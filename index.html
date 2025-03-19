@@ -23,13 +23,14 @@
                 background-color: #f8fafc;
             }
             .gradient-text {
-                background: linear-gradient(90deg, #2563eb 0%, #7c3aed 100%);
+                background: linear-gradient(90deg, #000000 0%, #333333 100%);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 background-clip: text;
             }
             .logo-gradient {
-                background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+                background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+                border: 2px solid #000000;
             }
             .card {
                 transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -58,7 +59,7 @@
             <header class="pt-16 pb-12 text-center">
                 <div class="flex justify-center items-center mb-6">
                     <div class="w-32 h-32 rounded-full logo-gradient flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300">
-                        <div class="w-28 h-28 rounded-full overflow-hidden flex items-center justify-center bg-black">
+                        <div class="w-28 h-28 rounded-full overflow-hidden flex items-center justify-center bg-white">
                             <img src="static/images/logo.png" alt="Opus AI Logo" class="w-full h-full object-contain p-1" />
                         </div>
                     </div>
@@ -67,7 +68,7 @@
                     <span class="gradient-text">Opus AI Research</span>
                 </h1>
                 <div
-                    class="h-1 w-40 logo-gradient mx-auto rounded-full mb-8"
+                    class="h-1 w-40 bg-black mx-auto rounded-full mb-8"
                 ></div>
             </header>
 
@@ -88,6 +89,112 @@
                         international AI competitions, achieving top rankings in
                         video understanding challenges.
                     </p>
+                </div>
+            </section>
+
+            <!-- Gallery Section (Moved here) -->
+            <section class="mb-20">
+                <h2 class="text-2xl md:text-3xl font-semibold mb-8 text-center">
+                    Research Gallery
+                </h2>
+
+                <div class="bg-white rounded-2xl shadow-md p-8 md:p-10">
+                    <div class="carousel relative">
+                        <!-- Carousel container -->
+                        <div
+                            class="overflow-hidden relative h-64 md:h-96 rounded-xl bg-gray-50"
+                        >
+                            <div
+                                id="slides-container"
+                                class="flex transition-transform duration-500 ease-in-out h-full"
+                            >
+                                <!-- Slide 1 -->
+                                <div class="w-full flex-shrink-0 flex flex-col">
+                                    <img
+                                        src="static/images/oscars.png"
+                                        alt="AI Research Visualization"
+                                        class="w-full h-5/6 object-contain"
+                                    />
+                                    <div class="bg-black/70 text-black py-2 px-3 text-center text-sm">
+                                        VEU-Bench: Towards Comprehensive Understanding of Video Editing
+                                    </div>
+                                </div>
+                                <!-- Slide 2 -->
+                                <div class="w-full flex-shrink-0 flex flex-col">
+                                    <img
+                                        src="static/images/numpro.png"
+                                        alt="Video Understanding Research"
+                                        class="w-full h-5/6 object-contain"
+                                    />
+                                    <div class="bg-black/70 text-black py-2 px-3 text-center text-sm">
+                                        Number it: Temporal Grounding Videos like Flipping Manga
+                                    </div>
+                                </div>
+                                <!-- Slide 3 -->
+                                <div class="w-full flex-shrink-0 flex flex-col">
+                                    <img
+                                        src="static/images/repurpose.png"
+                                        alt="Generative AI Research"
+                                        class="w-full h-5/6 object-contain"
+                                    />
+                                    <div class="bg-black/70 text-black py-2 px-3 text-center text-sm">
+                                        Video Repurposing from User Generated Content: A Large-scale Dataset and Benchmark
+                                    </div>
+                                </div>
+                                <!-- Slide 4 -->
+                                <div class="w-full flex-shrink-0 flex flex-col">
+                                    <img
+                                        src="static/images/frame.png"
+                                        alt="Generative AI Research"
+                                        class="w-full h-5/6 object-contain"
+                                    />
+                                    <div class="bg-black/70 text-black py-2 px-3 text-center text-sm">
+                                        Frame Order Matters: A Temporal Sequence-Aware Model for Few-Shot Action Recognition
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Controls -->
+                            <button
+                                id="prev"
+                                class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md"
+                            >
+                                <span class="material-icons text-gray-800"
+                                    >chevron_left</span
+                                >
+                            </button>
+                            <button
+                                id="next"
+                                class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md"
+                            >
+                                <span class="material-icons text-gray-800"
+                                    >chevron_right</span
+                                >
+                            </button>
+
+                            <!-- Indicators -->
+                            <div
+                                class="absolute bottom-4 left-0 right-0 flex justify-center gap-2"
+                            >
+                                <button
+                                    class="h-2 w-8 bg-white/50 hover:bg-white rounded-full indicator active"
+                                    data-index="0"
+                                ></button>
+                                <button
+                                    class="h-2 w-8 bg-white/50 hover:bg-white rounded-full indicator"
+                                    data-index="1"
+                                ></button>
+                                <button
+                                    class="h-2 w-8 bg-white/50 hover:bg-white rounded-full indicator"
+                                    data-index="2"
+                                ></button>
+                                <button
+                                    class="h-2 w-8 bg-white/50 hover:bg-white rounded-full indicator"
+                                    data-index="3"
+                                ></button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -357,112 +464,6 @@
                                 >
                                     Runner-up
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Gallery Section -->
-            <section class="mb-20">
-                <h2 class="text-2xl md:text-3xl font-semibold mb-8 text-center">
-                    Our Research Gallery
-                </h2>
-
-                <div class="bg-white rounded-2xl shadow-md p-8 md:p-10">
-                    <div class="carousel relative">
-                        <!-- Carousel container -->
-                        <div
-                            class="overflow-hidden relative h-64 md:h-96 rounded-xl bg-gray-50"
-                        >
-                            <div
-                                id="slides-container"
-                                class="flex transition-transform duration-500 ease-in-out h-full"
-                            >
-                                <!-- Slide 1 -->
-                                <div class="w-full flex-shrink-0 flex flex-col">
-                                    <img
-                                        src="static/images/oscars.png"
-                                        alt="AI Research Visualization"
-                                        class="w-full h-5/6 object-contain"
-                                    />
-                                    <div class="bg-black/70 text-black py-2 px-3 text-center text-sm">
-                                        VEU-Bench: Towards Comprehensive Understanding of Video Editing
-                                    </div>
-                                </div>
-                                <!-- Slide 2 -->
-                                <div class="w-full flex-shrink-0 flex flex-col">
-                                    <img
-                                        src="static/images/numpro.png"
-                                        alt="Video Understanding Research"
-                                        class="w-full h-5/6 object-contain"
-                                    />
-                                    <div class="bg-black/70 text-black py-2 px-3 text-center text-sm">
-                                        Number it: Temporal Grounding Videos like Flipping Manga
-                                    </div>
-                                </div>
-                                <!-- Slide 3 -->
-                                <div class="w-full flex-shrink-0 flex flex-col">
-                                    <img
-                                        src="static/images/repurpose.png"
-                                        alt="Generative AI Research"
-                                        class="w-full h-5/6 object-contain"
-                                    />
-                                    <div class="bg-black/70 text-black py-2 px-3 text-center text-sm">
-                                        Video Repurposing from User Generated Content: A Large-scale Dataset and Benchmark
-                                    </div>
-                                </div>
-                                <!-- Slide 4 -->
-                                <div class="w-full flex-shrink-0 flex flex-col">
-                                    <img
-                                        src="static/images/frame.png"
-                                        alt="Generative AI Research"
-                                        class="w-full h-5/6 object-contain"
-                                    />
-                                    <div class="bg-black/70 text-black py-2 px-3 text-center text-sm">
-                                        Frame Order Matters: A Temporal Sequence-Aware Model for Few-Shot Action Recognition
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Controls -->
-                            <button
-                                id="prev"
-                                class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md"
-                            >
-                                <span class="material-icons text-gray-800"
-                                    >chevron_left</span
-                                >
-                            </button>
-                            <button
-                                id="next"
-                                class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md"
-                            >
-                                <span class="material-icons text-gray-800"
-                                    >chevron_right</span
-                                >
-                            </button>
-
-                            <!-- Indicators -->
-                            <div
-                                class="absolute bottom-4 left-0 right-0 flex justify-center gap-2"
-                            >
-                                <button
-                                    class="h-2 w-8 bg-white/50 hover:bg-white rounded-full indicator active"
-                                    data-index="0"
-                                ></button>
-                                <button
-                                    class="h-2 w-8 bg-white/50 hover:bg-white rounded-full indicator"
-                                    data-index="1"
-                                ></button>
-                                <button
-                                    class="h-2 w-8 bg-white/50 hover:bg-white rounded-full indicator"
-                                    data-index="2"
-                                ></button>
-                                <button
-                                    class="h-2 w-8 bg-white/50 hover:bg-white rounded-full indicator"
-                                    data-index="3"
-                                ></button>
                             </div>
                         </div>
                     </div>
