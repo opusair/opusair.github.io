@@ -51,6 +51,23 @@
                 background-color: #ede9fe;
                 color: #5b21b6;
             }
+            /* 基本样式 */
+            #carousel {
+            overflow-x: auto;
+            scroll-behavior: auto;       /* 禁用平滑滚动干扰 */
+            scrollbar-width: none;       /* Firefox 隐藏滚动条 */
+            -ms-overflow-style: none;    /* IE 隐藏滚动条 */
+            }
+            #carousel::-webkit-scrollbar {
+            display: none;               /* Chrome/Safari 隐藏滚动条 */
+            }
+            /* 可选：鼠标悬停时显示抓手光标 */
+            #carousel:hover {
+            cursor: grab;
+            }
+            #carousel:active {
+            cursor: grabbing;
+            }
         </style>
     </head>
     <body class="text-gray-800">
@@ -108,6 +125,17 @@
                                 id="slides-container"
                                 class="flex transition-transform duration-500 ease-in-out h-full"
                             >
+                                <!-- Slide 0 -->
+                                <div class="w-full flex-shrink-0 flex flex-col">
+                                    <img
+                                        src="static/images/rsvp.png"
+                                        alt="AI Research Visualization"
+                                        class="w-full h-5/6 object-contain"
+                                    />
+                                    <div class="bg-black/70 text-black py-2 px-3 text-center text-sm">
+                                        RSVP: Reasoning Segmentation via Visual Prompting and Multi-modal Chain-of-Thought
+                                    </div>
+                                </div>
                                 <!-- Slide 1 -->
                                 <div class="w-full flex-shrink-0 flex flex-col">
                                     <img
@@ -232,6 +260,18 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td
+                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
+                                    >
+                                        RSVP: Reasoning Segmentation via Visual Prompting and Multi-modal Chain-of-Thought
+                                    </td>
+                                    <td
+                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                                    >
+                                        ACL 2025 Main
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td
                                         class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"
@@ -393,83 +433,148 @@
                     </div>
                 </div>
 
-                <!-- Competitions -->
-                <div class="bg-white rounded-2xl shadow-md p-8 md:p-10">
-                    <div class="flex items-center mb-8">
-                        <span class="material-icons text-purple-700 mr-3"
-                            >emoji_events</span
-                        >
-                        <h3 class="text-xl md:text-2xl font-semibold">
-                            Competitions
-                        </h3>
+                <section>
+                    <div
+                      id="carousel"
+                      class="bg-white rounded-2xl shadow-md p-8 md:p-10"
+                    >
+                      <div
+                        id="carousel-content"
+                        class="flex space-x-6 select-none whitespace-nowrap"
+                      >
+                        <!-- 第一轮卡片 -->
+                        <div class="flex-shrink-0 w-[30%] min-w-[240px] card card-gradient border border-gray-100 rounded-xl p-6 shadow-sm">
+                          <div class="flex justify-between items-start">
+                            <div>
+                              <h4 class="font-medium text-gray-800 mb-1">
+                                SoccerNet Challenges@CVPR 2025
+                              </h4>
+                              <p class="text-sm text-gray-500 mb-3">
+                                Multi-View Foul Recognition Track
+                              </p>
+                            </div>
+                            <div class="rounded-full btn-winner px-3 py-1 text-xs font-medium">
+                              Third Place
+                            </div>
+                          </div>
+                        </div>
+                
+                        <div class="flex-shrink-0 w-[30%] min-w-[240px] card card-gradient border border-gray-100 rounded-xl p-6 shadow-sm">
+                          <div class="flex justify-between items-start">
+                            <div>
+                              <h4 class="font-medium text-gray-800 mb-1">
+                                LOVEU Workshop@CVPR 2024
+                              </h4>
+                              <p class="text-sm text-gray-500 mb-3">
+                                Long-Term Video QA Track
+                              </p>
+                            </div>
+                            <div class="rounded-full btn-winner px-3 py-1 text-xs font-medium">
+                              Winner
+                            </div>
+                          </div>
+                        </div>
+                
+                        <div class="flex-shrink-0 w-[30%] min-w-[240px] card card-gradient border border-gray-100 rounded-xl p-6 shadow-sm">
+                          <div class="flex justify-between items-start">
+                            <div>
+                              <h4 class="font-medium text-gray-800 mb-1">
+                                Perception Challenge@ECCV 2024
+                              </h4>
+                              <p class="text-sm text-gray-500 mb-3">
+                                Hour-Long Video QA Track
+                              </p>
+                            </div>
+                            <div class="rounded-full btn-winner px-3 py-1 text-xs font-medium">
+                              Winner
+                            </div>
+                          </div>
+                        </div>
+                
+                        <div class="flex-shrink-0 w-[30%] min-w-[240px] card card-gradient border border-gray-100 rounded-xl p-6 shadow-sm">
+                          <div class="flex justify-between items-start">
+                            <div>
+                              <h4 class="font-medium text-gray-800 mb-1">
+                                KDD Cup 2020
+                              </h4>
+                              <p class="text-sm text-gray-500 mb-3">
+                                E-Commerce Debiasing Challenge
+                              </p>
+                            </div>
+                            <div class="rounded-full btn-runner px-4 py-1 text-xs font-medium whitespace-nowrap">
+                              Runner-up
+                            </div>
+                          </div>
+                        </div>
+                
+                        <!-- 第二轮卡片（与第一轮一模一样，用于无缝衔接） -->
+                        <div class="flex-shrink-0 w-[30%] min-w-[240px] card card-gradient border border-gray-100 rounded-xl p-6 shadow-sm">
+                          <div class="flex justify-between items-start">
+                            <div>
+                              <h4 class="font-medium text-gray-800 mb-1">
+                                SoccerNet Challenges@CVPR 2025
+                              </h4>
+                              <p class="text-sm text-gray-500 mb-3">
+                                Multi-View Foul Recognition Track
+                              </p>
+                            </div>
+                            <div class="rounded-full btn-winner px-3 py-1 text-xs font-medium">
+                              Third Place
+                            </div>
+                          </div>
+                        </div>
+                
+                        <div class="flex-shrink-0 w-[30%] min-w-[240px] card card-gradient border border-gray-100 rounded-xl p-6 shadow-sm">
+                          <div class="flex justify-between items-start">
+                            <div>
+                              <h4 class="font-medium text-gray-800 mb-1">
+                                LOVEU Workshop@CVPR 2024
+                              </h4>
+                              <p class="text-sm text-gray-500 mb-3">
+                                Long-Term Video QA Track
+                              </p>
+                            </div>
+                            <div class="rounded-full btn-winner px-3 py-1 text-xs font-medium">
+                              Winner
+                            </div>
+                          </div>
+                        </div>
+                
+                        <div class="flex-shrink-0 w-[30%] min-w-[240px] card card-gradient border border-gray-100 rounded-xl p-6 shadow-sm">
+                          <div class="flex justify-between items-start">
+                            <div>
+                              <h4 class="font-medium text-gray-800 mb-1">
+                                Perception Challenge@ECCV 2024
+                              </h4>
+                              <p class="text-sm text-gray-500 mb-3">
+                                Hour-Long Video QA Track
+                              </p>
+                            </div>
+                            <div class="rounded-full btn-winner px-3 py-1 text-xs font-medium">
+                              Winner
+                            </div>
+                          </div>
+                        </div>
+                
+                        <div class="flex-shrink-0 w-[30%] min-w-[240px] card card-gradient border border-gray-100 rounded-xl p-6 shadow-sm">
+                          <div class="flex justify-between items-start">
+                            <div>
+                              <h4 class="font-medium text-gray-800 mb-1">
+                                KDD Cup 2020
+                              </h4>
+                              <p class="text-sm text-gray-500 mb-3">
+                                E-Commerce Debiasing Challenge
+                              </p>
+                            </div>
+                            <div class="rounded-full btn-runner px-4 py-1 text-xs font-medium whitespace-nowrap">
+                              Runner-up
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div
-                            class="card card-gradient border border-gray-100 rounded-xl p-6 shadow-sm"
-                        >
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <h4 class="font-medium text-gray-800 mb-1">
-                                        LOVEU Workshop@CVPR 2024
-                                    </h4>
-                                    <p class="text-sm text-gray-500 mb-3">
-                                        Long-Term Video Question Answering Track
-                                    </p>
-                                </div>
-                                <div
-                                    class="rounded-full btn-winner px-3 py-1 text-xs font-medium"
-                                >
-                                    Winner
-                                </div>
-                            </div>
-                        </div>
-
-                        <div
-                            class="card card-gradient border border-gray-100 rounded-xl p-6 shadow-sm"
-                        >
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <h4 class="font-medium text-gray-800 mb-1">
-                                        The Second Perception Challenge@ECCV
-                                        2024
-                                    </h4>
-                                    <p class="text-sm text-gray-500 mb-3">
-                                        Hour-Long Video Question Answering Track
-                                    </p>
-                                </div>
-                                <div
-                                    class="rounded-full btn-winner px-3 py-1 text-xs font-medium"
-                                >
-                                    Winner
-                                </div>
-                            </div>
-                        </div>
-
-                        <div
-                            class="card card-gradient border border-gray-100 rounded-xl p-6 shadow-sm"
-                        >
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <h4 class="font-medium text-gray-800 mb-1">
-                                        KDD Cup 2020
-                                    </h4>
-                                    <p class="text-sm text-gray-500 mb-3">
-                                        Challenges for Modern E-Commerce
-                                        Platform - Debiasing
-                                    </p>
-                                </div>
-                                <div
-                                    class="rounded-full btn-runner px-4 py-1 text-xs font-medium whitespace-nowrap"
-                                >
-                                    Runner-up
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
+                  </section>
+                
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
                     let currentSlide = 0;
@@ -527,6 +632,23 @@
                     setInterval(() => {
                         goToSlide(currentSlide + 1);
                     }, 5000);
+                });
+                document.addEventListener('DOMContentLoaded', () => {
+                const carousel = document.getElementById('carousel');
+                const content  = document.getElementById('carousel-content');
+                const speed    = 0.5; // 每帧滚动像素数，可根据需要调整
+            
+                function step() {
+                    carousel.scrollLeft += speed;
+                    // 到达一轮宽度时，回到起点（无感切换）
+                    if (carousel.scrollLeft >= content.scrollWidth / 2) {
+                    carousel.scrollLeft -= content.scrollWidth / 2;
+                    }
+                    requestAnimationFrame(step);
+                }
+            
+                // 启动滚动动画
+                requestAnimationFrame(step);
                 });
             </script>
 
