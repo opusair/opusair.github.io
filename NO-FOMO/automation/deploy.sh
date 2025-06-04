@@ -59,9 +59,9 @@ EOF
     if crontab -l 2>/dev/null | grep -q "$cron_script"; then
         echo -e "${YELLOW}⚠️  定时任务已存在${NC}"
     else
-        # 添加cron任务 - 每天早上9点执行
-        (crontab -l 2>/dev/null; echo "0 9 * * * $cron_script") | crontab -
-        echo -e "${GREEN}✅ 已设置定时任务：每天早上9点自动更新日报${NC}"
+        # 添加cron任务 - 每天早上11点执行
+        (crontab -l 2>/dev/null; echo "0 11 * * * $cron_script") | crontab -
+        echo -e "${GREEN}✅ 已设置定时任务：每天早上11点自动更新日报${NC}"
         echo -e "${BLUE}📝 日志文件: $SCRIPT_DIR/cron.log${NC}"
     fi
 }

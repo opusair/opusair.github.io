@@ -20,10 +20,6 @@ https://opusair.github.io/NO-FOMO/
 ### 文件夹结构
 ```
 NO-FOMO/
-├── 2025-05-29/             # 源日报文件夹
-│   ├── index.html          # 日报页面
-│   ├── screenshot/         # 图片文件夹
-│   └── *.json             # 数据文件
 ├── home/                   # 发布目录
 │   ├── index.html         # 主页
 │   ├── 2025-05-29/       # 已发布的日报
@@ -58,22 +54,10 @@ chmod +x deploy.sh
 
 ### 3. 基本使用
 
-#### 添加新日报
+#### 同步和更新
 ```bash
-# 添加今天的日报（如果存在）
-./deploy.sh daily
-
-# 添加指定日期的日报
-./deploy.sh add 2025-06-01
-
-# 检查并更新最新日报
-./deploy.sh update
-```
-
-#### 查看状态
-```bash
-# 查看当前系统状态
-./deploy.sh status
+# 同步home目录下的所有日报文件夹
+./deploy.sh init
 
 # 查看帮助信息
 ./deploy.sh help
@@ -87,7 +71,7 @@ chmod +x deploy.sh
 ./deploy.sh setup-cron
 ```
 
-这将创建一个 cron 任务，每天早上 9 点自动检查并发布新日报。
+这将创建一个 cron 任务，每天早上 11 点自动检查并同步所有日报。
 
 ### 手动 cron 配置
 如果需要自定义时间，可以手动编辑 crontab：
@@ -96,26 +80,24 @@ chmod +x deploy.sh
 crontab -e
 
 # 添加定时任务（例如每天早上 8:30）
-30 8 * * * /path/to/NO-FOMO/automation/deploy.sh daily
+30 8 * * * /path/to/NO-FOMO/automation/deploy.sh init
 ```
 
 ## 📝 工作流程
 
 ### 日常工作流程
-1. **创建日报**: 在 `NO-FOMO/` 下创建日期文件夹（如 `2025-06-01/`）
-2. **添加内容**: 在文件夹中放入 `index.html` 和 `screenshot/` 图片
-3. **自动发布**: 运行 `./deploy.sh daily` 或等待定时任务执行
-4. **自动更新**: 系统会自动：
-   - 复制文件夹到 `home/` 目录
-   - 更新主页链接
+1. **添加日报**: 将新的日报文件夹直接放入 `home/` 目录（包含 `index.html` 和图片）
+2. **自动同步**: 运行 `./deploy.sh init` 或等待定时任务执行
+3. **自动更新**: 系统会自动：
+   - 为所有日报页面添加导航链接
+   - 更新主页链接和统计
    - 更新 daily 重定向
    - 提交到 Git 并推送
 
 ### 系统自动化功能
-- ✅ 自动检测新日报文件夹
-- ✅ 自动复制和部署
-- ✅ 自动更新主页导航
-- ✅ 自动添加返回链接
+- ✅ 自动扫描home目录下的日报文件夹
+- ✅ 自动添加导航链接到日报页面
+- ✅ 自动更新主页导航和统计
 - ✅ 自动统计文章数量
 - ✅ 自动提取数据源
 - ✅ 自动 Git 提交和推送
@@ -126,14 +108,14 @@ crontab -e
 - 📊 统计概览（总日报数、总文章数、最新更新）
 - 📅 日期卡片展示
 - 🔍 响应式设计
-- 🎯 快速导航链接
+- 🎯 快速导航链接（蓝、绿、橙三色配色）
 
 ### 日报页面功能
 - 📱 移动友好的响应式设计
 - 🖼️ 图片自动适配
 - 🏷️ 智能标签分类
 - 🔗 外链跳转
-- 🧭 导航面包屑
+- 🧭 导航面包屑（返回主页、最新日报、关于我们）
 
 ## 🔧 高级配置
 
@@ -145,11 +127,8 @@ python3 daily_report_manager.py --base-path /custom/path
 # 同步所有文件夹
 python3 daily_report_manager.py --sync-all
 
-# 添加特定日期
-python3 daily_report_manager.py --add-date 2025-06-01
-
 # 不自动提交到 Git
-python3 daily_report_manager.py --no-commit
+python3 daily_report_manager.py --sync-all --no-commit
 ```
 
 ### 自定义配置
@@ -162,7 +141,7 @@ def git_commit_and_push(self, message=None):
         today = date.today().strftime('%Y-%m-%d')
         message = f"自动更新日报 - {today}"  # 可自定义格式
 
-# 修改导航链接样式
+# 修改导航链接样式和颜色
 navigation_html = '''...'''  # 可自定义导航栏 HTML
 ```
 
@@ -191,7 +170,7 @@ ls -la automation/
 
 # 手动运行 Python 脚本
 cd NO-FOMO
-python3 automation/daily_report_manager.py --help
+python3 automation/daily_report_manager.py --sync-all
 ```
 
 #### 3. 定时任务不工作
@@ -203,7 +182,7 @@ crontab -l
 tail -f automation/cron.log
 
 # 测试脚本
-./automation/deploy.sh daily
+./automation/deploy.sh init
 ```
 
 ### 日志文件
@@ -234,7 +213,7 @@ cp -r home/ backup/home_$(date +%Y%m%d)
 
 ### 监控
 - 检查 GitHub Pages 部署状态
-- 监控 cron 任务执行情况
+- 监控 cron 任务执行情况（每天11点）
 - 定期查看日志文件
 
 ---
