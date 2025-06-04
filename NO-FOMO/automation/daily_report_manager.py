@@ -39,7 +39,7 @@ class DailyReportManager:
         print(f"📁 工作目录: {self.base_path}")
 
     def find_source_folders(self):
-        """查找所有源日期文件夹"""
+        """查找所有源日期文件夹（在根目录下）"""
         date_folders = []
         date_pattern = re.compile(r'^\d{4}-\d{2}-\d{2}$')
         
@@ -51,7 +51,23 @@ class DailyReportManager:
         
         # 按日期排序（最新的在前）
         date_folders.sort(reverse=True)
-        print(f"📅 发现日期文件夹: {date_folders}")
+        print(f"📅 发现源日期文件夹: {date_folders}")
+        return date_folders
+
+    def find_home_folders(self):
+        """查找home目录下的所有日期文件夹"""
+        date_folders = []
+        date_pattern = re.compile(r'^\d{4}-\d{2}-\d{2}$')
+        
+        for item in self.home_path.iterdir():
+            if item.is_dir() and date_pattern.match(item.name):
+                # 检查是否包含index.html
+                if (item / "index.html").exists():
+                    date_folders.append(item.name)
+        
+        # 按日期排序（最新的在前）
+        date_folders.sort(reverse=True)
+        print(f"📅 发现home日期文件夹: {date_folders}")
         return date_folders
 
     def copy_date_folder(self, source_date, target_date=None):
@@ -82,10 +98,15 @@ class DailyReportManager:
             return False
 
     def add_navigation_to_index(self, index_path):
-        """为日报页面添加导航链接"""
+        """为日报页面添加导航链接（如果不存在的话）"""
         try:
             with open(index_path, 'r', encoding='utf-8') as f:
                 content = f.read()
+            
+            # 检查是否已经存在导航栏
+            if '🏠 返回主页' in content or 'href="../../home/"' in content:
+                print(f"ℹ️  {index_path} 已存在导航链接，跳过添加")
+                return
             
             # 在header后添加导航栏
             navigation_html = '''
@@ -237,25 +258,28 @@ class DailyReportManager:
             return False
 
     def sync_all_dates(self):
-        """同步所有日期文件夹到home目录"""
-        source_dates = self.find_source_folders()
+        """同步home目录下的所有日期文件夹（简化版本）"""
+        # 直接扫描home目录下的文件夹
+        home_dates = self.find_home_folders()
         
-        if not source_dates:
-            print("❌ 没有找到任何日期文件夹")
+        if not home_dates:
+            print("❌ home目录下没有找到任何日期文件夹")
             return False
         
-        success_count = 0
-        for date_str in source_dates:
-            if self.copy_date_folder(date_str):
-                success_count += 1
+        # 为每个文件夹添加导航（如果没有的话）
+        for date_str in home_dates:
+            folder_path = self.home_path / date_str
+            index_path = folder_path / "index.html"
+            if index_path.exists():
+                self.add_navigation_to_index(index_path)
         
-        print(f"📊 同步完成: {success_count}/{len(source_dates)} 个文件夹")
+        print(f"📊 同步完成: 处理了 {len(home_dates)} 个文件夹")
         
         # 更新页面
-        self.update_home_page(source_dates)
-        self.update_daily_page(source_dates)
+        self.update_home_page(home_dates)
+        self.update_daily_page(home_dates)
         
-        return success_count > 0
+        return True
 
     def add_new_date(self, source_date, auto_commit=True):
         """添加新的日期文件夹"""
@@ -309,7 +333,7 @@ def main():
     manager = DailyReportManager(args.base_path)
     
     if args.sync_all:
-        print("🔄 开始同步所有日期文件夹...")
+        print("🔄 开始同步home目录下的所有日期文件夹...")
         if manager.sync_all_dates():
             if not args.no_commit:
                 manager.git_commit_and_push("同步所有日报文件夹")
