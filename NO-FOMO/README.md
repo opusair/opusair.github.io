@@ -189,23 +189,6 @@ tail -f automation/cron.log
 - `automation/cron.log`: 定时任务执行日志
 - Git 历史: 查看所有自动提交记录
 
-## 🔄 备份和恢复
-
-### 备份重要文件
-```bash
-# 备份配置
-cp -r automation/ backup/automation_$(date +%Y%m%d)
-
-# 备份 home 目录
-cp -r home/ backup/home_$(date +%Y%m%d)
-```
-
-### 从备份恢复
-```bash
-# 恢复并重新初始化
-./deploy.sh init
-```
-
 ## 📞 支持与维护
 
 ### 更新系统
