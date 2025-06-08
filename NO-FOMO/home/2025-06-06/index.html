@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 - 2025-06-06</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <h1>AI 日报</h1>
+            <p class="date">2025-06-06</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Twitter</h2>
+
+            <article class="item-card">
+                <h2>fchollet_ARC-AGI基准测试与前沿AI推理系统分析</h2>
+                <span class="published-time">Published: 2025-06-06T20:13:25.000Z</span>
+                <img src="screenshot/twitter/fchollet_1931082019204993324.png" alt="fchollet_ARC-AGI基准测试与前沿AI推理系统分析">
+                <p class="summary">推文详细介绍了ARC-AGI-1和ARC-AGI-2两种AI推理能力评估工具的用途。ARC-AGI-1适用于比较商业AI系统和衡量效率，而ARC-AGI-2则更适合测量突破性AGI能力进展，并与人类流体智能进行对比。截至2025年6月，对所有主要AI推理系统进行测试后发现，目前尚无明确的领先者。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>ARC-AGI</span><span>AI推理</span><span>基准测试</span><span>AGI</span><span>人工智能评估</span><span>前沿AI</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>研究进展</span><span>技术动态</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/fchollet/status/1931082019204993324" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Google_Gemini应用推出日程管理功能</h2>
+                <span class="published-time">Published: 2025-06-06T19:52:36.000Z</span>
+                <img src="screenshot/twitter/Google_1931076779717910625.png" alt="Google_Gemini应用推出日程管理功能">
+                <p class="summary">谷歌公司宣布，其Gemini应用现已推出创新的日程管理功能，旨在帮助用户高效完成待办事项。通过该功能，用户可以设置定时操作，例如在早晨获取日历摘要，或每周五接收本地活动列表。Gemini应用通过智能化的日程安排，简化了用户的日常规划，提升了个人生产力。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>Gemini应用</span><span>日程管理</span><span>智能助手</span><span>谷歌</span><span>生产力工具</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>智能体</span><span>产品发布</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/Google/status/1931076779717910625" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Google_Gemini 2.5 Pro回顾旧技术提供结构化创意回复</h2>
+                <span class="published-time">Published: 2025-06-06T18:20:00.000Z</span>
+                <img src="screenshot/twitter/Google_1931053475212718502.png" alt="Google_Gemini 2.5 Pro回顾旧技术提供结构化创意回复">
+                <p class="summary">谷歌官方推文展示了其Gemini 2.5 Pro模型的新能力。该模型能够针对“过往技术”相关问题，提供更具结构化和创造性的回答。这一特性表明Gemini 2.5 Pro在处理历史信息和生成高质量、多维度回复方面取得了进展，进一步提升了其在复杂问答场景下的表现力，为用户提供更深入、更丰富的知识探索体验。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>Gemini 2.5 Pro</span><span>谷歌</span><span>大模型</span><span>人工智能</span><span>问答系统</span><span>生成式AI</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>生成式AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/Google/status/1931053475212718502" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>googleaidevs_Google AI Studio展示2.5 Pro图像理解与创意字幕能力</h2>
+                <span class="published-time">Published: 2025-06-06T16:30:07.000Z</span>
+                <img src="screenshot/twitter/googleaidevs_1931025821923500104.png" alt="googleaidevs_Google AI Studio展示2.5 Pro图像理解与创意字幕能力">
+                <p class="summary">Google AI Developers通过“Caption This”演示，在Google AI Studio中展示了2.5 Pro模型的最新进展。该模型显著提升了图像理解和创意生成能力，不仅能识别图像中的具体对象，更能深入理解图像的“氛围”，从而生成富有语境且风趣的字幕。此次升级突显了其在视觉解码方面的深层潜力，为用户提供了更智能、更具创造性的图像描述体验。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>图像字幕</span><span>视觉理解</span><span>Google AI Studio</span><span>多模态</span><span>生成式AI</span><span>AI模型</span></div>
+                    <div class="area"><span class="label">区域：</span><span>计算机视觉</span><span>多模态</span><span>生成式AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/googleaidevs/status/1931025821923500104" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>natolambert_OpenAI探讨AGI未来：从单一到多智能体协同</h2>
+                <span class="published-time">Published: 2025-06-06T15:55:07.000Z</span>
+                <img src="screenshot/twitter/natolambert_1931017013419520063.png" alt="natolambert_OpenAI探讨AGI未来：从单一到多智能体协同">
+                <p class="summary">OpenAI高管Greg Brockman提出，未来通用人工智能（AGI）的发展趋势并非单一巨型模型，而是由众多专业化智能体组成的“动物园”模式。这些智能体将能够相互调用，共同协作。这一愿景旨在通过AI驱动，将经济活动和产出提升十倍，预示着一个由人工智能根本性赋能的经济新时代。Nathan Lambert对此观点评论为AGI定义的一种转变。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>AGI</span><span>智能体</span><span>OpenAI</span><span>人工智能经济</span><span>模型协同</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>智能体</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/natolambert/status/1931017013419520063" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>ylecun_赞同皮查伊关于AGI发展可能遇瓶颈的看法</h2>
+                <span class="published-time">Published: 2025-06-06T05:21:04.000Z</span>
+                <img src="screenshot/twitter/ylecun_1930857450883731727.png" alt="ylecun_赞同皮查伊关于AGI发展可能遇瓶颈的看法">
+                <p class="summary">知名AI科学家Yann LeCun对谷歌CEO Sundar Pichai关于通用人工智能（AGI）发展的观点表示认同。Pichai指出，尽管当前AI技术进步速度惊人，但实现AGI并非必然，且可能遭遇暂时的发展瓶颈。LeCun的表态呼应了业界对AGI未来路径的审慎思考，强调了技术发展中潜在的局限性，而非盲目乐观。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>Yann LeCun</span><span>Sundar Pichai</span><span>通用人工智能</span><span>AGI</span><span>AI发展</span><span>技术瓶颈</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>研究进展</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/ylecun/status/1930857450883731727" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">wechat</h2>
+
+            <article class="item-card">
+                <h2>4位图灵奖得主布道，2大冠军机器人登台，“AI春晚”果然又高又硬</h2>
+                <span class="published-time">Published: 2025-06-06T16:02:17.000Z</span>
+                <img src="screenshot/wechat/wechat_image__xxdjrEFcKFCoDznolkh4w.png" alt="4位图灵奖得主布道，2大冠军机器人登台，“AI春晚”果然又高又硬">
+                <p class="summary">智源大会作为“AI春晚”盛大启幕，汇聚四位图灵奖得主及众多产业领袖。大会重磅发布“悟界”系列大模型，包括全球首个原生多模态世界模型Emu3、脑科学多模态通用基础模型见微Brainμ及全原子微观生命模型OpenComplex2，标志着智源从“悟道”向“悟界”的跨越，旨在推动AI从数字世界迈向物理世界，并探索微观生命科学。同时，大会发布RoboOS 2.0与RoboBrain 2.0，旨在解决具身智能发展瓶颈，实现跨本体大小脑协作。会议还探讨了AI安全、智能体、开源等前沿议题，并展示了人形机器人天工和宇树G1，彰显了多模态、具身智能、智能体等成为下一代AI发展的关键方向。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>智源大会</span><span>悟界大模型</span><span>具身智能</span><span>人形机器人</span><span>多模态</span><span>智能体</span><span>AI安全</span><span>开源</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>机器人</span><span>多模态</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/_xxdjrEFcKFCoDznolkh4w" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>首个多模态专用慢思考框架！超GPT-o1近7个百分点，强化学习教会VLM「三思而后行」</h2>
+                <span class="published-time">Published: 2025-06-06T13:45:42.000Z</span>
+                <img src="screenshot/wechat/wechat_image_MBI_0v4ezWaXz3Bioqr6dw.png" alt="首个多模态专用慢思考框架！超GPT-o1近7个百分点，强化学习教会VLM「三思而后行」">
+                <p class="summary">港科大、滑铁卢大学等机构的研究团队针对多模态推理中视觉语言模型（VLM）“慢思考”能力不足的问题，提出了首个多模态专用慢思考强化框架VL-Rethinker。该框架旨在解决现有VLM在多模态场景下存在的“优势消失”和“反思惰性”两大核心障碍。VL-Rethinker通过“优势样本回放”（SSR）和“强制反思”两大创新技术，有效激发了VLM的深层推理和自我校准能力。实验结果显示，VL-Rethinker在MathVista、MathVerse等多模态数学推理任务上显著超越了GPT-o1模型，并在多学科理解测试中刷新了开源模型性能，展现了“慢思考”模式在多模态领域的巨大潜力。研究团队还构建了高质量的ViRL39K强化训练数据集，为多模态慢思考研究提供了重要资源。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>多模态</span><span>慢思考</span><span>视觉语言模型</span><span>强化学习</span><span>VL-Rethinker</span><span>优势样本回放</span><span>强制反思</span><span>ViRL39K</span></div>
+                    <div class="area"><span class="label">区域：</span><span>多模态</span><span>大模型</span><span>深度学习</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/MBI_0v4ezWaXz3Bioqr6dw" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>多模态推理新基准！最强Gemini 2.5 Pro仅得60分，复旦港中文上海AILab等出品</h2>
+                <span class="published-time">Published: 2025-06-06T13:45:42.000Z</span>
+                <img src="screenshot/wechat/wechat_image_BaGTkmjrqItbDUMve07ttg.png" alt="多模态推理新基准！最强Gemini 2.5 Pro仅得60分，复旦港中文上海AILab等出品">
+                <p class="summary">复旦大学、香港中文大学MMLab及上海人工智能实验室等机构联合推出MME-Reasoning，这是一个旨在全面评估多模态大模型（MLLMs）逻辑推理能力的新基准。该基准依据演绎、归纳、溯因三类推理进行设计，并涵盖多种问题类型和难度级别，旨在超越感知、弱化知识依赖。评测结果显示，当前最优模型得分仅约60%，揭示了MLLMs在逻辑推理方面面临的巨大挑战，尤其在溯因推理和开放式问题求解上表现不足。研究还发现，“思考模式”能显著提升推理能力，但过长的推理过程存在边际递减效应。MME-Reasoning的发布为MLLMs的推理能力研究提供了重要工具，并指明了未来发展方向。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>多模态大模型</span><span>逻辑推理</span><span>MME-Reasoning</span><span>基准</span><span>演绎推理</span><span>归纳推理</span><span>溯因推理</span><span>思考模式</span></div>
+                    <div class="area"><span class="label">区域：</span><span>多模态</span><span>大模型</span><span>人工智能</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/BaGTkmjrqItbDUMve07ttg" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI辩论能力碾压人类，81.7%概率让你信服！研究登Nature子刊</h2>
+                <span class="published-time">Published: 2025-06-06T10:52:39.000Z</span>
+                <img src="screenshot/wechat/wechat_image_XSmLYm9UZS82VnMoD_VXOA.png" alt="AI辩论能力碾压人类，81.7%概率让你信服！研究登Nature子刊">
+                <p class="summary">一项最新研究揭示，人工智能在辩论中的说服力已超越人类，尤其OpenAI的GPT-4模型，在获取个人信息后，能以81.7%的更高概率改变对话者观点。即使在未获取个人信息时，大模型仍表现出优于人类的说服能力。研究指出，大模型倾向于运用逻辑和分析思维进行辩论，而人类则更多依赖情感和故事。这项发表于《自然》子刊的研究引发了对AI可能被用于大规模操纵、误导或加剧社会两极分化的深切担忧，呼吁社会应警惕并考虑对大模型在影响人类主观认知方面的应用进行监管，以防范潜在的“黑镜”式风险。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>人工智能</span><span>大模型</span><span>说服力</span><span>辩论</span><span>观点操纵</span><span>GPT-4</span><span>伦理风险</span><span>社会影响</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>自然语言处理</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/XSmLYm9UZS82VnMoD_VXOA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MoE推理「王炸」组合：昇腾×盘古让推理性能狂飙6-8倍</h2>
+                <span class="published-time">Published: 2025-06-06T09:37:24.000Z</span>
+                <img src="screenshot/wechat/wechat_image_l2fZrFkmPQuEVlQ0-3zcEA.png" alt="MoE推理「王炸」组合：昇腾×盘古让推理性能狂飙6-8倍">
+                <p class="summary">华为团队在昇腾平台上推出Pangu Pro MoE 72B模型，通过系统级软硬协同、高性能算子融合及模型原生投机算法等全链路优化，实现了大模型推理性能6-8倍的显著提升。该模型在SuperCLUE千亿内模型中并列国内第一，并在昇腾300I Duo和800I A2上展现出极致性价比和硬件潜力。H2P分层混合并行、TopoComm通信优化、DuoStream计算通信融合、MulAttention与SwiftGMM融合算子以及PreMoE、TrimR、SpecReason等算法加速，共同构建了高性能、低成本的推理能力底座，为通用大模型的规模部署提供了坚实支撑。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>MoE模型</span><span>昇腾</span><span>盘古</span><span>推理优化</span><span>软硬协同</span><span>大模型</span><span>算子融合</span><span>并行计算</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>深度学习</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/l2fZrFkmPQuEVlQ0-3zcEA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>类R1训练不再只看结果对错！港中文推出SophiaVL-R1模型</h2>
+                <span class="published-time">Published: 2025-06-06T09:37:24.000Z</span>
+                <img src="screenshot/wechat/wechat_image_iYOcAA9ea5RDS-cOZmYOIQ.png" alt="类R1训练不再只看结果对错！港中文推出SophiaVL-R1模型">
+                <p class="summary">香港中文大学联合上海人工智能实验室发布多模态推理模型SophiaVL-R1，旨在解决传统R1训练范式仅关注结果对错导致模型“走捷径”的问题。该模型创新性地将“思考过程”纳入奖励体系，通过引入“思考奖励”机制和“思考评分模型”，并结合Trust-GRPO算法有效规避奖励欺骗。SophiaVL-R1在多个数学和通用多模态基准测试中展现出卓越的推理与泛化能力，其7B版本性能超越参数量10倍的LLaVA-OneVision-72B模型，且训练效率更高。这标志着推理能力可通过优化训练范式显著提升，为AI模型训练提供了新思路。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>SophiaVL-R1</span><span>R1训练</span><span>多模态推理</span><span>思考过程奖励</span><span>强化学习</span><span>Trust-GRPO</span><span>泛化能力</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>多模态</span><span>机器学习</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/iYOcAA9ea5RDS-cOZmYOIQ" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>cognee - Memory for AI Agents in 5 lines of code</h2>
+                <span class="published-time">Published: 2025-06-06T08:39:12Z</span>
+                <img src="https://raw.githubusercontent.com/topoteretes/cognee/main/assets/cognee_diagram.png" alt="cognee - Memory for AI Agents in 5 lines of code">
+                <p class="summary">Cognee是一个为AI智能体提供动态记忆的开源框架，通过可扩展的ECL（提取、认知、加载）管道替代传统RAG系统。它能够高效互联并检索包括对话、文档、图像和音频转录在内的多种数据类型，支持数据加载至图数据库和向量数据库，并可从30多种数据源进行数据摄取与操作，旨在降低开发成本并提升AI应用的记忆能力。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>AI智能体</span><span>记忆系统</span><span>RAG替代</span><span>知识图谱</span><span>向量数据库</span><span>自然语言处理</span><span>数据管理</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>智能体</span><span>自然语言处理</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/topoteretes/cognee" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>🐰 Ragbits</h2>
+                <span class="published-time">Published: 2025-06-04T12:44:13Z</span>
+                <img src="screenshot/github/ragbits.png" alt="🐰 Ragbits">
+                <p class="summary">Ragbits是一个用于快速开发生成式AI应用的构建模块集合。它提供灵活的LLM集成、类型安全的模型调用、多源向量数据库支持及高效RAG处理能力。该框架强调可靠性、可扩展性，并内置了实时可观测性、测试及聊天UI等部署监控工具，加速GenAI应用开发。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>生成式AI</span><span>检索增强生成</span><span>大语言模型</span><span>向量数据库</span><span>可观测性</span><span>聊天机器人</span><span>模块化</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>生成式AI</span><span>大模型</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/deepsense-ai/ragbits" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DSPy: Programming—not prompting—Foundation Models</h2>
+                <span class="published-time">Published: 2025-06-06T21:51:52Z</span>
+                <img src="https://github.com/stanfordnlp/dspy/raw/main/docs/docs/static/img/dspy_logo.png" alt="DSPy: Programming—not prompting—Foundation Models">
+                <p class="summary">DSPy是一个用于编程而非提示语言模型的框架，旨在通过模块化Python代码构建AI系统，并优化其提示和权重。它支持快速迭代开发，适用于构建分类器、RAG管道和智能体循环，实现语言模型的高质量输出。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>语言模型编程</span><span>提示工程</span><span>模块化AI</span><span>RAG</span><span>智能体</span><span>自改进</span><span>Python框架</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>自然语言处理</span><span>大模型</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/stanfordnlp/dspy" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Dify</h2>
+                <span class="published-time">Published: 2025-06-06T13:03:59Z</span>
+                <img src="screenshot/github/dify.png" alt="Dify">
+                <p class="summary">Dify是一个开源LLM应用开发平台，提供直观的界面，集成了智能体AI工作流、RAG管道、模型管理和可观测性等功能。它支持多种LLM模型，并提供后端即服务API，帮助用户快速从原型到生产部署AI应用。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>LLM应用开发</span><span>开源平台</span><span>RAG</span><span>智能体</span><span>AI工作流</span><span>模型管理</span><span>可观测性</span><span>后端服务</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>智能体</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/langgenius/dify" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LLM Course</h2>
+                <span class="published-time">Published: 2025-06-04 16:09:23+00:00</span>
+                <img src="https://github.com/mlabonne/llm-course/raw/main/img/banner.png" alt="LLM Course">
+                <p class="summary">该GitHub仓库提供了一个全面的LLM课程，涵盖LLM基础、LLM科学家（模型构建与优化）和LLM工程师（应用开发与部署）三大模块。内容涉及模型微调、量化、RAG、智能体、推理优化及安全等前沿技术，旨在帮助开发者掌握端到端LLM应用开发与部署能力。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>大语言模型</span><span>模型微调</span><span>模型量化</span><span>检索增强生成</span><span>智能体</span><span>提示工程</span><span>LLM部署</span><span>模型安全</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>自然语言处理</span><span>智能体</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/mlabonne/llm-course" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LangChain for Java: Supercharge your Java application with the power of LLMs</h2>
+                <span class="published-time">Published: 2025-06-06T18:08:02Z</span>
+                <img src="screenshot/github/langchain4j.png" alt="LangChain for Java: Supercharge your Java application with the power of LLMs">
+                <p class="summary">LangChain4j是一个专为Java应用设计的LLM集成框架，旨在简化大型语言模型在Java开发中的应用。它提供统一的API，支持多种LLM提供商和向量存储，避免了学习和实现特定API的复杂性。框架内置了丰富的工具箱，涵盖提示模板、聊天记忆、函数调用、智能体和RAG等高级模式，助力开发者快速构建聊天机器人和RAG管道等LLM驱动的应用。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>Java</span><span>大型语言模型</span><span>LangChain</span><span>API集成</span><span>检索增强生成</span><span>智能体</span><span>向量存储</span><span>自然语言处理</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>自然语言处理</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/langchain4j/langchain4j" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>ComfyUI-Copilot：自动化工作流开发的智能助手</h2>
+                <span class="published-time">Published: 2025-06-05T13:20:50.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.05010.png" alt="ComfyUI-Copilot：自动化工作流开发的智能助手">
+                <p class="summary">我们介绍了 ComfyUI-Copilot，这是一款由大型语言模型驱动的插件，旨在提升 ComfyUI（一个用于AI驱动艺术创作的开源平台）的可用性和效率。尽管 ComfyUI 具有灵活性和用户友好的界面，但它可能给新手带来挑战，包括有限的文档、模型配置错误以及工作流设计的复杂性。ComfyUI-Copilot 通过提供智能节点和模型推荐，以及自动化的一键式工作流构建来解决这些挑战。其核心是，该系统采用了一个分层的多智能体框架，包括一个用于任务委派的中央助手智能体和用于不同用途的专业工作智能体，并由我们精心策划的 ComfyUI 知识库支持，以简化调试和部署。我们通过离线定量评估和在线用户反馈验证了 ComfyUI-Copilot 的有效性，结果表明它能准确推荐节点并加速工作流开发。此外，用例表明 ComfyUI-Copilot 降低了初学者的入门门槛，并提高了经验用户的工效。ComfyUI-Copilot 的安装包和演示视频可在 https://github.com/AIDC-AI/ComfyUI-Copilot 获取。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>ComfyUI-Copilot</span><span>大型语言模型</span><span>工作流自动化</span><span>智能助手</span><span>多智能体</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>智能体</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.05010" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MedAgentGym：大规模训练基于代码的医疗推理LLM智能体</h2>
+                <span class="published-time">Published: 2025-06-04T19:38:55.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.04405.png" alt="MedAgentGym：大规模训练基于代码的医疗推理LLM智能体">
+                <p class="summary">我们推出了MedAgentGYM，这是首个公开可用的训练环境，旨在增强大型语言模型（LLM）智能体在基于代码的医疗推理方面的能力。MedAgentGYM包含来自真实世界生物医学场景的72,413个任务实例，涵盖129个类别。这些任务封装在可执行的编码环境中，每个环境都包含详细的任务描述、交互式反馈机制、可验证的真实标注以及可扩展的训练轨迹生成。对30多个LLM进行的广泛基准测试揭示了商业API模型与开源模型之间显著的性能差异。利用MedAgentGYM，Med-Copilot-7B通过监督微调（+36.44%）和持续强化学习（+42.47%）取得了显著的性能提升，成为一个经济实惠且保护隐私的替代方案，其竞争力可与gpt-4o媲美。通过在统一的执行环境中提供全面的基准测试和可访问、可扩展的训练资源，MedAgentGYM提供了一个集成平台，用于开发基于LLM的编码助手，以促进先进的生物医学研究和实践。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>MedAgentGym</span><span>LLM智能体</span><span>医疗推理</span><span>基于代码</span><span>强化学习</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>智能体</span><span>机器学习</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.04405" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Surfer-H 携手 Holo1：由开放权重驱动的经济高效型网络智能体</h2>
+                <span class="published-time">Published: 2025-06-03T13:29:03.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.02865.png" alt="Surfer-H 携手 Holo1：由开放权重驱动的经济高效型网络智能体">
+                <p class="summary">我们提出了 Surfer-H，这是一种经济高效的网络智能体，它集成了视觉-语言模型（VLM）以在网络上执行用户定义的任务。我们将其与 Holo1 配对，Holo1 是一个新颖的开放权重 VLM 集合，专门用于网络导航和信息提取。Holo1 在精心策划的数据源上进行训练，包括开放访问的网络内容、合成示例和自生成的智能体数据。Holo1 在通用用户界面（UI）基准测试以及我们新的网络 UI 定位基准 WebClick 上均表现出色。当由 Holo1 驱动时，Surfer-H 在 WebVoyager 上实现了 92.2% 的最先进性能，在准确性和成本效益之间取得了帕累托最优的平衡。为了加速智能体系统的研究进展，我们正在开源我们的 WebClick 评估数据集和 Holo1 模型权重。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>网络智能体</span><span>视觉-语言模型</span><span>开放权重</span><span>Holo1</span><span>WebClick</span></div>
+                    <div class="area"><span class="label">区域：</span><span>智能体</span><span>多模态</span><span>人工智能</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.02865" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>通过推理和强化学习实现大型语言模型中的语境完整性</h2>
+                <span class="published-time">Published: 2025-05-29T21:26:21.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.04245.png" alt="通过推理和强化学习实现大型语言模型中的语境完整性">
+                <p class="summary">随着自主智能体代表用户做出决策的时代到来，确保语境完整性（CI）——即在执行特定任务时共享何种信息是恰当的——成为该领域的核心问题。我们认为，语境完整性要求一种推理形式，即智能体需要对其所操作的语境进行推理。为了验证这一点，我们首先提示大型语言模型在决定披露何种信息时明确地对语境完整性进行推理。随后，我们通过开发一个强化学习（RL）框架来扩展此方法，该框架进一步向模型灌输实现语境完整性所需的推理能力。我们使用一个仅包含约700个示例的合成、自动创建的数据集，但其中包含多样化的语境和信息披露规范，结果表明，我们的方法在保持任务性能的同时，显著减少了不恰当的信息披露，并且适用于多种模型规模和系列。重要的是，这些改进可以从该合成数据集泛化到已建立的语境完整性基准，例如PrivacyLens，该基准具有人工标注，并评估AI助手在行动和工具调用中的隐私泄露情况。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>语境完整性</span><span>大型语言模型</span><span>强化学习</span><span>推理</span><span>信息披露</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>智能体</span><span>强化学习</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.04245" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Kinetics：重新思考测试时缩放定律</h2>
+                <span class="published-time">Published: 2025-06-05T17:59:24.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.05333.png" alt="Kinetics：重新思考测试时缩放定律">
+                <p class="summary">我们从实际效率的角度重新思考了测试时缩放定律，揭示了小型模型的有效性被显著高估了。以往基于计算最优性的工作，忽视了推理时策略（例如，Best-of-N、长CoTs）引入的关键内存访问瓶颈。我们对0.6B到32B参数模型的全面分析，揭示了一种新的Kinetics缩放定律，该定律通过结合计算和内存访问成本，能更好地指导资源分配。Kinetics缩放定律表明，测试时计算资源在超过某个阈值的模型上使用时，比在小型模型上使用更有效。一个关键原因是，在测试时缩放（TTS）中，注意力机制而非参数数量，成为主导成本因素。受此启发，我们提出了一种以稀疏注意力为中心的新型缩放范式，它降低了每个token的成本，并在相同的资源预算内实现了更长的生成和更多的并行样本。经验上，我们表明稀疏注意力模型始终优于密集对应模型，在低成本方案中，AIME问题解决准确率提高了60多分，在高成本方案中提高了5分以上，其中包括对最先进MoE模型的评估。这些结果表明，稀疏注意力对于实现测试时缩放的全部潜力至关重要，因为与训练阶段参数缩放会饱和不同，测试时准确性通过增加生成量持续提高。代码可在https://github.com/Infini-AI-Lab/Kinetics获取。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>测试时缩放</span><span>稀疏注意力</span><span>Kinetics Scaling Law</span><span>内存访问瓶颈</span><span>大模型</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>自然语言处理</span><span>生成式AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.05333" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>推理时超扩展与KV缓存压缩</h2>
+                <span class="published-time">Published: 2025-06-05T17:59:55.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.05345.png" alt="推理时超扩展与KV缓存压缩">
+                <p class="summary">推理时扩展通过生成更长或更并行的序列来提高推理准确性，但牺牲了效率。然而，在Transformer大型语言模型（LLMs）中，生成成本的瓶颈在于键值（KV）缓存的大小，而非生成的token数量。因此，我们探索推理时超扩展：通过压缩KV缓存，我们可以在相同的计算预算内生成更多token，并进一步提高扩展推理的准确性。然而，这种方法的成功取决于压缩方法在高压缩比下仍能保持准确性的能力。为了使超扩展变得实用，我们引入了动态内存稀疏化（DMS），这是一种新颖的KV缓存稀疏化方法，仅需1K训练步即可实现8倍压缩，同时保持比无训练稀疏注意力更好的准确性。DMS并非过早地丢弃缓存的token，而是延迟token的逐出，隐式地合并表示并保留关键信息。我们展示了DMS在多种LLM家族上实现推理时超扩展的有效性，表明它在相似的推理运行时和内存负载下提升了准确性。例如，我们在Qwen-R1 32B上，在不同计算预算下，平均将AIME 24的性能提升9.1点，GPQA提升7.6点，LiveCodeBench提升9.6点。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>KV Cache Compression</span><span>Inference-Time Hyper-Scaling</span><span>Dynamic Memory Sparsification</span><span>大型语言模型</span><span>稀疏化</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>自然语言处理</span><span>深度学习</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.05345" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
