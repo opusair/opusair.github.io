@@ -215,79 +215,6 @@
             margin-top: 5px;
         }
 
-        .visitor-map {
-            background: var(--card-background-color);
-            padding: 30px;
-            border-radius: 16px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 20px var(--shadow-color);
-            text-align: center;
-        }
-
-        .visitor-map h2 {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            color: var(--text-color);
-        }
-
-        .map-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .visitor-stats {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            width: 100%;
-            max-width: 600px;
-        }
-
-        .visitor-stat-item {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px 30px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-            min-width: 200px;
-        }
-
-        /* 优化clustrmaps计数器样式 */
-        .visitor-stat-item img {
-            display: none; /* 隐藏clustrmaps的图标 */
-        }
-        
-        .visitor-stat-item a {
-            color: white !important;
-            text-decoration: none !important;
-            font-size: 1.8em !important;
-            font-weight: 700 !important;
-        }
-
-        .visitor-stat-number {
-            font-size: 1.8em;
-            font-weight: 700;
-            margin: 0;
-        }
-
-        .visitor-stat-label {
-            font-size: 0.85em;
-            margin-top: 5px;
-            opacity: 0.9;
-        }
-
-        .map-widget {
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
         .footer {
             text-align: center;
             margin-top: 60px;
@@ -312,21 +239,6 @@
             .quick-links {
                 flex-direction: column;
                 align-items: center;
-            }
-            
-            .visitor-stats {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-            
-            .visitor-stat-item {
-                padding: 15px 20px;
-                min-width: 150px;
-            }
-            
-            .visitor-stat-number {
-                font-size: 1.5em;
             }
         }
     </style>
@@ -362,32 +274,6 @@
             </div>
         </div>
 
-        <div class="visitor-map">
-            <h2>🌍 访客分布地图</h2>
-            <p style="color: var(--secondary-color); margin-bottom: 20px;">实时展示全球访客分布情况</p>
-            <div class="map-container">
-                <!-- 真实访客统计 - 使用clustrmaps数据 -->
-                <div class="visitor-stats">
-                    <div class="visitor-stat-item">
-                        <div class="visitor-stat-number">
-                            <script type="text/javascript" id="clustrmaps-counter" src="//clustrmaps.com/counter.js?d=t30aIwYAuaG-bKOJ1Hq9ibnhWukmAht_6G2Z6tmSwGc&cg=ffffff&cd=333333&cs=blue"></script>
-                        </div>
-                        <div class="visitor-stat-label">总访问量</div>
-                    </div>
-                </div>
-                
-                <!-- 地图小部件 -->
-                <div class="map-widget">
-                    <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=t30aIwYAuaG-bKOJ1Hq9ibnhWukmAht_6G2Z6tmSwGc&cl=ffffff&w=a"></script>
-                </div>
-                
-                <!-- 计数器小部件 -->
-                <div style="margin-top: 15px;">
-                    <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=t30aIwYAuaG-bKOJ1Hq9ibnhWukmAht_6G2Z6tmSwGc"></script>
-                </div>
-            </div>
-        </div>
-
         <div id="date-list" class="date-grid">
             <!-- 日期卡片将由JavaScript动态生成 -->
         </div>
@@ -400,6 +286,18 @@
     <script>
         // 日报数据配置
         const reports = [
+            {
+                        "date": "2025-06-09",
+                        "title": "AI 日报 - 2025-06-09",
+                        "description": "涵盖 Twitter, wechat, GitHub 等来源的最新 AI 资讯和技术突破等 4 个来源",
+                        "articleCount": 24,
+                        "sources": [
+                                    "Twitter",
+                                    "wechat",
+                                    "GitHub",
+                                    "huggingface"
+                        ]
+            },
             {
                         "date": "2025-06-06",
                         "title": "AI 日报 - 2025-06-06",
