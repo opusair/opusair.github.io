@@ -21,7 +21,18 @@ class NoFomoAnalytics {
     // 获取当前页面路径
     getCurrentPagePath() {
         const path = window.location.pathname;
-        return path.replace('/NO-FOMO/home/', '').replace(/\/$/, '') || 'index';
+        let cleanPath = path.replace('/NO-FOMO/home/', '').replace(/\/$/, '') || 'index';
+        
+        // 特殊处理主页的不同语言版本
+        if (cleanPath === 'en' || cleanPath === 'en/index') {
+            cleanPath = 'en/index';
+        } else if (cleanPath === 'cn' || cleanPath === 'cn/index') {
+            cleanPath = 'cn/index';
+        } else if (cleanPath === 'index' || cleanPath === '') {
+            cleanPath = 'index';
+        }
+        
+        return cleanPath;
     }
 
     // 记录页面访问
@@ -118,8 +129,11 @@ class NoFomoAnalytics {
     // 格式化页面名称显示
     formatPageName(pagePath) {
         if (pagePath === 'index') return '主页';
+        if (pagePath === 'en/index') return '英文主页';
+        if (pagePath === 'cn/index') return '中文主页';
         if (pagePath.match(/^\d{4}-\d{2}-\d{2}$/)) return `日报 ${pagePath}`;
         if (pagePath.match(/^\d{4}-\d{2}-\d{2}\/en$/)) return `英文日报 ${pagePath.replace('/en', '')}`;
+        if (pagePath.match(/^\d{4}-\d{2}-\d{2}\/cn$/)) return `中文日报 ${pagePath.replace('/cn', '')}`;
         return pagePath;
     }
 }

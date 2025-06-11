@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NO-FOMO AI Daily - Homepage</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="../js/analytics.js"></script>
+    <script src="../js/stats-display.js"></script>
     <style>
         :root {
             --primary-color: #007bff;
@@ -244,6 +246,32 @@
             margin-top: 5px;
         }
 
+        .popular-pages {
+            display: grid;
+            gap: 15px;
+        }
+
+        .popular-page-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .popular-page-name {
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .popular-page-visits {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.9em;
+        }
+
         .footer {
             text-align: center;
             margin-top: 60px;
@@ -307,9 +335,25 @@
                     <div class="stat-label">Total Articles</div>
                 </div>
                 <div class="stat-item">
+                    <div class="stat-number" id="total-visits">0</div>
+                    <div class="stat-label">Total Visits</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="today-visits">0</div>
+                    <div class="stat-label">Today's Visits</div>
+                </div>
+                <div class="stat-item">
                     <div class="stat-number" id="latest-date">-</div>
                     <div class="stat-label">Latest Update</div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Popular Pages Statistics -->
+        <div class="stats">
+            <h2>🔥 Popular Pages</h2>
+            <div id="popular-pages" class="popular-pages">
+                <!-- Popular pages will be generated dynamically by JavaScript -->
             </div>
         </div>
 
@@ -443,17 +487,74 @@
             }
 ];
 
-        // Generate date cards
-        function generateDateCards() {
-            const dateList = document.getElementById('date-list');
+        // Update statistics
+        function updateStats() {
+            const analytics = window.NoFomoAnalytics;
+            const statsDisplay = window.StatsDisplay;
             const totalReports = reports.length;
             const totalArticles = reports.reduce((sum, report) => sum + report.articleCount, 0);
             const latestDate = reports[0].date;
-
-            // Update statistics
-            document.getElementById('total-reports').textContent = totalReports;
-            document.getElementById('total-articles').textContent = totalArticles;
+            
+            // Basic statistics (with animation effects)
+            if (statsDisplay) {
+                statsDisplay.updateStatItem('total-reports', totalReports);
+                statsDisplay.updateStatItem('total-articles', totalArticles);
+            } else {
+                document.getElementById('total-reports').textContent = totalReports;
+                document.getElementById('total-articles').textContent = totalArticles;
+            }
+            
             document.getElementById('latest-date').textContent = latestDate.replace(/(\d{4})-(\d{2})-(\d{2})/, '$2/$3');
+            
+            // Visit statistics (with animation effects)
+            const analyticsData = analytics.getAnalyticsData();
+            if (analyticsData) {
+                if (statsDisplay) {
+                    statsDisplay.updateStatItem('total-visits', analyticsData.totalVisits);
+                    statsDisplay.updateStatItem('today-visits', analytics.getTodayVisits());
+                } else {
+                    document.getElementById('total-visits').textContent = analyticsData.totalVisits;
+                    document.getElementById('today-visits').textContent = analytics.getTodayVisits();
+                }
+            }
+            
+            // Update popular pages
+            updatePopularPages();
+        }
+
+        // Update popular pages display
+        function updatePopularPages() {
+            const analytics = window.NoFomoAnalytics;
+            const popularPages = analytics.getPopularPages(5);
+            const container = document.getElementById('popular-pages');
+            
+            if (popularPages.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #6c757d;">No visit data available</p>';
+                return;
+            }
+            
+            container.innerHTML = popularPages.map(({ page, visits }) => `
+                <div class="popular-page-item">
+                    <span class="popular-page-name">${formatPageNameEn(page)}</span>
+                    <span class="popular-page-visits">${visits} visits</span>
+                </div>
+            `).join('');
+        }
+
+        // Format page name for English display
+        function formatPageNameEn(pagePath) {
+            if (pagePath === 'index') return 'Homepage';
+            if (pagePath === 'en/index') return 'English Homepage';
+            if (pagePath === 'cn/index') return 'Chinese Homepage';
+            if (pagePath.match(/^\d{4}-\d{2}-\d{2}$/)) return `Daily Report ${pagePath}`;
+            if (pagePath.match(/^\d{4}-\d{2}-\d{2}\/en$/)) return `EN Report ${pagePath.replace('/en', '')}`;
+            if (pagePath.match(/^\d{4}-\d{2}-\d{2}\/cn$/)) return `CN Report ${pagePath.replace('/cn', '')}`;
+            return pagePath;
+        }
+
+        // Generate date cards
+        function generateDateCards() {
+            const dateList = document.getElementById('date-list');
 
             // Generate cards
             reports.forEach((report, index) => {
@@ -501,7 +602,20 @@
         }
 
         // Generate content after page load
-        document.addEventListener('DOMContentLoaded', generateDateCards);
+        document.addEventListener('DOMContentLoaded', () => {
+            generateDateCards();
+            updateStats();
+            
+            // Listen for analytics data updates
+            if (window.NoFomoAnalytics) {
+                window.NoFomoAnalytics.onUpdate(() => {
+                    updateStats();
+                });
+            }
+            
+            // Update statistics every 30 seconds
+            setInterval(updateStats, 30000);
+        });
     </script>
 </body>
 </html> 
