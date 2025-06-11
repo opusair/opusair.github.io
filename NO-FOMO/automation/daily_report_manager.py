@@ -152,8 +152,16 @@ class DailyReportManager:
             with open(index_path, 'r', encoding='utf-8') as f:
                 content = f.read()
             
-            # 检查是否已经存在导航栏
-            if '🏠' in content and ('href="../../home/"' in content or 'href="../../../home/"' in content):
+            # 检查是否已经存在导航栏（更精确的检测）
+            # 检查是否存在包含主页、最新日报、关于我们的nav标签
+            nav_indicators = [
+                '<nav style="text-align: center',  # 导航栏的开始标签
+                'background: #f8f9fa',              # 导航栏的背景色
+                'Latest Daily' if not is_chinese else '最新日报',  # 最新日报按钮
+                'About Us' if not is_chinese else '关于我们'       # 关于我们按钮
+            ]
+            
+            if all(indicator in content for indicator in nav_indicators):
                 print(f"ℹ️  {index_path} 已存在导航链接，跳过添加")
                 return
             
