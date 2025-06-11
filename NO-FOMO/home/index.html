@@ -41,6 +41,7 @@
             border-radius: 20px;
             color: white;
             box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            position: relative;
         }
 
         .header h1 {
@@ -54,6 +55,34 @@
             font-size: 1.3em;
             margin: 0;
             opacity: 0.9;
+        }
+
+        .language-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switch a {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .language-switch a:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .language-switch a.active {
+            background: rgba(255, 255, 255, 0.4);
+            border-color: rgba(255, 255, 255, 0.5);
         }
 
         .quick-links {
@@ -240,12 +269,22 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .language-switch {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header class="header">
+            <div class="language-switch">
+                <a href="cn/" class="active">中文</a>
+                <a href="en/">English</a>
+            </div>
             <h1>NO-FOMO AI 日报</h1>
             <p>每日精选 AI 资讯，助您紧跟科技前沿</p>
         </header>
@@ -290,13 +329,14 @@
                         "date": "2025-06-10",
                         "title": "AI 日报 - 2025-06-10",
                         "description": "涵盖 Twitter, wechat, GitHub 等来源的最新 AI 资讯和技术突破等 4 个来源",
-                        "articleCount": 22,
+                        "articleCount": 20,
                         "sources": [
                                     "Twitter",
                                     "wechat",
                                     "GitHub",
                                     "huggingface"
-                        ]
+                        ],
+                        "hasLanguages": true
             },
             {
                         "date": "2025-06-09",
@@ -308,7 +348,8 @@
                                     "wechat",
                                     "GitHub",
                                     "huggingface"
-                        ]
+                        ],
+                        "hasLanguages": false
             },
             {
                         "date": "2025-06-06",
@@ -320,7 +361,8 @@
                                     "wechat",
                                     "GitHub",
                                     "huggingface"
-                        ]
+                        ],
+                        "hasLanguages": false
             },
             {
                         "date": "2025-06-05",
@@ -332,7 +374,8 @@
                                     "wechat",
                                     "GitHub",
                                     "huggingface"
-                        ]
+                        ],
+                        "hasLanguages": false
             },
             {
                         "date": "2025-06-04",
@@ -344,7 +387,8 @@
                                     "wechat",
                                     "GitHub",
                                     "huggingface"
-                        ]
+                        ],
+                        "hasLanguages": false
             },
             {
                         "date": "2025-06-03",
@@ -356,7 +400,8 @@
                                     "wechat",
                                     "GitHub",
                                     "huggingface"
-                        ]
+                        ],
+                        "hasLanguages": false
             },
             {
                         "date": "2025-05-29",
@@ -368,7 +413,8 @@
                                     "wechat",
                                     "GitHub",
                                     "huggingface"
-                        ]
+                        ],
+                        "hasLanguages": false
             },
             {
                         "date": "2025-05-26",
@@ -380,7 +426,8 @@
                                     "wechat",
                                     "GitHub",
                                     "huggingface"
-                        ]
+                        ],
+                        "hasLanguages": false
             }
 ];
 
@@ -401,6 +448,14 @@
                 const isNew = index === 0;
                 const formattedDate = formatDate(report.date);
                 
+                // 确定链接路径 - 默认中文版
+                let linkPath;
+                if (report.hasLanguages) {
+                    linkPath = `${report.date}/cn/`;
+                } else {
+                    linkPath = `${report.date}/`;
+                }
+                
                 const card = document.createElement('div');
                 card.className = 'date-card';
                 card.innerHTML = `
@@ -412,8 +467,8 @@
                     </div>
                     <div class="preview">${report.description}</div>
                     <div class="actions">
-                        <a href="${report.date}/" class="btn btn-primary">📖 阅读日报</a>
-                        <a href="${report.date}/" class="btn btn-outline">🔗 分享链接</a>
+                        <a href="${linkPath}" class="btn btn-primary">📖 阅读日报</a>
+                        <a href="${linkPath}" class="btn btn-outline">🔗 分享链接</a>
                     </div>
                 `;
                 

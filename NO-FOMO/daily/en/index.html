@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NO-FOMO AI Daily - Latest Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .loading-container {
+            text-align: center;
+            background: var(--card-background-color);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+
+        .language-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.8em;
+            transition: background-color 0.3s ease;
+        }
+
+        .language-switch a:hover {
+            background: #0056b3;
+        }
+
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+
+        .loading-container h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 0 0 20px 0;
+        }
+
+        .loading-container p {
+            font-size: 1.2em;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 30px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .manual-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .language-switch {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    <script>
+        // Available daily report dates (in reverse chronological order)
+        const availableDates = [
+            {
+                        "date": "2025-06-10",
+                        "hasLanguages": true
+            },
+            {
+                        "date": "2025-06-09",
+                        "hasLanguages": false
+            },
+            {
+                        "date": "2025-06-06",
+                        "hasLanguages": false
+            },
+            {
+                        "date": "2025-06-05",
+                        "hasLanguages": false
+            },
+            {
+                        "date": "2025-06-04",
+                        "hasLanguages": false
+            },
+            {
+                        "date": "2025-06-03",
+                        "hasLanguages": false
+            },
+            {
+                        "date": "2025-05-29",
+                        "hasLanguages": false
+            },
+            {
+                        "date": "2025-05-26",
+                        "hasLanguages": false
+            }
+];
+
+        function redirectToLatest() {
+            if (availableDates.length > 0) {
+                const latestReport = availableDates[0];
+                let redirectUrl;
+                
+                if (latestReport.hasLanguages) {
+                    // Force redirect to EN version
+                    redirectUrl = `../../home/${latestReport.date}/en/`;
+                } else {
+                    // Redirect to default version
+                    redirectUrl = `../../home/${latestReport.date}/`;
+                }
+                
+                console.log(`Redirecting to: ${redirectUrl}`);
+                window.location.href = redirectUrl;
+            } else {
+                // If no reports available, show error message
+                document.getElementById('loading-text').innerHTML = 'No reports available';
+                document.querySelector('.spinner').style.display = 'none';
+            }
+        }
+
+        // Redirect after 2 seconds delay when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(redirectToLatest, 2000);
+        });
+    </script>
+</head>
+<body>
+    <div class="loading-container">
+        <div class="language-switch">
+            <a href="../cn/">中文</a>
+            <a href="../en/" class="active">English</a>
+        </div>
+        <h1>🚀 Redirecting to Latest Report</h1>
+        <p id="loading-text">Preparing the latest AI insights for you...</p>
+        <div class="spinner"></div>
+        <div class="manual-links">
+            <a href="../../home/en/" class="btn btn-primary">Back to Home</a>
+            <a href="../../home/2025-06-10/en/" class="btn btn-outline">View Latest Report</a>
+        </div>
+    </div>
+</body>
+</html> 

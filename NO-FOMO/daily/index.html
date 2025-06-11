@@ -38,6 +38,34 @@
             box-shadow: 0 10px 30px var(--shadow-color);
             max-width: 500px;
             width: 90%;
+            position: relative;
+        }
+
+        .language-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.8em;
+            transition: background-color 0.3s ease;
+        }
+
+        .language-switch a:hover {
+            background: #0056b3;
+        }
+
+        .language-switch a.active {
+            background: var(--secondary-color);
         }
 
         .loading-container h1 {
@@ -104,25 +132,84 @@
             background: var(--primary-color);
             color: white;
         }
+
+        @media (max-width: 768px) {
+            .language-switch {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
     </style>
     <script>
         // 可用的日报日期列表（按时间倒序排列）
         const availableDates = [
-            "2025-06-10",
-            "2025-06-09",
-            "2025-06-06",
-            "2025-06-05",
-            "2025-06-04",
-            "2025-06-03",
-            "2025-05-29",
-            "2025-05-26"
+            {
+                        "date": "2025-06-10",
+                        "hasLanguages": true
+            },
+            {
+                        "date": "2025-06-09",
+                        "hasLanguages": false
+            },
+            {
+                        "date": "2025-06-06",
+                        "hasLanguages": false
+            },
+            {
+                        "date": "2025-06-05",
+                        "hasLanguages": false
+            },
+            {
+                        "date": "2025-06-04",
+                        "hasLanguages": false
+            },
+            {
+                        "date": "2025-06-03",
+                        "hasLanguages": false
+            },
+            {
+                        "date": "2025-05-29",
+                        "hasLanguages": false
+            },
+            {
+                        "date": "2025-05-26",
+                        "hasLanguages": false
+            }
 ];
+
+        function detectUserLanguage() {
+            // 检测用户语言偏好
+            const browserLang = navigator.language || navigator.userLanguage;
+            const isChineseBrowser = browserLang.toLowerCase().includes('zh');
+            
+            // 检查URL参数
+            const urlParams = new URLSearchParams(window.location.search);
+            const langParam = urlParams.get('lang');
+            
+            if (langParam === 'en') return 'en';
+            if (langParam === 'zh' || langParam === 'cn') return 'cn';
+            
+            // 默认根据浏览器语言判断
+            return isChineseBrowser ? 'cn' : 'cn'; // 默认中文
+        }
 
         function redirectToLatest() {
             if (availableDates.length > 0) {
-                const latestDate = availableDates[0];
-                // 重定向到最新的日报
-                window.location.href = `../home/${latestDate}/`;
+                const latestReport = availableDates[0];
+                const userLang = detectUserLanguage();
+                
+                let redirectUrl;
+                if (latestReport.hasLanguages) {
+                    // 如果支持多语言，根据用户偏好跳转
+                    redirectUrl = `../home/${latestReport.date}/${userLang}/`;
+                } else {
+                    // 如果不支持多语言，直接跳转
+                    redirectUrl = `../home/${latestReport.date}/`;
+                }
+                
+                console.log(`Redirecting to: ${redirectUrl}`);
+                window.location.href = redirectUrl;
             } else {
                 // 如果没有可用日报，显示错误信息
                 document.getElementById('loading-text').innerHTML = '暂无可用日报';
@@ -138,12 +225,16 @@
 </head>
 <body>
     <div class="loading-container">
+        <div class="language-switch">
+            <a href="cn/" class="active">中文</a>
+            <a href="en/">English</a>
+        </div>
         <h1>🚀 正在跳转最新日报</h1>
         <p id="loading-text">正在为您准备最新的 AI 资讯...</p>
         <div class="spinner"></div>
         <div class="manual-links">
             <a href="../home/" class="btn btn-primary">返回主页</a>
-            <a href="../home/2025-05-29/" class="btn btn-outline">查看最新日报</a>
+            <a href="../home/2025-06-10/" class="btn btn-outline">查看最新日报</a>
         </div>
     </div>
 </body>
