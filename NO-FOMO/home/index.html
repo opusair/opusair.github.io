@@ -349,11 +349,11 @@
             </div>
         </div>
 
-        <!-- 热门页面统计 -->
+        <!-- 最热日期统计 -->
         <div class="stats">
-            <h2>🔥 热门页面</h2>
+            <h2>🔥 最热日期</h2>
             <div id="popular-pages" class="popular-pages">
-                <!-- 热门页面将通过JavaScript动态生成 -->
+                <!-- 最热日期将通过JavaScript动态生成 -->
             </div>
         </div>
 
@@ -525,20 +525,21 @@
         // 更新热门页面显示
         function updatePopularPages() {
             const analytics = window.NoFomoAnalytics;
-            const popularPages = analytics.getPopularPages(5);
+            const popularDates = analytics.getPopularDatesByVisits(1);
             const container = document.getElementById('popular-pages');
             
-            if (popularPages.length === 0) {
+            if (popularDates.length === 0) {
                 container.innerHTML = '<p style="text-align: center; color: #6c757d;">暂无访问数据</p>';
                 return;
             }
             
-            container.innerHTML = popularPages.map(({ page, visits }) => `
+            const { date, visits } = popularDates[0];
+            container.innerHTML = `
                 <div class="popular-page-item">
-                    <span class="popular-page-name">${analytics.formatPageName(page)}</span>
+                    <span class="popular-page-name">${date}</span>
                     <span class="popular-page-visits">${visits} 次访问</span>
                 </div>
-            `).join('');
+            `;
         }
 
         // 生成日期卡片

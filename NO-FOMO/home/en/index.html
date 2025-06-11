@@ -349,11 +349,11 @@
             </div>
         </div>
 
-        <!-- Popular Pages Statistics -->
+        <!-- Hottest Date Statistics -->
         <div class="stats">
-            <h2>🔥 Popular Pages</h2>
+            <h2>🔥 Hottest Date</h2>
             <div id="popular-pages" class="popular-pages">
-                <!-- Popular pages will be generated dynamically by JavaScript -->
+                <!-- Hottest date will be generated dynamically by JavaScript -->
             </div>
         </div>
 
@@ -525,32 +525,24 @@
         // Update popular pages display
         function updatePopularPages() {
             const analytics = window.NoFomoAnalytics;
-            const popularPages = analytics.getPopularPages(5);
+            const popularDates = analytics.getPopularDatesByVisits(1);
             const container = document.getElementById('popular-pages');
             
-            if (popularPages.length === 0) {
+            if (popularDates.length === 0) {
                 container.innerHTML = '<p style="text-align: center; color: #6c757d;">No visit data available</p>';
                 return;
             }
             
-            container.innerHTML = popularPages.map(({ page, visits }) => `
+            const { date, visits } = popularDates[0];
+            container.innerHTML = `
                 <div class="popular-page-item">
-                    <span class="popular-page-name">${formatPageNameEn(page)}</span>
+                    <span class="popular-page-name">${date}</span>
                     <span class="popular-page-visits">${visits} visits</span>
                 </div>
-            `).join('');
+            `;
         }
 
-        // Format page name for English display
-        function formatPageNameEn(pagePath) {
-            if (pagePath === 'index') return 'Homepage';
-            if (pagePath === 'en/index') return 'English Homepage';
-            if (pagePath === 'cn/index') return 'Chinese Homepage';
-            if (pagePath.match(/^\d{4}-\d{2}-\d{2}$/)) return `Daily Report ${pagePath}`;
-            if (pagePath.match(/^\d{4}-\d{2}-\d{2}\/en$/)) return `EN Report ${pagePath.replace('/en', '')}`;
-            if (pagePath.match(/^\d{4}-\d{2}-\d{2}\/cn$/)) return `CN Report ${pagePath.replace('/cn', '')}`;
-            return pagePath;
-        }
+
 
         // Generate date cards
         function generateDateCards() {

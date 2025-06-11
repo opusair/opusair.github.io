@@ -101,6 +101,33 @@ class NoFomoAnalytics {
             .map(([page, visits]) => ({ page, visits }));
     }
 
+    // 获取按日期合并的热门日期
+    getPopularDatesByVisits(limit = 1) {
+        const data = this.getAnalyticsData();
+        if (!data) return [];
+
+        const dateVisits = {};
+
+        // 遍历所有页面访问记录
+        Object.entries(data.pageVisits).forEach(([page, visits]) => {
+            // 提取日期
+            const dateMatch = page.match(/^(\d{4}-\d{2}-\d{2})/);
+            if (dateMatch) {
+                const date = dateMatch[1];
+                if (!dateVisits[date]) {
+                    dateVisits[date] = 0;
+                }
+                dateVisits[date] += visits;
+            }
+        });
+
+        // 按访问量排序并返回
+        return Object.entries(dateVisits)
+            .sort(([,a], [,b]) => b - a)
+            .slice(0, limit)
+            .map(([date, visits]) => ({ date, visits }));
+    }
+
     // 广播更新事件
     broadcastUpdate() {
         // 使用 localStorage 事件在不同页面间同步
