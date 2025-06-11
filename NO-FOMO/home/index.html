@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NO-FOMO AI 日报 - 主页</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="js/analytics.js"></script>
+    <script src="js/stats-display.js"></script>
     <style>
         :root {
             --primary-color: #007bff;
@@ -244,6 +246,32 @@
             margin-top: 5px;
         }
 
+        .popular-pages {
+            display: grid;
+            gap: 15px;
+        }
+
+        .popular-page-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .popular-page-name {
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .popular-page-visits {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.9em;
+        }
+
         .footer {
             text-align: center;
             margin-top: 60px;
@@ -307,9 +335,29 @@
                     <div class="stat-label">总文章数</div>
                 </div>
                 <div class="stat-item">
+                    <div class="stat-number" id="total-visits">0</div>
+                    <div class="stat-label">总访问量</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="today-visits">0</div>
+                    <div class="stat-label">今日访问</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="total-pages">0</div>
+                    <div class="stat-label">访问页面数</div>
+                </div>
+                <div class="stat-item">
                     <div class="stat-number" id="latest-date">-</div>
                     <div class="stat-label">最新更新</div>
                 </div>
+            </div>
+        </div>
+
+        <!-- 热门页面统计 -->
+        <div class="stats">
+            <h2>🔥 热门页面</h2>
+            <div id="popular-pages" class="popular-pages">
+                <!-- 热门页面将通过JavaScript动态生成 -->
             </div>
         </div>
 
@@ -443,17 +491,65 @@
             }
 ];
 
-        // 生成日期卡片
-        function generateDateCards() {
-            const dateList = document.getElementById('date-list');
+        // 更新统计数据
+        function updateStats() {
+            const analytics = window.NoFomoAnalytics;
+            const statsDisplay = window.StatsDisplay;
             const totalReports = reports.length;
             const totalArticles = reports.reduce((sum, report) => sum + report.articleCount, 0);
             const latestDate = reports[0].date;
-
-            // 更新统计数据
-            document.getElementById('total-reports').textContent = totalReports;
-            document.getElementById('total-articles').textContent = totalArticles;
+            
+            // 基础统计（使用动画效果）
+            if (statsDisplay) {
+                statsDisplay.updateStatItem('total-reports', totalReports);
+                statsDisplay.updateStatItem('total-articles', totalArticles);
+            } else {
+                document.getElementById('total-reports').textContent = totalReports;
+                document.getElementById('total-articles').textContent = totalArticles;
+            }
+            
             document.getElementById('latest-date').textContent = latestDate.replace(/(\d{4})-(\d{2})-(\d{2})/, '$2/$3');
+            
+            // 访问统计（使用动画效果）
+            const analyticsData = analytics.getAnalyticsData();
+            if (analyticsData) {
+                if (statsDisplay) {
+                    statsDisplay.updateStatItem('total-visits', analyticsData.totalVisits);
+                    statsDisplay.updateStatItem('today-visits', analytics.getTodayVisits());
+                    statsDisplay.updateStatItem('total-pages', analytics.getTotalPages());
+                } else {
+                    document.getElementById('total-visits').textContent = analyticsData.totalVisits;
+                    document.getElementById('today-visits').textContent = analytics.getTodayVisits();
+                    document.getElementById('total-pages').textContent = analytics.getTotalPages();
+                }
+            }
+            
+            // 更新热门页面
+            updatePopularPages();
+        }
+
+        // 更新热门页面显示
+        function updatePopularPages() {
+            const analytics = window.NoFomoAnalytics;
+            const popularPages = analytics.getPopularPages(5);
+            const container = document.getElementById('popular-pages');
+            
+            if (popularPages.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #6c757d;">暂无访问数据</p>';
+                return;
+            }
+            
+            container.innerHTML = popularPages.map(({ page, visits }) => `
+                <div class="popular-page-item">
+                    <span class="popular-page-name">${analytics.formatPageName(page)}</span>
+                    <span class="popular-page-visits">${visits} 次访问</span>
+                </div>
+            `).join('');
+        }
+
+        // 生成日期卡片
+        function generateDateCards() {
+            const dateList = document.getElementById('date-list');
 
             // 生成卡片
             reports.forEach((report, index) => {
@@ -501,7 +597,20 @@
         }
 
         // 页面加载完成后生成内容
-        document.addEventListener('DOMContentLoaded', generateDateCards);
+        document.addEventListener('DOMContentLoaded', () => {
+            generateDateCards();
+            updateStats();
+            
+            // 监听统计数据更新
+            if (window.NoFomoAnalytics) {
+                window.NoFomoAnalytics.onUpdate(() => {
+                    updateStats();
+                });
+            }
+            
+            // 定时更新统计数据（每30秒）
+            setInterval(updateStats, 30000);
+        });
     </script>
 </body>
 </html> 
