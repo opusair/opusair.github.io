@@ -507,14 +507,28 @@
             document.getElementById('latest-date').textContent = latestDate.replace(/(\d{4})-(\d{2})-(\d{2})/, '$2/$3');
             
             // 访问统计（使用动画效果）
-            const analyticsData = analytics.getAnalyticsData();
-            if (analyticsData) {
-                if (statsDisplay) {
-                    statsDisplay.updateStatItem('total-visits', analyticsData.totalVisits);
-                    statsDisplay.updateStatItem('today-visits', analytics.getTodayVisits());
+            if (analytics) {
+                const analyticsData = analytics.getAnalyticsData();
+                if (analyticsData) {
+                    const totalVisits = analyticsData.totalVisits || 0;
+                    const todayVisits = analytics.getTodayVisits() || 0;
+                    
+                    if (statsDisplay) {
+                        statsDisplay.updateStatItem('total-visits', totalVisits);
+                        statsDisplay.updateStatItem('today-visits', todayVisits);
+                    } else {
+                        document.getElementById('total-visits').textContent = totalVisits;
+                        document.getElementById('today-visits').textContent = todayVisits;
+                    }
                 } else {
-                    document.getElementById('total-visits').textContent = analyticsData.totalVisits;
-                    document.getElementById('today-visits').textContent = analytics.getTodayVisits();
+                    // 如果没有数据，显示0
+                    if (statsDisplay) {
+                        statsDisplay.updateStatItem('total-visits', 0);
+                        statsDisplay.updateStatItem('today-visits', 0);
+                    } else {
+                        document.getElementById('total-visits').textContent = '0';
+                        document.getElementById('today-visits').textContent = '0';
+                    }
                 }
             }
             
@@ -596,7 +610,11 @@
         // 页面加载完成后生成内容
         document.addEventListener('DOMContentLoaded', () => {
             generateDateCards();
-            updateStats();
+            
+            // 确保analytics已初始化后再更新统计
+            setTimeout(() => {
+                updateStats();
+            }, 200);
             
             // 监听统计数据更新
             if (window.NoFomoAnalytics) {

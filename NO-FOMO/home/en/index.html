@@ -507,14 +507,28 @@
             document.getElementById('latest-date').textContent = latestDate.replace(/(\d{4})-(\d{2})-(\d{2})/, '$2/$3');
             
             // Visit statistics (with animation effects)
-            const analyticsData = analytics.getAnalyticsData();
-            if (analyticsData) {
-                if (statsDisplay) {
-                    statsDisplay.updateStatItem('total-visits', analyticsData.totalVisits);
-                    statsDisplay.updateStatItem('today-visits', analytics.getTodayVisits());
+            if (analytics) {
+                const analyticsData = analytics.getAnalyticsData();
+                if (analyticsData) {
+                    const totalVisits = analyticsData.totalVisits || 0;
+                    const todayVisits = analytics.getTodayVisits() || 0;
+                    
+                    if (statsDisplay) {
+                        statsDisplay.updateStatItem('total-visits', totalVisits);
+                        statsDisplay.updateStatItem('today-visits', todayVisits);
+                    } else {
+                        document.getElementById('total-visits').textContent = totalVisits;
+                        document.getElementById('today-visits').textContent = todayVisits;
+                    }
                 } else {
-                    document.getElementById('total-visits').textContent = analyticsData.totalVisits;
-                    document.getElementById('today-visits').textContent = analytics.getTodayVisits();
+                    // If no data, show 0
+                    if (statsDisplay) {
+                        statsDisplay.updateStatItem('total-visits', 0);
+                        statsDisplay.updateStatItem('today-visits', 0);
+                    } else {
+                        document.getElementById('total-visits').textContent = '0';
+                        document.getElementById('today-visits').textContent = '0';
+                    }
                 }
             }
             
@@ -596,7 +610,11 @@
         // Generate content after page load
         document.addEventListener('DOMContentLoaded', () => {
             generateDateCards();
-            updateStats();
+            
+            // Ensure analytics is initialized before updating stats
+            setTimeout(() => {
+                updateStats();
+            }, 200);
             
             // Listen for analytics data updates
             if (window.NoFomoAnalytics) {

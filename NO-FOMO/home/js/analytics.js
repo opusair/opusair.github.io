@@ -37,36 +37,53 @@ class NoFomoAnalytics {
 
     // 记录页面访问
     recordVisit() {
-        const data = this.getAnalyticsData();
-        const pagePath = this.getCurrentPagePath();
-        const today = new Date().toISOString().split('T')[0];
+        try {
+            const data = this.getAnalyticsData();
+            if (!data) {
+                console.error('无法获取分析数据，重新初始化');
+                this.initAnalytics();
+                return;
+            }
 
-        // 更新总访问量
-        data.totalVisits += 1;
+            const pagePath = this.getCurrentPagePath();
+            const today = new Date().toISOString().split('T')[0];
 
-        // 更新页面访问量
-        if (!data.pageVisits[pagePath]) {
-            data.pageVisits[pagePath] = 0;
+            // 更新总访问量
+            data.totalVisits = (data.totalVisits || 0) + 1;
+
+            // 更新页面访问量
+            if (!data.pageVisits[pagePath]) {
+                data.pageVisits[pagePath] = 0;
+            }
+            data.pageVisits[pagePath] += 1;
+
+            // 更新每日访问量
+            if (!data.dailyVisits[today]) {
+                data.dailyVisits[today] = {};
+            }
+            if (!data.dailyVisits[today][pagePath]) {
+                data.dailyVisits[today][pagePath] = 0;
+            }
+            data.dailyVisits[today][pagePath] += 1;
+
+            // 更新最后访问时间
+            data.lastUpdated = new Date().toISOString();
+
+            // 保存数据
+            localStorage.setItem(this.storageKey, JSON.stringify(data));
+            
+            console.log('访问已记录:', {
+                页面: pagePath,
+                总访问量: data.totalVisits,
+                今日访问: this.getTodayVisits(),
+                数据: data
+            });
+            
+            // 触发自定义事件，通知其他页面更新
+            this.broadcastUpdate();
+        } catch (error) {
+            console.error('记录访问时出错:', error);
         }
-        data.pageVisits[pagePath] += 1;
-
-        // 更新每日访问量
-        if (!data.dailyVisits[today]) {
-            data.dailyVisits[today] = {};
-        }
-        if (!data.dailyVisits[today][pagePath]) {
-            data.dailyVisits[today][pagePath] = 0;
-        }
-        data.dailyVisits[today][pagePath] += 1;
-
-        // 更新最后访问时间
-        data.lastUpdated = new Date().toISOString();
-
-        // 保存数据
-        localStorage.setItem(this.storageKey, JSON.stringify(data));
-        
-        // 触发自定义事件，通知其他页面更新
-        this.broadcastUpdate();
     }
 
     // 获取统计数据
@@ -170,5 +187,11 @@ window.NoFomoAnalytics = window.NoFomoAnalytics || new NoFomoAnalytics();
 
 // 页面加载时自动记录访问
 document.addEventListener('DOMContentLoaded', () => {
+    // 确保立即记录访问
     window.NoFomoAnalytics.recordVisit();
+    
+    // 延迟一点时间确保数据已经保存，然后触发更新事件
+    setTimeout(() => {
+        window.NoFomoAnalytics.broadcastUpdate();
+    }, 100);
 }); 
