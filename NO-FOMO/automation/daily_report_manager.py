@@ -120,13 +120,13 @@ class DailyReportManager:
             # 添加语言切换HTML
             if is_chinese:
                 language_switch_html = '''            <div class="language-switch">
-                <a href="../cn/" class="active">中文</a>
+                <a href="../" class="active">中文</a>
                 <a href="../en/">English</a>
             </div>
 '''
             else:
                 language_switch_html = '''            <div class="language-switch">
-                <a href="../cn/">中文</a>
+                <a href="../">中文</a>
                 <a href="../en/" class="active">English</a>
             </div>
 '''
@@ -437,10 +437,10 @@ class DailyReportManager:
             const langParam = urlParams.get('lang');
             
             if (langParam === 'en') return 'en';
-            if (langParam === 'zh' || langParam === 'cn') return 'cn';
+            if (langParam === 'zh' || langParam === 'cn') return 'zh';
             
-            // 默认根据浏览器语言判断
-            return isChineseBrowser ? 'cn' : 'cn'; // 默认中文
+            // 默认根据浏览器语言判断，现在默认是中文版（无cn路径）
+            return isChineseBrowser ? 'zh' : 'zh'; // 默认中文
         }
 
         function redirectToLatest() {
@@ -449,11 +449,11 @@ class DailyReportManager:
                 const userLang = detectUserLanguage();
                 
                 let redirectUrl;
-                if (latestReport.hasLanguages) {
-                    // 如果支持多语言，根据用户偏好跳转
-                    redirectUrl = `../home/${latestReport.date}/${userLang}/`;
+                if (latestReport.hasLanguages && userLang === 'en') {
+                    // 如果支持多语言且用户偏好英文，跳转到英文版
+                    redirectUrl = `../home/${latestReport.date}/en/`;
                 } else {
-                    // 如果不支持多语言，直接跳转
+                    // 默认跳转到中文版（无cn路径）
                     redirectUrl = `../home/${latestReport.date}/`;
                 }
                 
@@ -472,19 +472,19 @@ class DailyReportManager:
         });'''
             else:
                 # 语言特定的daily页面直接跳转到对应语言版本
-                lang_code = 'cn' if is_chinese else 'en'
+                lang_code = 'en' if not is_chinese else 'zh'
                 
                 # 根据语言生成注释和错误信息
                 if is_chinese:
                     date_list_comment = '// 可用的日报日期列表（按时间倒序排列）'
-                    force_redirect_comment = f'// 强制跳转到{lang_code}版本'
+                    force_redirect_comment = f'// 强制跳转到中文版本（无cn路径）'
                     default_redirect_comment = '// 跳转到默认版本'
                     no_reports_comment = '// 如果没有可用日报，显示错误信息'
                     delay_comment = '// 页面加载后延迟2秒重定向'
                     no_reports_text = '暂无可用日报'
                 else:
                     date_list_comment = '// Available daily report dates (in reverse chronological order)'
-                    force_redirect_comment = f'// Force redirect to {lang_code.upper()} version'
+                    force_redirect_comment = f'// Force redirect to EN version'
                     default_redirect_comment = '// Redirect to default version'
                     no_reports_comment = '// If no reports available, show error message'
                     delay_comment = '// Redirect after 2 seconds delay when page loads'
@@ -498,9 +498,9 @@ class DailyReportManager:
                 const latestReport = availableDates[0];
                 let redirectUrl;
                 
-                if (latestReport.hasLanguages) {{
+                if (latestReport.hasLanguages && "{lang_code}" === "en") {{
                     {force_redirect_comment}
-                    redirectUrl = `../../home/${{latestReport.date}}/{lang_code}/`;
+                    redirectUrl = `../../home/${{latestReport.date}}/en/`;
                 }} else {{
                     {default_redirect_comment}
                     redirectUrl = `../../home/${{latestReport.date}}/`;
