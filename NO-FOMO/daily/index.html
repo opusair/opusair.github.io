@@ -192,10 +192,10 @@
             const langParam = urlParams.get('lang');
             
             if (langParam === 'en') return 'en';
-            if (langParam === 'zh' || langParam === 'cn') return 'cn';
+            if (langParam === 'zh' || langParam === 'cn') return 'zh';
             
-            // 默认根据浏览器语言判断
-            return isChineseBrowser ? 'cn' : 'cn'; // 默认中文
+            // 默认根据浏览器语言判断，现在默认是中文版（无cn路径）
+            return isChineseBrowser ? 'zh' : 'zh'; // 默认中文
         }
 
         function redirectToLatest() {
@@ -204,11 +204,11 @@
                 const userLang = detectUserLanguage();
                 
                 let redirectUrl;
-                if (latestReport.hasLanguages) {
-                    // 如果支持多语言，根据用户偏好跳转
-                    redirectUrl = `../home/${latestReport.date}/${userLang}/`;
+                if (latestReport.hasLanguages && userLang === 'en') {
+                    // 如果支持多语言且用户偏好英文，跳转到英文版
+                    redirectUrl = `../home/${latestReport.date}/en/`;
                 } else {
-                    // 如果不支持多语言，直接跳转
+                    // 默认跳转到中文版（无cn路径）
                     redirectUrl = `../home/${latestReport.date}/`;
                 }
                 
