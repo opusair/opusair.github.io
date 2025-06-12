@@ -236,8 +236,8 @@ class DailyReportManager:
             if has_languages:
                 # 对于cn/en子文件夹中的文件，需要额外的../
                 if is_chinese:
-                    home_link = "../../../home/"
-                    daily_link = "../../../daily/"
+                    home_link = "../../home/"
+                    daily_link = "../../daily/"
                 else:
                     home_link = "../../../home/en/"
                     daily_link = "../../../daily/en/"
