@@ -487,8 +487,7 @@
                     'page_location': window.location.href
                 });
                 
-                // Simulate getting data from GA (actual implementation would need GA Reporting API)
-                // Here we use localStorage to simulate cumulative visit counts
+                // Update real local counts
                 updateVisitCounts();
             } else {
                 // If GA is not loaded, show placeholders
@@ -497,7 +496,7 @@
             }
         }
 
-        // Update visit count statistics
+        // Update visit count statistics (local real counts only)
         function updateVisitCounts() {
             // Get today's date string
             const today = new Date().toDateString();
@@ -524,11 +523,6 @@
             // Update display
             document.getElementById('total-visits').textContent = formatNumber(totalVisits);
             document.getElementById('today-visits').textContent = formatNumber(todayVisits);
-            
-            // Periodically get GA real-time data (every 30 seconds)
-            setTimeout(() => {
-                fetchGARealTimeData();
-            }, 30000);
         }
 
         // Format number display
@@ -539,29 +533,6 @@
                 return (num / 1000).toFixed(1) + 'K';
             }
             return num.toString();
-        }
-
-        // Get GA real-time data (requires GA Reporting API configuration)
-        function fetchGARealTimeData() {
-            // Here you can integrate GA Reporting API to get real-time data
-            // Since it requires backend support and API keys, we use mock data here
-            
-            // Simulate getting GA data from server
-            const mockData = {
-                totalPageViews: Math.floor(Math.random() * 50000) + 10000,
-                todayPageViews: Math.floor(Math.random() * 500) + 50
-            };
-            
-            // Update display (optional: combine with localStorage data)
-            const currentTotal = parseInt(localStorage.getItem('nofomo_total_visits') || '0');
-            const currentToday = parseInt(localStorage.getItem('nofomo_today_visits') || '0');
-            
-            // Use the larger value as display value
-            const displayTotal = Math.max(currentTotal, mockData.totalPageViews);
-            const displayToday = Math.max(currentToday, mockData.todayPageViews);
-            
-            document.getElementById('total-visits').textContent = formatNumber(displayTotal);
-            document.getElementById('today-visits').textContent = formatNumber(displayToday);
         }
 
         // Generate date cards

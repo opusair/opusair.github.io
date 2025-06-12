@@ -144,6 +144,38 @@ class DailyReportManager:
         except Exception as e:
             print(f"⚠️  添加语言切换失败: {e}")
 
+    def clean_obsolete_references(self, index_path):
+        """清理过时的引用（如analytics.js）"""
+        try:
+            with open(index_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            # 删除对analytics.js的引用
+            content = re.sub(r'<script src="[^"]*analytics\.js"><\/script>\s*', '', content)
+            
+            with open(index_path, 'w', encoding='utf-8') as f:
+                f.write(content)
+            
+            print(f"✅ 已清理 {index_path} 的过时引用")
+        except Exception as e:
+            print(f"⚠️  清理过时引用失败: {e}")
+
+    def configure_ga_measurement_id(self, index_path, measurement_id="G-008T4WC27P"):
+        """配置Google Analytics测量ID"""
+        try:
+            with open(index_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            # 替换GA_MEASUREMENT_ID占位符
+            content = content.replace('GA_MEASUREMENT_ID', measurement_id)
+            
+            with open(index_path, 'w', encoding='utf-8') as f:
+                f.write(content)
+            
+            print(f"✅ 已配置 {index_path} 的GA测量ID: {measurement_id}")
+        except Exception as e:
+            print(f"⚠️  配置GA测量ID失败: {e}")
+
     def add_google_analytics(self, index_path, has_languages=False):
         """为页面添加Google Analytics（如果不存在的话）"""
         try:
@@ -158,12 +190,12 @@ class DailyReportManager:
             # Google Analytics代码
             ga_code = '''    
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID');
+        gtag('config', 'G-008T4WC27P');
     </script>
 '''
             
@@ -270,8 +302,6 @@ class DailyReportManager:
             return sources
         except:
             return []
-
-
 
     def update_home_pages(self, available_folders):
         """更新所有主页（默认主页、英文版）"""
@@ -571,8 +601,66 @@ class DailyReportManager:
         print(f"📊 Google Analytics同步完成: 处理了 {len(available_folders)} 个文件夹 + 主页")
         return True
 
+    def clean_and_fix_all_pages(self):
+        """清理并修复所有页面"""
+        available_folders = self.find_home_folders()
+        
+        if not available_folders:
+            print("❌ home目录下没有找到任何日期文件夹")
+            return False
+        
+        processed_count = 0
+        
+        # 处理每个日期文件夹
+        for folder_info in available_folders:
+            folder_path = folder_info['path']
+            has_english = folder_info['hasEnglish']
+            
+            # 处理主版本（中文）
+            main_index = folder_path / "index.html"
+            if main_index.exists():
+                self.clean_obsolete_references(main_index)
+                self.configure_ga_measurement_id(main_index)
+                self.add_google_analytics(main_index, has_languages=has_english)
+                self.add_navigation_to_index(main_index, has_languages=has_english, is_chinese=True)
+                if has_english:
+                    self.add_language_switch_to_report(main_index, is_chinese=True, has_languages=True)
+                processed_count += 1
+            
+            # 处理英文版本（如果存在）
+            if has_english:
+                en_index = folder_path / "en" / "index.html"
+                if en_index.exists():
+                    self.clean_obsolete_references(en_index)
+                    self.configure_ga_measurement_id(en_index)
+                    self.add_google_analytics(en_index, has_languages=True)
+                    self.add_navigation_to_index(en_index, has_languages=True, is_chinese=False)
+                    self.add_language_switch_to_report(en_index, is_chinese=False, has_languages=True)
+                    processed_count += 1
+        
+        # 处理主页
+        home_pages = [
+            (self.home_path / "index.html", True),
+            (self.home_path / "en" / "index.html", False)
+        ]
+        
+        for home_page, is_chinese in home_pages:
+            if home_page.exists():
+                self.clean_obsolete_references(home_page)
+                self.configure_ga_measurement_id(home_page)
+                self.add_google_analytics(home_page)
+                processed_count += 1
+        
+        print(f"🧹 清理和修复完成: 处理了 {processed_count} 个页面")
+        
+        # 更新页面数据
+        self.update_home_pages(available_folders)
+        self.update_daily_pages(available_folders)
+        
+        return True
+
     def sync_all_dates(self):
-        """同步home目录下的所有日期文件夹"""
+        """同步home目录下的所有日期文件夹（不清理）"""
         available_folders = self.find_home_folders()
         
         if not available_folders:
@@ -616,13 +704,21 @@ def main():
     parser.add_argument('--base-path', help='基础路径', default=None)
     parser.add_argument('--sync-all', action='store_true', help='同步所有日期文件夹')
     parser.add_argument('--sync-ga', action='store_true', help='仅同步Google Analytics')
+    parser.add_argument('--clean-fix', action='store_true', help='清理过时引用并修复所有页面')
     parser.add_argument('--no-commit', action='store_true', help='不自动提交到Git')
     
     args = parser.parse_args()
     
     manager = DailyReportManager(args.base_path)
     
-    if args.sync_all:
+    if args.clean_fix:
+        print("🧹 开始清理过时引用并修复所有页面...")
+        if manager.clean_and_fix_all_pages():
+            if not args.no_commit:
+                manager.git_commit_and_push("清理过时引用，删除Mock数据，修复所有页面")
+        else:
+            sys.exit(1)
+    elif args.sync_all:
         print("🔄 开始同步home目录下的所有日期文件夹...")
         if manager.sync_all_dates():
             if not args.no_commit:
@@ -637,7 +733,10 @@ def main():
         else:
             sys.exit(1)
     else:
-        print("❌ 请使用 --sync-all 或 --sync-ga 参数")
+        print("❌ 请使用 --sync-all、--sync-ga 或 --clean-fix 参数")
+        print("  --clean-fix: 清理过时引用并修复所有页面")
+        print("  --sync-all: 同步所有日期文件夹")
+        print("  --sync-ga: 仅同步Google Analytics")
         sys.exit(1)
 
 if __name__ == "__main__":

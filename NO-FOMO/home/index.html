@@ -487,8 +487,7 @@
                     'page_location': window.location.href
                 });
                 
-                // 模拟从GA获取数据（实际应用中需要使用GA Reporting API）
-                // 这里使用localStorage来模拟累计访问量
+                // 更新真实的本地计数
                 updateVisitCounts();
             } else {
                 // 如果GA没有加载，显示占位符
@@ -497,7 +496,7 @@
             }
         }
 
-        // 更新访问量统计
+        // 更新访问量统计（仅本地真实计数）
         function updateVisitCounts() {
             // 获取今天的日期字符串
             const today = new Date().toDateString();
@@ -524,11 +523,6 @@
             // 更新显示
             document.getElementById('total-visits').textContent = formatNumber(totalVisits);
             document.getElementById('today-visits').textContent = formatNumber(todayVisits);
-            
-            // 定期获取GA实时数据（每30秒）
-            setTimeout(() => {
-                fetchGARealTimeData();
-            }, 30000);
         }
 
         // 格式化数字显示
@@ -539,29 +533,6 @@
                 return (num / 1000).toFixed(1) + 'K';
             }
             return num.toString();
-        }
-
-        // 获取GA实时数据（需要配置GA Reporting API）
-        function fetchGARealTimeData() {
-            // 这里可以集成GA Reporting API来获取真实的实时数据
-            // 由于需要后端支持和API密钥，这里使用模拟数据
-            
-            // 模拟从服务器获取GA数据
-            const mockData = {
-                totalPageViews: Math.floor(Math.random() * 50000) + 10000,
-                todayPageViews: Math.floor(Math.random() * 500) + 50
-            };
-            
-            // 更新显示（可选：与localStorage数据结合）
-            const currentTotal = parseInt(localStorage.getItem('nofomo_total_visits') || '0');
-            const currentToday = parseInt(localStorage.getItem('nofomo_today_visits') || '0');
-            
-            // 使用较大的值作为显示值
-            const displayTotal = Math.max(currentTotal, mockData.totalPageViews);
-            const displayToday = Math.max(currentToday, mockData.todayPageViews);
-            
-            document.getElementById('total-visits').textContent = formatNumber(displayTotal);
-            document.getElementById('today-visits').textContent = formatNumber(displayToday);
         }
 
         // 生成日期卡片
