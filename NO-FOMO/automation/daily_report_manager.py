@@ -120,14 +120,14 @@ class DailyReportManager:
             # 添加语言切换HTML
             if is_chinese:
                 language_switch_html = '''            <div class="language-switch">
-                <a href="../" class="active">中文</a>
-                <a href="../en/">English</a>
+                <a href="./" class="active">中文</a>
+                <a href="en/">English</a>
             </div>
 '''
             else:
                 language_switch_html = '''            <div class="language-switch">
                 <a href="../">中文</a>
-                <a href="../en/" class="active">English</a>
+                <a href="./" class="active">English</a>
             </div>
 '''
             
