@@ -24,10 +24,9 @@ class DailyReportManager:
         print(f"📁 工作目录: {self.base_path}")
 
     def has_language_folders(self, date_folder_path):
-        """检查日期文件夹是否包含cn和en子文件夹"""
-        cn_exists = (date_folder_path / "cn" / "index.html").exists()
+        """检查日期文件夹是否包含en子文件夹（支持英文版本）"""
         en_exists = (date_folder_path / "en" / "index.html").exists()
-        return cn_exists and en_exists
+        return en_exists
 
     def find_home_folders(self):
         """查找home目录下的所有日期文件夹"""
@@ -36,16 +35,15 @@ class DailyReportManager:
         
         for item in self.home_path.iterdir():
             if item.is_dir() and date_pattern.match(item.name):
-                # 检查是否包含index.html（直接在文件夹下）或者在cn/en子文件夹中
-                has_direct_index = (item / "index.html").exists()
-                has_language_folders = self.has_language_folders(item)
+                # 检查是否包含主index.html（默认中文版）
+                has_main_index = (item / "index.html").exists()
+                has_en_version = self.has_language_folders(item)
                 
-                if has_direct_index or has_language_folders:
+                if has_main_index:
                     date_folders.append({
                         'date': item.name,
                         'path': item,
-                        'hasLanguages': has_language_folders,
-                        'hasDirectIndex': has_direct_index
+                        'hasEnglish': has_en_version
                     })
         
         # 按日期排序（最新的在前）
@@ -146,59 +144,42 @@ class DailyReportManager:
         except Exception as e:
             print(f"⚠️  添加语言切换失败: {e}")
 
-    def add_analytics_scripts(self, index_path, has_languages=False):
-        """为页面添加统计脚本（如果不存在的话）"""
+    def add_google_analytics(self, index_path, has_languages=False):
+        """为页面添加Google Analytics（如果不存在的话）"""
         try:
             with open(index_path, 'r', encoding='utf-8') as f:
                 content = f.read()
             
-            # 检查是否已经存在统计脚本
-            analytics_indicators = [
-                'analytics.js',
-                'NoFomoAnalytics',
-                'recordVisit'
-            ]
-            
-            if any(indicator in content for indicator in analytics_indicators):
-                print(f"ℹ️  {index_path} 已存在统计脚本，跳过添加")
+            # 检查是否已经存在Google Analytics
+            if 'googletagmanager.com/gtag/js' in content or 'gtag(' in content:
+                print(f"ℹ️  {index_path} 已存在Google Analytics，跳过添加")
                 return
             
-            # 确定脚本路径
-            if has_languages:
-                # 对于 cn/en 子文件夹中的文件，需要 ../../js/
-                script_path = "../../js/analytics.js"
-            else:
-                # 对于直接在日期文件夹中的文件，需要 ../js/
-                script_path = "../js/analytics.js"
+            # Google Analytics代码
+            ga_code = '''    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+'''
             
-            # 添加统计脚本到head标签中
-            script_tag = f'    <script src="{script_path}"></script>'
-            
-            # 找到合适的位置插入，优先级顺序：
-            # 1. 在现有的fonts.googleapis.com链接后
-            # 2. 在</head>标签前
-            if 'fonts.googleapis.com' in content:
-                # 使用正则表达式找到字体链接并在其后插入
-                pattern = r'(\s*<link[^>]*fonts\.googleapis\.com[^>]*>)'
-                replacement = r'\1\n' + script_tag
-                if re.search(pattern, content):
-                    content = re.sub(pattern, replacement, content, count=1)
-                else:
-                    # 备用方案：在</head>前插入
-                    content = content.replace('</head>', f'{script_tag}\n</head>')
-            elif '</head>' in content:
-                # 在</head>前插入
-                content = content.replace('</head>', f'{script_tag}\n</head>')
+            # 在</head>标签前插入
+            if '</head>' in content:
+                content = content.replace('</head>', f'{ga_code}\n</head>')
             else:
-                print(f"⚠️  {index_path} 未找到合适的插入位置")
+                print(f"⚠️  {index_path} 未找到</head>标签")
                 return
             
             with open(index_path, 'w', encoding='utf-8') as f:
                 f.write(content)
             
-            print(f"✅ 已为 {index_path} 添加统计脚本")
+            print(f"✅ 已为 {index_path} 添加Google Analytics")
         except Exception as e:
-            print(f"⚠️  添加统计脚本失败: {e}")
+            print(f"⚠️  添加Google Analytics失败: {e}")
 
     def add_navigation_to_index(self, index_path, has_languages=False, is_chinese=True):
         """为日报页面添加导航链接（如果不存在的话）"""
@@ -290,92 +271,18 @@ class DailyReportManager:
         except:
             return []
 
-    def add_home_analytics_scripts(self, index_path, is_sub_dir=False):
-        """为主页添加统计脚本（如果不存在的话）"""
-        try:
-            with open(index_path, 'r', encoding='utf-8') as f:
-                content = f.read()
-            
-            # 检查是否已经存在统计脚本
-            analytics_indicators = [
-                'analytics.js',
-                'NoFomoAnalytics',
-                'recordVisit'
-            ]
-            
-            if any(indicator in content for indicator in analytics_indicators):
-                print(f"ℹ️  {index_path} 已存在统计脚本，跳过添加")
-                return
-            
-            # 确定脚本路径
-            if is_sub_dir:
-                # 对于 cn/en 子文件夹中的主页，需要 ../js/
-                script_path = "../js/analytics.js"
-                stats_script_path = "../js/stats-display.js"
-            else:
-                # 对于根目录的主页，直接使用 js/
-                script_path = "js/analytics.js"
-                stats_script_path = "js/stats-display.js"
-            
-            # 添加统计脚本到head标签中
-            script_tags = f'''    <script src="{script_path}"></script>
-    <script src="{stats_script_path}"></script>'''
-            
-            # 找到合适的位置插入
-            if 'fonts.googleapis.com' in content:
-                # 使用正则表达式找到字体链接并在其后插入
-                pattern = r'(\s*<link[^>]*fonts\.googleapis\.com[^>]*>)'
-                replacement = r'\1\n' + script_tags
-                if re.search(pattern, content):
-                    content = re.sub(pattern, replacement, content, count=1)
-                else:
-                    # 备用方案：在</head>前插入
-                    content = content.replace('</head>', f'{script_tags}\n</head>')
-            elif '</head>' in content:
-                # 在</head>前插入
-                content = content.replace('</head>', f'{script_tags}\n</head>')
-            else:
-                print(f"⚠️  {index_path} 未找到合适的插入位置")
-                return
-            
-            with open(index_path, 'w', encoding='utf-8') as f:
-                f.write(content)
-            
-            print(f"✅ 已为 {index_path} 添加统计和显示脚本")
-        except Exception as e:
-            print(f"⚠️  添加主页统计脚本失败: {e}")
 
-    def ensure_home_analytics(self):
-        """确保所有主页都包含统计脚本"""
-        home_pages = [
-            {'path': self.home_path / "index.html", 'is_sub_dir': False},
-            {'path': self.home_path / "cn" / "index.html", 'is_sub_dir': True},
-            {'path': self.home_path / "en" / "index.html", 'is_sub_dir': True}
-        ]
-        
-        for page_info in home_pages:
-            if page_info['path'].exists():
-                self.add_home_analytics_scripts(page_info['path'], page_info['is_sub_dir'])
 
     def update_home_pages(self, available_folders):
-        """更新所有主页（默认主页、中文版、英文版）"""
+        """更新所有主页（默认主页、英文版）"""
         success = True
-        
-        # 确保所有主页都包含统计脚本
-        self.ensure_home_analytics()
         
         # 更新默认主页（中文版）
         success &= self._update_home_page(
             self.home_path / "index.html", 
             available_folders, 
-            is_chinese=True, 
-            is_default=True
+            is_chinese=True
         )
-        
-        # 更新中文版主页
-        cn_home = self.home_path / "cn" / "index.html"
-        if cn_home.exists():
-            success &= self._update_home_page(cn_home, available_folders, is_chinese=True)
         
         # 更新英文版主页
         en_home = self.home_path / "en" / "index.html"
@@ -384,7 +291,7 @@ class DailyReportManager:
         
         return success
 
-    def _update_home_page(self, home_index_path, available_folders, is_chinese=True, is_default=False):
+    def _update_home_page(self, home_index_path, available_folders, is_chinese=True):
         """更新单个主页的日期列表"""
         if not home_index_path.exists():
             print(f"❌ 主页文件不存在: {home_index_path}")
@@ -399,12 +306,10 @@ class DailyReportManager:
             for folder_info in available_folders:
                 date_str = folder_info['date']
                 folder_path = folder_info['path']
-                has_languages = folder_info['hasLanguages']
+                has_english = folder_info['hasEnglish']
                 
-                # 优先从cn文件夹获取信息，然后是直接文件夹
-                if has_languages and (folder_path / "cn").exists():
-                    info_path = folder_path / "cn"
-                elif (folder_path / "index.html").exists():
+                # 主文件夹包含中文版本信息
+                if (folder_path / "index.html").exists():
                     info_path = folder_path
                 else:
                     continue
@@ -430,7 +335,7 @@ class DailyReportManager:
                     'description': description,
                     'articleCount': article_count,
                     'sources': sources,
-                    'hasLanguages': has_languages
+                    'hasLanguages': has_english
                 })
             
             # 替换JavaScript中的reports数组
@@ -454,18 +359,13 @@ class DailyReportManager:
         """更新所有daily页面的重定向，支持多语言检测"""
         success = True
         
-        # 更新默认daily页面
+        # 更新默认daily页面（使用语言检测）
         success &= self._update_daily_page(
             self.daily_path / "index.html", 
             available_folders, 
             is_chinese=True, 
             use_detection=True
         )
-        
-        # 更新中文版daily页面
-        cn_daily = self.daily_path / "cn" / "index.html"
-        if cn_daily.exists():
-            success &= self._update_daily_page(cn_daily, available_folders, is_chinese=True)
         
         # 更新英文版daily页面
         en_daily = self.daily_path / "en" / "index.html"
@@ -489,7 +389,7 @@ class DailyReportManager:
             for folder_info in available_folders:
                 dates_with_info.append({
                     'date': folder_info['date'],
-                    'hasLanguages': folder_info['hasLanguages']
+                    'hasLanguages': folder_info['hasEnglish']
                 })
             
             if use_detection:
@@ -634,39 +534,41 @@ class DailyReportManager:
             print(f"❌ Git操作出错: {e}")
             return False
 
-    def sync_analytics_only(self):
-        """仅同步统计脚本到所有页面"""
+    def sync_google_analytics(self):
+        """仅同步Google Analytics到所有页面"""
         available_folders = self.find_home_folders()
         
         if not available_folders:
             print("❌ home目录下没有找到任何日期文件夹")
             return False
         
-        # 为每个文件夹添加统计脚本（如果没有的话）
+        # 为每个文件夹添加Google Analytics（如果没有的话）
         for folder_info in available_folders:
             folder_path = folder_info['path']
-            has_languages = folder_info['hasLanguages']
+            has_english = folder_info['hasEnglish']
             
-            if has_languages:
-                # 处理cn版本
-                cn_index = folder_path / "cn" / "index.html"
-                if cn_index.exists():
-                    self.add_analytics_scripts(cn_index, has_languages=True)
-                
-                # 处理en版本
+            # 处理主版本（中文）
+            main_index = folder_path / "index.html"
+            if main_index.exists():
+                self.add_google_analytics(main_index, has_languages=has_english)
+            
+            # 处理英文版本（如果存在）
+            if has_english:
                 en_index = folder_path / "en" / "index.html"
                 if en_index.exists():
-                    self.add_analytics_scripts(en_index, has_languages=True)
-            else:
-                # 处理单语言版本（默认中文）
-                index_path = folder_path / "index.html"
-                if index_path.exists():
-                    self.add_analytics_scripts(index_path, has_languages=False)
+                    self.add_google_analytics(en_index, has_languages=True)
         
-        # 确保主页也包含统计脚本
-        self.ensure_home_analytics()
+        # 为主页添加Google Analytics
+        home_pages = [
+            self.home_path / "index.html",
+            self.home_path / "en" / "index.html"
+        ]
         
-        print(f"📊 统计脚本同步完成: 处理了 {len(available_folders)} 个文件夹 + 主页")
+        for home_page in home_pages:
+            if home_page.exists():
+                self.add_google_analytics(home_page)
+        
+        print(f"📊 Google Analytics同步完成: 处理了 {len(available_folders)} 个文件夹 + 主页")
         return True
 
     def sync_all_dates(self):
@@ -677,31 +579,26 @@ class DailyReportManager:
             print("❌ home目录下没有找到任何日期文件夹")
             return False
         
-        # 为每个文件夹添加统计脚本、导航和语言切换（如果没有的话）
+        # 为每个文件夹添加Google Analytics、导航和语言切换（如果没有的话）
         for folder_info in available_folders:
             folder_path = folder_info['path']
-            has_languages = folder_info['hasLanguages']
+            has_english = folder_info['hasEnglish']
             
-            if has_languages:
-                # 处理cn版本
-                cn_index = folder_path / "cn" / "index.html"
-                if cn_index.exists():
-                    self.add_analytics_scripts(cn_index, has_languages=True)
-                    self.add_navigation_to_index(cn_index, has_languages=True, is_chinese=True)
-                    self.add_language_switch_to_report(cn_index, is_chinese=True, has_languages=True)
-                
-                # 处理en版本
+            # 处理主版本（中文）
+            main_index = folder_path / "index.html"
+            if main_index.exists():
+                self.add_google_analytics(main_index, has_languages=has_english)
+                self.add_navigation_to_index(main_index, has_languages=has_english, is_chinese=True)
+                if has_english:
+                    self.add_language_switch_to_report(main_index, is_chinese=True, has_languages=True)
+            
+            # 处理英文版本（如果存在）
+            if has_english:
                 en_index = folder_path / "en" / "index.html"
                 if en_index.exists():
-                    self.add_analytics_scripts(en_index, has_languages=True)
+                    self.add_google_analytics(en_index, has_languages=True)
                     self.add_navigation_to_index(en_index, has_languages=True, is_chinese=False)
                     self.add_language_switch_to_report(en_index, is_chinese=False, has_languages=True)
-            else:
-                # 处理单语言版本（默认中文）
-                index_path = folder_path / "index.html"
-                if index_path.exists():
-                    self.add_analytics_scripts(index_path, has_languages=False)
-                    self.add_navigation_to_index(index_path, has_languages=False, is_chinese=True)
         
         print(f"📊 同步完成: 处理了 {len(available_folders)} 个文件夹")
         
@@ -718,7 +615,7 @@ def main():
     parser = argparse.ArgumentParser(description='NO-FOMO 日报自动化管理工具')
     parser.add_argument('--base-path', help='基础路径', default=None)
     parser.add_argument('--sync-all', action='store_true', help='同步所有日期文件夹')
-    parser.add_argument('--sync-analytics', action='store_true', help='仅同步统计脚本')
+    parser.add_argument('--sync-ga', action='store_true', help='仅同步Google Analytics')
     parser.add_argument('--no-commit', action='store_true', help='不自动提交到Git')
     
     args = parser.parse_args()
@@ -729,18 +626,18 @@ def main():
         print("🔄 开始同步home目录下的所有日期文件夹...")
         if manager.sync_all_dates():
             if not args.no_commit:
-                manager.git_commit_and_push("同步所有日报文件夹并支持多语言版本")
+                manager.git_commit_and_push("同步所有日报文件夹，添加Google Analytics")
         else:
             sys.exit(1)
-    elif args.sync_analytics:
-        print("📊 开始同步统计脚本到所有页面...")
-        if manager.sync_analytics_only():
+    elif args.sync_ga:
+        print("📊 开始同步Google Analytics到所有页面...")
+        if manager.sync_google_analytics():
             if not args.no_commit:
-                manager.git_commit_and_push("同步统计脚本到所有页面")
+                manager.git_commit_and_push("添加Google Analytics到所有页面")
         else:
             sys.exit(1)
     else:
-        print("❌ 请使用 --sync-all 或 --sync-analytics 参数")
+        print("❌ 请使用 --sync-all 或 --sync-ga 参数")
         sys.exit(1)
 
 if __name__ == "__main__":

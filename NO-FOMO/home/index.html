@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NO-FOMO AI 日报 - 主页</title>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <script src="js/analytics.js"></script>
-    <script src="js/stats-display.js"></script>
     <style>
         :root {
             --primary-color: #007bff;
@@ -246,31 +254,7 @@
             margin-top: 5px;
         }
 
-        .popular-pages {
-            display: grid;
-            gap: 15px;
-        }
 
-        .popular-page-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 16px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-
-        .popular-page-name {
-            font-weight: 500;
-            color: var(--text-color);
-        }
-
-        .popular-page-visits {
-            font-weight: 600;
-            color: var(--primary-color);
-            font-size: 0.9em;
-        }
 
         .footer {
             text-align: center;
@@ -310,7 +294,7 @@
     <div class="container">
         <header class="header">
             <div class="language-switch">
-                <a href="cn/" class="active">中文</a>
+                <a href="index.html" class="active">中文</a>
                 <a href="en/">English</a>
             </div>
             <h1>NO-FOMO AI 日报</h1>
@@ -335,25 +319,9 @@
                     <div class="stat-label">总文章数</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number" id="total-visits">0</div>
-                    <div class="stat-label">总访问量</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="today-visits">0</div>
-                    <div class="stat-label">今日访问</div>
-                </div>
-                <div class="stat-item">
                     <div class="stat-number" id="latest-date">-</div>
                     <div class="stat-label">最新更新</div>
                 </div>
-            </div>
-        </div>
-
-        <!-- 最热日期统计 -->
-        <div class="stats">
-            <h2>🔥 最热日期</h2>
-            <div id="popular-pages" class="popular-pages">
-                <!-- 最热日期将通过JavaScript动态生成 -->
             </div>
         </div>
 
@@ -489,71 +457,14 @@
 
         // 更新统计数据
         function updateStats() {
-            const analytics = window.NoFomoAnalytics;
-            const statsDisplay = window.StatsDisplay;
             const totalReports = reports.length;
             const totalArticles = reports.reduce((sum, report) => sum + report.articleCount, 0);
             const latestDate = reports[0].date;
             
-            // 基础统计（使用动画效果）
-            if (statsDisplay) {
-                statsDisplay.updateStatItem('total-reports', totalReports);
-                statsDisplay.updateStatItem('total-articles', totalArticles);
-            } else {
-                document.getElementById('total-reports').textContent = totalReports;
-                document.getElementById('total-articles').textContent = totalArticles;
-            }
-            
+            // 基础统计
+            document.getElementById('total-reports').textContent = totalReports;
+            document.getElementById('total-articles').textContent = totalArticles;
             document.getElementById('latest-date').textContent = latestDate.replace(/(\d{4})-(\d{2})-(\d{2})/, '$2/$3');
-            
-            // 访问统计（使用动画效果）
-            if (analytics) {
-                const analyticsData = analytics.getAnalyticsData();
-                if (analyticsData) {
-                    const totalVisits = analyticsData.totalVisits || 0;
-                    const todayVisits = analytics.getTodayVisits() || 0;
-                    
-                    if (statsDisplay) {
-                        statsDisplay.updateStatItem('total-visits', totalVisits);
-                        statsDisplay.updateStatItem('today-visits', todayVisits);
-                    } else {
-                        document.getElementById('total-visits').textContent = totalVisits;
-                        document.getElementById('today-visits').textContent = todayVisits;
-                    }
-                } else {
-                    // 如果没有数据，显示0
-                    if (statsDisplay) {
-                        statsDisplay.updateStatItem('total-visits', 0);
-                        statsDisplay.updateStatItem('today-visits', 0);
-                    } else {
-                        document.getElementById('total-visits').textContent = '0';
-                        document.getElementById('today-visits').textContent = '0';
-                    }
-                }
-            }
-            
-            // 更新热门页面
-            updatePopularPages();
-        }
-
-        // 更新热门页面显示
-        function updatePopularPages() {
-            const analytics = window.NoFomoAnalytics;
-            const popularDates = analytics.getPopularDatesByVisits(1);
-            const container = document.getElementById('popular-pages');
-            
-            if (popularDates.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: #6c757d;">暂无访问数据</p>';
-                return;
-            }
-            
-            const { date, visits } = popularDates[0];
-            container.innerHTML = `
-                <div class="popular-page-item">
-                    <span class="popular-page-name">${date}</span>
-                    <span class="popular-page-visits">${visits} 次访问</span>
-                </div>
-            `;
         }
 
         // 生成日期卡片
@@ -565,13 +476,8 @@
                 const isNew = index === 0;
                 const formattedDate = formatDate(report.date);
                 
-                // 确定链接路径 - 默认中文版
-                let linkPath;
-                if (report.hasLanguages) {
-                    linkPath = `${report.date}/cn/`;
-                } else {
-                    linkPath = `${report.date}/`;
-                }
+                // 确定链接路径 - 主版本为中文版
+                let linkPath = `${report.date}/`;
                 
                 const card = document.createElement('div');
                 card.className = 'date-card';
@@ -608,21 +514,7 @@
         // 页面加载完成后生成内容
         document.addEventListener('DOMContentLoaded', () => {
             generateDateCards();
-            
-            // 确保analytics已初始化后再更新统计
-            setTimeout(() => {
-                updateStats();
-            }, 200);
-            
-            // 监听统计数据更新
-            if (window.NoFomoAnalytics) {
-                window.NoFomoAnalytics.onUpdate(() => {
-                    updateStats();
-                });
-            }
-            
-            // 定时更新统计数据（每30秒）
-            setInterval(updateStats, 30000);
+            updateStats();
         });
     </script>
 </body>
