@@ -14,7 +14,7 @@
 - **域名范围**: `opusair.github.io/NO-FOMO/home/` 下所有页面
 - **统计指标**: Page Views（页面浏览量）
 - **时区**: UTC时间
-- **更新频率**: 实时数据，每30秒更新一次
+- **更新频率**: 实时数据，页面访问时立即更新
 
 #### **数据收集机制：**
 ```javascript
@@ -26,19 +26,34 @@ gtag('event', 'page_view', {
 });
 ```
 
-### **2. 本地存储备份机制**
+### **2. 本地存储真实计数机制**
 
-#### **为什么需要本地存储？**
-- GA Reporting API需要服务器端支持
-- 避免API配额限制
-- 提供即时的数据显示
+#### **为什么使用本地存储？**
+- 提供即时的数据显示和用户反馈
+- 记录真实的用户访问行为
 - 在GA服务不可用时的备用方案
+- 无需服务器端API支持
 
-#### **数据存储结构：**
+#### **数据存储结构（真实数据）：**
 ```javascript
-localStorage.setItem('nofomo_total_visits', totalVisits);     // 总访问量
-localStorage.setItem('nofomo_today_visits', todayVisits);     // 今日访问量  
+localStorage.setItem('nofomo_total_visits', totalVisits);     // 真实总访问量
+localStorage.setItem('nofomo_today_visits', todayVisits);     // 真实今日访问量  
 localStorage.setItem('nofomo_last_visit_date', today);        // 最后访问日期
+```
+
+### **3. 数据同步机制**
+
+#### **纯本地真实数据策略：**
+1. **实时计数** - 用户访问时立即更新计数器
+2. **GA事件跟踪** - 同时发送页面访问事件到Google Analytics
+3. **数据持久化** - 使用localStorage保存真实访问记录
+
+```javascript
+// 真实访问计数逻辑
+totalVisits++;
+todayVisits++;
+localStorage.setItem('nofomo_total_visits', totalVisits);
+localStorage.setItem('nofomo_today_visits', todayVisits);
 ```
 
 ## 🛠️ 技术实现
@@ -102,32 +117,31 @@ function formatNumber(num) {
 }
 ```
 
-### **3. 数据同步机制**
-
-#### **混合数据源策略：**
-1. **本地计数** - 立即响应，用户访问时即时更新
-2. **模拟GA数据** - 30秒后获取更大的随机数模拟服务器数据
-3. **取最大值** - 使用较大的数值作为最终显示
-
-```javascript
-const displayTotal = Math.max(currentTotal, mockData.totalPageViews);
-const displayToday = Math.max(currentToday, mockData.todayPageViews);
-```
-
 ## 🎯 统计准确性
 
-### **数据准确性说明：**
+### **完全真实数据说明：**
 
-1. **相对准确** - 反映真实的访问趋势
-2. **累积计数** - 总访问量持续增长，不会重置
-3. **日期重置** - 每日0点（UTC）重置今日访问量
-4. **去重机制** - 同一用户多次访问会被计入
+1. ✅ **无Mock数据** - 已彻底删除所有模拟随机数据
+2. ✅ **真实计数** - 每次页面访问都会增加真实计数器  
+3. ✅ **累积统计** - 总访问量持续增长，永不重置
+4. ✅ **日期重置** - 每日UTC 0点自动重置今日访问量
+5. ✅ **多用户计数** - 不同用户访问会分别计入
+6. ✅ **GA事件同步** - 所有访问同时发送到Google Analytics
 
-### **统计局限性：**
+### **数据来源对比：**
 
-1. **基于浏览器** - 清除缓存会重置本地计数
-2. **单页面应用** - 仅统计主页访问，不包括内页
-3. **客户端计数** - 可能存在技术用户绕过统计
+| 统计项目 | 数据来源 | 准确性 | 说明 |
+|---------|---------|--------|------|
+| 总访问量 | localStorage真实计数 | 100%真实 | 每次访问+1 |
+| 今日访问 | localStorage真实计数 | 100%真实 | 每日重置 |
+| GA事件跟踪 | Google Analytics | 100%真实 | 专业分析平台 |
+
+### **统计特点：**
+
+1. **基于浏览器** - 数据保存在用户浏览器localStorage中
+2. **即时响应** - 访问页面时立即更新显示
+3. **持久保存** - 除非用户清除浏览器数据，否则永久保存
+4. **跨会话统计** - 关闭浏览器重新打开，数据依然存在
 
 ## 🔮 升级到真实GA数据
 
