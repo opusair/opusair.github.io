@@ -344,6 +344,19 @@
         // Daily report data configuration
         const reports = [
             {
+                        "date": "2025-06-13",
+                        "title": "AI Daily Report - 2025-06-13",
+                        "description": "Covering the latest AI news and breakthroughs from 4 sources including Twitter, wechat, GitHub, and more",
+                        "articleCount": 24,
+                        "sources": [
+                                    "Twitter",
+                                    "wechat",
+                                    "GitHub",
+                                    "huggingface"
+                        ],
+                        "hasLanguages": true
+            },
+            {
                         "date": "2025-06-11",
                         "title": "AI Daily Report - 2025-06-11",
                         "description": "Covering the latest AI news and breakthroughs from 4 sources including Twitter, wechat, GitHub, and more",
@@ -477,53 +490,72 @@
             updateGAStats();
         }
 
-        // Get Google Analytics statistics
+        // Get real Google Analytics statistics
         function updateGAStats() {
-            // Use gtag to get real-time data
+            // Send GA event (for tracking, but not for display)
             if (typeof gtag === 'function') {
-                // Send custom event to track page visits
                 gtag('event', 'page_view', {
                     'send_to': 'G-008T4WC27P',
                     'page_title': 'NO-FOMO AI Daily - Homepage',
                     'page_location': window.location.href
                 });
+            }
+            
+            // Start auto-refresh statistics (every 30 seconds)
+            startAutoRefresh();
+        }
+
+        // Load real Analytics data from JSON file
+        async function loadRealAnalyticsData() {
+            try {
+                // Add timestamp to prevent caching
+                const timestamp = new Date().getTime();
+                const response = await fetch(`../analytics-stats.json?t=${timestamp}`);
+                if (!response.ok) {
+                    throw new Error('Unable to load statistics data');
+                }
                 
-                // Update real local counts
-                updateVisitCounts();
-            } else {
-                // If GA is not loaded, show placeholders
+                const data = await response.json();
+                
+                // Update display
+                document.getElementById('total-visits').textContent = formatNumber(data.totalVisits || 0);
+                document.getElementById('today-visits').textContent = formatNumber(data.todayVisits || 0);
+                
+                // Show last update time
+                const lastUpdated = new Date(data.lastUpdated);
+                if (data.lastUpdated) {
+                    console.log(`📊 Statistics last updated: ${lastUpdated.toLocaleString('en-US')}`);
+                }
+                
+            } catch (error) {
+                console.error('Failed to load statistics data:', error);
+                
+                // If loading fails, show placeholders
                 document.getElementById('total-visits').textContent = '...';
                 document.getElementById('today-visits').textContent = '...';
+                
+                // Try to get fallback data (backward compatibility)
+                loadFallbackData();
             }
         }
 
-        // Update visit count statistics (local real counts only)
-        function updateVisitCounts() {
-            // Get today's date string
-            const today = new Date().toDateString();
+        // Auto-refresh statistics every 30 seconds
+        function startAutoRefresh() {
+            // Load data immediately
+            loadRealAnalyticsData();
             
-            // Get or initialize data from localStorage
-            let totalVisits = parseInt(localStorage.getItem('nofomo_total_visits') || '0');
-            let todayVisits = parseInt(localStorage.getItem('nofomo_today_visits') || '0');
-            let lastVisitDate = localStorage.getItem('nofomo_last_visit_date') || '';
-            
-            // If it's a new day, reset today's visit count
-            if (lastVisitDate !== today) {
-                todayVisits = 0;
-                localStorage.setItem('nofomo_last_visit_date', today);
-            }
-            
-            // Increase visit counts
-            totalVisits++;
-            todayVisits++;
-            
-            // Save to localStorage
-            localStorage.setItem('nofomo_total_visits', totalVisits.toString());
-            localStorage.setItem('nofomo_today_visits', todayVisits.toString());
-            
-            // Update display
-            document.getElementById('total-visits').textContent = formatNumber(totalVisits);
-            document.getElementById('today-visits').textContent = formatNumber(todayVisits);
+            // Set timer to refresh every 30 seconds
+            setInterval(async () => {
+                console.log('🔄 Auto-refreshing statistics data...');
+                await loadRealAnalyticsData();
+            }, 30000); // 30 seconds = 30000 milliseconds
+        }
+
+        // Fallback data loading (backward compatibility)
+        function loadFallbackData() {
+            console.log('⚠️ Unable to load statistics data, showing default values');
+            document.getElementById('total-visits').textContent = '-';
+            document.getElementById('today-visits').textContent = '-';
         }
 
         // Format number display

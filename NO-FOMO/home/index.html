@@ -344,6 +344,19 @@
         // 日报数据配置
         const reports = [
             {
+                        "date": "2025-06-13",
+                        "title": "AI 日报 - 2025-06-13",
+                        "description": "涵盖 Twitter, wechat, GitHub 等来源的最新 AI 资讯和技术突破等 4 个来源",
+                        "articleCount": 24,
+                        "sources": [
+                                    "Twitter",
+                                    "wechat",
+                                    "GitHub",
+                                    "huggingface"
+                        ],
+                        "hasLanguages": true
+            },
+            {
                         "date": "2025-06-11",
                         "title": "AI 日报 - 2025-06-11",
                         "description": "涵盖 Twitter, wechat, GitHub 等来源的最新 AI 资讯和技术突破等 4 个来源",
@@ -477,53 +490,72 @@
             updateGAStats();
         }
 
-        // 获取Google Analytics统计数据
+        // 获取真实的Google Analytics统计数据
         function updateGAStats() {
-            // 使用gtag获取实时数据
+            // 发送GA事件（用于追踪，但不用于显示）
             if (typeof gtag === 'function') {
-                // 发送自定义事件来跟踪页面访问
                 gtag('event', 'page_view', {
                     'send_to': 'G-008T4WC27P',
                     'page_title': 'NO-FOMO AI 日报 - 主页',
                     'page_location': window.location.href
                 });
+            }
+            
+            // 启动自动刷新统计数据（每30秒）
+            startAutoRefresh();
+        }
+
+        // 从JSON文件加载真实的Analytics数据
+        async function loadRealAnalyticsData() {
+            try {
+                // 添加时间戳防止缓存
+                const timestamp = new Date().getTime();
+                const response = await fetch(`./analytics-stats.json?t=${timestamp}`);
+                if (!response.ok) {
+                    throw new Error('无法加载统计数据');
+                }
                 
-                // 更新真实的本地计数
-                updateVisitCounts();
-            } else {
-                // 如果GA没有加载，显示占位符
+                const data = await response.json();
+                
+                // 更新显示
+                document.getElementById('total-visits').textContent = formatNumber(data.totalVisits || 0);
+                document.getElementById('today-visits').textContent = formatNumber(data.todayVisits || 0);
+                
+                // 显示最后更新时间
+                const lastUpdated = new Date(data.lastUpdated);
+                if (data.lastUpdated) {
+                    console.log(`📊 统计数据最后更新: ${lastUpdated.toLocaleString('zh-CN')}`);
+                }
+                
+            } catch (error) {
+                console.error('加载统计数据失败:', error);
+                
+                // 如果加载失败，显示占位符
                 document.getElementById('total-visits').textContent = '...';
                 document.getElementById('today-visits').textContent = '...';
+                
+                // 尝试从本地存储获取备用数据（向后兼容）
+                loadFallbackData();
             }
         }
 
-        // 更新访问量统计（仅本地真实计数）
-        function updateVisitCounts() {
-            // 获取今天的日期字符串
-            const today = new Date().toDateString();
+        // 每30秒自动刷新统计数据
+        function startAutoRefresh() {
+            // 立即加载一次数据
+            loadRealAnalyticsData();
             
-            // 从localStorage获取或初始化数据
-            let totalVisits = parseInt(localStorage.getItem('nofomo_total_visits') || '0');
-            let todayVisits = parseInt(localStorage.getItem('nofomo_today_visits') || '0');
-            let lastVisitDate = localStorage.getItem('nofomo_last_visit_date') || '';
-            
-            // 如果是新的一天，重置今日访问量
-            if (lastVisitDate !== today) {
-                todayVisits = 0;
-                localStorage.setItem('nofomo_last_visit_date', today);
-            }
-            
-            // 增加访问量
-            totalVisits++;
-            todayVisits++;
-            
-            // 保存到localStorage
-            localStorage.setItem('nofomo_total_visits', totalVisits.toString());
-            localStorage.setItem('nofomo_today_visits', todayVisits.toString());
-            
-            // 更新显示
-            document.getElementById('total-visits').textContent = formatNumber(totalVisits);
-            document.getElementById('today-visits').textContent = formatNumber(todayVisits);
+            // 设置定时器，每30秒刷新一次
+            setInterval(async () => {
+                console.log('🔄 自动刷新统计数据...');
+                await loadRealAnalyticsData();
+            }, 30000); // 30秒 = 30000毫秒
+        }
+
+        // 备用数据加载（向后兼容）
+        function loadFallbackData() {
+            console.log('⚠️ 无法加载统计数据，显示默认值');
+            document.getElementById('total-visits').textContent = '-';
+            document.getElementById('today-visits').textContent = '-';
         }
 
         // 格式化数字显示

@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-06-13</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: 2px solid transparent;
+            font-size: 0.9em;
+        }
+
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .language-switch a.active {
+            background: var(--secondary-color);
+            border-color: var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .language-switch {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../">中文</a>
+                <a href="./" class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-06-13</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Twitter</h2>
+
+            <article class="item-card">
+                <h2>AnthropicAI_揭秘Claude多智能体研究系统构建</h2>
+                <span class="published-time">Published: 2025-06-13T21:01:19.000Z</span>
+                <img src="../screenshot/twitter/AnthropicAI_1933630785879507286.png" alt="AnthropicAI_揭秘Claude多智能体研究系统构建">
+                <p class="summary">Anthropic在其工程博客上发布新文章，详细阐述了如何通过并行协作的多个智能体构建Claude的研发能力。文章分享了该多智能体研究系统在开发过程中的成功经验、遇到的挑战以及工程难题，为AI系统设计与优化提供了宝贵见解。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude</span><span>多智能体</span><span>研究系统</span><span>Anthropic</span><span>AI工程</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>智能体</span><span>大模型</span><span>研究进展</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/AnthropicAI/status/1933630785879507286" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>jxmnop_LLM自编辑与强化学习框架SEAL</h2>
+                <span class="published-time">Published: 2025-06-13T03:05:00.000Z</span>
+                <img src="../screenshot/twitter/jxmnop_1933359925415325980.png" alt="jxmnop_LLM自编辑与强化学习框架SEAL">
+                <p class="summary">推文探讨了大型语言模型（LLM）通过强化学习（RL）实现自我编辑的可能性。Jyo Pari介绍了一个名为SEAL的框架，该框架允许LLM生成自身的训练数据（自编辑），并根据新输入更新其权重。这种自编辑能力通过RL学习，以模型下游性能作为奖励信号，预示着LLM自我改进的新范式。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>大型语言模型</span><span>强化学习</span><span>自编辑</span><span>SEAL框架</span><span>模型训练</span><span>AI自我改进</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>大模型</span><span>机器学习</span><span>研究进展</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/jxmnop/status/1933359925415325980" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>TheTuringPost_ReMA: Meta-learning and RL Empowering Multi-Agent LLMs</h2>
+                <span class="published-time">Published: 2025-06-13T10:57:25.000Z</span>
+                <img src="../screenshot/twitter/TheTuringPost_1933478813062869156.png" alt="TheTuringPost_ReMA: Meta-learning and RL Empowering Multi-Agent LLMs">
+                <p class="summary">TuringPost introduces Reinforced Meta-thinking Agents (ReMA), a framework combining meta-learning and reinforcement learning to significantly enhance Large Language Models' (LLM) effectiveness, especially in multi-agent collaboration. ReMA divides problem-solving into meta-thinking (planning) and reasoning (execution). It utilizes a Multi-Agent Meta-thinking Reasoning Process (MAMRP) with high-level agents for meta-planning and low-level agents for reasoning, allowing dynamic plan adjustments. ReMA demonstrates notable performance improvements on both math and LLM-as-a-Judge benchmarks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Meta-learning</span><span>Reinforcement Learning</span><span>Large Language Model</span><span>AI Agent</span><span>ReMA</span><span>Multi-Agent</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Large Language Model</span><span>Research Progress</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/TheTuringPost/status/1933478813062869156" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>jerryjliu0_LlamaParse推出用例预设，增强文档解析能力</h2>
+                <span class="published-time">Published: 2025-06-13T20:48:58.000Z</span>
+                <img src="../screenshot/twitter/jerryjliu0_1933627680265810205.png" alt="jerryjliu0_LlamaParse推出用例预设，增强文档解析能力">
+                <p class="summary">Jerry Liu宣布LlamaParse推出“用例预设”功能，这是一系列专业的解析代理，能将不同文档类型（如表单、技术文档、发票）渲染成预定义格式。例如，表单可输出为结构化2D表格，技术文档可输出XML，发票可输出行项目。此外，LlamaParse还更新了文档页面，详细介绍了通用预设（快速、平衡、高级）和用例预设。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LlamaParse</span><span>用例预设</span><span>文档解析</span><span>AI代理</span><span>结构化数据</span><span>LlamaIndex</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>产品发布</span><span>生成式AI</span><span>技术动态</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/jerryjliu0/status/1933627680265810205" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>vipulved_Predicts End of Hand-Written Code</h2>
+                <span class="published-time">Published: 2025-06-13T22:08:03.000Z</span>
+                <img src="../screenshot/twitter/vipulved_1933647581370069401.png" alt="vipulved_Predicts End of Hand-Written Code">
+                <p class="summary">Prominent technologist Vipul Ved Prakash boldly predicts that within the next 12 months, the era of hand-written code will come to an end. This statement suggests the rapid advancement of artificial intelligence in code generation, indicating that AI-assisted programming and fully automated code generation are poised to become mainstream. This shift is expected to fundamentally transform software development, prompting significant industry discussion and reflection on future programming paradigms.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Hand-written code</span><span>Code generation</span><span>Artificial Intelligence</span><span>Future of programming</span><span>Software development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/vipulved/status/1933647581370069401" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>GoogleDeepMind_DeepMind and Primordial Soup's Film "ANCESTRA" Debuts at Tribeca</h2>
+                <span class="published-time">Published: 2025-06-13T15:39:25.000Z</span>
+                <img src="../screenshot/twitter/GoogleDeepMind_1933549777192460771.png" alt="GoogleDeepMind_DeepMind and Primordial Soup's Film "ANCESTRA" Debuts at Tribeca">
+                <p class="summary">Google DeepMind announced the debut of "ANCESTRA," the first film from its partnership with Darren Aronofsky's Primordial Soup, at the Tribeca Film Festival. Directed by Eliza McNitt, the film integrates traditional filmmaking with DeepMind's generative video model, Veo, showcasing the potential of AI in cinematic art creation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Google DeepMind</span><span>Primordial Soup</span><span>ANCESTRA</span><span>Veo</span><span>Tribeca Film Festival</span><span>Generative Video</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Product Launch</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/GoogleDeepMind/status/1933549777192460771" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">wechat</h2>
+
+            <article class="item-card">
+                <h2>Official Announcement | Milvus 2.6 Officially Open-Sourced: 72% Memory Reduction, 4x Faster than ES</h2>
+                <span class="published-time">Published: 2025-06-13T11:21:11.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_TDX_zZ9jrz-SJImHAVoWdg.png" alt="Official Announcement | Milvus 2.6 Officially Open-Sourced: 72% Memory Reduction, 4x Faster than ES">
+                <p class="summary">Milvus 2.6 has been officially open-sourced, marking a significant milestone in its 2025 product roadmap, aiming to deliver a more efficient, powerful, and economical vector database solution. The new version introduces key improvements in cost reduction and efficiency, notably through the RaBitQ 1-bit quantization technology, achieving a substantial 72% memory reduction and significant QPS improvements. Regarding search capabilities, Milvus 2.6 enhances Analyzer/Tokenizer functionalities, adds Phrase Match, and introduces Decay Function for time-decay re-ranking, thereby improving hybrid search accuracy and timeliness. Architecturally, the update includes tiered storage for hot and cold data, a Streaming Service for real-time data processing, and support for 100k collections, significantly boosting system stability, scalability, and overall performance. Milvus 2.6 is dedicated to addressing the efficiency and stability challenges of data retrieval in the AI era, providing a robust foundation for large-scale AI applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Milvus 2.6</span><span>Vector Database</span><span>Memory Optimization</span><span>Search Enhancement</span><span>Architecture Optimization</span><span>Real-time Processing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/TDX_zZ9jrz-SJImHAVoWdg" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>iFlytek Leads the Way as Intelligent Interaction Enters True Human-Computer Interaction Era</h2>
+                <span class="published-time">Published: 2025-06-13T05:07:52.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_AET1QTzrrbLX0WxY-vL8HA.png" alt="iFlytek Leads the Way as Intelligent Interaction Enters True Human-Computer Interaction Era">
+                <p class="summary">At its latest press conference, iFlytek unveiled a new paradigm for intelligent interaction, signaling a shift from basic command-based human-computer interaction to a deep intelligent collaboration era. Through AIUI platform upgrades and the empowerment of the Spark Interaction Large Model, iFlytek has achieved full-duplex human-like dialogue, emotional perception and empathy, human-like memory systems, and rapid response times, significantly enhancing user experience, particularly with a surge in interaction frequency in children's scenarios. Furthermore, iFlytek launched its Robot Superbrain Platform, integrating the Spark Large Model to enable multimodal perception and intelligent action, and introduced a smart voice backpack to empower existing robots. This represents more than just product feature upgrades; it's a comprehensive re-shaping of the hardware industry ecosystem with AI interaction at its core, transforming human-machine relationships from "command-execution" to "collaborative partnership," thereby accelerating the creation of a smarter intelligent world.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Intelligent Interaction</span><span>Human-Computer Interaction</span><span>iFlytek</span><span>Large Language Model</span><span>Robotics</span><span>AIUI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Robotics</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/AET1QTzrrbLX0WxY-vL8HA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI Self-Correction for Enhanced Safety in Large Reasoning Models: Achieving 'Aha-Moments' and Reducing Risk by 9.6%</h2>
+                <span class="published-time">Published: 2025-06-13T05:07:52.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_fZW9_bHXfXzbogtHPpsnew.png" alt="AI Self-Correction for Enhanced Safety in Large Reasoning Models: Achieving 'Aha-Moments' and Reducing Risk by 9.6%">
+                <p class="summary">Developed by researchers from UC Santa Cruz, UC Berkeley, Cisco Research, and Yale University, the SafeKey framework addresses the limited generalization of Large Reasoning Models (LRMs) against “jailbreak” attacks. By identifying the “Key Sentence” phenomenon and “Dormant Safety Signals,” SafeKey introduces two innovative mechanisms: the “Dual-Path Safety Head” to amplify internal safety signals before key sentence generation, and “Query-Mask Modeling” to compel models to rely on their self-generated understanding for safe decisions. This framework aims to reinforce the “safety aha-moment” during key sentence generation, significantly enhancing LRM safety and robustness without impacting core capabilities. Experimental results demonstrate SafeKey's effectiveness in reducing the risk rate by 9.6%, offering an efficient and generalizable solution for secure LRM deployment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Reasoning Models</span><span>Model Safety</span><span>Jailbreak Attacks</span><span>SafeKey</span><span>Safety Robustness</span><span>Key Sentence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/fZW9_bHXfXzbogtHPpsnew" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Evaluating Image Editing Models' Reasoning Capabilities from a Knowledge Type Perspective: All Models Underperform in Procedural Reasoning</h2>
+                <span class="published-time">Published: 2025-06-13T05:07:52.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_KSKsp2gnOGiUlFvFkW6-UQ.png" alt="Evaluating Image Editing Models' Reasoning Capabilities from a Knowledge Type Perspective: All Models Underperform in Procedural Reasoning">
+                <p class="summary">A collaborative research team, including members from Southeast University, Max Planck Institute for Informatics, and UC Berkeley, has introduced KRIS-Bench, a groundbreaking benchmark designed to systematically evaluate the reasoning capabilities of image editing models. Uniquely, KRIS-Bench assesses models from a knowledge type perspective, categorizing challenges into factual, conceptual, and procedural knowledge. It features 22 diverse editing tasks, ranging from basic to advanced, with output scoring facilitated by multimodal large models and human calibration. Crucially, the evaluations conducted using KRIS-Bench indicate that existing image editing models, both closed and open-source, exhibit significant limitations, particularly in "procedural reasoning." This research endeavors to propel image editing models beyond simple pixel manipulation, fostering their evolution into "visual sages" capable of human-like cognitive understanding, thereby enabling them to grasp the underlying physical, chemical, and causal principles inherent in image editing tasks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Image Editing Models</span><span>Reasoning Capability</span><span>KRIS-Bench</span><span>Knowledge Types</span><span>Procedural Reasoning</span><span>Cognitive Evaluation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Multimodal</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/KSKsp2gnOGiUlFvFkW6-UQ" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DeepSeek Engineer Open-Sources Lightweight Nano-vLLM, Achieving Near-Original Throughput with Just 1200 Lines of Code</h2>
+                <span class="published-time">Published: 2025-06-13T04:32:14.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_Qo0xE6BtG4RpMIaeWCWsZQ.png" alt="DeepSeek Engineer Open-Sources Lightweight Nano-vLLM, Achieving Near-Original Throughput with Just 1200 Lines of Code">
+                <p class="summary">DeepSeek engineer Yu Xingkai has recently open-sourced Nano-vLLM, a lightweight large language model (LLM) inference engine, demonstrating a significant breakthrough in efficiency. This project remarkably achieves throughput performance comparable to the high-performance vLLM, all while being implemented with just 1200 lines of Python code. Nano-vLLM is designed to offer an easily readable and highly efficient alternative for LLM deployment, boasting core features like rapid offline inference, a remarkably concise codebase, and advanced optimization functionalities including Prefix caching, Torch compilation, and CUDA graphs. Benchmark tests, conducted on an RTX 4070 using the Qwen3-0.6B model, clearly indicate that Nano-vLLM's performance is nearly on par with the original vLLM. This innovative development provides a promising new approach and a valuable tool for optimizing LLM inference, underscoring the potential for streamlined and highly performant deep learning systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>vLLM</span><span>Nano-vLLM</span><span>LLM Inference</span><span>Open-source</span><span>Throughput</span><span>Deep Learning Systems</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/Qo0xE6BtG4RpMIaeWCWsZQ" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Unstructured Data Meetup Japan Edition: Don't Miss It on July 5th!</h2>
+                <span class="published-time">Published: 2025-06-13T11:21:11.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_jiFidVIjR3SVfgxjpHlAzA.png" alt="Unstructured Data Meetup Japan Edition: Don't Miss It on July 5th!">
+                <p class="summary">The Unstructured Data Meetup Japan edition, initiated by leading vector database provider Zilliz, is scheduled for July 5th at the AWS office in Tokyo. This technical sharing event focuses on unstructured data and Generative AI, targeting developers, AI engineers, data scientists, and AI product managers. The meetup aims to foster collaboration and explore cutting-edge advancements in vector databases, large language models, AI applications, and big data. Key presentations include Zilliz's introduction to Milvus and Zilliz Cloud, SmartNews's insights into Milvus applications for search, recommendation, and content understanding, and Mercari's deep dive into AI and LLM integration within their retrieval systems, covering offline data labeling, query expansion, and embedding technologies. This gathering will facilitate the exchange of the latest developments in unstructured data and generative AI fields.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Unstructured Data</span><span>Generative AI</span><span>Vector Database</span><span>Large Language Model</span><span>AI Applications</span><span>Technical Sharing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/jiFidVIjR3SVfgxjpHlAzA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>AI Hedge Fund</h2>
+                <span class="published-time">Published: 2025-06-15T17:21:13Z</span>
+                <img src="../screenshot/github/ai-hedge-fund.png" alt="AI Hedge Fund">
+                <p class="summary">This project presents a robust proof-of-concept for an AI-powered hedge fund, meticulously designed to explore the advanced application of artificial intelligence in sophisticated trading decision-making. The system boasts a highly collaborative multi-agent architecture, integrating specialized AI agents focused on critical financial aspects such as disciplined valuation, market sentiment analysis, in-depth fundamental data interpretation, precise technical indicator analysis, and comprehensive risk management. Furthermore, it simulates the distinct investment philosophies of twelve renowned financial masters, offering diverse strategic perspectives. The project provides flexible deployment options via Poetry and Docker, features seamless integration with various Large Language Models (LLMs) for enhanced analytical capabilities, and includes robust backtesting functionalities for performance evaluation. Primarily intended for educational and research purposes, this sophisticated system rigorously simulates trading decisions without engaging in any actual financial transactions, emphasizing its role as a learning and development tool.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Hedge Fund</span><span>AI Agent</span><span>Algorithmic Trading</span><span>FinTech</span><span>Large Language Model</span><span>Backtesting</span><span>Investment Decision</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/virattt/ai-hedge-fund" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The LLM Evaluation Framework</h2>
+                <span class="published-time">Published: 2025-06-13T07:55:16Z</span>
+                <img src="https://github.com/confident-ai/deepeval/blob/main/docs/static/img/deepeval.png" alt="The LLM Evaluation Framework">
+                <p class="summary">DeepEval is a robust, open-source LLM evaluation framework, akin to Pytest but specialized for large language model outputs. It incorporates the latest research to assess LLM performance across various metrics, including G-Eval, RAGAS, hallucination, answer relevancy, and conversational metrics, with evaluations running locally on your machine. This framework is crucial for validating RAG pipelines, chatbots, and AI agents, enabling developers to determine optimal models and prompts, prevent prompt drifting, and ensure application reliability. DeepEval also supports building custom metrics, generating synthetic datasets, seamless CI/CD integration, and red-teaming for over 40 safety vulnerabilities. Furthermore, it allows easy benchmarking of any LLM on popular benchmarks like MMLU and HumanEval, providing a comprehensive solution for LLM quality assurance and performance optimization throughout the development lifecycle.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>LLM Evaluation</span><span>Evaluation Framework</span><span>RAG</span><span>AI Agent</span><span>Quality Assurance</span><span>Continuous Integration</span><span>Performance Testing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/confident-ai/deepeval" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>All RAG Techniques: A Simpler, Hands-On Approach ✨</h2>
+                <span class="published-time">Published: 2025-06-13T02:13:12Z</span>
+                <img src="../screenshot/github/all-rag-techniques.png" alt="All RAG Techniques: A Simpler, Hands-On Approach ✨">
+                <p class="summary">This GitHub repository offers a practical, hands-on guide to Retrieval-Augmented Generation (RAG) techniques. It meticulously breaks down over 20 advanced RAG methods, such as semantic chunking, reranking, Graph RAG, Multimodal RAG, and Corrective RAG, all implemented from scratch using pure Python libraries like OpenAI and NumPy, without relying on frameworks like LangChain. The project aims to provide readable, modifiable, and educational code, enabling developers to grasp the fundamental workings of RAG. It also covers handling large datasets with knowledge graphs, serving as a valuable resource for building efficient and interpretable RAG systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Retrieval-Augmented Generation</span><span>RAG</span><span>Large Language Models</span><span>Natural Language Processing</span><span>Knowledge Graphs</span><span>Vector Databases</span><span>Python</span><span>Machine Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/FareedKhan-dev/all-rag-techniques" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Open-source Large Language Model Usage Guide</h2>
+                <span class="published-time">Published: 2025-06-12T08:52:13Z</span>
+                <img src="https://contrib.rocks/image?repo=datawhalechina/self-llm" alt="Open-source Large Language Model Usage Guide">
+                <p class="summary">This project serves as a dedicated open-source large language model tutorial for beginners in China, primarily focusing on Linux platforms. It provides comprehensive, full-process guidance covering environment setup, local deployment, and efficient fine-tuning for a wide range of open-source LLMs. The initiative aims to simplify the complex procedures of deploying, using, and applying these models, including mainstream ones like LLaMA, ChatGLM, and InternLM. Technical aspects covered include command-line invocation, online demo deployment, and integration with frameworks like LangChain. The tutorial's objective is to enable more students and researchers to effectively leverage open-source large models, fostering their adoption in academic and practical settings, and facilitating the development of customized, domain-specific LLMs.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Open-source LLM</span><span>Environment Configuration</span><span>Local Deployment</span><span>Model Fine-tuning</span><span>LangChain</span><span>Linux</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/datawhalechina/self-llm" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>✨ YouTube Transcript API ✨</h2>
+                <span class="published-time">Published: 2025-06-11T22:24:04Z</span>
+                <img src="../screenshot/github/youtube-transcript-api.png" alt="✨ YouTube Transcript API ✨">
+                <p class="summary">The YouTube Transcript API is a Python library designed for efficient retrieval of YouTube video transcripts and subtitles, including automatically generated ones. This API eliminates the need for headless browsers, supports subtitle translation, and offers flexible API interfaces and command-line tools. It addresses IP blocking issues by supporting proxy configurations to ensure service stability and provides various output formats. The project offers a convenient solution for video content analysis, multilingual processing, and automated data extraction.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>YouTube</span><span>Transcript</span><span>Subtitles</span><span>API</span><span>Python</span><span>Video Processing</span><span>Data Extraction</span><span>Proxy</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Video Understanding</span><span>Natural Language Processing</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/jdepoix/youtube-transcript-api" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI Agents for Beginners - A Course</h2>
+                <span class="published-time">Published: 2025-06-11T11:04:34Z</span>
+                <img src="https://raw.githubusercontent.com/microsoft/ai-agents-for-beginners/main/images/repo-thumbnail.png" alt="AI Agents for Beginners - A Course">
+                <p class="summary">This GitHub repository presents "AI Agents for Beginners - A Course," comprising 11 lessons designed to teach the fundamentals of building AI agents. The curriculum covers AI agent concepts, exploration of agentic frameworks, various agentic design patterns (such as tool use, RAG, planning, multi-agent, and metacognition), and deploying AI agents in production environments. The course provides Python code samples compatible with Azure AI Foundry and GitHub Model Catalogs, leveraging Microsoft's Azure AI Agent Service, Semantic Kernel, and AutoGen frameworks. With multi-language support, this course is ideal for beginners seeking a systematic approach to AI agent development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agents</span><span>Generative AI</span><span>Agentic Frameworks</span><span>Semantic Kernel</span><span>AutoGen</span><span>RAG</span><span>Design Patterns</span><span>Azure AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Generative AI</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/microsoft/ai-agents-for-beginners" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>ReasonMed: A 370K Multi-Agent Generated Dataset for Advancing Medical
+  Reasoning</h2>
+                <span class="published-time">Published: 2025-06-11T08:36:55.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.09513.png" alt="ReasonMed: A 370K Multi-Agent Generated Dataset for Advancing Medical
+  Reasoning">
+                <p class="summary">Though reasoning-based large language models (LLMs) have excelled in
+mathematics and programming, their capabilities in knowledge-intensive medical
+question answering remain underexplored. To address this, we introduce
+ReasonMed, the largest medical reasoning dataset, comprising 370k high-quality
+examples distilled from 1.7 million initial reasoning paths generated by
+various LLMs. ReasonMed is constructed through a multi-agent
+verification and refinement process, where we design an Error Refiner
+to enhance the reasoning paths by identifying and correcting error-prone steps
+flagged by a verifier. Leveraging ReasonMed, we systematically investigate best
+practices for training medical reasoning models and find that combining
+detailed Chain-of-Thought (CoT) reasoning with concise answer summaries yields
+the most effective fine-tuning strategy. Based on this strategy, we train
+ReasonMed-7B, which sets a new benchmark for sub-10B models, outperforming the
+prior best by 4.17\% and even exceeding LLaMA3.1-70B on PubMedQA by 4.60\%.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Medical Reasoning</span><span>Large Language Models</span><span>Dataset</span><span>Multi-Agent</span><span>Chain-of-Thought</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.09513" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Magistral</h2>
+                <span class="published-time">Published: 2025-06-12T17:22:37.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.10910.png" alt="Magistral">
+                <p class="summary">We introduce Magistral, Mistral's first reasoning model and our own scalable
+reinforcement learning (RL) pipeline. Instead of relying on existing
+implementations and RL traces distilled from prior models, we follow a ground
+up approach, relying solely on our own models and infrastructure. Notably, we
+demonstrate a stack that enabled us to explore the limits of pure RL training
+of LLMs, present a simple method to force the reasoning language of the model,
+and show that RL on text data alone maintains most of the initial checkpoint's
+capabilities. We find that RL on text maintains or improves multimodal
+understanding, instruction following and function calling. We present Magistral
+Medium, trained for reasoning on top of Mistral Medium 3 with RL alone, and we
+open-source Magistral Small (Apache 2.0) which further includes cold-start data
+from Magistral Medium.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Magistral</span><span>Reinforcement Learning</span><span>Large Language Models</span><span>Reasoning Model</span><span>Multimodal Understanding</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.10910" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AniMaker: Automated Multi-Agent Animated Storytelling with MCTS-Driven
+  Clip Generation</h2>
+                <span class="published-time">Published: 2025-06-12T10:06:21.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.10540.png" alt="AniMaker: Automated Multi-Agent Animated Storytelling with MCTS-Driven
+  Clip Generation">
+                <p class="summary">Despite rapid advancements in video generation models, generating coherent
+storytelling videos that span multiple scenes and characters remains
+challenging. Current methods often rigidly convert pre-generated keyframes into
+fixed-length clips, resulting in disjointed narratives and pacing issues.
+Furthermore, the inherent instability of video generation models means that
+even a single low-quality clip can significantly degrade the entire output
+animation's logical coherence and visual continuity. To overcome these
+obstacles, we introduce AniMaker, a multi-agent framework enabling efficient
+multi-candidate clip generation and storytelling-aware clip selection, thus
+creating globally consistent and story-coherent animation solely from text
+input. The framework is structured around specialized agents, including the
+Director Agent for storyboard generation, the Photography Agent for video clip
+generation, the Reviewer Agent for evaluation, and the Post-Production Agent
+for editing and voiceover. Central to AniMaker's approach are two key technical
+components: MCTS-Gen in Photography Agent, an efficient Monte Carlo Tree Search
+(MCTS)-inspired strategy that intelligently navigates the candidate space to
+generate high-potential clips while optimizing resource usage; and AniEval in
+Reviewer Agent, the first framework specifically designed for multi-shot
+animation evaluation, which assesses critical aspects such as story-level
+consistency, action completion, and animation-specific features by considering
+each clip in the context of its preceding and succeeding clips. Experiments
+demonstrate that AniMaker achieves superior quality as measured by popular
+metrics including VBench and our proposed AniEval framework, while
+significantly improving the efficiency of multi-candidate generation, pushing
+AI-generated storytelling animation closer to production standards.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multi-agent</span><span>Animated storytelling</span><span>Video generation</span><span>Monte Carlo Tree Search</span><span>AI-generated animation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.10540" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>VRBench: A Benchmark for Multi-Step Reasoning in Long Narrative Videos</h2>
+                <span class="published-time">Published: 2025-06-12T16:17:17.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.10857.png" alt="VRBench: A Benchmark for Multi-Step Reasoning in Long Narrative Videos">
+                <p class="summary">We present VRBench, the first long narrative video benchmark crafted for
+evaluating large models' multi-step reasoning capabilities, addressing
+limitations in existing evaluations that overlook temporal reasoning and
+procedural validity. It comprises 1,010 long videos (with an average duration
+of 1.6 hours), along with 9,468 human-labeled multi-step question-answering
+pairs and 30,292 reasoning steps with timestamps. These videos are curated via
+a multi-stage filtering process including expert inter-rater reviewing to
+prioritize plot coherence. We develop a human-AI collaborative framework that
+generates coherent reasoning chains, each requiring multiple temporally
+grounded steps, spanning seven types (e.g., event attribution, implicit
+inference). VRBench designs a multi-phase evaluation pipeline that assesses
+models at both the outcome and process levels. Apart from the MCQs for the
+final results, we propose a progress-level LLM-guided scoring metric to
+evaluate the quality of the reasoning chain from multiple dimensions
+comprehensively. Through extensive evaluations of 12 LLMs and 16 VLMs on
+VRBench, we undertake a thorough analysis and provide valuable insights that
+advance the field of multi-step reasoning.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multi-step reasoning</span><span>Long narrative videos</span><span>Benchmark</span><span>Large models</span><span>Video understanding</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Video Understanding</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.10857" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Ming-Omni: A Unified Multimodal Model for Perception and Generation</h2>
+                <span class="published-time">Published: 2025-06-11T02:50:49.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.09344.png" alt="Ming-Omni: A Unified Multimodal Model for Perception and Generation">
+                <p class="summary">We propose Ming-Omni, a unified multimodal model capable of processing
+images, text, audio, and video, while demonstrating strong proficiency in both
+speech and image generation. Ming-Omni employs dedicated encoders to extract
+tokens from different modalities, which are then processed by Ling, an MoE
+architecture equipped with newly proposed modality-specific routers. This
+design enables a single model to efficiently process and fuse multimodal inputs
+within a unified framework, thereby facilitating diverse tasks without
+requiring separate models, task-specific fine-tuning, or structural redesign.
+Importantly, Ming-Omni extends beyond conventional multimodal models by
+supporting audio and image generation. This is achieved through the integration
+of an advanced audio decoder for natural-sounding speech and Ming-Lite-Uni for
+high-quality image generation, which also allow the model to engage in
+context-aware chatting, perform text-to-speech conversion, and conduct
+versatile image editing. Our experimental results showcase Ming-Omni offers a
+powerful solution for unified perception and generation across all modalities.
+Notably, our proposed Ming-Omni is the first open-source model we are aware of
+to match GPT-4o in modality support, and we release all code and model weights
+to encourage further research and development in the community.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Unified Multimodal Model</span><span>Perception and Generation</span><span>Mixture-of-Experts</span><span>Audio Generation</span><span>Image Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Generative AI</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.09344" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Optimus-3: Towards Generalist Multimodal Minecraft Agents with Scalable
+  Task Experts</h2>
+                <span class="published-time">Published: 2025-06-12T05:29:40.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.10357.png" alt="Optimus-3: Towards Generalist Multimodal Minecraft Agents with Scalable
+  Task Experts">
+                <p class="summary">Recently, agents based on multimodal large language models (MLLMs) have
+achieved remarkable progress across various domains. However, building a
+generalist agent with capabilities such as perception, planning, action,
+grounding, and reflection in open-world environments like Minecraft remains
+challenges: insufficient domain-specific data, interference among heterogeneous
+tasks, and visual diversity in open-world settings. In this paper, we address
+these challenges through three key contributions. 1) We propose a
+knowledge-enhanced data generation pipeline to provide scalable and
+high-quality training data for agent development. 2) To mitigate interference
+among heterogeneous tasks, we introduce a Mixture-of-Experts (MoE) architecture
+with task-level routing. 3) We develop a Multimodal Reasoning-Augmented
+Reinforcement Learning approach to enhance the agent's reasoning ability for
+visual diversity in Minecraft. Built upon these innovations, we present
+Optimus-3, a general-purpose agent for Minecraft. Extensive experimental
+results demonstrate that Optimus-3 surpasses both generalist multimodal large
+language models and existing state-of-the-art agents across a wide range of
+tasks in the Minecraft environment. Project page:
+https://cybertronagent.github.io/Optimus-3.github.io/</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal Large Language Models</span><span>Minecraft Agents</span><span>Generalist Agent</span><span>Mixture-of-Experts</span><span>Reinforcement Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Multimodal</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.10357" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
