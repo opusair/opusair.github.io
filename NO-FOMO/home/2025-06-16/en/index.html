@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-06-16</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: 2px solid transparent;
+            font-size: 0.9em;
+        }
+
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .language-switch a.active {
+            background: var(--secondary-color);
+            border-color: var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .language-switch {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../">中文</a>
+                <a href="./" class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-06-16</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Twitter</h2>
+
+            <article class="item-card">
+                <h2>gdb_Joshua Ma Joins OpenAI Codex Team, Focusing on Agentic Software Engineers</h2>
+                <span class="published-time">Published: 2025-06-16T22:58:03.000Z</span>
+                <img src="../screenshot/twitter/gdb_1934747328457658554.png" alt="gdb_Joshua Ma Joins OpenAI Codex Team, Focusing on Agentic Software Engineers">
+                <p class="summary">Joshua Ma announced he has joined OpenAI's Codex team, focusing on developing "agentic software engineers," a goal he anticipates achieving within 18 months. He expressed his desire not to miss out on this technological wave. The OpenAI Codex team is rapidly expanding in San Francisco and actively recruiting full-stack engineers and product managers. This move signifies OpenAI's significant strategic deployment in automated software development and AI agent fields.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>OpenAI</span><span>Codex</span><span>Agentic Software Engineers</span><span>Joshua Ma</span><span>AI Agent</span><span>Hiring</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/gdb/status/1934747328457658554" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MiniMax__AI_Open-sources MiniMax-M1 LLM, Setting New Long-Context Reasoning Standards</h2>
+                <span class="published-time">Published: 2025-06-16T15:39:46.000Z</span>
+                <img src="../screenshot/twitter/MiniMax__AI_1934637031193514237.png" alt="MiniMax__AI_Open-sources MiniMax-M1 LLM, Setting New Long-Context Reasoning Standards">
+                <p class="summary">MiniMax officially announced the open-sourcing of its latest large language model, MiniMax-M1, which sets new standards in long-context reasoning. MiniMax-M1 features the world's longest context window, supporting 1M-token input and 80k-token output, and demonstrates state-of-the-art agentic use among open-source models. Furthermore, its reinforcement learning training was achieved with remarkable efficiency, costing only $534,700.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>MiniMax</span><span>MiniMax-M1</span><span>LLM</span><span>Open Source</span><span>Long Context</span><span>AI Agent</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Open Source</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/MiniMax__AI/status/1934637031193514237" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Google_Veo 3 Global Rollout</h2>
+                <span class="published-time">Published: 2025-06-16T19:16:43.000Z</span>
+                <img src="../screenshot/twitter/Google_1934691625974002109.png" alt="Google_Veo 3 Global Rollout">
+                <p class="summary">Google has announced the global rollout of its AI video generation model, Veo 3. This latest version is now accessible to AI Pro and Ultra subscribers across more than 70 markets, signifying a major step forward for Google in the generative AI video domain and broadening its AI service reach and user base.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Google</span><span>Veo 3</span><span>AI video</span><span>Product launch</span><span>Generative AI</span><span>Global rollout</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Product Launch</span><span>Video Understanding</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/Google/status/1934691625974002109" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>scaling01_Moonshot AI Kimi-Dev Model Excels on SWE-bench</h2>
+                <span class="published-time">Published: 2025-06-16T22:53:44.000Z</span>
+                <img src="../screenshot/twitter/scaling01_1934746243286319435.png" alt="scaling01_Moonshot AI Kimi-Dev Model Excels on SWE-bench">
+                <p class="summary">The tweet highlights that Moonshot AI has quietly released its new coding model, Kimi-Dev 72B. This model achieved a verified 60.4% on the SWE-bench benchmark and is released under an MIT License. Kimi-Dev is RL-trained to patch real repositories, with rewards only given if the full test suite passes, demonstrating its robust capabilities in code generation and repair.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Kimi-Dev</span><span>Moonshot AI</span><span>Coding Model</span><span>SWE-bench</span><span>Reinforcement Learning</span><span>Open Source</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Open Source</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/scaling01/status/1934746243286319435" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>karpathy_Caution on LLM Agent Prompt Injection Attacks and Security Risks</h2>
+                <span class="published-time">Published: 2025-06-16T16:37:53.000Z</span>
+                <img src="../screenshot/twitter/karpathy_1934651657444528277.png" alt="karpathy_Caution on LLM Agent Prompt Injection Attacks and Security Risks">
+                <p class="summary">Andrej Karpathy reposted a warning about prompt injection attacks faced by LLM agents, likening them to early computer viruses and noting the lack of robust defense mechanisms. He expresses concern over the "wild west" security landscape of LLM agents in personal computing. Simon Willison adds that AI agents combining private data access, untrusted content exposure, and external communication pose a "Lethal Trifecta" risk, potentially leading to data theft.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Prompt Injection</span><span>LLM Agents</span><span>Cybersecurity</span><span>Data Security</span><span>Artificial Intelligence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Industry News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/karpathy/status/1934651657444528277" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>sedielem_Diffusion Duality: New Connection Between Continuous and Discrete Diffusion Models</h2>
+                <span class="published-time">Published: 2025-06-16T21:50:38.000Z</span>
+                <img src="../screenshot/twitter/sedielem_1934730362476712043.png" alt="sedielem_Diffusion Duality: New Connection Between Continuous and Discrete Diffusion Models">
+                <p class="summary">Sander Dieleman highlighted "The Diffusion Duality" paper by Subham Sahoo et al., accepted at ICML 2025. This work reveals a profound connection between continuous and discrete diffusion models, enabling the transfer of advanced techniques like consistency distillation to discrete settings. By exploiting underlying Gaussian diffusion, the paper achieves few-step generation in discrete diffusion language models, outperforming autoregressive models on three out of seven zero-shot likelihood benchmarks, demonstrating significant potential in language generation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Diffusion Models</span><span>Language Models</span><span>Generative AI</span><span>Consistency Distillation</span><span>ICML 2025</span><span>Diffusion Duality</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Machine Learning</span><span>Natural Language Processing</span><span>Research Progress</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/sedielem/status/1934730362476712043" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">wechat</h2>
+
+            <article class="item-card">
+                <h2>Google's Future AI Roadmap Revealed: Abandoning Attention Mechanism? Transformer Has Fatal Flaws!</h2>
+                <span class="published-time">Published: 2025-06-16T16:02:11.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_eRUwonRTO-A07ukWXxPE5g.png" alt="Google's Future AI Roadmap Revealed: Abandoning Attention Mechanism? Transformer Has Fatal Flaws!">
+                <p class="summary">Google Product Lead Logan Kilpatrick recently unveiled the company's future AI roadmap, primarily focusing on the evolution of the Gemini model. This ambitious plan emphasizes Gemini's progression towards full multimodal capabilities, encompassing image, audio, and video generation, while gradually transforming into a sophisticated AI agent with robust tool-calling and systematic reasoning abilities. A significant highlight is Google's active exploration of "infinite context" solutions, which suggests a potential departure from the current attention mechanism within the Transformer architecture to overcome its inherent limitations. Furthermore, Google intends to introduce more compact models and is committed to re-positioning AI Studio as a comprehensive developer platform. This strategic direction underscores Google's resurgence as a leading force in the competitive AI landscape, signaling a paradigm shift from reactive AI systems to proactive, intelligent services. The company's integrated approach, combining foundational research with practical product development, aims to deliver groundbreaking advancements and meet the exploding demand from the developer ecosystem.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Google AI</span><span>Gemini</span><span>Attention Mechanism</span><span>Infinite Context</span><span>AI Agent</span><span>Multimodal</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Multimodal</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/eRUwonRTO-A07ukWXxPE5g" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI-Powered Live Streaming E-commerce Tool: High-Fidelity Product Demonstration Videos from Single Person and Product Images</h2>
+                <span class="published-time">Published: 2025-06-16T23:45:48.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_DnuXC8WwCBwulmQRsu1WGw.png" alt="AI-Powered Live Streaming E-commerce Tool: High-Fidelity Product Demonstration Videos from Single Person and Product Images">
+                <p class="summary">ByteDance has introduced DreamActor-H1, an innovative AI framework based on the Diffusion Transformer, capable of generating high-fidelity, realistic human-product demonstration videos from just a single person image and a single product image. This novel technology leverages injected human-product reference information and masked cross-attention mechanisms to effectively preserve human identity and intricate product details, while also producing physically plausible demonstration movements. Trained on extensive, multi-level augmented datasets, DreamActor-H1 surpasses existing state-of-the-art methods in maintaining human-product identity integrity and generating realistic actions. Its core advantage lies in its ability to create personalized e-commerce advertisements and interactive media, offering significant potential to revolutionize live streaming e-commerce, enhance user engagement, and boost marketing efficiency by automating video content creation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>DreamActor-H1</span><span>Live Streaming E-commerce</span><span>Video Generation</span><span>Diffusion Transformer</span><span>E-commerce</span><span>AI Application</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/DnuXC8WwCBwulmQRsu1WGw" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Midjourney Enters Video Generation Market, Image Model V7 Continues to Update</h2>
+                <span class="published-time">Published: 2025-06-16T16:02:11.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_mqdknnDnEFjCH-vlxfm-Gw.png" alt="Midjourney Enters Video Generation Market, Image Model V7 Continues to Update">
+                <p class="summary">Leading image generation platform Midjourney has officially made its foray into the video generation domain, with initial demonstrations of its video model revealing impressive capabilities in motion fluidity, physical realism, and intricate detail rendering. The model particularly excels in handling complex multi-character actions and producing highly realistic textures. Despite these advancements, a notable limitation is the current absence of audio functionality, which places it at a disadvantage when compared to rivals such as Veo 3. Simultaneously, Midjourney's acclaimed image model, V7, is receiving continuous enhancements. Recent updates include the introduction of "Draft Mode," enabling intuitive voice and dialogue-based control, alongside significant acceleration features. These improvements have substantially boosted both generation speed and overall image quality, with a particular emphasis on the hyper-realistic rendering of hand textures. Midjourney is proactively engaging with its user base, soliciting feedback to further refine and optimize its cutting-edge video and image generation technologies, thereby solidifying its position as a key innovator in the rapidly evolving generative AI landscape.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Midjourney</span><span>Video Generation</span><span>Image Generation</span><span>V7</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/mqdknnDnEFjCH-vlxfm-Gw" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Scaling Law Validated for the First Time in Autonomous Driving! XPeng's CVPR Speech Details: AI's Intelligent Emergence After Processing 600 Million Seconds of Video</h2>
+                <span class="published-time">Published: 2025-06-16T04:50:28.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_kk92qix7JnNnbnTtFg9Y9A.png" alt="Scaling Law Validated for the First Time in Autonomous Driving! XPeng's CVPR Speech Details: AI's Intelligent Emergence After Processing 600 Million Seconds of Video">
+                <p class="summary">At CVPR 2025, XPeng Motors announced a significant breakthrough, validating the Scaling Law for the first time in autonomous driving VLA (Vision-Language-Action) models. The article elaborates on XPeng's proprietary "world base model" solution, which leverages a large language model as its backbone, boasting 72 billion parameters. This model is trained with massive amounts of driving data and advanced reinforcement learning techniques, deployed in the cloud. To overcome edge computing limitations, XPeng employs knowledge distillation to transfer the powerful capabilities of the cloud-based large model to smaller, vehicle-side models. This approach enables seamless driving experiences without reliance on rule-based code, demonstrating a superior global understanding and decision-making ability that transcends traditional L2/L4 systems. This innovation not only addresses the long-standing critique of end-to-end systems merely imitating human behavior but also heralds a new era of convergence between autonomous driving and embodied AI. XPeng is actively redefining the automotive industry from the perspective of an "AI company."</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Scaling Law</span><span>Autonomous Driving</span><span>XPeng Motors</span><span>Base Model</span><span>Knowledge Distillation</span><span>Intelligent Emergence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Robotics</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/kk92qix7JnNnbnTtFg9Y9A" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>New Breakthrough in Web Agents! Tencent AI Lab Proposes New Framework Introducing Co-evolving World Models</h2>
+                <span class="published-time">Published: 2025-06-16T04:50:28.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_5onSvM_uHxrRxcO9FCGlIg.png" alt="New Breakthrough in Web Agents! Tencent AI Lab Proposes New Framework Introducing Co-evolving World Models">
+                <p class="summary">Tencent AI Lab has introduced the WebEvolver framework, which leverages co-evolving world models to overcome the performance stagnation of existing Large Language Model (LLM)-based web agents, achieving a 10% performance improvement in real web environments. This framework defines the world model as a "virtual web engine," capable of generating diverse synthetic training trajectories and performing multi-step lookahead reasoning. This significantly enhances the agent's ability to interact with unseen websites and improves training effectiveness. The research highlights the world model's capabilities in knowledge transfer and diverse trajectory generation, asserting that even minor "hallucinations" do not diminish its core value as a "virtual server" and "imagination engine." WebEvolver provides a new paradigm for building continuously evolving general web agents, offering guidance for future environment-free reinforcement learning.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Web Agent</span><span>World Model</span><span>Co-evolution</span><span>Large Language Model</span><span>WebEvolver</span><span>Self-evolving</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/5onSvM_uHxrRxcO9FCGlIg" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>He Successfully Joined OpenAI with Just One Blog Post! Core Technology May Be Used for GPT-5 Training</h2>
+                <span class="published-time">Published: 2025-06-16T04:49:52.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_Dwe1Nmw9lydl_8O8wAYI3g.png" alt="He Successfully Joined OpenAI with Just One Blog Post! Core Technology May Be Used for GPT-5 Training">
+                <p class="summary">Keller Jordan successfully joined OpenAI by sharing his Muon optimizer research via a blog and GitHub, challenging traditional AI research paradigms. Muon, an innovative optimizer for neural network hidden layers, significantly boosts the training efficiency of models like NanoGPT and large Transformers, potentially influencing GPT-5 development. This case highlights that in the rapidly evolving AI landscape, open collaboration, rapid iteration, and demonstrable real-world impact are becoming key metrics for research value, superseding traditional paper publication. Top institutions like OpenAI increasingly prioritize practical potential and skills over academic credentials or publication volume. This signals a shift in AI talent acquisition and research models towards a greater emphasis on practical contributions and community engagement. Jordan's experience, including Muon's ability to reduce 1.5B Transformer training time by 25% compared to AdamW, exemplifies this new approach where real-world adoption and reproducibility are paramount.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Muon optimizer</span><span>OpenAI</span><span>AI research paradigm</span><span>blog</span><span>model training</span><span>deep learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Machine Learning</span><span>Deep Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/Dwe1Nmw9lydl_8O8wAYI3g" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Anthropic Cookbook</h2>
+                <span class="published-time">Published: 2025-06-13T19:28:20Z</span>
+                <img src="../screenshot/github/anthropic-cookbook.png" alt="Anthropic Cookbook">
+                <p class="summary">The Anthropic Cookbook is a collection of code and guides designed for developers building applications with Claude. It offers readily integratable code snippets covering areas such as text classification, Retrieval Augmented Generation (RAG), summarization, tool use, multimodal capabilities, and advanced techniques. The project aims to assist developers in leveraging the Claude API, providing Python examples and concepts adaptable to other programming languages, thereby enhancing the efficiency of AI application development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude</span><span>LLM Applications</span><span>Code Examples</span><span>API Development</span><span>Natural Language Processing</span><span>Multimodal</span><span>AI Agent</span><span>Retrieval Augmented Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/anthropics/anthropic-cookbook" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Welcome to Anthropic's Prompt Engineering Interactive Tutorial</h2>
+                <span class="published-time">Published: 2024-04-08T03:17:07Z</span>
+                <img src="../screenshot/github/prompt-eng-interactive-tutorial.png" alt="Welcome to Anthropic's Prompt Engineering Interactive Tutorial">
+                <p class="summary">Anthropic's interactive prompt engineering tutorial systematically guides users on how to construct optimal and effective prompts for the Claude AI model. This comprehensive course is structured into nine detailed chapters, each accompanied by practical exercises, designed to provide a step-by-step understanding. Key topics include mastering basic prompt structures, identifying and resolving common failure modes using '80/20' techniques, understanding Claude's specific strengths and weaknesses, and building robust prompts from scratch for diverse real-world applications. The tutorial strongly emphasizes hands-on practice, featuring an "Example Playground" area where users can freely experiment with examples and observe the impact of prompt changes on Claude's responses. Furthermore, it introduces the different Claude 3 models—Haiku, Sonnet, and Opus—highlighting their varying intelligence levels. This practical guide is an invaluable resource for anyone looking to significantly enhance their proficiency in leveraging large language models for advanced AI applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Prompt Engineering</span><span>Large Language Model</span><span>Claude AI</span><span>AI Model Optimization</span><span>Interactive Tutorial</span><span>Natural Language Processing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/anthropics/prompt-eng-interactive-tutorial" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>🌟 Awesome LLM Apps</h2>
+                <span class="published-time">Published: 2025-06-15T16:08:42Z</span>
+                <img src="https://github.com/Shubhamsaboo/awesome-llm-apps/raw/main/docs/banner/unwind_black.png" alt="🌟 Awesome LLM Apps">
+                <p class="summary">The GitHub repository "Awesome LLM Apps" is a curated collection of Large Language Model (LLM) applications, incorporating various technologies such as Retrieval Augmented Generation (RAG), AI Agents, Multi-agent Teams, MCP (Multimodal Control Policy), and Voice Agents. It showcases practical applications built using models from OpenAI, Anthropic, Google, as well as open-source models like DeepSeek, Qwen, and Llama. This project aims to help developers explore the application potential of LLMs across different domains and foster the growth of the open-source LLM application ecosystem.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>AI Agent</span><span>Retrieval Augmented Generation</span><span>Multi-agent System</span><span>Voice AI</span><span>LLM Applications</span><span>Open Source Models</span><span>Model Fine-tuning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/Shubhamsaboo/awesome-llm-apps" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LeRobot: State-of-the-art AI for real-world robotics</h2>
+                <span class="published-time">Published: 2025-06-15T09:47:48Z</span>
+                <img src="https://raw.githubusercontent.com/huggingface/lerobot/main/media/gym/aloha_act.gif" alt="LeRobot: State-of-the-art AI for real-world robotics">
+                <p class="summary">LeRobot is a cutting-edge PyTorch robotics library developed by Hugging Face, aiming to significantly lower the barrier to entry for real-world robotics development. Its core mission is to facilitate the widespread sharing of high-quality datasets and advanced pretrained models within the robotics community. The library primarily focuses on state-of-the-art AI methodologies, including imitation learning and reinforcement learning, which have demonstrated strong transferability to physical robotic systems. LeRobot currently offers a comprehensive suite of resources, such as pre-trained models, extensive datasets derived from human demonstrations, and robust simulation environments, allowing users to commence development even without immediate access to physical hardware. Furthermore, it actively supports the construction of cost-effective robotic platforms like the SO-101 and LeKiwi, with ambitious plans to integrate support for an even broader range of affordable and capable real-world robots in the near future, thereby accelerating the deployment of AI in practical robotic applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Robotics</span><span>PyTorch</span><span>Imitation Learning</span><span>Reinforcement Learning</span><span>Pretrained Models</span><span>Datasets</span><span>Simulation Environments</span><span>Artificial Intelligence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/huggingface/lerobot" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Prompt Optimizer</h2>
+                <span class="published-time">Published: 2025-06-15T14:12:42Z</span>
+                <img src="../screenshot/github/prompt-optimizer.png" alt="Prompt Optimizer">
+                <p class="summary">Prompt Optimizer is a powerful AI prompt optimization tool designed to enhance AI output quality. It offers both a web application and a Chrome extension. Key features include intelligent one-click optimization, real-time comparison testing between original and optimized prompts, and integration with mainstream AI models like OpenAI, Gemini, and DeepSeek. The tool ensures data security and user privacy through pure client-side processing and local encrypted storage. Users can flexibly configure advanced LLM parameters and easily deploy it via Vercel or Docker, effectively addressing cross-domain issues. It is an ideal choice for optimizing AI interaction experiences.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Prompt Optimization</span><span>AI Tools</span><span>Large Language Models</span><span>Chrome Extension</span><span>Client-side Application</span><span>API Configuration</span><span>Cross-domain Solution</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/linshenkx/prompt-optimizer" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Learn Agentic AI using Dapr Agentic Cloud Ascent (DACA) Design Pattern: From Start to Scale</h2>
+                <span class="published-time">Published: 2025-06-16T22:08:33Z</span>
+                <img src="https://github.com/panaversity/learn-agentic-ai/raw/main/img/cover.png" alt="Learn Agentic AI using Dapr Agentic Cloud Ascent (DACA) Design Pattern: From Start to Scale">
+                <p class="summary">This GitHub repository introduces the Dapr Agentic Cloud Ascent (DACA) design pattern, aiming to address the challenge of building and scaling AI agent systems to handle ten million concurrent agents. It delves into the application of Dapr, Kubernetes, and the OpenAI Agents SDK in achieving large-scale, high-concurrency agent systems, emphasizing DACA's advantages in cloud-native, cost-effective, and resilient deployments. The project offers a comprehensive curriculum, including AI-201, AI-202, and AI-301 courses, covering topics from foundational theories to planet-scale distributed AI agent development. This framework, combining OpenAI Agents SDK, Model Context Protocol (MCP), and Agent2Agent (A2A) protocol, provides developers with a robust approach for constructing complex, scalable multi-agent systems, specifically tailored for training Agentic AI engineers and fostering related startups.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Agentic AI</span><span>Dapr</span><span>Kubernetes</span><span>OpenAI Agents SDK</span><span>Distributed Systems</span><span>Scalability</span><span>Cloud-Native</span><span>Multi-Agent</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/panaversity/learn-agentic-ai" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Feedback Friction: LLMs Struggle to Fully Incorporate External Feedback</h2>
+                <span class="published-time">Published: 2025-06-13T16:31:51.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.11930.png" alt="Feedback Friction: LLMs Struggle to Fully Incorporate External Feedback">
+                <p class="summary">Recent studies have shown LLMs possess some ability to improve their
+responses when given external feedback. However, it remains unclear how
+effectively and thoroughly these models can incorporate extrinsic feedback. In
+an ideal scenario, if LLMs receive near-perfect and complete feedback, we would
+expect them to fully integrate the feedback and change their incorrect answers
+to correct ones. In this paper, we systematically investigate LLMs' ability to
+incorporate feedback by designing a controlled experimental environment. For
+each problem, a solver model attempts a solution, then a feedback generator
+with access to near-complete ground-truth answers produces targeted feedback,
+after which the solver tries again. We evaluate this pipeline across a diverse
+range of tasks, including math reasoning, knowledge reasoning, scientific
+reasoning, and general multi-domain evaluations with state-of-the-art language
+models including Claude 3.7 (with and without extended thinking). Surprisingly,
+even under these near-ideal conditions, solver models consistently show
+resistance to feedback, a limitation that we term FEEDBACK FRICTION. To
+mitigate this limitation, we experiment with sampling-based strategies like
+progressive temperature increases and explicit rejection of previously
+attempted incorrect answers, which yield improvements but still fail to help
+models achieve target performance. We also perform a rigorous exploration of
+potential causes of FEEDBACK FRICTION, ruling out factors such as model
+overconfidence and data familiarity. We hope that highlighting this issue in
+LLMs and ruling out several apparent causes will help future research in
+self-improvement.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Feedback Friction</span><span>External Feedback</span><span>Feedback Incorporation</span><span>Self-improvement</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.11930" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Aligned Novel View Image and Geometry Synthesis via Cross-modal
+  Attention Instillation</h2>
+                <span class="published-time">Published: 2025-06-13T16:19:00.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.11924.png" alt="Aligned Novel View Image and Geometry Synthesis via Cross-modal
+  Attention Instillation">
+                <p class="summary">We introduce a diffusion-based framework that performs aligned novel view
+image and geometry generation via a warping-and-inpainting methodology. Unlike
+prior methods that require dense posed images or pose-embedded generative
+models limited to in-domain views, our method leverages off-the-shelf geometry
+predictors to predict partial geometries viewed from reference images, and
+formulates novel-view synthesis as an inpainting task for both image and
+geometry. To ensure accurate alignment between generated images and geometry,
+we propose cross-modal attention distillation, where attention maps from the
+image diffusion branch are injected into a parallel geometry diffusion branch
+during both training and inference. This multi-task approach achieves
+synergistic effects, facilitating geometrically robust image synthesis as well
+as well-defined geometry prediction. We further introduce proximity-based mesh
+conditioning to integrate depth and normal cues, interpolating between point
+cloud and filtering erroneously predicted geometry from influencing the
+generation process. Empirically, our method achieves high-fidelity
+extrapolative view synthesis on both image and geometry across a range of
+unseen scenes, delivers competitive reconstruction quality under interpolation
+settings, and produces geometrically aligned colored point clouds for
+comprehensive 3D completion. Project page is available at
+https://cvlab-kaist.github.io/MoAI.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Novel View Synthesis</span><span>Geometry Generation</span><span>Diffusion Model</span><span>Cross-modal Attention</span><span>3D Completion</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Deep Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.11924" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Beyond Homogeneous Attention: Memory-Efficient LLMs via
+  Fourier-Approximated KV Cache</h2>
+                <span class="published-time">Published: 2025-06-13T15:35:54.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.11886.png" alt="Beyond Homogeneous Attention: Memory-Efficient LLMs via
+  Fourier-Approximated KV Cache">
+                <p class="summary">Large Language Models struggle with memory demands from the growing Key-Value
+(KV) cache as context lengths increase. Existing compression methods homogenize
+head dimensions or rely on attention-guided token pruning, often sacrificing
+accuracy or introducing computational overhead. We propose FourierAttention, a
+training-free framework that exploits the heterogeneous roles of transformer
+head dimensions: lower dimensions prioritize local context, while upper ones
+capture long-range dependencies. By projecting the long-context-insensitive
+dimensions onto orthogonal Fourier bases, FourierAttention approximates their
+temporal evolution with fixed-length spectral coefficients. Evaluations on
+LLaMA models show that FourierAttention achieves the best long-context accuracy
+on LongBench and Needle-In-A-Haystack (NIAH). Besides, a custom Triton kernel,
+FlashFourierAttention, is designed to optimize memory via streamlined
+read-write operations, enabling efficient deployment without performance
+compromise.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>KV Cache</span><span>Fourier Approximation</span><span>Memory Efficiency</span><span>Long Context</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.11886" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Configurable Preference Tuning with Rubric-Guided Synthetic Data</h2>
+                <span class="published-time">Published: 2025-06-13T12:17:38.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.11702.png" alt="Configurable Preference Tuning with Rubric-Guided Synthetic Data">
+                <p class="summary">Models of human feedback for AI alignment, such as those underpinning Direct
+Preference Optimization (DPO), often bake in a singular, static set of
+preferences, limiting adaptability. This paper challenges the assumption of
+monolithic preferences by introducing Configurable Preference Tuning (CPT), a
+novel framework for endowing language models with the ability to dynamically
+adjust their behavior based on explicit, human-interpretable directives. CPT
+leverages synthetically generated preference data, conditioned on system
+prompts derived from structured, fine-grained rubrics that define desired
+attributes like writing style. By fine-tuning with these rubric-guided
+preferences, the LLM learns to modulate its outputs at inference time in
+response to the system prompt, without retraining. This approach not only
+offers fine-grained control but also provides a mechanism for modeling more
+nuanced and context-dependent human feedback. Several experimental artifacts,
+such as training code, generated datasets and fine-tuned models are released at
+https://github.com/vicgalle/configurable-preference-tuning</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Configurable Preference Tuning</span><span>Synthetic Data</span><span>Rubric-Guided</span><span>Language Models</span><span>AI Alignment</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.11702" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Effective Red-Teaming of Policy-Adherent Agents</h2>
+                <span class="published-time">Published: 2025-06-11T10:59:47.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.09600.png" alt="Effective Red-Teaming of Policy-Adherent Agents">
+                <p class="summary">Task-oriented LLM-based agents are increasingly used in domains with strict
+policies, such as refund eligibility or cancellation rules. The challenge lies
+in ensuring that the agent consistently adheres to these rules and policies,
+appropriately refusing any request that would violate them, while still
+maintaining a helpful and natural interaction. This calls for the development
+of tailored design and evaluation methodologies to ensure agent resilience
+against malicious user behavior. We propose a novel threat model that focuses
+on adversarial users aiming to exploit policy-adherent agents for personal
+benefit. To address this, we present CRAFT, a multi-agent red-teaming system
+that leverages policy-aware persuasive strategies to undermine a
+policy-adherent agent in a customer-service scenario, outperforming
+conventional jailbreak methods such as DAN prompts, emotional manipulation, and
+coercive. Building upon the existing tau-bench benchmark, we introduce
+tau-break, a complementary benchmark designed to rigorously assess the agent's
+robustness against manipulative user behavior. Finally, we evaluate several
+straightforward yet effective defense strategies. While these measures provide
+some protection, they fall short, highlighting the need for stronger,
+research-driven safeguards to protect policy-adherent agents from adversarial
+attacks</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agents</span><span>Red-Teaming</span><span>Policy Adherence</span><span>Robustness</span><span>Adversarial Attacks</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.09600" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DeepVideo-R1: Video Reinforcement Fine-Tuning via Difficulty-aware
+  Regressive GRPO</h2>
+                <span class="published-time">Published: 2025-06-09T06:15:54.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.07464.png" alt="DeepVideo-R1: Video Reinforcement Fine-Tuning via Difficulty-aware
+  Regressive GRPO">
+                <p class="summary">Recent works have demonstrated the effectiveness of reinforcement learning
+(RL)-based post-training in enhancing the reasoning capabilities of large
+language models (LLMs). In particular, Group Relative Policy Optimization
+(GRPO) has shown impressive success by employing a PPO-style reinforcement
+algorithm with group-based normalized rewards. However, the application of GRPO
+to Video Large Language Models (Video LLMs) has been less studied. In this
+paper, we explore GRPO for video LLMs and identify two primary issues that
+impede its effective learning: (1) reliance on safeguards, and (2) the
+vanishing advantage problem. To mitigate these challenges, we propose
+DeepVideo-R1, a video large language model trained with our proposed Reg-GRPO
+(Regressive GRPO) and difficulty-aware data augmentation strategy. Reg-GRPO
+reformulates the GRPO objective as a regression task, directly predicting the
+advantage in GRPO. This design eliminates the need for safeguards like clipping
+and min functions, thereby facilitating more direct policy guidance by aligning
+the model with the advantage values. We also design the difficulty-aware data
+augmentation strategy that dynamically augments training samples at solvable
+difficulty levels, fostering diverse and informative reward signals. Our
+comprehensive experiments show that DeepVideo-R1 significantly improves video
+reasoning performance across multiple video reasoning benchmarks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video LLMs</span><span>Reinforcement Learning</span><span>GRPO</span><span>Regressive GRPO</span><span>Difficulty-aware</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Video Understanding</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.07464" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 - 2025-06-16</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter, Noto Sans SC', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: 2px solid transparent;
+            font-size: 0.9em;
+        }
+
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .language-switch a.active {
+            background: var(--secondary-color);
+            border-color: var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .language-switch {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="./" class="active">中文</a>
+                <a href="en/">English</a>
+            </div>
+
+            <h1>AI 日报</h1>
+            <p class="date">2025-06-16</p>
+            <p class="theme-info">关于我们: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Twitter</h2>
+
+            <article class="item-card">
+                <h2>gdb_Joshua Ma加入OpenAI Codex团队，聚焦智能体软件工程师</h2>
+                <span class="published-time">发布时间: 2025-06-16T22:58:03.000Z</span>
+                <img src="screenshot/twitter/gdb_1934747328457658554.png" alt="gdb_Joshua Ma加入OpenAI Codex团队，聚焦智能体软件工程师">
+                <p class="summary">Joshua Ma宣布加入OpenAI的Codex团队，致力于开发“智能体软件工程师”，并预计在18个月内实现这一目标。他表示不愿错过这一技术浪潮。OpenAI Codex团队正在旧金山迅速扩张，并积极招聘全栈工程师和产品经理。此举标志着OpenAI在自动化软件开发和AI智能体领域的重要布局。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>OpenAI</span><span>Codex</span><span>智能体软件工程师</span><span>Joshua Ma</span><span>AI智能体</span><span>招聘</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>智能体</span><span>技术动态</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/gdb/status/1934747328457658554" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MiniMax__AI_开源MiniMax-M1大模型，长上下文推理创纪录</h2>
+                <span class="published-time">发布时间: 2025-06-16T15:39:46.000Z</span>
+                <img src="screenshot/twitter/MiniMax__AI_1934637031193514237.png" alt="MiniMax__AI_开源MiniMax-M1大模型，长上下文推理创纪录">
+                <p class="summary">MiniMax宣布开源其最新大型语言模型MiniMax-M1，该模型在长上下文推理方面树立了新标准。MiniMax-M1拥有业界最长的100万token输入和8万token输出上下文窗口，并在开源模型中展现出领先的智能体应用能力。此外，该模型在强化学习训练效率方面表现卓越，仅用53.47万美元完成训练，显著降低了成本。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>MiniMax-M1</span><span>大模型</span><span>开源</span><span>长上下文</span><span>智能体</span><span>强化学习</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>开源项目</span><span>产品发布</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/MiniMax__AI/status/1934637031193514237" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Google_视频生成模型Veo 3全球推出</h2>
+                <span class="published-time">发布时间: 2025-06-16T19:16:43.000Z</span>
+                <img src="screenshot/twitter/Google_1934691625974002109.png" alt="Google_视频生成模型Veo 3全球推出">
+                <p class="summary">Google宣布其先进的视频生成模型Veo 3正在全球范围内逐步推出。该模型现已面向70多个市场的AI Pro和Ultra订阅用户开放，标志着Google在生成式AI视频领域的重要进展，将为用户提供更强大的视频创作能力，进一步推动AI在多媒体内容创作中的应用。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>Google</span><span>Veo 3</span><span>视频生成</span><span>AI订阅</span><span>产品发布</span></div>
+                    <div class="area"><span class="label">区域：</span><span>生成式AI</span><span>产品发布</span><span>人工智能</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/Google/status/1934691625974002109" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>scaling01_月之暗面Kimi-Dev模型SWE-bench表现卓越</h2>
+                <span class="published-time">发布时间: 2025-06-16T22:53:44.000Z</span>
+                <img src="screenshot/twitter/scaling01_1934746243286319435.png" alt="scaling01_月之暗面Kimi-Dev模型SWE-bench表现卓越">
+                <p class="summary">推文指出，月之暗面（Moonshot AI）已悄然发布其新的编程模型Kimi-Dev 72B。该模型在SWE-bench基准测试中取得了60.4%的验证通过率，并采用MIT许可证。Kimi-Dev经过强化学习训练，能够修补真实代码库，且仅在通过完整测试套件时才获得奖励，显示出其在代码生成和修复方面的强大能力。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>Kimi-Dev</span><span>月之暗面</span><span>编程模型</span><span>SWE-bench</span><span>强化学习</span><span>开源</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>开源项目</span><span>技术动态</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/scaling01/status/1934746243286319435" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>karpathy_LLM智能体安全风险与提示注入攻击</h2>
+                <span class="published-time">发布时间: 2025-06-16T16:37:53.000Z</span>
+                <img src="screenshot/twitter/karpathy_1934651657444528277.png" alt="karpathy_LLM智能体安全风险与提示注入攻击">
+                <p class="summary">Andrej Karpathy指出，LLM中的提示注入攻击类似于早期计算机病毒，防御机制尚不完善，这让他对个人计算中采用LLM智能体感到犹豫。他引用Simon Willison的观点，强调AI智能体若同时具备访问私有数据、暴露于非受信内容及外部通信能力，将构成“致命三联”，极易被攻击者利用窃取数据。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>提示注入</span><span>LLM智能体</span><span>AI安全</span><span>数据泄露</span><span>网络安全</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>智能体</span><span>技术动态</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/karpathy/status/1934651657444528277" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>sedielem_扩散对偶性：连续与离散扩散模型的新连接</h2>
+                <span class="published-time">发布时间: 2025-06-16T21:50:38.000Z</span>
+                <img src="screenshot/twitter/sedielem_1934730362476712043.png" alt="sedielem_扩散对偶性：连续与离散扩散模型的新连接">
+                <p class="summary">Sander Dieleman转发并评论了Subham Sahoo等人的ICML 2025论文《扩散对偶性》。该研究揭示了连续与离散扩散模型之间的深层联系，使得一致性蒸馏等先进技术能应用于离散设置。论文通过利用底层高斯扩散，实现了离散扩散语言模型的少步生成，并在七个零样本似然基准测试中击败了自回归模型，展现了其在语言生成领域的潜力。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>扩散模型</span><span>语言模型</span><span>生成式AI</span><span>一致性蒸馏</span><span>ICML 2025</span><span>扩散对偶性</span></div>
+                    <div class="area"><span class="label">区域：</span><span>机器学习</span><span>自然语言处理</span><span>研究进展</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/sedielem/status/1934730362476712043" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">wechat</h2>
+
+            <article class="item-card">
+                <h2>谷歌未来的AI路线图曝光：抛弃注意力机制？Transformer有致命缺陷！</h2>
+                <span class="published-time">发布时间: 2025-06-16T16:02:11.000Z</span>
+                <img src="screenshot/wechat/wechat_image_eRUwonRTO-A07ukWXxPE5g.png" alt="谷歌未来的AI路线图曝光：抛弃注意力机制？Transformer有致命缺陷！">
+                <p class="summary">谷歌产品负责人Logan Kilpatrick近期披露了公司未来AI路线图，核心聚焦Gemini模型的发展。该路线图强调Gemini将实现全模态能力（图像、音频、视频），并逐步演变为具备强大工具调用和系统化推理能力的智能体。值得注意的是，谷歌正积极探索“无限上下文”解决方案，这预示着可能需要抛弃现有Transformer架构中的注意力机制，以克服其致命缺陷。此外，谷歌还将推出更多小模型，并致力于将AI Studio转型为开发者平台。此举彰显谷歌在AI竞争中重回领先地位，并预示着AI将从被动响应转向主动式服务。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>谷歌AI</span><span>Gemini</span><span>注意力机制</span><span>无限上下文</span><span>智能体</span><span>多模态</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>多模态</span><span>智能体</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/eRUwonRTO-A07ukWXxPE5g" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI版“真人”直播带货神器 | 单张人物+商品照秒出高保真带货视频，你或许是下一个李佳琦！</h2>
+                <span class="published-time">发布时间: 2025-06-16T23:45:48.000Z</span>
+                <img src="screenshot/wechat/wechat_image_DnuXC8WwCBwulmQRsu1WGw.png" alt="AI版“真人”直播带货神器 | 单张人物+商品照秒出高保真带货视频，你或许是下一个李佳琦！">
+                <p class="summary">文章介绍了字节跳动推出的DreamActor-H1，这是一种基于扩散变换器的新型AI框架，能够仅凭单张人物和商品图片，快速生成高质量、高保真的真人产品演示视频。该技术通过注入人物产品参考信息和掩码交叉注意力机制，有效保留了人物身份和产品细节，并能生成物理上合理的演示动作。DreamActor-H1在大规模混合数据集上训练，在电商直播、个性化广告和互动媒体等领域展现出巨大潜力，有望革新传统直播带货模式，提升用户体验和营销效率。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>DreamActor-H1</span><span>直播带货</span><span>视频生成</span><span>扩散变换器</span><span>电子商务</span><span>AI应用</span></div>
+                    <div class="area"><span class="label">区域：</span><span>生成式AI</span><span>计算机视觉</span><span>大模型</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/DnuXC8WwCBwulmQRsu1WGw" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>真视觉卷王！Midjourney入局视频生成，图像模型V7不断更新</h2>
+                <span class="published-time">发布时间: 2025-06-16T16:02:11.000Z</span>
+                <img src="screenshot/wechat/wechat_image_mqdknnDnEFjCH-vlxfm-Gw.png" alt="真视觉卷王！Midjourney入局视频生成，图像模型V7不断更新">
+                <p class="summary">图像生成巨头Midjourney正式入局视频生成领域，其初步展示的视频模型在动作流畅性、物理真实感及细节表现上令人印象深刻，尤其在多人物动作和纹理细节方面表现突出。然而，该模型目前缺乏音频功能，与竞品如Veo 3相比存在不足。与此同时，Midjourney的图像模型V7也在持续更新，引入了“草稿模式”（支持语音和对话控制）及加速功能，显著提升了生成速度和图像质量，特别是手部纹理的逼真度。Midjourney正积极收集用户反馈，以完善其视频和图像生成技术，展现了其在生成式AI领域的持续创新与竞争力。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>Midjourney</span><span>视频生成</span><span>图像生成</span><span>V7</span><span>生成式AI</span></div>
+                    <div class="area"><span class="label">区域：</span><span>生成式AI</span><span>计算机视觉</span><span>人工智能</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/mqdknnDnEFjCH-vlxfm-Gw" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Scaling Law首次在自动驾驶赛道被验证！小鹏汽车CVPR演讲详解：AI「吃」下6亿秒视频后，智能涌现</h2>
+                <span class="published-time">发布时间: 2025-06-16T04:50:28.000Z</span>
+                <img src="screenshot/wechat/wechat_image_kk92qix7JnNnbnTtFg9Y9A.png" alt="Scaling Law首次在自动驾驶赛道被验证！小鹏汽车CVPR演讲详解：AI「吃」下6亿秒视频后，智能涌现">
+                <p class="summary">小鹏汽车在CVPR 2025上首次验证了Scaling Law在自动驾驶VLA模型中的有效性，标志着行业重大突破。文章详细介绍了小鹏自研的“世界基座模型”技术方案，该模型以大语言模型为骨干，参数量达720亿，通过海量驾驶数据和强化学习进行训练，并在云端部署。为解决车端算力限制，小鹏采用知识蒸馏将云端大模型能力赋能车端小模型，实现了无规则代码托底的丝滑驾驶体验，展现出超越传统L2/L4的全局理解和决策能力。此举不仅回应了端到端系统“模仿而非超越”的质疑，更预示着自动驾驶与具身智能的融合新方向，小鹏正从“AI公司”视角重塑汽车。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>Scaling Law</span><span>自动驾驶</span><span>小鹏汽车</span><span>基座模型</span><span>知识蒸馏</span><span>智能涌现</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>智能体</span><span>机器人</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/kk92qix7JnNnbnTtFg9Y9A" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>网页智能体新突破！引入协同进化世界模型，腾讯AI Lab提出新框架</h2>
+                <span class="published-time">发布时间: 2025-06-16T04:50:28.000Z</span>
+                <img src="screenshot/wechat/wechat_image_5onSvM_uHxrRxcO9FCGlIg.png" alt="网页智能体新突破！引入协同进化世界模型，腾讯AI Lab提出新框架">
+                <p class="summary">腾讯AI Lab推出WebEvolver框架，通过引入协同进化的世界模型，成功突破现有基于大语言模型（LLM）的网页智能体性能瓶颈，在真实网页环境中实现10%的性能提升。该框架将世界模型定义为“虚拟网页引擎”，能够生成多样化的合成训练轨迹并进行多步前瞻推演，有效提升智能体与未见过网站的交互能力和训练效果。研究指出，世界模型具备知识迁移和多样化轨迹生成能力，即使存在轻微“幻觉”也不影响其作为“虚拟服务器”和“想象引擎”的核心价值。WebEvolver为构建持续进化的通用网络智能体提供了新范式，对无环境强化学习具有指导意义。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>网页智能体</span><span>世界模型</span><span>协同进化</span><span>大语言模型</span><span>WebEvolver</span><span>自演进</span></div>
+                    <div class="area"><span class="label">区域：</span><span>智能体</span><span>大模型</span><span>人工智能</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/5onSvM_uHxrRxcO9FCGlIg" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>仅凭一篇博客，他成功入职OpenAI！核心技术或用于GPT-5训练</h2>
+                <span class="published-time">发布时间: 2025-06-16T04:49:52.000Z</span>
+                <img src="screenshot/wechat/wechat_image_Dwe1Nmw9lydl_8O8wAYI3g.png" alt="仅凭一篇博客，他成功入职OpenAI！核心技术或用于GPT-5训练">
+                <p class="summary">Keller Jordan通过一篇博客和GitHub分享其Muon优化器研究，成功入职OpenAI，此举颠覆了传统AI研究范式。Muon作为一种神经网络隐藏层优化器，显著提升了NanoGPT和大型Transformer模型的训练效率，甚至可能用于GPT-5训练。该案例表明，在快速迭代的AI领域，开放协作、快速迭代和实际影响力正取代传统论文发表成为衡量研究价值的关键标准。OpenAI等顶尖机构更看重实际潜力与技能，而非单纯学历或论文数量，预示着AI人才选拔和研究模式正向更注重实践和社区贡献的方向转变。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>Muon优化器</span><span>OpenAI</span><span>AI研究范式</span><span>博客</span><span>模型训练</span><span>深度学习</span></div>
+                    <div class="area"><span class="label">区域：</span><span>机器学习</span><span>深度学习</span><span>大模型</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/Dwe1Nmw9lydl_8O8wAYI3g" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Anthropic Cookbook</h2>
+                <span class="published-time">发布时间: 2025-06-13T19:28:20Z</span>
+                <img src="screenshot/github/anthropic-cookbook.png" alt="Anthropic Cookbook">
+                <p class="summary">Anthropic Cookbook是一个为开发者构建Claude应用而设计的代码和指南集合。它提供可直接集成的代码片段，涵盖文本分类、检索增强生成、摘要、工具使用、多模态能力及高级技术等。该项目旨在帮助开发者利用Claude API，通过Python示例和可适配其他语言的概念，提升AI应用开发效率。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>Claude</span><span>大模型应用</span><span>代码示例</span><span>API开发</span><span>自然语言处理</span><span>多模态</span><span>智能体</span><span>检索增强生成</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>自然语言处理</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/anthropics/anthropic-cookbook" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Welcome to Anthropic's Prompt Engineering Interactive Tutorial</h2>
+                <span class="published-time">发布时间: 2024-04-08T03:17:07Z</span>
+                <img src="screenshot/github/prompt-eng-interactive-tutorial.png" alt="Welcome to Anthropic's Prompt Engineering Interactive Tutorial">
+                <p class="summary">Anthropic的交互式提示工程教程旨在系统教授用户如何在Claude模型中构建最优提示。该课程通过9个章节及练习，涵盖提示基础结构、常见问题解决、Claude模型特性理解及从零构建复杂提示等内容。教程强调实践，提供“Example Playground”供用户实验，并介绍Claude 3 Haiku、Sonnet、Opus等模型，是提升大模型应用能力的实用指南。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>提示工程</span><span>大语言模型</span><span>Claude</span><span>AI模型优化</span><span>交互式教程</span><span>自然语言处理</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>自然语言处理</span><span>生成式AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/anthropics/prompt-eng-interactive-tutorial" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>🌟 Awesome LLM Apps</h2>
+                <span class="published-time">发布时间: 2025-06-15T16:08:42Z</span>
+                <img src="https://github.com/Shubhamsaboo/awesome-llm-apps/raw/main/docs/banner/unwind_black.png" alt="🌟 Awesome LLM Apps">
+                <p class="summary">该GitHub仓库“Awesome LLM Apps”是一个精选的大语言模型（LLM）应用集合，涵盖了检索增强生成（RAG）、AI智能体、多智能体团队、MCP（多模态控制策略）和语音智能体等多种技术。它展示了利用OpenAI、Anthropic、Google以及DeepSeek、Qwen、Llama等开源模型构建的实际应用。该项目旨在帮助开发者探索LLM在不同领域的应用潜力，并促进开源LLM应用生态系统的发展。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>大语言模型</span><span>AI智能体</span><span>检索增强生成</span><span>多智能体系统</span><span>语音AI</span><span>LLM应用</span><span>开源模型</span><span>模型微调</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>智能体</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/Shubhamsaboo/awesome-llm-apps" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LeRobot: State-of-the-art AI for real-world robotics</h2>
+                <span class="published-time">发布时间: 2025-06-15T09:47:48Z</span>
+                <img src="https://raw.githubusercontent.com/huggingface/lerobot/main/media/gym/aloha_act.gif" alt="LeRobot: State-of-the-art AI for real-world robotics">
+                <p class="summary">LeRobot是Hugging Face推出的一个PyTorch机器人学库，旨在降低机器人技术门槛，促进数据集和预训练模型的共享。它专注于模仿学习和强化学习，提供最先进的AI方法，并已包含预训练模型、人类演示数据集和仿真环境。该库支持构建如SO-101和LeKiwi等经济型机器人，并计划未来增加更多真实世界机器人支持，助力AI在实际机器人应用中的发展。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>机器人</span><span>PyTorch</span><span>模仿学习</span><span>强化学习</span><span>预训练模型</span><span>数据集</span><span>仿真环境</span><span>人工智能</span></div>
+                    <div class="area"><span class="label">区域：</span><span>机器人</span><span>机器学习</span><span>深度学习</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/huggingface/lerobot" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Prompt Optimizer (提示词优化器)</h2>
+                <span class="published-time">发布时间: 2025-06-15T14:12:42Z</span>
+                <img src="screenshot/github/prompt-optimizer.png" alt="Prompt Optimizer (提示词优化器)">
+                <p class="summary">Prompt Optimizer是一款强大的AI提示词优化工具，旨在提升AI输出质量。它提供Web应用和Chrome插件两种使用方式，核心功能包括智能一键优化、原始与优化提示词对比测试、以及对OpenAI、Gemini、DeepSeek等主流AI模型的多模型集成。该工具采用纯客户端处理和本地加密存储，确保数据安全与用户隐私。用户可灵活配置高级LLM参数，并通过Vercel或Docker轻松部署，有效解决跨域问题，是优化AI交互体验的理想选择。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>提示词优化</span><span>AI工具</span><span>大模型</span><span>Chrome插件</span><span>客户端应用</span><span>API配置</span><span>跨域解决方案</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>生成式AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/linshenkx/prompt-optimizer" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Learn Agentic AI using Dapr Agentic Cloud Ascent (DACA) Design Pattern: From Start to Scale</h2>
+                <span class="published-time">发布时间: 2025-06-16T22:08:33Z</span>
+                <img src="https://github.com/panaversity/learn-agentic-ai/raw/main/img/cover.png" alt="Learn Agentic AI using Dapr Agentic Cloud Ascent (DACA) Design Pattern: From Start to Scale">
+                <p class="summary">该GitHub仓库聚焦Dapr Agentic Cloud Ascent (DACA)设计模式，旨在解决构建和扩展千万级并发AI智能体系统的挑战。它深入探讨了Dapr、Kubernetes和OpenAI Agents SDK在实现大规模、高并发智能体系统中的应用，强调DACA模式在云原生、成本效益和弹性方面的优势。项目提供AI-201、AI-202、AI-301系列课程，涵盖从基础理论到行星级分布式AI智能体开发，为培养Agentic AI工程师和推动相关创业提供全面指导。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>智能体AI</span><span>Dapr</span><span>Kubernetes</span><span>OpenAI Agents SDK</span><span>分布式系统</span><span>可扩展性</span><span>云原生</span><span>多智能体</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>智能体</span><span>大模型</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/panaversity/learn-agentic-ai" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>反馈摩擦：大型语言模型难以完全整合外部反馈</h2>
+                <span class="published-time">发布时间: 2025-06-13T16:31:51.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.11930.png" alt="反馈摩擦：大型语言模型难以完全整合外部反馈">
+                <p class="summary">近期研究表明，大型语言模型（LLMs）在接收外部反馈时，具备一定改进其响应的能力。然而，这些模型能多大程度和多有效地整合外部反馈仍不明确。在理想情况下，如果LLMs接收到近乎完美和完整的反馈，我们期望它们能完全整合反馈，并将错误答案修正为正确答案。本文通过设计受控实验环境，系统地研究了LLMs整合反馈的能力。对于每个问题，一个求解器模型尝试给出解决方案，然后一个可访问近乎完整真实答案的反馈生成器会产生有针对性的反馈，之后求解器再次尝试。我们使用包括Claude 3.7（带或不带扩展思维）在内的最先进语言模型，在数学推理、知识推理、科学推理和通用多领域评估等多样化任务中评估了这一流程。令人惊讶的是，即使在这些近乎理想的条件下，求解器模型仍持续表现出对反馈的抵制，我们将这一局限性称为“反馈摩擦”（FEEDBACK FRICTION）。为了缓解这一局限性，我们尝试了基于采样的策略，如逐步提高温度和明确拒绝先前尝试的错误答案，这些策略虽带来改进，但仍未能帮助模型达到目标性能。我们还对“反馈摩擦”的潜在原因进行了严格探索，排除了模型过度自信和数据熟悉度等因素。我们希望通过揭示LLMs中的这一问题并排除一些显而易见的诱因，能有助于未来在自我改进方面的研究。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>大型语言模型</span><span>反馈摩擦</span><span>外部反馈</span><span>模型整合</span><span>自我改进</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>自然语言处理</span><span>人工智能</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.11930" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>通过跨模态注意力注入实现对齐的新视角图像与几何合成</h2>
+                <span class="published-time">发布时间: 2025-06-13T16:19:00.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.11924.png" alt="通过跨模态注意力注入实现对齐的新视角图像与几何合成">
+                <p class="summary">我们提出了一种基于扩散的框架，通过翘曲-修复方法实现对齐的新视角图像与几何生成。与以往需要密集姿态图像或受限于域内视角的姿态嵌入生成模型不同，我们的方法利用现成的几何预测器从参考图像预测部分几何，并将新视角合成表述为图像和几何的修复任务。为确保生成图像与几何之间的精确对齐，我们提出了跨模态注意力蒸馏，在训练和推理过程中将图像扩散分支的注意力图注入到并行的几何扩散分支中。这种多任务方法实现了协同效应，促进了几何鲁棒的图像合成以及清晰的几何预测。我们进一步引入了基于邻近度的网格条件化，以整合深度和法线线索，在点云之间进行插值并过滤掉错误预测的几何对生成过程的影响。经验证明，我们的方法在各种未见场景下实现了图像和几何的高保真外推视角合成，在插值设置下提供了有竞争力的重建质量，并生成了几何对齐的彩色点云以实现全面的3D补全。项目页面可在 https://cvlab-kaist.github.io/MoAI 获取。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>新视角合成</span><span>几何生成</span><span>扩散模型</span><span>跨模态注意力</span><span>3D补全</span></div>
+                    <div class="area"><span class="label">区域：</span><span>计算机视觉</span><span>深度学习</span><span>生成式AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.11924" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>超越同质注意力：基于傅里叶近似KV缓存的内存高效LLM</h2>
+                <span class="published-time">发布时间: 2025-06-13T15:35:54.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.11886.png" alt="超越同质注意力：基于傅里叶近似KV缓存的内存高效LLM">
+                <p class="summary">随着上下文长度的增加，大型语言模型（LLM）面临日益增长的键值（KV）缓存带来的内存需求挑战。现有的压缩方法通常通过同质化注意力头维度或依赖注意力引导的令牌剪枝，但这往往会牺牲准确性或引入计算开销。我们提出了FourierAttention，一个无需训练的框架，它利用了Transformer注意力头维度异构作用的特点：较低维度优先处理局部上下文，而较高维度则捕获长距离依赖。通过将对长上下文不敏感的维度投影到正交傅里叶基上，FourierAttention能够用固定长度的频谱系数近似其时间演化。在LLaMA模型上的评估表明，FourierAttention在LongBench和Needle-In-A-Haystack (NIAH) 基准测试中实现了最佳的长上下文准确性。此外，我们还设计了一个定制的Triton内核FlashFourierAttention，通过简化读写操作来优化内存，从而在不影响性能的情况下实现高效部署。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>大型语言模型</span><span>KV缓存</span><span>傅里叶近似</span><span>内存优化</span><span>长上下文</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>自然语言处理</span><span>深度学习</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.11886" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>基于评分标准引导的合成数据可配置偏好调优</h2>
+                <span class="published-time">发布时间: 2025-06-13T12:17:38.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.11702.png" alt="基于评分标准引导的合成数据可配置偏好调优">
+                <p class="summary">用于AI对齐的人类反馈模型，例如支撑直接偏好优化（DPO）的模型，通常固化单一、静态的偏好集，从而限制了适应性。本文通过引入可配置偏好调优（CPT）——一种赋予语言模型根据明确、人类可解释指令动态调整其行为的新颖框架——挑战了单一偏好的假设。CPT利用合成生成的偏好数据，这些数据以源自结构化、细粒度评分标准的系统提示为条件，这些评分标准定义了诸如写作风格等期望属性。通过使用这些评分标准引导的偏好进行微调，大型语言模型（LLM）学会在推理时根据系统提示调整其输出，而无需重新训练。这种方法不仅提供了细粒度控制，还为建模更细致、更依赖上下文的人类反馈提供了一种机制。相关实验成果，如训练代码、生成数据集和微调模型已发布于 https://github.com/vicgalle/configurable-preference-tuning</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>可配置偏好调优</span><span>合成数据</span><span>评分标准</span><span>语言模型</span><span>AI对齐</span></div>
+                    <div class="area"><span class="label">区域：</span><span>自然语言处理</span><span>大模型</span><span>生成式AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.11702" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>策略遵循型智能体的有效红队测试</h2>
+                <span class="published-time">发布时间: 2025-06-11T10:59:47.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.09600.png" alt="策略遵循型智能体的有效红队测试">
+                <p class="summary">面向任务的基于大语言模型的智能体正越来越多地应用于具有严格策略的领域，例如退款资格或取消规则。挑战在于确保智能体始终遵循这些规则和策略，适当地拒绝任何违反其的请求，同时仍保持有益和自然的交互。这要求开发定制的设计和评估方法，以确保智能体对恶意用户行为的韧性。我们提出了一种新颖的威胁模型，该模型侧重于旨在利用策略遵循型智能体谋取个人利益的对抗性用户。为了解决这个问题，我们提出了CRAFT，一个多智能体红队测试系统，它利用策略感知的说服策略来破坏客户服务场景中的策略遵循型智能体，其性能优于传统的越狱方法，如DAN提示、情感操纵和强制。在现有tau-bench基准的基础上，我们引入了tau-break，一个旨在严格评估智能体对抗操纵性用户行为鲁棒性的补充基准。最后，我们评估了几种直接但有效的防御策略。虽然这些措施提供了一定的保护，但它们仍有不足，这凸显了需要更强大、研究驱动的保障措施来保护策略遵循型智能体免受对抗性攻击。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>智能体</span><span>红队测试</span><span>策略遵循</span><span>鲁棒性</span><span>对抗性攻击</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>智能体</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.09600" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DeepVideo-R1：基于难度感知回归式GRPO的视频强化微调</h2>
+                <span class="published-time">发布时间: 2025-06-09T06:15:54.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.07464.png" alt="DeepVideo-R1：基于难度感知回归式GRPO的视频强化微调">
+                <p class="summary">近期研究表明，基于强化学习（RL）的后训练能有效提升大型语言模型（LLM）的推理能力。特别是，群组相对策略优化（GRPO）通过采用一种PPO风格的强化算法和基于群组的归一化奖励，展现了令人瞩目的成功。然而，GRPO在视频大型语言模型（Video LLM）中的应用研究较少。本文中，我们探索了GRPO在视频LLM中的应用，并指出了阻碍其有效学习的两个主要问题：（1）对安全机制的依赖，以及（2）优势值消失问题。为解决这些挑战，我们提出了DeepVideo-R1，一个使用我们提出的回归式GRPO（Reg-GRPO）和难度感知数据增强策略训练的视频大型语言模型。Reg-GRPO将GRPO目标重新表述为一个回归任务，直接预测GRPO中的优势值。这种设计消除了对裁剪和最小值函数等安全机制的需求，从而通过使模型与优势值对齐，促进了更直接的策略指导。我们还设计了难度感知数据增强策略，该策略在可解决的难度级别上动态增强训练样本，从而培养多样化且信息丰富的奖励信号。我们全面的实验表明，DeepVideo-R1显著提升了在多个视频推理基准上的视频推理性能。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>视频大模型</span><span>强化学习</span><span>GRPO</span><span>回归式强化学习</span><span>难度感知</span></div>
+                    <div class="area"><span class="label">区域：</span><span>视频理解</span><span>大模型</span><span>机器学习</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.07464" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            由 AI 助手生成
+        </footer>
+    </div>
+</body>
+</html>
