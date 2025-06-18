@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-06-17</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: 2px solid transparent;
+            font-size: 0.9em;
+        }
+
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .language-switch a.active {
+            background: var(--secondary-color);
+            border-color: var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .language-switch {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../">中文</a>
+                <a href="./" class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-06-17</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Twitter</h2>
+
+            <article class="item-card">
+                <h2>GoogleDeepMind_Gemini 2.5 Series Models Updated and Generally Available</h2>
+                <span class="published-time">Published: 2025-06-17T16:02:57.000Z</span>
+                <img src="../screenshot/twitter/GoogleDeepMind_1935005262097551811.png" alt="GoogleDeepMind_Gemini 2.5 Series Models Updated and Generally Available">
+                <p class="summary">Google DeepMind has announced significant updates to its Gemini model series, making Gemini 2.5 Flash and Pro widely available for developers. These powerful models are now ready for building and scaling production-grade AI applications, offering robust capabilities. Furthermore, a preview of Gemini 2.5 Flash-Lite has been introduced. This new model is highlighted as the fastest within the 2.5 family, designed to provide exceptionally quick responses at the lowest possible cost, thereby significantly lowering the entry barrier and operational expenses for AI development and deployment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Gemini</span><span>Large Language Model</span><span>AI Applications</span><span>Product Launch</span><span>Google DeepMind</span><span>Flash-Lite</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Product Launch</span><span>Large Language Model</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/GoogleDeepMind/status/1935005262097551811" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>gdb_ChatGPT Image Generation Now Available on WhatsApp</h2>
+                <span class="published-time">Published: 2025-06-17T02:09:34.000Z</span>
+                <img src="../screenshot/twitter/gdb_1934795523481063601.png" alt="gdb_ChatGPT Image Generation Now Available on WhatsApp">
+                <p class="summary">Greg Brockman announced that ChatGPT's image generation feature is now universally available to WhatsApp users. Users can directly access AI image generation services within WhatsApp by calling the 1-800-ChatGPT number. This significantly expands ChatGPT's application scenarios, making its generative AI capabilities more conveniently accessible to a wide mobile user base and marking a significant step in integrating AI technology into instant messaging platforms.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>ChatGPT</span><span>Image Generation</span><span>WhatsApp</span><span>OpenAI</span><span>Generative AI</span><span>Product Launch</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Product Launch</span><span>Industry News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/gdb/status/1934795523481063601" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>SakanaAILabs_Introduces ALE-Bench and ALE-Agent for Automating Hard Optimization Problems</h2>
+                <span class="published-time">Published: 2025-06-17T00:17:14.000Z</span>
+                <img src="../screenshot/twitter/SakanaAILabs_1934767254715117812.png" alt="SakanaAILabs_Introduces ALE-Bench and ALE-Agent for Automating Hard Optimization Problems">
+                <p class="summary">Sakana AI introduces ALE-Bench benchmark and ALE-Agent, aiming to automate solutions for NP-hard optimization problems. ALE-Bench, developed with AtCoder, is a coding benchmark focusing on open-ended optimization challenges requiring long-horizon and creative reasoning. Their end-to-end agent, ALE-Agent, achieved an impressive 21st place (top 2%) among 1,000 human participants in the May 2025 AtCoder Heuristic Competition, demonstrating AI's strong capability in real-world hard optimization problems like logistics and routing.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>ALE-Bench</span><span>ALE-Agent</span><span>Hard Optimization Problems</span><span>Algorithm Engineering</span><span>AI Agent</span><span>AtCoder</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Research Progress</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/SakanaAILabs/status/1934767254715117812" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>fabianstelzer_Agent-Generated Long Videos Experiment and Future Authorship Model</h2>
+                <span class="published-time">Published: 2025-06-17T18:14:37.000Z</span>
+                <img src="../screenshot/twitter/fabianstelzer_1935038388782113197.png" alt="fabianstelzer_Agent-Generated Long Videos Experiment and Future Authorship Model">
+                <p class="summary">Fabianstelzer is experimenting with agents to generate longer videos using tools like Flux Ultra, Kling 2.1, and MMAudio, along with automated stitching. Using "roman legionnaire travel log" as a prompt, he suggests that future video authorship will shift from creating films directly to creating agents that can create films, indicating a profound change in content creation paradigms.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Video Generation</span><span>AI Creation</span><span>Flux Ultra</span><span>Kling 2.1</span><span>MMAudio</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Generative AI</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/fabianstelzer/status/1935038388782113197" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>UnslothAI_Launches Comprehensive Reinforcement Learning Guide for LLMs</h2>
+                <span class="published-time">Published: 2025-06-17T14:36:24.000Z</span>
+                <img src="../screenshot/twitter/UnslothAI_1934983471912591612.png" alt="UnslothAI_Launches Comprehensive Reinforcement Learning Guide for LLMs">
+                <p class="summary">Unsloth AI has released a comprehensive guide on Reinforcement Learning (RL) for Large Language Models (LLMs). The guide delves into RL's objectives and its pivotal role in building intelligent AI agents, explains why models like o3, Claude 4, and R1 utilize RL, and details techniques such as GRPO, RLHF, and DPO, along with reward functions. It also provides practical instructions for training local R1 models using Unsloth.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Large Language Models</span><span>AI Agents</span><span>RLHF</span><span>DPO</span><span>Unsloth</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Machine Learning</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/UnslothAI/status/1934983471912591612" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>ylecun_Discussion on AI Long-Term Task Success Rate and Error Rate</h2>
+                <span class="published-time">Published: 2025-06-17T22:51:21.000Z</span>
+                <img src="../screenshot/twitter/ylecun_1935108028891861393.png" alt="ylecun_Discussion on AI Long-Term Task Success Rate and Error Rate">
+                <p class="summary">Prominent AI scientist Yann LeCun quotes Benjamin Todd's explanation for why AIs perform poorly in long-duration tasks. The theory posits that if an AI has a 10% chance of error every 10 minutes, the success rate decreases exponentially with task length: 53% for 1 hour, but only 0.002% for 10 hours. This "constant error rate" theory has been tested and shown to fit the data well, highlighting the limitations of AI in complex, sustained operations.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI performance</span><span>error rate</span><span>task duration</span><span>success rate</span><span>AI limitations</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Research Progress</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/ylecun/status/1935108028891861393" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">wechat</h2>
+
+            <article class="item-card">
+                <h2>Horizon Robotics Open-Sources "3D Physical World Generation" Engine, One-Click Generation of Full URDF Assets in 5 Minutes, Seamlessly Supporting {Gym&Isaac}!</h2>
+                <span class="published-time">Published: 2025-06-17T23:45:27.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_OuBPwSRg0xBVZKzAHGOfLw.png" alt="Horizon Robotics Open-Sources "3D Physical World Generation" Engine, One-Click Generation of Full URDF Assets in 5 Minutes, Seamlessly Supporting {Gym&Isaac}!">
+                <p class="summary">Horizon Robotics has officially open-sourced EmbodiedGen, an innovative interactive platform designed for 3D physical world generation. This groundbreaking engine facilitates the low-cost and scalable creation of high-quality, controllable, and highly realistic 3D assets, all in the widely adopted URDF format. A key feature is its ability to embed precise physical properties and real-world scale into these assets, making them directly compatible with popular physics simulation environments such as OpenAI Gym and NVIDIA Isaac. This seamless integration is crucial for advanced training and rigorous evaluation of embodied AI systems. EmbodiedGen is presented as a comprehensive toolkit, comprising six essential modules, including image-to-3D, text-to-3D, and texture generation. By harnessing the power of generative AI, the platform effectively addresses critical generalization and evaluation challenges inherent in embodied intelligence research. Its practical applications span diverse areas, from efficient 3D scene generation to robust real-to-simulation transfers, thereby significantly boosting the efficiency of 3D asset creation and advancing the frontier of simulation-based research.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>EmbodiedGen</span><span>3D Generation</span><span>Physical World</span><span>URDF</span><span>Generative AI</span><span>Embodied Intelligence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Robotics</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/OuBPwSRg0xBVZKzAHGOfLw" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DeepSeek-R1 Tops Web Programming Crowdsourced Ranking, Surpassing Claude 4</h2>
+                <span class="published-time">Published: 2025-06-17T07:42:00.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_O8_jdzQevn5yjVxeuMi2Lg.png" alt="DeepSeek-R1 Tops Web Programming Crowdsourced Ranking, Surpassing Claude 4">
+                <p class="summary">The latest report indicates that DeepSeek's new R1-0528 version has surpassed Claude Opus 4, previously recognized as the "world's strongest coding model," to claim the global top spot in web programming capabilities. The article demonstrates DeepSeek-R1's robust performance through practical tests, showcasing its strong ability to generate code for solar system animations, Three.js simulations, and AGI-themed websites, although there is still room for improvement in certain complex tasks like the Tetris game. As an open-source model, DeepSeek-R1 not only excels in programming rankings but is also rated as the best open-source text model currently available, ranking sixth overall. It is notably more accessible and user-friendly for domestic users. The article also briefly mentions the breakthrough of Kimi's new model in achieving open-source SOTA for code.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>DeepSeek-R1</span><span>Web Programming</span><span>Large Language Model</span><span>Open-source Model</span><span>Code Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/O8_jdzQevn5yjVxeuMi2Lg" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>First AI Achieves Perfect Score in Gaokao Math, Impressing Renowned Teachers with Astonishing Results</h2>
+                <span class="published-time">Published: 2025-06-17T05:41:28.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_2vBomVVLDz8phY2j94BS8g.png" alt="First AI Achieves Perfect Score in Gaokao Math, Impressing Renowned Teachers with Astonishing Results">
+                <p class="summary">ByteDance's Doubao AI Education Edition, integrated into the Doubao AI Study App, achieved remarkable scores in the National Gaokao Math exams, scoring 144 on Paper I and a perfect 150 on Paper II. The full score on Paper II was rigorously validated by six senior math teachers with over a decade of average teaching experience, underscoring the AI's exceptional capabilities. The model demonstrated superior multimodal understanding, information integration, logical reasoning, and formula rendering, excelling particularly in challenging multiple-choice and final problems with concise thought processes and stable solutions. The article highlights the AI's consistent performance, evidenced by multiple public tests. Renowned educators lauded its potential as a powerful teaching assistant and learning companion, capable of providing high-quality, personalized explanations. This advancement is expected to foster rigorous reasoning skills in students and address educational resource disparities, signaling a promising future for AI in education.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Gaokao Math</span><span>AI Problem Solving</span><span>Doubao Large Model</span><span>Multimodal AI</span><span>AI Education</span><span>Model Stability</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/2vBomVVLDz8phY2j94BS8g" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Transformer Eight Founders' Startup: AI Sweeps NP-Hard Problem Competition, Top 2% Player is an AI Agent!</h2>
+                <span class="published-time">Published: 2025-06-17T05:41:28.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_ZAvHLKYu5J7eZUlzMWe9AA.png" alt="Transformer Eight Founders' Startup: AI Sweeps NP-Hard Problem Competition, Top 2% Player is an AI Agent!">
+                <p class="summary">Sakana AI, in collaboration with AtCoder, has introduced ALE-Bench, a new benchmark designed to evaluate AI's proficiency in solving NP-hard problems. Their ALE-Agent, built upon Gemini 2.5 Pro, demonstrated exceptional performance in the AtCoder Heuristic Competition. Competing against over a thousand human participants, the agent secured the 21st position, placing it within the top 2%. This achievement signifies a significant breakthrough for AI in tackling complex real-world optimization challenges such as logistics pathfinding and task scheduling. The ALE-Agent leverages domain-specific knowledge prompting and generates diverse solutions to achieve its results. While the agent still faces limitations in debugging and analyzing code complexity, its rapid, iterative optimization capabilities highlight immense potential. This development suggests a future where AI could match or even surpass top human experts in algorithm engineering.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>NP-hard problems</span><span>AI agent</span><span>Algorithm engineering</span><span>AtCoder</span><span>ALE-Bench</span><span>Optimization problems</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/ZAvHLKYu5J7eZUlzMWe9AA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>First Comprehensive Survey on Speech Large Models Accepted by ACL 2025 Main Conference</h2>
+                <span class="published-time">Published: 2025-06-17T04:51:20.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_sIa9qIzPuykCysAVgeGxew.png" alt="First Comprehensive Survey on Speech Large Models Accepted by ACL 2025 Main Conference">
+                <p class="summary">A comprehensive survey paper titled "Recent Advances in Speech Language Models: A Survey," authored by a Chinese University of Hong Kong team, has been accepted by the ACL 2025 main conference, marking the first systematic review in this field. The survey positions Speech Large Models (SpeechLM) as the next frontier in AI, aiming to overcome the limitations of traditional speech interaction, such as information loss, severe latency, and error accumulation, by enabling end-to-end natural human-machine speech dialogue. The paper meticulously details SpeechLM's technical architecture, comprising speech tokenizers, language models, and vocoders, along with its training strategies, including pre-training and instruction tuning. It explores advanced interaction paradigms like full-duplex communication, highlighting SpeechLM's broad applications in natural dialogue, personalized assistants, and emotional speech generation. Furthermore, the survey discusses evaluation methodologies and future challenges, such as optimization, real-time processing, safety, and support for low-resource languages. This seminal work anticipates that SpeechLM will usher in a new era of speech AI, fundamentally transforming human-computer interaction by enabling more natural and intuitive communication.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Speech Large Models</span><span>Speech Interaction</span><span>Human-Computer Interaction</span><span>Survey</span><span>Multimodal</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/sIa9qIzPuykCysAVgeGxew" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>XPeng, the First New Energy Vehicle Company to Transform into an AI Company, Showcases Next-Gen Autonomous Driving Model at Global AI Summit</h2>
+                <span class="published-time">Published: 2025-06-17T04:51:20.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_u_vREBzJ7Qeckn4OEWtoMQ.png" alt="XPeng, the First New Energy Vehicle Company to Transform into an AI Company, Showcases Next-Gen Autonomous Driving Model at Global AI Summit">
+                <p class="summary">XPeng, the first new energy vehicle company to transform into an AI company, showcased its next-generation autonomous driving foundation model and development progress at CVPR 2025, a global computer vision summit. The article details the VLA+VLM models integrated into the XPeng G7, highlighting its L3 intelligent driving strategy built upon "massive computing power, large models, and big data." XPeng has established a comprehensive cloud-to-edge AI system, including a 72-billion-parameter cloud foundation model and a 10 EFLOPS intelligent computing cluster, validating the Scaling Laws in autonomous driving. Its world foundation model possesses visual understanding, chain-of-thought reasoning, and action generation capabilities, continuously evolving through reinforcement learning. This demonstrates a leading human-like driving performance, signaling a new paradigm shift towards "AI-developed cars" in intelligent driving. The company's deep investment in AI infrastructure and proprietary technology stack positions it at the forefront of the industry, aiming to extend this advanced AI capability to future applications like AI robots and flying cars.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>XPeng</span><span>Autonomous Driving</span><span>Large Models</span><span>Foundation Models</span><span>World Model</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/u_vREBzJ7Qeckn4OEWtoMQ" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Jan - Local AI Assistant</h2>
+                <span class="published-time">Published: 2025-06-18T07:03:55Z</span>
+                <img src="https://github.com/menloresearch/jan/raw/main/JanBanner.png" alt="Jan - Local AI Assistant">
+                <p class="summary">Jan is a robust desktop AI assistant engineered for entirely offline operation, placing a strong emphasis on user privacy and data security. It empowers users to download and execute various large language models (LLMs) such as Llama, Gemma, and Qwen directly on their local machines, ensuring conversations remain private. Beyond local capabilities, Jan also facilitates seamless integration with leading cloud AI providers like OpenAI, Anthropic, Mistral, and Groq. The platform features an OpenAI-compatible API, allowing other applications to easily connect and leverage its functionalities. Users can also create and deploy specialized custom AI assistants tailored to specific tasks. Developed using Node.js, Rust, and Tauri, Jan provides a comprehensive, secure, and versatile local AI interaction environment, making advanced AI accessible without compromising personal data.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Local AI</span><span>Offline Assistant</span><span>Large Language Model</span><span>Privacy Protection</span><span>Desktop Application</span><span>Tauri</span><span>Llama.cpp</span><span>AI Assistant</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/menloresearch/jan" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Anthropic Cookbook</h2>
+                <span class="published-time">Published: 2025-06-13T19:28:20Z</span>
+                <img src="../screenshot/github/anthropic-cookbook.png" alt="Anthropic Cookbook">
+                <p class="summary">The Anthropic Cookbook is a collection of code and guides designed for developers building applications with Claude. It offers readily integratable code snippets covering areas such as text classification, Retrieval Augmented Generation (RAG), summarization, tool use, multimodal capabilities, and advanced techniques. The project aims to assist developers in leveraging the Claude API, providing Python examples and concepts adaptable to other programming languages, thereby enhancing the efficiency of AI application development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude</span><span>LLM Applications</span><span>Code Examples</span><span>API Development</span><span>Natural Language Processing</span><span>Multimodal</span><span>AI Agent</span><span>Retrieval Augmented Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/anthropics/anthropic-cookbook" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>RAGFlow</h2>
+                <span class="published-time">Published: 2025-06-18T08:02:36Z</span>
+                <img src="../screenshot/github/ragflow.png" alt="RAGFlow">
+                <p class="summary">RAGFlow is an open-source Retrieval-Augmented Generation (RAG) engine, leveraging deep document understanding to deliver highly accurate and truthful question-answering for businesses of any scale. It seamlessly integrates with Large Language Models (LLMs) to process and extract knowledge from diverse, complex formatted data, providing well-founded, traceable citations that significantly reduce hallucinations. Its core strengths include sophisticated deep document understanding, intelligent template-based chunking for precise information retrieval, and broad compatibility with heterogeneous data sources like Word, Excel, PDFs, and web pages. RAGFlow offers an automated and streamlined RAG workflow, supporting configurable LLMs and embedding models, along with intuitive APIs for effortless integration into existing systems, making it a robust platform for building reliable and efficient knowledge-based AI applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Retrieval-Augmented Generation</span><span>Deep Document Understanding</span><span>Large Language Model</span><span>Knowledge Extraction</span><span>Automated Workflow</span><span>Docker</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/infiniflow/ragflow" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DeepEP</h2>
+                <span class="published-time">Published: 2025-06-18T08:04:42Z</span>
+                <img src="https://raw.githubusercontent.com/deepseek-ai/DeepEP/main/figures/normal.png" alt="DeepEP">
+                <p class="summary">DeepEP is a cutting-edge communication library specifically designed for Mixture-of-Experts (MoE) and expert parallelism, providing high-throughput and low-latency all-to-all GPU kernels, alongside support for low-precision operations such as FP8. It features optimized kernels for asymmetric-domain bandwidth forwarding, crucial for aligning with the DeepSeek-V3 gating algorithm, making it highly effective for both training and inference prefilling tasks. The library also offers fine-grained SM number control. For latency-sensitive inference decoding, DeepEP includes a set of pure RDMA low-latency kernels. A notable innovation is its hook-based communication-computation overlapping method, which uniquely avoids occupying any Streaming Multiprocessor (SM) resources, thereby significantly boosting the communication efficiency and overall performance of MoE models in various demanding scenarios.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>MoE</span><span>Expert Parallelism</span><span>Communication Library</span><span>GPU Kernels</span><span>Low Latency</span><span>High Throughput</span><span>Deep Learning</span><span>Model Training</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Deep Learning</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/deepseek-ai/DeepEP" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>🌟 Awesome LLM Apps</h2>
+                <span class="published-time">Published: 2025-06-15T16:08:42Z</span>
+                <img src="https://github.com/Shubhamsaboo/awesome-llm-apps/raw/main/docs/banner/unwind_black.png" alt="🌟 Awesome LLM Apps">
+                <p class="summary">The GitHub repository "Awesome LLM Apps" is a curated collection of Large Language Model (LLM) applications, incorporating various technologies such as Retrieval Augmented Generation (RAG), AI Agents, Multi-agent Teams, MCP (Multimodal Control Policy), and Voice Agents. It showcases practical applications built using models from OpenAI, Anthropic, Google, as well as open-source models like DeepSeek, Qwen, and Llama. This project aims to help developers explore the application potential of LLMs across different domains and foster the growth of the open-source LLM application ecosystem.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>AI Agent</span><span>Retrieval Augmented Generation</span><span>Multi-agent System</span><span>Voice AI</span><span>LLM Applications</span><span>Open Source Models</span><span>Model Fine-tuning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/Shubhamsaboo/awesome-llm-apps" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Continue</h2>
+                <span class="published-time">Published: 2025-06-18T00:04:06Z</span>
+                <img src="https://raw.githubusercontent.com/continuedev/continue/main/media/readme.png" alt="Continue">
+                <p class="summary">Continue is an open-source platform designed to revolutionize developer workflows by providing highly customizable AI code assistants. Through its robust VS Code and JetBrains extensions, it seamlessly integrates advanced AI capabilities directly into the integrated development environment. Key features include an 'Agent' for substantial codebase changes, 'Chat' for instant LLM assistance, 'Autocomplete' for inline code suggestions, and 'Edit' for convenient in-file modifications. This comprehensive suite allows developers to leverage large language models for enhanced productivity, streamlining tasks from code generation and debugging to refactoring and knowledge retrieval, all without context switching. Continue also offers a centralized hub for models, rules, and prompts, fostering a collaborative ecosystem where developers can create, share, and utilize bespoke AI programming tools, ultimately accelerating software development cycles and improving code quality.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Code Assistant</span><span>IDE Integration</span><span>Large Language Model</span><span>Intelligent Programming</span><span>Code Completion</span><span>Developer Tools</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/continuedev/continue" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning
+  Attention</h2>
+                <span class="published-time">Published: 2025-06-16T15:08:02.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.13585.png" alt="MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning
+  Attention">
+                <p class="summary">We introduce MiniMax-M1, the world's first open-weight, large-scale
+hybrid-attention reasoning model. MiniMax-M1 is powered by a hybrid
+Mixture-of-Experts (MoE) architecture combined with a lightning attention
+mechanism. The model is developed based on our previous MiniMax-Text-01 model,
+which contains a total of 456 billion parameters with 45.9 billion parameters
+activated per token. The M1 model natively supports a context length of 1
+million tokens, 8x the context size of DeepSeek R1. Furthermore, the lightning
+attention mechanism in MiniMax-M1 enables efficient scaling of test-time
+compute. These properties make M1 particularly suitable for complex tasks that
+require processing long inputs and thinking extensively. MiniMax-M1 is trained
+using large-scale reinforcement learning (RL) on diverse problems including
+sandbox-based, real-world software engineering environments. In addition to
+M1's inherent efficiency advantage for RL training, we propose CISPO, a novel
+RL algorithm to further enhance RL efficiency. CISPO clips importance sampling
+weights rather than token updates, outperforming other competitive RL variants.
+Combining hybrid-attention and CISPO enables MiniMax-M1's full RL training on
+512 H800 GPUs to complete in only three weeks, with a rental cost of just
+$534,700. We release two versions of MiniMax-M1 models with 40K and 80K
+thinking budgets respectively, where the 40K model represents an intermediate
+phase of the 80K training. Experiments on standard benchmarks show that our
+models are comparable or superior to strong open-weight models such as the
+original DeepSeek-R1 and Qwen3-235B, with particular strengths in complex
+software engineering, tool utilization, and long-context tasks. We publicly
+release MiniMax-M1 at https://github.com/MiniMax-AI/MiniMax-M1.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>MiniMax-M1</span><span>Hybrid-attention</span><span>Lightning Attention</span><span>Reinforcement Learning</span><span>Long-context</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.13585" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DeepResearch Bench: A Comprehensive Benchmark for Deep Research Agents</h2>
+                <span class="published-time">Published: 2025-06-13T13:17:32.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.11763.png" alt="DeepResearch Bench: A Comprehensive Benchmark for Deep Research Agents">
+                <p class="summary">Deep Research Agents are a prominent category of LLM-based agents. By
+autonomously orchestrating multistep web exploration, targeted retrieval, and
+higher-order synthesis, they transform vast amounts of online information into
+analyst-grade, citation-rich reports--compressing hours of manual desk research
+into minutes. However, a comprehensive benchmark for systematically evaluating
+the capabilities of these agents remains absent. To bridge this gap, we present
+DeepResearch Bench, a benchmark consisting of 100 PhD-level research tasks,
+each meticulously crafted by domain experts across 22 distinct fields.
+Evaluating DRAs is inherently complex and labor-intensive. We therefore propose
+two novel methodologies that achieve strong alignment with human judgment. The
+first is a reference-based method with adaptive criteria to assess the quality
+of generated research reports. The other framework is introduced to evaluate
+DRA's information retrieval and collection capabilities by assessing its
+effective citation count and overall citation accuracy. We have open-sourced
+DeepResearch Bench and key components of these frameworks at
+https://github.com/Ayanami0730/deep_research_bench to accelerate the
+development of practical LLM-based agents.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Deep Research Agents</span><span>Benchmark</span><span>LLM-based Agents</span><span>Information Retrieval</span><span>Evaluation Methodology</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.11763" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Ego-R1: Chain-of-Tool-Thought for Ultra-Long Egocentric Video Reasoning</h2>
+                <span class="published-time">Published: 2025-06-16T16:17:08.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.13654.png" alt="Ego-R1: Chain-of-Tool-Thought for Ultra-Long Egocentric Video Reasoning">
+                <p class="summary">We introduce Ego-R1, a novel framework for reasoning over ultra-long (i.e.,
+in days and weeks) egocentric videos, which leverages a structured
+Chain-of-Tool-Thought (CoTT) process, orchestrated by an Ego-R1 Agent trained
+via reinforcement learning (RL). Inspired by human problem-solving strategies,
+CoTT decomposes complex reasoning into modular steps, with the RL agent
+invoking specific tools, one per step, to iteratively and collaboratively
+answer sub-questions tackling such tasks as temporal retrieval and multi-modal
+understanding. We design a two-stage training paradigm involving supervised
+finetuning (SFT) of a pretrained language model using CoTT data and RL to
+enable our agent to dynamically propose step-by-step tools for long-range
+reasoning. To facilitate training, we construct a dataset called Ego-R1 Data,
+which consists of Ego-CoTT-25K for SFT and Ego-QA-4.4K for RL. Furthermore, our
+Ego-R1 agent is evaluated on a newly curated week-long video QA benchmark,
+Ego-R1 Bench, which contains human-verified QA pairs from hybrid sources.
+Extensive results demonstrate that the dynamic, tool-augmented chain-of-thought
+reasoning by our Ego-R1 Agent can effectively tackle the unique challenges of
+understanding ultra-long egocentric videos, significantly extending the time
+coverage from few hours to a week.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Egocentric Video</span><span>Video Reasoning</span><span>Chain-of-Tool-Thought</span><span>Reinforcement Learning</span><span>AI Agent</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Video Understanding</span><span>AI Agent</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.13654" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Marrying Autoregressive Transformer and Diffusion with Multi-Reference
+  Autoregression</h2>
+                <span class="published-time">Published: 2025-06-11T07:50:31.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.09482.png" alt="Marrying Autoregressive Transformer and Diffusion with Multi-Reference
+  Autoregression">
+                <p class="summary">We introduce TransDiff, the first image generation model that marries
+Autoregressive (AR) Transformer with diffusion models. In this joint modeling
+framework, TransDiff encodes labels and images into high-level semantic
+features and employs a diffusion model to estimate the distribution of image
+samples. On the ImageNet 256x256 benchmark, TransDiff significantly outperforms
+other image generation models based on standalone AR Transformer or diffusion
+models. Specifically, TransDiff achieves a Fr\'echet Inception Distance (FID)
+of 1.61 and an Inception Score (IS) of 293.4, and further provides x2 faster
+inference latency compared to state-of-the-art methods based on AR Transformer
+and x112 faster inference compared to diffusion-only models. Furthermore,
+building on the TransDiff model, we introduce a novel image generation paradigm
+called Multi-Reference Autoregression (MRAR), which performs autoregressive
+generation by predicting the next image. MRAR enables the model to reference
+multiple previously generated images, thereby facilitating the learning of more
+diverse representations and improving the quality of generated images in
+subsequent iterations. By applying MRAR, the performance of TransDiff is
+improved, with the FID reduced from 1.61 to 1.42. We expect TransDiff to open
+up a new frontier in the field of image generation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>TransDiff</span><span>Image generation</span><span>Autoregressive Transformer</span><span>Diffusion models</span><span>Multi-Reference Autoregression</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Deep Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.09482" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Discrete Diffusion in Large Language and Multimodal Models: A Survey</h2>
+                <span class="published-time">Published: 2025-06-16T17:59:08.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.13759.png" alt="Discrete Diffusion in Large Language and Multimodal Models: A Survey">
+                <p class="summary">In this work, we provide a systematic survey of Discrete Diffusion Language
+Models (dLLMs) and Discrete Diffusion Multimodal Language Models (dMLLMs).
+Unlike autoregressive (AR) models, dLLMs and dMLLMs adopt a multi-token,
+parallel decoding paradigm using full attention and a denoising-based
+generation strategy. This paradigm naturally enables parallel generation,
+fine-grained output controllability, and dynamic, response-aware perception.
+These capabilities are previously difficult to achieve with AR models.
+Recently, a growing number of industrial-scale proprietary d(M)LLMs, as well as
+a large number of open-source academic d(M)LLMs, have demonstrated performance
+comparable to their autoregressive counterparts, while achieving up to 10x
+acceleration in inference speed.
+  The advancement of discrete diffusion LLMs and MLLMs has been largely driven
+by progress in two domains. The first is the development of autoregressive LLMs
+and MLLMs, which has accumulated vast amounts of data, benchmarks, and
+foundational infrastructure for training and inference. The second contributing
+domain is the evolution of the mathematical models underlying discrete
+diffusion. Together, these advancements have catalyzed a surge in dLLMs and
+dMLLMs research in early 2025.
+  In this work, we present a comprehensive overview of the research in the dLLM
+and dMLLM domains. We trace the historical development of dLLMs and dMLLMs,
+formalize the underlying mathematical frameworks, and categorize representative
+models. We further analyze key techniques for training and inference, and
+summarize emerging applications across language, vision-language, and
+biological domains. We conclude by discussing future directions for research
+and deployment.
+  Paper collection: https://github.com/LiQiiiii/DLLM-Survey</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Discrete Diffusion</span><span>Large Language Models</span><span>Multimodal Models</span><span>Parallel Generation</span><span>Survey</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Multimodal</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.13759" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>QGuard:Question-based Zero-shot Guard for Multi-modal LLM Safety</h2>
+                <span class="published-time">Published: 2025-06-14T01:23:50.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.12299.png" alt="QGuard:Question-based Zero-shot Guard for Multi-modal LLM Safety">
+                <p class="summary">The recent advancements in Large Language Models(LLMs) have had a significant
+impact on a wide range of fields, from general domains to specialized areas.
+However, these advancements have also significantly increased the potential for
+malicious users to exploit harmful and jailbreak prompts for malicious attacks.
+Although there have been many efforts to prevent harmful prompts and jailbreak
+prompts, protecting LLMs from such malicious attacks remains an important and
+challenging task. In this paper, we propose QGuard, a simple yet effective
+safety guard method, that utilizes question prompting to block harmful prompts
+in a zero-shot manner. Our method can defend LLMs not only from text-based
+harmful prompts but also from multi-modal harmful prompt attacks. Moreover, by
+diversifying and modifying guard questions, our approach remains robust against
+the latest harmful prompts without fine-tuning. Experimental results show that
+our model performs competitively on both text-only and multi-modal harmful
+datasets. Additionally, by providing an analysis of question prompting, we
+enable a white-box analysis of user inputs. We believe our method provides
+valuable insights for real-world LLM services in mitigating security risks
+associated with harmful prompts.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>LLM Safety</span><span>Zero-shot</span><span>Multimodal</span><span>Harmful Prompts</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Multimodal</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.12299" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
