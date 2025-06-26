@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-06-24</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: 2px solid transparent;
+            font-size: 0.9em;
+        }
+
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .language-switch a.active {
+            background: var(--secondary-color);
+            border-color: var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .language-switch {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../">中文</a>
+                <a href="./" class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-06-24</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Twitter</h2>
+
+            <article class="item-card">
+                <h2>mjbommar_Anthropic Wins Fair Use Summary Judgment, Still Faces Damages Trial</h2>
+                <span class="published-time">Published: 2025-06-24T11:58:06.000Z</span>
+                <img src="../screenshot/twitter/mjbommar_1937562175955980614.png" alt="mjbommar_Anthropic Wins Fair Use Summary Judgment, Still Faces Damages Trial">
+                <p class="summary">Anthropic has achieved a significant legal victory, with Judge Alsup granting its motion for summary judgment on fair use grounds. This ruling indicates that Anthropic's use of certain materials was deemed permissible under fair use principles at this preliminary stage. However, despite this win, the company will still proceed to trial to determine potential damages related to the use of "pirated" material from the internet. This case is closely watched as it has significant implications for AI content generation and the evolving boundaries of copyright law.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Anthropic</span><span>Fair Use</span><span>Copyright</span><span>Lawsuit</span><span>AI</span><span>Damages</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Industry News</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/mjbommar/status/1937562175955980614" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DeepLearningAI_Disney Universal Sue Midjourney for Copyright Infringement</h2>
+                <span class="published-time">Published: 2025-06-24T01:00:05.000Z</span>
+                <img src="../screenshot/twitter/DeepLearningAI_1937314755066171580.png" alt="DeepLearningAI_Disney Universal Sue Midjourney for Copyright Infringement">
+                <p class="summary">Disney and Universal have filed a lawsuit against image generation company Midjourney, accusing it of training its models on their copyrighted content and reproducing unauthorized images. The studios claim Midjourney generated images of characters like Spider-Man and Iron Man, sometimes without explicit prompts. The suit seeks to halt the distribution of this content and demands damages potentially amounting to $150,000 per image.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Midjourney</span><span>copyright infringement</span><span>AI-generated images</span><span>lawsuit</span><span>Disney</span><span>Universal</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Industry News</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/DeepLearningAI/status/1937314755066171580" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>GoogleDeepMind_Launches Gemini Robotics On-Device AI and Open-Source Tools</h2>
+                <span class="published-time">Published: 2025-06-24T14:25:11.000Z</span>
+                <img src="../screenshot/twitter/GoogleDeepMind_1937535740206022773.png" alt="GoogleDeepMind_Launches Gemini Robotics On-Device AI and Open-Source Tools">
+                <p class="summary">Google DeepMind announced the launch of Gemini Robotics On-Device AI, aiming to bring AI capabilities to local robotic devices. This release includes an on-device VLA that can run on a GPU, and an open-source MuJoCo simulator and benchmark for bimanual dexterity, designed to broaden access to these models for academics and developers.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Gemini Robotics</span><span>On-Device AI</span><span>Robotics</span><span>MuJoCo</span><span>Open Source</span><span>VLA</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Product Launch</span><span>Open Source</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/GoogleDeepMind/status/1937535740206022773" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>_akhaliq_Warp 2.0 Agentic Development Environment</h2>
+                <span class="published-time">Published: 2025-06-24T14:56:16.000Z</span>
+                <img src="../screenshot/twitter/_akhaliq_1937542375179448828.png" alt="_akhaliq_Warp 2.0 Agentic Development Environment">
+                <p class="summary">Warp has launched Warp 2.0, an innovative Agentic Development Environment. This platform is touted as the top overall coding agent, achieving first place on Terminal-Bench and 71% on SWE-bench. Warp 2.0 features verified agent multi-threading, enabling simultaneous feature building, debugging, and shipping. It aims to be the first all-in-one platform for agentic development, significantly boosting development efficiency.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Warp 2.0</span><span>Agentic Development</span><span>Coding Agent</span><span>Development Environment</span><span>Multi-threading</span><span>Software Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Product Launch</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/_akhaliq/status/1937542375179448828" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>mustafasuleyman_AI Models Evolve from "Chain of Thought" to "Chain of Debate"</h2>
+                <span class="published-time">Published: 2025-06-24T16:47:02.000Z</span>
+                <img src="../screenshot/twitter/mustafasuleyman_1937553061427445824.png" alt="mustafasuleyman_AI Models Evolve from "Chain of Thought" to "Chain of Debate"">
+                <p class="summary">Mustafa Suleyman introduces "Chain of Debate" as the next evolution for AI, moving from a single model's "thinking out loud" to multiple models discussing, debating, debugging, and deliberating. He emphasizes that this collaborative approach, where "two heads are better than one," will lead to more advanced AI systems, signifying a shift from individual AI intelligence to collective AI intelligence.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Chain of Debate</span><span>Chain of Thought</span><span>Multi-model</span><span>Artificial Intelligence</span><span>LLM</span><span>Collaborative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Research Progress</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/mustafasuleyman/status/1937553061427445824" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>corbtt_RL Sample Efficiency Breakthrough: GRPO Enables Qwen2.5-14B to Surpass Gemini Flash</h2>
+                <span class="published-time">Published: 2025-06-24T19:33:25.000Z</span>
+                <img src="../screenshot/twitter/corbtt_1937594932040204483.png" alt="corbtt_RL Sample Efficiency Breakthrough: GRPO Enables Qwen2.5-14B to Surpass Gemini Flash">
+                <p class="summary">Kyle Corbitt reported exciting evidence of significant sample efficiency in Reinforcement Learning (RL). By applying GRPO to train a modified version of ART-E (agentic RAG task), Qwen2.5-14B was able to exceed Gemini 2.5 Flash performance with just one training scenario, and surpass O3 with 16 scenarios. This outcome greatly exceeded initial expectations for sample efficiency, highlighting RL's potential for highly efficient large model training.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Sample Efficiency</span><span>GRPO</span><span>ART-E</span><span>Qwen2.5-14B</span><span>Large Language Model</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Machine Learning</span><span>Large Language Model</span><span>Research Progress</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/corbtt/status/1937594932040204483" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">wechat</h2>
+
+            <article class="item-card">
+                <h2>Cache Me If You Can: How ManyKVsDoYouNeed for Effective Long-Context LMs?</h2>
+                <span class="published-time">Published: 2025-06-24T16:09:26.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_Kntj7tn_wf--Q3sxwmzYDg.png" alt="Cache Me If You Can: How ManyKVsDoYouNeed for Effective Long-Context LMs?">
+                <p class="summary">Princeton University's Danqi Chen's team has introduced innovative solutions to address the significant KV cache memory consumption in large language models (LLMs) during long-context inference. They proposed "KV footprint" as a unified metric and defined "critical KV footprint" to enable fair comparison of optimization methods while ensuring performance remains at least 90% of full attention. Their research identified and improved shortcomings of existing eviction methods, particularly the high peak memory issue of post-fill eviction. Building upon this, the team developed PruLong, an end-to-end optimization approach that intelligently learns which attention heads require full KV cache retention. PruLong effectively saves memory, achieving a 12% smaller KV footprint compared to previous methods, while maintaining strong long-context performance and recall task capabilities. This work offers a crucial pathway to alleviate the memory bottleneck in LLMs, facilitating their application in more demanding scenarios.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>KV Cache</span><span>Large Language Models</span><span>Memory Optimization</span><span>Long Context</span><span>PruLong</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/Kntj7tn_wf--Q3sxwmzYDg" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>FilMaster: Bridging Cinematic Principles and Generative AI for Automated Film Generation</h2>
+                <span class="published-time">Published: 2025-06-24T16:09:26.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_mXXVADVyTpm-Up_oiRIUuw.png" alt="FilMaster: Bridging Cinematic Principles and Generative AI for Automated Film Generation">
+                <p class="summary">FilMaster, developed by a Chinese team, is the first end-to-end AI system for automated film generation, capable of producing complete movies from text input and reference images. Its core innovations include the "Multi-shot Collaborative RAG Cinematic Language Design Module" and the "Audience-Centric Film Rhythm Control Module." The former leverages a vast library of 440,000 film clips to learn director-level cinematography, ensuring shot coherence and continuity. The latter optimizes audiovisual elements through simulated audience reviews and professional post-production workflows, enhancing emotional resonance and viewer engagement. Experimental results demonstrate FilMaster's significant superiority over existing methods in cinematic language expressiveness and rhythmic appeal, achieving an average 68.44% improvement in user studies and 58.06% in automated evaluations. This system represents a groundbreaking AI tool for professional-grade film production.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>FilMaster</span><span>Film Generation</span><span>Cinematic Language</span><span>Film Rhythm</span><span>Generative AI</span><span>Large Language Model</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Multimodal</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/mXXVADVyTpm-Up_oiRIUuw" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Synthetic Data Outperforms Human Data: Over 10% Absolute Performance Gain with Efficient LLM Fine-tuning via Task Definition Only</h2>
+                <span class="published-time">Published: 2025-06-24T16:09:26.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_ukcoXZ3wEY_gtRa2D3SwIA.png" alt="Synthetic Data Outperforms Human Data: Over 10% Absolute Performance Gain with Efficient LLM Fine-tuning via Task Definition Only">
+                <p class="summary">Researchers from Peking University, MIT, and others have introduced the "Synthetic Data Reinforcement Learning" (Synthetic Data RL) framework, addressing the challenges of large language models' (LLMs) limitations in specialized domains and the high cost of human-annotated data for fine-tuning. This innovative framework requires only a task definition to generate high-quality, domain-specific synthetic data. It operates in three stages: knowledge-guided synthesis, difficulty adaptation, and high-potential sample selection combined with reinforcement learning. Experimental results demonstrate significant performance improvements, with absolute gains exceeding 10 percentage points across eight benchmarks in fields like mathematics, medicine, and law. The method substantially outperforms traditional supervised fine-tuning and existing synthetic data generation techniques, even matching or surpassing human-annotated data under equivalent data budgets. This framework enables efficient, human-annotation-free model customization, drastically reducing the cost of domain adaptation and laying a solid foundation for scalable AI applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Synthetic Data</span><span>Reinforcement Learning</span><span>LLM Fine-tuning</span><span>Domain Knowledge</span><span>Data Efficiency</span><span>Task Definition</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/ukcoXZ3wEY_gtRa2D3SwIA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>7B Small Model Surpasses DeepSeek-R1: Weak Models Can Teach Strong Reasoning LLMs by Imitating Human Teachers | Transformer Author Team</h2>
+                <span class="published-time">Published: 2025-06-24T13:37:41.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_TQBWalcM4fdB--m2oR8CJQ.png" alt="7B Small Model Surpasses DeepSeek-R1: Weak Models Can Teach Strong Reasoning LLMs by Imitating Human Teachers | Transformer Author Team">
+                <p class="summary">Sakana AI introduces a novel large language model (LLM) training methodology called Reinforcement Learning Teacher (RLT), which redefines the traditional approach where teacher models solve problems from scratch. This innovative method mandates that teacher models, akin to human educators, provide clear, step-by-step explanations based on known solutions, rather than independently deriving answers. Experimental results demonstrate that a 7B small model trained with RLT surpasses the 671B DeepSeek-R1 in imparting reasoning skills and can efficiently train student models several times its own size. This approach significantly enhances training efficiency, drastically reduces costs, and enables smaller models to effectively serve as teachers, offering a more economical and potent pathway for developing LLMs with robust reasoning capabilities.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Teacher Model</span><span>Reasoning Capability</span><span>LLM Training</span><span>Reinforcement Learning</span><span>Small Models</span><span>Sakana AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/TQBWalcM4fdB--m2oR8CJQ" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OmniAvatar Open-Sourced! Alibaba Quake Releases New Audio-Driven Character Model</h2>
+                <span class="published-time">Published: 2025-06-24T06:54:35.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_ubVieEt3kJ9PNImErFWzJA.png" alt="OmniAvatar Open-Sourced! Alibaba Quake Releases New Audio-Driven Character Model">
+                <p class="summary">Alibaba Quake team has open-sourced OmniAvatar, an innovative audio-driven full-body video generation model, addressing key challenges in existing techniques such as limited facial animation, lack of natural synchronization, and difficulties in generating fluid full-body movements. This novel model leverages a pixel-wise multi-level audio embedding strategy and a LoRA-based training method, which collectively enhance lip-sync precision and natural motion expression. OmniAvatar demonstrates superior performance in both facial and half-body video generation compared to current state-of-the-art models. Furthermore, it supports precise control via text prompts, enabling diverse applications including podcasts, human interaction, and singing, and offers the ability to control character emotions. Despite these significant advancements in virtual human video generation, the model still presents limitations regarding long video consistency, complex multi-character text control, and inference speed, which require further optimization.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>OmniAvatar</span><span>Audio-driven</span><span>Full-body video generation</span><span>Virtual human</span><span>LoRA</span><span>Quark</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/ubVieEt3kJ9PNImErFWzJA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LLMs Enter the "Drag-and-Drop Era"! Customize Large Models in Seconds with Just a Prompt, Boosting Efficiency by 12,000x</h2>
+                <span class="published-time">Published: 2025-06-24T04:36:19.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_geOn7zyJRQwfJra38EjcxQ.png" alt="LLMs Enter the "Drag-and-Drop Era"! Customize Large Models in Seconds with Just a Prompt, Boosting Efficiency by 12,000x">
+                <p class="summary">Researchers from the National University of Singapore and other institutions have introduced "Drag-and-Drop LLMs" (DnD), a novel prompt-based parameter generator enabling training-free adaptive fine-tuning for large language models. DnD leverages a lightweight text encoder and a cascaded super-convolutional decoder to generate task-specific LoRA weight matrices in mere seconds, solely from unlabeled task prompts, effectively bypassing the traditional gradient descent process. This innovative method boasts a computational overhead 12,000 times lower than conventional full fine-tuning. Furthermore, it demonstrates a remarkable 30% performance improvement over trained LoRA models in zero-shot learning benchmarks and exhibits robust generalization capabilities across diverse domains. DnD offers a highly efficient, flexible, and superior alternative for rapid LLM specialization, significantly accelerating the model customization process.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Drag-and-Drop LLMs</span><span>Parameter Generation</span><span>Training-Free Fine-tuning</span><span>LoRA Weights</span><span>Zero-Shot Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/geOn7zyJRQwfJra38EjcxQ" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Claude Code Router</h2>
+                <span class="published-time">Published: 2025-06-25T09:43:47Z</span>
+                <img src="https://github.com/musistudio/claude-code-router/blob/main/screenshoots/claude-code.png?raw=true" alt="Claude Code Router">
+                <p class="summary">Claude Code Router is a request routing tool specifically designed for Claude Code, enabling users to flexibly distribute code generation requests to various LLM models with high customization. It achieves model routing through configuration, allowing selection of the optimal model based on task types such as background tasks, reasoning, or long-context processing, thereby effectively reducing costs and enhancing performance. The tool also offers a plugin mechanism for extended functionality and seamless integration with GitHub Actions, providing an efficient and economical solution for AI-driven development workflows.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude Code</span><span>Model Routing</span><span>Large Language Model</span><span>Cost Optimization</span><span>AI Programming</span><span>GitHub Actions</span><span>Plugins</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/musistudio/claude-code-router" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>leaked-system-prompts</h2>
+                <span class="published-time">Published: 2025-06-11T11:08:13Z</span>
+                <img src="../screenshot/github/leaked-system-prompts.png" alt="leaked-system-prompts">
+                <p class="summary">This GitHub repository is a dedicated collection of leaked system prompts sourced from various widely used Large Language Model (LLM) based services. It functions as a community-driven platform, inviting contributions of such prompts, with a clear protocol for submission: all entries must be accompanied by verifiable sources or reproducible examples to ensure authenticity. The repository explicitly warns against the inclusion of sensitive commercial source code to prevent potential DMCA issues, a critical consideration given its frequent citation in academic research papers. This highlights its significant role as a valuable resource for understanding and analyzing the underlying instructions guiding prominent LLM applications, contributing to the broader study of prompt engineering and AI system behavior.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Leaked Prompts</span><span>System Prompts</span><span>Large Language Models</span><span>Prompt Engineering</span><span>LLM Services</span><span>Open Source Project</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/jujumilk3/leaked-system-prompts" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Machine Learning From Scratch</h2>
+                <span class="published-time">Published: 2019-10-18T21:42:16Z</span>
+                <img src="http://eriklindernoren.se/images/p_reg.gif" alt="Machine Learning From Scratch">
+                <p class="summary">This GitHub repository offers Python implementations of various fundamental machine learning models and algorithms from scratch. Its primary goal is to transparently and accessibly illustrate their inner workings, rather than focusing on computational optimization. The project spans four major domains: supervised learning, unsupervised learning, reinforcement learning, and deep learning, encompassing classic algorithms such as Decision Trees, Support Vector Machines, K-Means, GANs, and DQNs. Through numerous examples like polynomial regression, CNN image classification, DBSCAN clustering, generative adversarial networks for digit generation, and deep Q-networks, it provides an invaluable resource for learners to deeply understand core machine learning concepts and algorithm implementations.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Machine Learning</span><span>Deep Learning</span><span>Supervised Learning</span><span>Unsupervised Learning</span><span>Reinforcement Learning</span><span>Algorithms</span><span>Python</span><span>From Scratch</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Machine Learning</span><span>Deep Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/eriklindernoren/ML-From-Scratch" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>OmniGen2: Exploration to Advanced Multimodal Generation</h2>
+                <span class="published-time">Published: 2025-06-23T17:38:54.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.18871.png" alt="OmniGen2: Exploration to Advanced Multimodal Generation">
+                <p class="summary">In this work, we introduce OmniGen2, a versatile and open-source generative
+model designed to provide a unified solution for diverse generation tasks,
+including text-to-image, image editing, and in-context generation. Unlike
+OmniGen v1, OmniGen2 features two distinct decoding pathways for text and image
+modalities, utilizing unshared parameters and a decoupled image tokenizer. This
+design enables OmniGen2 to build upon existing multimodal understanding models
+without the need to re-adapt VAE inputs, thereby preserving the original text
+generation capabilities. To facilitate the training of OmniGen2, we developed
+comprehensive data construction pipelines, encompassing image editing and
+in-context generation data. Additionally, we introduce a reflection mechanism
+tailored for image generation tasks and curate a dedicated reflection dataset
+based on OmniGen2. Despite its relatively modest parameter size, OmniGen2
+achieves competitive results on multiple task benchmarks, including
+text-to-image and image editing. To further evaluate in-context generation,
+also referred to as subject-driven tasks, we introduce a new benchmark named
+OmniContext. OmniGen2 achieves state-of-the-art performance among open-source
+models in terms of consistency. We will release our models, training code,
+datasets, and data construction pipeline to support future research in this
+field. Project Page: https://vectorspacelab.github.io/OmniGen2; GitHub Link:
+https://github.com/VectorSpaceLab/OmniGen2</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal Generation</span><span>Text-to-Image</span><span>Image Editing</span><span>In-context Generation</span><span>OmniGen2</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Generative AI</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.18871" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LongWriter-Zero: Mastering Ultra-Long Text Generation via Reinforcement
+  Learning</h2>
+                <span class="published-time">Published: 2025-06-23T16:59:02.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.18841.png" alt="LongWriter-Zero: Mastering Ultra-Long Text Generation via Reinforcement
+  Learning">
+                <p class="summary">Ultra-long generation by large language models (LLMs) is a widely demanded
+scenario, yet it remains a significant challenge due to their maximum
+generation length limit and overall quality degradation as sequence length
+increases. Previous approaches, exemplified by LongWriter, typically rely on
+''teaching'', which involves supervised fine-tuning (SFT) on synthetic
+long-form outputs. However, this strategy heavily depends on synthetic SFT
+data, which is difficult and costly to construct, often lacks coherence and
+consistency, and tends to be overly artificial and structurally monotonous. In
+this work, we propose an incentivization-based approach that, starting entirely
+from scratch and without relying on any annotated or synthetic data, leverages
+reinforcement learning (RL) to foster the emergence of ultra-long, high-quality
+text generation capabilities in LLMs. We perform RL training starting from a
+base model, similar to R1-Zero, guiding it to engage in reasoning that
+facilitates planning and refinement during the writing process. To support
+this, we employ specialized reward models that steer the LLM towards improved
+length control, writing quality, and structural formatting. Experimental
+evaluations show that our LongWriter-Zero model, trained from Qwen2.5-32B,
+consistently outperforms traditional SFT methods on long-form writing tasks,
+achieving state-of-the-art results across all metrics on WritingBench and
+Arena-Write, and even surpassing 100B+ models such as DeepSeek R1 and
+Qwen3-235B. We open-source our data and model checkpoints under
+https://huggingface.co/THU-KEG/LongWriter-Zero-32B</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Ultra-long Text Generation</span><span>Large Language Models</span><span>Reinforcement Learning</span><span>Reward Models</span><span>Text Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.18841" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OAgents: An Empirical Study of Building Effective Agents</h2>
+                <span class="published-time">Published: 2025-06-17T17:59:02.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.15741.png" alt="OAgents: An Empirical Study of Building Effective Agents">
+                <p class="summary">Recently, Agentic AI has become an increasingly popular research field.
+However, we argue that current agent research practices lack standardization
+and scientific rigor, making it hard to conduct fair comparisons among methods.
+As a result, it is still unclear how different design choices in agent
+frameworks affect effectiveness, and measuring their progress remains
+challenging. In this work, we conduct a systematic empirical study on GAIA
+benchmark and BrowseComp to examine the impact of popular design choices in key
+agent components in a fair and rigorous manner. We find that the lack of a
+standard evaluation protocol makes previous works, even open-sourced ones,
+non-reproducible, with significant variance between random runs. Therefore, we
+introduce a more robust evaluation protocol to stabilize comparisons. Our study
+reveals which components and designs are crucial for effective agents, while
+others are redundant, despite seeming logical. Based on our findings, we build
+and open-source OAgents, a new foundation agent framework that achieves
+state-of-the-art performance among open-source projects. OAgents offers a
+modular design for various agent components, promoting future research in
+Agentic AI.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Agentic AI</span><span>Empirical Study</span><span>OAgents</span><span>Evaluation Protocol</span><span>Design Choices</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.15741" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>4D-LRM: Large Space-Time Reconstruction Model From and To Any View at
+  Any Time</h2>
+                <span class="published-time">Published: 2025-06-23T17:57:47.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.18890.png" alt="4D-LRM: Large Space-Time Reconstruction Model From and To Any View at
+  Any Time">
+                <p class="summary">Can we scale 4D pretraining to learn general space-time representations that
+reconstruct an object from a few views at some times to any view at any time?
+We provide an affirmative answer with 4D-LRM, the first large-scale 4D
+reconstruction model that takes input from unconstrained views and timestamps
+and renders arbitrary novel view-time combinations. Unlike prior 4D approaches,
+e.g., optimization-based, geometry-based, or generative, that struggle with
+efficiency, generalization, or faithfulness, 4D-LRM learns a unified space-time
+representation and directly predicts per-pixel 4D Gaussian primitives from
+posed image tokens across time, enabling fast, high-quality rendering at, in
+principle, infinite frame rate. Our results demonstrate that scaling
+spatiotemporal pretraining enables accurate and efficient 4D reconstruction. We
+show that 4D-LRM generalizes to novel objects, interpolates across time, and
+handles diverse camera setups. It reconstructs 24-frame sequences in one
+forward pass with less than 1.5 seconds on a single A100 GPU.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>4D Reconstruction</span><span>Space-Time Model</span><span>Novel View Synthesis</span><span>Gaussian Primitives</span><span>Efficient Rendering</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Deep Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.18890" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>CommVQ: Commutative Vector Quantization for KV Cache Compression</h2>
+                <span class="published-time">Published: 2025-06-23T17:50:11.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.18879.png" alt="CommVQ: Commutative Vector Quantization for KV Cache Compression">
+                <p class="summary">Large Language Models (LLMs) are increasingly used in applications requiring
+long context lengths, but the key-value (KV) cache often becomes a memory
+bottleneck on GPUs as context grows. To address this, we propose Commutative
+Vector Quantization (CommVQ) to significantly reduce memory usage for
+long-context LLM inference. We first introduce additive quantization with a
+lightweight encoder and codebook to compress the KV cache, which can be decoded
+via simple matrix multiplication. To further reduce computational costs during
+decoding, we design the codebook to be commutative with Rotary Position
+Embedding (RoPE) and train it using an Expectation-Maximization (EM) algorithm.
+This enables efficient integration of decoding into the self-attention
+mechanism. Our approach achieves high accuracy with additive quantization and
+low overhead via the RoPE-commutative codebook. Experiments on long-context
+benchmarks and GSM8K show that our method reduces FP16 KV cache size by 87.5%
+with 2-bit quantization, while outperforming state-of-the-art KV cache
+quantization methods. Notably, it enables 1-bit KV cache quantization with
+minimal accuracy loss, allowing a LLaMA-3.1 8B model to run with a 128K context
+length on a single RTX 4090 GPU. The source code is available at:
+https://github.com/UMass-Embodied-AGI/CommVQ.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>KV Cache Compression</span><span>Vector Quantization</span><span>Large Language Models</span><span>Memory Optimization</span><span>Rotary Position Embedding</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.18879" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Audit & Repair: An Agentic Framework for Consistent Story Visualization
+  in Text-to-Image Diffusion Models</h2>
+                <span class="published-time">Published: 2025-06-23T17:59:29.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2506.18900.png" alt="Audit & Repair: An Agentic Framework for Consistent Story Visualization
+  in Text-to-Image Diffusion Models">
+                <p class="summary">Story visualization has become a popular task where visual scenes are
+generated to depict a narrative across multiple panels. A central challenge in
+this setting is maintaining visual consistency, particularly in how characters
+and objects persist and evolve throughout the story. Despite recent advances in
+diffusion models, current approaches often fail to preserve key character
+attributes, leading to incoherent narratives. In this work, we propose a
+collaborative multi-agent framework that autonomously identifies, corrects, and
+refines inconsistencies across multi-panel story visualizations. The agents
+operate in an iterative loop, enabling fine-grained, panel-level updates
+without re-generating entire sequences. Our framework is model-agnostic and
+flexibly integrates with a variety of diffusion models, including rectified
+flow transformers such as Flux and latent diffusion models such as Stable
+Diffusion. Quantitative and qualitative experiments show that our method
+outperforms prior approaches in terms of multi-panel consistency.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Story Visualization</span><span>Diffusion Models</span><span>Visual Consistency</span><span>Multi-agent Framework</span><span>Text-to-Image</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2506.18900" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
