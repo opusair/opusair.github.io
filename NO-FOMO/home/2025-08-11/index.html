@@ -44,6 +44,7 @@
             margin-bottom: 30px;
             padding-bottom: 20px;
             border-bottom: 1px solid var(--border-color);
+            position: relative;
         }
 
         .report-header h1 {
@@ -182,6 +183,44 @@
             font-size: 0.9em;
             color: var(--secondary-color);
         }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: 2px solid transparent;
+            font-size: 0.9em;
+        }
+
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .language-switch a.active {
+            background: var(--secondary-color);
+            border-color: var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .language-switch {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
     </style>
     
     <!-- Google Analytics -->
@@ -197,6 +236,11 @@
 <body>
     <div class="container">
         <header class="report-header">
+            <div class="language-switch">
+                <a href="./" class="active">中文</a>
+                <a href="en/">English</a>
+            </div>
+
             <h1>AI 日报</h1>
             <p class="date">2025-08-11</p>
             <p class="theme-info">关于我们: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
