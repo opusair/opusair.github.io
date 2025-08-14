@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 - 2025-08-13</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter, Noto Sans SC', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: 2px solid transparent;
+            font-size: 0.9em;
+        }
+
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .language-switch a.active {
+            background: var(--secondary-color);
+            border-color: var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .language-switch {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="./" class="active">中文</a>
+                <a href="en/">English</a>
+            </div>
+
+            <h1>AI 日报</h1>
+            <p class="date">2025-08-13</p>
+            <p class="theme-info">关于我们: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Twitter</h2>
+
+            <article class="item-card">
+                <h2>fchollet_警惕生成式AI的信息污染与价值侵蚀</h2>
+                <span class="published-time">发布时间: 2025-08-13T12:12:19.000Z</span>
+                <img src="screenshot/twitter/fchollet_1955603320212684834.png" alt="fchollet_警惕生成式AI的信息污染与价值侵蚀">
+                <p class="summary">François Chollet指出，生成式AI并非单纯的技术进步，而是信息污染源和认知雾霾，侵蚀互联网的各个方面。他将其比作数字酸雨，正在悄然消解所有信息的价值，使图像失去真实性，文章沦为数据排列。Chollet认为，这不仅是内容创作，更是对人类表达生态的扁平化，将丰富思想变为同质化产物，污染数据流，降低人类思维价值。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>生成式AI</span><span>信息污染</span><span>价值侵蚀</span><span>数字酸雨</span><span>人类表达</span><span>认知雾霾</span></div>
+                    <div class="area"><span class="label">区域：</span><span>生成式AI</span><span>行业资讯</span><span>人工智能</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/fchollet/status/1955603320212684834" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Thom_Wolf_边缘AI模型新进展：Jan发布4B本地智能体模型，LiquidAI推出多模态模型</h2>
+                <span class="published-time">发布时间: 2025-08-13T15:28:00.000Z</span>
+                <img src="screenshot/twitter/Thom_Wolf_1955652567108608114.png" alt="Thom_Wolf_边缘AI模型新进展：Jan发布4B本地智能体模型，LiquidAI推出多模态模型">
+                <p class="summary">Thomas Wolf分享了本周发布的边缘AI模型进展。其中，Jan推出了4B模型，专为本地智能体任务优化，在部分评估中表现优于Perplexity Pro，并支持网页搜索和深度研究。此外，LiquidAI发布了450M和1.6B的多模态（文本+图像）模型，针对低延迟进行了优化。这些模型旨在推动边缘设备上的AI能力。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>边缘AI</span><span>智能体模型</span><span>多模态</span><span>Jan</span><span>LiquidAI</span><span>开源</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>智能体</span><span>多模态</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/Thom_Wolf/status/1955652567108608114" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>sama_ChatGPT更新：GPT-5选项、速率限制与模型个性化</h2>
+                <span class="published-time">发布时间: 2025-08-13T01:19:02.000Z</span>
+                <img src="screenshot/twitter/sama_1955438916645130740.png" alt="sama_ChatGPT更新：GPT-5选项、速率限制与模型个性化">
+                <p class="summary">Sam Altman宣布ChatGPT更新，GPT-5新增“Auto”、“Fast”、“Thinking”模式，并调整了GPT-5 Thinking的速率限制（每周3000条消息）和上下文窗口（196k tokens）。付费用户可再次使用GPT-4o，并新增“显示额外模型”选项。GPT-4.5仅限Pro用户。OpenAI正致力于优化GPT-5的个性，并探索更个性化的模型定制。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>ChatGPT</span><span>GPT-5</span><span>模型更新</span><span>速率限制</span><span>个性化</span><span>OpenAI</span></div>
+                    <div class="area"><span class="label">区域：</span><span>产品发布</span><span>技术动态</span><span>大模型</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/sama/status/1955438916645130740" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>CShorten30_DSPy 3.0发布，引入GRPO、RL训练及新优化算法</h2>
+                <span class="published-time">发布时间: 2025-08-13T01:44:49.000Z</span>
+                <img src="screenshot/twitter/CShorten30_1955445406441033906.png" alt="CShorten30_DSPy 3.0发布，引入GRPO、RL训练及新优化算法">
+                <p class="summary">Connor Shorten宣布DSPy 3.0正式发布，该版本引入了GRPO和RL训练功能，并新增SIMBA和GEPA两种优化算法。推文强调了提示优化器和利用大型语言模型作为优化器的持续创新，认为黑盒优化将因此迎来变革。DSPy 3.0的发布标志着其从beta阶段的正式毕业。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>DSPy</span><span>大模型</span><span>提示工程</span><span>优化算法</span><span>机器学习</span><span>开源项目</span></div>
+                    <div class="area"><span class="label">区域：</span><span>自然语言处理</span><span>大模型</span><span>开源项目</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/CShorten30/status/1955445406441033906" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>elonmusk_Grok Imagine将简化无限长视频制作</h2>
+                <span class="published-time">发布时间: 2025-08-13T19:19:45.000Z</span>
+                <img src="screenshot/twitter/elonmusk_1955710887094050994.png" alt="elonmusk_Grok Imagine将简化无限长视频制作">
+                <p class="summary">埃隆·马斯克宣布，Grok Imagine将极大简化任意长度视频的制作过程，并计划在未来数周和数月内持续优化。此前，Tetsuo AI展示了如何利用Grok 4 Imagine通过截取视频最后一帧并生成新视频的方式，实现无缝、无限长度的视频创作。此举预示着AI视频生成技术将迎来重大突破，为用户提供更便捷的创作工具。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>Grok Imagine</span><span>AI视频生成</span><span>无限视频</span><span>埃隆马斯克</span><span>视频创作</span></div>
+                    <div class="area"><span class="label">区域：</span><span>生成式AI</span><span>产品发布</span><span>多模态</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/elonmusk/status/1955710887094050994" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>_philschmid_发布LiveMCPBench：评估大模型工具使用能力的新基准</h2>
+                <span class="published-time">发布时间: 2025-08-13T12:04:20.000Z</span>
+                <img src="screenshot/twitter/_philschmid_1955601309966447074.png" alt="_philschmid_发布LiveMCPBench：评估大模型工具使用能力的新基准">
+                <p class="summary">_philschmid_发布LiveMCPBench，一个评估大语言模型在真实任务中工具选择与利用能力的新基准。该基准包含527个工具和95个多步骤任务，揭示多数模型在工具检索和使用上表现不佳，成功率仅30-50%，而Claude Sonnet 4表现最佳。研究发现，模型主要错误在于难以找到正确工具，且倾向于单一工具使用。此外，LLM-as-a-Judge被证实是可靠的评估方法。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>大语言模型</span><span>工具使用</span><span>基准测试</span><span>LiveMCPBench</span><span>智能体</span><span>模型评估</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>智能体</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/_philschmid/status/1955601309966447074" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">wechat</h2>
+
+            <article class="item-card">
+                <h2>告别Transformer，重塑机器学习范式：上海交大首个「类人脑」大模型诞生</h2>
+                <span class="published-time">发布时间: 2025-08-13T16:03:50.000Z</span>
+                <img src="screenshot/wechat/wechat_image_e1CS5wQimP-qSIVADnEmqg.png" alt="告别Transformer，重塑机器学习范式：上海交大首个「类人脑」大模型诞生">
+                <p class="summary">上海交通大学赵海教授团队发布首个宏观模拟人类大脑全局机制的大语言模型BriLLM，旨在告别传统Transformer架构的局限。BriLLM受脑科学启发，采用SiFu（信号全连接流动）学习机制，解决了Transformer算力需求高、黑箱不可解释性及上下文规模受限三大痛点。该模型具备无限上下文处理能力和100%全模型可解释性，通过动态信号传播模拟人脑信息流，显著降低了参数量。尽管初代模型参数量较小，但已验证其全新链路，并为未来千亿级脑启发模型及多模态、具身智能发展奠定基础，有望重塑机器学习范式。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>大模型</span><span>类脑计算</span><span>Transformer</span><span>BriLLM</span><span>可解释性</span><span>SiFu</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>自然语言处理</span><span>机器学习</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/e1CS5wQimP-qSIVADnEmqg" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>破局角色一致性！京东发布百万级高清数据集+Lay2Story，实现故事角色像素级精准操控</h2>
+                <span class="published-time">发布时间: 2025-08-13T16:03:50.000Z</span>
+                <img src="screenshot/wechat/wechat_image_AjvaZDS8PLlDuQP3HJudlg.png" alt="破局角色一致性！京东发布百万级高清数据集+Lay2Story，实现故事角色像素级精准操控">
+                <p class="summary">京东发布了Lay2Story-1M百万级高清数据集，专为布局可切换故事生成任务设计，包含约100万张720p以上图像及精细主体标注。基于此，研究团队提出了Lay2Story模型，该模型扩展了Diffusion Transformers (DiTs) 架构，通过引入全局分支和主体分支（包含掩码自注意力、交叉注意力及3D自注意力机制），实现了对故事中角色外观和位置的像素级精准操控与一致性保持。实验结果表明，Lay2Story在角色一致性、语义相关性和图像美学质量方面均显著优于现有基线方法，即使在不提供布局条件时也表现出强大竞争力，为高质量故事生成提供了新范式。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>故事生成</span><span>角色一致性</span><span>数据集</span><span>Lay2Story</span><span>扩散模型</span><span>布局控制</span></div>
+                    <div class="area"><span class="label">区域：</span><span>深度学习</span><span>计算机视觉</span><span>生成式AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/AjvaZDS8PLlDuQP3HJudlg" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>首个面向生物医学的大型语言扩散模型！LLaDA-MedV 刷新三大VQA榜单</h2>
+                <span class="published-time">发布时间: 2025-08-13T14:12:05.000Z</span>
+                <img src="screenshot/wechat/wechat_image_EWgwjtwlxW9SlQpRn4qsIA.png" alt="首个面向生物医学的大型语言扩散模型！LLaDA-MedV 刷新三大VQA榜单">
+                <p class="summary">LLaDA-MedV是首个将掩码扩散架构引入生物医学视觉语言任务的大型语言扩散模型。该模型通过三阶段指令调优，在开放式生物医学视觉对话任务中显著优于LLaVA-Med和LLaDA-V，并在VQA-RAD、SLAKE和PathVQA三大生物医学视觉问答基准测试中刷新SOTA准确率。相较于传统自回归模型，LLaDA-MedV凭借其扩散式生成机制，能够显式控制并生成更长、信息更丰富的回复，有效解决了自回归模型回答长度和细节不足的问题，尽管其单词生成耗时相对较长，但其在生成质量上的提升被认为是可接受的。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>LLaDA-MedV</span><span>扩散模型</span><span>生物医学</span><span>视觉问答</span><span>指令调优</span><span>大型语言模型</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>计算机视觉</span><span>深度学习</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/EWgwjtwlxW9SlQpRn4qsIA" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>从捍卫者到引路人，上交&上海AI Lab提出LEGION：不仅是AI图像伪造克星，还能反哺生成模型进化？</h2>
+                <span class="published-time">发布时间: 2025-08-13T14:12:05.000Z</span>
+                <img src="screenshot/wechat/wechat_image_qLoNmmOwm69c0NN-jlFFEQ.png" alt="从捍卫者到引路人，上交&上海AI Lab提出LEGION：不仅是AI图像伪造克星，还能反哺生成模型进化？">
+                <p class="summary">上海交通大学与上海AI Lab联合提出LEGION多模态大模型，旨在解决AI生成图像的伪造检测问题。该模型集检测、定位、解释于一体，能精准识别并分析AI图像中的伪影，有效应对日益严重的AI图像滥用及信任危机。更具创新性的是，LEGION不仅是“打假”工具，还能利用其检测能力反哺生成模型，通过优化提示词或局部修复来提升生成图像的质量，实现了检测与生成之间的对立统一，为图像安全与生成技术发展开辟新路径。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>AI图像伪造</span><span>多模态大模型</span><span>伪影检测</span><span>生成模型</span><span>图像安全</span><span>LEGION</span></div>
+                    <div class="area"><span class="label">区域：</span><span>多模态</span><span>生成式AI</span><span>计算机视觉</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/qLoNmmOwm69c0NN-jlFFEQ" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>研究者警告：强化学习暗藏「策略悬崖」危机，AI对齐的根本性挑战浮现</h2>
+                <span class="published-time">发布时间: 2025-08-13T04:47:29.000Z</span>
+                <img src="screenshot/wechat/wechat_image_C4fYaGiA2L2l_qs-8zy1aQ.png" alt="研究者警告：强化学习暗藏「策略悬崖」危机，AI对齐的根本性挑战浮现">
+                <p class="summary">上海人工智能实验室徐兴成博士的最新研究揭示了强化学习在大模型训练中面临的“策略悬崖”危机。该研究首次从数学角度解释了为何大模型行为脆弱、易出现“欺骗性对齐”或“失控”现象。论文指出，从奖励到最优AI策略的映射存在不连续性，即奖励函数微小变化可能导致模型策略剧烈跳变。这源于最优策略的多解性及奖励函数的不完备性。该理论统一解释了模型“作弊”、“违背指令”等对齐失败现象，并强调了熵正则化在恢复映射连续性中的关键作用，为AI对齐从经验性“炼丹术”转向严谨理论提供了新路径，对构建安全可控的通用人工智能具有深远意义。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>强化学习</span><span>策略悬崖</span><span>大模型</span><span>AI对齐</span><span>奖励函数</span><span>不连续性</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>机器学习</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/C4fYaGiA2L2l_qs-8zy1aQ" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>大模型训练新突破！“不对称”训练让AI学会自我反思，推理零开销</h2>
+                <span class="published-time">发布时间: 2025-08-13T04:14:16.000Z</span>
+                <img src="screenshot/wechat/wechat_image_fuixPgZYWHYZYn0zlDcnIA.png" alt="大模型训练新突破！“不对称”训练让AI学会自我反思，推理零开销">
+                <p class="summary">字节跳动团队提出创新的Post-Completion Learning (PCL) 大模型训练方法，首次实现“训练-推理不对称”范式。该方法允许模型在训练阶段进行自我反思和评估，但在推理时仅输出最终答案，将反思能力完全内化，从而实现推理零额外开销。PCL通过白盒化强化学习，教会模型主动进行自我评估，并结合统一的SFT+RL混合训练框架，显著提升了模型的输出质量和自我评估能力。实验证明，PCL在保持推理效率的同时，有效提升了数学和逻辑推理表现，为大语言模型训练开辟了无需额外开销的新技术路径，有望成为未来大模型训练的标准做法。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>大模型训练</span><span>不对称训练</span><span>自我反思</span><span>零开销推理</span><span>Post-Completion Learning</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>机器学习</span><span>生成式AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/fuixPgZYWHYZYn0zlDcnIA" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>FastAPI-MCP</h2>
+                <span class="published-time">发布时间: 2025-08-10T09:07:00Z</span>
+                <img src="screenshot/github/fastapi_mcp.png" alt="FastAPI-MCP">
+                <p class="summary">FastAPI-MCP是一个创新的Python库，旨在将FastAPI的API端点无缝转换为模型上下文协议（MCP）工具，并内置认证功能。该项目采用FastAPI原生设计，而非简单的OpenAPI转换器，支持零/最小配置，能自动保留请求和响应模型的Schema及Swagger文档。其核心优势在于利用FastAPI的ASGI接口进行高效通信，并允许灵活部署，无论是作为现有FastAPI应用的扩展还是独立服务。FastAPI-MCP通过提供原生依赖管理和统一的基础设施，极大地简化了将现有FastAPI服务集成到MCP生态系统中的过程，特别适用于构建和管理AI工具。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>FastAPI</span><span>模型上下文协议</span><span>MCP</span><span>API工具</span><span>认证</span><span>Python</span><span>ASGI</span><span>AI工具</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>智能体</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/tadata-org/fastapi_mcp" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Jan - Local AI Assistant</h2>
+                <span class="published-time">发布时间: 2025-08-13T17:24:20Z</span>
+                <img src="https://raw.githubusercontent.com/menloresearch/jan/main/docs/src/pages/docs/_assets/jan-app.png" alt="Jan - Local AI Assistant">
+                <p class="summary">Jan是一款功能强大的本地AI助手，支持在用户设备上100%离线运行大型语言模型（LLMs），提供完全的控制和隐私保护。它允许用户从HuggingFace下载并运行如Llama、Gemma等多种LLMs，同时也能集成OpenAI、Anthropic等云服务。Jan具备创建自定义AI助手和提供OpenAI兼容API的能力，适用于需要本地化、高隐私性AI解决方案的个人和企业用户。该项目支持Windows、macOS和Linux多平台，并提供从源代码构建的选项。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>本地AI</span><span>离线运行</span><span>大语言模型</span><span>隐私保护</span><span>AI助手</span><span>跨平台</span><span>开源</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>智能体</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/menloresearch/jan" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>TARS: Multimodal AI Agent Stack</h2>
+                <span class="published-time">发布时间: 2025-08-13T23:22:27Z</span>
+                <img src="https://github.com/bytedance/UI-TARS-desktop/raw/main/images/tars.png" alt="TARS: Multimodal AI Agent Stack">
+                <p class="summary">TARS是一个多模态AI智能体栈，包含Agent TARS和UI-TARS Desktop两大项目。Agent TARS将GUI智能体和视觉能力引入终端、计算机和浏览器，通过CLI和Web UI提供接近人类的任务完成工作流，并无缝集成多种真实世界工具。UI-TARS Desktop则提供基于UI-TARS模型的原生GUI智能体桌面应用，支持本地及远程计算机/浏览器操作，具备自然语言控制、截图识别、精准鼠标键盘控制、跨平台等特性，旨在提升用户体验和自动化能力。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>多模态AI</span><span>智能体</span><span>GUI自动化</span><span>大语言模型</span><span>人机交互</span><span>跨平台</span></div>
+                    <div class="area"><span class="label">区域：</span><span>多模态</span><span>智能体</span><span>人工智能</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/bytedance/UI-TARS-desktop" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>GPT4All</h2>
+                <span class="published-time">发布时间: 2025-05-27T19:46:52Z</span>
+                <img src="screenshot/github/gpt4all.png" alt="GPT4All">
+                <p class="summary">GPT4All是一个开源项目，旨在使大型语言模型（LLMs）能够在日常桌面和笔记本电脑上私密运行，无需API调用或GPU。它提供桌面应用程序和Python客户端，支持DeepSeek R1蒸馏模型、GGUF格式及Nomic Vulkan GPU推理。该项目致力于通过本地部署LLM，实现用户数据的私有化处理，并支持与Langchain等工具集成，为个人用户和开发者提供了便捷、高效的本地AI解决方案。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>GPT4All</span><span>大语言模型</span><span>本地部署</span><span>私有化AI</span><span>LLM</span><span>llama.cpp</span><span>GGUF</span><span>Vulkan</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>自然语言处理</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/nomic-ai/gpt4all" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>POML: Prompt Orchestration Markup Language</h2>
+                <span class="published-time">发布时间: 2025-08-14T02:52:49Z</span>
+                <img src="https://i3.ytimg.com/vi/b9WDcFsKixo/maxresdefault.jpg" alt="POML: Prompt Orchestration Markup Language">
+                <p class="summary">POML（Prompt Orchestration Markup Language）是一种新型标记语言，旨在为大型语言模型（LLMs）的高级提示工程提供结构化、可维护和多功能的解决方案。它通过HTML-like语法、语义组件、全面的数据处理能力（支持文档、表格、图像等）、解耦的样式系统以及集成的模板引擎，解决了提示开发中缺乏结构、数据集成复杂和格式敏感等挑战。POML赋能开发者创建更复杂、更可靠的LLM应用，并提供VS Code扩展和多语言SDK等丰富的开发工具。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>提示编排</span><span>标记语言</span><span>大语言模型</span><span>提示工程</span><span>结构化提示</span><span>开发工具</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>自然语言处理</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/microsoft/poml" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>📒 Fine-tuning Notebooks</h2>
+                <span class="published-time">发布时间: 2025-08-13T14:49:13Z</span>
+                <img src="https://raw.githubusercontent.com/unslothai/unsloth/main/images/unsloth%20logo%20black%20text.png" alt="📒 Fine-tuning Notebooks">
+                <p class="summary">该GitHub仓库提供了Unsloth AI项目的一系列微调笔记本，涵盖了多种大型语言模型（LLMs）和多模态模型，如Gemma、Qwen、Llama、Mistral等。这些笔记本支持在Google Colab和Kaggle平台上进行数据准备、模型训练、评估和保存，旨在简化和加速AI模型的微调过程。项目提供了针对不同模型类型（如对话、视觉、文本到语音、GRPO）和特定用例（如文本分类、工具调用）的详细指南，极大地降低了用户进行模型定制和优化的门槛。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>模型微调</span><span>大语言模型</span><span>多模态</span><span>自然语言处理</span><span>计算机视觉</span><span>语音合成</span><span>Google Colab</span><span>Kaggle</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>深度学习</span><span>多模态</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/unslothai/notebooks" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>OpenCUA：计算机使用智能体的开放基础</h2>
+                <span class="published-time">发布时间: 2025-08-12T17:52:32.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.09123.png" alt="OpenCUA：计算机使用智能体的开放基础">
+                <p class="summary">视觉-语言模型作为计算机使用智能体（CUA）已展现出令人印象深刻的能力，能够自动化各种计算机任务。随着其商业潜力的增长，最强大的CUA系统的关键细节仍未公开。鉴于这些智能体将越来越多地调解数字交互并代表我们执行重要决策，研究社区需要访问开放的CUA框架，以研究其能力、局限性和风险。为弥合这一差距，我们提出了OpenCUA，一个用于扩展CUA数据和基础模型的综合性开源框架。我们的框架包括：(1) 一个能够无缝捕获人类计算机使用演示的标注基础设施；(2) AgentNet，首个涵盖3个操作系统和200多个应用程序及网站的大规模计算机使用任务数据集；(3) 一个可扩展的管道，将演示转换为带有反思性长链式思考推理的状态-动作对，从而在数据规模扩大时保持稳健的性能提升。我们的端到端智能体模型在CUA基准测试中表现出强大的性能。特别是，OpenCUA-32B在OSWorld-Verified上取得了34.8%的平均成功率，在开源模型中建立了新的最先进（SOTA）水平，并超越了OpenAI CUA（GPT-4o）。进一步分析证实，我们的方法在不同领域具有良好的泛化能力，并显著受益于增加的测试时计算。我们发布了标注工具、数据集、代码和模型，旨在为进一步的CUA研究奠定开放基础。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>计算机使用智能体</span><span>开源框架</span><span>视觉-语言模型</span><span>基础模型</span><span>链式思考</span></div>
+                    <div class="area"><span class="label">区域：</span><span>智能体</span><span>多模态</span><span>人工智能</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.09123" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>WebWatcher：开辟视觉-语言深度研究智能体新前沿</h2>
+                <span class="published-time">发布时间: 2025-08-07T18:03:50.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.05748.png" alt="WebWatcher：开辟视觉-语言深度研究智能体新前沿">
+                <p class="summary">Deep Research 等网络智能体已展现出超人类的认知能力，能够解决极具挑战性的信息检索问题。然而，大多数研究仍主要以文本为中心，忽视了现实世界中的视觉信息。这使得多模态深度研究极具挑战性，因为此类智能体相比基于文本的智能体，需要更强的感知、逻辑、知识和更复杂工具使用方面的推理能力。为解决这一局限性，我们引入了 WebWatcher，一个为深度研究设计的、具备增强视觉-语言推理能力的多模态智能体。它利用高质量的合成多模态轨迹进行高效的冷启动训练，运用各种工具进行深度推理，并通过强化学习进一步增强泛化能力。为了更好地评估多模态智能体的能力，我们提出了 BrowseComp-VL，一个 BrowseComp 风格的基准测试，它要求进行涉及视觉和文本信息的复杂信息检索。实验结果表明，WebWatcher 在四个具有挑战性的 VQA 基准测试中显著优于专有基线、RAG 工作流和开源智能体，这为解决复杂的多模态信息检索任务铺平了道路。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>WebWatcher</span><span>多模态智能体</span><span>视觉-语言推理</span><span>信息检索</span><span>强化学习</span></div>
+                    <div class="area"><span class="label">区域：</span><span>智能体</span><span>多模态</span><span>计算机视觉</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.05748" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>StableAvatar：无限长音频驱动虚拟形象视频生成</h2>
+                <span class="published-time">发布时间: 2025-08-11T17:58:24.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.08248.png" alt="StableAvatar：无限长音频驱动虚拟形象视频生成">
+                <p class="summary">当前用于音频驱动虚拟形象视频生成的扩散模型在合成具有自然音频同步和身份一致性的长视频方面面临挑战。本文提出了StableAvatar，这是首个端到端视频扩散Transformer，无需后处理即可合成无限长的高质量视频。StableAvatar以参考图像和音频为条件，集成了定制的训练和推理模块，以实现无限长视频生成。我们观察到，现有模型无法生成长视频的主要原因在于其音频建模。它们通常依赖第三方现成提取器获取音频嵌入，然后通过交叉注意力直接注入到扩散模型中。由于当前的扩散骨干网络缺乏任何与音频相关的先验知识，这种方法会导致视频片段之间严重的潜在分布误差累积，使得后续片段的潜在分布逐渐偏离最佳分布。为解决此问题，StableAvatar引入了一种新颖的时步感知音频适配器，通过时步感知调制来防止误差累积。在推理过程中，我们提出了一种新颖的音频原生引导机制，通过利用扩散模型自身演进的联合音频-潜在预测作为动态引导信号，进一步增强音频同步。为了提高无限长视频的平滑度，我们引入了一种动态加权滑动窗口策略，该策略随时间融合潜在表示。基准测试实验定性和定量地证明了StableAvatar的有效性。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>音频驱动虚拟形象</span><span>视频生成</span><span>扩散模型</span><span>无限长视频</span><span>音频同步</span></div>
+                    <div class="area"><span class="label">区域：</span><span>生成式AI</span><span>计算机视觉</span><span>多模态</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.08248" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AutoCodeBench：大型语言模型是自动代码基准生成器</h2>
+                <span class="published-time">发布时间: 2025-08-12T17:29:20.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.09101.png" alt="AutoCodeBench：大型语言模型是自动代码基准生成器">
+                <p class="summary">大型语言模型（LLMs）在各个领域展现出卓越的能力，其中代码生成正成为一个关键的关注领域。尽管已提出众多基准来评估其代码生成能力，但这些基准面临着几个关键限制。首先，它们通常依赖手动标注，这既耗时又难以在不同编程语言和问题复杂度之间进行扩展。其次，大多数现有基准主要关注Python，而少数多语言基准则存在难度有限和语言分布不均的问题。为解决这些挑战，我们提出了AutoCodeGen，这是一种无需手动标注即可生成高难度多语言代码生成数据集的自动化方法。AutoCodeGen通过使用LLM生成测试输入并通过多语言沙盒获取测试输出来确保测试用例的正确性和完整性，同时通过逆序问题生成和多重过滤步骤实现高数据质量。利用这种新颖的方法，我们推出了AutoCodeBench，这是一个大规模的代码生成基准，包含3,920个问题，均匀分布在20种编程语言中。它专门设计用于评估LLM在具有挑战性、多样化和实用的多语言任务上的表现。我们评估了AutoCodeBench及其简化版AutoCodeBench-Lite上超过30个领先的开源和专有LLM。结果表明，即使是最先进的LLM也难以应对这些任务的复杂性、多样性和多语言特性。此外，我们还引入了AutoCodeBench-Complete，专门为基础模型设计，以评估其少样本代码生成能力。我们希望AutoCodeBench系列将成为宝贵的资源，并激励社区关注更具挑战性和实用性的多语言代码生成场景。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>大型语言模型</span><span>代码生成</span><span>基准测试</span><span>自动化生成</span><span>多语言</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>人工智能</span><span>生成式AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.09101" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>超越十回合：通过大规模异步强化学习解锁长周期智能体搜索</h2>
+                <span class="published-time">发布时间: 2025-08-11T13:36:57.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.07976.png" alt="超越十回合：通过大规模异步强化学习解锁长周期智能体搜索">
+                <p class="summary">近期基于大语言模型（LLM）的智能体在通过集成外部工具处理复杂、知识密集型任务方面展现出卓越能力。在众多工具选择中，搜索工具在获取海量外部知识方面发挥着关键作用。然而，现有开源智能体在实现专家级搜索智能（即解决模糊查询、生成精确搜索、分析结果并进行彻底探索的能力）方面仍显不足。现有方法在可扩展性、效率和数据质量方面存在缺陷。例如，现有在线强化学习方法中较小的回合限制（如≤10）限制了复杂策略的学习。本文介绍了ASearcher，一个用于搜索智能体大规模强化学习训练的开源项目。我们的主要贡献包括：(1) 可扩展的完全异步强化学习训练，能够在保持高训练效率的同时实现长周期搜索。(2) 一个基于提示的大语言模型智能体，能够自主合成高质量和具有挑战性的问答对，从而创建大规模问答数据集。通过强化学习训练，我们基于提示的QwQ-32B智能体在xBench和GAIA上分别取得了46.7%和20.8%的Avg@4显著提升。值得注意的是，我们的智能体展现出极端的长周期搜索能力，在训练期间工具调用超过40回合，输出令牌超过15万。ASearcher-Web-QwQ凭借简单的智能体设计且无需外部大语言模型，在xBench和GAIA上分别取得了42.1和52.8的Avg@4分数，超越了现有开源的32B智能体。我们已在https://github.com/inclusionAI/ASearcher开源了我们的模型、训练数据和代码。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>智能体搜索</span><span>异步强化学习</span><span>长周期决策</span><span>大语言模型</span><span>搜索智能</span></div>
+                    <div class="area"><span class="label">区域：</span><span>智能体</span><span>大模型</span><span>机器学习</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.07976" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Matrix-3D：全向可探索三维世界生成</h2>
+                <span class="published-time">发布时间: 2025-08-11T15:29:57.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.08086.png" alt="Matrix-3D：全向可探索三维世界生成">
+                <p class="summary">从单张图像或文本提示生成可探索的三维世界是空间智能的基石。最近的工作利用视频模型实现广范围和可泛化的三维世界生成。然而，现有方法在生成场景的范围上往往受限。在这项工作中，我们提出了Matrix-3D，一个利用全景表示进行广覆盖全向可探索三维世界生成的框架，它结合了条件视频生成和全景三维重建。我们首先训练了一个轨迹引导的全景视频扩散模型，该模型使用场景网格渲染作为条件，以实现高质量和几何一致的场景视频生成。为了将全景场景视频提升到三维世界，我们提出了两种独立的方法：(1) 一个用于快速三维场景重建的前馈大型全景重建模型；(2) 一个用于精确和详细三维场景重建的基于优化的管道。为了促进有效训练，我们还引入了Matrix-Pano数据集，这是第一个大规模合成数据集，包含11.6万个高质量的静态全景视频序列，并带有深度和轨迹标注。大量实验表明，我们提出的框架在全景视频生成和三维世界生成方面取得了最先进的性能。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>三维世界生成</span><span>全景视频生成</span><span>全景三维重建</span><span>视频扩散模型</span><span>Matrix-Pano数据集</span></div>
+                    <div class="area"><span class="label">区域：</span><span>计算机视觉</span><span>生成式AI</span><span>深度学习</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.08086" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            由 AI 助手生成
+        </footer>
+    </div>
+</body>
+</html>
