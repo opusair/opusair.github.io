@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-08-15</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: 2px solid transparent;
+            font-size: 0.9em;
+        }
+
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .language-switch a.active {
+            background: var(--secondary-color);
+            border-color: var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .language-switch {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../">中文</a>
+                <a href="./" class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-08-15</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Twitter</h2>
+
+            <article class="item-card">
+                <h2>latentspacepod_Greg Brockman on OpenAI's Future, GPT-5, and AGI</h2>
+                <span class="published-time">Published: 2025-08-15T19:10:06.000Z</span>
+                <img src="../screenshot/twitter/latentspacepod_1956433236021883071.png" alt="latentspacepod_Greg Brockman on OpenAI's Future, GPT-5, and AGI">
+                <p class="summary">In a Latent.Space podcast, OpenAI President Greg Brockman discusses the GPT-5 era, evaluating model intelligence, scaling compute, and the path to AGI. He emphasizes "energy turns into compute, turns into intelligence," sharing OpenAI's progress in reasoning evolution, online/offline learning, model routing, pricing optimization, and self-improving agents. The conversation reveals OpenAI's vision for future AI research and engineering, alongside reflections on the value of engineers in the age of AGI.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>OpenAI</span><span>GPT-5</span><span>Greg Brockman</span><span>AGI</span><span>Large Language Model</span><span>Compute Intelligence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Research Progress</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/latentspacepod/status/1956433236021883071" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OpenAI_ChatGPT Weekly Updates: GPT-4o and GPT-5 Features & Availability Expansion</h2>
+                <span class="published-time">Published: 2025-08-15T04:34:03.000Z</span>
+                <img src="../screenshot/twitter/OpenAI_1956212769365352758.png" alt="OpenAI_ChatGPT Weekly Updates: GPT-4o and GPT-5 Features & Availability Expansion">
+                <p class="summary">OpenAI announced its latest weekly ChatGPT updates, including GPT-4o being default for paid users, who can also enable more legacy models and GPT-5 Thinking mini. GPT-5 introduces Auto, Fast, and Thinking modes for varied response speed and depth. Plus and Team users now receive up to 3,000 GPT-5 Thinking messages per week. Furthermore, GPT-5 is now available for Enterprise and Education users, with a warmer personality coming soon.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>ChatGPT</span><span>GPT-4o</span><span>GPT-5</span><span>Model Updates</span><span>Feature Expansion</span><span>OpenAI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Product Launch</span><span>Large Language Model</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/OpenAI/status/1956212769365352758" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Alibaba_Qwen_Qwen Chat Vision Understanding Major Upgrade</h2>
+                <span class="published-time">Published: 2025-08-15T09:39:03.000Z</span>
+                <img src="../screenshot/twitter/Alibaba_Qwen_1956289523421470855.png" alt="Alibaba_Qwen_Qwen Chat Vision Understanding Major Upgrade">
+                <p class="summary">Qwen Chat's vision understanding capabilities have received a significant update, now featuring native 128K context and stronger performance across vision, video, and 3D tasks. Key upgrades include a substantial boost in math and reasoning, more accurate object recognition, OCR support for over 30 languages, enhanced 2D and 3D grounding, and major improvements in video understanding.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Qwen</span><span>Vision Understanding</span><span>Multimodal</span><span>Large Language Model</span><span>Video Understanding</span><span>OCR</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Multimodal</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/Alibaba_Qwen/status/1956289523421470855" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>xywang626_OpenCUA: First Open-Source Computer-Use Agent Foundation Model Framework Released</h2>
+                <span class="published-time">Published: 2025-08-15T16:59:39.000Z</span>
+                <img src="../screenshot/twitter/xywang626_1956400403911962757.png" alt="xywang626_OpenCUA: First Open-Source Computer-Use Agent Foundation Model Framework Released">
+                <p class="summary">Xinyuan Wang's team has released OpenCUA, the first from-scratch open-source foundation model framework for computer-use agents, along with the SOTA model OpenCUA-32B. This framework matches top proprietary models on the OSWorld-Verified benchmark and provides full open-source infrastructure and data. OpenCUA aims to address the lack of large-scale open desktop agent datasets and transparent pipelines. It offers a comprehensive stack for scalable data collection, effective data formulation, model training strategies, and reproducible evaluation, powering top open-source models like OpenCUA-7B and OpenCUA-32B.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Computer-Use Agent</span><span>OpenCUA</span><span>Open-Source Framework</span><span>Foundation Model</span><span>Dataset</span><span>Benchmark</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Open Source</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/xywang626/status/1956400403911962757" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>_philschmid_Imagen 4 Officially Launched with Performance Boost and Pricing Details</h2>
+                <span class="published-time">Published: 2025-08-15T13:45:56.000Z</span>
+                <img src="../screenshot/twitter/_philschmid_1956351654753673252.png" alt="_philschmid_Imagen 4 Officially Launched with Performance Boost and Pricing Details">
+                <p class="summary">Philipp Schmid announced that Imagen 4 is now generally available in AI Studio and the Gemini API. The service offers three models: Ultra, Standard, and Fast, with pricing starting at $0.02 per image. Imagen 4 boasts up to 10x faster generation compared to its predecessor, supports image output up to 2K resolution, and significantly improves spelling and typography for longer text strings. Users can generate between 1 and 4 images per prompt, with specific pricing at $0.06 for Ultra, $0.04 for Standard, and $0.02 for Fast.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Imagen 4</span><span>AI Studio</span><span>Gemini API</span><span>Image Generation</span><span>Text-to-Image</span><span>Product Launch</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Product Launch</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/_philschmid/status/1956351654753673252" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>omarsar0_OdysseyBench: Multi-Day Office Task AI Agent Benchmark</h2>
+                <span class="published-time">Published: 2025-08-15T12:03:07.000Z</span>
+                <img src="../screenshot/twitter/omarsar0_1956325856265326923.png" alt="omarsar0_OdysseyBench: Multi-Day Office Task AI Agent Benchmark">
+                <p class="summary">The omarsar0 team has introduced OdysseyBench, a novel benchmark and data-generation pipeline designed to evaluate AI agents' performance in realistic, multi-day office tasks. This benchmark spans applications like Word, Excel, PDF, Email, and Calendar, specifically targeting long-horizon, context-dependent workflows rather than atomic tasks. It provides a new paradigm for assessing agent capabilities in complex office environments.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>OdysseyBench</span><span>AI Agent</span><span>Benchmark</span><span>Office Automation</span><span>Long-horizon Tasks</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Research Progress</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/omarsar0/status/1956325856265326923" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">wechat</h2>
+
+            <article class="item-card">
+                <h2>DINOv3 Arrives: 7 Billion Parameters, 1.7 Billion Images, Self-Supervised Learning Reaches New Milestone</h2>
+                <span class="published-time">Published: 2025-08-15T01:13:45.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_uxUibyxlYko6rAaHKiDSlg.png" alt="DINOv3 Arrives: 7 Billion Parameters, 1.7 Billion Images, Self-Supervised Learning Reaches New Milestone">
+                <p class="summary">Meta has launched DINOv3, a cutting-edge self-supervised learning (SSL) computer vision model. This new iteration scales unsupervised training to an unprecedented 7 billion parameters and leverages a massive 1.7 billion image dataset. DINOv3 marks a significant breakthrough by being the first single frozen visual backbone to outperform specialized solutions across multiple long-standing dense prediction tasks. Inspired by the success of large language models, DINOv3 emphasizes expanding model capacity and data scale. It introduces innovative techniques like Gram Anchoring to address performance degradation in dense tasks during extended training and incorporates high-resolution adaptation for enhanced feature utilization. The model demonstrates for the first time that self-supervised learning can broadly surpass weakly supervised models, achieving superior performance in both image classification and dense prediction benchmarks. Its real-world impact is already evident, for instance, in forest monitoring applications, signifying a major milestone for self-supervised learning in computer vision.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>DINOv3</span><span>Self-supervised learning</span><span>Computer Vision</span><span>Large Models</span><span>Dense Prediction</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Deep Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/uxUibyxlYko6rAaHKiDSlg" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Google Open-Sources Gemma 3 270M, Outperforming Qwen 2.5 Equivalent Models</h2>
+                <span class="published-time">Published: 2025-08-15T04:14:53.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_IH64apP7SmHVCwHKfTGOsQ.png" alt="Google Open-Sources Gemma 3 270M, Outperforming Qwen 2.5 Equivalent Models">
+                <p class="summary">Google has officially released Gemma 3 270M, a compact language model with only 270 million parameters, specifically designed for fine-tuning on specialized tasks. Inheriting the advanced architecture of the Gemma 3 series, this model demonstrates robust instruction-following and text structuring capabilities, setting new performance benchmarks against equivalent models in IFEval benchmarks. Its key advantages include extreme energy efficiency (consuming only 0.75% battery for 25 conversations on a Pixel 9 Pro), support for production-ready INT4 quantization, and excellent instruction adherence. Gemma 3 270M aims to empower developers to build highly efficient, cost-effective, and offline-capable specialized AI systems. It is particularly suited for high-volume, low-latency, privacy-sensitive, and rapid iteration scenarios, fostering the widespread adoption of small, expert models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Gemma 3 270M</span><span>Google</span><span>Language Model</span><span>Fine-tuning</span><span>On-device AI</span><span>Energy Efficiency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Generative AI</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/IH64apP7SmHVCwHKfTGOsQ" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Video-BLADE: Block-Sparse Attention Meets Step Distillation for Efficient Video Generation</h2>
+                <span class="published-time">Published: 2025-08-15T16:19:53.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_ReIDqAtEabUbzMvAu40CgQ.png" alt="Video-BLADE: Block-Sparse Attention Meets Step Distillation for Efficient Video Generation">
+                <p class="summary">The Video-BLADE framework, jointly open-sourced by Zhejiang University and Huawei, significantly enhances the inference efficiency of video diffusion models by synergistically integrating Adaptive Block-Sparse Attention (ASA) with a data-free Trajectory Distribution Matching (TDM) distillation process. This innovative framework enables DiT models to achieve up to a 14x speedup while demonstrating superior or maintained generation quality, even surpassing traditional dense baselines on the VBench-2.0 benchmark. At its core, Video-BLADE dynamically prunes attention matrices to focus on critical spatiotemporal interactions and employs distribution-level alignment to ensure the student model efficiently learns the teacher model's generation trajectory. This approach substantially reduces computational costs while preserving high perceptual quality, establishing a new paradigm for efficient video generation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Text-to-video</span><span>Diffusion models</span><span>Model distillation</span><span>Sparse attention</span><span>Video generation acceleration</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Deep Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/ReIDqAtEabUbzMvAu40CgQ" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>StableAvatar: New Lip-Sync Technology for Infinite-Length, Zero-Frame-Drop Video Generation</h2>
+                <span class="published-time">Published: 2025-08-15T13:44:57.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_3nZGw_6WFDo2lvNjiA8yNA.png" alt="StableAvatar: New Lip-Sync Technology for Infinite-Length, Zero-Frame-Drop Video Generation">
+                <p class="summary">Fudan University introduces StableAvatar, the first end-to-end video diffusion Transformer, specifically designed to overcome the limitations of current audio-driven avatar video generation models, which struggle to maintain natural audio synchronization and consistent identity over extended video durations. StableAvatar achieves this breakthrough through several key innovations: a timestep-aware audio adapter that suppresses error accumulation, an audio-native guidance mechanism that significantly improves audio-visual synchronization, and a dynamic weighted sliding window strategy to enhance overall video smoothness. These combined features enable the seamless generation of high-quality, infinite-length videos without the need for post-processing. Furthermore, StableAvatar demonstrates remarkable efficiency, reducing GPU memory consumption by approximately 50% and achieving a 10x inference speedup compared to leading competitors. Its superior performance in facial quality and precise lip-sync accuracy positions StableAvatar as a significant advancement in the field of long-duration avatar video generation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>StableAvatar</span><span>Lip-sync</span><span>Video Generation</span><span>Diffusion Models</span><span>Long-form Video</span><span>AI Avatars</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/3nZGw_6WFDo2lvNjiA8yNA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>WebWatcher: The First Open-Source Multimodal Deep Research Agent Surpassing Closed-Source Models</h2>
+                <span class="published-time">Published: 2025-08-15T06:41:05.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_3gzb5QcJ8AO-1EDeECUFlQ.png" alt="WebWatcher: The First Open-Source Multimodal Deep Research Agent Surpassing Closed-Source Models">
+                <p class="summary">WebWatcher, the first open-source multimodal deep research agent, integrates various tools such as web browsing, image search, and code interpreters. It generates high-quality reasoning trajectories through a fully automated process, optimized by supervised fine-tuning and reinforcement learning. This agent is designed to tackle complex, cross-modal, multi-tool, and multi-step tasks. Its technical approach encompasses building high-difficulty multimodal data, optimizing reasoning trajectories, and applying reinforcement learning. Evaluated against challenging benchmarks like BrowseComp-VL, WebWatcher comprehensively outperforms leading closed-source models such as GPT-4o and Gemini in complex reasoning, information retrieval, knowledge integration, and information aggregation. This performance establishes WebWatcher's leading position as a new generation of open-source multimodal AI agents.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Deep Research Agent</span><span>Multimodal</span><span>Open-source</span><span>Tool Use</span><span>Reinforcement Learning</span><span>WebWatcher</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Multimodal</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/3gzb5QcJ8AO-1EDeECUFlQ" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>GPT-5 Surpasses Human Doctors: 24% Higher Reasoning and 29% Stronger Comprehension Than Experts</h2>
+                <span class="published-time">Published: 2025-08-15T06:41:05.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_gfM7kMxSt9Cs7Ark8gaOcA.png" alt="GPT-5 Surpasses Human Doctors: 24% Higher Reasoning and 29% Stronger Comprehension Than Experts">
+                <p class="summary">Recent research indicates that GPT-5 demonstrates exceptional performance in medical image reasoning and comprehension, with accuracy rates 24.23% and 29.40% higher than human experts, respectively. The model comprehensively outperforms GPT-4o and other variants across multiple standardized medical tests, including USMLE, MedXpertQA, and VQA-RAD. Its core capability enhancement stems from an architectural shift from text-dominant to native multimodal deep fusion, utilizing shared tokenization techniques and cross-modal attention mechanisms for seamless information processing. Although GPT-5 excels in ideal testing environments, researchers emphasize that its application in real-world clinical scenarios still requires further practical validation. Currently, in handling complex, unseen real-world cases, AI models, including GPT-5, still lag behind experienced radiologists.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>GPT-5</span><span>Medical Imaging</span><span>Multimodal</span><span>Artificial Intelligence</span><span>Medical AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/gfM7kMxSt9Cs7Ark8gaOcA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>FastAPI-MCP</h2>
+                <span class="published-time">Published: 2025-08-10T09:07:00Z</span>
+                <img src="../screenshot/github/fastapi_mcp.png" alt="FastAPI-MCP">
+                <p class="summary">FastAPI-MCP is an innovative Python library designed to seamlessly expose FastAPI API endpoints as Model Context Protocol (MCP) tools, complete with built-in authentication. This project adopts a FastAPI-native approach, distinguishing itself from mere OpenAPI converters, and supports zero or minimal configuration. It automatically preserves the schemas of request and response models, as well as Swagger documentation. Key advantages include efficient communication via FastAPI's ASGI interface and flexible deployment options, allowing it to function either as an extension to an existing FastAPI application or as a standalone service. By offering native dependency management and a unified infrastructure, FastAPI-MCP significantly streamlines the integration of existing FastAPI services into the MCP ecosystem, making it particularly suitable for developing and managing AI-powered tools.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>FastAPI</span><span>Model Context Protocol</span><span>MCP</span><span>API Tools</span><span>Authentication</span><span>Python</span><span>ASGI</span><span>AI Tools</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/tadata-org/fastapi_mcp" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>SpatialLM</h2>
+                <span class="published-time">Published: 2025-06-10T02:58:45Z</span>
+                <img src="https://github.com/manycore-research/SpatialLM/raw/main/figures/stru3d.jpg" alt="SpatialLM">
+                <p class="summary">SpatialLM is an innovative 3D large language model specifically engineered to interpret and process complex 3D point cloud data. Its primary function is to generate highly structured 3D scene understanding outputs, which encompass detailed architectural elements like walls, doors, and windows, as well as precisely oriented object bounding boxes complete with their semantic categories. A key advantage of SpatialLM is its versatility in handling point clouds derived from a wide array of sources, including monocular video sequences, RGBD images, and LiDAR sensors, thereby overcoming limitations of previous methods requiring specialized equipment. This multimodal architecture effectively bridges the critical gap between raw, unstructured 3D geometric data and refined, structured 3D representations, offering a high-level semantic understanding of environments. Furthermore, SpatialLM 1.1 introduces advanced capabilities such as doubled point cloud resolution, a more powerful point cloud encoder (Sonata), and the ability to perform detection based on user-specified categories, leveraging the flexibility of LLMs. These features collectively enhance spatial reasoning, making SpatialLM highly valuable for cutting-edge applications in embodied robotics, autonomous navigation, and sophisticated 3D scene analysis tasks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>3D Large Language Model</span><span>Point Cloud Processing</span><span>Scene Understanding</span><span>Spatial Reasoning</span><span>Embodied Robotics</span><span>Object Detection</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Computer Vision</span><span>Robotics</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/manycore-research/SpatialLM" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Magentic-UI</h2>
+                <span class="published-time">Published: 2025-08-14T17:46:34Z</span>
+                <img src="https://github.com/microsoft/magentic-ui/blob/main/docs/img/magenticui_running.png?raw=true" alt="Magentic-UI">
+                <p class="summary">Magentic-UI is a cutting-edge research prototype of a human-centered interface, leveraging a sophisticated multi-agent system to automate complex web tasks while ensuring users retain full control. It excels at browsing and performing actions on the web, generating and executing code, and analyzing various file types, addressing scenarios from form filling to deep website navigation and data-driven code execution. Built on the AutoGen framework, Magentic-UI provides a transparent and highly controllable interaction paradigm, fostering efficient human-in-the-loop involvement. Its core functionalities include collaborative planning (Co-Planning), guided task execution (Co-Tasking), robust security measures (Action Guards), intelligent plan learning and retrieval from past runs, and efficient parallel task execution. This innovative approach significantly boosts human-agent interaction efficiency, making it an ideal solution for intricate web navigation, data extraction, and automated data processing challenges, as demonstrated by its performance on benchmarks like GAIA and AssistantBench.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multi-agent System</span><span>Human-in-the-loop</span><span>Web Automation</span><span>Code Execution</span><span>File Analysis</span><span>LLM Applications</span><span>AutoGen</span><span>Docker</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/microsoft/magentic-ui" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Marker</h2>
+                <span class="published-time">Published: 2025-08-15T23:20:30Z</span>
+                <img src="../screenshot/github/marker.png" alt="Marker">
+                <p class="summary">Marker is an efficient and accurate document conversion tool, supporting various file formats such as PDF, images, Office documents, HTML, and EPUB, converting them into Markdown, JSON, chunks, or HTML. Its core features include intelligent recognition and formatting of complex elements like tables, equations, and code blocks, with support for all languages. Marker outperforms existing cloud services and open-source solutions in performance. Furthermore, it can significantly enhance conversion accuracy and structured data extraction capabilities by integrating Large Language Models (LLMs), particularly excelling in table recognition. The tool supports GPU/CPU/MPS operation, offering flexible API and CLI interfaces, making it widely applicable in document digitization, content management, and RAG data preparation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Document Conversion</span><span>PDF Processing</span><span>Structured Extraction</span><span>Large Language Model</span><span>OCR</span><span>Multimodal</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/datalab-to/marker" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>We-Math 2.0: A Versatile MathBook System for Incentivizing Visual
+  Mathematical Reasoning</h2>
+                <span class="published-time">Published: 2025-08-14T08:15:41.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.10433.png" alt="We-Math 2.0: A Versatile MathBook System for Incentivizing Visual
+  Mathematical Reasoning">
+                <p class="summary">Multimodal Large Language Models (MLLMs) have demonstrated impressive
+capabilities across various tasks, but still struggle with complex mathematical
+reasoning. Existing research primarily focuses on dataset construction and
+method optimization, often overlooking two critical aspects: comprehensive
+knowledge-driven design and model-centric data space modeling. In this paper,
+we introduce We-Math 2.0, a unified system that integrates a structured
+mathematical knowledge system, model-centric data space modeling, and a
+reinforcement learning (RL)-based training paradigm to comprehensively enhance
+the mathematical reasoning abilities of MLLMs. The key contributions of We-Math
+2.0 are fourfold: (1) MathBook Knowledge System: We construct a five-level
+hierarchical system encompassing 491 knowledge points and 1,819 fundamental
+principles. (2) MathBook-Standard & Pro: We develop MathBook-Standard, a
+dataset that ensures broad conceptual coverage and flexibility through dual
+expansion. Additionally, we define a three-dimensional difficulty space and
+generate 7 progressive variants per problem to build MathBook-Pro, a
+challenging dataset for robust training. (3) MathBook-RL: We propose a
+two-stage RL framework comprising: (i) Cold-Start Fine-tuning, which aligns the
+model with knowledge-oriented chain-of-thought reasoning; and (ii) Progressive
+Alignment RL, leveraging average-reward learning and dynamic data scheduling to
+achieve progressive alignment across difficulty levels. (4) MathBookEval: We
+introduce a comprehensive benchmark covering all 491 knowledge points with
+diverse reasoning step distributions. Experimental results show that
+MathBook-RL performs competitively with existing baselines on four widely-used
+benchmarks and achieves strong results on MathBookEval, suggesting promising
+generalization in mathematical reasoning.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Mathematical Reasoning</span><span>Multimodal Large Language Models</span><span>Reinforcement Learning</span><span>Knowledge System</span><span>Dataset</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.10433" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>NextStep-1: Toward Autoregressive Image Generation with Continuous
+  Tokens at Scale</h2>
+                <span class="published-time">Published: 2025-08-14T14:54:22.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.10711.png" alt="NextStep-1: Toward Autoregressive Image Generation with Continuous
+  Tokens at Scale">
+                <p class="summary">Prevailing autoregressive (AR) models for text-to-image generation either
+rely on heavy, computationally-intensive diffusion models to process continuous
+image tokens, or employ vector quantization (VQ) to obtain discrete tokens with
+quantization loss. In this paper, we push the autoregressive paradigm forward
+with NextStep-1, a 14B autoregressive model paired with a 157M flow matching
+head, training on discrete text tokens and continuous image tokens with
+next-token prediction objectives. NextStep-1 achieves state-of-the-art
+performance for autoregressive models in text-to-image generation tasks,
+exhibiting strong capabilities in high-fidelity image synthesis. Furthermore,
+our method shows strong performance in image editing, highlighting the power
+and versatility of our unified approach. To facilitate open research, we will
+release our code and models to the community.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Autoregressive models</span><span>Text-to-image generation</span><span>Continuous tokens</span><span>Image synthesis</span><span>NextStep-1</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Multimodal</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.10711" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>ToonComposer: Streamlining Cartoon Production with Generative
+  Post-Keyframing</h2>
+                <span class="published-time">Published: 2025-08-14T17:50:11.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.10881.png" alt="ToonComposer: Streamlining Cartoon Production with Generative
+  Post-Keyframing">
+                <p class="summary">Traditional cartoon and anime production involves keyframing, inbetweening,
+and colorization stages, which require intensive manual effort. Despite recent
+advances in AI, existing methods often handle these stages separately, leading
+to error accumulation and artifacts. For instance, inbetweening approaches
+struggle with large motions, while colorization methods require dense per-frame
+sketches. To address this, we introduce ToonComposer, a generative model that
+unifies inbetweening and colorization into a single post-keyframing stage.
+ToonComposer employs a sparse sketch injection mechanism to provide precise
+control using keyframe sketches. Additionally, it uses a cartoon adaptation
+method with the spatial low-rank adapter to tailor a modern video foundation
+model to the cartoon domain while keeping its temporal prior intact. Requiring
+as few as a single sketch and a colored reference frame, ToonComposer excels
+with sparse inputs, while also supporting multiple sketches at any temporal
+location for more precise motion control. This dual capability reduces manual
+workload and improves flexibility, empowering artists in real-world scenarios.
+To evaluate our model, we further created PKBench, a benchmark featuring
+human-drawn sketches that simulate real-world use cases. Our evaluation
+demonstrates that ToonComposer outperforms existing methods in visual quality,
+motion consistency, and production efficiency, offering a superior and more
+flexible solution for AI-assisted cartoon production.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>ToonComposer</span><span>Cartoon Production</span><span>Generative AI</span><span>Post-Keyframing</span><span>Inbetweening</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Video Understanding</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.10881" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>PRELUDE: A Benchmark Designed to Require Global Comprehension and
+  Reasoning over Long Contexts</h2>
+                <span class="published-time">Published: 2025-08-13T14:28:25.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.09848.png" alt="PRELUDE: A Benchmark Designed to Require Global Comprehension and
+  Reasoning over Long Contexts">
+                <p class="summary">We introduce PRELUDE, a benchmark for evaluating long-context understanding
+through the task of determining whether a character's prequel story is
+consistent with the canonical narrative of the original book. Our task poses a
+stronger demand for global comprehension and deep reasoning than existing
+benchmarks -- as the prequels are not part of the original story, assessing
+their plausibility typically requires searching and integrating information
+that is only indirectly related. Empirically, 88% of instances require evidence
+from multiple parts of the narrative. Experimental results highlight the
+challenge of our task: in-context learning, RAG and in-domain training with
+state-of-the-art LLMs, and commercial DeepResearch services, lag behind humans
+by >15%. A further human study reveals that models often produce correct
+answers with flawed reasoning, leading to an over 30% gap in reasoning accuracy
+compared to humans. These findings underscore the substantial room for
+improvement in long-context understanding and reasoning.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Long-context understanding</span><span>Benchmark</span><span>Global comprehension</span><span>Deep reasoning</span><span>Large Language Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.09848" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>UI-Venus Technical Report: Building High-performance UI Agents with RFT</h2>
+                <span class="published-time">Published: 2025-08-14T16:58:07.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.10833.png" alt="UI-Venus Technical Report: Building High-performance UI Agents with RFT">
+                <p class="summary">We present UI-Venus, a native UI agent that takes only screenshots as input
+based on a multimodal large language model. UI-Venus achieves SOTA performance
+on both UI grounding and navigation tasks using only several hundred thousand
+high-quality training samples through reinforcement finetune (RFT) based on
+Qwen2.5-VL. Specifically, the 7B and 72B variants of UI-Venus obtain 94.1% /
+50.8% and 95.3% / 61.9% on the standard grounding benchmarks, i.e.,
+Screenspot-V2 / Pro, surpassing the previous SOTA baselines including
+open-source GTA1 and closed-source UI-TARS-1.5.To show UI-Venus's summary and
+planing ability, we also evaluate it on the AndroidWorld, an online UI
+navigation arena, on which our 7B and 72B variants achieve 49.1% and 65.9%
+success rate, also beating existing models.To achieve this, we introduce
+carefully designed reward functions for both UI grounding and navigation tasks
+and corresponding efficient data cleaning strategies.To further boost
+navigation performance, we propose Self-Evolving Trajectory History Alignment
+\& Sparse Action Enhancement that refine historical reasoning traces and
+balances the distribution of sparse but critical actions, leading to more
+coherent planning and better generalization in complex UI tasks. Our
+contributions include the publish of SOTA open-source UI agents, comprehensive
+data cleaning protocols and a novel self-evolving framework for improving
+navigation performance, which encourage further research and development in the
+community. Code is available at https://github.com/antgroup/UI-Venus.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>UI Agent</span><span>Multimodal Large Language Model</span><span>Reinforcement Finetune</span><span>UI Grounding</span><span>UI Navigation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Multimodal</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.10833" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>A Survey on Diffusion Language Models</h2>
+                <span class="published-time">Published: 2025-08-14T17:47:22.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.10875.png" alt="A Survey on Diffusion Language Models">
+                <p class="summary">Diffusion Language Models (DLMs) are rapidly emerging as a powerful and
+promising alternative to the dominant autoregressive (AR) paradigm. By
+generating tokens in parallel through an iterative denoising process, DLMs
+possess inherent advantages in reducing inference latency and capturing
+bidirectional context, thereby enabling fine-grained control over the
+generation process. While achieving a several-fold speed-up, recent
+advancements have allowed DLMs to show performance comparable to their
+autoregressive counterparts, making them a compelling choice for various
+natural language processing tasks. In this survey, we provide a holistic
+overview of the current DLM landscape. We trace its evolution and relationship
+with other paradigms, such as autoregressive and masked language models, and
+cover both foundational principles and state-of-the-art models. Our work offers
+an up-to-date, comprehensive taxonomy and an in-depth analysis of current
+techniques, from pre-training strategies to advanced post-training methods.
+Another contribution of this survey is a thorough review of DLM inference
+strategies and optimizations, including improvements in decoding parallelism,
+caching mechanisms, and generation quality. We also highlight the latest
+approaches to multimodal extensions of DLMs and delineate their applications
+across various practical scenarios. Furthermore, our discussion addresses the
+limitations and challenges of DLMs, including efficiency, long-sequence
+handling, and infrastructure requirements, while outlining future research
+directions to sustain progress in this rapidly evolving field. Project GitHub
+is available at https://github.com/VILA-Lab/Awesome-DLMs.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Diffusion Language Models</span><span>Natural Language Processing</span><span>Generative AI</span><span>Survey</span><span>Autoregressive Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Deep Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.10875" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
