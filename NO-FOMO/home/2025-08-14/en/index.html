@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-08-14</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: 2px solid transparent;
+            font-size: 0.9em;
+        }
+
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .language-switch a.active {
+            background: var(--secondary-color);
+            border-color: var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .language-switch {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../">中文</a>
+                <a href="./" class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-08-14</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Twitter</h2>
+
+            <article class="item-card">
+                <h2>rasbt_Gemma 3 270M Release: Powerful Performance from a Small Open-Weight LLM</h2>
+                <span class="published-time">Published: 2025-08-14T23:06:30.000Z</span>
+                <img src="../screenshot/twitter/rasbt_1956130338431713307.png" alt="rasbt_Gemma 3 270M Release: Powerful Performance from a Small Open-Weight LLM">
+                <p class="summary">Sebastian Raschka highlights the release of Gemma 3 270M, a new small open-weight large language model from Google, featuring only 270 million parameters. This compact model demonstrates surprisingly strong instruction following capabilities and can be fine-tuned rapidly. It boasts a large vocabulary, serving as a high-quality foundation for various applications. A notable technical detail is its efficient performance despite having only four attention heads, making it ideal for local experimentation and development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Gemma 3 270M</span><span>Large Language Model</span><span>Open-Weight Model</span><span>Small Model</span><span>Attention Mechanism</span><span>Model Release</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Product Launch</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/rasbt/status/1956130338431713307" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>francoisfleuret_Questioning LLM Universality and Necessity of New Architectures</h2>
+                <span class="published-time">Published: 2025-08-14T22:35:19.000Z</span>
+                <img src="../screenshot/twitter/francoisfleuret_1956122489853239329.png" alt="francoisfleuret_Questioning LLM Universality and Necessity of New Architectures">
+                <p class="summary">François Fleuret presents a "hot take," suggesting that the universality of language and the capabilities of Large Language Models (LLMs) might be misleading us. He argues that since chains-of-thought can implement virtually any cognitive process, new model architectures might seem unnecessary. He draws an analogy to the universal representation theorem not rendering convolutional neural networks (convnets) unnecessary, implying that current LLM capabilities should not deter the exploration of novel architectures.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Chains-of-Thought</span><span>Model Architectures</span><span>Artificial Intelligence</span><span>Cognitive Processes</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Research Progress</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/francoisfleuret/status/1956122489853239329" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AIatMeta_Introducing DINOv3: A Breakthrough in Self-Supervised Vision Models</h2>
+                <span class="published-time">Published: 2025-08-14T16:19:02.000Z</span>
+                <img src="../screenshot/twitter/AIatMeta_1956027795051831584.png" alt="AIatMeta_Introducing DINOv3: A Breakthrough in Self-Supervised Vision Models">
+                <p class="summary">Meta AI introduces DINOv3, a state-of-the-art computer vision model trained with self-supervised learning (SSL). It generates powerful, high-resolution image features. For the first time, a single frozen vision backbone in DINOv3 outperforms specialized solutions on multiple long-standing dense prediction tasks, marking a significant advancement in computer vision. This model enhances image feature extraction, bringing substantial performance improvements to related applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>DINOv3</span><span>Computer Vision</span><span>Self-supervised Learning</span><span>Meta AI</span><span>Image Features</span><span>Dense Prediction</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Deep Learning</span><span>Research Progress</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/AIatMeta/status/1956027795051831584" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>shai_s_shwartz_Launches FormulaOne Benchmark to Evaluate Frontier AI Model Reasoning</h2>
+                <span class="published-time">Published: 2025-08-14T12:23:49.000Z</span>
+                <img src="../screenshot/twitter/shai_s_shwartz_1955968602978320727.png" alt="shai_s_shwartz_Launches FormulaOne Benchmark to Evaluate Frontier AI Model Reasoning">
+                <p class="summary">Shai Shalev-Shwartz introduced FormulaOne, a new benchmark designed to evaluate the “PhD-level” reasoning capabilities of frontier AI models on Dynamic Programming problems. The benchmark features three tiers: 'shallow', 'deeper', and 'deepest'. Results indicate that while top models perform adequately on the 'shallow' tier, they struggle significantly with 'deeper' problems, including Grok 4, Gemini-Pro, and Opus-4. Even GPT-5 Pro solves only a few problems, and all models fail completely on the 'deepest' tier, highlighting current AI models' substantial limitations in complex reasoning.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Models</span><span>Reasoning</span><span>Benchmark</span><span>Dynamic Programming</span><span>FormulaOne</span><span>Large Language Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Research Progress</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/shai_s_shwartz/status/1955968602978320727" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>awnihannun_Gemma 3 270M Model Achieves Ultra-Fast Text Generation on M4 Max</h2>
+                <span class="published-time">Published: 2025-08-14T18:01:09.000Z</span>
+                <img src="../screenshot/twitter/awnihannun_1956053493216895406.png" alt="awnihannun_Gemma 3 270M Model Achieves Ultra-Fast Text Generation on M4 Max">
+                <p class="summary">Awni Hannun shared the impressive performance of the Gemma 3 270M 4-bit quantized model on the M4 Max chip. Utilizing the mlx-lm library, the model achieved text generation speeds exceeding 650 tokens per second while consuming less than 200MB of memory. This demonstrates the high efficiency and low resource consumption of compact large language models running on Apple hardware, holding significant implications for AI applications on edge devices and personal computers.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Gemma 3</span><span>Large Language Model</span><span>Text Generation</span><span>M4 Max</span><span>mlx-lm</span><span>Quantization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Generative AI</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/awnihannun/status/1956053493216895406" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>hwchase17_LangChain Academy Launches Deep Research Course</h2>
+                <span class="published-time">Published: 2025-08-14T16:53:03.000Z</span>
+                <img src="../screenshot/twitter/hwchase17_1956036358709108979.png" alt="hwchase17_LangChain Academy Launches Deep Research Course">
+                <p class="summary">Harrison Chase announced that LangChain Academy has launched a new hour-long course titled "Deep Research with LangGraph". This new offering focuses on how to effectively build and utilize AI agents for comprehensive and in-depth information retrieval and analysis, identifying it as one of the most popular and powerful use cases for agents. The course aims to equip learners with practical skills to navigate complex research challenges and apply advanced AI techniques in real-world scenarios, further expanding the capabilities of LangChain's ecosystem.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LangChain</span><span>AI Agent</span><span>Deep Research</span><span>AI Course</span><span>Product Launch</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Tech News</span><span>Product Launch</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/hwchase17/status/1956036358709108979" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">wechat</h2>
+
+            <article class="item-card">
+                <h2>Is Chain-of-Thought Reasoning a Mirage? Re-examining Large Language Model Inference from a Data Distribution Perspective, Elon Musk Responds, Grok Breaks Down</h2>
+                <span class="published-time">Published: 2025-08-14T16:08:29.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_S0JuK0nOHV0iekdGUg0f7A.png" alt="Is Chain-of-Thought Reasoning a Mirage? Re-examining Large Language Model Inference from a Data Distribution Perspective, Elon Musk Responds, Grok Breaks Down">
+                <p class="summary">A study from Arizona State University reveals that Chain-of-Thought (CoT) reasoning in large language models (LLMs) may not represent true logical deduction but rather a reproduction of patterns within their training data distribution. The research indicates that CoT's generalization capabilities rapidly collapse when tasks deviate from the training data distribution (Out-of-Distribution, OOD), demonstrating fragility across task, length, and format generalization. Using a controllable experimental platform called DataAlchemy, the study confirmed this "mirage" nature, highlighting that CoT's vulnerability is a universal phenomenon, unaffected by model scale or temperature. This finding cautions against blindly relying on CoT in high-stakes domains, suggests that current evaluation methods might overestimate model robustness, and clarifies that supervised fine-tuning only locally extends distribution rather than enhancing abstract reasoning. Future development must acknowledge CoT's generalization limitations and maintain caution in evaluation and deployment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Chain-of-Thought</span><span>Large Language Models</span><span>Data Distribution</span><span>Generalization</span><span>Reasoning</span><span>Out-of-Distribution</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/S0JuK0nOHV0iekdGUg0f7A" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Omni-Effects: The First Unified Multi-Effect Generation Framework</h2>
+                <span class="published-time">Published: 2025-08-14T13:22:35.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_MYxLWj5hRLIj2xTQ2X_OWg.png" alt="Omni-Effects: The First Unified Multi-Effect Generation Framework">
+                <p class="summary">Omni-Effects introduces an innovative unified framework for diverse customized visual effects (VFX) generation, supporting single, multi, and spatially controllable multi-effect synthesis. It integrates pure prompt-driven generation with Spatial-Aware Prompt (SAP) technology, enabling precise spatial control of effects within videos and complex visual outcomes that adapt to environmental changes. Validated through the comprehensive Omni-VFX dataset and a novel data production pipeline, the framework demonstrates high robustness, capable of generating high-fidelity, diverse VFX composite videos. Its core technical innovations, including LoRA-MoE and SAP, effectively address the challenges of multi-conditional VFX generation. Omni-Effects holds significant application potential in film production, game development, and advertising, representing the first comprehensive solution for controllable multi-effect generation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Visual Effects</span><span>Multi-Effect Generation</span><span>Unified Framework</span><span>Spatial-Aware Prompt</span><span>Video Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/MYxLWj5hRLIj2xTQ2X_OWg" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Microsoft Introduces GFPO, a Groundbreaking Improvement to DeepSeek GRPO, Reducing Lengthy Responses by 80%</h2>
+                <span class="published-time">Published: 2025-08-14T04:55:37.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_gXegvKs4BZxkeUa7CPnMqw.png" alt="Microsoft Introduces GFPO, a Groundbreaking Improvement to DeepSeek GRPO, Reducing Lengthy Responses by 80%">
+                <p class="summary">Microsoft researcher Dimitris Papailiopoulos has introduced a groundbreaking reinforcement learning algorithm, Group Filtered Policy Optimization (GFPO), designed to address the issue of lengthy responses generated by models like DeepSeek GRPO. GFPO expands the candidate response pool and explicitly filters for desired properties, enabling it to reduce redundant tokens in inference by up to 80% while simultaneously improving accuracy. This algorithm eliminates the need for complex reward engineering, allowing for the joint optimization of multiple response attributes such as conciseness and accuracy. Experimental results demonstrate that GFPO significantly shortens responses across various difficulty levels. Notably, its adaptive difficulty variant efficiently balances computational cost and accuracy when tackling complex problems, and it effectively mitigates length inflation in out-of-distribution tasks, establishing a new paradigm for efficient reinforcement learning.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>GFPO</span><span>GRPO</span><span>Reinforcement Learning</span><span>Response Length</span><span>Large Model Optimization</span><span>Token Efficiency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/gXegvKs4BZxkeUa7CPnMqw" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>HERMES: A Unified Self-Driving World Model for Simultaneous 3D Scene Understanding and Generation</h2>
+                <span class="published-time">Published: 2025-08-14T04:55:37.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_vBaauj88Jd-Xdi3RU_F9IA.png" alt="HERMES: A Unified Self-Driving World Model for Simultaneous 3D Scene Understanding and Generation">
+                <p class="summary">HERMES introduces the first unified self-driving world model, designed to bridge the critical gap between comprehensive 3D scene understanding and accurate future scene generation. This innovative model leverages a shared Large Language Model (LLM), a unified Bird's-Eye View (BEV) feature space, and a novel World Queries mechanism. This architecture enables HERMES to achieve deep comprehension of complex urban environments, such as identifying specific landmarks and traffic conditions, alongside precise prediction of future dynamics, like vehicle and pedestrian movements. Extensive experiments on datasets including nuScenes demonstrate HERMES's superior performance; its generation accuracy significantly surpasses existing separate models, while its understanding capabilities remain robust. The model's multi-task comparative results underscore its powerful integrated abilities, offering a new, efficient paradigm for developing more intelligent and reliable autonomous driving systems and paving the way for general-purpose driving foundation models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Autonomous Driving</span><span>World Model</span><span>Scene Understanding</span><span>Scene Generation</span><span>Large Language Model</span><span>Unified Framework</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/vBaauj88Jd-Xdi3RU_F9IA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Kunlun Wanwei Launches Skywork Deep Research Agent V2, Revolutionizing Multimodal Research and Browser Automation</h2>
+                <span class="published-time">Published: 2025-08-14T04:55:37.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_mfokWcYudJPWhY69h_kBkA.png" alt="Kunlun Wanwei Launches Skywork Deep Research Agent V2, Revolutionizing Multimodal Research and Browser Automation">
+                <p class="summary">Kunlun Wanwei has officially launched Skywork Deep Research Agent V2, a groundbreaking AI agent model that revolutionizes multimodal deep research and browser automation. This new iteration excels in processing both textual and visual information, setting new SOTA records on authoritative benchmarks like BrowseComp and GAIA, surpassing leading domestic and international competitors. The V2 introduces advanced multimodal information retrieval, an asynchronous parallel multi-agent architecture, and integrated result presentation capabilities, effectively addressing the limitations of traditional text-only research. Furthermore, its multimodal deep browser agent overcomes common efficiency and stability bottlenecks of conventional browser agents, enabling in-depth social media content analysis and visual report generation. This launch signifies Kunlun Wanwei's significant progress in AI application deployment and full-stack development, indicating a strategic shift in the AI industry's focus from singular general large models to building comprehensive toolchains and application ecosystems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Kunlun Wanwei</span><span>AI Agent</span><span>Multimodal</span><span>Deep Research</span><span>Browser Agent</span><span>Skywork</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/mfokWcYudJPWhY69h_kBkA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Boosting AI Multi-Domain Reinforcement Learning Capabilities by Integrating Math, Programming, and Logic Data | Shanghai AI Lab</h2>
+                <span class="published-time">Published: 2025-08-14T04:00:26.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_pXKpvJ-PWV2DXMywyJO4jA.png" alt="Boosting AI Multi-Domain Reinforcement Learning Capabilities by Integrating Math, Programming, and Logic Data | Shanghai AI Lab">
+                <p class="summary">The OpenDataLab team at Shanghai AI Lab has developed a multi-domain evaluation framework encompassing mathematics, programming, and logic puzzles, thoroughly analyzing the complex mechanisms of Reinforcement Learning with Verifiable Rewards (RLVR) in multi-domain reasoning. Their research, based on the Qwen2.5-7B series models, reveals that joint training across these three domains significantly boosts overall average performance to 56.57, outperforming any dual-domain combination. Key findings include: mutual support between logic and mathematical abilities, cross-domain effects of code reasoning, enhanced robustness with diversified data, improved RL effectiveness through SFT, critical importance of template consistency, benefits of Policy Refresh, necessity of task-adaptive reward design, and RLVR's sensitivity to language. This study emphasizes that multi-domain joint training effectively prevents performance "collapse" in specific tasks, ensuring balanced model development and offering new perspectives for optimizing large model reasoning capabilities.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Multi-domain Reasoning</span><span>Large Language Models</span><span>Math Programming Logic</span><span>RLVR</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/pXKpvJ-PWV2DXMywyJO4jA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>FastAPI-MCP</h2>
+                <span class="published-time">Published: 2025-08-10T09:07:00Z</span>
+                <img src="../screenshot/github/fastapi_mcp.png" alt="FastAPI-MCP">
+                <p class="summary">FastAPI-MCP is an innovative Python library designed to seamlessly expose FastAPI API endpoints as Model Context Protocol (MCP) tools, complete with built-in authentication. This project adopts a FastAPI-native approach, distinguishing itself from mere OpenAPI converters, and supports zero or minimal configuration. It automatically preserves the schemas of request and response models, as well as Swagger documentation. Key advantages include efficient communication via FastAPI's ASGI interface and flexible deployment options, allowing it to function either as an extension to an existing FastAPI application or as a standalone service. By offering native dependency management and a unified infrastructure, FastAPI-MCP significantly streamlines the integration of existing FastAPI services into the MCP ecosystem, making it particularly suitable for developing and managing AI-powered tools.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>FastAPI</span><span>Model Context Protocol</span><span>MCP</span><span>API Tools</span><span>Authentication</span><span>Python</span><span>ASGI</span><span>AI Tools</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/tadata-org/fastapi_mcp" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>SpatialLM</h2>
+                <span class="published-time">Published: 2025-06-10T02:58:45Z</span>
+                <img src="https://github.com/manycore-research/SpatialLM/raw/main/figures/stru3d.jpg" alt="SpatialLM">
+                <p class="summary">SpatialLM is an innovative 3D large language model specifically engineered to interpret and process complex 3D point cloud data. Its primary function is to generate highly structured 3D scene understanding outputs, which encompass detailed architectural elements like walls, doors, and windows, as well as precisely oriented object bounding boxes complete with their semantic categories. A key advantage of SpatialLM is its versatility in handling point clouds derived from a wide array of sources, including monocular video sequences, RGBD images, and LiDAR sensors, thereby overcoming limitations of previous methods requiring specialized equipment. This multimodal architecture effectively bridges the critical gap between raw, unstructured 3D geometric data and refined, structured 3D representations, offering a high-level semantic understanding of environments. Furthermore, SpatialLM 1.1 introduces advanced capabilities such as doubled point cloud resolution, a more powerful point cloud encoder (Sonata), and the ability to perform detection based on user-specified categories, leveraging the flexibility of LLMs. These features collectively enhance spatial reasoning, making SpatialLM highly valuable for cutting-edge applications in embodied robotics, autonomous navigation, and sophisticated 3D scene analysis tasks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>3D Large Language Model</span><span>Point Cloud Processing</span><span>Scene Understanding</span><span>Spatial Reasoning</span><span>Embodied Robotics</span><span>Object Detection</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Computer Vision</span><span>Robotics</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/manycore-research/SpatialLM" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Magentic-UI</h2>
+                <span class="published-time">Published: 2025-08-14T17:46:34Z</span>
+                <img src="https://github.com/microsoft/magentic-ui/blob/main/docs/img/magenticui_running.png?raw=true" alt="Magentic-UI">
+                <p class="summary">Magentic-UI is a cutting-edge research prototype of a human-centered interface, leveraging a sophisticated multi-agent system to automate complex web tasks while ensuring users retain full control. It excels at browsing and performing actions on the web, generating and executing code, and analyzing various file types, addressing scenarios from form filling to deep website navigation and data-driven code execution. Built on the AutoGen framework, Magentic-UI provides a transparent and highly controllable interaction paradigm, fostering efficient human-in-the-loop involvement. Its core functionalities include collaborative planning (Co-Planning), guided task execution (Co-Tasking), robust security measures (Action Guards), intelligent plan learning and retrieval from past runs, and efficient parallel task execution. This innovative approach significantly boosts human-agent interaction efficiency, making it an ideal solution for intricate web navigation, data extraction, and automated data processing challenges, as demonstrated by its performance on benchmarks like GAIA and AssistantBench.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multi-agent System</span><span>Human-in-the-loop</span><span>Web Automation</span><span>Code Execution</span><span>File Analysis</span><span>LLM Applications</span><span>AutoGen</span><span>Docker</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/microsoft/magentic-ui" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Marker</h2>
+                <span class="published-time">Published: 2025-08-15T23:20:30Z</span>
+                <img src="../screenshot/github/marker.png" alt="Marker">
+                <p class="summary">Marker is an efficient and accurate document conversion tool, supporting various file formats such as PDF, images, Office documents, HTML, and EPUB, converting them into Markdown, JSON, chunks, or HTML. Its core features include intelligent recognition and formatting of complex elements like tables, equations, and code blocks, with support for all languages. Marker outperforms existing cloud services and open-source solutions in performance. Furthermore, it can significantly enhance conversion accuracy and structured data extraction capabilities by integrating Large Language Models (LLMs), particularly excelling in table recognition. The tool supports GPU/CPU/MPS operation, offering flexible API and CLI interfaces, making it widely applicable in document digitization, content management, and RAG data preparation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Document Conversion</span><span>PDF Processing</span><span>Structured Extraction</span><span>Large Language Model</span><span>OCR</span><span>Multimodal</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/datalab-to/marker" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Seeing, Listening, Remembering, and Reasoning: A Multimodal Agent with
+  Long-Term Memory</h2>
+                <span class="published-time">Published: 2025-08-13T12:03:03.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.09736.png" alt="Seeing, Listening, Remembering, and Reasoning: A Multimodal Agent with
+  Long-Term Memory">
+                <p class="summary">We introduce M3-Agent, a novel multimodal agent framework equipped with
+long-term memory. Like humans, M3-Agent can process real-time visual and
+auditory inputs to build and update its long-term memory. Beyond episodic
+memory, it also develops semantic memory, enabling it to accumulate world
+knowledge over time. Its memory is organized in an entity-centric, multimodal
+format, allowing deeper and more consistent understanding of the environment.
+Given an instruction, M3-Agent autonomously performs multi-turn, iterative
+reasoning and retrieves relevant information from memory to accomplish the
+task. To evaluate memory effectiveness and memory-based reasoning in multimodal
+agents, we develop M3-Bench, a new long-video question answering benchmark.
+M3-Bench comprises 100 newly recorded real-world videos captured from a robot's
+perspective (M3-Bench-robot) and 929 web-sourced videos across diverse
+scenarios (M3-Bench-web). We annotate question-answer pairs designed to test
+key capabilities essential for agent applications, such as human understanding,
+general knowledge extraction, and cross-modal reasoning. Experimental results
+show that M3-Agent, trained via reinforcement learning, outperforms the
+strongest baseline, a prompting agent using Gemini-1.5-pro and GPT-4o,
+achieving 6.7%, 7.7%, and 5.3% higher accuracy on M3-Bench-robot, M3-Bench-web
+and VideoMME-long, respectively. Our work advances the multimodal agents toward
+more human-like long-term memory and provides insights into their practical
+design. Model, code and data are available at
+https://github.com/bytedance-seed/m3-agent</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal Agent</span><span>Long-Term Memory</span><span>Memory-based Reasoning</span><span>Video Question Answering</span><span>Reinforcement Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>AI Agent</span><span>Video Understanding</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.09736" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Stand-In: A Lightweight and Plug-and-Play Identity Control for Video
+  Generation</h2>
+                <span class="published-time">Published: 2025-08-11T12:17:38.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.07901.png" alt="Stand-In: A Lightweight and Plug-and-Play Identity Control for Video
+  Generation">
+                <p class="summary">Generating high-fidelity human videos that match user-specified identities is
+important yet challenging in the field of generative AI. Existing methods often
+rely on an excessive number of training parameters and lack compatibility with
+other AIGC tools. In this paper, we propose Stand-In, a lightweight and
+plug-and-play framework for identity preservation in video generation.
+Specifically, we introduce a conditional image branch into the pre-trained
+video generation model. Identity control is achieved through restricted
+self-attentions with conditional position mapping, and can be learned quickly
+with only 2000 pairs. Despite incorporating and training just sim1\%
+additional parameters, our framework achieves excellent results in video
+quality and identity preservation, outperforming other full-parameter training
+methods. Moreover, our framework can be seamlessly integrated for other tasks,
+such as subject-driven video generation, pose-referenced video generation,
+stylization, and face swapping.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Generation</span><span>Identity Control</span><span>Lightweight Framework</span><span>Plug-and-Play</span><span>Identity Preservation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Deep Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.07901" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AMFT: Aligning LLM Reasoners by Meta-Learning the Optimal
+  Imitation-Exploration Balance</h2>
+                <span class="published-time">Published: 2025-08-09T11:40:54.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.06944.png" alt="AMFT: Aligning LLM Reasoners by Meta-Learning the Optimal
+  Imitation-Exploration Balance">
+                <p class="summary">Large Language Models (LLMs) are typically fine-tuned for reasoning tasks
+through a two-stage pipeline of Supervised Fine-Tuning (SFT) followed by
+Reinforcement Learning (RL), a process fraught with catastrophic forgetting and
+suboptimal trade-offs between imitation and exploration. Recent single-stage
+methods attempt to unify SFT and RL using heuristics, but lack a principled
+mechanism for dynamically balancing the two paradigms. In this paper, we
+reframe this challenge through the theoretical lens of implicit
+rewards, viewing SFT and RL not as distinct methods but as complementary
+reward signals. We introduce Adaptive Meta Fine-Tuning (AMFT), a novel
+single-stage algorithm that learns the optimal balance between SFT's implicit,
+path-level reward and RL's explicit, outcome-based reward. The core of AMFT is
+a meta-gradient adaptive weight controller that treats the SFT-RL
+balance as a learnable parameter, dynamically optimizing it to maximize
+long-term task performance. This forward-looking approach, regularized by
+policy entropy for stability, autonomously discovers an effective training
+curriculum. We conduct a comprehensive evaluation on challenging benchmarks
+spanning mathematical reasoning, abstract visual reasoning (General Points),
+and vision-language navigation (V-IRL). AMFT consistently establishes a new
+state-of-the-art and demonstrats superior generalization on out-of-distribution
+(OOD) tasks. Ablation studies and training dynamic analysis confirm that the
+meta-learning controller is crucial for AMFT's stability, sample efficiency,
+and performance, offering a more principled and effective paradigm for LLM
+alignment.Our codes are open-sourced via https://github.com/hlxtsyj/AMFT.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Meta-Learning</span><span>Reinforcement Learning</span><span>LLM Alignment</span><span>Imitation-Exploration Balance</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.06944" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>VisCodex: Unified Multimodal Code Generation via Merging Vision and
+  Coding Models</h2>
+                <span class="published-time">Published: 2025-08-13T17:00:44.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.09945.png" alt="VisCodex: Unified Multimodal Code Generation via Merging Vision and
+  Coding Models">
+                <p class="summary">Multimodal large language models (MLLMs) have significantly advanced the
+integration of visual and textual understanding. However, their ability to
+generate code from multimodal inputs remains limited. In this work, we
+introduce VisCodex, a unified framework that seamlessly merges vision and
+coding language models to empower MLLMs with strong multimodal code generation
+abilities. Leveraging a task vector-based model merging technique, we integrate
+a state-of-the-art coding LLM into a strong vision-language backbone, while
+preserving both visual comprehension and advanced coding skills. To support
+training and evaluation, we introduce the Multimodal Coding Dataset (MCD), a
+large-scale and diverse collection of 598k samples, including high-quality HTML
+code, chart image-code pairs, image-augmented StackOverflow QA, and algorithmic
+problems. Furthermore, we propose InfiBench-V, a novel and challenging
+benchmark specifically designed to assess models on visually-rich, real-world
+programming questions that demand a nuanced understanding of both textual and
+visual contexts. Extensive experiments show that VisCodex achieves
+state-of-the-art performance among open-source MLLMs and approaches proprietary
+models like GPT-4o, highlighting the effectiveness of our model merging
+strategy and new datasets.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal Code Generation</span><span>Model Merging</span><span>Multimodal Large Language Models</span><span>Vision-Language Models</span><span>Coding Dataset</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.09945" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AWorld: Dynamic Multi-Agent System with Stable Maneuvering for Robust
+  GAIA Problem Solving</h2>
+                <span class="published-time">Published: 2025-08-13T15:46:25.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.09889.png" alt="AWorld: Dynamic Multi-Agent System with Stable Maneuvering for Robust
+  GAIA Problem Solving">
+                <p class="summary">The rapid advancement of large language models (LLMs) has empowered
+intelligent agents to leverage diverse external tools for solving complex
+real-world problems. However, as agents increasingly depend on multiple tools,
+they encounter new challenges: extended contexts from disparate sources and
+noisy or irrelevant tool outputs can undermine system reliability and accuracy.
+These challenges underscore the necessity for enhanced stability in agent-based
+systems. To address this, we introduce dynamic supervision and maneuvering
+mechanisms, constructing a robust and dynamic Multi-Agent System (MAS)
+architecture within the AWorld framework. In our approach, the Execution Agent
+invokes the Guard Agent at critical steps to verify and correct the reasoning
+process, effectively reducing errors arising from noise and bolstering
+problem-solving robustness. Extensive experiments on the GAIA test dataset
+reveal that our dynamic maneuvering mechanism significantly improves both the
+effectiveness and stability of solutions, outperforming single-agent system
+(SAS) and standard tool-augmented systems. As a result, our dynamic MAS system
+achieved first place among open-source projects on the prestigious GAIA
+leaderboard. These findings highlight the practical value of collaborative
+agent roles in developing more reliable and trustworthy intelligent systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multi-Agent System</span><span>Intelligent Agents</span><span>Robustness</span><span>Dynamic Maneuvering</span><span>GAIA</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.09889" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Echo-4o: Harnessing the Power of GPT-4o Synthetic Images for Improved
+  Image Generation</h2>
+                <span class="published-time">Published: 2025-08-13T17:59:28.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.09987.png" alt="Echo-4o: Harnessing the Power of GPT-4o Synthetic Images for Improved
+  Image Generation">
+                <p class="summary">Recently, GPT-4o has garnered significant attention for its strong
+performance in image generation, yet open-source models still lag behind.
+Several studies have explored distilling image data from GPT-4o to enhance
+open-source models, achieving notable progress. However, a key question
+remains: given that real-world image datasets already constitute a natural
+source of high-quality data, why should we use GPT-4o-generated synthetic data?
+In this work, we identify two key advantages of synthetic images. First, they
+can complement rare scenarios in real-world datasets, such as surreal fantasy
+or multi-reference image generation, which frequently occur in user queries.
+Second, they provide clean and controllable supervision. Real-world data often
+contains complex background noise and inherent misalignment between text
+descriptions and image content, whereas synthetic images offer pure backgrounds
+and long-tailed supervision signals, facilitating more accurate text-to-image
+alignment. Building on these insights, we introduce Echo-4o-Image, a 180K-scale
+synthetic dataset generated by GPT-4o, harnessing the power of synthetic image
+data to address blind spots in real-world coverage. Using this dataset, we
+fine-tune the unified multimodal generation baseline Bagel to obtain Echo-4o.
+In addition, we propose two new evaluation benchmarks for a more accurate and
+challenging assessment of image generation capabilities: GenEval++, which
+increases instruction complexity to mitigate score saturation, and
+Imagine-Bench, which focuses on evaluating both the understanding and
+generation of imaginative content. Echo-4o demonstrates strong performance
+across standard benchmarks. Moreover, applying Echo-4o-Image to other
+foundation models (e.g., OmniGen2, BLIP3-o) yields consistent performance gains
+across multiple metrics, highlighting the datasets strong transferability.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Image Generation</span><span>GPT-4o</span><span>Synthetic Data</span><span>Multimodal</span><span>Evaluation Benchmarks</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Multimodal</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.09987" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
