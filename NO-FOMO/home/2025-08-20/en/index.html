@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-08-20</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: 2px solid transparent;
+            font-size: 0.9em;
+        }
+
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .language-switch a.active {
+            background: var(--secondary-color);
+            border-color: var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .language-switch {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../">中文</a>
+                <a href="./" class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-08-20</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Twitter</h2>
+
+            <article class="item-card">
+                <h2>madebygoogle_Gemini Live Real-time Visual Conversation and Advice</h2>
+                <span class="published-time">Published: 2025-08-20T17:15:17.000Z</span>
+                <img src="../screenshot/twitter/madebygoogle_1958216279300403670.png" alt="madebygoogle_Gemini Live Real-time Visual Conversation and Advice">
+                <p class="summary">Made by Google announced a new camera sharing feature in Gemini Live, allowing users to share their camera feed in conversations for real-time advice. The Gemini App can identify and point out specific objects, such as recommending the best glasses shape for a user's face, significantly enhancing the AI assistant's practicality and interactivity by providing a more intuitive and personalized visual assistance experience.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Gemini Live</span><span>Real-time Advice</span><span>Visual Conversation</span><span>Camera Sharing</span><span>AI Assistant</span><span>Multimodal</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Multimodal</span><span>Product Launch</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/madebygoogle/status/1958216279300403670" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>madebygoogle_Google Gemini App Launches Video Generation, Pixel 10 Pro Buyers Get AI Pro</h2>
+                <span class="published-time">Published: 2025-08-20T17:14:08.000Z</span>
+                <img src="../screenshot/twitter/madebygoogle_1958215989352440270.png" alt="madebygoogle_Google Gemini App Launches Video Generation, Pixel 10 Pro Buyers Get AI Pro">
+                <p class="summary">Google's Made by Google announced that its Gemini app now features video generation, allowing users to quickly create videos with sound from text or photos. This new capability aims to bring ideas to life in minutes. Furthermore, customers who purchase the Pixel 10 Pro or Pixel 10 Pro Fold will receive a complimentary one-year subscription to Google AI Pro, promoting the broader adoption of Google's AI services.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Gemini</span><span>Video Generation</span><span>Google AI Pro</span><span>Pixel 10 Pro</span><span>Artificial Intelligence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Product Launch</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/madebygoogle/status/1958215989352440270" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>CerebrasSystems_Becomes Hugging Face Inference Provider</h2>
+                <span class="published-time">Published: 2025-08-20T00:08:50.000Z</span>
+                <img src="../screenshot/twitter/CerebrasSystems_1957957962514960567.png" alt="CerebrasSystems_Becomes Hugging Face Inference Provider">
+                <p class="summary">Cerebras Systems announced it has become an inference provider for Hugging Face, handling 5 million monthly requests. Hugging Face's inference provider network has surpassed 20 million monthly requests, with Cerebras, Novita Labs, and Fireworks AI showing the fastest growth. This service currently powers OpenAI's official open playground and is integrated into various applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Cerebras</span><span>Hugging Face</span><span>Inference Service</span><span>AI Models</span><span>OpenAI</span><span>Cloud Computing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/CerebrasSystems/status/1957957962514960567" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AndrewYNg_AI Dev 25 NYC Summit Announced</h2>
+                <span class="published-time">Published: 2025-08-20T13:55:16.000Z</span>
+                <img src="../screenshot/twitter/AndrewYNg_1958165941369634825.png" alt="AndrewYNg_AI Dev 25 NYC Summit Announced">
+                <p class="summary">Andrew Ng announced the AI Dev 25 conference will take place on November 14 in NYC, expecting over 1,200 developers. The event will delve into cutting-edge AI topics, including Agentic AI (e.g., multi-agent orchestration, tool use), AI-assisted coding, Context Engineering (e.g., advanced RAG, memory systems), Multimodal AI (e.g., vision-language models), and Fintech applications. A larger venue was secured due to the rapid sell-out of the previous Pi Day AI Dev event.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Dev 25</span><span>Agentic AI</span><span>Multimodal AI</span><span>Fintech</span><span>Tech Conference</span><span>NYC</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Tech News</span><span>AI Agent</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/AndrewYNg/status/1958165941369634825" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Google_Pixel 10 Ten Camera Updates</h2>
+                <span class="published-time">Published: 2025-08-20T21:47:16.000Z</span>
+                <img src="../screenshot/twitter/Google_1958284725526643090.png" alt="Google_Pixel 10 Ten Camera Updates">
+                <p class="summary">Google announced ten significant camera updates for its Pixel 10 smartphone, aiming to greatly enhance the user photography experience. New features include high-resolution portraits and selfies, smoother stabilization, 100x Pro Res Zoom, AI-assisted composition guidance (Camera Coach), Auto Best Take for group shots, and deep integration with Google Photos. Additionally, Guided Frame powered by Gemini models and C2PA Content Credentials for image authenticity are introduced, along with real-time preview, comprehensively optimizing photo capture.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Google</span><span>Pixel 10</span><span>Camera Updates</span><span>Photography</span><span>AI Features</span><span>Image Processing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Product Launch</span><span>Tech News</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/Google/status/1958284725526643090" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Google_Gemini Visual and Interaction Capabilities Upgrade</h2>
+                <span class="published-time">Published: 2025-08-20T20:45:53.000Z</span>
+                <img src="../screenshot/twitter/Google_1958269277003256044.png" alt="Google_Gemini Visual and Interaction Capabilities Upgrade">
+                <p class="summary">Google announced significant upgrades to its Gemini assistant, transforming it into a more helpful, natural, and visual AI. Key enhancements include new visual guidance, enabling Gemini to see what users see and highlight objects directly on screen when the camera is shared. Speech interaction has become more natural and expressive, with improvements in intonation, rhythm, and pitch. Furthermore, Gemini can now connect to a wider range of Google applications, such as Messages, Phone, and Clock, with user permission, offering more comprehensive assistance.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Gemini</span><span>AI Assistant</span><span>Visual Guidance</span><span>Speech Interaction</span><span>Google Apps</span><span>Multimodal</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Multimodal</span><span>Product Launch</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/Google/status/1958269277003256044" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">wechat</h2>
+
+            <article class="item-card">
+                <h2>OpenAI Executive Reveals: Scaling Endures, GPT-5's "Dual-Axis Training" Breaks Through Intelligence Ceiling</h2>
+                <span class="published-time">Published: 2025-08-20T01:46:22.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_7uk3f4fFlEtx06pjr3oiuA.png" alt="OpenAI Executive Reveals: Scaling Endures, GPT-5's "Dual-Axis Training" Breaks Through Intelligence Ceiling">
+                <p class="summary">OpenAI COO Brad Lightcap revealed key breakthroughs in GPT-5, emphasizing its ability to autonomously decide whether to perform deep reasoning before answering, significantly enhancing user experience. GPT-5's intelligence leap is not merely exponential growth but achieved through "dual-axis training," combining pre-training (where scaling laws still hold) and post-training, yielding substantial gains in the latter. The model demonstrates comprehensive upgrades in accuracy, response speed, tool utilization, and structured thinking, showcasing strong potential in health, coding, and legal domains. Lightcap noted that while scaling laws remain valid, post-training represents a new paradigm for advancing model intelligence. Although GPT-5 is not AGI, it embodies the nascent form of a generalized learning system. OpenAI will continue to advance across multiple dimensions—algorithms, scale, compute, and data—to ensure more users and enterprises benefit from GPT-5's powerful capabilities and to foster the AI ecosystem.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>GPT-5</span><span>Dual-Axis Training</span><span>Post-training</span><span>Scaling Law</span><span>Artificial Intelligence</span><span>OpenAI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/7uk3f4fFlEtx06pjr3oiuA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DeepSeek V3.1 Base Stealthily Launched! Outperforms Claude 4 in Programming, Community Awaits R2 and V4</h2>
+                <span class="published-time">Published: 2025-08-20T14:01:05.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_yq5mvap6ldR5hwZWGJSEOw.png" alt="DeepSeek V3.1 Base Stealthily Launched! Outperforms Claude 4 in Programming, Community Awaits R2 and V4">
+                <p class="summary">DeepSeek has stealthily launched its V3.1 model, a 685B-parameter large language model that extends its context length to 128K and achieves significant breakthroughs in programming capabilities. Benchmarking reveals V3.1 scored 71.6% on the Aider programming benchmark, surpassing Claude Opus 4, while offering faster inference and response times at a cost merely one-sixtieth of proprietary systems. The new version also introduces native “search token” support and hints at a potential future mixed architecture. Despite the model card not yet being released, V3.1 has already climbed to the top of Hugging Face's trending list, fueling strong community anticipation for R2 and V4. This update further solidifies DeepSeek's leading position in the open-source large model domain, demonstrating robust competitiveness, particularly in programming performance and cost-efficiency.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>DeepSeek V3.1</span><span>Programming Capability</span><span>Context Length</span><span>Large Language Model</span><span>Cost-Efficiency</span><span>AI Performance</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Artificial Intelligence</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/yq5mvap6ldR5hwZWGJSEOw" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Qwen-2.5-VL 7B Model Achieves Autonomous 'Visual Reflection' with 'Look-Back' Mechanism, Boosting Perception Task Performance by 6.3%</h2>
+                <span class="published-time">Published: 2025-08-20T14:01:05.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_8WROvfZYtob_JSk0XTSNeQ.png" alt="Qwen-2.5-VL 7B Model Achieves Autonomous 'Visual Reflection' with 'Look-Back' Mechanism, Boosting Perception Task Performance by 6.3%">
+                <p class="summary">Multimodal Large Language Models (MLLMs) frequently exhibit a tendency to over-rely on textual information during the latter stages of complex reasoning, often neglecting the critical integration of visual input. To address this limitation, the Qwen-2.5-VL 7B model introduces a groundbreaking "Look-Back" mechanism. This novel approach empowers the model to autonomously determine when and where to re-focus its attention on visual information throughout the inference process, crucially without requiring explicit image re-injection or any modifications to its core architecture. Developed through a sophisticated two-stage training framework, which combines supervised fine-tuning with reinforcement learning, the "Look-Back" mechanism has yielded substantial performance improvements. Specifically, it has boosted the model's average performance by approximately 7% in mathematical reasoning tasks and 6.3% in perception-based tasks. This significant advancement not only redefines the multimodal reasoning paradigm but also substantially enhances the model's generalization capabilities, positioning it as a highly competitive solution in the field.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal Large Language Models</span><span>Visual Reflection</span><span>Look-Back</span><span>Reasoning Capability</span><span>Reinforcement Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/8WROvfZYtob_JSk0XTSNeQ" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Is DiT Mathematically and Formally Wrong? Xie Saining Responds: Don't Do Science in Your Head</h2>
+                <span class="published-time">Published: 2025-08-20T04:23:48.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_wCqh9BIPoXjiK5yTGOPrqA.png" alt="Is DiT Mathematically and Formally Wrong? Xie Saining Responds: Don't Do Science in Your Head">
+                <p class="summary">Recently, a post questioned the DiT model's architectural flaws, citing its premature FID stabilization, the use of unstable post-LayerNorm, and the expression-limiting adaLN-zero, even claiming that replacing some computational units with identity functions improved performance. Xie Saining, the author of DiT, responded by acknowledging some “hard flaws” like the inefficient sd-vae, but emphasized DiT's academic standing as the foundational architecture for Sora and Stable Diffusion 3. He stressed that scientific research requires empirical validation, not mere speculation. Xie argued that methods like TREAD are more akin to regularization effects rather than revealing fundamental errors in DiT, and offered suggestions for robust DiT upgrades, reiterating the pivotal role of experimental verification in scientific exploration.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>DiT</span><span>Diffusion Models</span><span>Transformer</span><span>Architectural Flaws</span><span>Xie Saining</span><span>TREAD</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Deep Learning</span><span>Generative AI</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/wCqh9BIPoXjiK5yTGOPrqA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Zhipu AI Unveils World's First Universal Mobile Agent, Free for All, Capable of Directly Controlling Cloud PCs</h2>
+                <span class="published-time">Published: 2025-08-20T04:31:04.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_2C5hi2o0RzAO_y6MTh2JMQ.png" alt="Zhipu AI Unveils World's First Universal Mobile Agent, Free for All, Capable of Directly Controlling Cloud PCs">
+                <p class="summary">Zhipu AI has launched AutoGLM, the world's first universal mobile agent, featuring a groundbreaking cloud-based execution architecture. This innovation allows users to command the AI via voice to perform complex, cross-application tasks such as ordering food, comparing product prices, generating reports, and creating presentations, all without consuming local device resources. AutoGLM supports operations on both mobile phones and cloud PCs, effectively addressing the computational limitations and resource occupation issues prevalent in traditional agents, thereby significantly enhancing user experience. This agent integrates multimodal capabilities including reasoning and coding, representing a pivotal stride for Zhipu AI towards Artificial General Intelligence (AGI) and validating the viability of cloud-based agents. Zhipu AI has also released an API to foster the widespread adoption of Agent technology and build a collaborative ecosystem, signaling the imminent arrival of an era where users can simply "ask once and let the agent handle the rest."</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Zhipu AI</span><span>Universal Agent</span><span>Cloud Execution</span><span>AutoGLM</span><span>Artificial General Intelligence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/2C5hi2o0RzAO_y6MTh2JMQ" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Claude Code and Gemini Abandon Code Indexing: A Misstep</h2>
+                <span class="published-time">Published: 2025-08-20T10:05:26.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_C1h6QveDrX_-yDxwI1CNUA.png" alt="Claude Code and Gemini Abandon Code Indexing: A Misstep">
+                <p class="summary">The article criticizes AI IDEs like Claude Code and Gemini for abandoning code indexing (RAG) in favor of traditional grep-like text search, highlighting issues such as high token consumption, inefficiency, and a lack of semantic understanding. The author demonstrates through practical testing that integrating vector retrieval significantly improves efficiency and saves tokens. To address this pain point, the author open-sourced the "claude-context" project, a code retrieval tool that integrates vector databases and embedding models. The article elaborates on its technical details, including its MCP architecture, AST-based code splitting, and Merkle Tree synchronization mechanism. It showcases the project's remarkable effectiveness in real-world applications, achieving over 40% token savings, and emphasizes the critical role of code indexing in providing high-quality context for AI IDEs.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Code Retrieval</span><span>Vector Database</span><span>AI IDE</span><span>RAG</span><span>claude-context</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/C1h6QveDrX_-yDxwI1CNUA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Build and deploy AI agent workflows in minutes.</h2>
+                <span class="published-time">Published: 2025-08-20T16:56:09Z</span>
+                <img src="https://raw.githubusercontent.com/simstudioai/sim/main/apps/sim/public/static/demo.gif" alt="Build and deploy AI agent workflows in minutes.">
+                <p class="summary">Sim is a platform designed for rapidly building and deploying AI agent workflows. It offers flexible deployment options, including cloud-hosted services and various self-hosting methods such as NPM packages, Docker Compose, development containers, and manual setup. The platform supports integration with local AI models via Ollama and leverages PostgreSQL with the pgvector extension for efficient vector embeddings, enabling advanced AI functionalities like knowledge bases and semantic search. Built on a modern tech stack including Next.js, Bun, Drizzle ORM, and Socket.io, Sim aims to streamline the development of sophisticated AI applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Workflow</span><span>Self-hosting</span><span>Large Language Model</span><span>Vector Database</span><span>PostgreSQL</span><span>Docker</span><span>Next.js</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/simstudioai/sim" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Project AIRI</h2>
+                <span class="published-time">Published: 2025-08-20T20:19:11Z</span>
+                <img src="https://github.com/moeru-ai/airi/raw/main/docs/content/public/banner-dark-1280x640.avif" alt="Project AIRI">
+                <p class="summary">Project AIRI aims to recreate Neuro-sama, developing a comprehensive container for AI waifu and virtual characters, enabling them to interact, play games, and engage in natural conversations with users. Positioned as a robust open-source alternative to existing proprietary solutions like Neuro-sama, AIRI distinguishes itself by leveraging cutting-edge Web technologies such as WebGPU, WebAssembly, and Web Workers. This architectural choice ensures broad compatibility, allowing the application to run seamlessly across modern browsers, desktop environments, and even mobile devices with PWA support. The platform integrates with a wide array of large language model APIs, providing flexibility and power. Its core functionalities include sophisticated memory systems, advanced client-side speech recognition, realistic speech synthesis, and precise control over VRM and Live2D models. Project AIRI is dedicated to empowering individuals to easily own, customize, and manage their personalized digital companions, ushering in a new era of interactive and accessible virtual life experiences.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Virtual Character</span><span>Digital Companion</span><span>Large Language Model</span><span>Web Technologies</span><span>VRM</span><span>Live2D</span><span>Speech Interaction</span><span>AI Agent</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/moeru-ai/airi" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Self-hosted AI starter kit</h2>
+                <span class="published-time">Published: 2025-07-17T08:11:19Z</span>
+                <img src="https://raw.githubusercontent.com/n8n-io/self-hosted-ai-starter-kit/main/assets/n8n-demo.gif" alt="Self-hosted AI starter kit">
+                <p class="summary">The Self-hosted AI Starter Kit is an open-source Docker Compose template meticulously crafted to swiftly initialize a comprehensive local AI and low-code development environment. This robust solution seamlessly combines the self-hosted n8n platform, renowned for its extensive integrations and advanced AI components, with essential AI products like Ollama for running local large language models, Qdrant as a high-performance vector store, and PostgreSQL for reliable data management. It supports diverse hardware configurations, including Nvidia and AMD GPUs, as well as CPU-only setups. The kit empowers users to securely develop a wide array of AI-powered applications, such as intelligent AI agents for task automation, confidential document summarization without data leaks, and enhanced communication tools like smarter Slack bots. Ideal for rapid prototyping and proof-of-concept projects, it provides a complete, self-contained ecosystem for building and experimenting with AI workflows locally, ensuring data privacy and cost efficiency.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Self-hosted AI</span><span>Low-code</span><span>Docker Compose</span><span>Large Language Model</span><span>Vector Database</span><span>AI Workflow</span><span>n8n</span><span>Ollama</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/n8n-io/self-hosted-ai-starter-kit" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Build a Large Language Model (From Scratch)</h2>
+                <span class="published-time">Published: 2025-08-20T02:08:29Z</span>
+                <img src="../screenshot/github/LLMs-from-scratch.png" alt="Build a Large Language Model (From Scratch)">
+                <p class="summary">This GitHub repository serves as the official code companion for the book "Build a Large Language Model (From Scratch)," guiding readers through the process of developing, pretraining, and finetuning GPT-like large language models from the ground up. The project provides comprehensive code examples, covering text data handling, attention mechanism implementation, GPT model construction, unsupervised pretraining, and both classification and instruction finetuning. It emphasizes a hands-on coding approach to deeply understand the internal workings of LLMs, also supporting the loading of larger pretrained models for finetuning. This resource is ideal for individuals seeking a systematic and practical learning experience in LLM development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>From Scratch</span><span>Pretraining</span><span>Finetuning</span><span>GPT</span><span>PyTorch</span><span>Natural Language Processing</span><span>Deep Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Deep Learning</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/rasbt/LLMs-from-scratch" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>terminal-bench</h2>
+                <span class="published-time">Published: 2025-08-20T22:24:50Z</span>
+                <img src="../screenshot/github/terminal-bench.png" alt="terminal-bench">
+                <p class="summary">Terminal-Bench is a robust benchmark platform specifically designed to rigorously evaluate the performance of AI agents within authentic terminal environments. It offers a comprehensive, reproducible task suite and an advanced execution harness, empowering agents to autonomously tackle complex, end-to-end real-world challenges, ranging from intricate code compilation and model training to sophisticated server setup. The platform fundamentally consists of two core components: a diverse dataset of tasks and an innovative execution harness that seamlessly connects large language models to a secure, sandboxed terminal environment. This design provides a practical and realistic evaluation framework for developers building LLM agents, benchmarking AI frameworks, and stress-testing advanced system-level reasoning capabilities. Currently in its beta phase with approximately 100 diverse tasks, Terminal-Bench is actively expanding to become a more comprehensive testbed for AI agents in text-based environments.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Terminal Environment</span><span>Benchmark</span><span>Large Language Model</span><span>Execution Harness</span><span>Sandbox Environment</span><span>Task Dataset</span><span>System-level Reasoning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/laude-institute/terminal-bench" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>bitnet.cpp</h2>
+                <span class="published-time">Published: 2025-06-03T06:14:20Z</span>
+                <img src="https://github.com/microsoft/BitNet/raw/main/assets/m2_performance.jpg" alt="bitnet.cpp">
+                <p class="summary">bitnet.cpp is the official inference framework from Microsoft for 1-bit Large Language Models (LLMs) like BitNet b1.58. It provides a suite of optimized kernels that enable fast and lossless inference of 1.58-bit models on both CPUs and GPUs. The framework achieves significant speedups, ranging from 1.37x to 5.07x on ARM CPUs and 2.37x to 6.17x on x86 CPUs, while also substantially reducing energy consumption. Notably, bitnet.cpp can run a 100B BitNet b1.58 model on a single CPU at speeds comparable to human reading, greatly enhancing the potential for deploying LLMs on local devices and marking a significant advancement in edge AI inference.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>1-bit LLM</span><span>Inference Framework</span><span>Model Optimization</span><span>CPU Inference</span><span>GPU Inference</span><span>Edge Computing</span><span>Energy Efficiency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/microsoft/BitNet" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Chain-of-Agents: End-to-End Agent Foundation Models via Multi-Agent
+  Distillation and Agentic RL</h2>
+                <span class="published-time">Published: 2025-08-06T17:01:02.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.13167.png" alt="Chain-of-Agents: End-to-End Agent Foundation Models via Multi-Agent
+  Distillation and Agentic RL">
+                <p class="summary">Recent advances in large language models (LLMs) and multi-agent systems have
+demonstrated remarkable capabilities in complex problem-solving tasks such as
+deep research, vibe coding, and mathematical reasoning. However, most existing
+multi-agent systems are built upon manual prompt/workflow engineering with
+sophisticated agent frameworks, making them computationally inefficient, less
+capable, and can not benefit from data-centric learning. In this work, we
+introduce Chain-of-Agents (CoA), a novel paradigm of LLM reasoning that enables
+native end-to-end complex problem-solving in the same way as a multi-agent
+system (i.e., multi-turn problem solving with multiple tools and multiple
+agents) within one model. In chain-of-agents problem-solving, the model
+dynamically activates different tool agents and role-playing agents to simulate
+multi-agent collaboration in an end-to-end fashion. To elicit end-to-end
+chain-of-agents problem-solving abilities in LLMs, we introduce a multi-agent
+distillation framework to distill state-of-the-art multi-agent systems into
+chain-of-agents trajectories for agentic supervised fine-tuning. We then use
+agentic reinforcement learning on verifiable agentic tasks to further improve
+the models' capabilities on chain-of-agents problem solving. We call the
+resulting models Agent Foundation Models (AFMs). Our empirical studies
+demonstrate that AFM establishes new state-of-the-art performance across
+diverse benchmarks in both web agent and code agent settings. We make the
+entire research, including the model weights, code for training and evaluation,
+and the training data, fully open-sourced, which offers a solid starting point
+for future research on agent models and agentic RL.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Chain-of-Agents</span><span>Agent Foundation Models</span><span>Multi-agent systems</span><span>Agentic Reinforcement Learning</span><span>Large Language Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.13167" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Prompt Orchestration Markup Language</h2>
+                <span class="published-time">Published: 2025-08-19T15:37:29.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.13948.png" alt="Prompt Orchestration Markup Language">
+                <p class="summary">Large Language Models (LLMs) require sophisticated prompting, yet current
+practices face challenges in structure, data integration, format sensitivity,
+and tooling. Existing methods lack comprehensive solutions for organizing
+complex prompts involving diverse data types (documents, tables, images) or
+managing presentation variations systematically. To address these gaps, we
+introduce POML (Prompt Orchestration Markup Language). POML employs
+component-based markup for logical structure (roles, tasks, examples),
+specialized tags for seamless data integration, and a CSS-like styling system
+to decouple content from presentation, reducing formatting sensitivity. It
+includes templating for dynamic prompts and a comprehensive developer toolkit
+(IDE support, SDKs) to improve version control and collaboration. We validate
+POML through two case studies demonstrating its impact on complex application
+integration (PomLink) and accuracy performance (TableQA), as well as a user
+study assessing its effectiveness in real-world development scenarios.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Prompt Orchestration</span><span>Markup Language</span><span>Data Integration</span><span>Developer Toolkit</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.13948" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Embodied-R1: Reinforced Embodied Reasoning for General Robotic
+  Manipulation</h2>
+                <span class="published-time">Published: 2025-08-19T16:50:01.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.13998.png" alt="Embodied-R1: Reinforced Embodied Reasoning for General Robotic
+  Manipulation">
+                <p class="summary">Generalization in embodied AI is hindered by the "seeing-to-doing gap," which
+stems from data scarcity and embodiment heterogeneity. To address this, we
+pioneer "pointing" as a unified, embodiment-agnostic intermediate
+representation, defining four core embodied pointing abilities that bridge
+high-level vision-language comprehension with low-level action primitives. We
+introduce Embodied-R1, a 3B Vision-Language Model (VLM) specifically designed
+for embodied reasoning and pointing. We use a wide range of embodied and
+general visual reasoning datasets as sources to construct a large-scale
+dataset, Embodied-Points-200K, which supports key embodied pointing
+capabilities. We then train Embodied-R1 using a two-stage Reinforced
+Fine-tuning (RFT) curriculum with a specialized multi-task reward design.
+Embodied-R1 achieves state-of-the-art performance on 11 embodied spatial and
+pointing benchmarks. Critically, it demonstrates robust zero-shot
+generalization by achieving a 56.2% success rate in the SIMPLEREnv and 87.5%
+across 8 real-world XArm tasks without any task-specific fine-tuning,
+representing a 62% improvement over strong baselines. Furthermore, the model
+exhibits high robustness against diverse visual disturbances. Our work shows
+that a pointing-centric representation, combined with an RFT training paradigm,
+offers an effective and generalizable pathway to closing the perception-action
+gap in robotics.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Embodied Reasoning</span><span>Robotic Manipulation</span><span>Vision-Language Model</span><span>Reinforced Fine-tuning</span><span>Pointing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>AI Agent</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.13998" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>A Stitch in Time Saves Nine: Proactive Self-Refinement for Language
+  Models</h2>
+                <span class="published-time">Published: 2025-08-18T13:07:21.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.12903.png" alt="A Stitch in Time Saves Nine: Proactive Self-Refinement for Language
+  Models">
+                <p class="summary">Recent advances in self-refinement have demonstrated significant potential
+for improving the outputs of large language models (LLMs) through iterative
+refinement. However, most existing self-refinement methods rely on a reactive
+process with a fixed number of iterations, making it difficult to determine the
+optimal timing and content of refinement based on the evolving generation
+context. Inspired by the way humans dynamically refine their thoughts during
+execution, we propose ProActive Self-Refinement (PASR), a novel method that
+enables LLMs to refine their outputs during the generation process. Unlike
+methods that regenerate entire responses, PASR proactively decides whether,
+when, and how to refine based on the model's internal state and evolving
+context. We conduct extensive experiments on a diverse set of 10 tasks to
+evaluate the effectiveness of PASR. Experimental results show that PASR
+significantly enhances problem-solving performance. In particular, on Qwen3-8B,
+PASR reduces average token consumption by 41.6 percent compared to standard
+generation, while also achieving an 8.2 percent improvement in accuracy. Our
+code and all baselines used in the paper are available in the GitHub.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Language Models</span><span>Self-Refinement</span><span>Proactive Self-Refinement</span><span>Large Language Models</span><span>Iterative Refinement</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.12903" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Training-Free Text-Guided Color Editing with Multi-Modal Diffusion
+  Transformer</h2>
+                <span class="published-time">Published: 2025-08-12T17:57:04.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.09131.png" alt="Training-Free Text-Guided Color Editing with Multi-Modal Diffusion
+  Transformer">
+                <p class="summary">Text-guided color editing in images and videos is a fundamental yet unsolved
+problem, requiring fine-grained manipulation of color attributes, including
+albedo, light source color, and ambient lighting, while preserving physical
+consistency in geometry, material properties, and light-matter interactions.
+Existing training-free methods offer broad applicability across editing tasks
+but struggle with precise color control and often introduce visual
+inconsistency in both edited and non-edited regions. In this work, we present
+ColorCtrl, a training-free color editing method that leverages the attention
+mechanisms of modern Multi-Modal Diffusion Transformers (MM-DiT). By
+disentangling structure and color through targeted manipulation of attention
+maps and value tokens, our method enables accurate and consistent color
+editing, along with word-level control of attribute intensity. Our method
+modifies only the intended regions specified by the prompt, leaving unrelated
+areas untouched. Extensive experiments on both SD3 and FLUX.1-dev demonstrate
+that ColorCtrl outperforms existing training-free approaches and achieves
+state-of-the-art performances in both edit quality and consistency.
+Furthermore, our method surpasses strong commercial models such as FLUX.1
+Kontext Max and GPT-4o Image Generation in terms of consistency. When extended
+to video models like CogVideoX, our approach exhibits greater advantages,
+particularly in maintaining temporal coherence and editing stability. Finally,
+our method also generalizes to instruction-based editing diffusion models such
+as Step1X-Edit and FLUX.1 Kontext dev, further demonstrating its versatility.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Text-guided color editing</span><span>Multi-Modal Diffusion Transformer</span><span>Training-free</span><span>Attention mechanisms</span><span>Image and video editing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Multimodal</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.09131" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Radiance Fields in XR: A Survey on How Radiance Fields are Envisioned
+  and Addressed for XR Research</h2>
+                <span class="published-time">Published: 2025-08-06T11:14:06.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.04326.png" alt="Radiance Fields in XR: A Survey on How Radiance Fields are Envisioned
+  and Addressed for XR Research">
+                <p class="summary">The development of radiance fields (RF), such as 3D Gaussian Splatting (3DGS)
+and Neural Radiance Fields (NeRF), has revolutionized interactive
+photorealistic view synthesis and presents enormous opportunities for XR
+research and applications. However, despite the exponential growth of RF
+research, RF-related contributions to the XR community remain sparse. To better
+understand this research gap, we performed a systematic survey of current RF
+literature to analyze (i) how RF is envisioned for XR applications, (ii) how
+they have already been implemented, and (iii) the remaining research gaps. We
+collected 365 RF contributions related to XR from computer vision, computer
+graphics, robotics, multimedia, human-computer interaction, and XR communities,
+seeking to answer the above research questions. Among the 365 papers, we
+performed an analysis of 66 papers that already addressed a detailed aspect of
+RF research for XR. With this survey, we extended and positioned XR-specific RF
+research topics in the broader RF research field and provide a helpful resource
+for the XR community to navigate within the rapid development of RF research.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Radiance Fields</span><span>XR</span><span>View Synthesis</span><span>3D Gaussian Splatting</span><span>Survey</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Generative AI</span><span>Robotics</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.04326" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
