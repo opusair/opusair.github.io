@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-08-21</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: 2px solid transparent;
+            font-size: 0.9em;
+        }
+
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .language-switch a.active {
+            background: var(--secondary-color);
+            border-color: var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .language-switch {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../">中文</a>
+                <a href="./" class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-08-21</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Twitter</h2>
+
+            <article class="item-card">
+                <h2>Cohere_Labs_Launches Command A Reasoning Model</h2>
+                <span class="published-time">Published: 2025-08-21T17:05:49.000Z</span>
+                <img src="../screenshot/twitter/Cohere_Labs_1958576284763611322.png" alt="Cohere_Labs_Launches Command A Reasoning Model">
+                <p class="summary">Cohere Labs has launched Command A Reasoning, its most advanced model specifically designed for complex enterprise reasoning tasks such as deep research and data analysis. This new model aims to enhance AI capabilities for businesses. Demonstrating its commitment to the research ecosystem, Cohere Labs is also releasing the model weights, fostering further development and application of AI technology.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Command A Reasoning</span><span>Cohere Labs</span><span>Enterprise AI</span><span>Reasoning Model</span><span>Model Release</span><span>Open Source</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Product Launch</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/Cohere_Labs/status/1958576284763611322" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Google_Unveils Pixel 10 Series, Pixel Watch 4, and New AI Products</h2>
+                <span class="published-time">Published: 2025-08-21T20:17:17.000Z</span>
+                <img src="../screenshot/twitter/Google_1958624466893770808.png" alt="Google_Unveils Pixel 10 Series, Pixel Watch 4, and New AI Products">
+                <p class="summary">Google has unveiled its Pixel 10 series, featuring the Tensor G5 chip and Gemini Nano model, enhancing AI capabilities and camera systems with 100x zoom and AI photography assistance. The launch also includes the Pixel Watch 4, offering standalone satellite communication and on-wrist Gemini, alongside Pixel Buds 2a with Active Noise Cancellation. Furthermore, Google introduced AI health coaching, Magic Cue, and Gemini for Home, comprehensively improving user experience across its ecosystem.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Google</span><span>Pixel 10</span><span>Pixel Watch 4</span><span>Artificial Intelligence</span><span>Gemini</span><span>Product Launch</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Product Launch</span><span>Artificial Intelligence</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/Google/status/1958624466893770808" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>googleaidevs_Launches Open-Source AI Video Studio Template</h2>
+                <span class="published-time">Published: 2025-08-21T18:37:18.000Z</span>
+                <img src="../screenshot/twitter/googleaidevs_1958599306472206349.png" alt="googleaidevs_Launches Open-Source AI Video Studio Template">
+                <p class="summary">Google AI Developers has released an open-source AI video studio template built with Next.js, integrating Veo 3 and Imagen 4 technologies from the Gemini API. This tool enables users to generate text-to-video and image-to-video content, as well as perform video editing directly within the browser, aiming to streamline the AI video creation process.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Video Studio</span><span>Open Source Project</span><span>Gemini API</span><span>Veo 3</span><span>Imagen 4</span><span>Video Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Open Source</span><span>Product Launch</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/googleaidevs/status/1958599306472206349" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>weaviate_io_Weaviate Open-Sources Elysia: Explainable Agentic RAG Framework with Real-time Decision Process Visualization</h2>
+                <span class="published-time">Published: 2025-08-21T16:35:02.000Z</span>
+                <img src="../screenshot/twitter/weaviate_io_1958568536420299184.png" alt="weaviate_io_Weaviate Open-Sources Elysia: Explainable Agentic RAG Framework with Real-time Decision Process Visualization">
+                <p class="summary">Weaviate has open-sourced Elysia, an innovative agentic RAG AI framework designed for explainability. Unlike traditional black-box AI systems, Elysia utilizes a decision tree architecture that allows real-time visualization of the AI's decision-making process. Its agents evaluate environments, consider actions, and output reasoning, maintaining global context awareness. The framework features advanced error handling, intelligently recognizing mismatches or irrelevant results and retrying with different approaches. Users can observe the entire decision tree traversal and LLM's reasoning within each node, significantly enhancing transparency and debuggability. Elysia is open-source and pip-installable, making it easy to adopt and customize.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Weaviate</span><span>Elysia</span><span>AI Agent</span><span>RAG</span><span>Explainable AI</span><span>Open Source</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Open Source</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/weaviate_io/status/1958568536420299184" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>ErnestRyu_GPT-5-pro Proves New Math in Convex Optimization, Drawing Attention</h2>
+                <span class="published-time">Published: 2025-08-21T06:00:48.000Z</span>
+                <img src="../screenshot/twitter/ErnestRyu_1958408925864403068.png" alt="ErnestRyu_GPT-5-pro Proves New Math in Convex Optimization, Drawing Attention">
+                <p class="summary">Sebastien Bubeck claims that GPT-5-pro successfully proved a new and superior mathematical bound within a convex optimization paper, a result he personally verified as correct. Ernest Ryu, a prominent mathematics researcher specializing in convex optimization, expressed significant excitement and admiration for this achievement, acknowledging its direct relevance to his own field. However, he also indicated a nuanced perspective on the implications of such AI capabilities. This development underscores the profound and evolving potential of large language models to contribute to advanced and complex mathematical research.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>GPT-5-pro</span><span>Convex Optimization</span><span>Mathematical Proof</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Research Progress</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Research Progress</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/ErnestRyu/status/1958408925864403068" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">wechat</h2>
+
+            <article class="item-card">
+                <h2>AI Agents Enter Investment Sector: QuantumBit Salon to Explore Future of Fintech</h2>
+                <span class="published-time">Published: 2025-08-21T04:20:33.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_Xraa8M4dB9DxtF7_5lIN-A.png" alt="AI Agents Enter Investment Sector: QuantumBit Salon to Explore Future of Fintech">
+                <p class="summary">This article explores the burgeoning potential of AI Agents in the financial investment sector, highlighting their capacity to potentially revolutionize traditional investment approaches. It also raises critical questions regarding AI Agents' ability to genuinely comprehend market dynamics, accurately predict trends, and effectively replace professional human investment advisors. To delve deeper into these pivotal discussions, QuantumBit AI Salon is set to host an event on August 22nd, featuring Vakee Lai, Founder and CEO of Singaporean fintech company RockFlow. Vakee brings over 12 years of extensive experience in early-stage investment, fintech product design, and quantitative trading across global high-tech and AI domains. His impressive track record includes leading investments in numerous prominent AI companies, achieving significant returns. Vakee will offer a unique integrated perspective, combining product, capital, and technology insights, to analyze the future development and entrepreneurial opportunities for AI Agents within the investment landscape.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Investment</span><span>Fintech</span><span>Quantitative Trading</span><span>AI Entrepreneurship</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/Xraa8M4dB9DxtF7_5lIN-A" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>GPT-5 Pro Conducts Independent Mathematical Research! Provides More Precise Bounds After Reading Papers, OpenAI President: This is a Sign of Life</h2>
+                <span class="published-time">Published: 2025-08-21T04:20:33.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_NEdGzIbYYa08piUXq1gFHA.png" alt="GPT-5 Pro Conducts Independent Mathematical Research! Provides More Precise Bounds After Reading Papers, OpenAI President: This is a Sign of Life">
+                <p class="summary">OpenAI's GPT-5 Pro has demonstrated a remarkable capability for independent mathematical research. After analyzing a paper on convex optimization, the model successfully refined a boundary problem, providing a more precise threshold and an original proof that surpassed the initial findings of the human-authored paper. While human researchers later updated their work, presenting an even tighter bound, GPT-5 Pro's unique and distinct proof methodology underscores its genuine capacity for autonomous exploration and discovery, rather than mere replication. OpenAI President Brockman lauded this achievement as a "sign of life," emphasizing the profound implications of AI's advancement in autonomous reasoning and scientific discovery. This breakthrough has ignited widespread discussion and excitement across the tech community, highlighting AI's rapidly evolving role in tackling complex scientific challenges, particularly those demanding abstract mathematical reasoning, novel problem-solving approaches, and the generation of rigorous proofs. It signifies a pivotal step towards more self-sufficient AI systems in research.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>GPT-5 Pro</span><span>Mathematical Research</span><span>Convex Optimization</span><span>Autonomous Exploration</span><span>Artificial Intelligence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/NEdGzIbYYa08piUXq1gFHA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>ByteDance Open-Sources First Large Model Seed-OSS, Surpassing Qwen</h2>
+                <span class="published-time">Published: 2025-08-21T00:52:20.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_ke03ETrnm2B-wFtG5HWlnQ.png" alt="ByteDance Open-Sources First Large Model Seed-OSS, Surpassing Qwen">
+                <p class="summary">ByteDance's Seed team has officially open-sourced its inaugural large language model, Seed-OSS-36B, a 36-billion-parameter model. This new offering exhibits robust capabilities in long-context processing, complex reasoning, AI agent functionality, and general-purpose tasks, with notable optimizations for international applications. Remarkably, despite being trained on a relatively modest 12T of data, Seed-OSS has achieved outstanding performance across numerous mainstream benchmarks. Specifically, its Base-woSyn version has surpassed models like Qwen3-30B, and the Instruct version has demonstrated superior results compared to similar offerings from OpenAI and Google. A distinctive feature of Seed-OSS is its innovative "thinking budget" mechanism, which empowers users to precisely control the model's reasoning depth and computational expenditure. Released under the permissive Apache-2.0 license for commercial use, Seed-OSS signifies ByteDance's strategic and impactful contribution to the global open-source large model ecosystem.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Seed-OSS</span><span>ByteDance</span><span>Large Language Model</span><span>Open Source</span><span>AI Agent</span><span>Thinking Budget</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Artificial Intelligence</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/ke03ETrnm2B-wFtG5HWlnQ" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Project AIRI</h2>
+                <span class="published-time">Published: 2025-08-21T14:14:16Z</span>
+                <img src="https://raw.githubusercontent.com/moeru-ai/airi/main/docs/content/public/banner-light-1280x640.avif" alt="Project AIRI">
+                <p class="summary">Project AIRI aims to recreate AI virtual characters like Neuro-sama, building a real-time interactive digital companion that can seamlessly integrate into users' daily lives. Leveraging advanced Web technologies such as WebGPU, WebAudio, Web Workers, and WebAssembly, the project supports both VRM and Live2D models, ensuring broad compatibility. It operates efficiently across modern browsers, mobile devices (via PWA), and desktop environments, with robust native acceleration capabilities through NVIDIA CUDA and Apple Metal, thanks to projects like Candle. AIRI is designed to integrate with a wide array of large language model APIs, including OpenRouter, OpenAI, and Anthropic Claude, facilitating sophisticated interactions. Its core functionalities include enabling AI characters to play games like Minecraft and Factorio, engage in real-time voice conversations, and provide a truly immersive virtual interaction experience. This project is dedicated to empowering users with their own personalized digital life, offering unparalleled flexibility and control over their AI companions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI VTuber</span><span>Digital Companion</span><span>Large Language Model</span><span>Web Technologies</span><span>Real-time Interaction</span><span>Virtual Human</span><span>Game Integration</span><span>AI Agent</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/moeru-ai/airi" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Sim: Build and deploy AI agent workflows in minutes.</h2>
+                <span class="published-time">Published: 2025-08-22T04:44:28Z</span>
+                <img src="https://raw.githubusercontent.com/simstudioai/sim/main/apps/sim/public/static/demo.gif" alt="Sim: Build and deploy AI agent workflows in minutes.">
+                <p class="summary">Sim is a platform designed for rapidly building and deploying AI agent workflows. It supports both cloud-hosted and various self-hosted deployment options, including NPM package, Docker Compose, Dev Containers, and manual setup. The project leverages a modern tech stack including Next.js, Bun, and PostgreSQL with pgvector extension, offering features like AI embeddings, knowledge bases, and semantic search. Sim aims to simplify AI application development, supporting integration with local large language models (e.g., Ollama), providing developers with a flexible and efficient solution for constructing AI agents.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Workflow</span><span>Self-hosted</span><span>Docker</span><span>PostgreSQL</span><span>Vector Database</span><span>Large Language Model</span><span>Ollama</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/simstudioai/sim" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>🔥 Firecrawl</h2>
+                <span class="published-time">Published: 2025-08-21T16:17:13Z</span>
+                <img src="https://raw.githubusercontent.com/firecrawl/firecrawl/main/img/firecrawl_logo.png" alt="🔥 Firecrawl">
+                <p class="summary">Firecrawl is an API service designed to empower AI applications with clean data from any website. It offers advanced web scraping, crawling, and data extraction capabilities, converting URL content into LLM-ready Markdown or structured data, and supporting all accessible subpages without requiring a sitemap. Its technical features include handling proxies, anti-bot mechanisms, dynamic content rendering, outputting various LLM-ready formats (e.g., Markdown, HTML, screenshots, structured data), and providing customizability for crawl depth, media parsing, and page interaction actions. Firecrawl aims to deliver reliable data acquisition solutions and supports batch processing, serving as a powerful tool for building the data foundation of AI applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Web Scraping</span><span>Data Extraction</span><span>Web Crawling</span><span>API Service</span><span>LLM Data</span><span>AI Applications</span><span>Structured Data</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/firecrawl/firecrawl" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>DuPO: Enabling Reliable LLM Self-Verification via Dual Preference
+  Optimization</h2>
+                <span class="published-time">Published: 2025-08-20T06:31:18.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.14460.png" alt="DuPO: Enabling Reliable LLM Self-Verification via Dual Preference
+  Optimization">
+                <p class="summary">We present DuPO, a dual learning-based preference optimization framework that
+generates annotation-free feedback via a generalized duality. DuPO addresses
+two key limitations: Reinforcement Learning with Verifiable Rewards (RLVR)'s
+reliance on costly labels and applicability restricted to verifiable tasks, and
+traditional dual learning's restriction to strictly dual task pairs (e.g.,
+translation and back-translation). Specifically, DuPO decomposes a primal
+task's input into known and unknown components, then constructs its dual task
+to reconstruct the unknown part using the primal output and known information
+(e.g., reversing math solutions to recover hidden variables), broadening
+applicability to non-invertible tasks. The quality of this reconstruction
+serves as a self-supervised reward to optimize the primal task, synergizing
+with LLMs' ability to instantiate both tasks via a single model. Empirically,
+DuPO achieves substantial gains across diverse tasks: it enhances the average
+translation quality by 2.13 COMET over 756 directions, boosts the mathematical
+reasoning accuracy by an average of 6.4 points on three challenge benchmarks,
+and enhances performance by 9.3 points as an inference-time reranker (trading
+computation for accuracy). These results position DuPO as a scalable, general,
+and annotation-free paradigm for LLM optimization.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM</span><span>Dual Preference Optimization</span><span>Self-verification</span><span>Dual Learning</span><span>Annotation-free</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.14460" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>FutureX: An Advanced Live Benchmark for LLM Agents in Future Prediction</h2>
+                <span class="published-time">Published: 2025-08-16T08:54:08.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.11987.png" alt="FutureX: An Advanced Live Benchmark for LLM Agents in Future Prediction">
+                <p class="summary">Future prediction is a complex task for LLM agents, requiring a high level of
+analytical thinking, information gathering, contextual understanding, and
+decision-making under uncertainty. Agents must not only gather and interpret
+vast amounts of dynamic information but also integrate diverse data sources,
+weigh uncertainties, and adapt predictions based on emerging trends, just as
+human experts do in fields like politics, economics, and finance. Despite its
+importance, no large-scale benchmark exists for evaluating agents on future
+prediction, largely due to challenges in handling real-time updates and
+retrieving timely, accurate answers. To address this, we introduce
+FutureX, a dynamic and live evaluation benchmark specifically
+designed for LLM agents performing future prediction tasks. FutureX is the
+largest and most diverse live benchmark for future prediction, supporting
+real-time daily updates and eliminating data contamination through an automated
+pipeline for question gathering and answer collection. We evaluate 25 LLM/agent
+models, including those with reasoning, search capabilities, and integration of
+external tools such as the open-source Deep Research Agent and closed-source
+Deep Research models. This comprehensive evaluation assesses agents' adaptive
+reasoning and performance in dynamic environments. Additionally, we provide
+in-depth analyses of agents' failure modes and performance pitfalls in
+future-oriented tasks, including the vulnerability to fake web pages and the
+temporal validity. Our goal is to establish a dynamic, contamination-free
+evaluation standard that drives the development of LLM agents capable of
+performing at the level of professional human analysts in complex reasoning and
+predictive thinking.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM Agents</span><span>Future Prediction</span><span>Live Benchmark</span><span>Evaluation</span><span>Dynamic Environment</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.11987" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MeshCoder: LLM-Powered Structured Mesh Code Generation from Point Clouds</h2>
+                <span class="published-time">Published: 2025-08-20T17:50:15.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.14879.png" alt="MeshCoder: LLM-Powered Structured Mesh Code Generation from Point Clouds">
+                <p class="summary">Reconstructing 3D objects into editable programs is pivotal for applications
+like reverse engineering and shape editing. However, existing methods often
+rely on limited domain-specific languages (DSLs) and small-scale datasets,
+restricting their ability to model complex geometries and structures. To
+address these challenges, we introduce MeshCoder, a novel framework that
+reconstructs complex 3D objects from point clouds into editable Blender Python
+scripts. We develop a comprehensive set of expressive Blender Python APIs
+capable of synthesizing intricate geometries. Leveraging these APIs, we
+construct a large-scale paired object-code dataset, where the code for each
+object is decomposed into distinct semantic parts. Subsequently, we train a
+multimodal large language model (LLM) that translates 3D point cloud into
+executable Blender Python scripts. Our approach not only achieves superior
+performance in shape-to-code reconstruction tasks but also facilitates
+intuitive geometric and topological editing through convenient code
+modifications. Furthermore, our code-based representation enhances the
+reasoning capabilities of LLMs in 3D shape understanding tasks. Together, these
+contributions establish MeshCoder as a powerful and flexible solution for
+programmatic 3D shape reconstruction and understanding.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Point Clouds</span><span>3D Reconstruction</span><span>Large Language Models</span><span>Code Generation</span><span>Multimodal</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Multimodal</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.14879" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Tinker: Diffusion's Gift to 3D--Multi-View Consistent Editing From
+  Sparse Inputs without Per-Scene Optimization</h2>
+                <span class="published-time">Published: 2025-08-20T16:02:59.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.14811.png" alt="Tinker: Diffusion's Gift to 3D--Multi-View Consistent Editing From
+  Sparse Inputs without Per-Scene Optimization">
+                <p class="summary">We introduce Tinker, a versatile framework for high-fidelity 3D editing that
+operates in both one-shot and few-shot regimes without any per-scene
+finetuning. Unlike prior techniques that demand extensive per-scene
+optimization to ensure multi-view consistency or to produce dozens of
+consistent edited input views, Tinker delivers robust, multi-view consistent
+edits from as few as one or two images. This capability stems from repurposing
+pretrained diffusion models, which unlocks their latent 3D awareness. To drive
+research in this space, we curate the first large-scale multi-view editing
+dataset and data pipeline, spanning diverse scenes and styles. Building on this
+dataset, we develop our framework capable of generating multi-view consistent
+edited views without per-scene training, which consists of two novel
+components: (1) Referring multi-view editor: Enables precise, reference-driven
+edits that remain coherent across all viewpoints. (2) Any-view-to-video
+synthesizer: Leverages spatial-temporal priors from video diffusion to perform
+high-quality scene completion and novel-view generation even from sparse
+inputs. Through extensive experiments, Tinker significantly reduces the barrier
+to generalizable 3D content creation, achieving state-of-the-art performance on
+editing, novel-view synthesis, and rendering enhancement tasks. We believe that
+Tinker represents a key step towards truly scalable, zero-shot 3D editing.
+Project webpage: https://aim-uofa.github.io/Tinker</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>3D editing</span><span>Diffusion models</span><span>Multi-view consistency</span><span>Sparse inputs</span><span>Novel-view synthesis</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Generative AI</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.14811" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MCP-Universe: Benchmarking Large Language Models with Real-World Model
+  Context Protocol Servers</h2>
+                <span class="published-time">Published: 2025-08-20T13:28:58.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.14704.png" alt="MCP-Universe: Benchmarking Large Language Models with Real-World Model
+  Context Protocol Servers">
+                <p class="summary">The Model Context Protocol has emerged as a transformative standard for
+connecting large language models to external data sources and tools, rapidly
+gaining adoption across major AI providers and development platforms. However,
+existing benchmarks are overly simplistic and fail to capture real application
+challenges such as long-horizon reasoning and large, unfamiliar tool spaces. To
+address this critical gap, we introduce MCP-Universe, the first comprehensive
+benchmark specifically designed to evaluate LLMs in realistic and hard tasks
+through interaction with real-world MCP servers. Our benchmark encompasses 6
+core domains spanning 11 different MCP servers: Location Navigation, Repository
+Management, Financial Analysis, 3D Design, Browser Automation, and Web
+Searching. To ensure rigorous evaluation, we implement execution-based
+evaluators, including format evaluators for agent format compliance, static
+evaluators for time-invariant content matching, and dynamic evaluators that
+automatically retrieve real-time ground truth for temporally sensitive tasks.
+Through extensive evaluation of leading LLMs, we find that even SOTA models
+such as GPT-5 (43.72%), Grok-4 (33.33%) and Claude-4.0-Sonnet (29.44%) exhibit
+significant performance limitations. In addition, our benchmark poses a
+significant long-context challenge for LLM agents, as the number of input
+tokens increases rapidly with the number of interaction steps. Moreover, it
+introduces an unknown-tools challenge, as LLM agents often lack familiarity
+with the precise usage of the MCP servers. Notably, enterprise-level agents
+like Cursor cannot achieve better performance than standard ReAct frameworks.
+Beyond evaluation, we open-source our extensible evaluation framework with UI
+support, enabling researchers and practitioners to seamlessly integrate new
+agents and MCP servers while fostering innovation in the rapidly evolving MCP
+ecosystem.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Model Context Protocol</span><span>Benchmarking</span><span>AI Agents</span><span>Evaluation Framework</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.14704" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>From AI for Science to Agentic Science: A Survey on Autonomous
+  Scientific Discovery</h2>
+                <span class="published-time">Published: 2025-08-18T05:25:54.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.14111.png" alt="From AI for Science to Agentic Science: A Survey on Autonomous
+  Scientific Discovery">
+                <p class="summary">Artificial intelligence (AI) is reshaping scientific discovery, evolving from
+specialized computational tools into autonomous research partners. We position
+Agentic Science as a pivotal stage within the broader AI for Science paradigm,
+where AI systems progress from partial assistance to full scientific agency.
+Enabled by large language models (LLMs), multimodal systems, and integrated
+research platforms, agentic AI shows capabilities in hypothesis generation,
+experimental design, execution, analysis, and iterative refinement -- behaviors
+once regarded as uniquely human. This survey provides a domain-oriented review
+of autonomous scientific discovery across life sciences, chemistry, materials
+science, and physics. We unify three previously fragmented perspectives --
+process-oriented, autonomy-oriented, and mechanism-oriented -- through a
+comprehensive framework that connects foundational capabilities, core
+processes, and domain-specific realizations. Building on this framework, we (i)
+trace the evolution of AI for Science, (ii) identify five core capabilities
+underpinning scientific agency, (iii) model discovery as a dynamic four-stage
+workflow, (iv) review applications across the above domains, and (v) synthesize
+key challenges and future opportunities. This work establishes a
+domain-oriented synthesis of autonomous scientific discovery and positions
+Agentic Science as a structured paradigm for advancing AI-driven research.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Agentic Science</span><span>Autonomous Scientific Discovery</span><span>AI for Science</span><span>Large Language Models</span><span>Scientific Agency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.14111" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
