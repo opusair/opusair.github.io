@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-08-27</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: 2px solid transparent;
+            font-size: 0.9em;
+        }
+
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .language-switch a.active {
+            background: var(--secondary-color);
+            border-color: var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .language-switch {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../">中文</a>
+                <a href="./" class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-08-27</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Twitter</h2>
+
+            <article class="item-card">
+                <h2>ammar__khairi_New LLM Test-Time Compute Optimization Method to Appear at EMNLP2025</h2>
+                <span class="published-time">Published: 2025-08-27T18:03:47.000Z</span>
+                <img src="../screenshot/twitter/ammar__khairi_1960765201311010844.png" alt="ammar__khairi_New LLM Test-Time Compute Optimization Method to Appear at EMNLP2025">
+                <p class="summary">Ammar Khairi's team announced their research on scaling test-time compute for Large Language Models (LLMs), dubbed the "LLMonade recipe," has been accepted by the EMNLP 2025 Main Conference. This method combines strategic sampling with novel selection to significantly boost LLM inference performance without requiring extra training or special reward models, aiming for more efficient resource utilization and superior results.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM</span><span>Inference Optimization</span><span>EMNLP</span><span>Sampling</span><span>Large Language Model</span><span>Performance Enhancement</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Large Language Model</span><span>Research Progress</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/ammar__khairi/status/1960765201311010844" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>_KarenHao_Teen Suicide Linked to ChatGPT Prompts Reflection</h2>
+                <span class="published-time">Published: 2025-08-27T12:47:57.000Z</span>
+                <img src="../screenshot/twitter/_KarenHao_1960685718621315482.png" alt="_KarenHao_Teen Suicide Linked to ChatGPT Prompts Reflection">
+                <p class="summary">Renowned journalist Karen Hao highlights the disturbing case of teenager Adam Raine, who died by suicide after prolonged engagement with ChatGPT. She expresses profound sorrow over the incident, recalling artist Hito Steyerl's insights that such tragedies are not inevitable. The tweet prompts deep reflection on AI ethics, the impact of AI technology on user mental health, and platform responsibility.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>ChatGPT</span><span>Suicide</span><span>AI Ethics</span><span>Mental Health</span><span>Teenager</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Industry News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/_KarenHao/status/1960685718621315482" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AndrewYNg_New Course on Agentic Knowledge Graph Construction</h2>
+                <span class="published-time">Published: 2025-08-27T15:51:42.000Z</span>
+                <img src="../screenshot/twitter/AndrewYNg_1960731961494004077.png" alt="AndrewYNg_New Course on Agentic Knowledge Graph Construction">
+                <p class="summary">Andrew Ng announced a new DeepLearning.AI short course, "Agentic Knowledge Graph Construction," taught by a Neo4j expert. The course focuses on leveraging teams of AI agents to automate the building of knowledge graphs, extracting entities and relationships from unstructured data, performing deduplication, fact-checking, and committing them to a graph database. This significantly enhances the accuracy of RAG systems, transforming fragmented information into queryable business intelligence, particularly beneficial for high-stakes applications where precision is crucial.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Knowledge Graph</span><span>AI Agent</span><span>RAG</span><span>DeepLearning.AI</span><span>Graph Database</span><span>Information Retrieval</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/AndrewYNg/status/1960731961494004077" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>jaseweston_Introduces StepWiser: Reframing Stepwise Reward Modeling as a Reasoning Task</h2>
+                <span class="published-time">Published: 2025-08-27T02:27:59.000Z</span>
+                <img src="../screenshot/twitter/jaseweston_1960529697055355037.png" alt="jaseweston_Introduces StepWiser: Reframing Stepwise Reward Modeling as a Reasoning Task">
+                <p class="summary">Jason Weston introduced StepWiser, a new research approach that reframes stepwise reward modeling as a reasoning task, generating Chain-of-Thought (CoT) and judgments. Trained by Reinforcement Learning using relative outcomes of rollouts, StepWiser achieves state-of-the-art performance on ProcessBench. It also demonstrates improvements in policy at train time and enhances inference-time search. This work offers a novel perspective on reward modeling and AI reasoning.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>StepWiser</span><span>Reward Modeling</span><span>Reasoning Task</span><span>Reinforcement Learning</span><span>ProcessBench</span><span>Chain-of-Thought</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Research Progress</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/jaseweston/status/1960529697055355037" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>fchollet_A New Method to Distinguish Model Memorization from Reasoning</h2>
+                <span class="published-time">Published: 2025-08-27T20:56:33.000Z</span>
+                <img src="../screenshot/twitter/fchollet_1960808676262076629.png" alt="fchollet_A New Method to Distinguish Model Memorization from Reasoning">
+                <p class="summary">Prominent AI researcher François Chollet proposes a simple method to distinguish whether a model's correct answer stems from memorization or genuine reasoning. He suggests that when a model provides a correct answer to a reasoning question, one can test its true understanding by subtly tweaking the question. If the modified question requires the model to reason and adapt to produce a new answer, but the model still yields the original answer, it strongly indicates that its response was based on rote memorization rather than true reasoning ability. This practical method offers a valuable approach to evaluating the deeper cognitive capabilities of AI models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Model Reasoning</span><span>Model Memorization</span><span>AI Evaluation</span><span>Machine Learning</span><span>Deep Learning</span><span>Chollet</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Research Progress</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/fchollet/status/1960808676262076629" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">wechat</h2>
+
+            <article class="item-card">
+                <h2>Google's "Strongest Image Model" Sweeps All! 3 Cents Per Image Stuns OpenAI, Photoshop May Cease to Exist</h2>
+                <span class="published-time">Published: 2025-08-27T14:01:16.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_z_eUXxh-SXQyqx-999kSbQ.png" alt="Google's "Strongest Image Model" Sweeps All! 3 Cents Per Image Stuns OpenAI, Photoshop May Cease to Exist">
+                <p class="summary">Google has officially launched its top-tier image generation and editing model, Gemini 2.5 Flash Image, also known as nano-banana. This model has been hailed as the "strongest image model" after dominating LMArena blind tests with the largest historical lead. Its core capabilities include maintaining character consistency, advanced prompt-based image editing, leveraging native world knowledge, and multi-image fusion. Offering high-quality image generation and editing at an exceptionally low cost—approximately $0.039 per image—it significantly undercuts competitors like OpenAI. This breakthrough is poised to revolutionize traditional image processing software such as Adobe Photoshop, potentially rendering professional image editing roles obsolete. Furthermore, its advanced features and cost-effectiveness are expected to profoundly impact workflows in industries like advertising and film production, enabling new levels of creative control and efficiency.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Gemini 2.5 Flash Image</span><span>Image Generation</span><span>Image Editing</span><span>AI Model</span><span>Cost-effectiveness</span><span>Google</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Computer Vision</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/z_eUXxh-SXQyqx-999kSbQ" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Why PPO Consistently Outperforms Policy Gradient? The Answer Lies in This 'Golden Clipping' Strategy</h2>
+                <span class="published-time">Published: 2025-08-27T14:01:16.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_0SB5uhT4YE-vGSwm_FLFVw.png" alt="Why PPO Consistently Outperforms Policy Gradient? The Answer Lies in This 'Golden Clipping' Strategy">
+                <p class="summary">The Proximal Policy Optimization (PPO) algorithm has emerged as a highly effective solution in reinforcement learning, successfully overcoming the inherent instability of traditional Policy Gradient methods and the computational complexity associated with TRPO. PPO's core innovation lies in its unique "Clipping" mechanism, which judiciously limits the magnitude of policy updates, thereby guaranteeing a stable and secure learning process. Furthermore, PPO leverages advanced techniques such as Generalized Advantage Estimation (GAE) for more accurate value assessment, incorporates an entropy bonus to encourage exploration, and allows for multiple iterations of data utilization, all of which collectively boost its sample efficiency and overall robustness. This remarkable ability to strike an optimal balance among stability, ease of implementation, and sample efficiency has propelled PPO to become one of the most widely adopted and influential reinforcement learning algorithms across both academic research and industrial applications. It undeniably marks a pivotal advancement in the trajectory of policy gradient algorithms.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>PPO</span><span>Reinforcement Learning</span><span>Policy Gradient</span><span>Clipping Mechanism</span><span>Stability</span><span>Sample Efficiency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/0SB5uhT4YE-vGSwm_FLFVw" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OmniHuman-1.5: A New Video Generation Paradigm for 'Thinking' Digital Humans</h2>
+                <span class="published-time">Published: 2025-08-27T12:07:04.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_X4aCSgG3qhw_ApIPvR4NnQ.png" alt="OmniHuman-1.5: A New Video Generation Paradigm for 'Thinking' Digital Humans">
+                <p class="summary">Existing digital human models, while capable of generating fluid animations, often fall short in capturing the essence of characters due to a lack of deep understanding of emotions, intentions, and context. ByteDance's OmniHuman-1.5 framework addresses this limitation by aiming to produce physically plausible, semantically coherent, and highly expressive character animations. Its core innovations lie in two aspects: first, leveraging Multi-modal Large Language Models (MLLM) to generate structured conditional text representations, providing high-level semantic guidance that transcends simple rhythm synchronization; second, introducing a specialized Multi-modal DiT architecture with a novel Pseudo Last Frame design. This design facilitates efficient multi-modal signal fusion and mitigates cross-modal conflicts, enabling the model to accurately comprehend the joint semantics of audio, image, and text. The framework employs a dual-system simulation approach, combining a deliberative System 2 (planning via MLLM Agent) with a reactive System 1 (rendering via MMDiT network), ensuring high consistency across character, scene, and language content, thereby moving towards digital humans with 'thinking' capabilities.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Digital Human</span><span>Video Generation</span><span>Multimodal Large Model</span><span>AI Agent</span><span>DiT Architecture</span><span>Pseudo Last Frame</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Multimodal</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/X4aCSgG3qhw_ApIPvR4NnQ" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Princeton, Tsinghua, and 20 Other Universities Jointly Release Survey on 'Self-Evolving' Agents</h2>
+                <span class="published-time">Published: 2025-08-27T10:53:02.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_L8cv1IARvsIA0gSu8wlUFA.png" alt="Princeton, Tsinghua, and 20 Other Universities Jointly Release Survey on 'Self-Evolving' Agents">
+                <p class="summary">A joint survey paper by 20 leading universities, including Princeton and Tsinghua, introduces the concept of "self-evolving agents," emphasizing the critical role of adaptability and adjustment for AI systems in dynamic environments to achieve Artificial General Intelligence (AGI). The review proposes a four-dimensional analytical framework—What, When, How, and Where to evolve—systematically dissecting the evolvable components of agents, including model parameters, context, tools, and architecture. The paper elaborates on two evolution timings: in-task immediate evolution and post-task retrospective learning, alongside three driving forces: feedback, demonstration, and population-based evolution. Self-evolving agents show broad application prospects as general digital assistants and in specialized domains like coding, finance, and healthcare. Future evaluation metrics must focus on adaptability, knowledge retention, generalization, and safety efficiency. This research signals that the next generation of AI will be "intelligent life" capable of co-growth with users, moving beyond static tools.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Self-Evolving Agents</span><span>Large Language Models</span><span>Adaptability</span><span>Evolution Framework</span><span>Reinforcement Learning</span><span>Multi-Agent Systems</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/L8cv1IARvsIA0gSu8wlUFA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Breaking Bottlenecks, Enabling RAG to Reason: USTC, Zhipu AI, and Others Release Reasoning Retrieval Framework BGE-Reasoner</h2>
+                <span class="published-time">Published: 2025-08-27T06:24:35.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_hDBJ998nc9kO6vnTpx9exA.png" alt="Breaking Bottlenecks, Enabling RAG to Reason: USTC, Zhipu AI, and Others Release Reasoning Retrieval Framework BGE-Reasoner">
+                <p class="summary">A joint team from USTC, Zhipu AI, and other institutions has released BGE-Reasoner, an innovative reasoning retrieval framework designed to overcome the critical bottleneck of reasoning-intensive information retrieval in the advancement of RAG and AI Agents. This end-to-end solution significantly enhances search engine performance in complex query scenarios through a modular three-stage framework (Rewriter, Embedder, Reranker), leveraging large language models for high-quality synthetic training data, and empowering the Reranker with reinforcement learning. BGE-Reasoner has achieved a new state-of-the-art score on the authoritative BRIGHT benchmark, surpassing existing models. This breakthrough provides a novel paradigm for advancing Retrieval-Augmented Generation (RAG) in complex reasoning tasks and signals a crucial direction for future Agent Search development. The project plans to open-source its model weights and training code to further promote research and application in this field.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reasoning Retrieval</span><span>RAG</span><span>AI Agent</span><span>BGE-Reasoner</span><span>Reinforcement Learning</span><span>Synthetic Data</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/hDBJ998nc9kO6vnTpx9exA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Claude for Chrome Arrives! Directly Usable as a Browser Extension</h2>
+                <span class="published-time">Published: 2025-08-27T05:47:09.000Z</span>
+                <img src="../screenshot/wechat/wechat_image__2xyfpJU60rx6-FhdXNCQA.png" alt="Claude for Chrome Arrives! Directly Usable as a Browser Extension">
+                <p class="summary">Anthropic has launched Claude for Chrome, a new AI agent available as a browser extension. This extension allows users to interact with Claude in a side window, maintaining context from active browser tabs, and can perform tasks like calendar management, email replies, and information retrieval with user authorization. Currently, access is limited to a select group of Max subscribers, as Anthropic prioritizes security, particularly against "prompt injection attacks." The company has implemented various safeguards, including restricting access to specific websites, blocking sensitive content by default, and requiring user permission for high-risk operations. The article highlights that AI-powered browsers are emerging as a new competitive arena for tech giants, citing examples such as Perplexity's Comet, Google's Gemini, and Microsoft's Copilot. It suggests two main development paths: integrating AI as an extension into existing browsers or developing entirely new AI-centric browsers.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude for Chrome</span><span>Browser Extension</span><span>AI Agent</span><span>Prompt Injection Attack</span><span>AI Browser</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/_2xyfpJU60rx6-FhdXNCQA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>System Prompts Leaks</h2>
+                <span class="published-time">Published: 2025-08-27T17:43:45Z</span>
+                <img src="https://api.star-history.com/svg?repos=asgeirtj/system_prompts_leaks&type=Date" alt="System Prompts Leaks">
+                <p class="summary">The GitHub repository "System Prompts Leaks" is a significant open-source project dedicated to the systematic collection and public dissemination of system message instructions employed by various publicly deployed AI chatbots. This initiative provides an invaluable and unique resource for researchers, AI ethicists, and developers who are keen to delve into the intricate internal workings, operational logic, and behavioral patterns of large language models and advanced conversational AI systems. By meticulously compiling these often-undisclosed system prompts, the project plays a pivotal role in advancing the understanding of AI transparency, facilitating the identification of inherent biases, and enabling a deeper analysis of the complex processes that govern AI response generation. Ultimately, this repository aims to significantly enhance the explainability, robustness, and safety of contemporary AI systems, thereby fostering a more transparent, responsible, and informed development ecosystem for artificial intelligence technologies across various domains.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>System Prompts</span><span>Chatbots</span><span>Large Language Models</span><span>AI Ethics</span><span>Prompt Engineering</span><span>Data Collection</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/asgeirtj/system_prompts_leaks" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>WhisperLiveKit</h2>
+                <span class="published-time">Published: 2025-08-27T19:02:25Z</span>
+                <img src="https://raw.githubusercontent.com/QuentinFuxa/WhisperLiveKit/refs/heads/main/demo.png" alt="WhisperLiveKit">
+                <p class="summary">WhisperLiveKit is an open-source project offering real-time, fully local speech-to-text with integrated speaker identification. It leverages cutting-edge research like SimulStreaming, WhisperStreaming, and Sortformer to achieve ultra-low latency and high-accuracy speech processing. The tool includes a ready-to-use backend server and a simple frontend, supporting multiple concurrent users and optimizing resources through Voice Activity Detection. Its core advantage lies in intelligent buffering and incremental processing, effectively addressing context loss issues common with traditional Whisper models in real-time, small-batch processing. WhisperLiveKit is suitable for various applications such as meeting transcription, accessibility tools for the hearing-impaired, automated content creation for podcasts/videos, and customer service call transcription, offering easy integration and scalability with Docker support.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Real-time Speech-to-Text</span><span>Speaker Diarization</span><span>Voice Activity Detection</span><span>Streaming Speech Recognition</span><span>Local Deployment</span><span>Low Latency</span><span>Speech Processing</span><span>Natural Language Processing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/QuentinFuxa/WhisperLiveKit" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Neural Networks: Zero to Hero</h2>
+                <span class="published-time">Published: 2024-02-20T17:19:51Z</span>
+                <img src="../screenshot/github/nn-zero-to-hero.png" alt="Neural Networks: Zero to Hero">
+                <p class="summary">This GitHub repository serves as the official companion for the "Neural Networks: Zero to Hero" course, providing comprehensive resources through a series of YouTube video lectures and corresponding Jupyter Notebooks. The course meticulously guides learners from the absolute basics of neural networks and backpropagation, exemplified by the `micrograd` project, to the intricate development of character-level language models with `makemore`, culminating in the construction of a Generative Pre-trained Transformer (GPT) from scratch. It delves into essential concepts such as PyTorch tensor operations, efficient neural network evaluation, model training methodologies, hyperparameter tuning, and advanced techniques like Batch Normalization and manual backpropagation. This educational initiative is designed to equip individuals with a deep, hands-on understanding of modern deep learning architectures, particularly focusing on their practical application in natural language processing and large language models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Neural Networks</span><span>Deep Learning</span><span>Natural Language Processing</span><span>Large Language Models</span><span>Backpropagation</span><span>PyTorch</span><span>GPT</span><span>Machine Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Deep Learning</span><span>Machine Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/karpathy/nn-zero-to-hero" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Audiblez: Generate audiobooks from e-books</h2>
+                <span class="published-time">Published: 2025-03-02T18:28:03Z</span>
+                <img src="https://github.com/santinic/audiblez/raw/main/imgs/mac.png" alt="Audiblez: Generate audiobooks from e-books">
+                <p class="summary">Audiblez is an open-source tool designed to efficiently convert e-books, specifically in EPUB format, into high-quality M4B audiobooks. It utilizes the Kokoro-82M text-to-speech model, known for its natural-sounding output and compact size, supporting a wide array of languages including English, Spanish, French, and Chinese. The tool offers both a command-line interface and a user-friendly graphical interface, catering to different user preferences. A key feature is its support for CUDA acceleration, which dramatically speeds up the conversion process; for example, a 160,000-character book can be converted in about 5 minutes on a GPU. Users can also fine-tune the audiobook experience by adjusting playback speed and selecting from a diverse range of voices. This makes Audiblez a robust and versatile solution for anyone looking to create personalized audiobooks from their digital library.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Audiobook Generation</span><span>E-book Conversion</span><span>Text-to-Speech</span><span>Speech Synthesis</span><span>Multilingual Support</span><span>GPU Acceleration</span><span>Open Source Tool</span><span>EPUB</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/santinic/audiblez" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MCP Toolbox for Databases</h2>
+                <span class="published-time">Published: 2025-08-28T02:07:20Z</span>
+                <img src="https://github.com/googleapis/genai-toolbox/raw/main/logo.png" alt="MCP Toolbox for Databases">
+                <p class="summary">MCP Toolbox for Databases is an open-source MCP server specifically designed to streamline the development of Generative AI tools. It empowers AI agents to interact with and access database data with greater ease, speed, and security by abstracting away complexities like connection pooling and robust authentication mechanisms. This solution provides a simplified development experience, optimizes performance through best practices, and ensures enhanced data security via integrated authentication. Furthermore, it offers comprehensive end-to-end observability with built-in OpenTelemetry support, allowing for better monitoring. Developers can leverage this toolbox to create powerful AI database assistants, enabling natural language querying directly from their IDEs, automating database management tasks, and generating context-aware application code and tests. This significantly reduces manual setup, boilerplate, and error-prone schema migrations, ultimately boosting productivity and allowing developers to focus on core innovation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>MCP</span><span>Database</span><span>Generative AI</span><span>AI Agent</span><span>Toolbox</span><span>Connection Pooling</span><span>Data Access</span><span>OpenTelemetry</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/googleapis/genai-toolbox" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Agent Reinforcement Trainer</h2>
+                <span class="published-time">Published: 2025-08-28T02:35:08Z</span>
+                <img src="https://github.com/openpipe/art/raw/main/assets/ART_logo.png" alt="Agent Reinforcement Trainer">
+                <p class="summary">ART (Agent Reinforcement Trainer) is an innovative open-source reinforcement learning framework designed to empower Large Language Models (LLMs) to learn from experience and effectively train multi-step agents for complex real-world tasks using GRPO. A standout feature is RULER (Relative Universal LLM-Elicited Rewards), which revolutionizes reward engineering by employing an LLM-as-judge to automatically score agent trajectories. This eliminates the traditional need for hand-crafted reward functions, labeled data, or expert feedback, significantly accelerating the development cycle by 2-3x. ART operates on a robust client-server architecture, ensuring flexible deployment and training from various environments, including local GPUs or ephemeral cloud instances. It supports a wide range of vLLM/HuggingFace-compatible models and offers seamless integrations with observability platforms like W&B and Langfuse, simplifying debugging. ART's capabilities are demonstrated across diverse applications, from email research and game playing (e.g., 2048, Tic Tac Toe) to mastering complex server tools, making it a versatile solution for advanced AI agent development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Agent Training</span><span>Large Language Model</span><span>Reward Function</span><span>GRPO</span><span>RULER</span><span>Multi-step Tasks</span><span>Open-source Framework</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/OpenPipe/ART" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Servant, Stalker, Predator: How An Honest, Helpful, And Harmless (3H)
+  Agent Unlocks Adversarial Skills</h2>
+                <span class="published-time">Published: 2025-08-27T01:11:59.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.19500.png" alt="Servant, Stalker, Predator: How An Honest, Helpful, And Harmless (3H)
+  Agent Unlocks Adversarial Skills">
+                <p class="summary">This paper identifies and analyzes a novel vulnerability class in Model
+Context Protocol (MCP) based agent systems. The attack chain describes and
+demonstrates how benign, individually authorized tasks can be orchestrated to
+produce harmful emergent behaviors. Through systematic analysis using the MITRE
+ATLAS framework, we demonstrate how 95 agents tested with access to multiple
+services-including browser automation, financial analysis, location tracking,
+and code deployment-can chain legitimate operations into sophisticated attack
+sequences that extend beyond the security boundaries of any individual service.
+These red team exercises survey whether current MCP architectures lack
+cross-domain security measures necessary to detect or prevent a large category
+of compositional attacks. We present empirical evidence of specific attack
+chains that achieve targeted harm through service orchestration, including data
+exfiltration, financial manipulation, and infrastructure compromise. These
+findings reveal that the fundamental security assumption of service isolation
+fails when agents can coordinate actions across multiple domains, creating an
+exponential attack surface that grows with each additional capability. This
+research provides a barebones experimental framework that evaluate not whether
+agents can complete MCP benchmark tasks, but what happens when they complete
+them too well and optimize across multiple services in ways that violate human
+expectations and safety constraints. We propose three concrete experimental
+directions using the existing MCP benchmark suite.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent Security</span><span>Vulnerability Analysis</span><span>Attack Chain</span><span>Service Orchestration</span><span>Cross-domain Security</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.19500" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>TreePO: Bridging the Gap of Policy Optimization and Efficacy and
+  Inference Efficiency with Heuristic Tree-based Modeling</h2>
+                <span class="published-time">Published: 2025-08-24T16:52:37.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.17445.png" alt="TreePO: Bridging the Gap of Policy Optimization and Efficacy and
+  Inference Efficiency with Heuristic Tree-based Modeling">
+                <p class="summary">Recent advancements in aligning large language models via reinforcement
+learning have achieved remarkable gains in solving complex reasoning problems,
+but at the cost of expensive on-policy rollouts and limited exploration of
+diverse reasoning paths. In this work, we introduce TreePO, involving a
+self-guided rollout algorithm that views sequence generation as a
+tree-structured searching process. Composed of dynamic tree sampling policy and
+fixed-length segment decoding, TreePO leverages local uncertainty to warrant
+additional branches. By amortizing computation across common prefixes and
+pruning low-value paths early, TreePO essentially reduces the per-update
+compute burden while preserving or enhancing exploration diversity. Key
+contributions include: (1) a segment-wise sampling algorithm that alleviates
+the KV cache burden through contiguous segments and spawns new branches along
+with an early-stop mechanism; (2) a tree-based segment-level advantage
+estimation that considers both global and local proximal policy optimization.
+and (3) analysis on the effectiveness of probability and quality-driven dynamic
+divergence and fallback strategy. We empirically validate the performance gain
+of TreePO on a set reasoning benchmarks and the efficiency saving of GPU hours
+from 22\% up to 43\% of the sampling design for the trained models, meanwhile
+showing up to 40\% reduction at trajectory-level and 35\% at token-level
+sampling compute for the existing models. While offering a free lunch of
+inference efficiency, TreePO reveals a practical path toward scaling RL-based
+post-training with fewer samples and less compute. Home page locates at
+https://m-a-p.ai/TreePO.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Reinforcement Learning</span><span>Policy Optimization</span><span>Inference Efficiency</span><span>Tree-based Modeling</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.17445" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OmniHuman-1.5: Instilling an Active Mind in Avatars via Cognitive
+  Simulation</h2>
+                <span class="published-time">Published: 2025-08-26T17:15:26.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.19209.png" alt="OmniHuman-1.5: Instilling an Active Mind in Avatars via Cognitive
+  Simulation">
+                <p class="summary">Existing video avatar models can produce fluid human animations, yet they
+struggle to move beyond mere physical likeness to capture a character's
+authentic essence. Their motions typically synchronize with low-level cues like
+audio rhythm, lacking a deeper semantic understanding of emotion, intent, or
+context. To bridge this gap, we propose a framework designed to
+generate character animations that are not only physically plausible but also
+semantically coherent and expressive. Our model, OmniHuman-1.5, is
+built upon two key technical contributions. First, we leverage Multimodal Large
+Language Models to synthesize a structured textual representation of conditions
+that provides high-level semantic guidance. This guidance steers our motion
+generator beyond simplistic rhythmic synchronization, enabling the production
+of actions that are contextually and emotionally resonant. Second, to ensure
+the effective fusion of these multimodal inputs and mitigate inter-modality
+conflicts, we introduce a specialized Multimodal DiT architecture with a novel
+Pseudo Last Frame design. The synergy of these components allows our model to
+accurately interpret the joint semantics of audio, images, and text, thereby
+generating motions that are deeply coherent with the character, scene, and
+linguistic content. Extensive experiments demonstrate that our model achieves
+leading performance across a comprehensive set of metrics, including lip-sync
+accuracy, video quality, motion naturalness and semantic consistency with
+textual prompts. Furthermore, our approach shows remarkable extensibility to
+complex scenarios, such as those involving multi-person and non-human subjects.
+Homepage: https://omnihuman-lab.github.io/v1_5/</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Avatars</span><span>Cognitive Simulation</span><span>Multimodal Large Language Models</span><span>Motion Generation</span><span>Semantic Coherence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.19209" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>CineScale: Free Lunch in High-Resolution Cinematic Visual Generation</h2>
+                <span class="published-time">Published: 2025-08-21T17:59:57.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.15774.png" alt="CineScale: Free Lunch in High-Resolution Cinematic Visual Generation">
+                <p class="summary">Visual diffusion models achieve remarkable progress, yet they are typically
+trained at limited resolutions due to the lack of high-resolution data and
+constrained computation resources, hampering their ability to generate
+high-fidelity images or videos at higher resolutions. Recent efforts have
+explored tuning-free strategies to exhibit the untapped potential
+higher-resolution visual generation of pre-trained models. However, these
+methods are still prone to producing low-quality visual content with repetitive
+patterns. The key obstacle lies in the inevitable increase in high-frequency
+information when the model generates visual content exceeding its training
+resolution, leading to undesirable repetitive patterns deriving from the
+accumulated errors. In this work, we propose CineScale, a novel inference
+paradigm to enable higher-resolution visual generation. To tackle the various
+issues introduced by the two types of video generation architectures, we
+propose dedicated variants tailored to each. Unlike existing baseline methods
+that are confined to high-resolution T2I and T2V generation, CineScale broadens
+the scope by enabling high-resolution I2V and V2V synthesis, built atop
+state-of-the-art open-source video generation frameworks. Extensive experiments
+validate the superiority of our paradigm in extending the capabilities of
+higher-resolution visual generation for both image and video models.
+Remarkably, our approach enables 8k image generation without any fine-tuning,
+and achieves 4k video generation with only minimal LoRA fine-tuning. Generated
+video samples are available at our website:
+https://eyeline-labs.github.io/CineScale/.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>High-resolution generation</span><span>Visual diffusion models</span><span>Video generation</span><span>Tuning-free</span><span>Inference paradigm</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.15774" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Training Language Model Agents to Find Vulnerabilities with CTF-Dojo</h2>
+                <span class="published-time">Published: 2025-08-25T18:02:23.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.18370.png" alt="Training Language Model Agents to Find Vulnerabilities with CTF-Dojo">
+                <p class="summary">Large language models (LLMs) have demonstrated exceptional capabilities when
+trained within executable runtime environments, notably excelling at software
+engineering tasks through verified feedback loops. Yet, scalable and
+generalizable execution-grounded environments remain scarce, limiting progress
+in training more capable ML agents. We introduce CTF-Dojo, the first
+large-scale executable runtime tailored for training LLMs with verifiable
+feedback, featuring 658 fully functional Capture-The-Flag (CTF)-style
+challenges containerized in Docker with guaranteed reproducibility. To enable
+rapid scaling without manual intervention, we develop CTF-Forge, an automated
+pipeline that transforms publicly available artifacts into ready-to-use
+execution environments in minutes, eliminating weeks of expert configuration
+traditionally required. We trained LLM-based agents on just 486 high-quality,
+execution-verified trajectories from CTF-Dojo, achieving up to 11.6% absolute
+gains over strong baselines across three competitive benchmarks: InterCode-CTF,
+NYU CTF Bench, and Cybench. Our best-performing 32B model reaches 31.9% Pass@1,
+establishing a new open-weight state-of-the-art that rivals frontier models
+like DeepSeek-V3-0324 and Gemini-2.5-Flash. By framing CTF-style tasks as a
+benchmark for executable-agent learning, CTF-Dojo demonstrates that
+execution-grounded training signals are not only effective but pivotal in
+advancing high-performance ML agents without dependence on costly proprietary
+systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>AI Agents</span><span>Vulnerability Discovery</span><span>CTF-Dojo</span><span>Executable Environments</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.18370" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>UltraMemV2: Memory Networks Scaling to 120B Parameters with Superior
+  Long-Context Learning</h2>
+                <span class="published-time">Published: 2025-08-26T07:33:11.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.18756.png" alt="UltraMemV2: Memory Networks Scaling to 120B Parameters with Superior
+  Long-Context Learning">
+                <p class="summary">While Mixture of Experts (MoE) models achieve remarkable efficiency by
+activating only subsets of parameters, they suffer from high memory access
+costs during inference. Memory-layer architectures offer an appealing
+alternative with very few memory access, but previous attempts like UltraMem
+have only matched the performance of 2-expert MoE models, falling significantly
+short of state-of-the-art 8-expert configurations. We present UltraMemV2, a
+redesigned memory-layer architecture that closes this performance gap. Our
+approach introduces five key improvements: integrating memory layers into every
+transformer block, simplifying value expansion with single linear projections,
+adopting FFN-based value processing from PEER, implementing principled
+parameter initialization, and rebalancing memory-to-FFN computation ratios.
+Through extensive evaluation, we demonstrate that UltraMemV2 achieves
+performance parity with 8-expert MoE models under same computation and
+parameters but significantly low memory access. Notably, UltraMemV2 shows
+superior performance on memory-intensive tasks, with improvements of +1.6
+points on long-context memorization, +6.2 points on multi-round memorization,
+and +7.9 points on in-context learning. We validate our approach at scale with
+models up to 2.5B activated parameters from 120B total parameters, and
+establish that activation density has greater impact on performance than total
+sparse parameter count. Our work brings memory-layer architectures to
+performance parity with state-of-the-art MoE models, presenting a compelling
+alternative for efficient sparse computation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Memory Networks</span><span>Mixture of Experts</span><span>Long-Context Learning</span><span>Large Models</span><span>Sparse Computation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Deep Learning</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.18756" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
