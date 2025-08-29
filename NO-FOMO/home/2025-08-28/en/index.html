@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-08-28</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: 2px solid transparent;
+            font-size: 0.9em;
+        }
+
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .language-switch a.active {
+            background: var(--secondary-color);
+            border-color: var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .language-switch {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../">中文</a>
+                <a href="./" class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-08-28</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Twitter</h2>
+
+            <article class="item-card">
+                <h2>GeminiApp_Gemini应用新增图像生成与编辑功能</h2>
+                <span class="published-time">Published: 2025-08-28T22:21:24.000Z</span>
+                <img src="../screenshot/twitter/GeminiApp_1961192420496085127.png" alt="GeminiApp_Gemini应用新增图像生成与编辑功能">
+                <p class="summary">Google Gemini应用近期推出图像生成与编辑功能更新，用户社区正积极探索并展示其创意用法。此次更新引入了名为“nanobanana”的图像处理能力，旨在提升Gemini应用在视觉内容创作方面的用户体验，进一步拓展其多模态交互潜力。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Gemini</span><span>图像生成</span><span>图像编辑</span><span>多模态</span><span>应用更新</span><span>nanobanana</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>人工智能</span><span>生成式AI</span><span>产品发布</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/GeminiApp/status/1961192420496085127" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AndrewYNg_吴恩达：并行智能体是扩展AI能力的新方向</h2>
+                <span class="published-time">Published: 2025-08-28T17:25:47.000Z</span>
+                <img src="../screenshot/twitter/AndrewYNg_1961118026398617648.png" alt="AndrewYNg_吴恩达：并行智能体是扩展AI能力的新方向">
+                <p class="summary">吴恩达指出，并行智能体正成为扩展AI能力的重要新方向。传统AI性能提升依赖更多数据和计算，而测试时计算虽能提高性能但耗时。随着LLM每token成本下降，并行化智能体工作流成为可能，能显著缩短用户等待时间。推文列举了并行研究、并行编程框架及后台任务处理等应用案例，并提及“CodeMonkeys”和“智能体混合架构”等研究，强调并行智能体在提升AI效率和用户体验方面的潜力。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>并行智能体</span><span>AI扩展</span><span>大模型</span><span>智能体工作流</span><span>计算效率</span><span>吴恩达</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>智能体</span><span>大模型</span><span>研究进展</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/AndrewYNg/status/1961118026398617648" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>premium_谷歌将Gemini集成至Chrome浏览器，浏览体验将迎来变革</h2>
+                <span class="published-time">Published: 2025-08-28T13:33:06.000Z</span>
+                <img src="../screenshot/twitter/premium_1952590396670046264.png" alt="premium_谷歌将Gemini集成至Chrome浏览器，浏览体验将迎来变革">
+                <p class="summary">谷歌已悄然将旗下AI模型Gemini集成至Chrome浏览器，此举预示着未来的网页浏览体验将发生颠覆性变革。此次集成预计将带来一系列创新功能，显著提升用户在信息获取、内容交互及个性化服务方面的效率与便捷性。推文指出，至少有八项值得关注的新特性将随之推出，预示着AI在浏览器应用中的深度融合。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>谷歌</span><span>Gemini</span><span>Chrome浏览器</span><span>人工智能</span><span>浏览体验</span><span>产品集成</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>人工智能</span><span>产品发布</span><span>技术动态</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/premium/status/1952590396670046264/analytics" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>fchollet_模型可解释性：规模而非方法是关键</h2>
+                <span class="published-time">Published: 2025-08-28T18:55:59.000Z</span>
+                <img src="../screenshot/twitter/fchollet_1961140723392332276.png" alt="fchollet_模型可解释性：规模而非方法是关键">
+                <p class="summary">弗朗索瓦·肖莱指出，模型可解释性并非取决于所使用的机器学习方法（如神经网络或符号代码），而是纯粹由模型规模和复杂性决定。他强调，任何基底的模型在足够小时都可解释，但复杂代码或图形模型的行为难以解释。肖莱认为，“必须使用可解释方法”的说法是站不住脚的，因为它意味着将自己限制在玩具模型中，阻碍了复杂AI系统的发展。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>模型可解释性</span><span>机器学习</span><span>模型复杂度</span><span>神经网络</span><span>AI伦理</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>机器学习</span><span>研究进展</span><span>人工智能</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/fchollet/status/1961140723392332276" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MilesCcc_Selected for TIME's 2025 AI 100 List, Aiding Isomorphic Labs Drug Design</h2>
+                <span class="published-time">Published: 2025-08-28T16:34:06.000Z</span>
+                <img src="../screenshot/twitter/MilesCcc_1961105018272268426.png" alt="MilesCcc_Selected for TIME's 2025 AI 100 List, Aiding Isomorphic Labs Drug Design">
+                <p class="summary">Miles Congreve announced his humble selection for TIME's 2025 AI 100 list. He highlighted his three-year dedication to helping shape Isomorphic Labs' drug design engine and building the team leveraging it for drug discovery. This recognition not only acknowledges his personal achievements but also underscores the growing influence of AI in accelerating drug development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>TIME 100 AI</span><span>Artificial Intelligence</span><span>Drug Design</span><span>Drug Discovery</span><span>Isomorphic Labs</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Industry News</span><span>Research Progress</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/MilesCcc/status/1961105018272268426" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>sama_OpenAI发布Codex新功能</h2>
+                <span class="published-time">Published: 2025-08-28T16:01:13.000Z</span>
+                <img src="../screenshot/twitter/sama_1961096744533647501.png" alt="sama_OpenAI发布Codex新功能">
+                <p class="summary">OpenAI开发者宣布推出Codex系列新功能，旨在提升其作为编程协作工具的效率。这些更新包括全新的IDE扩展、支持云端与本地环境间任务无缝迁移、GitHub代码审查集成以及改进的Codex命令行工具。新功能由GPT-5驱动，并通过ChatGPT计划提供。Sam Altman表示用户对新功能反响积极。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Codex</span><span>OpenAI</span><span>GPT-5</span><span>编程工具</span><span>IDE扩展</span><span>代码审查</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>产品发布</span><span>大模型</span><span>技术动态</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/sama/status/1961096744533647501" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">wechat</h2>
+
+            <article class="item-card">
+                <h2>VoxHammer: Training-Free Localized 3D Model Editing for Enhanced Efficiency</h2>
+                <span class="published-time">Published: 2025-08-28T23:50:40.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_E9DcldQZUPyIUUeqzi-STw.png" alt="VoxHammer: Training-Free Localized 3D Model Editing for Enhanced Efficiency">
+                <p class="summary">VoxHammer presents a novel, training-free 3D editing methodology designed for precise and coherent localized modifications directly within the 3D latent space. This innovative technique functions by predicting the inverse trajectory of a given 3D model. During the subsequent denoising and editing phases, it strategically replaces the denoised features within the preserved regions with corresponding inverse delay and cached key-value tokens. This meticulous approach guarantees exceptional consistency between the newly edited sections and the original, untouched areas. To rigorously assess its capabilities, the research team developed Edit3D Bench, a human-annotated dataset. Extensive experimental evaluations conclusively demonstrate that VoxHammer significantly surpasses existing methods in achieving superior 3D consistency and overall quality, thereby offering an exceptionally efficient and flexible solution for localized editing of 3D assets and substantially enhancing productivity in 3D content creation workflows.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>VoxHammer</span><span>3D Editing</span><span>Training-Free</span><span>Localized Modification</span><span>Latent Space</span><span>Model Consistency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Generative AI</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/E9DcldQZUPyIUUeqzi-STw" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Interview with LimX Dynamics' Zhang Wei: Building Robots is Easy, The Key is Practical Application</h2>
+                <span class="published-time">Published: 2025-08-28T16:01:34.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_nz9KZ7oN8P5-ZNdDnt8GBg.png" alt="Interview with LimX Dynamics' Zhang Wei: Building Robots is Easy, The Key is Practical Application">
+                <p class="summary">LimX Dynamics founder Zhang Wei states that while humanoid robot hardware manufacturing is relatively easy, the core challenge lies in the AI-powered "cerebellum" for motion control, an area where LimX Dynamics claims global leadership. The company aims to build a robotics platform, providing foundational body and motion control technologies, and plans to develop a "Windows" operating system for humanoid robots. This initiative seeks to lower development barriers, making robots user-friendly and easily programmable. Zhang Wei emphasizes that innovation should be company-driven rather than solely academic, viewing humanoid robots as the "iPhone of robots" with significant long-term value. LimX Dynamics empowers developers by offering competitively priced full-sized humanoid robots like LimX Oli and open APIs/SDKs. Their business model prioritizes user value and ecosystem development over mere sales volume, with short-term applications focused on the B2B market.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LimX Dynamics</span><span>Humanoid Robots</span><span>Embodied AI</span><span>Motion Control</span><span>Robotics Platform</span><span>AI Cerebellum</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Embodied AI</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/nz9KZ7oN8P5-ZNdDnt8GBg" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>HunyuanVideo-Foley: Multimodal Diffusion with Representation Alignment for High-Fidelity Foley Audio Generation</h2>
+                <span class="published-time">Published: 2025-08-28T16:01:34.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_ykA5AKduOu5o4gNKdmqslw.png" alt="HunyuanVideo-Foley: Multimodal Diffusion with Representation Alignment for High-Fidelity Foley Audio Generation">
+                <p class="summary">Tencent has open-sourced HunyuanVideo-Foley, an innovative end-to-end Text-Video-Audio (TV2A) generation framework, specifically engineered to automatically produce high-fidelity, cinema-quality sound effects for videos. This groundbreaking framework effectively tackles the complex challenges of multimodal alignment and realistic audio generation. It achieves this through the development of a novel, high-quality, and large-scale 100,000-hour TV2A dataset, coupled with the introduction of a sophisticated hybrid architecture, Multimodal Diffusion Transformer (MMDiT), and a unique Representation Alignment (REPA) loss strategy. Comprehensive evaluations demonstrate that HunyuanVideo-Foley significantly outperforms existing State-of-the-Art (SOTA) models across various critical metrics, notably excelling in video-semantic alignment, temporal synchronization, and overall audio quality. This technological advancement represents a substantial leap forward for automated video foley, promising to greatly enhance immersive content creation and user experiences.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>HunyuanVideo-Foley</span><span>Text-Video-Audio Generation</span><span>Sound Effect Generation</span><span>Multimodal Diffusion Model</span><span>Dataset Construction</span><span>REPA Strategy</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Multimodal</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/ykA5AKduOu5o4gNKdmqslw" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Your Doubts Are Valid: LLMs as Judges Are Neither Valid Nor Reliable, a Paper Finally Criticizes LLJs</h2>
+                <span class="published-time">Published: 2025-08-28T09:54:13.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_NChnvM0uijUhDMiu_tWVRg.png" alt="Your Doubts Are Valid: LLMs as Judges Are Neither Valid Nor Reliable, a Paper Finally Criticizes LLJs">
+                <p class="summary">A recent paper critically examines the prevalent "Large Language Models as Judges" (LLJs) paradigm in AI, asserting its lack of both reliability and validity across performance evaluation, data construction, and model enhancement. The research challenges core assumptions that LLMs serve as effective proxies for human judgment, capable evaluators, scalable tools, and cost-effective solutions. It exposes inherent flaws such as instruction non-adherence, untrustworthy explanations, biases, fragility, and lack of domain expertise. Furthermore, the article warns against issues like data contamination, narcissistic bias, superficial safety alignment, and hidden costs including economic, environmental, and social bias amplification. The study advocates for a return to scientific rigor in AI evaluation, proposing task-specific LLJ applications, improved assessment practices, and the establishment of independent third-party oversight to address the current crisis in AI evaluation methodology.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM as Judge</span><span>Model Evaluation</span><span>Reliability</span><span>Validity</span><span>Bias</span><span>Data Contamination</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/NChnvM0uijUhDMiu_tWVRg" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Baidu Smart Cloud Launches AI Search MCP Service: Agents Directly Access Real-time Information!</h2>
+                <span class="published-time">Published: 2025-08-28T07:26:57.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_szX0WG9a3pmYnIPSOTjanw.png" alt="Baidu Smart Cloud Launches AI Search MCP Service: Agents Directly Access Real-time Information!">
+                <p class="summary">Baidu Smart Cloud's Qianfan platform has launched its AI Search MCP Service, making Baidu's powerful AI search capabilities available as components. This strategic move addresses a critical bottleneck for AI Agents: the inability to access real-time information and mitigate model hallucinations, enabling Agents to directly link to up-to-date data and enhance output authority. Concurrently, Qianfan 4.0, positioned as a comprehensive enterprise-grade AI platform, introduces significant upgrades. These include multimodal RAG for deep internal data analysis, graph-enhanced RAG for improved retrieval, and a flexible multi-agent orchestration framework. The platform also boasts enhanced model services, integrating over 150 cutting-edge models, offering advanced features like Function Calling, fine-grained thinking control, and RFT fine-tuning tools. This initiative aims to provide robust infrastructure for enterprises to build intelligent Agents that are both "aware of the external world" and "knowledgeable internally," shifting the focus from mere model competition to a broader platform and infrastructure battle. The Qianfan platform currently supports over 460,000 enterprises and has fostered over 1.3 million AI Agents, accelerating the deployment of AI applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Baidu Smart Cloud</span><span>Qianfan Platform</span><span>AI Search</span><span>Agent</span><span>MCP Service</span><span>Enterprise AI Platform</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/szX0WG9a3pmYnIPSOTjanw" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>NVIDIA Advances FP4 Precision for Pre-training, Offering Faster and Cheaper AI, Following DeepSeek's FP8 Discussion</h2>
+                <span class="published-time">Published: 2025-08-28T00:02:46.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_k1rVhAoQxD5phvGq9YWmRA.png" alt="NVIDIA Advances FP4 Precision for Pre-training, Offering Faster and Cheaper AI, Following DeepSeek's FP8 Discussion">
+                <p class="summary">DeepSeek recently unveiled its FP8 quantization strategy, designed for domestic chips, sparking industry-wide interest in large model quantization and the integration of domestic hardware and software. Shortly thereafter, NVIDIA announced the extension of its NVFP4 (4-bit floating point) precision to the pre-training phase of large language models. NVIDIA claims NVFP4 can achieve 16-bit precision at 4-bit speed and efficiency, significantly boosting training throughput and reducing costs. The article delves into the technical intricacies of NVFP4, including micro-block scaling, high-precision block encoding, and tensor distribution reshaping. It highlights how these innovations address the challenges of low-precision training, such as dynamic range and gradient fluctuations. Validation experiments on a 12-billion-parameter Hybrid Mamba-Transformer model, trained on 10 trillion tokens, demonstrated that NVFP4 maintains accuracy and stability comparable to FP8 across various downstream tasks. This development signifies a pivotal shift in AI training, moving beyond mere computational power scaling towards more efficient, low-precision optimization. It sets a new benchmark for the scalability of 'AI factories' and the development of cutting-edge models, promising a future of faster, more sustainable, and more accessible AI innovation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>FP4</span><span>FP8</span><span>Large Model Pre-training</span><span>Quantization</span><span>NVIDIA</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/k1rVhAoQxD5phvGq9YWmRA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>System Prompts Leaks</h2>
+                <span class="published-time">Published: 2025-08-27T17:43:45Z</span>
+                <img src="https://api.star-history.com/svg?repos=asgeirtj/system_prompts_leaks&type=Date" alt="System Prompts Leaks">
+                <p class="summary">The GitHub repository "System Prompts Leaks" is a significant open-source project dedicated to the systematic collection and public dissemination of system message instructions employed by various publicly deployed AI chatbots. This initiative provides an invaluable and unique resource for researchers, AI ethicists, and developers who are keen to delve into the intricate internal workings, operational logic, and behavioral patterns of large language models and advanced conversational AI systems. By meticulously compiling these often-undisclosed system prompts, the project plays a pivotal role in advancing the understanding of AI transparency, facilitating the identification of inherent biases, and enabling a deeper analysis of the complex processes that govern AI response generation. Ultimately, this repository aims to significantly enhance the explainability, robustness, and safety of contemporary AI systems, thereby fostering a more transparent, responsible, and informed development ecosystem for artificial intelligence technologies across various domains.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>System Prompts</span><span>Chatbots</span><span>Large Language Models</span><span>AI Ethics</span><span>Prompt Engineering</span><span>Data Collection</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/asgeirtj/system_prompts_leaks" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Wren AI - Open-Source GenBI Agent</h2>
+                <span class="published-time">Published: 2025-08-28T11:57:35Z</span>
+                <img src="https://raw.githubusercontent.com/Canner/WrenAI/main/misc/workflow.png" alt="Wren AI - Open-Source GenBI Agent">
+                <p class="summary">Wren AI is an open-source GenBI agent that revolutionizes business intelligence by enabling users to query any database with natural language, instantly generating accurate SQL, insightful charts, and AI-driven summaries. It features robust Text-to-SQL and Text-to-Charts capabilities, underpinned by a sophisticated semantic layer that encodes schema, metrics, and joins to ensure precise and governed LLM outputs. The platform boasts broad compatibility with numerous databases and integrates seamlessly with a wide array of large language models. Furthermore, Wren AI offers API embedding, allowing developers to build custom agents, SaaS features, and chatbots. This powerful tool dramatically simplifies data interaction, eliminates the need for extensive SQL knowledge, and delivers decision-ready context, making advanced business intelligence accessible and efficient for enterprises.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>GenBI</span><span>AI Agent</span><span>Natural Language Query</span><span>Text-to-SQL</span><span>Semantic Layer</span><span>Business Intelligence</span><span>Large Language Model</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/Canner/WrenAI" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Chroma - the open-source embedding database</h2>
+                <span class="published-time">Published: 2025-08-28T21:52:15Z</span>
+                <img src="https://user-images.githubusercontent.com/891664/227103090-6624bf7d-9524-4e05-9d2c-c28d5d451481.png" alt="Chroma - the open-source embedding database">
+                <p class="summary">Chroma is an open-source embedding database designed to provide fast memory management capabilities for Python and JavaScript Large Language Model (LLM) applications. It offers a simple API, supports integration with popular frameworks like LangChain and LlamaIndex, and boasts rich features such as querying and filtering. Chroma supports various embedding models and can be used for scenarios like "chatting with your data," enabling natural language queries of documents and subsequent analysis with LLMs, making it an efficient solution for developing intelligent applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Embedding Database</span><span>Vector Database</span><span>Large Language Model</span><span>Memory Management</span><span>Open Source</span><span>Natural Language Processing</span><span>AI Applications</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/chroma-core/chroma" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Audiblez: Generate audiobooks from e-books</h2>
+                <span class="published-time">Published: 2025-03-02T18:28:03Z</span>
+                <img src="https://github.com/santinic/audiblez/raw/main/imgs/mac.png" alt="Audiblez: Generate audiobooks from e-books">
+                <p class="summary">Audiblez is an open-source tool designed to efficiently convert e-books, specifically in EPUB format, into high-quality M4B audiobooks. It utilizes the Kokoro-82M text-to-speech model, known for its natural-sounding output and compact size, supporting a wide array of languages including English, Spanish, French, and Chinese. The tool offers both a command-line interface and a user-friendly graphical interface, catering to different user preferences. A key feature is its support for CUDA acceleration, which dramatically speeds up the conversion process; for example, a 160,000-character book can be converted in about 5 minutes on a GPU. Users can also fine-tune the audiobook experience by adjusting playback speed and selecting from a diverse range of voices. This makes Audiblez a robust and versatile solution for anyone looking to create personalized audiobooks from their digital library.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Audiobook Generation</span><span>E-book Conversion</span><span>Text-to-Speech</span><span>Speech Synthesis</span><span>Multilingual Support</span><span>GPU Acceleration</span><span>Open Source Tool</span><span>EPUB</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/santinic/audiblez" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Neural Networks: Zero to Hero</h2>
+                <span class="published-time">Published: 2024-02-20T17:19:51Z</span>
+                <img src="../screenshot/github/nn-zero-to-hero.png" alt="Neural Networks: Zero to Hero">
+                <p class="summary">This GitHub repository serves as supplementary material for the "Neural Networks: Zero to Hero" course. Through a series of YouTube videos and accompanying Jupyter Notebooks, the course progresses from fundamental concepts like backpropagation and multilayer perceptrons to advanced topics such as language models, batch normalization, convolutional neural networks, and culminates in the implementation of GPT and its tokenizer. The curriculum emphasizes hands-on coding to build and train neural networks, aiming to equip learners with a systematic understanding of core deep learning technologies and enhance practical skills. It is particularly beneficial for developers and researchers seeking to deeply comprehend the operational principles of modern large language models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Neural Networks</span><span>Deep Learning</span><span>Backpropagation</span><span>Language Model</span><span>GPT</span><span>Transformer</span><span>Tokenizer</span><span>Jupyter Notebook</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Deep Learning</span><span>Machine Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/karpathy/nn-zero-to-hero" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>SurfSense</h2>
+                <span class="published-time">Published: 2025-08-28T02:20:00Z</span>
+                <img src="../screenshot/github/SurfSense.png" alt="SurfSense">
+                <p class="summary">SurfSense is a highly customizable AI research agent designed to integrate personal knowledge bases with external information sources. It supports uploading various file formats, including documents, images, and audio/video, with over 50 extensions. It offers powerful search and content interaction capabilities, and can rapidly generate podcasts. The project utilizes advanced RAG techniques, supporting numerous LLMs and embedding models, and is self-hostable. Its core value lies in seamlessly connecting personal data with external sources like search engines, Slack, and GitHub, providing a private and efficient AI research experience, with support for local LLM deployment ensuring privacy.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Research Agent</span><span>Personal Knowledge Base</span><span>Retrieval Augmented Generation</span><span>Podcast Generation</span><span>Self-Hostable</span><span>Multimodal</span><span>Large Language Model</span><span>File Processing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/MODSetter/SurfSense" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Self-Rewarding Vision-Language Model via Reasoning Decomposition</h2>
+                <span class="published-time">Published: 2025-08-27T08:01:03.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.19652.png" alt="Self-Rewarding Vision-Language Model via Reasoning Decomposition">
+                <p class="summary">Vision-Language Models (VLMs) often suffer from visual hallucinations, saying
+things that are not actually in the image, and language shortcuts, where they
+skip the visual part and just rely on text priors. These issues arise because
+most post-training methods for VLMs rely on simple verifiable answer matching
+and supervise only final outputs, leaving intermediate visual reasoning without
+explicit guidance. As a result, VLMs receive sparse visual signals and often
+learn to prioritize language-based reasoning over visual perception. To
+mitigate this, some existing methods add visual supervision using human
+annotations or distilled labels from external large models. However, human
+annotations are labor-intensive and costly, and because external signals cannot
+adapt to the evolving policy, they cause distributional shifts that can lead to
+reward hacking. In this paper, we introduce Vision-SR1, a self-rewarding method
+that improves visual reasoning without relying on external visual supervisions
+via reinforcement learning. Vision-SR1 decomposes VLM reasoning into two
+stages: visual perception and language reasoning. The model is first prompted
+to produce self-contained visual perceptions that are sufficient to answer the
+question without referring back the input image. To validate this
+self-containment, the same VLM model is then re-prompted to perform language
+reasoning using only the generated perception as input to compute reward. This
+self-reward is combined with supervision on final outputs, providing a balanced
+training signal that strengthens both visual perception and language reasoning.
+Our experiments demonstrate that Vision-SR1 improves visual reasoning,
+mitigates visual hallucinations, and reduces reliance on language shortcuts
+across diverse vision-language tasks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Vision-Language Models</span><span>Self-Rewarding</span><span>Reasoning Decomposition</span><span>Visual Hallucinations</span><span>Reinforcement Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.19652" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MIDAS: Multimodal Interactive Digital-human Synthesis via Real-time
+  Autoregressive Video Generation</h2>
+                <span class="published-time">Published: 2025-08-26T14:00:16.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.19320.png" alt="MIDAS: Multimodal Interactive Digital-human Synthesis via Real-time
+  Autoregressive Video Generation">
+                <p class="summary">Recently, interactive digital human video generation has attracted widespread
+attention and achieved remarkable progress. However, building such a practical
+system that can interact with diverse input signals in real time remains
+challenging to existing methods, which often struggle with high latency, heavy
+computational cost, and limited controllability. In this work, we introduce an
+autoregressive video generation framework that enables interactive multimodal
+control and low-latency extrapolation in a streaming manner. With minimal
+modifications to a standard large language model (LLM), our framework accepts
+multimodal condition encodings including audio, pose, and text, and outputs
+spatially and semantically coherent representations to guide the denoising
+process of a diffusion head. To support this, we construct a large-scale
+dialogue dataset of approximately 20,000 hours from multiple sources, providing
+rich conversational scenarios for training. We further introduce a deep
+compression autoencoder with up to 64times reduction ratio, which
+effectively alleviates the long-horizon inference burden of the autoregressive
+model. Extensive experiments on duplex conversation, multilingual human
+synthesis, and interactive world model highlight the advantages of our approach
+in low latency, high efficiency, and fine-grained multimodal controllability.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>digital human synthesis</span><span>multimodal interaction</span><span>real-time video generation</span><span>autoregressive model</span><span>large language model</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Generative AI</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.19320" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>CODA: Coordinating the Cerebrum and Cerebellum for a Dual-Brain Computer
+  Use Agent with Decoupled Reinforcement Learning</h2>
+                <span class="published-time">Published: 2025-08-27T17:59:50.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.20096.png" alt="CODA: Coordinating the Cerebrum and Cerebellum for a Dual-Brain Computer
+  Use Agent with Decoupled Reinforcement Learning">
+                <p class="summary">Autonomous agents for Graphical User Interfaces (GUIs) face significant
+challenges in specialized domains such as scientific computing, where both
+long-horizon planning and precise execution are required. Existing approaches
+suffer from a trade-off: generalist agents excel at planning but perform poorly
+in execution, while specialized agents demonstrate the opposite weakness.
+Recent compositional frameworks attempt to bridge this gap by combining a
+planner and an actor, but they are typically static and non-trainable, which
+prevents adaptation from experience. This is a critical limitation given the
+scarcity of high-quality data in scientific domains. To address these
+limitations, we introduce CODA, a novel and trainable compositional framework
+that integrates a generalist planner (Cerebrum) with a specialist executor
+(Cerebellum), trained via a dedicated two-stage pipeline. In the first stage,
+Specialization, we apply a decoupled GRPO approach to train an expert planner
+for each scientific application individually, bootstrapping from a small set of
+task trajectories. In the second stage, Generalization, we aggregate all
+successful trajectories from the specialized experts to build a consolidated
+dataset, which is then used for supervised fine-tuning of the final planner.
+This equips CODA with both robust execution and cross-domain generalization.
+Evaluated on four challenging applications from the ScienceBoard benchmark,
+CODA significantly outperforms baselines and establishes a new state of the art
+among open-source models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Agent</span><span>Decoupled Reinforcement Learning</span><span>Compositional Framework</span><span>Scientific Computing</span><span>Planning and Execution</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.20096" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Diffusion Language Models Know the Answer Before Decoding</h2>
+                <span class="published-time">Published: 2025-08-27T15:40:25.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.19982.png" alt="Diffusion Language Models Know the Answer Before Decoding">
+                <p class="summary">Diffusion language models (DLMs) have recently emerged as an alternative to
+autoregressive approaches, offering parallel sequence generation and flexible
+token orders. However, their inference remains slower than that of
+autoregressive models, primarily due to the cost of bidirectional attention and
+the large number of refinement steps required for high quality outputs. In this
+work, we highlight and leverage an overlooked property of DLMs early answer
+convergence: in many cases, the correct answer can be internally identified by
+half steps before the final decoding step, both under semi-autoregressive and
+random remasking schedules. For example, on GSM8K and MMLU, up to 97% and 99%
+of instances, respectively, can be decoded correctly using only half of the
+refinement steps. Building on this observation, we introduce Prophet, a
+training-free fast decoding paradigm that enables early commit decoding.
+Specifically, Prophet dynamically decides whether to continue refinement or to
+go "all-in" (i.e., decode all remaining tokens in one step), using the
+confidence gap between the top-2 prediction candidates as the criterion. It
+integrates seamlessly into existing DLM implementations, incurs negligible
+overhead, and requires no additional training. Empirical evaluations of
+LLaDA-8B and Dream-7B across multiple tasks show that Prophet reduces the
+number of decoding steps by up to 3.4x while preserving high generation
+quality. These results recast DLM decoding as a problem of when to stop
+sampling, and demonstrate that early decode convergence provides a simple yet
+powerful mechanism for accelerating DLM inference, complementary to existing
+speedup techniques. Our code is publicly available at
+https://github.com/pixeli99/Prophet.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Diffusion Language Models</span><span>Fast Decoding</span><span>Early Convergence</span><span>Inference Acceleration</span><span>Prophet</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Deep Learning</span><span>Natural Language Processing</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.19982" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AudioStory: Generating Long-Form Narrative Audio with Large Language
+  Models</h2>
+                <span class="published-time">Published: 2025-08-27T17:55:38.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.20088.png" alt="AudioStory: Generating Long-Form Narrative Audio with Large Language
+  Models">
+                <p class="summary">Recent advances in text-to-audio (TTA) generation excel at synthesizing short
+audio clips but struggle with long-form narrative audio, which requires
+temporal coherence and compositional reasoning. To address this gap, we propose
+AudioStory, a unified framework that integrates large language models (LLMs)
+with TTA systems to generate structured, long-form audio narratives. AudioStory
+possesses strong instruction-following reasoning generation capabilities. It
+employs LLMs to decompose complex narrative queries into temporally ordered
+sub-tasks with contextual cues, enabling coherent scene transitions and
+emotional tone consistency. AudioStory has two appealing features: (1)
+Decoupled bridging mechanism: AudioStory disentangles LLM-diffuser
+collaboration into two specialized components, i.e., a bridging query for
+intra-event semantic alignment and a residual query for cross-event coherence
+preservation. (2) End-to-end training: By unifying instruction comprehension
+and audio generation within a single end-to-end framework, AudioStory
+eliminates the need for modular training pipelines while enhancing synergy
+between components. Furthermore, we establish a benchmark AudioStory-10K,
+encompassing diverse domains such as animated soundscapes and natural sound
+narratives. Extensive experiments show the superiority of AudioStory on both
+single-audio generation and narrative audio generation, surpassing prior TTA
+baselines in both instruction-following ability and audio fidelity. Our code is
+available at https://github.com/TencentARC/AudioStory</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Long-form narrative audio</span><span>Large Language Models</span><span>Text-to-audio generation</span><span>Instruction-following</span><span>End-to-end training</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Generative AI</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.20088" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Mind the Third Eye! Benchmarking Privacy Awareness in MLLM-powered
+  Smartphone Agents</h2>
+                <span class="published-time">Published: 2025-08-27T00:41:28.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.19493.png" alt="Mind the Third Eye! Benchmarking Privacy Awareness in MLLM-powered
+  Smartphone Agents">
+                <p class="summary">Smartphones bring significant convenience to users but also enable devices to
+extensively record various types of personal information. Existing smartphone
+agents powered by Multimodal Large Language Models (MLLMs) have achieved
+remarkable performance in automating different tasks. However, as the cost,
+these agents are granted substantial access to sensitive users' personal
+information during this operation. To gain a thorough understanding of the
+privacy awareness of these agents, we present the first large-scale benchmark
+encompassing 7,138 scenarios to the best of our knowledge. In addition, for
+privacy context in scenarios, we annotate its type (e.g., Account Credentials),
+sensitivity level, and location. We then carefully benchmark seven available
+mainstream smartphone agents. Our results demonstrate that almost all
+benchmarked agents show unsatisfying privacy awareness (RA), with performance
+remaining below 60% even with explicit hints. Overall, closed-source agents
+show better privacy ability than open-source ones, and Gemini 2.0-flash
+achieves the best, achieving an RA of 67%. We also find that the agents'
+privacy detection capability is highly related to scenario sensitivity level,
+i.e., the scenario with a higher sensitivity level is typically more
+identifiable. We hope the findings enlighten the research community to rethink
+the unbalanced utility-privacy tradeoff about smartphone agents. Our code and
+benchmark are available at https://zhixin-l.github.io/SAPA-Bench.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Smartphone Agents</span><span>Privacy Awareness</span><span>Multimodal Large Language Models</span><span>Benchmarking</span><span>Personal Information Protection</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Multimodal</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.19493" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>

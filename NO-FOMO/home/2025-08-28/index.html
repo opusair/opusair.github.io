@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 - 2025-08-28</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter, Noto Sans SC', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: 2px solid transparent;
+            font-size: 0.9em;
+        }
+
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .language-switch a.active {
+            background: var(--secondary-color);
+            border-color: var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .language-switch {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="./" class="active">中文</a>
+                <a href="en/">English</a>
+            </div>
+
+            <h1>AI 日报</h1>
+            <p class="date">2025-08-28</p>
+            <p class="theme-info">关于我们: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Twitter</h2>
+
+            <article class="item-card">
+                <h2>GeminiApp_Gemini应用新增图像生成与编辑功能</h2>
+                <span class="published-time">发布时间: 2025-08-28T22:21:24.000Z</span>
+                <img src="screenshot/twitter/GeminiApp_1961192420496085127.png" alt="GeminiApp_Gemini应用新增图像生成与编辑功能">
+                <p class="summary">Google Gemini应用近期推出图像生成与编辑功能更新，用户社区正积极探索并展示其创意用法。此次更新引入了名为“nanobanana”的图像处理能力，旨在提升Gemini应用在视觉内容创作方面的用户体验，进一步拓展其多模态交互潜力。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>Gemini</span><span>图像生成</span><span>图像编辑</span><span>多模态</span><span>应用更新</span><span>nanobanana</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>生成式AI</span><span>产品发布</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/GeminiApp/status/1961192420496085127" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AndrewYNg_吴恩达：并行智能体是扩展AI能力的新方向</h2>
+                <span class="published-time">发布时间: 2025-08-28T17:25:47.000Z</span>
+                <img src="screenshot/twitter/AndrewYNg_1961118026398617648.png" alt="AndrewYNg_吴恩达：并行智能体是扩展AI能力的新方向">
+                <p class="summary">吴恩达指出，并行智能体正成为扩展AI能力的重要新方向。传统AI性能提升依赖更多数据和计算，而测试时计算虽能提高性能但耗时。随着LLM每token成本下降，并行化智能体工作流成为可能，能显著缩短用户等待时间。推文列举了并行研究、并行编程框架及后台任务处理等应用案例，并提及“CodeMonkeys”和“智能体混合架构”等研究，强调并行智能体在提升AI效率和用户体验方面的潜力。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>并行智能体</span><span>AI扩展</span><span>大模型</span><span>智能体工作流</span><span>计算效率</span><span>吴恩达</span></div>
+                    <div class="area"><span class="label">区域：</span><span>智能体</span><span>大模型</span><span>研究进展</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/AndrewYNg/status/1961118026398617648" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>premium_谷歌将Gemini集成至Chrome浏览器，浏览体验将迎来变革</h2>
+                <span class="published-time">发布时间: 2025-08-28T13:33:06.000Z</span>
+                <img src="screenshot/twitter/premium_1952590396670046264.png" alt="premium_谷歌将Gemini集成至Chrome浏览器，浏览体验将迎来变革">
+                <p class="summary">谷歌已悄然将旗下AI模型Gemini集成至Chrome浏览器，此举预示着未来的网页浏览体验将发生颠覆性变革。此次集成预计将带来一系列创新功能，显著提升用户在信息获取、内容交互及个性化服务方面的效率与便捷性。推文指出，至少有八项值得关注的新特性将随之推出，预示着AI在浏览器应用中的深度融合。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>谷歌</span><span>Gemini</span><span>Chrome浏览器</span><span>人工智能</span><span>浏览体验</span><span>产品集成</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>产品发布</span><span>技术动态</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/premium/status/1952590396670046264/analytics" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>fchollet_模型可解释性：规模而非方法是关键</h2>
+                <span class="published-time">发布时间: 2025-08-28T18:55:59.000Z</span>
+                <img src="screenshot/twitter/fchollet_1961140723392332276.png" alt="fchollet_模型可解释性：规模而非方法是关键">
+                <p class="summary">弗朗索瓦·肖莱指出，模型可解释性并非取决于所使用的机器学习方法（如神经网络或符号代码），而是纯粹由模型规模和复杂性决定。他强调，任何基底的模型在足够小时都可解释，但复杂代码或图形模型的行为难以解释。肖莱认为，“必须使用可解释方法”的说法是站不住脚的，因为它意味着将自己限制在玩具模型中，阻碍了复杂AI系统的发展。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>模型可解释性</span><span>机器学习</span><span>模型复杂度</span><span>神经网络</span><span>AI伦理</span></div>
+                    <div class="area"><span class="label">区域：</span><span>机器学习</span><span>研究进展</span><span>人工智能</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/fchollet/status/1961140723392332276" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MilesCcc_入选时代周刊2025年AI百人榜，助力Isomorphic Labs药物设计</h2>
+                <span class="published-time">发布时间: 2025-08-28T16:34:06.000Z</span>
+                <img src="screenshot/twitter/MilesCcc_1961105018272268426.png" alt="MilesCcc_入选时代周刊2025年AI百人榜，助力Isomorphic Labs药物设计">
+                <p class="summary">Miles Congreve宣布荣幸入选《时代》杂志2025年AI百人榜。他强调，过去三年致力于协助塑造Isomorphic Labs的药物设计引擎，并组建团队利用该技术进行药物发现。此次入选不仅是对其个人成就的认可，也凸显了AI在加速药物研发领域日益增长的影响力。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>时代百人榜</span><span>人工智能</span><span>药物设计</span><span>药物发现</span><span>Isomorphic Labs</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>行业资讯</span><span>研究进展</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/MilesCcc/status/1961105018272268426" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>sama_OpenAI发布Codex新功能</h2>
+                <span class="published-time">发布时间: 2025-08-28T16:01:13.000Z</span>
+                <img src="screenshot/twitter/sama_1961096744533647501.png" alt="sama_OpenAI发布Codex新功能">
+                <p class="summary">OpenAI开发者宣布推出Codex系列新功能，旨在提升其作为编程协作工具的效率。这些更新包括全新的IDE扩展、支持云端与本地环境间任务无缝迁移、GitHub代码审查集成以及改进的Codex命令行工具。新功能由GPT-5驱动，并通过ChatGPT计划提供。Sam Altman表示用户对新功能反响积极。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>Codex</span><span>OpenAI</span><span>GPT-5</span><span>编程工具</span><span>IDE扩展</span><span>代码审查</span></div>
+                    <div class="area"><span class="label">区域：</span><span>产品发布</span><span>大模型</span><span>技术动态</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/sama/status/1961096744533647501" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">wechat</h2>
+
+            <article class="item-card">
+                <h2>3D模型也能做“局部外科手术了”，无需训练，“想改哪里改哪里”，提效N倍+！</h2>
+                <span class="published-time">发布时间: 2025-08-28T23:50:40.000Z</span>
+                <img src="screenshot/wechat/wechat_image_E9DcldQZUPyIUUeqzi-STw.png" alt="3D模型也能做“局部外科手术了”，无需训练，“想改哪里改哪里”，提效N倍+！">
+                <p class="summary">VoxHammer是一种创新的无需训练的3D编辑方法，能够在3D潜在空间中实现精确且连贯的局部修改。该技术通过预测3D模型的反转轨迹，并在去噪和编辑阶段替换保留区域的去噪特征，从而确保编辑部分与未编辑区域之间的高度一致性。为验证其性能，研究团队构建了Edit3D Bench数据集进行评估。大量实验结果表明，VoxHammer在3D一致性和整体质量方面显著优于现有方法，为3D资产的灵活局部编辑提供了高效解决方案，极大地提升了工作效率。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>VoxHammer</span><span>3D编辑</span><span>无需训练</span><span>局部修改</span><span>潜在空间</span><span>模型一致性</span></div>
+                    <div class="area"><span class="label">区域：</span><span>计算机视觉</span><span>生成式AI</span><span>人工智能</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/E9DcldQZUPyIUUeqzi-STw" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>对话逐际动力张巍：造机器人很容易，关键是用起来</h2>
+                <span class="published-time">发布时间: 2025-08-28T16:01:34.000Z</span>
+                <img src="screenshot/wechat/wechat_image_nz9KZ7oN8P5-ZNdDnt8GBg.png" alt="对话逐际动力张巍：造机器人很容易，关键是用起来">
+                <p class="summary">逐际动力创始人张巍指出，人形机器人硬件制造相对容易，核心挑战在于其“小脑”即运动控制的AI化能力，逐际动力在此领域全球领先。公司致力于打造机器人平台，提供底层本体与运控技术，并计划推出人形机器人的“Windows”操作系统，旨在降低开发门槛，实现机器人“好用”且“易编程”。张巍强调，创新需由公司而非学术界主导，并认为人形机器人是长期价值巨大的“机器人iPhone”。逐际动力通过提供具竞争力的全尺寸人形机器人LimX Oli及开放API/SDK，赋能开发者，其商业模式注重用户价值与生态构建，而非单纯追求销量，短期应用聚焦B端市场。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>逐际动力</span><span>人形机器人</span><span>具身智能</span><span>运动控制</span><span>机器人平台</span><span>AI小脑</span></div>
+                    <div class="area"><span class="label">区域：</span><span>机器人</span><span>具身智能</span><span>人工智能</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/nz9KZ7oN8P5-ZNdDnt8GBg" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>碾压SOTA！腾讯HunyuanVideo-Foley开源：让视频自动生成电影级音效，沉浸感拉满！</h2>
+                <span class="published-time">发布时间: 2025-08-28T16:01:34.000Z</span>
+                <img src="screenshot/wechat/wechat_image_ykA5AKduOu5o4gNKdmqslw.png" alt="碾压SOTA！腾讯HunyuanVideo-Foley开源：让视频自动生成电影级音效，沉浸感拉满！">
+                <p class="summary">腾讯开源HunyuanVideo-Foley，一个端到端的文本-视频-音频（TV2A）生成框架，旨在实现电影级音效的自动生成。该框架通过构建高质量、大规模的10万小时TV2A数据集，并引入混合架构（MMDiT）和REPA损失策略，有效解决了多模态对齐和高保真音频生成挑战。HunyuanVideo-Foley在视频-语义对齐、时序同步和音频质量等多个关键指标上超越现有SOTA模型，为视频内容自动配音和提升沉浸感提供了新的技术突破。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>HunyuanVideo-Foley</span><span>文本-视频-音频生成</span><span>音效生成</span><span>多模态扩散模型</span><span>数据集构建</span><span>REPA策略</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>多模态</span><span>生成式AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/ykA5AKduOu5o4gNKdmqslw" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>你的怀疑是对的！LLM作为Judge，既无效又不可靠，终于有论文向LLJ开炮了</h2>
+                <span class="published-time">发布时间: 2025-08-28T09:54:13.000Z</span>
+                <img src="screenshot/wechat/wechat_image_NChnvM0uijUhDMiu_tWVRg.png" alt="你的怀疑是对的！LLM作为Judge，既无效又不可靠，终于有论文向LLJ开炮了">
+                <p class="summary">一篇最新论文深刻批判AI领域广泛应用的“大语言模型作为评判者”（LLMs as Judges, LLJs）模式，指出其在性能评估、数据构建和模型增强中既缺乏信度也缺乏效度。研究挑战了LLMs作为人类判断代理、能干评估者、可扩展评估者和成本效益高评估者等核心假设，揭示了其不遵循指令、解释不可信、偏见、脆弱性及缺乏专业知识等内在缺陷。文章警示了数据污染、自恋偏见、肤浅安全对齐及隐性成本。研究呼吁AI评估应回归科学严谨，倡导任务特定应用、改进评估实践，并建立独立第三方监督机制，以应对当前AI评估的文化危机。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>LLM作为Judge</span><span>模型评估</span><span>信度</span><span>效度</span><span>偏见</span><span>数据污染</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>自然语言处理</span><span>人工智能</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/NChnvM0uijUhDMiu_tWVRg" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI搜索MCP服务来了，Agent直接链接实时信息！刚刚，百度智能云打出了张“王牌”</h2>
+                <span class="published-time">发布时间: 2025-08-28T07:26:57.000Z</span>
+                <img src="screenshot/wechat/wechat_image_szX0WG9a3pmYnIPSOTjanw.png" alt="AI搜索MCP服务来了，Agent直接链接实时信息！刚刚，百度智能云打出了张“王牌”">
+                <p class="summary">百度智能云千帆平台推出AI搜索MCP服务，将百度AI搜索能力开放为组件，解决Agent获取实时信息和减少模型幻觉的痛点。同步发布的千帆4.0作为企业级AI平台，全面升级，包括多模态RAG、图谱增强RAG、灵活的智能体编排框架及强化的模型服务（集成150+模型，提供Function calling、思维链控制、RFT调优工具等）。此举旨在为企业构建“知外界、懂内部”的Agent提供基础设施，推动AI从模型竞争转向平台与基础设施竞争，助力企业快速落地AI应用，目前千帆平台已服务超46万家企业，孕育超130万个智能体。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>百度智能云</span><span>千帆平台</span><span>AI搜索</span><span>Agent</span><span>MCP服务</span><span>企业级AI平台</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>智能体</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/szX0WG9a3pmYnIPSOTjanw" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DeepSeek刚提到FP8，英伟达就把FP4精度推向预训练，更快、更便宜</h2>
+                <span class="published-time">发布时间: 2025-08-28T00:02:46.000Z</span>
+                <img src="screenshot/wechat/wechat_image_k1rVhAoQxD5phvGq9YWmRA.png" alt="DeepSeek刚提到FP8，英伟达就把FP4精度推向预训练，更快、更便宜">
+                <p class="summary">DeepSeek近期提及为国产芯片设计的FP8量化策略，引发业界对大模型量化与国产软硬结合的关注。紧随其后，英伟达宣布将NVFP4（4位浮点数）精度拓展至大模型预训练阶段，声称能以4位速度实现16位精度，显著提升训练效率并降低成本。文章深入探讨了NVFP4的技术细节，包括微块缩放、高精度块编码等，并验证其在万亿级Token规模下仍能保持与FP8相当的精度和稳定性。这标志着AI训练正从单纯堆叠算力转向更高效的低精度优化，为AI工厂的扩展和前沿模型开发设定了新标准。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>FP4</span><span>FP8</span><span>大模型预训练</span><span>量化</span><span>英伟达</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>深度学习</span><span>生成式AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/k1rVhAoQxD5phvGq9YWmRA" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>System Prompts Leaks</h2>
+                <span class="published-time">发布时间: 2025-08-27T17:43:45Z</span>
+                <img src="https://api.star-history.com/svg?repos=asgeirtj/system_prompts_leaks&type=Date" alt="System Prompts Leaks">
+                <p class="summary">该GitHub仓库“System Prompts Leaks”致力于收集并公开各种已部署聊天机器人的系统消息指令。它提供了一个宝贵的资源库，用于研究和理解大型语言模型及AI聊天机器人的内部运作机制和行为模式。通过汇集这些“泄露”的系统提示，项目旨在促进对AI伦理、偏见以及模型响应生成原理的深入分析，为研究人员和开发者提供透明度与洞察力，有助于提升AI系统的可解释性和安全性。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>系统提示</span><span>聊天机器人</span><span>大语言模型</span><span>AI伦理</span><span>提示工程</span><span>数据收集</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>自然语言处理</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/asgeirtj/system_prompts_leaks" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Wren AI - Open-Source GenBI Agent</h2>
+                <span class="published-time">发布时间: 2025-08-28T11:57:35Z</span>
+                <img src="https://raw.githubusercontent.com/Canner/WrenAI/main/misc/workflow.png" alt="Wren AI - Open-Source GenBI Agent">
+                <p class="summary">Wren AI是一个开源的GenBI智能体，旨在通过自然语言查询数据库，快速生成准确的SQL、图表及AI驱动的洞察。它支持Text-to-SQL和Text-to-Charts功能，并内置语义层以确保LLM输出的准确性和治理。该平台兼容多种主流数据库和大型语言模型，提供API嵌入能力，赋能开发者构建定制化应用。Wren AI极大地简化了数据分析流程，降低了SQL学习门槛，为企业决策提供即时、可操作的商业智能。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>GenBI</span><span>智能体</span><span>自然语言查询</span><span>Text-to-SQL</span><span>语义层</span><span>商业智能</span><span>大模型</span></div>
+                    <div class="area"><span class="label">区域：</span><span>生成式AI</span><span>智能体</span><span>大模型</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/Canner/WrenAI" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Chroma - the open-source embedding database</h2>
+                <span class="published-time">发布时间: 2025-08-28T21:52:15Z</span>
+                <img src="https://user-images.githubusercontent.com/891664/227103090-6624bf7d-9524-4e05-9d2c-c28d5d451481.png" alt="Chroma - the open-source embedding database">
+                <p class="summary">Chroma是一个开源的嵌入式数据库，旨在为Python和JavaScript的大语言模型（LLM）应用提供快速的内存管理能力。它提供简洁的API，支持LangChain和LlamaIndex等主流框架集成，并具备查询、过滤等丰富功能。Chroma支持多种嵌入模型，可用于构建“聊天数据”等场景，通过自然语言查询文档并结合LLM进行分析，是开发智能应用的高效解决方案。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>嵌入式数据库</span><span>向量数据库</span><span>大语言模型</span><span>内存管理</span><span>开源</span><span>自然语言处理</span><span>AI应用</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>机器学习</span><span>大模型</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/chroma-core/chroma" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Audiblez: Generate audiobooks from e-books</h2>
+                <span class="published-time">发布时间: 2025-03-02T18:28:03Z</span>
+                <img src="https://github.com/santinic/audiblez/raw/main/imgs/mac.png" alt="Audiblez: Generate audiobooks from e-books">
+                <p class="summary">Audiblez是一款开源工具，能够将电子书（如EPUB格式）高效转换为高质量的有声书（M4B格式）。它利用轻量级但效果自然的Kokoro-82M文本转语音模型，支持多种语言，并提供命令行和图形用户界面。该工具支持CUDA加速，显著提升转换速度，例如在GPU上转换一本16万字符的书籍仅需约5分钟。用户可自定义语速和选择不同音色，是个人制作有声读物的理想选择。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>有声书生成</span><span>电子书转换</span><span>文本转语音</span><span>语音合成</span><span>多语言支持</span><span>GPU加速</span><span>开源工具</span><span>EPUB</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>自然语言处理</span><span>生成式AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/santinic/audiblez" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Neural Networks: Zero to Hero</h2>
+                <span class="published-time">发布时间: 2024-02-20T17:19:51Z</span>
+                <img src="screenshot/github/nn-zero-to-hero.png" alt="Neural Networks: Zero to Hero">
+                <p class="summary">该GitHub仓库是“神经网络：从零到英雄”课程的配套资源，通过一系列YouTube视频和Jupyter Notebooks，从基础概念如反向传播、多层感知机，逐步深入到语言模型、批量归一化、卷积神经网络，并最终实现GPT和其分词器。课程强调通过实际编码构建和训练神经网络，旨在帮助学习者系统掌握深度学习核心技术，提升实践能力，尤其适合希望深入理解现代大型语言模型工作原理的开发者和研究人员。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>神经网络</span><span>深度学习</span><span>反向传播</span><span>语言模型</span><span>GPT</span><span>Transformer</span><span>分词器</span><span>Jupyter Notebook</span></div>
+                    <div class="area"><span class="label">区域：</span><span>深度学习</span><span>机器学习</span><span>自然语言处理</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/karpathy/nn-zero-to-hero" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>SurfSense</h2>
+                <span class="published-time">发布时间: 2025-08-28T02:20:00Z</span>
+                <img src="screenshot/github/SurfSense.png" alt="SurfSense">
+                <p class="summary">SurfSense是一个高度可定制的AI研究智能体，旨在整合个人知识库与外部信息源。它支持多种文件格式上传（包括文档、图片、音视频等50多种扩展），提供强大的搜索和内容交互功能，并能快速生成播客。该项目采用先进的RAG技术，支持多种LLM和嵌入模型，并具备自托管能力。其核心价值在于将个人数据与外部数据（如搜索引擎、Slack、GitHub等）无缝连接，提供私有化、高效的AI研究体验，并支持本地LLM部署，确保隐私。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>AI研究智能体</span><span>个人知识库</span><span>检索增强生成</span><span>播客生成</span><span>自托管</span><span>多模态</span><span>大语言模型</span><span>文件处理</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>智能体</span><span>大模型</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/MODSetter/SurfSense" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>基于推理分解的自奖励视觉-语言模型</h2>
+                <span class="published-time">发布时间: 2025-08-27T08:01:03.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.19652.png" alt="基于推理分解的自奖励视觉-语言模型">
+                <p class="summary">视觉-语言模型（VLM）常受视觉幻觉（即描述图像中不存在的事物）和语言捷径（即跳过视觉部分而仅依赖文本先验）的困扰。这些问题出现的原因在于，大多数VLM的后训练方法依赖于简单的可验证答案匹配，且仅监督最终输出，导致中间视觉推理缺乏明确指导。因此，VLM接收到的视觉信号稀疏，并常倾向于优先处理基于语言的推理而非视觉感知。为缓解此问题，现有方法通过人工标注或从外部大型模型蒸馏标签来增加视觉监督。然而，人工标注劳动密集且成本高昂，且由于外部信号无法适应不断演变的策略，它们会导致分布偏移，进而可能引发奖励欺骗。本文引入了Vision-SR1，这是一种自奖励方法，通过强化学习在不依赖外部视觉监督的情况下改进视觉推理。Vision-SR1将VLM推理分解为两个阶段：视觉感知和语言推理。模型首先被提示生成自包含的视觉感知，这些感知足以回答问题而无需回溯输入图像。为验证这种自包含性，同一VLM模型随后被再次提示，仅使用生成的感知作为输入进行语言推理以计算奖励。这种自奖励与对最终输出的监督相结合，提供了平衡的训练信号，从而增强了视觉感知和语言推理。我们的实验表明，Vision-SR1在各种视觉-语言任务中改进了视觉推理，减轻了视觉幻觉，并减少了对语言捷径的依赖。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>视觉-语言模型</span><span>自奖励</span><span>推理分解</span><span>视觉幻觉</span><span>强化学习</span></div>
+                    <div class="area"><span class="label">区域：</span><span>多模态</span><span>计算机视觉</span><span>深度学习</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.19652" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MIDAS：基于实时自回归视频生成的多模态交互式数字人合成</h2>
+                <span class="published-time">发布时间: 2025-08-26T14:00:16.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.19320.png" alt="MIDAS：基于实时自回归视频生成的多模态交互式数字人合成">
+                <p class="summary">近年来，交互式数字人视频生成引起了广泛关注并取得了显著进展。然而，构建一个能够实时与多样化输入信号交互的实用系统对现有方法而言仍具挑战性，这些方法常面临高延迟、高计算成本和有限可控性等问题。在这项工作中，我们引入了一个自回归视频生成框架，该框架能够以流式方式实现交互式多模态控制和低延迟外推。我们的框架在对标准大语言模型（LLM）进行最小修改的基础上，接受包括音频、姿态和文本在内的多模态条件编码，并输出空间和语义一致的表示，以指导扩散头部的去噪过程。为此，我们构建了一个约20,000小时的大规模多源对话数据集，为训练提供了丰富的对话场景。我们进一步引入了一个深度压缩自编码器，其压缩比高达64倍，有效缓解了自回归模型长序列推理的负担。在双向对话、多语言数字人合成和交互式世界模型上的大量实验突出了我们方法在低延迟、高效率和细粒度多模态可控性方面的优势。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>数字人合成</span><span>多模态交互</span><span>实时视频生成</span><span>自回归模型</span><span>大语言模型</span></div>
+                    <div class="area"><span class="label">区域：</span><span>多模态</span><span>生成式AI</span><span>深度学习</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.19320" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>CODA：基于解耦强化学习的协调大脑皮层与小脑的双脑计算机使用智能体</h2>
+                <span class="published-time">发布时间: 2025-08-27T17:59:50.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.20096.png" alt="CODA：基于解耦强化学习的协调大脑皮层与小脑的双脑计算机使用智能体">
+                <p class="summary">用于图形用户界面（GUI）的自主智能体在科学计算等专业领域面临重大挑战，这些领域既需要长周期规划，也需要精确执行。现有方法存在权衡：通用智能体擅长规划但在执行方面表现不佳，而专用智能体则表现出相反的弱点。最近的组合框架试图通过结合规划器和执行器来弥补这一差距，但它们通常是静态且不可训练的，这阻碍了从经验中进行适应。考虑到科学领域高质量数据的稀缺性，这是一个关键的局限性。为了解决这些局限性，我们引入了CODA，这是一种新颖且可训练的组合框架，它将通用规划器（大脑皮层）与专业执行器（小脑）相结合，并通过专门的两阶段管道进行训练。在第一阶段，即专业化阶段，我们采用解耦的GRPO方法，从少量任务轨迹中引导，为每个科学应用单独训练一个专家规划器。在第二阶段，即泛化阶段，我们聚合来自专业化专家的所有成功轨迹，以构建一个整合数据集，然后将其用于最终规划器的监督微调。这使得CODA既具有强大的执行能力，又具有跨领域泛化能力。在ScienceBoard基准测试的四个挑战性应用上进行评估，CODA显著优于基线，并在开源模型中建立了新的最先进水平。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>智能体</span><span>解耦强化学习</span><span>组合框架</span><span>科学计算</span><span>规划与执行</span></div>
+                    <div class="area"><span class="label">区域：</span><span>智能体</span><span>机器学习</span><span>深度学习</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.20096" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>扩散语言模型在解码前便已知晓答案</h2>
+                <span class="published-time">发布时间: 2025-08-27T15:40:25.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.19982.png" alt="扩散语言模型在解码前便已知晓答案">
+                <p class="summary">扩散语言模型（DLMs）近期作为自回归方法的替代方案出现，提供了并行序列生成和灵活的词元顺序。然而，其推理速度仍慢于自回归模型，这主要归因于双向注意力的高昂成本以及高质量输出所需的大量精炼步骤。在这项工作中，我们强调并利用了DLMs一个被忽视的特性——早期答案收敛：在许多情况下，无论是在半自回归还是随机重掩码调度下，正确答案都可以在最终解码步骤前通过一半的步骤在内部识别。例如，在GSM8K和MMLU数据集上，分别高达97%和99%的实例仅使用一半的精炼步骤即可正确解码。基于这一观察，我们引入了Prophet，这是一种无需训练的快速解码范式，可实现早期提交解码。具体而言，Prophet利用前两名预测候选之间的置信度差距作为判据，动态决定是继续精炼还是“全力以赴”（即一步解码所有剩余词元）。它能无缝集成到现有DLM实现中，开销可忽略不计，且无需额外训练。对LLaDA-8B和Dream-7B在多项任务上的实证评估表明，Prophet在保持高质量生成的同时，将解码步骤减少了高达3.4倍。这些结果将DLM解码重新定义为何时停止采样的问题，并证明早期解码收敛提供了一种简单而强大的机制来加速DLM推理，与现有加速技术互补。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>扩散语言模型</span><span>快速解码</span><span>早期收敛</span><span>推理加速</span><span>Prophet</span></div>
+                    <div class="area"><span class="label">区域：</span><span>深度学习</span><span>自然语言处理</span><span>生成式AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.19982" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AudioStory：使用大型语言模型生成长篇叙事音频</h2>
+                <span class="published-time">发布时间: 2025-08-27T17:55:38.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.20088.png" alt="AudioStory：使用大型语言模型生成长篇叙事音频">
+                <p class="summary">近期文本到音频（TTA）生成技术在合成短音频片段方面表现出色，但在处理长篇叙事音频时面临挑战，后者需要时间连贯性和组合推理能力。为弥补这一空白，我们提出了 AudioStory，一个统一的框架，它将大型语言模型（LLM）与 TTA 系统相结合，以生成结构化的长篇音频叙事。AudioStory 具有强大的指令遵循推理生成能力。它利用 LLM 将复杂的叙事查询分解为带有上下文线索的时间有序子任务，从而实现连贯的场景过渡和情感语调一致性。AudioStory 具有两个吸引人的特点：（1）解耦桥接机制：AudioStory 将 LLM-扩散器协作分解为两个专门组件，即用于事件内语义对齐的桥接查询和用于跨事件连贯性保持的残差查询。（2）端到端训练：通过在一个单一的端到端框架内统一指令理解和音频生成，AudioStory 消除了对模块化训练管道的需求，同时增强了组件之间的协同作用。此外，我们建立了一个基准数据集 AudioStory-10K，涵盖了动画音景和自然声音叙事等多样化领域。大量实验表明，AudioStory 在单音频生成和叙事音频生成方面均表现出优越性，在指令遵循能力和音频保真度方面均超越了先前的 TTA 基线。我们的代码可在 https://github.com/TencentARC/AudioStory 获取。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>长篇叙事音频</span><span>大型语言模型</span><span>文本到音频生成</span><span>指令遵循</span><span>端到端训练</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>生成式AI</span><span>多模态</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.20088" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>警惕第三只眼！基准测试多模态大语言模型驱动的智能手机智能体的隐私意识</h2>
+                <span class="published-time">发布时间: 2025-08-27T00:41:28.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.19493.png" alt="警惕第三只眼！基准测试多模态大语言模型驱动的智能手机智能体的隐私意识">
+                <p class="summary">智能手机为用户带来了极大的便利，但也使得设备能够广泛记录各种个人信息。现有由多模态大语言模型（MLLMs）驱动的智能手机智能体在自动化不同任务方面取得了显著的性能。然而，作为代价，这些智能体在操作过程中被授予了对用户敏感个人信息的实质性访问权限。为了全面了解这些智能体的隐私意识，我们提出了据我们所知首个包含7,138个场景的大规模基准测试。此外，对于场景中的隐私上下文，我们标注了其类型（例如，账户凭据）、敏感度级别和位置。随后，我们仔细评估了七个主流的智能手机智能体。我们的结果表明，几乎所有被评估的智能体都表现出不令人满意的隐私意识（RA），即使有明确提示，其性能仍低于60%。总体而言，闭源智能体比开源智能体表现出更好的隐私能力，其中Gemini 2.0-flash表现最佳，隐私意识达到67%。我们还发现，智能体的隐私检测能力与场景敏感度级别高度相关，即敏感度级别越高的场景通常越容易被识别。我们希望这些发现能启发研究界重新思考智能手机智能体中不平衡的效用-隐私权衡。我们的代码和基准测试可在https://zhixin-l.github.io/SAPA-Bench获取。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>智能手机智能体</span><span>隐私意识</span><span>多模态大语言模型</span><span>基准测试</span><span>个人信息保护</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>多模态</span><span>智能体</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.19493" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            由 AI 助手生成
+        </footer>
+    </div>
+</body>
+</html>
