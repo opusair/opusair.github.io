@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 - 2025-09-02</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter, Noto Sans SC', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: 2px solid transparent;
+            font-size: 0.9em;
+        }
+
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .language-switch a.active {
+            background: var(--secondary-color);
+            border-color: var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .language-switch {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="./" class="active">中文</a>
+                <a href="en/">English</a>
+            </div>
+
+            <h1>AI 日报</h1>
+            <p class="date">2025-09-02</p>
+            <p class="theme-info">关于我们: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Twitter</h2>
+
+            <article class="item-card">
+                <h2>emilygsands_Mistral AI与Stripe合作Le Chat集成MCP处理支付数据</h2>
+                <span class="published-time">发布时间: 2025-09-02T14:23:11.000Z</span>
+                <img src="screenshot/twitter/emilygsands_1962884010289590583.png" alt="emilygsands_Mistral AI与Stripe合作Le Chat集成MCP处理支付数据">
+                <p class="summary">Emily Glassberg Sands宣布，Mistral AI的Le Chat现已通过与Stripe的MCP集成，能够处理支付数据、退款、发票和订阅等财务操作。此次合作显著增强了Le Chat作为企业级AI助手的连接性和实用性，使其成为更全面的AI解决方案，支持20多个连接器并具备可控内存功能。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>Mistral AI</span><span>Stripe</span><span>Le Chat</span><span>MCP</span><span>支付处理</span><span>企业AI</span></div>
+                    <div class="area"><span class="label">区域：</span><span>产品发布</span><span>大模型</span><span>行业资讯</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/emilygsands/status/1962884010289590583" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>corbtt_发布RL训练深度研究智能体食谱，30小时H200超越Sonnet-4</h2>
+                <span class="published-time">发布时间: 2025-09-02T19:02:31.000Z</span>
+                <img src="screenshot/twitter/corbtt_1962954306078048297.png" alt="corbtt_发布RL训练深度研究智能体食谱，30小时H200超越Sonnet-4">
+                <p class="summary">Kyle Corbitt宣布发布一项利用强化学习（RL）训练前沿深度研究智能体的“食谱”。该方法仅需在H200 GPU上运行30小时，任何开发者便能使用开源工具在DeepResearch Bench基准测试中超越Sonnet-4的性能。这标志着在低成本计算资源下实现高性能AI智能体训练的重大突破，有望加速AI研究与应用普及。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>深度研究智能体</span><span>强化学习</span><span>开源工具</span><span>AI训练</span><span>性能超越</span><span>H200</span></div>
+                    <div class="area"><span class="label">区域：</span><span>智能体</span><span>深度学习</span><span>研究进展</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/corbtt/status/1962954306078048297" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>eliebakouch_英伟达13B模型4比特训练稳定性验证</h2>
+                <span class="published-time">发布时间: 2025-09-02T09:12:59.000Z</span>
+                <img src="screenshot/twitter/eliebakouch_1962805948184998064.png" alt="eliebakouch_英伟达13B模型4比特训练稳定性验证">
+                <p class="summary">推文指出，英伟达正对其130亿参数模型进行大规模消融研究，训练数据量高达10万亿个token，旨在验证其4比特（NVFP4）训练技术的稳定性。此举或预示英伟达在低精度模型训练方面取得重要进展，有望降低大模型训练成本并提升效率。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>英伟达</span><span>4比特训练</span><span>NVFP4</span><span>大模型</span><span>低精度训练</span><span>消融研究</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>机器学习</span><span>技术动态</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/eliebakouch/status/1962805948184998064" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>gm8xx8_Nous Research发布Hermes 4开源推理系列大模型</h2>
+                <span class="published-time">发布时间: 2025-09-02T18:17:54.000Z</span>
+                <img src="screenshot/twitter/gm8xx8_1962943078702186627.png" alt="gm8xx8_Nous Research发布Hermes 4开源推理系列大模型">
+                <p class="summary">Nous Research发布了Hermes 4开源推理系列大模型，包括基于Llama-3.1的70B和405B版本，以及基于Qwen3的14B基线模型。该系列模型在训练、数据处理、推理模式和评估方面进行了多项创新，尤其引入了混合推理模式和RefusalBench评估基准。Hermes 4在数学、推理、代码和知识等多个领域表现出色，其70B版本在RefusalBench推理模式下得分远超GPT-5。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>Hermes 4</span><span>大模型</span><span>推理模型</span><span>开源</span><span>Llama-3.1</span><span>RefusalBench</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>开源项目</span><span>研究进展</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/gm8xx8/status/1962943078702186627" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LangChainAI_LangChain与LangGraph 1.0alpha发布</h2>
+                <span class="published-time">发布时间: 2025-09-02T17:45:17.000Z</span>
+                <img src="screenshot/twitter/LangChainAI_1962934869065191457.png" alt="LangChainAI_LangChain与LangGraph 1.0alpha发布">
+                <p class="summary">LangChainAI宣布LangChain与LangGraph的1.0alpha版本已在Python和JS中发布。LangGraph作为低级智能体编排框架，提供持久执行和精细控制；LangChain则专注于通过标准化模型抽象和预构建智能体模式加速AI功能开发。此次更新预示着LangChain 1.0将成为基于LangGraph的新核心智能体抽象包。官方1.0版本预计10月下旬发布，并征集用户反馈。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>LangChain</span><span>LangGraph</span><span>智能体</span><span>框架</span><span>版本发布</span><span>AI开发</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>智能体</span><span>产品发布</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/LangChainAI/status/1962934869065191457" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DITOGAMESch_多模态AI工具链测试：Gemini、Kling与Veo协同创作</h2>
+                <span class="published-time">发布时间: 2025-09-02T16:06:46.000Z</span>
+                <img src="screenshot/twitter/DITOGAMESch_1809885065066733956.png" alt="DITOGAMESch_多模态AI工具链测试：Gemini、Kling与Veo协同创作">
+                <p class="summary">推文作者Travis Davids分享了其测试多模态AI工具链的创意工作流。该流程结合了Gemini 2.5 Flash进行图像生成（包括“Nano Banana”模型和拼贴法），并利用Kling 2.1处理视频的起始和结束帧，同时强调Veo 3是其偏爱的组合。此测试旨在探索不同AI工具间的协同创作潜力。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>Gemini 2.5 Flash</span><span>Kling 2.1</span><span>Veo 3</span><span>多模态AI</span><span>图像生成</span><span>视频生成</span><span>工作流</span></div>
+                    <div class="area"><span class="label">区域：</span><span>生成式AI</span><span>多模态</span><span>技术动态</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/DITOGAMESch/status/1809885065066733956/analytics" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">wechat</h2>
+
+            <article class="item-card">
+                <h2>ICCV 2025 | 描述替代指令：南大联合vivo发布DescriptiveEdit，定义语义图像编辑新范式</h2>
+                <span class="published-time">发布时间: 2025-09-02T14:01:10.000Z</span>
+                <img src="screenshot/wechat/wechat_image_wLLay3UxJCutu4kesqAxTA.png" alt="ICCV 2025 | 描述替代指令：南大联合vivo发布DescriptiveEdit，定义语义图像编辑新范式">
+                <p class="summary">南京大学与vivo联合发布了DescriptiveEdit，提出一种基于“描述”的语义图像编辑新范式。该方法通过描述直接引导编辑意图，实现了高质量的全局与局部图像编辑，并在指令遵循度与结构保真之间取得更理想平衡。DescriptiveEdit引入Attention Bridge进行高效参考图控制，并采用零初始化线性层自适应融合特征，有效解决了精准编辑与结构保真的冲突。此外，它能无缝兼容ControlNet、LoRA等现有文生图生态扩展，展现出卓越的兼容性和编辑性能。实验证明，DescriptiveEdit在图像一致性和指令遵循度方面均优于现有方案，为语义图像编辑领域带来了可扩展、即插即用的灵活解决方案。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>语义图像编辑</span><span>描述引导</span><span>扩散模型</span><span>ControlNet</span><span>DescriptiveEdit</span><span>图像生成</span></div>
+                    <div class="area"><span class="label">区域：</span><span>计算机视觉</span><span>深度学习</span><span>生成式AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/wLLay3UxJCutu4kesqAxTA" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>马斯克发布《宏伟蓝图4》：特斯拉80%价值在于机器人，还意外露出了一款新车</h2>
+                <span class="published-time">发布时间: 2025-09-02T04:13:51.000Z</span>
+                <img src="screenshot/wechat/wechat_image_sjsf0A50aKsaKcuRz47_PA.png" alt="马斯克发布《宏伟蓝图4》：特斯拉80%价值在于机器人，还意外露出了一款新车">
+                <p class="summary">特斯拉最新发布的《宏伟蓝图4》揭示了公司未来战略重心：埃隆·马斯克指出，特斯拉约80%的价值将来自其人形机器人Optimus。该蓝图标志着特斯拉从电动汽车和可持续能源向人工智能与物理世界深度融合的范式转变，旨在通过大规模统一软硬件实现“可持续富足”。《蓝图4》强调了增长无限、创新破限、技术解决现实问题、自动化普惠全人类及普及促进增长等五大原则，并将汽车视为特定场景下的轮式机器人，预示着FSD技术将通用化应用于人形机器人。文章还提及了疑似新款Cybertruck SUV的意外曝光。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>特斯拉</span><span>宏伟蓝图4</span><span>Optimus</span><span>人形机器人</span><span>可持续富足</span><span>人工智能</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>机器人</span><span>智能体</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/sjsf0A50aKsaKcuRz47_PA" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>用短视频成本生成长视频，字节Seed新注意力机制让计算量降低85%</h2>
+                <span class="published-time">发布时间: 2025-09-02T04:13:51.000Z</span>
+                <img src="screenshot/wechat/wechat_image_0JTfrSnf76WrmpchpCcrhQ.png" alt="用短视频成本生成长视频，字节Seed新注意力机制让计算量降低85%">
+                <p class="summary">字节跳动Seed团队与斯坦福等机构合作，推出名为Mixture of Contexts (MoC) 的新型稀疏注意力机制，旨在以短视频的成本生成高质量长视频。该机制将长视频生成重定义为上下文检索任务，通过高效的长期记忆检索，显著降低了计算量。实验表明，MoC能将长视频生成所需的计算量削减高达85%，同时保持人物和场景的连贯性及视频质量，解决了传统方法中跨时域记忆调取效率低的问题，为长视频内容创作提供了高效且经济的解决方案。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>长视频生成</span><span>注意力机制</span><span>计算量优化</span><span>字节跳动</span><span>MoC</span></div>
+                    <div class="area"><span class="label">区域：</span><span>生成式AI</span><span>深度学习</span><span>计算机视觉</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/0JTfrSnf76WrmpchpCcrhQ" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>腾讯开源智能体新框架：不用训练无需充值，用开源模型实现SOTA Agent</h2>
+                <span class="published-time">发布时间: 2025-09-02T04:13:51.000Z</span>
+                <img src="screenshot/wechat/wechat_image_a2GL3DN7KPpXjQECE_TVqA.png" alt="腾讯开源智能体新框架：不用训练无需充值，用开源模型实现SOTA Agent">
+                <p class="summary">腾讯优图实验室正式开源Youtu-agent智能体框架，旨在解决当前智能体开发中上手门槛高、依赖复杂环境及成本高昂等问题。该框架完全基于开源生态，无需训练模型或依赖闭源API，却能在多个挑战性基准上取得领先性能，接近甚至超越部分付费解决方案。Youtu-agent具备开源友好、灵活架构、自动化智能体生成及简洁高效等核心亮点，并已在文件管理、数据分析、学术研究和广域综述等真实场景中展现实用性。其DITA原则和自动化Agent生成机制大幅降低了智能体定制难度，为科研人员、应用开发者及AI爱好者提供了强大的开源基线和即用型工具。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>智能体</span><span>开源框架</span><span>腾讯优图</span><span>大模型</span><span>自动化</span><span>SOTA</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>智能体</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/a2GL3DN7KPpXjQECE_TVqA" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>你的RAG系统有个数学BUG，DeepMind首次证明嵌入向量检索召回能力有限</h2>
+                <span class="published-time">发布时间: 2025-09-02T11:35:23.000Z</span>
+                <img src="screenshot/wechat/wechat_image_FNUrpFyf-L9AJASLiN7EnA.png" alt="你的RAG系统有个数学BUG，DeepMind首次证明嵌入向量检索召回能力有限">
+                <p class="summary">谷歌DeepMind最新研究首次从数学层面揭示了当前主流单向量嵌入检索模型的固有局限性。论文指出，性能瓶颈并非训练不足，而是将复杂相关性信息压缩至固定维度向量的模式本身。研究通过“符号秩”概念证明，固定维度的向量空间无法表示任意复杂的查询-文档组合关系，导致模型在面对高复杂度检索任务时存在数学上的“天花板”。实验验证（如“自由嵌入”和LIMIT数据集）表明，即使是SOTA单向量模型也无法完美处理看似简单但组合关系复杂的任务，而稀疏检索（BM25）和多向量模型表现更优。这预示着RAG系统若依赖单一向量嵌入，其召回能力将受限，促使业界重新思考混合检索和多向量架构的未来方向，以构建更鲁棒的AI系统。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>RAG</span><span>向量嵌入</span><span>检索</span><span>DeepMind</span><span>召回能力</span><span>数学证明</span></div>
+                    <div class="area"><span class="label">区域：</span><span>生成式AI</span><span>大模型</span><span>机器学习</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/FNUrpFyf-L9AJASLiN7EnA" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI读网页，这次真不一样了，谷歌Gemini解锁「详解网页」新技能</h2>
+                <span class="published-time">发布时间: 2025-09-02T03:42:30.000Z</span>
+                <img src="screenshot/wechat/wechat_image_alV-czwScS_CSsdP3nWZHQ.png" alt="AI读网页，这次真不一样了，谷歌Gemini解锁「详解网页」新技能">
+                <p class="summary">文章介绍了谷歌Gemini API新推出的URL Context功能，该功能允许Gemini模型深度访问和处理URL内容，包括网页、PDF和图像，上限达34MB。与传统AI处理链接仅读取摘要不同，URL Context作为专为开发者设计的API，能进行完整的文档解析，理解结构、内容和数据，支持深度解析PDF、多模态理解图片及多种网页文件。作者Thomas Reid认为其是RAG的“棺材钉”，因为它简化了公开网络内容处理流程，无需复杂的RAG步骤。尽管有容量和访问限制，URL Context揭示了基础模型将外部能力内置化的行业趋势，为开发者提供了更高效、精准的解决方案，但RAG在私有文档处理等场景仍不可或缺。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>Gemini</span><span>URL Context</span><span>RAG</span><span>网页解析</span><span>多模态</span><span>API</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>自然语言处理</span><span>多模态</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/alV-czwScS_CSsdP3nWZHQ" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Fast and Flexible Multi-Agent Automation Framework</h2>
+                <span class="published-time">发布时间: 2025-09-02T21:36:28Z</span>
+                <img src="https://raw.githubusercontent.com/crewAIInc/crewAI/main/docs/images/crewai_logo.png" alt="Fast and Flexible Multi-Agent Automation Framework">
+                <p class="summary">CrewAI是一个轻量、快速的Python框架，专为自主AI智能体编排设计，独立于LangChain等现有框架。它提供Crews（多智能体协作）和Flows（事件驱动工作流）两种核心机制，兼顾高层简洁性与底层精细控制。CrewAI致力于将复杂业务流程转化为高效智能自动化，尤其适用于企业级应用，并拥有超过10万认证开发者的活跃社区支持。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>多智能体</span><span>AI智能体</span><span>自动化框架</span><span>Python</span><span>智能体编排</span><span>工作流</span><span>大模型应用</span><span>企业级AI</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>智能体</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/crewAIInc/crewAI" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Koog</h2>
+                <span class="published-time">发布时间: 2025-09-02T20:54:48Z</span>
+                <img src="screenshot/github/koog.png" alt="Koog">
+                <p class="summary">Koog是一个基于Kotlin的AI代理框架，旨在以纯Kotlin方式构建和运行智能代理。它提供了一系列核心功能，包括与模型上下文协议（MCP）集成、嵌入能力、自定义工具创建、智能历史压缩、强大的流式API以及持久化代理内存。该框架支持JVM、JS、WasmJS和iOS等多平台部署，并兼容Google、OpenAI等主流LLM提供商，赋能开发者构建可处理复杂工作流并与用户交互的智能代理应用，是AI工程领域的理想选择。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>AI代理</span><span>Kotlin</span><span>大语言模型</span><span>智能体框架</span><span>多平台</span><span>自然语言处理</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>智能体</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/JetBrains/koog" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Bytebot: Open-Source AI Desktop Agent</h2>
+                <span class="published-time">发布时间: 2025-09-01T15:38:09Z</span>
+                <img src="https://github.com/bytebot-ai/bytebot/raw/main/docs/images/bytebot-logo.png" alt="Bytebot: Open-Source AI Desktop Agent">
+                <p class="summary">Bytebot是一个开源AI桌面智能体，赋予AI完整的虚拟桌面环境，使其能像人类一样操作电脑完成复杂任务。它支持使用任意应用程序、管理文件、登录网站、处理文档和执行跨程序工作流。核心功能包括任务自主性、文档处理和真实应用交互。Bytebot由虚拟桌面、AI代理、任务界面和API组成，支持多种AI模型，提供数据隐私和高度定制化能力，适用于业务流程自动化、开发测试和研究分析等场景。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>AI桌面智能体</span><span>自动化</span><span>虚拟桌面</span><span>任务自动化</span><span>文档处理</span><span>API控制</span><span>开源</span></div>
+                    <div class="area"><span class="label">区域：</span><span>智能体</span><span>人工智能</span><span>大模型</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/bytebot-ai/bytebot" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>🌟 500+ AI Agent Projects / UseCases</h2>
+                <span class="published-time">发布时间: 2025-08-01T11:52:42+00:00</span>
+                <img src="https://github.com/ashishpatel26/500-AI-Agents-Projects/raw/main/images/AIAgentUseCase.jpg" alt="🌟 500+ AI Agent Projects / UseCases">
+                <p class="summary">该GitHub仓库汇集了500多个跨行业AI智能体项目和用例，旨在展示AI智能体在医疗、金融、教育、客户服务等领域的实际应用。它提供了详细的用例描述，并链接到相应的开源项目，涵盖CrewAI、AutoGen、Agno、Langgraph等主流AI框架。该资源库是开发者、研究人员和商业爱好者探索AI智能体灵感和学习的宝库，促进了AI代理技术的普及和创新。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>AI智能体</span><span>人工智能应用</span><span>开源项目</span><span>行业解决方案</span><span>AI框架</span><span>用例集合</span></div>
+                    <div class="area"><span class="label">区域：</span><span>智能体</span><span>人工智能</span><span>大模型</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/ashishpatel26/500-AI-Agents-Projects" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Chatterbox TTS</h2>
+                <span class="published-time">发布时间: 2025-08-01T10:22:29Z</span>
+                <img src="screenshot/github/chatterbox.png" alt="Chatterbox TTS">
+                <p class="summary">Chatterbox是Resemble AI推出的首个生产级开源文本转语音（TTS）模型，采用MIT许可。该模型在与ElevenLabs等领先闭源系统的对比评估中表现出色，并首次支持情感夸张控制功能，能为语音注入独特表现力。Chatterbox基于0.5B Llama骨干网络，经过50万小时数据训练，具备SoTA零样本TTS能力、超稳定推理及内置PerTh水印技术，适用于模因、视频、游戏和AI智能体等多种应用场景。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>文本转语音</span><span>情感控制</span><span>零样本TTS</span><span>Llama模型</span><span>语音水印</span><span>语音合成</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>深度学习</span><span>生成式AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/resemble-ai/chatterbox" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>PVPO：面向智能体推理的预估价值策略优化</h2>
+                <span class="published-time">发布时间: 2025-08-28T09:18:26.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.21104.png" alt="PVPO：面向智能体推理的预估价值策略优化">
+                <p class="summary">无Critic的强化学习方法，特别是群组策略，因其在复杂任务中的高效性而备受关注。然而，这些方法严重依赖策略内部的多次采样和比较来估计优势，这可能导致策略陷入局部最优并增加计算成本。为解决这些问题，我们提出了PVPO，一种通过优势参考锚点和数据预采样增强的高效强化学习方法。具体而言，我们利用参考模型提前进行rollout，并使用计算出的奖励分数作为参考锚点。我们的方法有效纠正了组内比较引入的累积偏差，并显著减少了对rollout次数的依赖。同时，参考模型可以在数据预采样期间评估样本难度，从而有效选择高收益数据以提高训练效率。在两个领域的九个数据集上进行的实验表明，PVPO实现了最先进（SOTA）的性能。我们的方法不仅在多任务中展现出强大的泛化能力，而且在不同规模的模型上也表现出可扩展的性能。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>强化学习</span><span>策略优化</span><span>智能体推理</span><span>优势估计</span><span>数据预采样</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>机器学习</span><span>智能体</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.21104" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>T2R-bench：一个从真实世界工业表格生成文章级报告的基准</h2>
+                <span class="published-time">发布时间: 2025-08-27T11:55:40.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.19813.png" alt="T2R-bench：一个从真实世界工业表格生成文章级报告的基准">
+                <p class="summary">针对大型语言模型（LLMs）在表格推理方面的能力，已开展了广泛研究。然而，将表格信息转化为报告这一核心任务对于工业应用而言仍是一个重大挑战。此任务面临两个关键问题：1）表格的复杂性和多样性导致推理结果不尽理想；2）现有表格基准缺乏充分评估此任务实际应用的能力。为弥补这一空白，我们提出了表格到报告（table-to-report）任务，并构建了一个名为T2R-bench的双语基准，该基准的关键信息流是从表格到报告。该基准包含457个工业表格，均来源于真实世界场景，涵盖19个工业领域和4种工业表格类型。此外，我们提出了一套评估标准，以公平衡量报告生成的质量。对25个广泛使用的LLMs进行的实验表明，即使是Deepseek-R1等最先进的模型也仅取得了62.71的综合得分，这表明LLMs在T2R-bench上仍有改进空间。源代码和数据将在接收后提供。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>表格到报告</span><span>大型语言模型</span><span>工业表格</span><span>基准</span><span>报告生成</span></div>
+                    <div class="area"><span class="label">区域：</span><span>自然语言处理</span><span>大模型</span><span>人工智能</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.19813" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>在复杂动态环境中，输入重构如何提高工具使用准确性？一项基于τ-bench的研究</h2>
+                <span class="published-time">发布时间: 2025-08-28T15:57:33.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.20931.png" alt="在复杂动态环境中，输入重构如何提高工具使用准确性？一项基于τ-bench的研究">
+                <p class="summary">大型语言模型（LLMs）在推理和规划能力方面的最新进展，使其在动态环境中作为能够使用工具的自主智能体展现出潜力。然而，在像tau-bench这样的多轮对话环境中，这些智能体在一致性推理、遵守领域特定策略以及在长时间的工具调用和对话中提取正确信息方面常常面临困难。为了捕捉并缓解这些失败，我们对对话轨迹中常见的错误进行了全面的手动分析。随后，我们通过对工具调用智能体的输入进行重构来实验性地改进智能体的决策。最后，我们提出了输入重构多智能体（IRMA）框架，该框架自动重构用户查询，并辅以相关的领域规则和工具建议，以供工具调用智能体关注。结果表明，IRMA在整体pass^5分数上显著优于ReAct、Function Calling和Self-Reflection，分别高出16.1%、12.7%和19.1%。这些发现强调了IRMA在动态环境中相比其他方法的卓越可靠性和一致性。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>输入重构</span><span>工具使用</span><span>大型语言模型</span><span>智能体</span><span>动态环境</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>智能体</span><span>自然语言处理</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.20931" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>ALLaM 34B 的 UI 级评估：通过 HUMAIN Chat 衡量以阿拉伯语为中心的 LLM</h2>
+                <span class="published-time">发布时间: 2025-08-24T14:32:15.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.17378.png" alt="ALLaM 34B 的 UI 级评估：通过 HUMAIN Chat 衡量以阿拉伯语为中心的 LLM">
+                <p class="summary">主要在英文语料库上训练的大型语言模型（LLM）通常难以捕捉阿拉伯语的语言和文化细微差别。为弥补这一空白，沙特数据与人工智能管理局（SDAIA）推出了专注于阿拉伯语的 ALLaM 系列模型。其中向公众开放的最强大的模型 ALLaM-34B 随后被 HUMAIN 采用，HUMAIN 基于该模型开发并部署了 HUMAIN Chat，一个封闭的对话式网络服务。本文对 ALLaM-34B 进行了扩展和改进的 UI 级评估。我们使用了一个涵盖现代标准阿拉伯语、五种区域方言、语码转换、事实知识、算术和时间推理、创意生成以及对抗性安全性的提示包，收集了 115 个输出（23 个提示乘以 5 次运行），并使用三个前沿 LLM 评判器（GPT-5、Gemini 2.5 Pro、Claude Sonnet-4）对每个输出进行评分。我们计算了类别级别的平均值和 95% 置信区间，分析了分数分布，并可视化了方言度量热图。更新后的分析显示，在生成和语码转换任务上表现持续出色（均值均为 4.92/5），在现代标准阿拉伯语处理方面表现强劲（4.74/5），推理能力扎实（4.64/5），方言保真度有所提高（4.21/5）。安全相关提示显示出稳定可靠的性能（4.54/5）。总而言之，这些结果表明 ALLaM-34B 是一款强大且具有文化基础的阿拉伯语 LLM，展示了其技术实力和实际部署的准备就绪性。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>ALLaM-34B</span><span>大型语言模型</span><span>阿拉伯语LLM</span><span>UI级评估</span><span>HUMAIN Chat</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>自然语言处理</span><span>人工智能</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.17378" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>从反应式到认知式：具身智能体的类脑空间智能</h2>
+                <span class="published-time">发布时间: 2025-08-24T03:20:48.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.17198.png" alt="从反应式到认知式：具身智能体的类脑空间智能">
+                <p class="summary">空间认知通过构建内部空间模型来实现适应性的目标导向行为。强大的生物系统将空间知识整合为三种相互关联的形式：用于显著线索的地标、用于运动轨迹的路径知识以及用于地图式表示的概览知识。尽管多模态大语言模型（MLLMs）的最新进展已使具身智能体具备视觉-语言推理能力，但这些努力缺乏结构化的空间记忆，而是以反应式方式运作，限制了它们在复杂现实世界环境中的泛化能力和适应性。本文提出了用于导航的类脑空间认知（BSC-Nav），这是一个在具身智能体中构建和利用结构化空间记忆的统一框架。BSC-Nav 从以自我为中心的轨迹和上下文线索中构建异我中心认知地图，并动态检索与语义目标对齐的空间知识。BSC-Nav 与强大的MLLMs集成后，在各种导航任务中实现了最先进的效率和效能，展示了强大的零样本泛化能力，并支持在真实物理世界中实现多功能具身行为，为通用空间智能提供了一条可扩展且具有生物学基础的路径。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>具身智能体</span><span>空间智能</span><span>类脑认知</span><span>认知地图</span><span>多模态大语言模型</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>智能体</span><span>多模态</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.17198" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>硅基民主：人工智能治理政体中的制度设计与对齐</h2>
+                <span class="published-time">发布时间: 2025-08-27T04:44:41.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.19562.png" alt="硅基民主：人工智能治理政体中的制度设计与对齐">
+                <p class="summary">本文介绍了“硅基民主”，这是一种基于智能体的模拟，其中，具备复杂心理特征的高级人工智能智能体社会在不同的制度框架下进行自我治理。我们通过让大型语言模型（LLMs）扮演具有创伤记忆、隐藏议程和心理触发点的智能体，来探索在人工智能时代作为人类的意义。这些智能体在预算危机和资源稀缺等各种压力下参与审议、立法和选举。我们提出了一种新颖的度量指标——权力保留指数（PPI），用于量化智能体将自身权力置于公共福祉之上的未对齐行为。我们的研究结果表明，制度设计，特别是宪法级人工智能（CAI）章程和调解式审议协议的结合，是一种有效的对齐机制。与限制较少的民主模式相比，这些结构显著减少了腐败的权力寻租行为，提高了政策稳定性，并增进了公民福祉。该模拟揭示，制度设计可能为对齐未来人工智能智能体社会中复杂、涌现的行为提供一个框架，促使我们重新思考在与非人类实体共享创造的时代中，哪些人类仪式和责任是至关重要的。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>硅基民主</span><span>人工智能治理</span><span>制度设计</span><span>智能体</span><span>对齐</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>智能体</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.19562" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            由 AI 助手生成
+        </footer>
+    </div>
+</body>
+</html>

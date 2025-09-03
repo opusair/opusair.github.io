@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-09-02</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: 2px solid transparent;
+            font-size: 0.9em;
+        }
+
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .language-switch a.active {
+            background: var(--secondary-color);
+            border-color: var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .language-switch {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../">中文</a>
+                <a href="./" class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-09-02</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Twitter</h2>
+
+            <article class="item-card">
+                <h2>emilygsands_Mistral AI Integrates Stripe MCP into Le Chat for Payment Data Handling</h2>
+                <span class="published-time">Published: 2025-09-02T14:23:11.000Z</span>
+                <img src="../screenshot/twitter/emilygsands_1962884010289590583.png" alt="emilygsands_Mistral AI Integrates Stripe MCP into Le Chat for Payment Data Handling">
+                <p class="summary">Emily Glassberg Sands announced that Mistral AI's Le Chat now handles payment data, refunds, invoices, and subscriptions through its integration with Stripe's MCP. This collaboration significantly enhances Le Chat's connectivity and utility as an enterprise AI assistant, making it a more comprehensive AI solution. The update introduces over 20 connectors powered by MCP and fully controllable memory, positioning Le Chat as a highly relevant AI assistant for both enterprises and consumers.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Mistral AI</span><span>Stripe</span><span>Le Chat</span><span>MCP</span><span>Payment Processing</span><span>Enterprise AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Product Launch</span><span>Large Language Model</span><span>Industry News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/emilygsands/status/1962884010289590583" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>corbtt_RL Recipe for Deep Research Agent Outperforms Sonnet-4 on H200 in 30 Hours</h2>
+                <span class="published-time">Published: 2025-09-02T19:02:31.000Z</span>
+                <img src="../screenshot/twitter/corbtt_1962954306078048297.png" alt="corbtt_RL Recipe for Deep Research Agent Outperforms Sonnet-4 on H200 in 30 Hours">
+                <p class="summary">Kyle Corbitt announced the release of a recipe for training a frontier-level deep research agent using Reinforcement Learning (RL). This method allows any developer, with just 30 hours on an H200 GPU and open-source tools, to surpass Sonnet-4's performance on the DeepResearch Bench. This represents a significant breakthrough in achieving high-performance AI agent training with minimal computational resources, potentially accelerating AI research and broader adoption.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Deep Research Agent</span><span>Reinforcement Learning</span><span>Open Source Tools</span><span>AI Training</span><span>Performance Benchmark</span><span>H200</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Deep Learning</span><span>Research Progress</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/corbtt/status/1962954306078048297" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>eliebakouch_Nvidia 13B Model 4-bit Training Stability Validation</h2>
+                <span class="published-time">Published: 2025-09-02T09:12:59.000Z</span>
+                <img src="../screenshot/twitter/eliebakouch_1962805948184998064.png" alt="eliebakouch_Nvidia 13B Model 4-bit Training Stability Validation">
+                <p class="summary">The tweet highlights Nvidia's extensive ablation study on a 13-billion parameter model, trained with 10 trillion tokens, to demonstrate the stability of their 4-bit (NVFP4) training technology. This initiative suggests significant progress by Nvidia in low-precision model training, potentially reducing large model training costs and enhancing efficiency.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Nvidia</span><span>4-bit Training</span><span>NVFP4</span><span>Large Language Model</span><span>Low-Precision Training</span><span>Ablation Study</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/eliebakouch/status/1962805948184998064" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>gm8xx8_Nous Research Releases Hermes 4 Open-Weight Reasoning Family Models</h2>
+                <span class="published-time">Published: 2025-09-02T18:17:54.000Z</span>
+                <img src="../screenshot/twitter/gm8xx8_1962943078702186627.png" alt="gm8xx8_Nous Research Releases Hermes 4 Open-Weight Reasoning Family Models">
+                <p class="summary">Nous Research has released the Hermes 4 open-weight reasoning family models, including 70B and 405B versions based on Llama-3.1, and a 14B baseline model based on Qwen3. These models feature innovations in training, data pipeline, reasoning modes, and evaluation, notably introducing a hybrid reasoning mode and the RefusalBench benchmark. Hermes 4 demonstrates strong performance across math, reasoning, code, and knowledge domains, with its 70B version significantly outperforming GPT-5 on RefusalBench in reasoning mode.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Hermes 4</span><span>Large Language Model</span><span>Reasoning Model</span><span>Open-Weight</span><span>Llama-3.1</span><span>RefusalBench</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Open Source</span><span>Research Progress</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/gm8xx8/status/1962943078702186627" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LangChainAI_LangChain and LangGraph 1.0alpha Releases</h2>
+                <span class="published-time">Published: 2025-09-02T17:45:17.000Z</span>
+                <img src="../screenshot/twitter/LangChainAI_1962934869065191457.png" alt="LangChainAI_LangChain and LangGraph 1.0alpha Releases">
+                <p class="summary">LangChainAI announced the alpha releases of LangChain and LangGraph v1.0 in both Python and JS. LangGraph serves as a low-level agent orchestration framework, offering durable execution and fine-grained control. LangChain aims to accelerate AI feature development with standardized model abstractions and prebuilt agent patterns. This update positions LangChain 1.0 as a new core agent abstraction package built on LangGraph. The official 1.0 release is targeted for late October, and feedback is encouraged.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LangChain</span><span>LangGraph</span><span>AI Agent</span><span>Framework</span><span>Version Release</span><span>AI Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Product Launch</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/LangChainAI/status/1962934869065191457" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DITOGAMESch_Multimodal AI Toolchain Test: Gemini, Kling, and Veo Collaborative Creation</h2>
+                <span class="published-time">Published: 2025-09-02T16:06:46.000Z</span>
+                <img src="../screenshot/twitter/DITOGAMESch_1809885065066733956.png" alt="DITOGAMESch_Multimodal AI Toolchain Test: Gemini, Kling, and Veo Collaborative Creation">
+                <p class="summary">Travis Davids shared his creative workflow test involving a multimodal AI toolchain. The process integrates Gemini 2.5 Flash for image generation, utilizing the "Nano Banana" model and a collage method, then feeding these outputs to Kling 2.1 for start and end video frames. He highlighted Veo 3 as a favorite component of this combination. This test was conducted to explore the collaborative potential among various AI tools.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Gemini 2.5 Flash</span><span>Kling 2.1</span><span>Veo 3</span><span>Multimodal AI</span><span>Image Generation</span><span>Video Generation</span><span>Workflow</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Multimodal</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/DITOGAMESch/status/1809885065066733956/analytics" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">wechat</h2>
+
+            <article class="item-card">
+                <h2>ICCV 2025 | Descriptive Instructions as Alternatives: Nanjing University and vivo Jointly Release DescriptiveEdit, Defining a New Paradigm for Semantic Image Editing</h2>
+                <span class="published-time">Published: 2025-09-02T14:01:10.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_wLLay3UxJCutu4kesqAxTA.png" alt="ICCV 2025 | Descriptive Instructions as Alternatives: Nanjing University and vivo Jointly Release DescriptiveEdit, Defining a New Paradigm for Semantic Image Editing">
+                <p class="summary">Nanjing University and vivo have jointly unveiled DescriptiveEdit, a novel semantic image editing paradigm based on "descriptions." This method directly guides editing intentions through descriptive inputs, achieving high-quality global and local image modifications while striking an optimal balance between instruction adherence and structural fidelity. DescriptiveEdit incorporates an Attention Bridge for efficient reference image control and utilizes a zero-initialized linear layer for adaptive feature fusion, effectively resolving the conflict between precise editing and structural preservation. Furthermore, it seamlessly integrates with existing text-to-image ecosystem extensions like ControlNet and LoRA, demonstrating exceptional compatibility and editing performance. Experimental results confirm DescriptiveEdit's superior performance in both image consistency and instruction following compared to existing solutions, establishing an extensible, plug-and-play framework for semantic image editing.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Semantic Image Editing</span><span>Description-guided</span><span>Diffusion Models</span><span>ControlNet</span><span>DescriptiveEdit</span><span>Image Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Deep Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/wLLay3UxJCutu4kesqAxTA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Musk Releases "Master Plan Part 4": 80% of Tesla's Value Lies in Robots, and a New Car Was Accidentally Revealed</h2>
+                <span class="published-time">Published: 2025-09-02T04:13:51.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_sjsf0A50aKsaKcuRz47_PA.png" alt="Musk Releases "Master Plan Part 4": 80% of Tesla's Value Lies in Robots, and a New Car Was Accidentally Revealed">
+                <p class="summary">Tesla's newly released "Master Plan Part 4" outlines the company's future strategic focus, with Elon Musk stating that approximately 80% of Tesla's value will derive from its Optimus humanoid robots. This blueprint signifies a profound paradigm shift for Tesla, moving beyond its initial focus on electric vehicles and sustainable energy towards a deep integration of artificial intelligence with the physical world. The overarching goal is to achieve "sustainable abundance" by unifying hardware and software on a massive scale. Part 4 emphasizes five core principles: infinite growth, innovation removing constraints, technology solving tangible problems, automation benefiting all humanity, and greater access driving greater growth. Crucially, it redefines cars as specialized wheeled robots for specific scenarios, indicating that Tesla's advanced FSD technology will be generalized and applied to humanoid robots like Optimus. The article also highlights the unexpected reveal of a new Cybertruck-like SUV, adding to the anticipation surrounding Tesla's evolving vision.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Tesla</span><span>Master Plan Part 4</span><span>Optimus</span><span>Humanoid Robots</span><span>Sustainable Abundance</span><span>Artificial Intelligence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Robotics</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/sjsf0A50aKsaKcuRz47_PA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>ByteDance Seed's New Attention Mechanism Reduces Computation by 85% for Long Video Generation at Short Video Cost</h2>
+                <span class="published-time">Published: 2025-09-02T04:13:51.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_0JTfrSnf76WrmpchpCcrhQ.png" alt="ByteDance Seed's New Attention Mechanism Reduces Computation by 85% for Long Video Generation at Short Video Cost">
+                <p class="summary">ByteDance Seed, in collaboration with Stanford and other institutions, has introduced a novel sparse attention mechanism called Mixture of Contexts (MoC), designed to enable high-quality long video generation at the computational cost typically associated with short videos. This innovative mechanism redefines long video generation as a context retrieval task, leveraging efficient long-term memory retrieval to drastically reduce computational overhead. Experimental results demonstrate that MoC can cut the required computation for long video generation by up to 85%, while consistently maintaining character and scene coherence, as well as overall video quality. This breakthrough addresses the inefficiency of cross-temporal memory access in traditional methods, offering an efficient and economical solution for creating extended video content.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Long Video Generation</span><span>Attention Mechanism</span><span>Computational Optimization</span><span>ByteDance</span><span>MoC</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Deep Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/0JTfrSnf76WrmpchpCcrhQ" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Tencent Open-sources Youtu-agent: A New AI Agent Framework Achieving SOTA Performance with Open-source Models, No Training or Charges Required</h2>
+                <span class="published-time">Published: 2025-09-02T04:13:51.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_a2GL3DN7KPpXjQECE_TVqA.png" alt="Tencent Open-sources Youtu-agent: A New AI Agent Framework Achieving SOTA Performance with Open-source Models, No Training or Charges Required">
+                <p class="summary">Tencent Youtu Lab has officially open-sourced Youtu-agent, a new AI agent framework designed to address common challenges in agent development, such as high entry barriers, complex dependencies, and high costs. This framework operates entirely within the open-source ecosystem, eliminating the need for model training or reliance on proprietary APIs. Despite this, Youtu-agent achieves leading performance on various challenging benchmarks, approaching or even surpassing some paid solutions. Key highlights include its open-source friendliness, flexible architecture, automated agent generation, and concise, efficient design. The framework has demonstrated practical utility in real-world scenarios like file management, data analysis, academic research, and broad surveys. Its DITA principles and automated agent generation mechanism significantly lower the difficulty of agent customization, providing a robust open-source baseline and ready-to-use tool for researchers, application developers, and AI enthusiasts alike.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Open-source Framework</span><span>Tencent Youtu</span><span>Large Language Models</span><span>Automation</span><span>SOTA</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/a2GL3DN7KPpXjQECE_TVqA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Your RAG System Has a Mathematical Bug: DeepMind First Proves Limited Recall Capability of Embedding Vector Retrieval</h2>
+                <span class="published-time">Published: 2025-09-02T11:35:23.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_FNUrpFyf-L9AJASLiN7EnA.png" alt="Your RAG System Has a Mathematical Bug: DeepMind First Proves Limited Recall Capability of Embedding Vector Retrieval">
+                <p class="summary">A recent groundbreaking study by Google DeepMind mathematically demonstrates the inherent limitations of current mainstream single-vector embedding retrieval models. The paper posits that performance bottlenecks stem not from insufficient training, but from the fundamental paradigm of compressing complex relational information into fixed-dimension vectors. Utilizing the concept of "Sign Rank," the research proves that a fixed-dimensional vector space cannot represent arbitrarily complex query-document combinations, imposing a mathematical "ceiling" on models tackling high-complexity retrieval tasks. Experimental validations, including "free embeddings" and the LIMIT dataset, reveal that even state-of-the-art single-vector models fail to perfectly handle seemingly simple yet combinatorially complex tasks, while sparse retrieval (BM25) and multi-vector models exhibit superior performance. This implies that RAG systems relying solely on single-vector embeddings will face recall limitations, prompting the industry to re-evaluate hybrid retrieval and multi-vector architectures as future directions for building more robust AI systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>RAG</span><span>Vector Embeddings</span><span>Retrieval</span><span>DeepMind</span><span>Recall Capability</span><span>Mathematical Proof</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/FNUrpFyf-L9AJASLiN7EnA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI Reads Webpages, This Time It's Different: Google Gemini Unlocks 'Detailed Webpage Understanding' Skill</h2>
+                <span class="published-time">Published: 2025-09-02T03:42:30.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_alV-czwScS_CSsdP3nWZHQ.png" alt="AI Reads Webpages, This Time It's Different: Google Gemini Unlocks 'Detailed Webpage Understanding' Skill">
+                <p class="summary">This article introduces Google Gemini API's new URL Context feature, enabling Gemini models to deeply access and process content from URLs, including webpages, PDFs, and images, with a limit of 34MB. Unlike traditional AI methods that often only read summaries from links, URL Context is a developer-centric API designed for comprehensive document parsing, understanding structure, content, and data. It supports deep PDF analysis, multimodal image comprehension, and various web file formats. Thomas Reid suggests it's a "nail in RAG's coffin" for public web content, as it streamlines processing by eliminating complex RAG steps like extraction, chunking, and vectorization. Despite limitations such as paywalls and capacity, URL Context signifies a broader industry trend where foundational models internalize external capabilities, offering developers more efficient and precise solutions. However, RAG remains crucial for private document handling and complex retrieval scenarios.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Gemini</span><span>URL Context</span><span>RAG</span><span>Webpage Parsing</span><span>Multimodal Understanding</span><span>API</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/alV-czwScS_CSsdP3nWZHQ" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Fast and Flexible Multi-Agent Automation Framework</h2>
+                <span class="published-time">Published: 2025-09-02T21:36:28Z</span>
+                <img src="https://raw.githubusercontent.com/crewAIInc/crewAI/main/docs/images/crewai_logo.png" alt="Fast and Flexible Multi-Agent Automation Framework">
+                <p class="summary">CrewAI is a lean, lightning-fast Python framework built for orchestrating autonomous AI agents, entirely independent of existing frameworks like LangChain. It offers two core mechanisms: Crews for multi-agent collaboration and Flows for event-driven workflows, balancing high-level simplicity with precise low-level control. CrewAI aims to transform complex business processes into efficient, intelligent automations, particularly suited for enterprise-grade applications, and is supported by an active community of over 100,000 certified developers.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multi-Agent</span><span>AI Agent</span><span>Automation Framework</span><span>Python</span><span>Agent Orchestration</span><span>Workflow</span><span>LLM Application</span><span>Enterprise AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/crewAIInc/crewAI" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Koog</h2>
+                <span class="published-time">Published: 2025-09-02T20:54:48Z</span>
+                <img src="../screenshot/github/koog.png" alt="Koog">
+                <p class="summary">Koog is a cutting-edge, Kotlin-based framework specifically engineered for the development and execution of AI agents, leveraging the full power of idiomatic Kotlin. It provides a robust suite of functionalities crucial for modern AI applications, such as seamless integration with the Model Context Protocol (MCP), advanced embedding capabilities for semantic search, and flexible tools for extending agent functionalities. Key innovations include intelligent history compression for optimized token usage, a powerful Streaming API enabling real-time responses and parallel tool calls, and persistent agent memory for knowledge retention across sessions. Koog's scalable and modular architecture supports multiplatform deployment across JVM, JS, WasmJS, and iOS targets. It is compatible with leading LLM providers like Google, OpenAI, Anthropic, OpenRouter, and Ollama, making it an ideal choice for developers aiming to build sophisticated, interactive AI agents capable of managing complex workflows.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Kotlin</span><span>Large Language Model</span><span>Agentic Framework</span><span>Multiplatform</span><span>Natural Language Processing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/JetBrains/koog" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Bytebot: Open-Source AI Desktop Agent</h2>
+                <span class="published-time">Published: 2025-09-01T15:38:09Z</span>
+                <img src="https://github.com/bytebot-ai/bytebot/raw/main/docs/images/bytebot-logo.png" alt="Bytebot: Open-Source AI Desktop Agent">
+                <p class="summary">Bytebot is an open-source AI desktop agent that provides AI with a complete virtual desktop environment, enabling it to operate a computer like a human to accomplish complex tasks. It supports using any application, managing files, logging into websites, processing documents, and executing cross-program workflows. Key features include complete task autonomy, document processing, and interaction with real applications. Bytebot comprises a virtual desktop, an AI agent, a task interface, and APIs, supporting various AI models. It offers data privacy and high customization, making it suitable for business process automation, development and testing, and research and analysis scenarios.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Desktop Agent</span><span>Automation</span><span>Virtual Desktop</span><span>Task Automation</span><span>Document Processing</span><span>API Control</span><span>Open Source</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/bytebot-ai/bytebot" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>🌟 500+ AI Agent Projects / UseCases</h2>
+                <span class="published-time">Published: 2025-08-01T11:52:42+00:00</span>
+                <img src="https://github.com/ashishpatel26/500-AI-Agents-Projects/raw/main/images/AIAgentUseCase.jpg" alt="🌟 500+ AI Agent Projects / UseCases">
+                <p class="summary">This GitHub repository curates over 500 AI agent projects and use cases across various industries, showcasing the practical applications of AI agents in healthcare, finance, education, customer service, and more. It provides detailed use case descriptions and links to corresponding open-source projects, covering mainstream AI frameworks such as CrewAI, AutoGen, Agno, and Langgraph. This resource serves as a valuable hub for developers, researchers, and business enthusiasts seeking inspiration and knowledge in AI agent technology, fostering the widespread adoption and innovation of AI agent solutions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>AI Applications</span><span>Open Source Projects</span><span>Industry Solutions</span><span>AI Frameworks</span><span>Use Case Collection</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/ashishpatel26/500-AI-Agents-Projects" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Chatterbox TTS</h2>
+                <span class="published-time">Published: 2025-08-01T10:22:29Z</span>
+                <img src="../screenshot/github/chatterbox.png" alt="Chatterbox TTS">
+                <p class="summary">Chatterbox, Resemble AI's inaugural production-grade open-source Text-to-Speech (TTS) model, is released under an MIT license. This advanced model has demonstrated superior performance in side-by-side evaluations against prominent closed-source systems such as ElevenLabs. A groundbreaking feature is its unique emotion exaggeration control, allowing users to infuse voices with distinct expressiveness. Architected with a 0.5B Llama backbone and rigorously trained on 0.5 million hours of cleaned data, Chatterbox delivers state-of-the-art zeroshot TTS capabilities, ensuring ultra-stable and alignment-informed inference. Furthermore, it integrates built-in PerTh watermarking for responsible AI usage. Chatterbox is highly versatile, suitable for a wide array of applications including memes, videos, games, and AI agents, effectively bringing digital content to life with high-fidelity, controllable speech synthesis.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Text-to-Speech</span><span>Emotion Control</span><span>Zeroshot TTS</span><span>Llama Model</span><span>Audio Watermarking</span><span>Speech Synthesis</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Deep Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/resemble-ai/chatterbox" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>PVPO: Pre-Estimated Value-Based Policy Optimization for Agentic
+  Reasoning</h2>
+                <span class="published-time">Published: 2025-08-28T09:18:26.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.21104.png" alt="PVPO: Pre-Estimated Value-Based Policy Optimization for Agentic
+  Reasoning">
+                <p class="summary">Critic-free reinforcement learning methods, particularly group policies, have
+attracted considerable attention for their efficiency in complex tasks.
+However, these methods rely heavily on multiple sampling and comparisons within
+the policy to estimate advantage, which may cause the policy to fall into local
+optimum and increase computational cost. To address these issues, we propose
+PVPO, an efficient reinforcement learning method enhanced by an advantage
+reference anchor and data pre-sampling. Specifically, we use the reference
+model to rollout in advance and employ the calculated reward score as a
+reference anchor. Our approach effectively corrects the cumulative bias
+introduced by intra-group comparisons and significantly reduces reliance on the
+number of rollouts. Meanwhile, the reference model can assess sample difficulty
+during data pre-sampling, enabling effective selection of high-gain data to
+improve training efficiency. Experiments conducted on nine datasets across two
+domains demonstrate that PVPO achieves State-Of-The-Art (SOTA) performance. Our
+approach not only demonstrates robust generalization across multiple tasks, but
+also exhibits scalable performance across models of varying scales.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Policy Optimization</span><span>Agentic Reasoning</span><span>Critic-free</span><span>Data Pre-sampling</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.21104" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>T2R-bench: A Benchmark for Generating Article-Level Reports from Real
+  World Industrial Tables</h2>
+                <span class="published-time">Published: 2025-08-27T11:55:40.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.19813.png" alt="T2R-bench: A Benchmark for Generating Article-Level Reports from Real
+  World Industrial Tables">
+                <p class="summary">Extensive research has been conducted to explore the capabilities of large
+language models (LLMs) in table reasoning. However, the essential task of
+transforming tables information into reports remains a significant challenge
+for industrial applications. This task is plagued by two critical issues: 1)
+the complexity and diversity of tables lead to suboptimal reasoning outcomes;
+and 2) existing table benchmarks lack the capacity to adequately assess the
+practical application of this task. To fill this gap, we propose the
+table-to-report task and construct a bilingual benchmark named T2R-bench, where
+the key information flow from the tables to the reports for this task. The
+benchmark comprises 457 industrial tables, all derived from real-world
+scenarios and encompassing 19 industry domains as well as 4 types of industrial
+tables. Furthermore, we propose an evaluation criteria to fairly measure the
+quality of report generation. The experiments on 25 widely-used LLMs reveal
+that even state-of-the-art models like Deepseek-R1 only achieves performance
+with 62.71 overall score, indicating that LLMs still have room for improvement
+on T2R-bench. Source code and data will be available after acceptance.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>table-to-report</span><span>Large Language Models</span><span>industrial tables</span><span>benchmark</span><span>report generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.19813" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>How Can Input Reformulation Improve Tool Usage Accuracy in a Complex
+  Dynamic Environment? A Study on τ-bench</h2>
+                <span class="published-time">Published: 2025-08-28T15:57:33.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.20931.png" alt="How Can Input Reformulation Improve Tool Usage Accuracy in a Complex
+  Dynamic Environment? A Study on τ-bench">
+                <p class="summary">Recent advances in reasoning and planning capabilities of large language
+models (LLMs) have enabled their potential as autonomous agents capable of tool
+use in dynamic environments. However, in multi-turn conversational environments
+like tau-bench, these agents often struggle with consistent reasoning,
+adherence to domain-specific policies, and extracting correct information over
+a long horizon of tool-calls and conversation. To capture and mitigate these
+failures, we conduct a comprehensive manual analysis of the common errors
+occurring in the conversation trajectories. We then experiment with
+reformulations of inputs to the tool-calling agent for improvement in agent
+decision making. Finally, we propose the Input-Reformulation Multi-Agent (IRMA)
+framework, which automatically reformulates user queries augmented with
+relevant domain rules and tool suggestions for the tool-calling agent to focus
+on. The results show that IRMA significantly outperforms ReAct, Function
+Calling, and Self-Reflection by 16.1%, 12.7%, and 19.1%, respectively, in
+overall pass^5 scores. These findings highlight the superior reliability and
+consistency of IRMA compared to other methods in dynamic environments.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Input Reformulation</span><span>Tool Usage</span><span>Large Language Models</span><span>AI Agent</span><span>Dynamic Environment</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.20931" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>UI-Level Evaluation of ALLaM 34B: Measuring an Arabic-Centric LLM via
+  HUMAIN Chat</h2>
+                <span class="published-time">Published: 2025-08-24T14:32:15.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.17378.png" alt="UI-Level Evaluation of ALLaM 34B: Measuring an Arabic-Centric LLM via
+  HUMAIN Chat">
+                <p class="summary">Large language models (LLMs) trained primarily on English corpora often
+struggle to capture the linguistic and cultural nuances of Arabic. To address
+this gap, the Saudi Data and AI Authority (SDAIA) introduced the ALLaM family
+of Arabic-focused models. The most capable of these available to the public,
+ALLaM-34B, was subsequently adopted by HUMAIN, who developed and deployed
+HUMAIN Chat, a closed conversational web service built on this model. This
+paper presents an expanded and refined UI-level evaluation of ALLaM-34B.
+Using a prompt pack spanning modern standard Arabic, five regional dialects,
+code-switching, factual knowledge, arithmetic and temporal reasoning, creative
+generation, and adversarial safety, we collected 115 outputs (23 prompts times
+5 runs) and scored each with three frontier LLM judges (GPT-5, Gemini 2.5 Pro,
+Claude Sonnet-4). We compute category-level means with 95\% confidence
+intervals, analyze score distributions, and visualize dialect-wise metric heat
+maps. The updated analysis reveals consistently high performance on generation
+and code-switching tasks (both averaging 4.92/5), alongside strong results in
+MSA handling (4.74/5), solid reasoning ability (4.64/5), and improved dialect
+fidelity (4.21/5). Safety-related prompts show stable, reliable performance of
+(4.54/5). Taken together, these results position ALLaM-34B as a robust and
+culturally grounded Arabic LLM, demonstrating both technical strength and
+practical readiness for real-world deployment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>ALLaM-34B</span><span>Large Language Model</span><span>Arabic LLM</span><span>UI-level Evaluation</span><span>HUMAIN Chat</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.17378" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>From reactive to cognitive: brain-inspired spatial intelligence for
+  embodied agents</h2>
+                <span class="published-time">Published: 2025-08-24T03:20:48.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.17198.png" alt="From reactive to cognitive: brain-inspired spatial intelligence for
+  embodied agents">
+                <p class="summary">Spatial cognition enables adaptive goal-directed behavior by constructing
+internal models of space. Robust biological systems consolidate spatial
+knowledge into three interconnected forms: landmarks for salient cues,
+route knowledge for movement trajectories, and survey
+knowledge for map-like representations. While recent advances in multi-modal
+large language models (MLLMs) have enabled visual-language reasoning in
+embodied agents, these efforts lack structured spatial memory and instead
+operate reactively, limiting their generalization and adaptability in complex
+real-world environments. Here we present Brain-inspired Spatial Cognition for
+Navigation (BSC-Nav), a unified framework for constructing and leveraging
+structured spatial memory in embodied agents. BSC-Nav builds allocentric
+cognitive maps from egocentric trajectories and contextual cues, and
+dynamically retrieves spatial knowledge aligned with semantic goals. Integrated
+with powerful MLLMs, BSC-Nav achieves state-of-the-art efficacy and efficiency
+across diverse navigation tasks, demonstrates strong zero-shot generalization,
+and supports versatile embodied behaviors in the real physical world, offering
+a scalable and biologically grounded path toward general-purpose spatial
+intelligence.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Embodied Agents</span><span>Spatial Intelligence</span><span>Brain-inspired Cognition</span><span>Cognitive Maps</span><span>MLLMs</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.17198" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Democracy-in-Silico: Institutional Design as Alignment in AI-Governed
+  Polities</h2>
+                <span class="published-time">Published: 2025-08-27T04:44:41.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2508.19562.png" alt="Democracy-in-Silico: Institutional Design as Alignment in AI-Governed
+  Polities">
+                <p class="summary">This paper introduces Democracy-in-Silico, an agent-based simulation where
+societies of advanced AI agents, imbued with complex psychological personas,
+govern themselves under different institutional frameworks. We explore what it
+means to be human in an age of AI by tasking Large Language Models (LLMs) to
+embody agents with traumatic memories, hidden agendas, and psychological
+triggers. These agents engage in deliberation, legislation, and elections under
+various stressors, such as budget crises and resource scarcity. We present a
+novel metric, the Power-Preservation Index (PPI), to quantify misaligned
+behavior where agents prioritize their own power over public welfare. Our
+findings demonstrate that institutional design, specifically the combination of
+a Constitutional AI (CAI) charter and a mediated deliberation protocol, serves
+as a potent alignment mechanism. These structures significantly reduce corrupt
+power-seeking behavior, improve policy stability, and enhance citizen welfare
+compared to less constrained democratic models. The simulation reveals that an
+institutional design may offer a framework for aligning the complex, emergent
+behaviors of future artificial agent societies, forcing us to reconsider what
+human rituals and responsibilities are essential in an age of shared authorship
+with non-human entities.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Democracy-in-Silico</span><span>Institutional Design</span><span>AI Governance</span><span>Alignment</span><span>AI Agents</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2508.19562" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
