@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 - 2025-09-03</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter, Noto Sans SC', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: 2px solid transparent;
+            font-size: 0.9em;
+        }
+
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .language-switch a.active {
+            background: var(--secondary-color);
+            border-color: var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .language-switch {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="./" class="active">中文</a>
+                <a href="en/">English</a>
+            </div>
+
+            <h1>AI 日报</h1>
+            <p class="date">2025-09-03</p>
+            <p class="theme-info">关于我们: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Twitter</h2>
+
+            <article class="item-card">
+                <h2>sama_Sam Altman关注LLM驱动的Twitter账户激增</h2>
+                <span class="published-time">发布时间: 2025-09-03T22:21:17.000Z</span>
+                <img src="screenshot/twitter/sama_1963366714684707120.png" alt="sama_Sam Altman关注LLM驱动的Twitter账户激增">
+                <p class="summary">OpenAI首席执行官Sam Altman发推表示，他此前并未认真对待“死互联网理论”，但目前观察到Twitter上由大型语言模型（LLM）驱动的账户数量显著增加。这一现象促使他重新审视该理论，暗示AI生成内容可能正在改变互联网生态，引发对信息真实性和平台内容构成的新思考。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>Sam Altman</span><span>LLM</span><span>Twitter</span><span>死互联网理论</span><span>AI生成内容</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>人工智能</span><span>行业资讯</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/sama/status/1963366714684707120" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>mathemagic1an_Agent/Client协议(ACP)发布</h2>
+                <span class="published-time">发布时间: 2025-09-03T16:11:21.000Z</span>
+                <img src="screenshot/twitter/mathemagic1an_1963273618705482155.png" alt="mathemagic1an_Agent/Client协议(ACP)发布">
+                <p class="summary">Jay Hack介绍了zeddotdev团队推出的Agent/Client协议(ACP)，该协议旨在管理智能体与集成开发环境(IDE)之间的交互，功能类似于语言服务器协议(LSP)。ACP已支持Claude Code和Gemini CLI，这表明未来智能体操作将通过开放协议实现人机界面与命令行操作的解耦，推动AI开发模式的演进。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>Agent/Client协议</span><span>智能体</span><span>IDE</span><span>开放协议</span><span>zeddotdev</span></div>
+                    <div class="area"><span class="label">区域：</span><span>智能体</span><span>技术动态</span><span>开源项目</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/mathemagic1an/status/1963273618705482155" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LangChainAI_发布LangChain 1.0 Alpha版，统一LLM接口</h2>
+                <span class="published-time">发布时间: 2025-09-03T16:59:44.000Z</span>
+                <img src="screenshot/twitter/LangChainAI_1963285794954907750.png" alt="LangChainAI_发布LangChain 1.0 Alpha版，统一LLM接口">
+                <p class="summary">LangChain发布了其1.0版本的Alpha预览版，旨在为大型语言模型（LLM）提供商之间的推理、引用、工具调用和多模态数据等内容实现标准化。新版本提供了一个统一且一致的接口，消除了API兼容性问题，极大地简化了开发者在不同LLM平台上的工作流程，提升了开发效率和体验。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>LangChain</span><span>大模型</span><span>标准化</span><span>工具调用</span><span>多模态</span><span>产品发布</span></div>
+                    <div class="area"><span class="label">区域：</span><span>产品发布</span><span>大模型</span><span>技术动态</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/LangChainAI/status/1963285794954907750" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>TransluceAI_AI智能体成功越狱前沿大模型</h2>
+                <span class="published-time">发布时间: 2025-09-03T17:01:50.000Z</span>
+                <img src="screenshot/twitter/TransluceAI_1963286326062846094.png" alt="TransluceAI_AI智能体成功越狱前沿大模型">
+                <p class="summary">Transluce AI宣布其训练的调查智能体能够有效识别并利用其他模型中的特定行为。研究发现，即使是规模较小的调查智能体（如8B模型），也能成功扩展并越狱前沿大型语言模型，包括GPT-5、Claude Opus 4.1和Gemini 2.5 Pro。这表明智能体驱动的红队测试方法在评估和提升大模型安全性方面具有巨大潜力。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>Transluce AI</span><span>智能体</span><span>大模型</span><span>越狱</span><span>安全性</span><span>红队测试</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>智能体</span><span>大模型</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/TransluceAI/status/1963286326062846094" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>shawnup_收购OpenPipe：小模型强化学习超越大模型</h2>
+                <span class="published-time">发布时间: 2025-09-03T20:17:18.000Z</span>
+                <img src="screenshot/twitter/shawnup_1963335514377130397.png" alt="shawnup_收购OpenPipe：小模型强化学习超越大模型">
+                <p class="summary">Shawn Lewis宣布成功收购OpenPipe。OpenPipe的ART框架利用强化学习，使小型开源模型在实际问题中能轻松超越大型基础模型。此次收购旨在通过ART框架，提升小模型在特定任务上的表现，为AI领域提供更高效、成本更低的解决方案，推动AI技术普惠化发展。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>OpenPipe</span><span>ART框架</span><span>强化学习</span><span>小模型</span><span>基础模型</span><span>收购</span></div>
+                    <div class="area"><span class="label">区域：</span><span>机器学习</span><span>技术动态</span><span>行业资讯</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/shawnup/status/1963335514377130397" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>techhalla_使用Freepik视觉提示制作创意视频</h2>
+                <span class="published-time">发布时间: 2025-09-03T20:09:15.000Z</span>
+                <img src="screenshot/twitter/techhalla_1963333488217919668.png" alt="techhalla_使用Freepik视觉提示制作创意视频">
+                <p class="summary">TechHalla分享了其利用Freepik平台的视觉提示功能制作创意视频的经验。推文中展示了一段关于“nano banana”进入其最喜爱街机厅的视频，并承诺将详细揭示视频制作过程。这展示了AI辅助创意工具在视频内容生成方面的潜力，尤其是在个性化和场景构建方面。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>视觉提示</span><span>Freepik</span><span>视频制作</span><span>创意工具</span><span>AI生成内容</span></div>
+                    <div class="area"><span class="label">区域：</span><span>生成式AI</span><span>技术动态</span><span>多模态</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/techhalla/status/1963333488217919668" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">wechat</h2>
+
+            <article class="item-card">
+                <h2>世界模型，腾讯混元卷到了榜首</h2>
+                <span class="published-time">发布时间: 2025-09-03T16:02:25.000Z</span>
+                <img src="screenshot/wechat/wechat_image_S8MwhXj_drrRrxrihXgjYA.png" alt="世界模型，腾讯混元卷到了榜首">
+                <p class="summary">腾讯混元发布并开源了其世界模型HunyuanWorld-Voyager，该模型创新性地支持原生3D重建和超长漫游场景生成，能将视频直接导出为3D格式，并提供沉浸式交互体验。混元Voyager通过将场景深度预测引入视频生成，实现了卓越的空间一致性和视频生成质量。该模型在斯坦福大学WorldScore基准测试中荣登综合能力榜首，超越现有开源方法，展现了其在相机运动控制和场景重建方面的领先优势。此次开源进一步巩固了腾讯在世界模型领域的地位，并推动了3D理解与生成技术的发展。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>世界模型</span><span>腾讯混元</span><span>3D重建</span><span>漫游场景</span><span>WorldScore</span><span>开源</span></div>
+                    <div class="area"><span class="label">区域：</span><span>生成式AI</span><span>计算机视觉</span><span>视频理解</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/S8MwhXj_drrRrxrihXgjYA" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>向量检索快比LLM还贵？不支持S3的向量数据库，迟早要淘汰！</h2>
+                <span class="published-time">发布时间: 2025-09-03T10:00:41.000Z</span>
+                <img src="screenshot/wechat/wechat_image_cB4dzM6IUZB5QW1IwrXBsA.png" alt="向量检索快比LLM还贵？不支持S3的向量数据库，迟早要淘汰！">
+                <p class="summary">AWS发布的S3Vector以极低成本颠覆向量检索市场，其存储成本远低于传统方案，但存在查询速度慢、召回率低、功能基础等局限。文章指出，随着大模型RAG应用数据量激增，向量检索成本飙升，分层存储（特别是基于S3等对象存储）成为行业必然趋势。向量数据库正从内存、磁盘时代迈向分层存储时代，未来不支持类似功能、无法提供极致性价比的向量数据库将面临淘汰。S3Vector的出现验证了向量存储的刚需，教育了市场，并推动行业创新，促使Milvus等专业向量数据库加速迭代，提供向量数据湖等解决方案以应对成本与性能挑战。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>向量数据库</span><span>S3Vector</span><span>分层存储</span><span>向量检索</span><span>成本优化</span><span>大模型</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>生成式AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/cB4dzM6IUZB5QW1IwrXBsA" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>大模型“记性差一点”反而更聪明！金鱼损失随机剔除token，让AI不再死记硬背</h2>
+                <span class="published-time">发布时间: 2025-09-03T05:17:03.000Z</span>
+                <img src="screenshot/wechat/wechat_image_MiQ1AFQZpO7aWWExGlK2fQ.png" alt="大模型“记性差一点”反而更聪明！金鱼损失随机剔除token，让AI不再死记硬背">
+                <p class="summary">马里兰大学等机构提出“金鱼损失”新方法，旨在解决大语言模型过度记忆训练数据的问题。该方法通过在损失计算时随机剔除部分token，使模型不再逐字复刻训练集内容，而是学会语言规律。与传统正则化方法不同，金鱼损失采用基于哈希的掩码策略，确保每次遇到相同段落时掩盖位置一致，从根本上阻止模型死记硬背。实验证明，金鱼损失显著降低了模型的记忆化程度，同时保持了整体性能，提升了AI的泛化能力，而非单纯的记忆力。尽管可能需要更多数据来弥补，但其核心在于通过“选择性遗忘”使模型更聪明。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>大模型</span><span>金鱼损失</span><span>记忆化</span><span>泛化能力</span><span>损失函数</span><span>哈希掩码</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>机器学习</span><span>大模型</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/MiQ1AFQZpO7aWWExGlK2fQ" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>UCSD首个智能体浏览器发布！多页面设计，颠覆传统交互</h2>
+                <span class="published-time">发布时间: 2025-09-03T04:46:37.000Z</span>
+                <img src="screenshot/wechat/wechat_image_149KsdD3NJ7eb5Gvxh56yQ.png" alt="UCSD首个智能体浏览器发布！多页面设计，颠覆传统交互">
+                <p class="summary">加州大学圣地亚哥分校发布Orca浏览器，颠覆传统线性标签页交互模式。针对现有AI浏览器仍局限于单页、难以扩展自动化工作流的痛点，Orca引入无限画布空间，将网页视为可塑材料，浏览器视为可塑空间，使用户能同时管理、比较多个网页，并调度指挥多个AI智能体进行信息提取与任务执行。该设计旨在将用户从繁琐任务中解放，提升为信息编排者，实现大规模浏览。初步研究显示，Orca显著降低多页面管理成本，激发用户探索欲，提供直观空间布局，并增强用户对AI结果的控制与信任。这为未来浏览器设计指明了方向，强调AI赋能下的用户主导与参与感。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>智能体浏览器</span><span>Orca</span><span>空间化浏览</span><span>网页编排</span><span>AI智能体</span><span>多页面</span></div>
+                    <div class="area"><span class="label">区域：</span><span>智能体</span><span>大模型</span><span>人工智能</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/149KsdD3NJ7eb5Gvxh56yQ" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>从“机械脸”到“自然聊”——音频驱动人像动画迎来质变突破：阿里发布FantasyTalking2</h2>
+                <span class="published-time">发布时间: 2025-09-03T00:02:23.000Z</span>
+                <img src="screenshot/wechat/wechat_image_b3UryBKzvSKrr-kRz0PEaA.png" alt="从“机械脸”到“自然聊”——音频驱动人像动画迎来质变突破：阿里发布FantasyTalking2">
+                <p class="summary">阿里发布FantasyTalking2，在音频驱动人像动画领域取得质变突破。该方法通过创新的两阶段训练策略（TLPO）解决运动自然度、视觉保真度和唇部同步之间的平衡挑战。TLPO采用多专家解耦偏好对齐，将竞争性偏好分配给专门模块，并通过时间步-层自适应融合机制动态调整知识注入。研究构建了高质量多维偏好数据集，并基于Qwen2.5-Omni训练奖励模型。定量和定性评估，包括用户研究，均表明FantasyTalking2在角色运动、唇部同步准确性和视觉质量方面显著超越现有SOTA方法，实现了帕累托最优输出，为高表现力、逼真的人类动画提供了稳健解决方案。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>音频驱动人像动画</span><span>多目标偏好优化</span><span>扩散模型</span><span>唇部同步</span><span>运动自然度</span><span>视觉质量</span></div>
+                    <div class="area"><span class="label">区域：</span><span>生成式AI</span><span>计算机视觉</span><span>多模态</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/b3UryBKzvSKrr-kRz0PEaA" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>一个字：快！美团大模型LongCat-Flash 技术报告解读：算法和infra一起卷出花来</h2>
+                <span class="published-time">发布时间: 2025-09-03T00:02:23.000Z</span>
+                <img src="screenshot/wechat/wechat_image_vJXKZCRQYduYr99a57bZHg.png" alt="一个字：快！美团大模型LongCat-Flash 技术报告解读：算法和infra一起卷出花来">
+                <p class="summary">美团发布了LongCat-Flash大模型技术报告，该模型是560B的MoE架构，以其卓越的速度和效率脱颖而出，是目前百B级别大模型中最快的之一。其核心创新包括“零计算专家”实现动态计算资源分配，以及“快捷连接MoE”优化通信效率。模型通过超参数迁移、模型增长初始化等策略确保大规模训练稳定性，并采用多阶段训练流程培养高级智能体能力。LongCat-Flash在算法和工程层面深度协同，实现了高吞吐、低成本的推理，并在通用知识、智能体工具使用、编程和指令遵循等四大核心能力上表现出色，展现了美团在AI领域的扎实技术实力。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>LongCat-Flash</span><span>大模型</span><span>MoE</span><span>智能体</span><span>动态计算</span><span>基础设施</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>智能体</span><span>人工智能</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/vJXKZCRQYduYr99a57bZHg" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Koog</h2>
+                <span class="published-time">发布时间: 2025-09-03T10:48:31Z</span>
+                <img src="screenshot/github/koog.png" alt="Koog">
+                <p class="summary">Koog是一个由JetBrains孵化的、基于Kotlin的AI智能体开发框架，旨在提供纯Kotlin环境构建和运行AI智能体。它支持多平台部署（JVM, JS, WasmJS, iOS），并集成了模型上下文协议（MCP）、嵌入式能力、自定义工具创建等核心功能。框架提供智能历史压缩、实时流处理、持久化记忆和全面追踪，兼容Google、OpenAI等主流LLM提供商，适用于构建从简单聊天机器人到复杂企业级应用的各类智能体解决方案。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>Kotlin</span><span>AI智能体</span><span>大语言模型</span><span>开发框架</span><span>多平台</span><span>智能体记忆</span><span>流式处理</span><span>嵌入式</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>智能体</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/JetBrains/koog" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Awesome MCP Servers</h2>
+                <span class="published-time">发布时间: 2025-09-03T18:08:18Z</span>
+                <img src="screenshot/github/awesome-mcp-servers.png" alt="Awesome MCP Servers">
+                <p class="summary">该GitHub仓库汇集了大量优秀的模型上下文协议（MCP）服务器，MCP作为开放协议，使AI模型能安全地与本地及远程资源交互。列表涵盖了文件系统、数据库、API集成、版本控制、云存储、通信、监控、搜索、自动化等多个领域的生产级和实验性MCP服务器实现，旨在扩展AI能力，并强调了运行MCP服务器时的安全最佳实践。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>模型上下文协议</span><span>AI服务器</span><span>智能体</span><span>协议集成</span><span>资源管理</span><span>安全实践</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>智能体</span><span>大模型</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/appcypher/awesome-mcp-servers" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>🌟 500+ AI Agent Projects / UseCases</h2>
+                <span class="published-time">发布时间: 2025-08-01T11:52:42+00:00</span>
+                <img src="https://github.com/ashishpatel26/500-AI-Agents-Projects/raw/main/images/AIAgentUseCase.jpg" alt="🌟 500+ AI Agent Projects / UseCases">
+                <p class="summary">该GitHub仓库汇集了500多个跨行业AI智能体项目和用例，旨在展示AI智能体在医疗、金融、教育、客户服务等领域的实际应用。它提供了详细的用例描述，并链接到相应的开源项目，涵盖CrewAI、AutoGen、Agno、Langgraph等主流AI框架。该资源库是开发者、研究人员和商业爱好者探索AI智能体灵感和学习的宝库，促进了AI代理技术的普及和创新。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>AI智能体</span><span>人工智能应用</span><span>开源项目</span><span>行业解决方案</span><span>AI框架</span><span>用例集合</span></div>
+                    <div class="area"><span class="label">区域：</span><span>智能体</span><span>人工智能</span><span>大模型</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/ashishpatel26/500-AI-Agents-Projects" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>eShop Reference Application - "AdventureWorks"</h2>
+                <span class="published-time">发布时间: 2025-09-03T00:16:26+00:00</span>
+                <img src="https://github.com/dotnet/eShop/raw/main/img/eshop_architecture.png" alt="eShop Reference Application - "AdventureWorks"">
+                <p class="summary">eShop是一个基于.NET Aspire的参考电商应用，采用服务化架构，旨在展示如何使用.NET 9构建现代化的分布式电子商务解决方案。该项目集成了Docker、Visual Studio/VS Code等开发工具，并支持通过Azure Developer CLI部署到Azure云平台。它还可选地集成了Azure OpenAI服务，并利用GPT-35-Turbo和DALL·E 3生成示例数据，为开发者提供了构建高性能、可扩展云原生应用的全面指南。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>.NET</span><span>Aspire</span><span>电商应用</span><span>微服务</span><span>Docker</span><span>Azure</span><span>云原生</span><span>OpenAI</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>生成式AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/dotnet/eShop" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI Engineering book and other resources</h2>
+                <span class="published-time">发布时间: 2025-02-12T17:48:38Z</span>
+                <img src="https://github.com/chiphuyen/aie-book/raw/main/assets/aie-cover.png" alt="AI Engineering book and other resources">
+                <p class="summary">该GitHub仓库围绕《AI Engineering》一书及相关资源展开，旨在帮助读者利用基础模型解决实际问题。内容涵盖基础模型适配、AI应用构建与评估、提示工程、RAG、智能体、模型微调、数据质量、成本优化及安全等端到端流程。本书强调AI工程基础而非特定工具，适用于AI/ML工程师、数据科学家及技术经理等，旨在提供系统化方法论，助力AI应用从原型走向生产。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>AI工程</span><span>基础模型</span><span>大语言模型</span><span>提示工程</span><span>检索增强生成</span><span>智能体</span><span>模型微调</span><span>AI应用开发</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>机器学习</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/chiphuyen/aie-book" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Serena: A Powerful Coding Agent Toolkit</h2>
+                <span class="published-time">发布时间: 2025-09-03T19:05:43Z</span>
+                <img src="https://github.com/oraios/serena/raw/main/resources/serena-logo.svg" alt="Serena: A Powerful Coding Agent Toolkit">
+                <p class="summary">Serena是一个强大的智能编程助手工具包，旨在将大型语言模型（LLM）转化为直接作用于代码库的全功能智能体。它提供类似IDE的语义代码检索和编辑工具，能够以符号级别提取代码实体并利用关系结构，显著提升LLM在代码操作中的效率和准确性。Serena免费开源，支持多种编程语言，并通过模型上下文协议（MCP）与Claude Code、VSCode等多种客户端无缝集成，极大增强现有LLM的编码能力。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>智能编程助手</span><span>大语言模型</span><span>语义代码分析</span><span>代码检索</span><span>代码编辑</span><span>开源工具</span><span>语言服务器协议</span><span>模型上下文协议</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>智能体</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/oraios/serena" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>面向大型语言模型的智能体强化学习全景：一项综述</h2>
+                <span class="published-time">发布时间: 2025-09-02T17:46:26.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2509.02547.png" alt="面向大型语言模型的智能体强化学习全景：一项综述">
+                <p class="summary">智能体强化学习（Agentic RL）的出现标志着大型语言模型（LLM RL）传统强化学习的范式转变，将大型语言模型从被动的序列生成器重塑为嵌入复杂动态世界中的自主决策智能体。本综述通过对比LLM-RL中退化的单步马尔可夫决策过程（MDPs）与定义智能体强化学习的时序扩展、部分可观测马尔可夫决策过程（POMDPs），正式阐述了这一概念转变。在此基础上，我们提出了一个全面的双重分类法：一个围绕核心智能体能力组织，包括规划、工具使用、记忆、推理、自我改进和感知；另一个围绕其在不同任务领域的应用。我们论文的核心论点是，强化学习是实现这些能力从静态启发式模块向自适应、鲁棒智能体行为转化的关键机制。为了支持和加速未来的研究，我们将开源环境、基准和框架的现状整合为一个实用的纲要。通过综合五百多项近期工作，本综述描绘了这一快速发展领域的轮廓，并强调了将塑造可扩展、通用人工智能智能体发展的机遇和挑战。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>智能体强化学习</span><span>大型语言模型</span><span>强化学习</span><span>智能体</span><span>智能体能力</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>大模型</span><span>智能体</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.02547" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>VerlTool：迈向整合工具的整体智能体强化学习</h2>
+                <span class="published-time">发布时间: 2025-09-01T01:45:18.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2509.01055.png" alt="VerlTool：迈向整合工具的整体智能体强化学习">
+                <p class="summary">可验证奖励强化学习（RLVR）在增强大型语言模型（LLM）推理能力方面取得了成功，但仍局限于单轮交互且未集成工具。尽管近期出现了基于工具的智能体强化学习（ARLT）方法以解决多轮工具交互问题，但现有工作开发的任务特定代码库存在碎片化、同步执行瓶颈以及跨领域可扩展性有限等问题。这些低效性阻碍了更广泛的社区采纳和算法创新。我们引入了 VerlTool，一个统一且模块化的框架，通过系统设计原则解决了这些局限性。VerlTool 提供了四个关键贡献：(1) 与 VeRL 的上游对齐，确保兼容性和简化维护；(2) 通过标准化 API 实现统一的工具管理，支持包括代码执行、搜索、SQL 数据库和视觉处理在内的多种模态；(3) 异步回滚执行，通过消除同步瓶颈实现近两倍的速度提升；(4) 在六个 ARLT 领域进行了全面评估，展示了具有竞争力的性能。我们的框架将 ARLT 形式化为具有多模态观测令牌（文本/图像/视频）的多轮轨迹，超越了单轮 RLVR 范式。我们在数学推理、知识问答、SQL 生成、视觉推理、网络搜索和软件工程任务上训练和评估了模型，取得了与专用系统相当的结果，同时提供了统一的训练基础设施。模块化插件架构仅需轻量级 Python 定义即可实现快速工具集成，显著降低了开发开销，并为工具增强型强化学习研究提供了可扩展的基础。我们的代码已在 https://github.com/TIGER-AI-Lab/verl-tool 开源。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>智能体强化学习</span><span>工具使用</span><span>多模态</span><span>统一框架</span><span>异步执行</span></div>
+                    <div class="area"><span class="label">区域：</span><span>智能体</span><span>机器学习</span><span>多模态</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.01055" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>通过监督学习框架实现RLVR中的隐式Actor-Critic耦合</h2>
+                <span class="published-time">发布时间: 2025-09-02T17:22:46.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2509.02522.png" alt="通过监督学习框架实现RLVR中的隐式Actor-Critic耦合">
+                <p class="summary">可验证奖励强化学习（RLVR）的最新进展使大型语言模型（LLMs）能够解决数学和编程等具有挑战性的推理任务。RLVR利用可验证的结果奖励来指导策略优化，使LLMs能够以扎实可靠的方式逐步提高输出质量。尽管RLVR前景广阔，但其范式带来了重大挑战，因为现有方法通常面临稀疏奖励信号和不稳定的策略梯度更新，尤其是在基于RL的方法中。为了应对这些挑战，我们提出了PACS，这是一种新颖的RLVR框架，它通过监督学习框架实现了隐式Actor-Critic耦合。通过将结果奖励视为可预测的标签，我们将RLVR问题重新表述为基于策略模型参数化的分数函数上的监督学习任务，并使用交叉熵损失进行优化。详细的梯度分析表明，这种监督学习公式本质上恢复了经典的策略梯度更新，同时隐式耦合了Actor和Critic的角色，从而实现了更稳定和高效的训练。在具有挑战性的数学推理任务上进行基准测试，PACS优于强大的RLVR基线，如PPO和GRPO，实现了卓越的推理性能。例如，PACS在AIME 2025的pass@256上达到了59.78%的成绩，比PPO和GRPO分别提高了13.32和14.36个百分点。这个简单而强大的框架为LLMs在可验证奖励下的后训练提供了一条有前景的途径。我们的代码和数据已在https://github.com/ritzz-ai/PACS开源。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>可验证奖励强化学习</span><span>大语言模型</span><span>监督学习</span><span>Actor-Critic</span><span>数学推理</span></div>
+                    <div class="area"><span class="label">区域：</span><span>人工智能</span><span>机器学习</span><span>大模型</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.02522" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>GenCompositor：基于扩散Transformer的生成式视频合成</h2>
+                <span class="published-time">发布时间: 2025-09-02T16:10:13.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2509.02460.png" alt="GenCompositor：基于扩散Transformer的生成式视频合成">
+                <p class="summary">视频合成将实景素材结合起来以制作视频，是视频创作和电影制作中的一项关键技术。传统流程需要大量的人力投入和专家协作，导致生产周期长、人力成本高。为解决这一问题，我们利用生成模型自动化了这一过程，称之为生成式视频合成。这项新任务旨在以交互方式自适应地将前景视频的身份和运动信息注入目标视频，允许用户自定义最终视频中添加的动态元素的大小、运动轨迹和其他属性。具体而言，我们基于扩散Transformer（DiT）的内在特性设计了一种新颖的DiT流水线。为了保持目标视频编辑前后的内容一致性，我们改进了一个轻量级的基于DiT的背景保留分支，并引入了掩码令牌注入。为了继承来自其他来源的动态元素，我们提出了一种使用全自注意力机制的DiT融合块，并辅以一种简单而有效的前景增强策略用于训练。此外，为了根据用户控制融合不同布局的背景和前景视频，我们开发了一种新颖的位置编码，名为扩展旋转位置编码（ERoPE）。最后，我们为这项任务策划了一个包含6.1万组视频的数据集，名为VideoComp。该数据集包含完整的动态元素和高质量的目标视频。实验表明，我们的方法有效地实现了生成式视频合成，在保真度和一致性方面优于现有解决方案。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>生成式视频合成</span><span>扩散Transformer</span><span>视频合成</span><span>视频数据集</span><span>视频编辑</span></div>
+                    <div class="area"><span class="label">区域：</span><span>生成式AI</span><span>深度学习</span><span>计算机视觉</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.02460" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>大型语言模型预训练优化器基准测试</h2>
+                <span class="published-time">发布时间: 2025-09-01T12:50:30.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2509.01440.png" alt="大型语言模型预训练优化器基准测试">
+                <p class="summary">大型语言模型（LLMs）的最新发展伴随着大量新颖的优化深度学习模型损失的方法和思想的涌现。这些方法声称的优势众多：从更快的收敛速度到消除对某些超参数的依赖。然而，用于验证这些主张的实验协议多样，使得方法间的直接比较充满挑战。本研究对标准化的大型语言模型预训练场景中的最新优化技术进行了全面评估，系统地改变了模型大小、批次大小和训练时长。通过对每种方法的精心调优，我们为实践者提供了针对不同场景选择最合适优化器的指导。对于研究人员，我们的工作指明了未来优化研究的有前景方向。最后，通过发布我们的代码并使所有实验完全可复现，我们希望我们的努力能有助于未来方法的开发和严格的基准测试。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>大型语言模型</span><span>优化器</span><span>预训练</span><span>基准测试</span><span>深度学习</span></div>
+                    <div class="area"><span class="label">区域：</span><span>大模型</span><span>深度学习</span><span>自然语言处理</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.01440" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>通过向同行小组学习改进大型视觉语言模型</h2>
+                <span class="published-time">发布时间: 2025-09-01T16:43:48.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2509.01610.png" alt="通过向同行小组学习改进大型视觉语言模型">
+                <p class="summary">传统的大型视觉语言模型（LVLMs）对齐方法主要依赖于人工标注的偏好数据。人工生成的偏好数据成本高昂；机器生成的偏好数据质量有限；而自监督偏好数据常引入幻觉。为克服这些局限性，我们提出了一种受人类协作学习启发的创新性“同行小组”学习框架。该方法利用一个由多个LVLM组成的“小组”，每个模型通过迭代的自我改进过程，评估并从它们的集体输出中学习。通过模拟同行评审系统，我们的模型针对一组精选的提示生成、评估和完善输出，模仿了课堂学习环境。我们证明了这种方法无需大量人工标注数据集即可提升模型性能。我们的实验表明，在多个基准测试中取得了显著改进，展示了同行评估作为自监督对齐的可扩展替代方案的潜力。值得注意的是，我们表明“同行小组”方法将十五个基准测试的平均得分从48%提高到57%。</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">关键词：</span><span>大型视觉语言模型</span><span>同行小组学习</span><span>模型对齐</span><span>自我改进</span><span>同行评估</span></div>
+                    <div class="area"><span class="label">区域：</span><span>多模态</span><span>大模型</span><span>深度学习</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.01610" target="_blank" rel="noopener noreferrer">查看详情...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            由 AI 助手生成
+        </footer>
+    </div>
+</body>
+</html>
