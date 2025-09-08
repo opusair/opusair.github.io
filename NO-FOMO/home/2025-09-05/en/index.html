@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-09-05</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: 2px solid transparent;
+            font-size: 0.9em;
+        }
+
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .language-switch a.active {
+            background: var(--secondary-color);
+            border-color: var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .language-switch {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../">中文</a>
+                <a href="./" class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-09-05</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Twitter</h2>
+
+            <article class="item-card">
+                <h2>Alibaba_Qwen_Launches Trillion-Parameter Qwen3-Max-Preview Large Model</h2>
+                <span class="published-time">Published: 2025-09-05T15:43:58.000Z</span>
+                <img src="../screenshot/twitter/Alibaba_Qwen_1963991502440562976.png" alt="Alibaba_Qwen_Launches Trillion-Parameter Qwen3-Max-Preview Large Model">
+                <p class="summary">Alibaba's Qwen team has announced the release of their largest model to date, Qwen3-Max-Preview (Instruct), featuring over 1 trillion parameters. This groundbreaking new model is now readily accessible via Qwen Chat and Alibaba Cloud API, marking a significant milestone. Internal tests and early user feedback consistently confirm that Qwen3-Max-Preview substantially outperforms its predecessor, Qwen3-235B, across various critical metrics. These improvements include enhanced overall performance, broader knowledge acquisition, superior conversational abilities, more effective handling of agentic tasks, and precise instruction following, collectively demonstrating remarkable advancements in large language model capabilities.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Qwen</span><span>Qwen3-Max-Preview</span><span>Large Language Model</span><span>Trillion Parameters</span><span>Artificial Intelligence</span><span>Product Launch</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Product Launch</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/Alibaba_Qwen/status/1963991502440562976" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Kimi_Moonshot_Kimi K2-0905 Update: Enhanced Coding and Long Context</h2>
+                <span class="published-time">Published: 2025-09-05T03:13:40.000Z</span>
+                <img src="../screenshot/twitter/Kimi_Moonshot_1963802687230947698.png" alt="Kimi_Moonshot_Kimi K2-0905 Update: Enhanced Coding and Long Context">
+                <p class="summary">Kimi.ai announced the Kimi K2-0905 model update, featuring significantly enhanced coding capabilities, particularly for front-end development and tool-calling. The model's context length has been extended to 256k tokens, and its integration with various agent scaffolds has been improved. Additionally, a Turbo API is available, offering 60-100 TPS and guaranteed 100% tool-call accuracy for advanced applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Kimi K2-0905</span><span>Large Language Model</span><span>Coding Capabilities</span><span>Context Length</span><span>AI Agent</span><span>Tool Calling</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/Kimi_Moonshot/status/1963802687230947698" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>karpathy_Praises OpenAI's GPT-5 Pro for Solving Complex Coding Challenges</h2>
+                <span class="published-time">Published: 2025-09-05T17:38:51.000Z</span>
+                <img src="../screenshot/twitter/karpathy_1964026120191545346.png" alt="karpathy_Praises OpenAI's GPT-5 Pro for Solving Complex Coding Challenges">
+                <p class="summary">Renowned AI expert Andrej Karpathy tweeted praise for OpenAI's 'GPT-5 Pro' model, highlighting its exceptional capability in solving complex programming challenges. He noted that a problem he struggled with for an hour using another tool ('CC') was resolved by GPT-5 Pro in just ten minutes, providing ready-to-use code. This experience underscores the significant advancements made by OpenAI's next-generation model in code generation and problem-solving, greatly enhancing development efficiency and user experience.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>OpenAI</span><span>GPT-5 Pro</span><span>Code Generation</span><span>Artificial Intelligence</span><span>Programming Assistant</span><span>Andrej Karpathy</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Generative AI</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/karpathy/status/1964026120191545346" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>omarsar0_Microsoft Unveils rStar2-Agent: 14B Math Reasoning Model Achieves Frontier Performance in 510 RL Steps</h2>
+                <span class="published-time">Published: 2025-09-05T19:17:02.000Z</span>
+                <img src="../screenshot/twitter/omarsar0_1964045125115662847.png" alt="omarsar0_Microsoft Unveils rStar2-Agent: 14B Math Reasoning Model Achieves Frontier Performance in 510 RL Steps">
+                <p class="summary">Microsoft's latest research introduces rStar2-Agent, a 14-billion-parameter math reasoning model. This model, trained with agentic Reinforcement Learning (RL), achieves frontier-level math reasoning capabilities in just 510 RL training steps. This advancement highlights the significant potential of efficient RL training in enhancing the reasoning performance of large models, marking a new breakthrough in the field of mathematical and logical reasoning.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Microsoft</span><span>rStar2-Agent</span><span>Math Reasoning</span><span>Reinforcement Learning</span><span>Large Model</span><span>AI Agent</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Research Progress</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/omarsar0/status/1964045125115662847" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>arankomatsuzaki_Meta Introduces SBD for LLM Inference Acceleration</h2>
+                <span class="published-time">Published: 2025-09-05T04:14:28.000Z</span>
+                <img src="../screenshot/twitter/arankomatsuzaki_1963817987506643350.png" alt="arankomatsuzaki_Meta Introduces SBD for LLM Inference Acceleration">
+                <p class="summary">Meta has introduced a new inference accelerator called Set Block Decoding (SBD), specifically designed for Large Language Models (LLMs). SBD technology enables parallel sampling of multiple future tokens, reducing forward passes by 3 to 5 times without requiring architectural changes. This innovation is compatible with KV-cache and maintains performance comparable to Next Token Prediction (NTP) training, significantly enhancing LLM inference efficiency.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Meta</span><span>SBD</span><span>LLM</span><span>Inference Acceleration</span><span>Parallel Sampling</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Tech News</span><span>Research Progress</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/arankomatsuzaki/status/1963817987506643350" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>llama_index_SemTools CLI Agents Enhance Document Search and Analysis</h2>
+                <span class="published-time">Published: 2025-09-05T16:54:00.000Z</span>
+                <img src="../screenshot/twitter/llama_index_1964009128973783135.png" alt="llama_index_SemTools CLI Agents Enhance Document Search and Analysis">
+                <p class="summary">LlamaIndex introduced SemTools, a command-line toolkit for document parsing and semantic search. Tested with coding agents like Claude Code on 1000 ArXiv papers, SemTools demonstrated significant improvements. The research indicates that combining Unix tools with semantic search capabilities creates highly effective knowledge workers, providing more detailed and accurate answers for document analysis tasks. This approach leverages existing Unix tooling, proving CLI access to be a powerful and efficient alternative to custom RAG infrastructure.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Command-line agents</span><span>Semantic search</span><span>Document analysis</span><span>SemTools</span><span>LlamaIndex</span><span>RAG</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Natural Language Processing</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/llama_index/status/1964009128973783135" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">wechat</h2>
+
+            <article class="item-card">
+                <h2>DeepSeek's Next Big Move Revealed: The Future of AI Agents</h2>
+                <span class="published-time">Published: 2025-09-05T14:01:18.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_FjGn2S5VmZ30hXs0Jvadqg.png" alt="DeepSeek's Next Big Move Revealed: The Future of AI Agents">
+                <p class="summary">Insiders reveal that DeepSeek is secretly developing an advanced AI agent model with significant self-evolution capabilities, with the highly anticipated "R2" version projected for release by year-end. This follows DeepSeek-V3.1's recent update, which already demonstrated substantial improvements in tool utilization and complex agent tasks, showcasing comprehensive performance gains in both programming and search agent evaluations. The forthcoming "R2" model is designed to execute intricate operations with minimal user prompts and continuously learn from historical actions, enabling greater autonomy. This strategic move marks a crucial and ambitious step for DeepSeek in the burgeoning AI agent domain, poised to lead new industry trends and potentially democratize access by lowering the cost barrier for sophisticated agent technology. This development firmly signals a continued and intensified industry focus on AI agent advancements within the large language model landscape throughout 2025, promising further innovation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>DeepSeek</span><span>AI Agent</span><span>Large Language Model</span><span>Self-evolution</span><span>Programming Agent</span><span>R2</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/FjGn2S5VmZ30hXs0Jvadqg" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Kuaishou Keye-VL-1.5 Unveiled: Slow-Fast Dual-Track Encoding and 128K Context for a New Era of Visual Language</h2>
+                <span class="published-time">Published: 2025-09-05T14:01:18.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_dlMpKCqzbNLhqwg1RVNosg.png" alt="Kuaishou Keye-VL-1.5 Unveiled: Slow-Fast Dual-Track Encoding and 128K Context for a New Era of Visual Language">
+                <p class="summary">The Kuaishou Keye-VL-1.5 model introduces an innovative slow-fast dual-track video encoding strategy and a progressive four-stage pre-training approach, effectively addressing the fundamental challenge of balancing spatial resolution and temporal coverage in video understanding. This advanced model extends its context length to an impressive 128K tokens, enabling it to process longer videos and more complex visual content. Furthermore, it incorporates a sophisticated post-training pipeline specifically designed to enhance inference capabilities and align with human preferences, thereby significantly improving complex video understanding and reasoning. Keye-VL-1.5 demonstrates outstanding performance in public benchmarks, achieving notable breakthroughs in video understanding tasks while simultaneously maintaining strong competitiveness in general multimodal benchmarks. This comprehensive research offers a practical and robust solution for developing next-generation multimodal models capable of sophisticated video comprehension and advanced reasoning.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Keye-VL-1.5</span><span>Video Understanding</span><span>Multimodal Model</span><span>Slow-Fast Dual-Track Encoding</span><span>Context Length</span><span>Pre-training</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Video Understanding</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/dlMpKCqzbNLhqwg1RVNosg" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Stanford's Latest: Qwen2.5-3B, Capable of 'Deliberate Practice', Outperforms Claude3.5</h2>
+                <span class="published-time">Published: 2025-09-05T13:55:21.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_rSE8j5rRBEJ2-F5Cy2uxuQ.png" alt="Stanford's Latest: Qwen2.5-3B, Capable of 'Deliberate Practice', Outperforms Claude3.5">
+                <p class="summary">A recent Stanford University study addresses two significant challenges in Reinforcement Learning (RL) for Machine Learning Engineering (MLE) tasks: learning bias caused by variable-duration actions and sparse reward signals. To overcome these, the research team introduced innovative solutions: "Duration-Aware Gradient Updates" and "Environment Detection" mechanisms, which significantly optimize the RL training process. Experimental results demonstrate that the Qwen2.5-3B model, with only 3 billion parameters, after RL training, surpassed the prompt-dependent Claude3.5-Sonnet in 8 out of 12 Kaggle MLE tasks, achieving an average performance improvement of 22%. Furthermore, it outperformed GPT-4o in most tasks. This research highlights the critical importance of continuous learning and iterative optimization, demonstrating that smaller models possess the potential to surpass larger, static models in complex AI tasks, offering significant insights for AI Agent development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Machine Learning Engineering</span><span>Qwen2.5-3B</span><span>AI Agent</span><span>Continuous Learning</span><span>Large Language Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Machine Learning</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/rSE8j5rRBEJ2-F5Cy2uxuQ" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Long Video Generation Can Now Look Back! Oxford Proposes "Memory Stabilization" for 12x Speedup</h2>
+                <span class="published-time">Published: 2025-09-05T05:37:56.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_muSPVne06AdhhpNyMrnR8Q.png" alt="Long Video Generation Can Now Look Back! Oxford Proposes "Memory Stabilization" for 12x Speedup">
+                <p class="summary">Researchers from Oxford University have introduced VMem (Surfel-Indexed View Memory), a novel approach designed to address the challenges of inconsistency and high computational costs in long video generation. VMem tackles these issues by explicitly recording "what has been seen" into geometric surfels. Instead of relying solely on recent frames, it leverages geometric visibility to retrieve the most relevant historical views as context for subsequent generation. This method significantly enhances consistency in long-sequence video generation, particularly excelling in loop-trajectory evaluations. Furthermore, VMem drastically reduces computational overhead, achieving up to a 12-fold increase in inference speed. As an explicit, interpretable external memory mechanism, VMem offers an efficient and stable solution for long video generation, capable of being plug-and-play integrated into existing backbone networks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Long Video Generation</span><span>Video Consistency</span><span>Memory Mechanism</span><span>Surfel</span><span>Geometric Visibility</span><span>Efficiency Improvement</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/muSPVne06AdhhpNyMrnR8Q" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Nvidia Acquires AI Coding Startup Solver</h2>
+                <span class="published-time">Published: 2025-09-05T01:47:01.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_83iXDiM1jJK-kEl5-LubJQ.png" alt="Nvidia Acquires AI Coding Startup Solver">
+                <p class="summary">Nvidia has recently acquired Solver, an AI coding startup specializing in developing AI Agents capable of managing entire codebases, moving beyond mere code auto-completion. This acquisition is a pivotal step in Nvidia's broader strategy to build a comprehensive software ecosystem around its leading AI hardware, aiming to reduce chip utilization costs and deepen its footprint in the rapidly evolving AI software market. Solver's technology, founded by veterans including a Siri co-founder, signals a future where AI collaborators are more deeply integrated into core software development processes. This move is expected to shorten development cycles on Nvidia's platforms and signifies a continuation of Nvidia's "AI acquisition spree," further expanding its business scope from chips and data tools to advanced AI agents.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Nvidia</span><span>AI Programming</span><span>AI Agent</span><span>Solver</span><span>Software Ecosystem</span><span>Acquisition</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/83iXDiM1jJK-kEl5-LubJQ" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Breaking the Embodied AI "Expert Dilemma"! Peking University's New Method Enables Unitree G1 to Master Dancing and Cartwheels with a Single Framework</h2>
+                <span class="published-time">Published: 2025-09-05T01:47:01.000Z</span>
+                <img src="../screenshot/wechat/wechat_image_Oc8gw7jtUoqd5QqKVbpqaQ.png" alt="Breaking the Embodied AI "Expert Dilemma"! Peking University's New Method Enables Unitree G1 to Master Dancing and Cartwheels with a Single Framework">
+                <p class="summary">Peking University and BeingBeyond team have jointly developed the innovative BumbleBee system, featuring a "divide-refine-fuse" three-level architecture. This groundbreaking approach is the first to effectively address the long-standing "expert dilemma" in traditional humanoid robot control, which suffers from over-reliance on specific expert strategies and limited generalization capabilities. BumbleBee successfully bridges the gap from optimized expert policies to versatile whole-body control within a single, unified framework. This enables humanoid robots, exemplified by the Unitree G1, to fluidly execute a wide range of complex and diverse actions, including intricate dance routines and dynamic cartwheels. Comprehensive evaluations in both simulation environments (IsaacGym, MuJoCo) and on the physical Unitree G1 platform consistently demonstrate BumbleBee's superior performance in terms of task success rate and overall stability compared to existing baseline methods. This research presents a highly efficient and generalizable new paradigm, significantly advancing the field of universal embodied artificial intelligence control.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Embodied AI</span><span>Humanoid Robots</span><span>Motion Control</span><span>Unified Framework</span><span>BumbleBee</span><span>Expert Dilemma</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Robotics</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mp.weixin.qq.com/s/Oc8gw7jtUoqd5QqKVbpqaQ" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Finally, LLM agents that actually follow instructions</h2>
+                <span class="published-time">Published: 2025-09-08T05:17:02Z</span>
+                <img src="https://github.com/emcie-co/parlant/blob/develop/docs/LogoTransparentDark.png?raw=true" alt="Finally, LLM agents that actually follow instructions">
+                <p class="summary">Parlant is an innovative AI agent framework designed to address the critical challenge of ensuring Large Language Models (LLMs) consistently follow instructions and maintain predictable behavior. Unlike traditional prompt engineering, Parlant enables developers to define explicit behavioral guidelines, integrate external tools, adapt to specific domains, and utilize canned responses, guaranteeing reliable agent performance. Key features include conversational journeys, dynamic guideline matching, robust tool integration, and comprehensive explainability, allowing deep insights into agent decisions. This framework is ideal for building production-ready, customer-facing AI agents across diverse sectors such as financial services, healthcare, e-commerce, and legal tech, where compliance, consistency, and reliability are paramount. Parlant empowers businesses to deploy AI agents that behave exactly as required, minimizing hallucinations and maximizing operational efficiency.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Large Language Model</span><span>Instruction Following</span><span>Behavioral Guidance</span><span>Tool Integration</span><span>Conversational AI</span><span>Explainability</span><span>AI Framework</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/emcie-co/parlant" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>What is the Live Agent Studio?</h2>
+                <span class="published-time">Published: 2025-09-03T23:14:34Z</span>
+                <img src="../screenshot/github/ottomator-agents.png" alt="What is the Live Agent Studio?">
+                <p class="summary">The Live Agent Studio, developed by oTTomator, is a community-driven platform dedicated to exploring and implementing cutting-edge AI agents. All agents featured on the platform are open source, with their complete source code and workflow JSON files readily available in the associated GitHub repository, fostering transparency and collaborative learning. This initiative aims to establish the studio as a central hub for the latest advancements in AI agent technology, groundbreaking research, and essential development tools, ensuring users stay at the forefront of AI innovation. Users can access and utilize these powerful agents through a token-based system, which covers the underlying large language model usage costs, with initial free tokens provided to encourage exploration. Beyond its practical utility, the platform serves as a comprehensive educational resource for learning AI applications and mastering the process of building sophisticated agents, thereby fostering collaborative learning and continuous development within the broader AI community.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Open Source</span><span>AI Platform</span><span>Large Language Model</span><span>Workflow</span><span>AI Application Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/coleam00/ottomator-agents" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>🚀 Kilo Code</h2>
+                <span class="published-time">Published: 2025-09-05T22:38:14Z</span>
+                <img src="https://raw.githubusercontent.com/Kilo-Org/kilocode/refs/heads/main/kilo.gif" alt="🚀 Kilo Code">
+                <p class="summary">Kilo Code is an open-source VS Code AI agent designed to enhance development efficiency by generating code from natural language, automating tasks, and refactoring code. It integrates the latest AI models such as Gemini 2.5 Pro, Claude 4, and GPT-5, with optional API key usage. The project incorporates features from other open-source projects like Roo Code and Cline, offering multi-mode workflows (e.g., Architect, Coder, Debugger) and an MCP Server Marketplace to extend capabilities. Kilo Code aims to provide developers with an adaptable and feature-rich AI coding assistant, streamlining the development process.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>VS Code Extension</span><span>Code Generation</span><span>Natural Language Processing</span><span>Automated Programming</span><span>Large Language Models</span><span>Code Refactoring</span><span>Development Tools</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/Kilo-Org/kilocode" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>bitnet.cpp</h2>
+                <span class="published-time">Published: 2025-06-03T06:14:20Z</span>
+                <img src="https://github.com/microsoft/BitNet/raw/main/assets/m2_performance.jpg" alt="bitnet.cpp">
+                <p class="summary">bitnet.cpp is the official inference framework from Microsoft for 1-bit Large Language Models (LLMs) like BitNet b1.58. It provides a suite of optimized kernels that enable fast and lossless inference of 1.58-bit models on both CPUs and GPUs. The framework achieves significant speedups, ranging from 1.37x to 5.07x on ARM CPUs and 2.37x to 6.17x on x86 CPUs, while also substantially reducing energy consumption. Notably, bitnet.cpp can run a 100B BitNet b1.58 model on a single CPU at speeds comparable to human reading, greatly enhancing the potential for deploying LLMs on local devices and marking a significant advancement in edge AI inference.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>1-bit LLM</span><span>Inference Framework</span><span>Model Optimization</span><span>CPU Inference</span><span>GPU Inference</span><span>Edge Computing</span><span>Energy Efficiency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/microsoft/BitNet" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Pathway AI Pipelines</h2>
+                <span class="published-time">Published: 2025-07-30T12:13:38Z</span>
+                <img src="https://github.com/pathwaycom/llm-app/blob/main/examples/pipelines/gpt_4o_multimodal_rag/gpt4o_with_pathway_comparison.gif" alt="Pathway AI Pipelines">
+                <p class="summary">Pathway AI Pipelines provide a robust and efficient solution for rapidly deploying AI applications, specializing in high-accuracy Retrieval-Augmented Generation (RAG) and scalable enterprise AI search. These pipelines leverage the most current knowledge from various data sources, offering ready-to-use Large Language Model (LLM) App Templates that can be deployed on-cloud or on-premises. They seamlessly connect and synchronize with diverse data sources, including file systems, Google Drive, Sharepoint, S3, and Kafka, handling all data additions, deletions, and updates in real-time. A key feature is the built-in data indexing, enabling lightning-fast vector, hybrid, and full-text search capabilities, all managed in-memory with caching, thus eliminating external infrastructure dependencies. This comprehensive approach significantly simplifies the development and deployment of sophisticated AI applications, particularly for managing and querying vast document collections with continuously updated information.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Pipelines</span><span>RAG</span><span>Large Language Models</span><span>Data Indexing</span><span>Vector Search</span><span>Real-time Data</span><span>Enterprise Search</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/pathwaycom/llm-app" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>XLeRobot 🤖</h2>
+                <span class="published-time">Published: 2025-09-08T00:37:42Z</span>
+                <img src="../screenshot/github/XLeRobot.png" alt="XLeRobot 🤖">
+                <p class="summary">XLeRobot is an innovative open-source, low-cost embodied AI robotics project designed to make advanced embodied AI technology accessible to a broader audience. This initiative presents a practical dual-arm mobile robot that boasts an impressive affordability, costing less than an iPhone, and remarkable ease of assembly, requiring under 4 hours. With a starting price of approximately $660, XLeRobot leverages foundational work from projects like LeRobot, SO-100, and Lekiwi. It features versatile control options, including keyboard, Xbox controller, and Switch Joy-Con, enabling intuitive interaction. The project is comprehensively supported by detailed documentation, a robust simulation environment, and clear hardware assembly guides, positioning it as an ideal platform for both practical household automation and cutting-edge robotics research.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Embodied AI</span><span>Robotics</span><span>Low-cost Hardware</span><span>Open-source Project</span><span>Simulation</span><span>Robotic Arm</span><span>Home Automation</span><span>Robot Control</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Artificial Intelligence</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/Vector-Wangel/XLeRobot" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Delta Activations: A Representation for Finetuned Large Language Models</h2>
+                <span class="published-time">Published: 2025-09-04T17:59:06.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2509.04442.png" alt="Delta Activations: A Representation for Finetuned Large Language Models">
+                <p class="summary">The success of powerful open source Large Language Models (LLMs) has enabled
+the community to create a vast collection of post-trained models adapted to
+specific tasks and domains. However, navigating and understanding these models
+remains challenging due to inconsistent metadata and unstructured repositories.
+We introduce Delta Activations, a method to represent finetuned models as
+vector embeddings by measuring shifts in their internal activations relative to
+a base model. This representation allows for effective clustering by domain and
+task, revealing structure in the model landscape. Delta Activations also
+demonstrate desirable properties: it is robust across finetuning settings and
+exhibits an additive property when finetuning datasets are mixed. In addition,
+we show that Delta Activations can embed tasks via few-shot finetuning, and
+further explore its use for model selection and merging. We hope Delta
+Activations can facilitate the practice of reusing publicly available models.
+Code is available at https://github.com/OscarXZQ/delta_activations.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Delta Activations</span><span>Large Language Models</span><span>Finetuning</span><span>Vector Embeddings</span><span>Model Representation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.04442" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Durian: Dual Reference-guided Portrait Animation with Attribute Transfer</h2>
+                <span class="published-time">Published: 2025-09-04T17:53:03.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2509.04434.png" alt="Durian: Dual Reference-guided Portrait Animation with Attribute Transfer">
+                <p class="summary">We present Durian, the first method for generating portrait animation videos
+with facial attribute transfer from a given reference image to a target
+portrait in a zero-shot manner. To enable high-fidelity and spatially
+consistent attribute transfer across frames, we introduce dual reference
+networks that inject spatial features from both the portrait and attribute
+images into the denoising process of a diffusion model. We train the model
+using a self-reconstruction formulation, where two frames are sampled from the
+same portrait video: one is treated as the attribute reference and the other as
+the target portrait, and the remaining frames are reconstructed conditioned on
+these inputs and their corresponding masks. To support the transfer of
+attributes with varying spatial extent, we propose a mask expansion strategy
+using keypoint-conditioned image generation for training. In addition, we
+further augment the attribute and portrait images with spatial and
+appearance-level transformations to improve robustness to positional
+misalignment between them. These strategies allow the model to effectively
+generalize across diverse attributes and in-the-wild reference combinations,
+despite being trained without explicit triplet supervision. Durian achieves
+state-of-the-art performance on portrait animation with attribute transfer, and
+notably, its dual reference design enables multi-attribute composition in a
+single generation pass without additional training.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Portrait Animation</span><span>Attribute Transfer</span><span>Diffusion Model</span><span>Dual Reference</span><span>Zero-shot</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Deep Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.04434" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Towards a Unified View of Large Language Model Post-Training</h2>
+                <span class="published-time">Published: 2025-09-04T17:40:33.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2509.04419.png" alt="Towards a Unified View of Large Language Model Post-Training">
+                <p class="summary">Two major sources of training data exist for post-training modern language
+models: online (model-generated rollouts) data, and offline (human or
+other-model demonstrations) data. These two types of data are typically used by
+approaches like Reinforcement Learning (RL) and Supervised Fine-Tuning (SFT),
+respectively. In this paper, we show that these approaches are not in
+contradiction, but are instances of a single optimization process. We derive a
+Unified Policy Gradient Estimator, and present the calculations of a wide
+spectrum of post-training approaches as the gradient of a common objective
+under different data distribution assumptions and various bias-variance
+tradeoffs. The gradient estimator is constructed with four interchangeable
+parts: stabilization mask, reference policy denominator, advantage estimate,
+and likelihood gradient. Motivated by our theoretical findings, we propose
+Hybrid Post-Training (HPT), an algorithm that dynamically selects different
+training signals. HPT is designed to yield both effective exploitation of
+demonstration and stable exploration without sacrificing learned reasoning
+patterns. We provide extensive experiments and ablation studies to verify the
+effectiveness of our unified theoretical framework and HPT. Across six
+mathematical reasoning benchmarks and two out-of-distribution suites, HPT
+consistently surpasses strong baselines across models of varying scales and
+families.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>Post-training</span><span>Unified Policy Gradient Estimator</span><span>Hybrid Post-Training</span><span>Reinforcement Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.04419" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Few-step Flow for 3D Generation via Marginal-Data Transport Distillation</h2>
+                <span class="published-time">Published: 2025-09-04T17:24:31.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2509.04406.png" alt="Few-step Flow for 3D Generation via Marginal-Data Transport Distillation">
+                <p class="summary">Flow-based 3D generation models typically require dozens of sampling steps
+during inference. Though few-step distillation methods, particularly
+Consistency Models (CMs), have achieved substantial advancements in
+accelerating 2D diffusion models, they remain under-explored for more complex
+3D generation tasks. In this study, we propose a novel framework, MDT-dist, for
+few-step 3D flow distillation. Our approach is built upon a primary objective:
+distilling the pretrained model to learn the Marginal-Data Transport. Directly
+learning this objective needs to integrate the velocity fields, while this
+integral is intractable to be implemented. Therefore, we propose two
+optimizable objectives, Velocity Matching (VM) and Velocity Distillation (VD),
+to equivalently convert the optimization target from the transport level to the
+velocity and the distribution level respectively. Velocity Matching (VM) learns
+to stably match the velocity fields between the student and the teacher, but
+inevitably provides biased gradient estimates. Velocity Distillation (VD)
+further enhances the optimization process by leveraging the learned velocity
+fields to perform probability density distillation. When evaluated on the
+pioneer 3D generation framework TRELLIS, our method reduces sampling steps of
+each flow transformer from 25 to 1 or 2, achieving 0.68s (1 step x 2) and 0.94s
+(2 steps x 2) latency with 9.0x and 6.5x speedup on A800, while preserving high
+visual and geometric fidelity. Extensive experiments demonstrate that our
+method significantly outperforms existing CM distillation methods, and enables
+TRELLIS to achieve superior performance in few-step 3D generation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>3D Generation</span><span>Model Distillation</span><span>Few-step Flow</span><span>Marginal-Data Transport</span><span>Velocity Distillation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Deep Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.04406" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Loong: Synthesize Long Chain-of-Thoughts at Scale through Verifiers</h2>
+                <span class="published-time">Published: 2025-09-03T06:42:40.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2509.03059.png" alt="Loong: Synthesize Long Chain-of-Thoughts at Scale through Verifiers">
+                <p class="summary">Recent advances in Large Language Models (LLMs) have shown that their
+reasoning capabilities can be significantly improved through Reinforcement
+Learning with Verifiable Reward (RLVR), particularly in domains like
+mathematics and programming, where ground-truth correctness can be
+automatically evaluated. However, extending this success to other
+reasoning-intensive domains remains challenging due to the scarcity of
+high-quality, verifiable datasets and the high cost of human supervision. In
+this work, we introduce the Loong Project: an open-source framework for
+scalable synthetic data generation and verification across a diverse range of
+reasoning-intensive domains. The framework consists of two key components: (1)
+LoongBench, a curated seed dataset containing 8,729 human-vetted examples
+across 12 domains (e.g., Advanced Mathematics, Chemistry, Logic), each paired
+with executable code and rich metadata; and (2) LoongEnv, a modular synthetic
+data generation environment that supports multiple prompting strategies to
+produce new question-answer-code triples. Together, these components form an
+agent-environment loop that enables reinforcement learning, where an LLM-based
+agent is rewarded for generating Chain-of-Thought (CoT) solutions that align
+with code-executed answers. Empirically, we benchmark LoongBench on a broad
+suite of both open-source and proprietary LLMs to evaluate domain coverage and
+reveal performance bottlenecks. In addition, we conduct a comprehensive
+analysis of synthetic data generated by LoongEnv, examining correctness,
+difficulty, and diversity. Code and documentation are available at
+https://github.com/camel-ai/loong.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Chain-of-Thought</span><span>Synthetic Data</span><span>Reinforcement Learning</span><span>Verifiers</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Artificial Intelligence</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.03059" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DeepResearch Arena: The First Exam of LLMs' Research Abilities via
+  Seminar-Grounded Tasks</h2>
+                <span class="published-time">Published: 2025-09-01T11:42:47.000Z</span>
+                <img src="https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2509.01396.png" alt="DeepResearch Arena: The First Exam of LLMs' Research Abilities via
+  Seminar-Grounded Tasks">
+                <p class="summary">Deep research agents have attracted growing attention for their potential to
+orchestrate multi-stage research workflows, spanning literature synthesis,
+methodological design, and empirical verification. Despite these strides,
+evaluating their research capability faithfully is rather challenging due to
+the difficulty of collecting frontier research questions that genuinely capture
+researchers' attention and intellectual curiosity. To address this gap, we
+introduce DeepResearch Arena, a benchmark grounded in academic seminars that
+capture rich expert discourse and interaction, better reflecting real-world
+research environments and reducing the risk of data leakage. To automatically
+construct DeepResearch Arena, we propose a Multi-Agent Hierarchical Task
+Generation (MAHTG) system that extracts research-worthy inspirations from
+seminar transcripts. The MAHTG system further translates research-worthy
+inspirations into high-quality research tasks, ensuring the traceability of
+research task formulation while filtering noise. With the MAHTG system, we
+curate DeepResearch Arena with over 10,000 high-quality research tasks from
+over 200 academic seminars, spanning 12 disciplines, such as literature,
+history, and science. Our extensive evaluation shows that DeepResearch Arena
+presents substantial challenges for current state-of-the-art agents, with clear
+performance gaps observed across different models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLMs</span><span>Research Abilities</span><span>AI Agents</span><span>Benchmark</span><span>Seminar-Grounded Tasks</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.01396" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
