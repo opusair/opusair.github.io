@@ -142,8 +142,11 @@
         }
     </style>
     <script>
-        // 可用的日报日期列表（按时间倒序排列）
         const availableDates = [
+            {
+                        "date": "2025-09-09",
+                        "hasLanguages": true
+            },
             {
                         "date": "2025-09-08",
                         "hasLanguages": true
@@ -290,49 +293,19 @@
             }
 ];
 
-        function detectUserLanguage() {
-            // 检测用户语言偏好
-            const browserLang = navigator.language || navigator.userLanguage;
-            const isChineseBrowser = browserLang.toLowerCase().includes('zh');
-            
-            // 检查URL参数
-            const urlParams = new URLSearchParams(window.location.search);
-            const langParam = urlParams.get('lang');
-            
-            if (langParam === 'en') return 'en';
-            if (langParam === 'zh' || langParam === 'cn') return 'zh';
-            
-            // 默认根据浏览器语言判断，现在默认是中文版（无cn路径）
-            return isChineseBrowser ? 'zh' : 'zh'; // 默认中文
-        }
-
         function redirectToLatest() {
             if (availableDates.length > 0) {
-                const latestReport = availableDates[0];
-                const userLang = detectUserLanguage();
-                
-                let redirectUrl;
-                if (latestReport.hasLanguages && userLang === 'en') {
-                    // 如果支持多语言且用户偏好英文，跳转到英文版
-                    redirectUrl = `../home/${latestReport.date}/en/`;
-                } else {
-                    // 默认跳转到中文版（无cn路径）
-                    redirectUrl = `../home/${latestReport.date}/`;
-                }
-                
-                console.log(`Redirecting to: ${redirectUrl}`);
-                window.location.href = redirectUrl;
+                const latest = availableDates[0];
+                const url = `../home/${latest.date}/`;
+                console.log(`Redirecting to: ${url}`);
+                window.location.href = url;
             } else {
-                // 如果没有可用日报，显示错误信息
                 document.getElementById('loading-text').innerHTML = '暂无可用日报';
                 document.querySelector('.spinner').style.display = 'none';
             }
         }
 
-        // 页面加载后延迟2秒重定向
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(redirectToLatest, 2000);
-        });
+        document.addEventListener('DOMContentLoaded', () => setTimeout(redirectToLatest, 2000));
     </script>
 </head>
 <body>

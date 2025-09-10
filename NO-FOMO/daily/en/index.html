@@ -142,8 +142,11 @@
         }
     </style>
     <script>
-        // Available daily report dates (in reverse chronological order)
         const availableDates = [
+            {
+                        "date": "2025-09-09",
+                        "hasLanguages": true
+            },
             {
                         "date": "2025-09-08",
                         "hasLanguages": true
@@ -292,30 +295,17 @@
 
         function redirectToLatest() {
             if (availableDates.length > 0) {
-                const latestReport = availableDates[0];
-                let redirectUrl;
-                
-                if (latestReport.hasLanguages && "en" === "en") {
-                    // Force redirect to EN version
-                    redirectUrl = `../../home/${latestReport.date}/en/`;
-                } else {
-                    // Redirect to default version
-                    redirectUrl = `../../home/${latestReport.date}/`;
-                }
-                
-                console.log(`Redirecting to: ${redirectUrl}`);
-                window.location.href = redirectUrl;
+                const latest = availableDates[0];
+                const url = `../../home/${latest.date}/en/`;
+                console.log(`Redirecting to: ${url}`);
+                window.location.href = url;
             } else {
-                // If no reports available, show error message
                 document.getElementById('loading-text').innerHTML = 'No reports available';
                 document.querySelector('.spinner').style.display = 'none';
             }
         }
 
-        // Redirect after 2 seconds delay when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(redirectToLatest, 2000);
-        });
+        document.addEventListener('DOMContentLoaded', () => setTimeout(redirectToLatest, 2000));
     </script>
 </head>
 <body>
