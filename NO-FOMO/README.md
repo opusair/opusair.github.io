@@ -1,210 +1,133 @@
-# NO-FOMO AI 日报自动化系统
+# NO-FOMO AI 日报 🤖
 
-## 📖 项目简介
+> Never miss out on AI breakthroughs again! 不再错过任何AI突破！
 
-NO-FOMO AI 日报是一个自动化的 AI 资讯发布系统，支持每日日报的生成、管理和发布。该系统通过 GitHub Pages 提供在线访问，具有现代化的 Web 界面和完整的自动化工作流。
+## 🔗 快速访问
 
-## 🏗️ 系统架构
+- 🌐 [查看最新日报](https://opusair.github.io/NO-FOMO/daily/)
+- 📅 [浏览历史日报](https://opusair.github.io/NO-FOMO/home/)
+- 🌍 [English Version](https://opusair.github.io/NO-FOMO/home/en/)
+- 📊 [最新日报 (2025-09-09)](https://opusair.github.io/NO-FOMO/home/2025-09-09/)
 
-### URL 结构
-```
-https://opusair.github.io/NO-FOMO/
-├── daily/                    # 最新日报（自动重定向）
-├── home/                     # 主页，显示所有日报列表
-│   ├── 2025-05-29/          # 特定日期的日报
-│   ├── 2025-05-28/          # 特定日期的日报
-│   └── ...
-└── automation/              # 自动化脚本
-```
+## 📂 项目结构
 
-### 文件夹结构
 ```
 NO-FOMO/
-├── home/                   # 发布目录
-│   ├── index.html         # 主页
-│   ├── 2025-05-29/       # 已发布的日报
-│   └── ...
-├── daily/                 # 最新日报重定向
-│   └── index.html
-├── automation/            # 自动化工具
-│   ├── daily_report_manager.py  # Python 主脚本
-│   ├── deploy.sh              # Shell 部署脚本
-│   └── README.md              # 说明文档
-└── README.md              # 项目文档
+├── home/                      # 日报主页和历史归档
+│   ├── index.html            # 中文主页
+│   ├── en/                   # 英文版本
+│   │   └── index.html        
+│   └── YYYY-MM-DD/           # 按日期组织的日报
+│       ├── index.html        # 中文日报
+│       ├── en/               # 英文日报
+│       │   ├── index.html
+│       │   └── YYYYMMDD_en.json
+│       └── screenshot/       # 文章截图
+│           ├── github/       # GitHub项目截图
+│           ├── twitter/      # Twitter推文截图
+│           └── wechat/       # 微信文章截图
+├── daily/                    # 最新日报重定向页面
+│   ├── index.html           # 中文重定向
+│   └── en/                  # 英文重定向
+│       └── index.html
+└── automation/              # 自动化脚本
+    ├── daily_report_manager.py  # 核心管理脚本
+    └── config.json             # 配置文件
 ```
 
 ## 🚀 快速开始
 
-### 1. 环境要求
-- Python 3.6+
+### 环境要求
+
+- Python 3.7+
 - Git
-- Bash/Zsh (macOS/Linux)
 
-### 2. 初始化系统
+### 安装
+
+克隆仓库：
 ```bash
-# 进入自动化目录
-cd NO-FOMO/automation
-
-# 给脚本执行权限
-chmod +x deploy.sh
-
-# 初始化系统（首次使用）
-./deploy.sh init
+git clone https://github.com/opusair/opusair.github.io.git
+cd opusair.github.io/NO-FOMO
 ```
 
-### 3. 基本使用
 
-#### 同步和更新
+### 使用方法
+
+#### 同步所有日报文件夹
+
+更新所有日期文件夹的导航、语言切换和分析代码：
+
 ```bash
-# 同步home目录下的所有日报文件夹
-./deploy.sh init
+python automation/daily_report_manager.py --sync-all
+```
+
+#### 仅同步不提交
+
+如果只想同步文件但不自动提交到Git：
+
+```bash
+python automation/daily_report_manager.py --sync-all --no-commit
+```
+
+### 使用示例
+
+```bash
+# 完整同步并自动提交
+python automation/daily_report_manager.py --sync-all
+
+# 只同步不提交（适合手动检查后再提交）
+python automation/daily_report_manager.py --sync-all --no-commit
 
 # 查看帮助信息
-./deploy.sh help
+python automation/daily_report_manager.py --help
 ```
 
-## ⚙️ 自动化配置
+### 主要功能
 
-### 设置定时任务
-```bash
-# 设置每天自动更新
-./deploy.sh setup-cron
-```
+1. **自动添加Google Analytics**
+   - 自动检测并添加GA追踪代码到所有HTML页面
 
-这将创建一个 cron 任务，每天早上 11 点自动检查并同步所有日报。
+2. **智能导航栏**
+   - 自动为每个页面添加返回主页、查看最新日报等导航链接
+   - 根据页面位置自动调整路径深度
 
-### 手动 cron 配置
-如果需要自定义时间，可以手动编辑 crontab：
-```bash
-# 编辑 crontab
-crontab -e
+3. **语言切换功能**
+   - 为支持双语的日报自动添加中英文切换按钮
+   - 智能检测当前语言并高亮对应按钮
 
-# 添加定时任务（例如每天早上 8:30）
-30 8 * * * /path/to/NO-FOMO/automation/deploy.sh init
-```
+4. **主页更新**
+   - 自动扫描所有日报文件夹
+   - 提取文章数量和来源信息
+   - 生成日报列表并按日期排序
 
-## 📝 工作流程
+5. **重定向页面**
+   - 自动跳转到最新的日报
+   - 支持中英文不同路径
 
-### 日常工作流程
-1. **添加日报**: 将新的日报文件夹直接放入 `home/` 目录（包含 `index.html` 和图片）
-2. **自动同步**: 运行 `./deploy.sh init` 或等待定时任务执行
-3. **自动更新**: 系统会自动：
-   - 为所有日报页面添加导航链接
-   - 更新主页链接和统计
-   - 更新 daily 重定向
-   - 提交到 Git 并推送
+## 📊 数据格式
 
-### 系统自动化功能
-- ✅ 自动扫描home目录下的日报文件夹
-- ✅ 自动添加导航链接到日报页面
-- ✅ 自动更新主页导航和统计
-- ✅ 自动统计文章数量
-- ✅ 自动提取数据源
-- ✅ 自动 Git 提交和推送
+### 日报数据
 
-## 🎨 界面特性
+每个日报包含以下信息：
 
-### 主页功能
-- 📊 统计概览（总日报数、总文章数、最新更新）
-- 📅 日期卡片展示
-- 🔍 响应式设计
-- 🎯 快速导航链接（蓝、绿、橙三色配色）
+- **日期**：YYYY-MM-DD格式
+- **标题**：AI日报标题
+- **描述**：包含来源数量和类型
+- **文章数量**：该日收录的文章总数
+- **来源列表**：GitHub、Twitter、微信等
 
-### 日报页面功能
-- 📱 移动友好的响应式设计
-- 🖼️ 图片自动适配
-- 🏷️ 智能标签分类
-- 🔗 外链跳转
-- 🧭 导航面包屑（返回主页、最新日报、关于我们）
+### 访问统计
 
-## 🔧 高级配置
+系统自动收集访问数据（`analytics-stats.json`）：
 
-### Python 脚本参数
-```bash
-# 使用自定义路径
-python3 daily_report_manager.py --base-path /custom/path
-
-# 同步所有文件夹
-python3 daily_report_manager.py --sync-all
-
-# 不自动提交到 Git
-python3 daily_report_manager.py --sync-all --no-commit
-```
-
-### 自定义配置
-如需修改默认行为，可以编辑 `daily_report_manager.py` 中的相关配置：
-
-```python
-# 修改 Git 提交信息格式
-def git_commit_and_push(self, message=None):
-    if message is None:
-        today = date.today().strftime('%Y-%m-%d')
-        message = f"自动更新日报 - {today}"  # 可自定义格式
-
-# 修改导航链接样式和颜色
-navigation_html = '''...'''  # 可自定义导航栏 HTML
-```
-
-## 📋 故障排除
-
-### 常见问题
-
-#### 1. Git 提交失败
-```bash
-# 检查 Git 状态
-git status
-
-# 手动提交
-git add .
-git commit -m "手动提交"
-git push
-```
-
-#### 2. Python 脚本执行错误
-```bash
-# 检查 Python 版本
-python3 --version
-
-# 检查文件权限
-ls -la automation/
-
-# 手动运行 Python 脚本
-cd NO-FOMO
-python3 automation/daily_report_manager.py --sync-all
-```
-
-#### 3. 定时任务不工作
-```bash
-# 查看 cron 任务
-crontab -l
-
-# 查看日志
-tail -f automation/cron.log
-
-# 测试脚本
-./automation/deploy.sh init
-```
-
-### 日志文件
-- `automation/cron.log`: 定时任务执行日志
-- Git 历史: 查看所有自动提交记录
-
-## 📞 支持与维护
-
-### 更新系统
-定期检查并更新自动化脚本以获得最新功能和修复。
-
-### 监控
-- 检查 GitHub Pages 部署状态
-- 监控 cron 任务执行情况（每天11点）
-- 定期查看日志文件
-
+- **访问量统计**：总访问量、今日/昨日/最近7天/30天访问量
+- **热门页面**：最受欢迎的日报和页面
+- **流量来源**：直接访问、搜索引擎、社交媒体、引荐
+- **设备分布**：桌面端、移动端、平板电脑
+- **地域分布**：访客国家/地区统计
 ---
 
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request 来改进这个项目！
-
----
-
-**NO-FOMO AI 日报** - 让您不错过任何重要的 AI 资讯！ 🚀 
+<p align="center">
+  Made with ❤️ by OpusAir Team<br>
+  让AI资讯触手可及 | Making AI News Accessible
+</p>
