@@ -219,7 +219,7 @@ class DailyReportManager:
                 self.add_language_switch(en_index, False)
     
     def sync_all(self):
-        """同步所有 - 这才是真正的主逻辑"""
+        """同步所有 """
         folders = self.find_date_folders()
         
         if not folders:
