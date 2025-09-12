@@ -129,8 +129,19 @@ class DailyReportManager:
         # 构建报告数据
         reports = []
         for folder in folders:
+            # 根据语言版本选择正确的文件路径
+            if not is_chinese and folder['hasEnglish']:
+                # 英文版主页，读取en子文件夹的内容
+                content_path = folder['path'] / "en" / "index.html"
+            else:
+                # 中文版主页，读取根目录的内容
+                content_path = folder['path'] / "index.html"
+            
+            if not content_path.exists():
+                continue
+                
             # 统计文章数量
-            folder_content = (folder['path'] / "index.html").read_text(encoding='utf-8')
+            folder_content = content_path.read_text(encoding='utf-8')
             article_count = folder_content.count('class="item-card"')
             
             # 提取来源
