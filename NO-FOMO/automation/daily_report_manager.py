@@ -261,13 +261,31 @@ class DailyReportManager:
         message = message or f"自动更新日报 - {date.today()}"
         
         try:
+            # 检查是否有更改
+            result = subprocess.run(['git', 'status', '--porcelain'], cwd=self.base_path, 
+                                  capture_output=True, text=True, check=True)
+            
+            if not result.stdout.strip():
+                print("ℹ️  没有检测到更改，跳过Git提交")
+                return True
+            
+            # 添加更改
             subprocess.run(['git', 'add', '.'], cwd=self.base_path, check=True)
+            
+            # 提交更改
             subprocess.run(['git', 'commit', '-m', message], cwd=self.base_path, check=True)
-            subprocess.run(['git', 'push'], cwd=self.base_path, check=True)
-            print(f"✅ Git提交成功: {message}")
+            
+            # 尝试推送（如果失败也不影响主要功能）
+            try:
+                subprocess.run(['git', 'push'], cwd=self.base_path, check=True)
+                print(f"✅ Git提交并推送成功: {message}")
+            except subprocess.CalledProcessError as e:
+                print(f"⚠️  Git推送失败，但本地提交成功: {e}")
+                print("💡 提示: 可以稍后手动执行 'git push' 来同步到远程仓库")
+            
             return True
-        except subprocess.CalledProcessError:
-            print("⚠️  Git操作失败，可能是没有更改或者你的Git配置有问题")
+        except subprocess.CalledProcessError as e:
+            print(f"⚠️  Git操作失败: {e}")
             return False
 
 
