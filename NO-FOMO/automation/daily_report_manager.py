@@ -276,7 +276,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--sync-all', action='store_true', help='同步所有日期文件夹')
     parser.add_argument('--no-commit', action='store_true', help='不自动提交到Git')
-    
+    print(f"Git提交:")
     args = parser.parse_args()
     
     if not args.sync_all:
