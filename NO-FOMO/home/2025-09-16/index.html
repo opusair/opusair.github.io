@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-09-16</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-09-16</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Launch HN: Rowboat (YC S24) – Open-source IDE for multi-agent systems</h2>
+                <span class="published-time">Published: 2025-09-16 17:01:16</span>
+                
+                <p class="summary">Rowboat, an open-source AI-assisted Integrated Development Environment (IDE) from Y Combinator S24, has been launched to streamline the creation and management of multi-agent systems. Developed by Arjun, Ramnique, and Akhilesh, this platform features a copilot designed to assist developers in building sophisticated AI applications. Rowboat supports a wide spectrum of agent types, ranging from deterministic automation agents, such as those for email summarization, to more complex, agentic systems like meeting preparation assistants and customer support bots. The IDE aims to simplify the development workflow for multi-agent architectures, providing intuitive tools and practical examples for various applications. Its open-source nature encourages community contributions and broader adoption in the rapidly evolving field of AI agent development, offering a robust solution for orchestrating intelligent systems and enhancing productivity in AI development. This initiative addresses the growing need for specialized tools to manage the complexity inherent in multi-agent AI deployments.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Open-source</span><span>IDE</span><span>Multi-agent systems</span><span>AI-assisted development</span><span>AI agents</span><span>Copilot</span><span>Agent orchestration</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/rowboatlabs/rowboat" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Generative AI as Seniority-Biased Technological Change</h2>
+                <span class="published-time">Published: 2025-09-16 13:24:35</span>
+                
+                <p class="summary">This paper investigates Generative AI's role as a seniority-biased technological change, examining its differential impact on the workforce based on experience and tenure. The research likely explores how generative artificial intelligence technologies could augment or displace tasks performed by employees at various seniority levels, potentially leading to significant shifts in demand for specific skills and altering career trajectories. It delves into the mechanisms through which AI influences productivity, job design, and the overall structure of the labor market. The study aims to provide critical insights into the socio-economic implications of AI adoption, particularly concerning workforce restructuring, skill development needs, and the future of work across different professional hierarchies. Furthermore, it may discuss policy implications for education, training, and organizational strategies to adapt to these technological shifts, ensuring equitable benefits and mitigating potential adverse effects on employment and career progression for different seniority groups.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Generative AI</span><span>Technological Change</span><span>Labor Market</span><span>Workforce</span><span>Seniority Bias</span><span>Economic Impact</span><span>Future of Work</span><span>AI Adoption</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Artificial Intelligence</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5425555" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Microsoft Favors Anthropic over OpenAI for Visual Studio Code</h2>
+                <span class="published-time">Published: 2025-09-16 14:48:37</span>
+                
+                <p class="summary">Microsoft is reportedly shifting its strategic AI partnerships by favoring Anthropic, a leading artificial intelligence research company, over its established collaborator OpenAI for integration within its widely-used developer environment, Visual Studio Code. This move signals a potential diversification in Microsoft's approach to embedding AI capabilities across its product ecosystem, extending beyond its significant investment in OpenAI. The decision suggests that Anthropic's advanced AI models, such as the Claude series, are being considered or actively integrated to power intelligent coding assistance, contextual suggestions, and other generative AI features directly within the Visual Studio Code platform. This development highlights the increasingly competitive landscape among major AI providers and the strategic choices technology giants are making to enhance their offerings. For the vast community of developers utilizing Visual Studio Code, this could introduce new AI-driven functionalities, potentially offering specialized or alternative tools for code generation, debugging, and overall productivity improvements, thereby shaping the future of AI-assisted software development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Microsoft</span><span>Anthropic</span><span>OpenAI</span><span>Visual Studio Code</span><span>AI Partnership</span><span>Large Language Model</span><span>Developer Tools</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.theverge.com/report/778641/microsoft-visual-studio-code-anthropic-claude-4" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: AI Code Detector – detect AI-generated code with 95% accuracy</h2>
+                <span class="published-time">Published: 2025-09-16 18:18:56</span>
+                
+                <p class="summary">Span, a company co-founded by Henry, has launched the AI Code Detector, a browser-based tool designed to identify AI-generated code with 95% accuracy. This new offering addresses growing challenges faced by engineering organizations due to the widespread adoption of AI code generation tools like Cursor and Copilot, which often lack standardized or comprehensive usage reporting. The creators emphasize that as AI integration deepens in software development, the financial impact of 'token spend' will increasingly rival payroll expenses. Therefore, gaining clear visibility into AI-generated code is crucial for optimizing proficiency, enhancing return on investment, and effectively allocating resources related to AI tools within an organization.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Code Detection</span><span>AI-generated code</span><span>Code Generation</span><span>Developer Tools</span><span>Software Engineering</span><span>AI Usage Tracking</span><span>Copilot</span><span>Token Spend Management</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://code-detector.ai/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Your" vs. "My" in user interfaces</h2>
+                <span class="published-time">Published: 2025-09-16 03:05:53</span>
+                
+                <p class="summary">The article "Your" vs. "My" in user interfaces likely explores the critical role of pronoun selection in shaping user perception and interaction within digital products. It would delve into how the choice between "Your" and "My" influences feelings of ownership, personalization, and clarity, impacting overall user experience. This discussion is particularly relevant for AI-driven interfaces and Large Language Models, where precise linguistic choices are crucial for effective communication and user engagement, guiding designers and developers in crafting more intuitive and human-centric interactions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>User Interface Design</span><span>User Experience</span><span>Pronoun Usage</span><span>Linguistic Design</span><span>Human-Computer Interaction</span><span>Content Strategy</span><span>AI-driven Interfaces</span><span>Natural Language Processing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://adamsilver.io/blog/your-vs-my-in-user-interfaces/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Waymo has received our pilot permit allowing for commercial operations at SFO</h2>
+                <span class="published-time">Published: 2025-09-16 16:38:08</span>
+                
+                <p class="summary">Waymo, a prominent autonomous driving technology company, has achieved a significant regulatory milestone by obtaining a pilot permit for commercial operations at San Francisco International Airport (SFO). This crucial approval allows Waymo to initiate driverless ride-hailing services to and from the airport, marking a substantial advancement in the deployment of autonomous vehicles within complex urban and transportation infrastructure. The permit signifies a growing acceptance and trust in the safety and reliability of Waymo's self-driving technology by regulatory bodies. This pilot program will enable Waymo to meticulously test and optimize its autonomous operations in the dynamic and challenging environment of a major international airport, gathering invaluable data for future scaling. The move is poised to demonstrate the practical benefits of advanced artificial intelligence and robotics in enhancing transportation efficiency, reducing human error, and providing innovative mobility solutions for the public. This development positions Waymo to further solidify its leadership in the autonomous vehicle industry and expand its commercial footprint.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Autonomous Vehicles</span><span>Waymo</span><span>Self-Driving Technology</span><span>Commercial Operations</span><span>Regulatory Approval</span><span>Robotics</span><span>San Francisco International Airport</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Robotics</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://waymo.com/blog/#short-all-systems-go-at-sfo-waymo-has-received-our-pilot-permit" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>MarkItDown</h2>
+                <span class="published-time">Published: 2025-08-26T22:30:47Z</span>
+                
+                <p class="summary">MarkItDown is a lightweight Python utility designed for converting diverse file formats into Markdown, primarily for integration with Large Language Models (LLMs) and text analysis pipelines. It supports a wide array of input types, including PDF, PowerPoint, Word, Excel, images (with OCR), audio (with speech transcription), HTML, various text-based formats, ZIP archives, YouTube URLs, and EPubs. A key focus of MarkItDown is to preserve essential document structure, such as headings, lists, tables, and links, ensuring that the output Markdown is both human-readable and machine-consumable. The tool leverages Markdown's inherent token efficiency and its native understanding by mainstream LLMs, which are often trained on Markdown-formatted text. MarkItDown offers flexible installation with optional dependencies, a command-line interface, a Python API, and Docker support. It also features extensibility through a plugin system and integrates with Azure Document Intelligence for enhanced conversion capabilities, and can use LLMs for image descriptions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Markdown Conversion</span><span>LLM Applications</span><span>Document Processing</span><span>Text Analysis</span><span>Python Utility</span><span>File Conversion</span><span>OCR</span><span>Speech Transcription</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/microsoft/markitdown" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MLX LM</h2>
+                <span class="published-time">Published: 2025-09-16T15:01:45Z</span>
+                
+                <p class="summary">MLX LM is a Python package designed for efficient text generation and fine-tuning of large language models (LLMs) specifically on Apple silicon, leveraging the MLX framework. It offers robust integration with the Hugging Face Hub, allowing users to easily access and deploy a vast array of LLMs. Key functionalities include support for model quantization, uploading models to Hugging Face, and both low-rank (LoRA) and full model fine-tuning, compatible even with quantized models. The package also supports distributed inference and fine-tuning via `mx.distributed`. Users can interact with LLMs through a command-line interface for quick text generation and chat, or utilize a comprehensive Python API for programmatic control, including streaming generation and advanced sampling. MLX LM incorporates features for handling long prompts and generations efficiently, such as a rotating fixed-size key-value cache and prompt caching, which significantly enhance performance in multi-turn dialogues and context reuse. It supports numerous Hugging Face LLMs, including popular Mistral, Llama, Phi-2, and Mixtral architectures, with specific configurations for certain models like Qwen. Furthermore, it optimizes performance for large models on macOS 15+ by managing wired memory.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>MLX</span><span>Large Language Models</span><span>Fine-tuning</span><span>Quantization</span><span>Apple Silicon</span><span>Hugging Face Integration</span><span>Text Generation</span><span>Distributed Computing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/ml-explore/mlx-lm" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>基于大模型和 RAG 的智能问数系统</h2>
+                <span class="published-time">Published: 2025-09-16T10:08:53Z</span>
+                
+                <p class="summary">SQLBot is an advanced intelligent data querying system that harnesses the power of large language models (LLMs) and Retrieval-Augmented Generation (RAG) to deliver high-quality text-to-SQL conversions. Its primary advantages include an out-of-the-box setup, requiring only the configuration of an LLM and a data source to begin intelligent data exploration. The system boasts easy integration, allowing for quick embedding into existing third-party business systems and seamless interoperability with leading AI application development platforms like n8n, MaxKB, Dify, and Coze. This broad compatibility enables diverse applications to rapidly acquire sophisticated data querying capabilities. Moreover, SQLBot prioritizes security and control by implementing a workspace-based resource isolation mechanism, which facilitates fine-grained data permission management, ensuring data integrity and compliance. This makes SQLBot a versatile, secure, and efficient solution for modern data interaction and analysis.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>Retrieval-Augmented Generation</span><span>Text-to-SQL</span><span>Intelligent Data Querying</span><span>System Integration</span><span>Data Security</span><span>AI Application Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/dataease/SQLBot" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DeepResearchAgent</h2>
+                <span class="published-time">Published: 2025-08-13T17:04:52Z</span>
+                
+                <p class="summary">DeepResearchAgent is a sophisticated hierarchical multi-agent system designed for both in-depth research and general-purpose task execution. It features a top-level planning agent that intelligently decomposes complex tasks into manageable sub-tasks, coordinating specialized lower-level agents for efficient execution. Key capabilities include deep analysis of diverse data, thorough research and report generation, automated web interaction via a Browser Use agent, and management of Model Context Protocol (MCP) tools. The system supports extensible agent integration, asynchronous operations, and flexible model inference with various LLMs, including OpenAI, Anthropic, Google, and local Qwen models. Additionally, it incorporates generative AI tools for image and video creation based on Imagen and Veo3 models. DeepResearchAgent demonstrates state-of-the-art performance on GAIA benchmarks, showcasing its robust capabilities in dynamic and complex scenarios. Its secure Python execution environment further enhances its utility for diverse applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Multi-agent System</span><span>Large Language Models</span><span>Research Automation</span><span>Web Automation</span><span>Generative AI</span><span>Hierarchical AI</span><span>Task Decomposition</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/SkyworkAI/DeepResearchAgent" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI Hedge Fund</h2>
+                <span class="published-time">Published: 2025-09-15T19:33:45Z</span>
+                
+                <p class="summary">The AI Hedge Fund is a proof-of-concept project exploring the application of artificial intelligence in making trading decisions, primarily for educational and research purposes. It features a sophisticated multi-agent system where various AI agents, inspired by renowned investors like Warren Buffett, Ben Graham, and Michael Burry, collaborate to analyze financial data. Key agents include those focused on disciplined valuation, market sentiment, fundamental analysis, technical indicators, risk management, and portfolio management, which collectively generate trading signals and simulated investment decisions. The system is explicitly not intended for real trading, emphasizing its role as a learning tool. It offers both a command-line interface for granular control and a user-friendly web application, requiring API keys for large language models (like OpenAI) and comprehensive financial datasets. This project provides a robust, agent-based framework for understanding and experimenting with AI's potential in financial markets and advanced investment strategies.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Hedge Fund</span><span>Algorithmic Trading</span><span>Multi-Agent System</span><span>Financial AI</span><span>Investment Strategy</span><span>Valuation</span><span>Risk Management</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/virattt/ai-hedge-fund" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>UI-S1: Advancing GUI Automation via Semi-online Reinforcement Learning</h2>
+                <span class="published-time">Published: 2025-09-15T03:24:08.000Z</span>
+                
+                <p class="summary">Graphical User Interface (GUI) agents have demonstrated remarkable progress in automating complex user interface interactions through reinforcement learning. However, current approaches face a fundamental dilemma: offline RL enables stable training on pre-collected trajectories, but struggles with multi-step task execution for lack of trajectory-level reward signals; online RL captures these signals through environment interaction, but suffers from sparse rewards and prohibitive deployment costs. To address it, we present Semi-online Reinforcement Learning, a novel paradigm that simulates online RL on offline trajectories. During each rollout process, we preserve the original model output within the multi-turn dialogue, where a Patch Module adaptively recovers the divergence between rollout and expert trajectories. To capture long-term training signals, Semi-online RL introduces discounted future returns into the reward computation and optimizes the policy with weighted step-level and episode-level advantages. We further introduce Semi-Online Performance (SOP), a metric that aligns better with true online performance, serving as a practical and effective proxy for real-world evaluation. Experiments show that ours Semi-online RL achieves SOTA performance among 7B models across four dynamic benchmarks, with significant gains over the base model (e.g., +12.0% on AndroidWorld, +23.8% on AITW), demonstrating significant progress in bridging the gap between offline training efficiency and online multi-turn reasoning. The code is available at https://github.com/X-PLUG/MobileAgent/tree/main/UI-S1.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Semi-online Reinforcement Learning</span><span>GUI Automation</span><span>Reinforcement Learning</span><span>AI Agent</span><span>Offline RL</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.11543" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>SearchInstruct: Enhancing Domain Adaptation via Retrieval-Based Instruction Dataset Creation</h2>
+                <span class="published-time">Published: 2025-09-12T21:50:39.000Z</span>
+                
+                <p class="summary">Supervised Fine-Tuning (SFT) is essential for training large language models (LLMs), significantly enhancing critical capabilities such as instruction following and in-context learning. Nevertheless, creating suitable training datasets tailored for specific domains remains challenging due to unique domain constraints and data scarcity. In this paper, we propose SearchInstruct, an innovative method explicitly designed to construct high quality instruction datasets for SFT. Our approach begins with a limited set of domain specific, human generated questions, which are systematically expanded using a large language model. Subsequently, domain relevant resources are dynamically retrieved to generate accurate and contextually appropriate answers for each augmented question. Experimental evaluation demonstrates that SearchInstruct enhances both the diversity and quality of SFT datasets, leading to measurable improvements in LLM performance within specialized domains. Additionally, we show that beyond dataset generation, the proposed method can also effectively facilitate tasks such as model editing, enabling efficient updates to existing models. To facilitate reproducibility and community adoption, we provide full implementation details, the complete set of generated instruction response pairs, and the source code in a publicly accessible Git repository: [https://github.com/mostafaamiri/SearchInstruct](https://github.com/mostafaamiri/SearchInstruct)</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Supervised Fine-Tuning</span><span>Instruction Dataset Creation</span><span>Domain Adaptation</span><span>Retrieval-Based</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.10708" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LazyDrag: Enabling Stable Drag-Based Editing on Multi-Modal Diffusion Transformers via Explicit Correspondence</h2>
+                <span class="published-time">Published: 2025-09-15T17:59:47.000Z</span>
+                
+                <p class="summary">The reliance on implicit point matching via attention has become a core bottleneck in drag-based editing, resulting in a fundamental compromise on weakened inversion strength and costly test-time optimization (TTO). This compromise severely limits the generative capabilities of diffusion models, suppressing high-fidelity inpainting and text-guided creation. In this paper, we introduce LazyDrag, the first drag-based image editing method for Multi-Modal Diffusion Transformers, which directly eliminates the reliance on implicit point matching. In concrete terms, our method generates an explicit correspondence map from user drag inputs as a reliable reference to boost the attention control. This reliable reference opens the potential for a stable full-strength inversion process, which is the first in the drag-based editing task. It obviates the necessity for TTO and unlocks the generative capability of models. Therefore, LazyDrag naturally unifies precise geometric control with text guidance, enabling complex edits that were previously out of reach: opening the mouth of a dog and inpainting its interior, generating new objects like a "tennis ball", or for ambiguous drags, making context-aware changes like moving a hand into a pocket. Additionally, LazyDrag supports multi-round workflows with simultaneous move and scale operations. Evaluated on the DragBench, our method outperforms baselines in drag accuracy and perceptual quality, as validated by VIEScore and human evaluation. LazyDrag not only establishes new state-of-the-art performance, but also paves a new way to editing paradigms.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Drag-Based Editing</span><span>Multi-Modal Diffusion Transformers</span><span>Explicit Correspondence</span><span>Generative AI</span><span>Image Editing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Generative AI</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.12203" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Measuring Epistemic Humility in Multimodal Large Language Models</h2>
+                <span class="published-time">Published: 2025-09-11T17:54:00.000Z</span>
+                
+                <p class="summary">Hallucinations in multimodal large language models (MLLMs) -- where the model generates content inconsistent with the input image -- pose significant risks in real-world applications, from misinformation in visual question answering to unsafe errors in decision-making. Existing benchmarks primarily test recognition accuracy, i.e., evaluating whether models can select the correct answer among distractors. This overlooks an equally critical capability for trustworthy AI: recognizing when none of the provided options are correct, a behavior reflecting epistemic humility. We present HumbleBench, a new hallucination benchmark designed to evaluate MLLMs' ability to reject plausible but incorrect answers across three hallucination types: object, relation, and attribute. Built from a panoptic scene graph dataset, we leverage fine-grained scene graph annotations to extract ground-truth entities and relations, and prompt GPT-4-Turbo to generate multiple-choice questions, followed by a rigorous manual filtering process. Each question includes a "None of the above" option, requiring models not only to recognize correct visual information but also to identify when no provided answer is valid. We evaluate a variety of state-of-the-art MLLMs -- including both general-purpose and specialized reasoning models -- on HumbleBench and share valuable findings and insights with the community. By incorporating explicit false-option rejection, HumbleBench fills a key gap in current evaluation suites, providing a more realistic measure of MLLM reliability in safety-critical settings. Our code and dataset are released publicly and can be accessed at https://github.com/maifoundations/HumbleBench.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal Large Language Models</span><span>Hallucinations</span><span>Epistemic Humility</span><span>Hallucination Benchmark</span><span>MLLM Evaluation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.09658" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Nav-R1: Reasoning and Navigation in Embodied Scenes</h2>
+                <span class="published-time">Published: 2025-09-13T16:31:03.000Z</span>
+                
+                <p class="summary">Embodied navigation requires agents to integrate perception, reasoning, and action for robust interaction in complex 3D environments. Existing approaches often suffer from incoherent and unstable reasoning traces that hinder generalization across diverse environments, and difficulty balancing long-horizon semantic reasoning with low-latency control for real-time navigation. To address these challenges, we propose Nav-R1, an embodied foundation model that unifies reasoning in embodied environments. We first construct Nav-CoT-110K, a large-scale dataset of step-by-step Chains-of-Thought (CoT) for embodied tasks, which enables cold-start initialization with structured reasoning. Building on this foundation, we design a GRPO-based reinforcement learning framework with three complementary rewards: format, understanding, and navigation, to improve structural adherence, semantic grounding, and path fidelity. Furthermore, we introduce a Fast-in-Slow reasoning paradigm, decoupling deliberate semantic reasoning from low-latency reactive control for efficient yet coherent navigation. Extensive evaluations on embodied AI benchmarks demonstrate that Nav-R1 consistently outperforms strong baselines, with over 8% average improvement in reasoning and navigation performance. Real-world deployment on a mobile robot further validates its robustness under limited onboard resources.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Embodied Navigation</span><span>Reasoning</span><span>Reinforcement Learning</span><span>Foundation Model</span><span>Chains-of-Thought</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Robotics</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.10884" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Learning to Optimize Multi-Objective Alignment Through Dynamic Reward Weighting</h2>
+                <span class="published-time">Published: 2025-09-14T21:56:35.000Z</span>
+                
+                <p class="summary">Prior works in multi-objective reinforcement learning typically use linear reward scalarization with fixed weights, which provably fail to capture non-convex Pareto fronts and thus yield suboptimal results. This limitation becomes especially critical in online preference alignment for large language models. Here, stochastic trajectories generated by parameterized policies create highly non-linear and non-convex mappings from parameters to objectives that no single static weighting scheme can find optimal trade-offs. We address this limitation by introducing dynamic reward weighting, which adaptively adjusts reward weights during the online reinforcement learning process. Unlike existing approaches that rely on fixed-weight interpolation, our dynamic weighting continuously balances and prioritizes objectives in training, facilitating effective exploration of Pareto fronts in objective space. We introduce two approaches of increasing sophistication and generalizability: (1) hypervolume-guided weight adaptation and (2) gradient-based weight optimization, offering a versatile toolkit for online multi-objective alignment. Our extensive experiments demonstrate their compatibility with commonly used online reinforcement learning algorithms (including GRPO, REINFORCE, and RLOO), effectiveness across multiple mathematical reasoning datasets, and applicability to different model families, consistently achieving Pareto dominant solutions with fewer training steps than fixed-weight linear scalarization baselines.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multi-Objective Alignment</span><span>Dynamic Reward Weighting</span><span>Reinforcement Learning</span><span>Large Language Models</span><span>Pareto Fronts</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Machine Learning</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.11452" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">Twitter</h2>
+
+            <article class="item-card">
+                <h2>GoogleDeepMind_AI Video Generation</h2>
+                <span class="published-time">Published: 2025-09-16 16:51:09</span>
+                
+                <p class="summary">Google DeepMind is enhancing video creation with AI, announcing a custom version of their Veo 3 Fast model now available on YouTube Shorts. This AI model is capable of generating video clips complete with sound, directly from a single prompt. This advancement aims to democratize video creation, allowing users to produce engaging content more easily. The rollout is currently underway in the United States, Canada, the United Kingdom, Australia, and New Zealand, marking a significant step in making sophisticated AI video generation tools accessible to a wider audience on a popular platform. The integration with YouTube Shorts signifies a move towards more dynamic and AI-powered content creation experiences.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI</span><span>Video Generation</span><span>YouTube Shorts</span><span>Veo 3 Fast</span><span>Generative AI</span><span>Content Creation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Product Launch</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/GoogleDeepMind/status/1967994679011504319" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>ylecun_Meta AI Speedup</h2>
+                <span class="published-time">Published: 2025-09-16 04:44:33</span>
+                
+                <p class="summary">Meta has achieved a significant breakthrough in AI development by making the training of AI agents 25 times faster. This advancement is poised to revolutionize the fields of robotics and complex planning, enabling more sophisticated and efficient AI systems. The progress stems from Meta's Fundamental AI Research (FAIR) division, highlighting their continued commitment to pushing the boundaries of artificial intelligence. This acceleration in training speed is expected to unlock new possibilities for developing advanced AI agents capable of tackling intricate real-world problems, particularly in areas requiring precise control and strategic decision-making, such as autonomous systems and advanced simulations.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Meta AI</span><span>AI Agents</span><span>Robotics</span><span>AI Training</span><span>FAIR</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Robotics</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/ylecun/status/1967811822700101998" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OpenAI's AI Safety Tradeoffs</h2>
+                <span class="published-time">Published: 2025-09-16 14:18:59</span>
+                
+                <p class="summary">OpenAI is addressing the inherent conflicts between teen safety, user freedom, and privacy in AI interactions. The company emphasizes protecting privacy for AI conversations, likening them to privileged communications with doctors or lawyers, and is advocating for this with policymakers. Advanced security features are being developed to shield data, with exceptions for monitoring serious misuse and escalating critical risks. OpenAI aims to extend user freedoms, particularly for adults, allowing more steerability within safety bounds, such as enabling adult users to request fictional content involving sensitive topics. For teens, safety is prioritized over freedom and privacy, with measures like age prediction systems and stricter content moderation. OpenAI acknowledges these decisions involve difficult tradeoffs and aims for transparency in their approach.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI safety</span><span>teen safety</span><span>privacy</span><span>user freedom</span><span>OpenAI</span><span>AI ethics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Tech News</span><span>Industry News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/sama/status/1967956382646223248" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Waymo at SFO Airport</h2>
+                <span class="published-time">Published: 2025-09-16 20:10:16</span>
+                
+                <p class="summary">Waymo has received approval from San Francisco International Airport (SFO) to commence operations. This significant development allows the autonomous driving company to begin testing its services at the airport. The approval marks a crucial step for Waymo in expanding its footprint in public transportation and mobility services, potentially integrating its driverless technology into airport logistics and passenger transport. Further details regarding the timeline and specific testing phases are expected to be released soon, signaling a new era for autonomous vehicles in airport environments.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Waymo</span><span>SFO</span><span>Airport Operations</span><span>Autonomous Driving</span><span>Testing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Tech News</span><span>Industry News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/fchollet/status/1968044785954148487" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>ylecun_MobileLLM-R1 Release</h2>
+                <span class="published-time">Published: 2025-09-16 04:34:51</span>
+                
+                <p class="summary">Yann LeCun's tweet announces the release of MobileLLM-R1, a series of small-scale reasoning models. These models are available in parameter sizes of 0.14 billion, 0.35 billion, and 0.95 billion. Notably, they were trained from scratch using a substantial dataset of 4.2 trillion tokens. This development signifies a step towards more efficient and accessible large language models, potentially enabling broader applications in resource-constrained environments. The focus on training from scratch with a large token count suggests an emphasis on foundational capabilities and robust reasoning abilities within these smaller models. The release is likely to be of interest to researchers and developers working on optimizing LLM performance and deployment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>MobileLLM-R1</span><span>Reasoning Models</span><span>Large Language Models</span><span>AI Research</span><span>Open Source</span><span>LLM</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Research Progress</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/ylecun/status/1967809382328197618" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>fchollet_ARC-AGI SOTA Update</h2>
+                <span class="published-time">Published: 2025-09-16 20:09:42</span>
+                
+                <p class="summary">The tweet reports a new State-of-the-Art (SOTA) achievement on ARC-AGI, a benchmark for Artificial General Intelligence (AGI) research. It highlights performance metrics for two versions, V1 and V2. V1 achieved 79.6% accuracy at a cost of $8.42 per task, while V2 reached 29.4% accuracy at a higher cost of $30.40 per task. The post also acknowledges custom submissions from users @jerber888 and @_eric_pang_. This update signifies progress in the challenging field of AGI development, providing valuable data points on current capabilities and cost-effectiveness for different approaches.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>ARC-AGI</span><span>SOTA</span><span>AGI</span><span>AI Research</span><span>Performance Metrics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Research Progress</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/fchollet/status/1968044643171606992" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
