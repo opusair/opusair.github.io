@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-09-24</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-09-24</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Launch HN: Flywheel (YC S25) – Waymo for Excavators</h2>
+                <span class="published-time">Published: 2025-09-24 16:48:27</span>
+                
+                <p class="summary">Flywheel AI, founded by Jash and Mahimana (YC S25), is developing a remote teleoperation and autonomous stack specifically designed for excavators. The company aims to bring automation capabilities to the heavy construction machinery industry, drawing a parallel to Waymo's efforts in autonomous driving. A significant challenge addressed by Flywheel AI is the inherent mechanical nature of most existing excavators. Unlike modern vehicles with 'drive-by-wire' electronic controls, excavators primarily rely on complex hydraulic systems, where joysticks mechanically control hydraulic circuits to move the machine's joints. Flywheel AI's innovative solution involves mechanically actuating the joysticks and pedals directly within the excavators, effectively bypassing the lack of native electronic interfaces to enable remote control and autonomous operations.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Teleoperation</span><span>Autonomous Systems</span><span>Excavators</span><span>Hydraulic Systems</span><span>Robotics</span><span>Mechanical Actuation</span><span>Construction Technology</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://news.ycombinator.com/item?id=45362914" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Learning Persian with Anki, ChatGPT and YouTube</h2>
+                <span class="published-time">Published: 2025-09-24 12:45:07</span>
+                
+                <p class="summary">This article outlines an innovative methodology for learning the Persian language, integrating three powerful digital tools: Anki, ChatGPT, and YouTube. The approach leverages Anki's proven spaced repetition system to efficiently master vocabulary and grammatical structures. ChatGPT, functioning as a large language model, plays a crucial role as an interactive tutor, providing on-demand explanations, generating practice sentences, and facilitating conversational exercises, thereby offering personalized feedback and accelerating comprehension. Furthermore, YouTube is utilized as a rich source of authentic Persian content, including videos, cultural documentaries, and news, which is essential for developing listening skills and immersing the learner in real-world language usage. This comprehensive strategy demonstrates how a combination of AI-driven linguistic support, systematic memorization, and exposure to native media can create an effective and self-directed pathway for acquiring proficiency in a foreign language.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Anki</span><span>ChatGPT</span><span>YouTube</span><span>language learning</span><span>Persian language</span><span>Natural Language Processing</span><span>AI in education</span><span>Spaced Repetition</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://cjauvin.github.io/posts/learning-persian/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Unlocking a Million Times More Data for AI</h2>
+                <span class="published-time">Published: 2025-09-24 18:54:20</span>
+                
+                <p class="summary">A recent development highlighted in the article 'Unlocking a Million Times More Data for AI' signifies a profound breakthrough in making unprecedented volumes of data accessible for artificial intelligence systems. This advancement holds the potential to dramatically enhance the scalability and capabilities of current AI models, addressing the critical and ever-growing demand for extensive datasets required for training sophisticated machine learning algorithms. While specific technical methodologies remain undisclosed, the title itself suggests a paradigm shift in data handling for AI. Overcoming existing limitations in data acquisition, processing, or storage on such a grand scale could unlock new possibilities for developing more robust, accurate, and highly sophisticated AI applications across a multitude of domains. This monumental increase in available data is expected to accelerate progress in AI research, enabling the exploration of complex patterns and the creation of more intelligent systems that were previously unfeasible due to data constraints, ultimately pushing the boundaries of what artificial intelligence can achieve.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Data</span><span>Big Data</span><span>Data Scalability</span><span>Machine Learning Datasets</span><span>AI Development</span><span>Data Management</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://ifp.org/unlocking-a-million-times-more-data-for-ai/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Zed's Pricing Has Changed: LLM Usage Is Now Token-Based</h2>
+                <span class="published-time">Published: 2025-09-24 16:13:49</span>
+                
+                <p class="summary">Zed, a development environment or service, has announced a significant alteration to its pricing structure, specifically impacting its Large Language Model (LLM) integration. Previously, the specifics of Zed's LLM feature billing might have been different, but the new policy dictates that all LLM usage will now be calculated and charged on a token-based system. This strategic pivot aligns Zed's monetization approach with the prevalent industry standard for AI service providers, where costs are directly proportional to the volume of data (tokens) processed by the underlying language models. This move is critical for users, as their operational expenditures for AI-assisted features within Zed will now directly reflect their level of interaction with these powerful models, potentially leading to more variable billing cycles. The change emphasizes the importance of efficient prompt design and careful management of LLM interactions to optimize costs. This shift highlights a broader trend in software as a service (SaaS) platforms integrating AI, where the cost of AI components is increasingly passed through to users in a consumption-based manner, reflecting the compute and data processing demands of generative AI technologies. Zed's decision signals a maturity in its AI offerings and a desire to align its business model with the economic realities of deploying advanced language models at scale.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM</span><span>Token-based Pricing</span><span>AI Integration</span><span>Pricing Model</span><span>Software as a Service</span><span>Generative AI</span><span>Consumption-based Billing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Generative AI</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://zed.dev/blog/pricing-change-llm-usage-is-now-token-based" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Smartphone Cameras Go Hyperspectral</h2>
+                <span class="published-time">Published: 2025-09-24 14:20:33</span>
+                
+                <p class="summary">The prospect of integrating hyperspectral imaging capabilities into smartphone cameras marks a significant advancement in consumer-level spectral analysis. Traditionally confined to specialized laboratory or industrial equipment, hyperspectral technology captures a broad spectrum of light beyond the visible range, enabling detailed material identification and analysis. This development could transform various everyday applications, from enhancing agricultural insights by detecting plant health issues to improving dermatological screenings through non-invasive skin analysis. Furthermore, it holds potential for authenticating products, analyzing food quality, and even environmental monitoring by identifying specific chemical signatures. Miniaturization challenges, data processing demands, and cost-effectiveness are key hurdles being addressed by researchers and engineers. Overcoming these obstacles would democratize access to sophisticated spectral data, empowering users with unprecedented analytical tools directly within their pockets. The move towards hyperspectral smartphones promises to open new frontiers in mobile sensing, offering a new dimension of information about the world around us beyond conventional photographic representation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Hyperspectral Imaging</span><span>Smartphone Cameras</span><span>Spectral Analysis</span><span>Mobile Sensing</span><span>Computer Vision</span><span>Material Identification</span><span>Miniaturization</span><span>Data Processing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://spectrum.ieee.org/hyperspectral-imaging" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Waymo for Business</h2>
+                <span class="published-time">Published: 2025-09-24 16:32:34</span>
+                
+                <p class="summary">Waymo, a leader in autonomous vehicle technology, is reportedly expanding its operational focus with the introduction of "Waymo for Business." This strategic initiative aims to leverage Waymo's advanced self-driving capabilities to provide commercial solutions across various industries. By integrating its proven autonomous driving system, which relies heavily on sophisticated artificial intelligence, machine learning algorithms, and advanced sensor fusion, Waymo for Business seeks to enhance operational efficiency, reduce costs, and improve safety for commercial partners. This move signifies a significant step in the commercialization of autonomous technology beyond consumer ride-hailing, opening new avenues for enterprise adoption and demonstrating the versatility of Waymo's robust AI-powered platform in diverse business environments. The offering is anticipated to include tailored fleet management solutions and integration support, positioning Waymo as a key enabler for future-proof business operations.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Autonomous Driving</span><span>Self-Driving Technology</span><span>Robotics</span><span>AI in Transportation</span><span>Fleet Management</span><span>Commercial Autonomy</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Robotics</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://waymo.com/blog/2025/09/waymo-for-business" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Elasticsearch</h2>
+                <span class="published-time">Published: 2025-09-24T19:57:03Z</span>
+                
+                <p class="summary">Elasticsearch is a powerful, distributed search and analytics engine, scalable data store, and vector database optimized for speed and relevance in production-scale workloads. It serves as the core of Elastic's open Stack platform, enabling near real-time search over massive datasets, advanced vector searches, and seamless integration with generative AI applications, including Retrieval Augmented Generation (RAG). Key use cases span full-text search, logs, metrics, Application Performance Monitoring (APM), and security analytics. The project provides flexible deployment options, from managed services on Elastic Cloud to local Docker setups for development and testing. It features comprehensive API access, supporting various programming language clients and direct HTTP requests. The ecosystem also includes Kibana for data exploration, visualization, and dashboard creation, offering a complete solution for data indexing, search, and analysis.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Elasticsearch</span><span>Distributed Search</span><span>Analytics Engine</span><span>Vector Database</span><span>Generative AI</span><span>RAG</span><span>Observability</span><span>Kibana</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/elastic/elasticsearch" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>🚀 RAG-Anything: All-in-One RAG Framework</h2>
+                <span class="published-time">Published: 2025-09-22T12:57:02Z</span>
+                
+                <p class="summary">RAG-Anything is a comprehensive, all-in-one multimodal document processing Retrieval-Augmented Generation (RAG) system built on the LightRAG framework. It addresses the limitations of traditional text-focused RAG systems by seamlessly integrating and processing diverse content types, including text, images, tables, equations, and multimedia, within a single integrated framework. The system offers an end-to-end pipeline from document ingestion and parsing to intelligent multimodal query answering, supporting universal document formats like PDFs, Office documents, and various image/text files. Key features include specialized content analysis, a multimodal knowledge graph for enhanced understanding, and adaptive processing modes, enabling users to query complex documents through one cohesive interface. Its architecture features a multi-stage pipeline encompassing document parsing, multi-modal content understanding, an advanced multimodal analysis engine, a knowledge graph index, and modality-aware retrieval. RAG-Anything is a powerful solution for unified processing of rich, mixed-content documents, with VLM-enhanced and multimodal query capabilities valuable for academic research, technical documentation, financial reports, and enterprise knowledge management.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Retrieval-Augmented Generation</span><span>Multimodal AI</span><span>Knowledge Graph</span><span>Document Processing</span><span>Information Retrieval</span><span>AI Framework</span><span>Visual Language Model</span><span>LightRAG</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Multimodal</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/HKUDS/RAG-Anything" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Reinforcement Learning on Pre-Training Data</h2>
+                <span class="published-time">Published: 2025-09-23T17:10:40.000Z</span>
+                
+                <p class="summary">The growing disparity between the exponential scaling of computational resources and the finite growth of high-quality text data now constrains conventional scaling approaches for large language models (LLMs). To address this challenge, we introduce Reinforcement Learning on Pre-Training data (RLPT), a new training-time scaling paradigm for optimizing LLMs. In contrast to prior approaches that scale training primarily through supervised learning, RLPT enables the policy to autonomously explore meaningful trajectories to learn from pre-training data and improve its capability through reinforcement learning (RL). While existing RL strategies such as reinforcement learning from human feedback (RLHF) and reinforcement learning with verifiable rewards (RLVR) rely on human annotation for reward construction, RLPT eliminates this dependency by deriving reward signals directly from pre-training data. Specifically, it adopts a next-segment reasoning objective, rewarding the policy for accurately predicting subsequent text segments conditioned on the preceding context. This formulation allows RL to be scaled on pre-training data, encouraging the exploration of richer trajectories across broader contexts and thereby fostering more generalizable reasoning skills. Extensive experiments on both general-domain and mathematical reasoning benchmarks across multiple models validate the effectiveness of RLPT. For example, when applied to Qwen3-4B-Base, RLPT yields absolute improvements of 3.0, 5.1, 8.1, 6.0, 6.6, and 5.3 on MMLU, MMLU-Pro, GPQA-Diamond, KOR-Bench, AIME24, and AIME25, respectively. The results further demonstrate favorable scaling behavior, suggesting strong potential for continued gains with more compute. In addition, RLPT provides a solid foundation, extending the reasoning boundaries of LLMs and enhancing RLVR performance.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Large Language Models</span><span>Pre-training Data</span><span>Training-time Scaling</span><span>Next-segment Reasoning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.19249" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MiniCPM-V 4.5: Cooking Efficient MLLMs via Architecture, Data, and Training Recipe</h2>
+                <span class="published-time">Published: 2025-09-16T19:41:48.000Z</span>
+                
+                <p class="summary">Multimodal Large Language Models (MLLMs) are undergoing rapid progress and represent the frontier of AI development. However, their training and inference efficiency have emerged as a core bottleneck in making MLLMs more accessible and scalable. To address the challenges, we present MiniCPM-V 4.5, an 8B parameter model designed for high efficiency and strong performance. We introduce three core improvements in model architecture, data strategy and training method: a unified 3D-Resampler model architecture for highly compact encoding over images and videos, a unified learning paradigm for document knowledge and text recognition without heavy data engineering, and a hybrid reinforcement learning strategy for proficiency in both short and long reasoning modes. Comprehensive experimental results in OpenCompass evaluation show that MiniCPM-V 4.5 surpasses widely used proprietary models such as GPT-4o-latest, and significantly larger open-source models such as Qwen2.5-VL 72B. Notably, the strong performance is achieved with remarkable efficiency. For example, on the widely adopted VideoMME benchmark, MiniCPM-V 4.5 achieves state-of-the-art performance among models under 30B size, using just 46.7% GPU memory cost and 8.7% inference time of Qwen2.5-VL 7B.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>MiniCPM-V 4.5</span><span>Multimodal Large Language Models</span><span>Training Efficiency</span><span>Model Architecture</span><span>Data Strategy</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Video Understanding</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.18154" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Hyper-Bagel: A Unified Acceleration Framework for Multimodal Understanding and Generation</h2>
+                <span class="published-time">Published: 2025-09-23T09:12:46.000Z</span>
+                
+                <p class="summary">Unified multimodal models have recently attracted considerable attention for their remarkable abilities in jointly understanding and generating diverse content. However, as contexts integrate increasingly numerous interleaved multimodal tokens, the iterative processes of diffusion denoising and autoregressive decoding impose significant computational overhead. To address this, we propose Hyper-Bagel, a unified acceleration framework designed to simultaneously speed up both multimodal understanding and generation tasks. Our approach uses a divide-and-conquer strategy, employing speculative decoding for next-token prediction and a multi-stage distillation process for diffusion denoising. The framework delivers substantial performance gains, achieving over a 2x speedup in multimodal understanding. For generative tasks, our resulting lossless 6-NFE model yields a 16.67x speedup in text-to-image generation and a 22x speedup in image editing, all while preserving the high-quality output of the original model. We further develop a highly efficient 1-NFE model that enables near real-time interactive editing and generation. By combining advanced adversarial distillation with human feedback learning, this model achieves ultimate cost-effectiveness and responsiveness, making complex multimodal interactions seamless and instantaneous.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal Understanding</span><span>Multimodal Generation</span><span>Acceleration Framework</span><span>Speculative Decoding</span><span>Diffusion Denoising</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Generative AI</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.18824" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Lyra: Generative 3D Scene Reconstruction via Video Diffusion Model Self-Distillation</h2>
+                <span class="published-time">Published: 2025-09-23T17:58:01.000Z</span>
+                
+                <p class="summary">The ability to generate virtual environments is crucial for applications ranging from gaming to physical AI domains such as robotics, autonomous driving, and industrial AI. Current learning-based 3D reconstruction methods rely on the availability of captured real-world multi-view data, which is not always readily available. Recent advancements in video diffusion models have shown remarkable imagination capabilities, yet their 2D nature limits the applications to simulation where a robot needs to navigate and interact with the environment. In this paper, we propose a self-distillation framework that aims to distill the implicit 3D knowledge in the video diffusion models into an explicit 3D Gaussian Splatting (3DGS) representation, eliminating the need for multi-view training data. Specifically, we augment the typical RGB decoder with a 3DGS decoder, which is supervised by the output of the RGB decoder. In this approach, the 3DGS decoder can be purely trained with synthetic data generated by video diffusion models. At inference time, our model can synthesize 3D scenes from either a text prompt or a single image for real-time rendering. Our framework further extends to dynamic 3D scene generation from a monocular input video. Experimental results show that our framework achieves state-of-the-art performance in static and dynamic 3D scene generation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Generative 3D Scene Reconstruction</span><span>Video Diffusion Models</span><span>Self-Distillation</span><span>3D Gaussian Splatting</span><span>Dynamic 3D Scenes</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.19296" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Soft Tokens, Hard Truths</h2>
+                <span class="published-time">Published: 2025-09-23T15:43:47.000Z</span>
+                
+                <p class="summary">The use of continuous instead of discrete tokens during the Chain-of-Thought (CoT) phase of reasoning LLMs has garnered attention recently, based on the intuition that a continuous mixture of discrete tokens could simulate a superposition of several reasoning paths simultaneously. Theoretical results have formally proven that continuous tokens have much greater expressivity and can solve specific problems more efficiently. However, practical use of continuous tokens has been limited by strong training difficulties: previous works either just use continuous tokens at inference time on a pre-trained discrete-token model, or must distill the continuous CoT from ground-truth discrete CoTs and face computational costs that limit the CoT to very few tokens. This is the first work introducing a scalable method to learn continuous CoTs via reinforcement learning (RL), without distilling from reference discrete CoTs. We use "soft" tokens: mixtures of tokens together with noise on the input embedding to provide RL exploration. Computational overhead is minimal, enabling us to learn continuous CoTs with hundreds of tokens. On math reasoning benchmarks with Llama and Qwen models up to 8B, training with continuous CoTs match discrete-token CoTs for pass@1 and surpass them for pass@32, showing greater CoT diversity. In systematic comparisons, the best-performing scenario is to train with continuous CoTs then use discrete tokens for inference, meaning the "soft" models can be deployed in a standard way. Finally, we show continuous CoT RL training better preserves the predictions of the base model on out-of-domain tasks, thus providing a softer touch to the base model.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Continuous tokens</span><span>Chain-of-Thought</span><span>Large Language Models</span><span>Reinforcement Learning</span><span>Math reasoning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.19170" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>PEEK: Guiding and Minimal Image Representations for Zero-Shot Generalization of Robot Manipulation Policies</h2>
+                <span class="published-time">Published: 2025-09-22T18:10:14.000Z</span>
+                
+                <p class="summary">Robotic manipulation policies often fail to generalize because they must simultaneously learn where to attend, what actions to take, and how to execute them. We argue that high-level reasoning about where and what can be offloaded to vision-language models (VLMs), leaving policies to specialize in how to act. We present PEEK (Policy-agnostic Extraction of Essential Keypoints), which fine-tunes VLMs to predict a unified point-based intermediate representation: 1. end-effector paths specifying what actions to take, and 2. task-relevant masks indicating where to focus. These annotations are directly overlaid onto robot observations, making the representation policy-agnostic and transferable across architectures. To enable scalable training, we introduce an automatic annotation pipeline, generating labeled data across 20+ robot datasets spanning 9 embodiments. In real-world evaluations, PEEK consistently boosts zero-shot generalization, including a 41.4x real-world improvement for a 3D policy trained only in simulation, and 2-3.5x gains for both large VLAs and small manipulation policies. By letting VLMs absorb semantic and visual complexity, PEEK equips manipulation policies with the minimal cues they need--where, what, and how. Website at https://peek-robot.github.io/.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Robotic Manipulation</span><span>Zero-shot Generalization</span><span>Vision-Language Models</span><span>Policy Learning</span><span>Intermediate Representations</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Multimodal</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.18282" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
