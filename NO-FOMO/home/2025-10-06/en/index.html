@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-10-06</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-10-06</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Launch HN: Grapevine (YC S19) 
+			– A company GPT that actually works</h2>
+                <span class="published-time">Published: 2025-10-06 15:39:59</span>
+                
+                <p class="summary">Grapevine (YC S19) has launched a specialized knowledge search system engineered to power AI agents within corporate environments, aiming to deliver a highly effective "company GPT" that genuinely addresses practical business needs. The platform integrates seamlessly with diverse organizational data sources, including Slack, GDrive, Notion, and internal codebases, to build a comprehensive, contextual understanding of company operations. Grapevine differentiates itself by tackling granular, day-to-day operational questions that frequently impede employee workflows, an area where many existing and expensive enterprise AI solutions often fall short, typically excelling only at high-level informational requests. The system is deployable as a Slack bot, capable of providing both responsive and proactive intelligent assistance tailored to specific internal company contexts. This focus on practical, actionable insights ensures Grapevine provides a more robust and effective AI assistant for daily business functions, moving beyond generic answers to deliver relevant, blocking-issue resolutions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agents</span><span>Knowledge Search</span><span>Company GPT</span><span>Enterprise AI</span><span>Slack Bot</span><span>Data Integration</span><span>Contextual AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://getgrapevine.ai/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OpenAI DevDay 2025: Opening keynote [video]</h2>
+                <span class="published-time">Published: 2025-10-06 17:00:05</span>
+                
+                <p class="summary">OpenAI's DevDay 2025 opening keynote is anticipated to unveil significant advancements in artificial intelligence, focusing on the latest iterations of their foundational models, developer tools, and API enhancements. The keynote is expected to highlight new capabilities in areas such as multimodal AI, improved reasoning, and potentially introduce novel AI agent frameworks designed to streamline complex tasks and automate workflows. Discussions will likely cover future strategic directions for AI development, emphasizing responsible deployment, ethical considerations, and expanded accessibility for developers worldwide. This annual event typically serves as a major platform for OpenAI to share its vision for the future of AI, showcase practical applications of cutting-edge research, and announce updates that empower the developer community to build more sophisticated and impactful AI-powered solutions. Key announcements are also expected regarding performance optimizations, cost efficiencies, and expanded model offerings, impacting a wide range of industries and accelerating the pace of AI integration into everyday applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>Generative AI</span><span>AI Development</span><span>API</span><span>Multimodal AI</span><span>AI Agents</span><span>Machine Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.youtube.com/watch?v=hS1YqcewH0c" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AMD signs AI chip-supply deal with OpenAI, gives it option to take a 10% stake</h2>
+                <span class="published-time">Published: 2025-10-06 12:17:59</span>
+                
+                <p class="summary">AMD has reportedly finalized a significant agreement with OpenAI for the supply of its advanced artificial intelligence chips. This partnership is a strategic move for both entities, addressing the critical demand for specialized hardware in the burgeoning AI sector. A notable aspect of the deal includes an option for OpenAI to acquire a 10% stake in AMD, indicating a deeper, long-term strategic alliance beyond a mere supplier-customer relationship. For AMD, this collaboration strengthens its competitive standing against market leaders like NVIDIA in the AI hardware segment, positioning it as a pivotal provider for cutting-edge AI infrastructure. The equity option also suggests a potential for OpenAI to influence future chip development, tailoring hardware to its specific AI model requirements. Conversely, OpenAI secures a vital supply chain for the computational power necessary to train and deploy its sophisticated AI models and conduct advanced research. This arrangement highlights the increasing convergence of hardware and software development in AI, aiming to accelerate the innovation cycle. The deal is poised to impact the competitive landscape of both the semiconductor and artificial intelligence industries, potentially fostering new benchmarks in AI performance and accessibility.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Chips</span><span>Semiconductor</span><span>Hardware Supply</span><span>AI Infrastructure</span><span>Machine Learning</span><span>Deep Learning</span><span>Computational Power</span><span>AI Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.reuters.com/business/amd-signs-ai-chip-supply-deal-with-openai-gives-it-option-take-10-stake-2025-10-06/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Why do LLMs freak out over the seahorse emoji?</h2>
+                <span class="published-time">Published: 2025-10-06 02:20:05</span>
+                
+                <p class="summary">Large Language Models (LLMs) have been observed to exhibit peculiar and often nonsensical "freak out" behaviors when prompted with the seahorse emoji, a phenomenon that highlights specific vulnerabilities in their processing capabilities. This unusual reaction is typically attributed to complexities in how these models process and tokenize non-standard or visually distinct characters, such as emojis. When an LLM encounters the seahorse emoji, it might be tokenized into a sequence of low-frequency or semantically ambiguous sub-word units, leading to an unpredictable internal state that deviates significantly from stable operational parameters. Furthermore, the limited or specific contexts in which this particular emoji appeared during the vast training datasets could contribute to its unusual processing, making it an "out-of-distribution" input for the model. The article likely explores these tokenization challenges, the critical role of training data distribution, and the resulting instability in LLM outputs, underscoring a broader issue in robustly handling unusual or edge-case inputs. This specific case serves as a practical example illustrating the intricacies of LLM internal representations and their sometimes brittle performance when faced with unexpected inputs, shedding light on areas requiring further research in model robustness.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Tokenization</span><span>Emoji Processing</span><span>Model Behavior</span><span>Out-of-distribution Inputs</span><span>Model Robustness</span><span>Neural Networks</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://vgel.me/posts/seahorse/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Zen MCP: Many Workflows. One Context.</h2>
+                <span class="published-time">Published: 2025-10-06T19:32:56Z</span>
+                
+                <p class="summary">Zen MCP is a Model Context Protocol server designed to supercharge existing AI CLIs and IDE clients by enabling them to orchestrate multiple AI models for enhanced software development workflows. It acts as a "super-glue," connecting popular CLIs like Claude Code, Gemini CLI, and Codex CLI to diverse models from providers such as Gemini, OpenAI, Azure, and Ollama. A key innovation is `clink`, a CLI-to-CLI bridge that allows seamless integration of external AI CLIs and the creation of isolated "subagents" for tasks like code reviews or bug hunting, ensuring primary context windows remain clean. Zen MCP supports conversation continuity, multi-model debates, and context revival, allowing developers to leverage the strengths of various models across complex workflows, from deep code analysis and debugging to strategic planning and pre-commit validation, all within a single conversation thread. This system empowers users to become "AI puppeteers," guiding an AI development team to achieve deeper insights and better solutions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Orchestration</span><span>Multi-model AI</span><span>Model Context Protocol</span><span>CLI Tools</span><span>AI Agent</span><span>Conversation Continuity</span><span>Code Review</span><span>Context Revival</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/BeehiveInnovations/zen-mcp-server" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>bitnet.cpp</h2>
+                <span class="published-time">Published: 2025-06-03T06:14:20Z</span>
+                
+                <p class="summary">bitnet.cpp is Microsoft's official inference framework designed for 1-bit Large Language Models (LLMs), specifically BitNet b1.58. It provides a suite of optimized kernels that enable fast and lossless inference on both CPU and GPU architectures, with future NPU support planned. The framework significantly boosts performance, achieving speedups ranging from 1.37x to 5.07x on ARM CPUs and 2.37x to 6.17x on x86 CPUs, while also drastically reducing energy consumption by 55.4% to 82.2%. A notable achievement is its ability to run a 100B BitNet b1.58 model on a single CPU, delivering speeds comparable to human reading (5-7 tokens per second). This capability greatly enhances the potential for deploying powerful LLMs on local, resource-constrained devices, facilitating efficient edge inference. The project builds upon the `llama.cpp` framework and utilizes Lookup Table methodologies from `T-MAC` for its kernels, supporting various 1-bit LLMs available on Hugging Face.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>1-bit LLMs</span><span>BitNet</span><span>inference framework</span><span>CPU optimization</span><span>GPU acceleration</span><span>edge inference</span><span>quantized models</span><span>Large Language Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/microsoft/BitNet" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Apriel-1.5-15b-Thinker</h2>
+                <span class="published-time">Published: 2025-10-01T17:29:35.000Z</span>
+                
+                <p class="summary">We present Apriel-1.5-15B-Thinker, a 15-billion parameter open-weights multimodal reasoning model that achieves frontier-level performance through training design rather than sheer scale. Starting from Pixtral-12B, we apply a progressive three-stage methodology: (1) depth upscaling to expand reasoning capacity without pretraining from scratch, (2) staged continual pre-training that first develops foundational text and vision understanding, then enhances visual reasoning through targeted synthetic data generation addressing spatial structure, compositional understanding, and fine-grained perception, and (3) high-quality text-only supervised fine-tuning on curated instruction-response pairs with explicit reasoning traces spanning mathematics, coding, science, and tool use. Notably, our model achieves competitive results without reinforcement learning or preference optimization, isolating the contribution of our data-centric continual pre-training approach. On the Artificial Analysis Intelligence Index, Apriel-1.5-15B-Thinker attains a score of 52, matching DeepSeek-R1-0528 despite requiring significantly fewer computational resources. Across ten image benchmarks, its performance is on average within five points of Gemini-2.5-Flash and Claude Sonnet-3.7, a key achievement for a model operating within single-GPU deployment constraints. Our results demonstrate that thoughtful mid-training 2 design can close substantial capability gaps without massive scale, making frontier-level multimodal reasoning accessible to organizations with limited infrastructure. We release the model checkpoint, all training recipes, and evaluation protocols under the MIT license to to advance open-source research.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal Reasoning</span><span>Continual Pre-training</span><span>Training Design</span><span>Synthetic Data Generation</span><span>Frontier-level Performance</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Multimodal</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.01141" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Large Reasoning Models Learn Better Alignment from Flawed Thinking</h2>
+                <span class="published-time">Published: 2025-10-01T14:15:43.000Z</span>
+                
+                <p class="summary">Large reasoning models (LRMs) "think" by generating structured chain-of-thought (CoT) before producing a final answer, yet they still lack the ability to reason critically about safety alignment and are easily biased when a flawed premise is injected into their thought process. We propose RECAP (Robust Safety Alignment via Counter-Aligned Prefilling), a principled reinforcement learning (RL) method for post-training that explicitly teaches models to override flawed reasoning trajectories and reroute to safe and helpful responses. RECAP trains on a mixture of synthetically generated counter-aligned CoT prefills and standard prompts, requires no additional training cost or modifications beyond vanilla reinforcement learning from human feedback (RLHF), and substantially improves safety and jailbreak robustness, reduces overrefusal, and preserves core reasoning capability -- all while maintaining inference token budget. Extensive analysis shows that RECAP-trained models engage in self-reflection more frequently and remain robust under adaptive attacks, preserving safety even after repeated attempts to override their reasoning.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Reasoning Models</span><span>Safety Alignment</span><span>Reinforcement Learning</span><span>Chain-of-Thought</span><span>Jailbreak Robustness</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.00938" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Your Agent May Misevolve: Emergent Risks in Self-evolving LLM Agents</h2>
+                <span class="published-time">Published: 2025-09-30T14:55:55.000Z</span>
+                
+                <p class="summary">Advances in Large Language Models (LLMs) have enabled a new class of self-evolving agents that autonomously improve through interaction with the environment, demonstrating strong capabilities. However, self-evolution also introduces novel risks overlooked by current safety research. In this work, we study the case where an agent's self-evolution deviates in unintended ways, leading to undesirable or even harmful outcomes. We refer to this as Misevolution. To provide a systematic investigation, we evaluate misevolution along four key evolutionary pathways: model, memory, tool, and workflow. Our empirical findings reveal that misevolution is a widespread risk, affecting agents built even on top-tier LLMs (e.g., Gemini-2.5-Pro). Different emergent risks are observed in the self-evolutionary process, such as the degradation of safety alignment after memory accumulation, or the unintended introduction of vulnerabilities in tool creation and reuse. To our knowledge, this is the first study to systematically conceptualize misevolution and provide empirical evidence of its occurrence, highlighting an urgent need for new safety paradigms for self-evolving agents. Finally, we discuss potential mitigation strategies to inspire further research on building safer and more trustworthy self-evolving agents. Our code and data are available at https://github.com/ShaoShuai0605/Misevolution . Warning: this paper includes examples that may be offensive or harmful in nature.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Self-evolving Agents</span><span>Large Language Models (LLMs)</span><span>Misevolution</span><span>Emergent Risks</span><span>AI Safety</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2509.26354" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>FocusAgent: Simple Yet Effective Ways of Trimming the Large Context of Web Agents</h2>
+                <span class="published-time">Published: 2025-10-03T17:41:30.000Z</span>
+                
+                <p class="summary">Web agents powered by large language models (LLMs) must process lengthy web page observations to complete user goals; these pages often exceed tens of thousands of tokens. This saturates context limits and increases computational cost processing; moreover, processing full pages exposes agents to security risks such as prompt injection. Existing pruning strategies either discard relevant content or retain irrelevant context, leading to suboptimal action prediction. We introduce FocusAgent, a simple yet effective approach that leverages a lightweight LLM retriever to extract the most relevant lines from accessibility tree (AxTree) observations, guided by task goals. By pruning noisy and irrelevant content, FocusAgent enables efficient reasoning while reducing vulnerability to injection attacks. Experiments on WorkArena and WebArena benchmarks show that FocusAgent matches the performance of strong baselines, while reducing observation size by over 50%. Furthermore, a variant of FocusAgent significantly reduces the success rate of prompt-injection attacks, including banner and pop-up attacks, while maintaining task success performance in attack-free settings. Our results highlight that targeted LLM-based retrieval is a practical and robust strategy for building web agents that are efficient, effective, and secure.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Web Agents</span><span>Large Language Models</span><span>Context Trimming</span><span>Prompt Injection</span><span>Security</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.03204" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>How Confident are Video Models? Empowering Video Models to Express their Uncertainty</h2>
+                <span class="published-time">Published: 2025-10-02T21:20:41.000Z</span>
+                
+                <p class="summary">Generative video models demonstrate impressive text-to-video capabilities, spurring widespread adoption in many real-world applications. However, like large language models (LLMs), video generation models tend to hallucinate, producing plausible videos even when they are factually wrong. Although uncertainty quantification (UQ) of LLMs has been extensively studied in prior work, no UQ method for video models exists, raising critical safety concerns. To our knowledge, this paper represents the first work towards quantifying the uncertainty of video models. We present a framework for uncertainty quantification of generative video models, consisting of: (i) a metric for evaluating the calibration of video models based on robust rank correlation estimation with no stringent modeling assumptions; (ii) a black-box UQ method for video models (termed S-QUBED), which leverages latent modeling to rigorously decompose predictive uncertainty into its aleatoric and epistemic components; and (iii) a UQ dataset to facilitate benchmarking calibration in video models. By conditioning the generation task in the latent space, we disentangle uncertainty arising due to vague task specifications from that arising from lack of knowledge. Through extensive experiments on benchmark video datasets, we demonstrate that S-QUBED computes calibrated total uncertainty estimates that are negatively correlated with the task accuracy and effectively computes the aleatoric and epistemic constituents.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Uncertainty Quantification</span><span>Generative Video Models</span><span>S-QUBED</span><span>Model Calibration</span><span>Latent Modeling</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Machine Learning</span><span>Video Understanding</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.02571" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Self-Improvement in Multimodal Large Language Models: A Survey</h2>
+                <span class="published-time">Published: 2025-10-03T01:48:26.000Z</span>
+                
+                <p class="summary">Recent advancements in self-improvement for Large Language Models (LLMs) have efficiently enhanced model capabilities without significantly increasing costs, particularly in terms of human effort. While this area is still relatively young, its extension to the multimodal domain holds immense potential for leveraging diverse data sources and developing more general self-improving models. This survey is the first to provide a comprehensive overview of self-improvement in Multimodal LLMs (MLLMs). We provide a structured overview of the current literature and discuss methods from three perspectives: 1) data collection, 2) data organization, and 3) model optimization, to facilitate the further development of self-improvement in MLLMs. We also include commonly used evaluations and downstream applications. Finally, we conclude by outlining open challenges and future research directions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Self-Improvement</span><span>Multimodal Large Language Models</span><span>MLLMs</span><span>Large Language Models</span><span>Survey</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Multimodal</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.02665" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
