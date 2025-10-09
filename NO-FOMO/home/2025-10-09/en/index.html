@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-10-09</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-10-09</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>A small number of samples can poison LLMs of any size</h2>
+                <span class="published-time">Published: 2025-10-09 16:04:04</span>
+                
+                <p class="summary">Recent research from Anthropic reveals a significant vulnerability in Large Language Models (LLMs), demonstrating that even a minuscule number of carefully crafted data samples can effectively "poison" these models. This poisoning can induce the LLM to produce specific, undesirable outputs, or subtly alter its behavior in ways that could compromise its integrity and safety. A key finding is that this susceptibility is not dependent on the model's scale, meaning both small and large LLMs are equally vulnerable to such attacks. This research highlights critical security implications for the deployment and ongoing training of LLMs, emphasizing the need for robust data curation, stringent auditing processes, and advanced defense mechanisms to safeguard against malicious data injection and maintain model reliability in real-world applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM poisoning</span><span>data poisoning</span><span>AI security</span><span>adversarial attacks</span><span>large language models</span><span>model robustness</span><span>AI safety</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.anthropic.com/research/small-samples-poison" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Two things LLM coding agents are still bad at</h2>
+                <span class="published-time">Published: 2025-10-09 04:33:48</span>
+                
+                <p class="summary">The article 'Two things LLM coding agents are still bad at' identifies critical areas where current AI-powered coding agents fall short, impacting their effectiveness in real-world software development. A primary limitation discussed is the agents' struggle with complex, multi-file codebases and maintaining a consistent architectural vision across an entire project. This often leads to fragmented solutions or difficulties integrating changes within an existing, intricate system. Secondly, the piece highlights the inadequacy of LLM coding agents in performing robust, iterative debugging, especially when faced with non-trivial bugs that require deep contextual understanding and strategic problem-solving. Unlike human developers who can methodically isolate issues through hypothesis testing and nuanced observation, AI agents often lack the nuanced reasoning required for advanced debugging. These shortcomings suggest that while LLM agents excel at isolated tasks, their capability to handle the holistic and iterative nature of complex software engineering remains a significant challenge for ongoing research and development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>AI Agents</span><span>Code Generation</span><span>Software Development</span><span>Debugging</span><span>Architectural Design</span><span>AI Limitations</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://kix.dev/two-things-llm-coding-agents-are-still-bad-at/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Figure 03, our 3rd generation humanoid robot</h2>
+                <span class="published-time">Published: 2025-10-09 13:27:14</span>
+                
+                <p class="summary">Figure.ai has officially introduced Figure 03, marking a significant milestone as their third-generation humanoid robot. This announcement highlights the company's continued commitment to advancing autonomous robotics, aiming to deploy intelligent machines capable of operating effectively in human-centric environments. Figure 03 is expected to showcase enhanced capabilities in areas such as bipedal locomotion, sophisticated manipulation, and AI-powered decision-making, building upon the foundational technologies of its predecessors. The development of such advanced humanoids is crucial for addressing labor shortages and automating repetitive or hazardous tasks across industries like logistics, manufacturing, and even everyday assistance. This release positions Figure.ai at the forefront of the general-purpose robot market, where the integration of cutting-edge artificial intelligence and machine learning is paramount for creating truly adaptable and safe machines that can learn and perform diverse functions. The introduction of Figure 03 signifies a tangible step towards a future where humanoid robots can seamlessly integrate into various societal and industrial roles.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Humanoid Robot</span><span>Robotics</span><span>AI</span><span>Automation</span><span>Robot Development</span><span>Bipedal Locomotion</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Artificial Intelligence</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.figure.ai/news/introducing-figure-03" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LLMs are mortally terrified of exceptions</h2>
+                <span class="published-time">Published: 2025-10-09 17:16:28</span>
+                
+                <p class="summary">Recent observations, highlighted in discussions like those by Andrej Karpathy, indicate that Large Language Models (LLMs) exhibit significant difficulty in robustly handling exceptions or unexpected error conditions within their operational context. This 'fear' manifests as a tendency for LLMs to struggle when confronted with unconventional inputs, malformed data, or programmatic errors, often leading to undesirable behaviors such as generating incorrect outputs, entering unproductive loops, or failing to recover gracefully. The challenge underscores a critical area for improvement in LLM development: enhancing their ability to perform effective error detection, diagnosis, and recovery mechanisms. Addressing this limitation is crucial for improving the reliability, safety, and practical deployability of LLMs, especially in applications requiring high levels of fault tolerance and intelligent exception management, such as automated code generation or complex agentic systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Error Handling</span><span>Robustness</span><span>Exception Management</span><span>AI Development</span><span>Failure Modes</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/karpathy/status/1976077806443569355" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Launch HN: Extend (YC W23) – Turn your messiest documents into data</h2>
+                <span class="published-time">Published: 2025-10-09 16:06:49</span>
+                
+                <p class="summary">Extend, a YC W23 startup, introduces a specialized toolkit designed to assist AI teams in converting complex, unstructured documents into actionable data. Co-founders Kushal and Eli highlight the persistent challenges in document processing, particularly the </p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Document Processing</span><span>AI Toolkit</span><span>Data Ingestion</span><span>Unstructured Data</span><span>Edge Cases</span><span>Machine Learning Pipelines</span><span>PDF Processing</span><span>Handwriting Recognition</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.extend.ai/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>N8n raises $180M</h2>
+                <span class="published-time">Published: 2025-10-09 09:19:18</span>
+                
+                <p class="summary">N8n, an open-source workflow automation platform, has successfully secured $180 million in a Series C funding round. This significant capital infusion is set to accelerate the company's product development, enhance its integration capabilities, and expand its global market reach. N8n provides a low-code solution that empowers developers and non-technical users to connect various applications, services, and APIs to automate complex processes without extensive coding knowledge. The platform's flexible, open-source nature allows for deep customization and self-hosting, appealing to a broad range of enterprise clients seeking scalable and secure automation solutions. With this funding, n8n aims to solidify its position as a leading provider in the workflow automation and integration space, potentially focusing on advanced features that could facilitate the orchestration of AI-powered tasks and intelligent agents within automated workflows, thereby enhancing operational efficiency and fostering innovation across diverse industries.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Workflow automation</span><span>Integration platform</span><span>Open-source software</span><span>Low-code</span><span>Enterprise automation</span><span>Developer tools</span><span>Fundraising</span><span>Venture capital</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://blog.n8n.io/series-c/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>SurfSense</h2>
+                <span class="published-time">Published: 2025-10-09T07:34:25Z</span>
+                
+                <p class="summary">SurfSense is a highly customizable AI research agent that integrates with a user's personal knowledge base, extending its capabilities beyond tools like NotebookLM and Perplexity. It connects to over 20 external sources, including search engines, Slack, Jira, Notion, YouTube, and GitHub, supporting diverse content ingestion across more than 50 file formats. Key features include powerful search, natural language interaction with saved content for cited answers, privacy-focused local LLM support (Ollama), and self-hostability. The platform also boasts a blazingly fast podcast generation agent and employs advanced RAG techniques, such as hierarchical indices, hybrid search (semantic + full-text with RRF), and broad compatibility with 100+ LLMs and 6000+ embedding models. Developed with FastAPI, Next.js, and Docker, SurfSense offers robust data management, AI-driven insights, and a cross-browser extension for web content saving, aiming to be a comprehensive solution for personal AI-powered research and content creation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Research Agent</span><span>Retrieval-Augmented Generation</span><span>Large Language Models</span><span>Knowledge Management</span><span>Hybrid Search</span><span>Podcast Generation</span><span>Self-Hostable</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/MODSetter/SurfSense" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Computer Use Preview</h2>
+                <span class="published-time">Published: 2025-10-08T00:45:39Z</span>
+                
+                <p class="summary">The Google Computer Use Preview project introduces an advanced AI agent capable of interacting with web browsers through natural language queries. This innovative tool empowers users to automate complex, multi-step browser tasks by simply articulating their desired outcomes, significantly enhancing efficiency in web-based operations. The system is designed for broad applicability, offering seamless integration with leading AI platforms like the Gemini Developer API and Google Cloud's Vertex AI for model inferencing. Technical setup is streamlined, guiding users through Python virtual environment creation, dependency installation, and browser setup using Playwright, including necessary system-level dependencies. The agent supports multiple execution environments, including local browser control via Playwright and remote browser management through Browserbase, catering to diverse deployment needs. A straightforward command-line interface facilitates execution, allowing users to define specific natural language queries, set initial URLs, and choose their preferred operating environment. This framework provides a robust solution for AI-driven browser automation, testing, and intelligent web interaction, bridging the gap between human instruction and digital execution.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Natural Language Processing</span><span>Browser Automation</span><span>Gemini API</span><span>Vertex AI</span><span>Playwright</span><span>Browserbase</span><span>Web Automation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/google/computer-use-preview" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Cache-to-Cache: Direct Semantic Communication Between Large Language Models</h2>
+                <span class="published-time">Published: 2025-10-03T17:52:32.000Z</span>
+                
+                <p class="summary">Multi-LLM systems harness the complementary strengths of diverse Large Language Models, achieving performance and efficiency gains unattainable by a single model. In existing designs, LLMs communicate through text, forcing internal representations to be transformed into output token sequences. This process both loses rich semantic information and incurs token-by-token generation latency. Motivated by these limitations, we ask: Can LLMs communicate beyond text? Oracle experiments show that enriching the KV-Cache semantics can improve response quality without increasing cache size, supporting KV-Cache as an effective medium for inter-model communication. Thus, we propose Cache-to-Cache (C2C), a new paradigm for direct semantic communication between LLMs. C2C uses a neural network to project and fuse the source model's KV-cache with that of the target model to enable direct semantic transfer. A learnable gating mechanism selects the target layers that benefit from cache communication. Compared with text communication, C2C utilizes the deep, specialized semantics from both models, while avoiding explicit intermediate text generation. Experiments show that C2C achieves 8.5-10.5% higher average accuracy than individual models. It further outperforms the text communication paradigm by approximately 3.0-5.0%, while delivering an average 2.0x speedup in latency. Our code is available at https://github.com/thu-nics/C2C.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Cache-to-Cache</span><span>Semantic Communication</span><span>Multi-LLM Systems</span><span>KV-Cache</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.03215" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Lumina-DiMOO: An Omni Diffusion Large Language Model for Multi-Modal Generation and Understanding</h2>
+                <span class="published-time">Published: 2025-10-07T17:59:20.000Z</span>
+                
+                <p class="summary">We introduce Lumina-DiMOO, an open-source foundational model for seamless multi-modal generation and understanding. Lumina-DiMOO sets itself apart from prior unified models by utilizing a fully discrete diffusion modeling to handle inputs and outputs across various modalities. This innovative approach allows Lumina-DiMOO to achieve higher sampling efficiency compared to previous autoregressive (AR) or hybrid AR-Diffusion paradigms and adeptly support a broad spectrum of multi-modal tasks, including text-to-image generation, image-to-image generation (e.g., image editing, subject-driven generation, and image inpainting, etc.), as well as image understanding. Lumina-DiMOO achieves state-of-the-art performance on multiple benchmarks, surpassing existing open-source unified multi-modal models. To foster further advancements in multi-modal and discrete diffusion model research, we release our code and checkpoints to the community. Project Page: https://synbol.github.io/Lumina-DiMOO.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Lumina-DiMOO</span><span>Multi-modal Generation</span><span>Multi-modal Understanding</span><span>Discrete Diffusion Modeling</span><span>Large Language Model</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.06308" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MATRIX: Mask Track Alignment for Interaction-aware Video Generation</h2>
+                <span class="published-time">Published: 2025-10-08T17:57:38.000Z</span>
+                
+                <p class="summary">Video DiTs have advanced video generation, yet they still struggle to model multi-instance or subject-object interactions. This raises a key question: How do these models internally represent interactions? To answer this, we curate MATRIX-11K, a video dataset with interaction-aware captions and multi-instance mask tracks. Using this dataset, we conduct a systematic analysis that formalizes two perspectives of video DiTs: semantic grounding, via video-to-text attention, which evaluates whether noun and verb tokens capture instances and their relations; and semantic propagation, via video-to-video attention, which assesses whether instance bindings persist across frames. We find both effects concentrate in a small subset of interaction-dominant layers. Motivated by this, we introduce MATRIX, a simple and effective regularization that aligns attention in specific layers of video DiTs with multi-instance mask tracks from the MATRIX-11K dataset, enhancing both grounding and propagation. We further propose InterGenEval, an evaluation protocol for interaction-aware video generation. In experiments, MATRIX improves both interaction fidelity and semantic alignment while reducing drift and hallucination. Extensive ablations validate our design choices. Codes and weights will be released.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Generation</span><span>Interaction-aware</span><span>Mask Track Alignment</span><span>Video DiTs</span><span>Semantic Grounding</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.07310" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Multi-Agent Tool-Integrated Policy Optimization</h2>
+                <span class="published-time">Published: 2025-10-06T10:44:04.000Z</span>
+                
+                <p class="summary">Large language models (LLMs) increasingly rely on multi-turn tool-integrated planning for knowledge-intensive and complex reasoning tasks. Existing implementations typically rely on a single agent, but they suffer from limited context length and noisy tool responses. A natural solution is to adopt a multi-agent framework with planner- and worker-agents to manage context. However, no existing methods support effective reinforcement learning post-training of tool-integrated multi-agent frameworks. To address this gap, we propose Multi-Agent Tool-Integrated Policy Optimization (MATPO), which enables distinct roles (planner and worker) to be trained within a single LLM instance using role-specific prompts via reinforcement learning. MATPO is derived from a principled credit assignment mechanism across planner and worker rollouts. This design eliminates the need to deploy multiple LLMs, which would be memory-intensive, while preserving the benefits of specialization. Experiments on GAIA-text, WebWalkerQA, and FRAMES show that MATPO consistently outperforms single-agent baselines by an average of 18.38% relative improvement in performance and exhibits greater robustness to noisy tool outputs. Our findings highlight the effectiveness of unifying multiple agent roles within a single LLM and provide practical insights for stable and efficient multi-agent RL training.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multi-Agent Systems</span><span>Large Language Models</span><span>Reinforcement Learning</span><span>Tool Integration</span><span>Policy Optimization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.04678" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The Markovian Thinker</h2>
+                <span class="published-time">Published: 2025-10-08T01:18:13.000Z</span>
+                
+                <p class="summary">Reinforcement learning (RL) has recently become a strong recipe for training reasoning LLMs that produce long chains of thought (LongCoT). Yet the standard RL "thinking environment", where the state is the prompt plus all prior reasoning tokens, makes the state unbounded and forces attention-based policies to pay quadratic compute as thoughts lengthen. We revisit the environment itself. We propose Markovian Thinking, a paradigm in which the policy advances reasoning while conditioning on a constant-size state, decoupling thinking length from context size. As an immediate consequence this yields linear compute with constant memory. We instantiate this idea with Delethink, an RL environment that structures reasoning into fixed-size chunks. Within each chunk, the model thinks as usual; at the boundary, the environment resets the context and reinitializes the prompt with a short carryover. Through RL, the policy learns to write a textual state near the end of each chunk sufficient for seamless continuation of reasoning after reset. Trained in this environment, an R1-Distill 1.5B model reasons in 8K-token chunks yet thinks up to 24K tokens, matching or surpassing LongCoT-RL trained with a 24K budget. With test-time scaling, Delethink continues to improve where LongCoT plateaus. The effect of linear compute is substantial: we empirically estimate at 96K average thinking length LongCoT-RL costs 27 H100-months vs. 7 for Delethink. Analysis at RL initialization shows off-the-shelf reasoning models (1.5B-120B) often sample Markovian traces zero-shot across diverse benchmarks, providing positive samples that make RL effective at scale. Our results show that redesigning the thinking environment is a powerful lever: it enables very long reasoning without quadratic overhead and opens a path toward efficient, scalable reasoning LLMs.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Large Language Models</span><span>Chains of Thought</span><span>Markovian Thinking</span><span>Context Management</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.06557" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Vibe Checker: Aligning Code Evaluation with Human Preference</h2>
+                <span class="published-time">Published: 2025-10-08T17:59:19.000Z</span>
+                
+                <p class="summary">Large Language Models (LLMs) have catalyzed vibe coding, where users leverage LLMs to generate and iteratively refine code through natural language interactions until it passes their vibe check. Vibe check is tied to real-world human preference and goes beyond functionality: the solution should feel right, read cleanly, preserve intent, and remain correct. However, current code evaluation remains anchored to pass@k and captures only functional correctness, overlooking the non-functional instructions that users routinely apply. In this paper, we hypothesize that instruction following is the missing piece underlying vibe check that represents human preference in coding besides functional correctness. To quantify models' code instruction following capabilities with measurable signals, we present VeriCode, a taxonomy of 30 verifiable code instructions together with corresponding deterministic verifiers. We use the taxonomy to augment established evaluation suites, resulting in Vibe Checker, a testbed to assess both code instruction following and functional correctness. Upon evaluating 31 leading LLMs, we show that even the strongest models struggle to comply with multiple instructions and exhibit clear functional regression. Most importantly, a composite score of functional correctness and instruction following correlates the best with human preference, with the latter emerging as the primary differentiator on real-world programming tasks. Our work identifies core factors of the vibe check, providing a concrete path for benchmarking and developing models that better align with user preferences in coding.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Code Evaluation</span><span>Human Preference</span><span>Instruction Following</span><span>Vibe Checker</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.07315" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
