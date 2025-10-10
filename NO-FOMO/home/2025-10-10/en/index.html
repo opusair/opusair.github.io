@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-10-10</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-10-10</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Show HN: I invented a new generative model and got accepted to ICLR</h2>
+                <span class="published-time">Published: 2025-10-10 09:01:54</span>
+                
+                <p class="summary">A new generative model, Discrete Distribution Networks (DDN), has been developed and accepted to ICLR2025. DDN proposes a novel approach to modeling data distributions, diverging from established models like Diffusion, GAN, VAE, and autoregressive models. Its core innovation lies in generating multiple outputs simultaneously within a single forward pass, utilizing these outputs to approximate the target data distribution. Critically, these combined outputs form a discrete distribution, hence the model's name. Key features of DDN include Zero-Shot Conditional Generation (ZSCG) and the use of a one-dimensional discrete latent representation structured in a tree-like fashion. This research offers a distinct perspective on generative modeling with potential implications for advancing the field.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Generative Model</span><span>Discrete Distribution Networks</span><span>ICLR</span><span>Zero-Shot Conditional Generation</span><span>Latent Representation</span><span>Data Distribution</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://discrete-distribution-networks.github.io/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>It's OpenAI's world, we're just living in it</h2>
+                <span class="published-time">Published: 2025-10-10 17:01:04</span>
+                
+                <p class="summary">The title, "It's OpenAI's world, we're just living in it," encapsulates a prevailing sentiment regarding OpenAI's profound and rapidly expanding influence across the artificial intelligence landscape. This evocative statement suggests a perception that OpenAI has ascended to a position of significant, perhaps even dominant, control over the direction and pace of AI development. It implies that other players in the industry, including startups, established tech giants, and researchers, are largely operating within paradigms or reacting to innovations established by OpenAI. This perceived hegemony stems from the company's groundbreaking advancements in large language models and generative AI, which have not only captivated public imagination but also set new benchmarks for capability and application. The article likely explores how OpenAI's rapid innovation cycle, strategic partnerships, and substantial funding have enabled it to dictate key trends, influence research agendas, and shape market expectations, positioning other entities as responders rather than primary drivers.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>OpenAI</span><span>Artificial Intelligence</span><span>AI Industry</span><span>Technological Leadership</span><span>Generative AI</span><span>Large Language Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://stratechery.com/2025/its-openais-world-were-just-living-in-it/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Gitcasso – Syntax Highlighting and Draft Recovery for GitHub Comments</h2>
+                <span class="published-time">Published: 2025-10-10 15:37:27</span>
+                
+                <p class="summary">Gitcasso is a newly developed browser extension that significantly enhances the GitHub user experience by introducing Markdown syntax highlighting directly into textareas and offering robust draft recovery functionalities. It compiles and displays all open pull request and issue tabs along with their respective drafts, with an unimplemented yet planned feature for automatic comment draft autosaving. The extension's conception was inspired by overtype.dev, another successful markdown textarea highlighter. A notable aspect of Gitcasso's creation lies in its development methodology, which heavily utilized Playwright and Claude Code. This approach allowed for near-automatic adaptation to upstream GitHub changes, addressing a common challenge in browser extension maintenance. The developer highlighted a novel experience where AI was instrumental in the actual construction of the tool, marking a significant step in AI-assisted software development and underscoring the potential of generative AI in streamlining complex programming tasks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Syntax Highlighting</span><span>GitHub</span><span>Browser Extension</span><span>Draft Recovery</span><span>Markdown</span><span>Playwright</span><span>Claude Code</span><span>AI Assisted Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/diffplug/gitcasso" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Argentina joins OpenAI's Stargate project with a 500MW data center</h2>
+                <span class="published-time">Published: 2025-10-10 18:38:54</span>
+                
+                <p class="summary">Argentina has officially announced its participation in OpenAI's ambitious 'Stargate' project, a monumental initiative aimed at developing advanced AI supercomputing infrastructure. This collaboration involves the establishment of a substantial 500-megawatt (MW) data center within Argentina, positioning the nation as a key player in the global expansion of artificial intelligence capabilities. The Stargate project, widely reported to be a multi-billion dollar undertaking led by OpenAI in partnership with major technology investors, seeks to address the ever-growing demand for immense computational power required for training next-generation large language models and other sophisticated AI systems. The 500MW capacity signifies a significant investment in high-density computing facilities, essential for handling the extreme energy and cooling requirements of AI supercomputers. Argentina's involvement underscores a strategic move to attract high-tech investment and foster local expertise in advanced data center operations and AI infrastructure management, potentially creating numerous opportunities for technological development and economic growth within the region, while supporting OpenAI's long-term vision for AI research and deployment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>OpenAI</span><span>AI Infrastructure</span><span>Data Center</span><span>Supercomputing</span><span>Stargate Project</span><span>Large Language Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.bnamericas.com/en/features/argentina-joins-openais-stargate-project-with-a-500mw-megadata-center" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Multi-Core by Default</h2>
+                <span class="published-time">Published: 2025-10-10 07:11:06</span>
+                
+                <p class="summary">The concept of "Multi-Core by Default" signifies a pivotal shift in software development and system design, where applications and operating systems are inherently engineered to leverage the ubiquitous presence of multi-core processors. This paradigm emphasizes that parallelism should not be an afterthought but a fundamental consideration from the initial stages of software architecture. The article likely delves into the historical context of single-core dominance and the subsequent transition driven by physical limitations in clock speed scaling. It highlights the imperative for developers to adopt concurrent programming models and tools to effectively harness the potential of modern hardware. This approach is critical for enhancing performance, improving responsiveness, and efficiently managing computational resources across a spectrum of devices, from embedded systems to high-performance computing clusters. Embracing a "multi-core by default" mindset is presented as essential for future-proofing software, ensuring scalability, and maximizing the efficiency of contemporary and upcoming computing platforms, thereby dictating a new standard for robust and performant application design.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multi-core processing</span><span>Parallel computing</span><span>Concurrency</span><span>Software architecture</span><span>System design</span><span>Performance optimization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.rfleury.com/p/multi-core-by-default" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Claude Code</h2>
+                <span class="published-time">Published: 2025-10-10T16:02:03Z</span>
+                
+                <p class="summary">Claude Code is an innovative agentic coding tool designed to enhance developer productivity by integrating directly into the terminal, IDE, or GitHub workflows. This AI agent understands a user's codebase, enabling faster development through natural language commands. Its core functionalities include automating routine coding tasks, providing clear explanations for complex code segments, and streamlining common Git operations. Developers can interact with Claude Code to quickly execute commands, manage their project's version control, and gain insights into their code without leaving their development environment. The tool also facilitates bug reporting directly within its interface and fosters community engagement through a dedicated Discord channel. Anthropic collects usage data, conversation data, and user feedback, with clear policies regarding data usage and privacy safeguards, ensuring feedback is not used for model training and sensitive information has limited retention. This positions Claude Code as a versatile assistant for modern software development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Agentic Coding Tool</span><span>AI Agent</span><span>Natural Language Processing</span><span>Code Generation</span><span>Developer Tools</span><span>Git Workflow Automation</span><span>Codebase Analysis</span><span>Terminal Integration</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/anthropics/claude-code" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>An MCP-based Chatbot</h2>
+                <span class="published-time">Published: 2025-10-10T02:58:47Z</span>
+                
+                <p class="summary">The "An MCP-based Chatbot" project introduces an AI conversational robot that leverages Qwen/DeepSeek large language models and the Multi-Control Protocol (MCP) for versatile multi-device control. Acting as a voice interaction gateway, it incorporates advanced features like Wi-Fi/4G connectivity, offline voice wake-up via ESP-SR, and voiceprint recognition through 3D Speaker technology. The system utilizes a streaming ASR + LLM + TTS architecture for real-time speech processing and supports the OPUS audio codec. It is compatible with ESP32-C3, ESP32-S3, and ESP32-P4 chip platforms, offering extensive control capabilities for device peripherals such as volume, lighting, motors, and GPIO via device-side MCP. Additionally, cloud-side MCP expands its functionality to intelligent home automation, PC desktop operations, knowledge retrieval, and email management. The project supports extensive customization of wake words, fonts, expressions, and chat backgrounds, and is compatible with over 70 open-source hardware devices, positioning it as a robust solution for embedded AI applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>MCP Protocol</span><span>AI Chatbot</span><span>ESP32</span><span>Voice Interaction</span><span>Large Language Model</span><span>IoT Control</span><span>Embedded AI</span><span>Speech Recognition</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/78/xiaozhi-esp32" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Stagehand: The AI Browser Automation Framework</h2>
+                <span class="published-time">Published: 2025-10-10T00:18:00Z</span>
+                
+                <p class="summary">Stagehand is an innovative AI browser automation framework designed to bridge the gap between low-level coding tools like Selenium, Playwright, or Puppeteer and often unpredictable high-level AI agents. It offers a unique hybrid approach, empowering developers to strategically choose between writing traditional code for precise actions and leveraging natural language prompts for navigating unfamiliar pages, thus making it a natural choice for robust production-grade browser automations. A core technical advantage is its deep integration with Playwright, allowing users to combine the reliability of code with the flexibility of AI. Stagehand further enhances efficiency by enabling users to preview AI actions before execution and cache repeatable actions, significantly saving time and computational resources. It also simplifies the integration of state-of-the-art computer use models from leading providers like OpenAI and Anthropic with just a single line of code. Focused on improving reliability, speed, and cost, Stagehand provides a versatile and powerful solution for complex web automation scenarios.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Browser Automation</span><span>AI Agent</span><span>Playwright</span><span>Natural Language Processing</span><span>Large Language Model</span><span>Web Automation</span><span>Automation Framework</span><span>Hybrid AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/browserbase/stagehand" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Beyond Turn Limits: Training Deep Search Agents with Dynamic Context Window</h2>
+                <span class="published-time">Published: 2025-10-09T14:31:39.000Z</span>
+                
+                <p class="summary">While recent advances in reasoning models have demonstrated cognitive behaviors through reinforcement learning, existing approaches struggle to invoke deep reasoning capabilities in multi-turn agents with long-horizon interactions. We propose DeepMiner, a novel framework that elicits such abilities by introducing high-difficulty training tasks and dynamic context window. DeepMiner presents a reverse construction method to generate complex but verifiable question-answer pairs from authentic web sources, which ensures the challenge and reliability of training data while injecting cognitive capabilities into multi-turn reasoning scenarios. We further design an elegant yet effective dynamic context management strategy for both training and inference, utilizing sliding window mechanisms while eliminating the dependency on external summarization models, thereby efficiently empowering the model to handle continuously expanding long-horizon contexts. Through reinforcement learning on Qwen3-32B, we develop DeepMiner-32B, which achieves substantial performance improvements across multiple search agent benchmarks. DeepMiner attains 33.5% accuracy on BrowseComp-en, surpassing the previous best open-source agent by almost 20 percentage points, and demonstrates consistent improvements on BrowseComp-zh, XBench-DeepSearch, and GAIA. Notably, our dynamic context management enables sustained interactions of nearly 100 turns within standard 32k context length, effectively addressing the context limitations that constrain existing multi-turn interaction systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Deep Search Agents</span><span>Dynamic Context Window</span><span>Reinforcement Learning</span><span>Multi-turn agents</span><span>Context Management</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Large Language Model</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.08276" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The Alignment Waltz: Jointly Training Agents to Collaborate for Safety</h2>
+                <span class="published-time">Published: 2025-10-09T14:03:05.000Z</span>
+                
+                <p class="summary">Harnessing the power of LLMs requires a delicate dance between being helpful and harmless. This creates a fundamental tension between two competing challenges: vulnerability to adversarial attacks that elicit unsafe content, and a tendency for overrefusal on benign but sensitive prompts. Current approaches often navigate this dance with safeguard models that completely reject any content that contains unsafe portions. This approach cuts the music entirely-it may exacerbate overrefusals and fails to provide nuanced guidance for queries it refuses. To teach models a more coordinated choreography, we propose WaltzRL, a novel multi-agent reinforcement learning framework that formulates safety alignment as a collaborative, positive-sum game. WaltzRL jointly trains a conversation agent and a feedback agent, where the latter is incentivized to provide useful suggestions that improve the safety and helpfulness of the conversation agent's responses. At the core of WaltzRL is a Dynamic Improvement Reward (DIR) that evolves over time based on how well the conversation agent incorporates the feedback. At inference time, unsafe or overrefusing responses from the conversation agent are improved rather than discarded. The feedback agent is deployed together with the conversation agent and only engages adaptively when needed, preserving helpfulness and low latency on safe queries. Our experiments, conducted across five diverse datasets, demonstrate that WaltzRL significantly reduces both unsafe responses (e.g., from 39.0% to 4.6% on WildJailbreak) and overrefusals (from 45.3% to 9.9% on OR-Bench) compared to various baselines. By enabling the conversation and feedback agents to co-evolve and adaptively apply feedback, WaltzRL enhances LLM safety without degrading general capabilities, thereby advancing the Pareto front between helpfulness and harmlessness.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM Safety</span><span>Multi-agent Reinforcement Learning</span><span>Safety Alignment</span><span>Agent Collaboration</span><span>Overrefusal Mitigation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.08240" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Hybrid Reinforcement: When Reward Is Sparse, It's Better to Be Dense</h2>
+                <span class="published-time">Published: 2025-10-08T17:09:41.000Z</span>
+                
+                <p class="summary">Post-training for reasoning of large language models (LLMs) increasingly relies on verifiable rewards: deterministic checkers that provide 0-1 correctness signals. While reliable, such binary feedback is brittle--many tasks admit partially correct or alternative answers that verifiers under-credit, and the resulting all-or-nothing supervision limits learning. Reward models offer richer, continuous feedback, which can serve as a complementary supervisory signal to verifiers. We introduce HERO (Hybrid Ensemble Reward Optimization), a reinforcement learning framework that integrates verifier signals with reward-model scores in a structured way. HERO employs stratified normalization to bound reward-model scores within verifier-defined groups, preserving correctness while refining quality distinctions, and variance-aware weighting to emphasize challenging prompts where dense signals matter most. Across diverse mathematical reasoning benchmarks, HERO consistently outperforms RM-only and verifier-only baselines, with strong gains on both verifiable and hard-to-verify tasks. Our results show that hybrid reward design retains the stability of verifiers while leveraging the nuance of reward models to advance reasoning.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Large Language Models</span><span>Reward Models</span><span>Hybrid Reward Design</span><span>Verifiable Rewards</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.07242" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>UniVideo: Unified Understanding, Generation, and Editing for Videos</h2>
+                <span class="published-time">Published: 2025-10-09T16:01:30.000Z</span>
+                
+                <p class="summary">Unified multimodal models have shown promising results in multimodal content generation and editing but remain largely limited to the image domain. In this work, we present UniVideo, a versatile framework that extends unified modeling to the video domain. UniVideo adopts a dual-stream design, combining a Multimodal Large Language Model (MLLM) for instruction understanding with a Multimodal DiT (MMDiT) for video generation. This design enables accurate interpretation of complex multimodal instructions while preserving visual consistency. Built on this architecture, UniVideo unifies diverse video generation and editing tasks under a single multimodal instruction paradigm and is jointly trained across them. Extensive experiments demonstrate that UniVideo matches or surpasses state-of-the-art task-specific baselines in text/image-to-video generation, in-context video generation and in-context video editing. Notably, the unified design of UniVideo enables two forms of generalization. First, UniVideo supports task composition, such as combining editing with style transfer, by integrating multiple capabilities within a single instruction. Second, even without explicit training on free-form video editing, UniVideo transfers its editing capability from large-scale image editing data to this setting, handling unseen instructions such as green-screening characters or changing materials within a video. Beyond these core capabilities, UniVideo also supports visual-prompt-based video generation, where the MLLM interprets visual prompts and guides the MMDiT during synthesis. To foster future research, we will release our model and code.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>UniVideo</span><span>Video Generation</span><span>Video Editing</span><span>Multimodal Large Language Model</span><span>Unified Modeling</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Generative AI</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.08377" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MM-HELIX: Boosting Multimodal Long-Chain Reflective Reasoning with Holistic Platform and Adaptive Hybrid Policy Optimization</h2>
+                <span class="published-time">Published: 2025-10-09T17:53:58.000Z</span>
+                
+                <p class="summary">While current Multimodal Large Language Models (MLLMs) have demonstrated proficiency in reasoning tasks such as mathematics and logic, their capacity for long-chain reflective reasoning, a prerequisite for solving complex real-world problems, remains largely underexplored. In this work, we first conduct an extensive empirical investigation to evaluate this capability. Leveraging a carefully designed data synthesis engine, we construct MM-HELIX, a multimodal benchmark consisting 1,260 samples of 42 challenging synthetic tasks that require iterative thinking and backtracking. Empirical results on this benchmark reveal that existing MLLMs exhibit significant performance deficits in long-chain reflective reasoning. To address this limitation, we generate post-training data and further explore learning paradigms for exploiting such data. We first develop the Step-Elicited Response Generation pipeline to create MM-HELIX-100K, a large-scale dataset of 100k high-quality, reflective reasoning traces for instruction-tuning stage. Given that standard Reinforcement Learning fails on complex tasks due to sparse reward signals and catastrophic forgetting after Supervised Fine-Tuning, we propose Adaptive Hybrid Policy Optimization (AHPO), a novel training strategy that dynamically unifies offline supervision and online optimization into a single stage. This strategy enables the model to learn from expert data when rewards are sparse and conduct independent exploration once proficient. When applied to the Qwen2.5-VL-7B baseline, our method achieves a +18.6% accuracy improvement on MM-HELIX benchmark and demonstrates strong generalization with a +5.7% average performance gain on general mathematic and logic tasks. Our work demonstrate that reflective reasoning in MLLMs can be effectively learned and generalized, paving the way for developing more capable MLLMs.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal Large Language Models</span><span>Reflective Reasoning</span><span>Long-Chain Reasoning</span><span>Policy Optimization</span><span>Instruction Tuning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.08540" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>When Thoughts Meet Facts: Reusable Reasoning for Long-Context LMs</h2>
+                <span class="published-time">Published: 2025-10-08T19:52:35.000Z</span>
+                
+                <p class="summary">Recent Long-Context Language Models (LCLMs) can process hundreds of thousands of tokens in a single prompt, enabling new opportunities for knowledge-intensive multi-hop reasoning by integrating large sets of retrieved documents or, in some cases, directly all necessary information. However, simply feeding more documents into the context window fails to capture how evidence should be connected. We address this gap with thought templates, which recast reasoning as reusable thought caches, derived from prior problem solving traces, structuring how evidence is combined and guiding multi-hop inference with factual documents. To keep these templates effective, we propose an update strategy that iteratively refines templates derived from training data through natural-language feedback. Across diverse benchmarks and LCLM families, our approach delivers consistent gains over strong baselines in both retrieval-based and retrieval-free settings. Furthermore, we show that optimized templates can be distilled into smaller open-source models, demonstrating its broad applicability and transparent reasoning reuse. We refer to our framework as Thought Template Augmented LCLMs (ToTAL).</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Long-Context Language Models</span><span>Multi-hop reasoning</span><span>Thought templates</span><span>Reusable reasoning</span><span>Knowledge-intensive reasoning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.07499" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
