@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-10-11</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-10-11</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Superpowers: How I'm using coding agents in October 2025</h2>
+                <span class="published-time">Published: 2025-10-11 07:29:23</span>
+                
+                <p class="summary">This article, set in October 2025, explores the transformative impact of coding agents on software development workflows. It delves into practical applications and strategies for leveraging these advanced AI tools to enhance productivity and streamline various programming tasks. The author discusses how coding agents are evolving beyond mere assistants to become integral components of the development lifecycle, capable of automating code generation, debugging, refactoring, and even managing complex project segments. The piece will likely highlight specific tools and methodologies adopted by developers to integrate agentic systems into their daily routines, illustrating a future where human programmers collaborate closely with intelligent agents to achieve unprecedented efficiency and innovation in software creation. The narrative is expected to provide insights into the operational advantages and challenges faced when deploying these 'superpowers' in real-world development environments, setting a vision for the future of professional coding.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI agents</span><span>Coding automation</span><span>Software development</span><span>Developer tools</span><span>Agentic workflows</span><span>Future of programming</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://blog.fsck.com/2025/10/09/superpowers/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Microsoft only lets you opt out of AI photo scanning 3x a year</h2>
+                <span class="published-time">Published: 2025-10-11 18:36:51</span>
+                
+                <p class="summary">Microsoft's OneDrive service is reportedly initiating trials for a new AI-powered photo scanning feature, specifically incorporating face-recognizing artificial intelligence. This functionality is being rolled out to a limited number of preview users, allowing the system to identify and potentially categorize individuals within uploaded photographs. A notable aspect of this new implementation, and one that has drawn significant attention, is Microsoft's restrictive opt-out policy. Users are permitted to decline participation in this AI photo scanning process only three times per year. This limitation has sparked discussions regarding user data privacy, autonomy, and the extent of control individuals have over their personal digital assets within cloud services. Critics argue that such a policy could effectively coerce users into accepting continuous AI surveillance of their photo libraries after exhausting their limited opt-out allowance, raising ethical questions about consent and the persistent monitoring capabilities of cloud-based AI technologies. The development highlights ongoing tensions between technological advancement, user convenience, and fundamental privacy rights in the digital age.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Photo Scanning</span><span>Facial Recognition</span><span>OneDrive</span><span>Microsoft</span><span>Data Privacy</span><span>User Control</span><span>Opt-out Policy</span><span>Artificial Intelligence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Computer Vision</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://hardware.slashdot.org/story/25/10/11/0238213/microsofts-onedrive-begins-testing-face-recognizing-ai-for-photos-for-some-preview-users" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Claude Code</h2>
+                <span class="published-time">Published: 2025-10-10T21:16:29Z</span>
+                
+                <p class="summary">Claude Code is an innovative agentic coding tool by Anthropic, designed to enhance developer productivity directly within the terminal, IDE, or GitHub. This utility leverages natural language processing to understand a user's codebase, enabling it to execute routine tasks, explain complex code, and manage Git workflows efficiently through natural language commands. It acts as an intelligent assistant, automating repetitive operations and simplifying complex version control, thus helping developers code faster. Key features include comprehensive codebase understanding, automated task execution, and seamless Git integration. Claude Code aims to provide a more intuitive and conversational approach to software development, fostering faster coding and reduced cognitive load. It supports direct bug reporting and offers community engagement via Discord, alongside transparent data collection policies focused on user feedback with strict privacy safeguards.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Coding Tool</span><span>Natural Language Processing</span><span>Terminal Interface</span><span>Git Integration</span><span>Codebase Understanding</span><span>Developer Tools</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/anthropics/claude-code" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Qwen3-VL</h2>
+                <span class="published-time">Published: 2025-10-11T16:21:23Z</span>
+                
+                <p class="summary">Qwen3-VL represents the latest and most powerful vision-language model in the Qwen series, offering substantial upgrades across multiple modalities. It delivers superior text understanding and generation, deeper visual perception and reasoning, an extended context length of 256K (expandable to 1M), and enhanced comprehension of spatial and video dynamics. Key capabilities include acting as a visual agent for PC/mobile GUIs, boosting visual coding by generating code from images/videos, and advanced spatial perception for 2D/3D grounding. The model also features long context and video understanding, multimodal reasoning for STEM/Math, upgraded omni-recognition of diverse entities, and expanded OCR supporting 32 languages. Its architectural innovations, like Interleaved-MRoPE and DeepStack, further refine long-horizon video reasoning and image-text alignment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Vision-Language Model</span><span>Multimodal AI</span><span>Visual Agent</span><span>Video Understanding</span><span>OCR</span><span>Spatial Reasoning</span><span>Long Context</span><span>Deep Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Multimodal</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/QwenLM/Qwen3-VL" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>SurfSense</h2>
+                <span class="published-time">Published: 2025-10-10T08:25:14Z</span>
+                
+                <p class="summary">SurfSense is a highly customizable AI research agent designed to integrate with a user's personal knowledge base, enhancing research capabilities beyond tools like NotebookLM and Perplexity. It connects to a wide array of external sources including search engines, collaboration platforms (Slack, Jira, Notion), and various media sources (YouTube, Luma). Key features include robust support for uploading over 50 file formats, powerful semantic and full-text search, and natural language interaction with saved content to provide cited answers. The platform supports privacy through local LLM integration with Ollama and is self-hostable. Advanced RAG techniques are central, utilizing over 100 LLMs, 6000+ embedding models, multiple rerankers, hierarchical indices, and hybrid search with Reciprocal Rank Fusion, all accessible via a RAG as a Service API backend. Additionally, SurfSense offers a blazingly fast podcast generation agent capable of converting chat conversations into audio content using various TTS providers. A cross-browser extension facilitates saving web pages, even those behind authentication.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Knowledge Management</span><span>Retrieval-Augmented Generation</span><span>Large Language Model</span><span>Self-Hostable</span><span>Hybrid Search</span><span>Podcast Generation</span><span>Natural Language Processing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/MODSetter/SurfSense" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Claude Code Templates (aitmpl.com)</h2>
+                <span class="published-time">Published: 2025-10-10T19:44:47Z</span>
+                
+                <p class="summary">Claude Code Templates, hosted at aitmpl.com, provides a comprehensive suite of ready-to-use configurations to significantly enhance development workflows centered around Anthropic's Claude Code. This open-source project offers a rich collection of AI agents, custom commands, system settings, automation hooks, external integrations (MCPs), and complete project templates. Developers can interactively explore and install these components via a dedicated web interface or through a streamlined `npx` command-line installation. Key offerings include specialized AI agents for tasks like security auditing, custom slash commands for common development operations, and integrations with services such as GitHub and PostgreSQL. The platform also features powerful supplementary tools: Claude Code Analytics for real-time session monitoring, a mobile-optimized Conversation Monitor for live AI response viewing, and a Health Check for installation diagnostics. By streamlining the setup and customization of AI-driven development environments, Claude Code Templates enables faster and more efficient coding practices for its users.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude Code</span><span>AI agents</span><span>code templates</span><span>development tools</span><span>external integrations</span><span>automation</span><span>AI analytics</span><span>workflow optimization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/davila7/claude-code-templates" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
