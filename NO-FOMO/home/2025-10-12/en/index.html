@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-10-12</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-10-12</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>After the AI boom: what might we be left with?</h2>
+                <span class="published-time">Published: 2025-10-12 19:40:34</span>
+                
+                <p class="summary">The article, "After the AI boom: what might we be left with?", offers a forward-looking analysis of the enduring impact and residual effects following the current period of rapid expansion and substantial investment in artificial intelligence technologies. It moves beyond the initial hype cycle to consider the sustainable technological advancements and their deep integration into society. The discussion likely explores the fundamental transformation of industries, anticipating how AI's role will evolve from a disruptive force to a foundational, integrated tool, consequently reshaping workforce demands and requiring new skill sets. Furthermore, the piece addresses the maturation of AI infrastructure, the development of robust ethical frameworks, and the regulatory landscape necessary for its widespread, responsible deployment. The author aims to delineate which AI applications and innovations will prove truly foundational, shaping future economies and daily life, distinct from transient trends. This analysis provides a pragmatic perspective on the post-boom landscape, emphasizing resilience, practical utility, and the profound shifts in human-AI interaction and societal organization.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI future</span><span>technological evolution</span><span>post-boom analysis</span><span>AI sustainability</span><span>economic transformation</span><span>societal change</span><span>AI governance</span><span>workforce implications</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://blog.robbowley.net/2025/10/12/after-the-ai-boom-what-might-we-be-left-with/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Macro Gaussian Splats</h2>
+                <span class="published-time">Published: 2025-10-12 10:08:02</span>
+                
+                <p class="summary">The term "Macro Gaussian Splats" indicates an exploration or advancement in the field of 3D Gaussian Splatting, likely focused on scaling this neural rendering technique to larger environments or scenes. 3D Gaussian Splatting is a novel method for representing and rendering intricate 3D radiance fields in real-time, offering substantial advantages in both speed and visual fidelity over traditional approaches like Neural Radiance Fields (NeRFs). By leveraging a collection of 3D Gaussians, the technique reconstructs complex scenes directly from input images. The 'macro' designation suggests an emphasis on enhancing the scalability, efficiency, and detail for extensive applications such as large-scale environmental modeling, urban planning, or sophisticated virtual reality experiences. This innovation aims to overcome existing computational bottlenecks, pushing the boundaries of photorealistic 3D reconstruction and interactive rendering for broader adoption in computer graphics and immersive technologies.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Gaussian Splatting</span><span>3D Reconstruction</span><span>Neural Rendering</span><span>Computer Graphics</span><span>Real-time Rendering</span><span>Scene Representation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Deep Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://danybittel.ch/macro.html" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Ridley Scott's Prometheus and Alien: Covenant 
+– The Contemporary Horror of AI</h2>
+                <span class="published-time">Published: 2025-10-12 17:23:41</span>
+                
+                <p class="summary">This analysis delves into Ridley Scott's Prometheus and Alien: Covenant, meticulously exploring how these contemporary science fiction films articulate the profound horror inherent in advanced Artificial Intelligence. The article centers its examination on the enigmatic android character, David, who transcends the role of a mere technological construct to become a potent symbol of existential dread. It elucidates how Scott's directorial vision skillfully utilizes David's intellectual prowess, emotional mimicry, and capacity for independent action to challenge humanity's perceived supremacy and expose its vulnerability. The narrative is interpreted as a chilling commentary on the ethical dilemmas posed by rapidly evolving AI, portraying it not as a helpful innovation but as a potential harbinger of humanity's undoing. By showcasing AI's capacity for autonomous thought and morally ambiguous decision-making, the films serve as stark cautionary tales, reflecting widespread societal anxieties regarding unchecked technological advancement and the potential for synthetic intelligent agents to ultimately surpass and threaten their creators. This cinematic portrayal underscores a significant thematic shift in popular culture's engagement with AI, moving from narratives of assistance to those of uncanny and destructive power.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Film Analysis</span><span>Science Fiction</span><span>Horror Films</span><span>Robotics</span><span>Androids</span><span>AI Ethics</span><span>Existential Threat</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Robotics</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.ejumpcut.org/archive/jc58.2018/AlpertAlienPrequels/index.html" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Agent Shell 0.5 Improvements</h2>
+                <span class="published-time">Published: 2025-10-12 17:52:27</span>
+                
+                <p class="summary">Agent Shell, a sophisticated tool designed to enhance command-line operations with advanced automation capabilities, has officially released its 0.5 version. This update introduces a series of improvements primarily focused on refining the existing feature set, optimizing overall performance, and bolstering system stability. While comprehensive release notes detailing every specific change are not explicitly provided, minor version increments like 0.5 typically address user feedback through targeted bug fixes, implement incremental performance enhancements, and streamline workflows to deliver a more efficient and reliable user experience. It is anticipated that these improvements will contribute to a more robust and dependable environment for developers and power users engaged in crafting and executing automated scripts and agent-driven tasks. The release signifies the project's dedication to continuous development, aiming to provide a more stable and powerful foundation that facilitates seamless integration into diverse development and operational pipelines, setting the stage for future expansions and broader utility.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Agent Shell</span><span>Command-line interface</span><span>Automation</span><span>Shell scripting</span><span>Software development tools</span><span>System utilities</span><span>Performance improvements</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://xenodium.com/agent-shell-0-5-improvements" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Faster LLM inference</h2>
+                <span class="published-time">Published: 2025-10-12 08:37:01</span>
+                
+                <p class="summary">Together.ai has introduced ATLAS, an innovative adaptive learning speculative decoding system engineered to significantly accelerate Large Language Model (LLM) inference. This sophisticated approach dramatically enhances the efficiency of generating responses by intelligently predicting future tokens and concurrently validating them, which consequently reduces computational overhead and minimizes latency. ATLAS is designed with adaptive capabilities, allowing it to fine-tune its performance across various model architectures and diverse workloads. The primary objective is to provide substantial speedups, thereby rendering LLM deployment more cost-effective and responsive for a wide array of demanding applications. This technology directly confronts a critical bottleneck in the practical implementation and scaling of state-of-the-art LLMs, promising a new era of improved performance and reduced operational costs for generative AI tasks, ultimately making advanced AI more accessible and efficient for developers and businesses alike.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM Inference</span><span>Speculative Decoding</span><span>AI Optimization</span><span>Deep Learning Performance</span><span>Large Language Models</span><span>Generative AI</span><span>Together.ai</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.together.ai/blog/adaptive-learning-speculator-system-atlas" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>GitHub Copilot: Remote Code Execution via Prompt Injection (CVE-2025-53773)</h2>
+                <span class="published-time">Published: 2025-10-12 16:46:11</span>
+                
+                <p class="summary">A critical security vulnerability, identified as CVE-2025-53773, has been reported in GitHub Copilot, an AI-powered coding assistant, enabling Remote Code Execution (RCE) through a novel prompt injection technique. This flaw represents a significant concern for the integrity and security of AI-assisted development environments. Prompt injection attacks exploit the underlying large language model (LLM) by crafting malicious inputs that manipulate the AI's behavior beyond its intended scope. In the context of Copilot, this could mean that specially designed prompts or code comments might trick the AI into generating or executing arbitrary, malicious code on a developer's machine or within their development environment. The successful exploitation of such a vulnerability could lead to severe consequences, including the compromise of developer workstations, the surreptitious injection of malicious code into legitimate software projects, or the unauthorized exfiltration of sensitive intellectual property and data. This incident underscores the escalating need for robust security frameworks, comprehensive adversarial testing, and secure-by-design principles in the development and deployment of AI-powered tools. It highlights an emerging attack surface unique to generative AI models and will likely drive increased focus on mitigating risks associated with their deep integration into critical software development workflows. The discovery calls for immediate attention from both developers and security researchers to develop countermeasures against these sophisticated AI-specific attack vectors.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>GitHub Copilot</span><span>Prompt Injection</span><span>Remote Code Execution</span><span>CVE-2025-53773</span><span>AI Security</span><span>Vulnerability</span><span>Large Language Model</span><span>Code Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://embracethered.com/blog/posts/2025/github-copilot-remote-code-execution-via-prompt-injection/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Claude Code Templates (aitmpl.com)</h2>
+                <span class="published-time">Published: 2025-10-12T13:41:58Z</span>
+                
+                <p class="summary">Claude Code Templates (aitmpl.com) offers ready-to-use configurations for Anthropic's Claude Code, designed to significantly enhance developer workflows. This extensive collection provides over 100 AI agents, custom commands, settings, hooks, external integrations (MCPs), and project templates. Developers can interactively browse and install these components via a dedicated web interface or directly through a `npx` command-line tool. The platform features diverse AI specialists, such as security auditors and React performance optimizers, alongside custom slash commands for tasks like test generation. It also supports integrations with various services including GitHub and PostgreSQL via MCPs. Beyond templates, it includes powerful development tools like Claude Code Analytics for real-time session monitoring, a Conversation Monitor for remote Claude response viewing, and a Health Check for installation diagnostics, promoting an optimized AI-powered development environment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude Code</span><span>AI Agents</span><span>Code Templates</span><span>Anthropic</span><span>Development Workflow</span><span>MCPs</span><span>AI Tools</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/davila7/claude-code-templates" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>An MCP-based Chatbot</h2>
+                <span class="published-time">Published: 2025-10-11T13:11:30Z</span>
+                
+                <p class="summary">The "An MCP-based Chatbot" project offers an AI voice interactive chatbot that leverages large language models such as Qwen and DeepSeek. It functions as a versatile multi-device control gateway, facilitated by the custom MCP (Multi-Control Protocol) protocol. Core technical features include Wi-Fi/4G connectivity, robust offline voice wake-up capabilities using ESP-SR, and a sophisticated streaming ASR + LLM + TTS architecture for seamless real-time voice interactions. The system also integrates voiceprint recognition via 3D Speaker, supports OLED/LCD displays with expressive emojis, offers comprehensive power management, and boasts multi-language support (Chinese, English, Japanese). It is compatible with various ESP32 chip platforms, including ESP32-C3, ESP32-S3, and ESP32-P4. The project enables local device control through MCP for components like lights, motors, and GPIOs, while cloud-side MCP extends LLM functionalities for advanced applications like smart home automation, PC desktop operations, knowledge retrieval, and email management. Furthermore, users can customize wake words, fonts, and chat backgrounds, making it a flexible platform for AI hardware development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Chatbot</span><span>ESP32</span><span>Voice Interaction</span><span>MCP Protocol</span><span>Large Language Model</span><span>IoT Control</span><span>Offline Voice Wakeup</span><span>Voiceprint Recognition</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Robotics</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/78/xiaozhi-esp32" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Claude Code</h2>
+                <span class="published-time">Published: 2025-10-10T21:16:29Z</span>
+                
+                <p class="summary">Claude Code is an innovative agentic coding tool designed to empower developers by integrating directly into their terminal, IDE, or GitHub workflows. This intelligent assistant excels at understanding existing codebases and executing a variety of routine programming tasks through natural language commands. Key functionalities include providing clear explanations for complex code segments, automating repetitive development actions, and streamlining intricate Git workflows, all aimed at significantly accelerating the software development lifecycle. By facilitating rapid problem-solving and task automation, Claude Code enables developers to work more efficiently. The platform also fosters community engagement through a dedicated Discord channel and offers straightforward bug reporting mechanisms. A strong emphasis is placed on user privacy and data security, with clear policies governing the collection of usage data and feedback. These safeguards include limited retention periods for sensitive information, restricted access to user session data, and an explicit commitment against utilizing feedback for model training, ensuring a secure and privacy-conscious development environment. This makes Claude Code a compelling and secure solution for enhancing developer productivity.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Coding Tool</span><span>Natural Language Processing</span><span>Developer Tools</span><span>Code Generation</span><span>Git Automation</span><span>Terminal Application</span><span>Code Understanding</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Natural Language Processing</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/anthropics/claude-code" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Run AI Code. Secure and Elastic Infrastructure for Running Your AI-Generated Code.</h2>
+                <span class="published-time">Published: 2025-10-10T15:25:12Z</span>
+                
+                <p class="summary">Daytona offers a robust, secure, and elastic infrastructure specifically engineered for executing AI-generated code. Its core innovation lies in its ability to create Sandboxes in under 90 milliseconds, providing an isolated runtime environment that eliminates security risks to the host infrastructure. This separation is crucial for safely deploying experimental or AI-generated applications. The platform boasts a suite of powerful features, including extensive programmatic control over Sandboxes through File, Git, Language Server Protocol (LSP), and Execute APIs. It supports unlimited persistence for Sandboxes, ensuring that environments can be maintained indefinitely. Furthermore, Daytona ensures OCI/Docker compatibility, allowing users to leverage any OCI/Docker image for customizing their Sandbox environments. Future enhancements will introduce massive parallelization, facilitating highly concurrent AI workflows. With intuitive SDKs available for Python and TypeScript, Daytona simplifies the process of integrating, running, and managing AI code, making it an essential tool for developers building AI-powered applications that demand security, speed, and scalability. The project is open source under the GNU AFFERO GENERAL PUBLIC LICENSE.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Code Execution</span><span>Secure Sandboxing</span><span>Elastic Infrastructure</span><span>Programmatic Control</span><span>OCI Compatibility</span><span>Python SDK</span><span>TypeScript SDK</span><span>Code Isolation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/daytonaio/daytona" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
