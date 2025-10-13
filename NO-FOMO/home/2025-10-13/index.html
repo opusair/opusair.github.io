@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-10-13</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-10-13</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>NanoChat 
+																– The best ChatGPT that $100 can buy</h2>
+                <span class="published-time">Published: 2025-10-13 15:22:47</span>
+                
+                <p class="summary">NanoChat, an open-source project spearheaded by prominent AI researcher Andrej Karpathy, presents a highly cost-effective and resource-efficient approach to building a ChatGPT-like conversational AI model. The project's distinctive title, "The best ChatGPT that $100 can buy," highlights its primary objective: to deliver substantial conversational AI capabilities within remarkably strict budgetary or computational limits. This initiative appears to focus on optimizing existing architectures, employing innovative training methodologies, or utilizing highly quantized models to achieve advanced natural language processing functionalities without the extensive computational infrastructure typically demanded by contemporary large language models. NanoChat aims to democratize access to powerful AI tools, empowering developers, researchers, and enthusiasts to experiment with and deploy sophisticated language models at a significantly reduced cost. This makes advanced AI technology more accessible for a wider range of applications, from educational tools to bespoke personal projects, by emphasizing efficiency and affordability in AI development and deployment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>Conversational AI</span><span>Resource Efficiency</span><span>Open Source AI</span><span>Natural Language Processing</span><span>AI Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/karpathy/nanochat" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Ask HN: Has AI stolen the satisfaction from programming?</h2>
+                <span class="published-time">Published: 2025-10-13 19:07:15</span>
+                
+                <p class="summary">A Hacker News post questions whether AI has eroded the inherent satisfaction in programming. The author articulates a significant shift from traditional coding, where thorough problem understanding, architectural design, and manual implementation were crucial, fostering a deep sense of accomplishment. In contrast, modern AI coding tools promise to automate the cognitive aspects of programming, encouraging developers to describe problems and expect ready-made solutions without needing to grasp intricate details. This new paradigm creates a perceived pressure to delegate complex problem-solving to AI, leading to a process of simply describing issues and iterating with AI-generated outputs. The author contends that this approach, even when successful, results in "zero satisfaction" due to a lack of profound understanding of the solution and diminished ownership over the developed code. Consequently, the core intellectual reward and personal fulfillment traditionally associated with programming are significantly reduced.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI coding tools</span><span>Programming satisfaction</span><span>Developer experience</span><span>Code generation</span><span>Problem-solving</span><span>Software development</span><span>Artificial Intelligence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://news.ycombinator.com/item?id=45572130" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Programming in Assembly Is Brutal, Beautiful, and Maybe Even a Path to Better AI</h2>
+                <span class="published-time">Published: 2025-10-13 18:37:04</span>
+                
+                <p class="summary">This Wired article explores the unconventional, yet potentially transformative, role of assembly language programming in advancing artificial intelligence. Traditionally viewed as an arduous and low-level discipline, assembly offers unparalleled control over hardware, a capability the author posits could be crucial for optimizing AI algorithms and unlocking new computational efficiencies. The piece delves into the 'brutal' complexity inherent in assembly programming, contrasting it with its 'beautiful' ability to maximize performance at the bare metal level. It suggests that a deeper, foundational understanding of computer architecture, which is inherently fostered by assembly programming, might lead to significant breakthroughs in AI development, particularly in areas requiring extreme resource optimization and novel hardware utilization. By stripping away the layers of abstraction provided by higher-level programming languages, developers could potentially craft more efficient neural networks or create entirely new AI paradigms that leverage computing hardware far more effectively than current approaches. The article argues that while this low-level engagement presents considerable challenges, it could ultimately pave a path to a more performant, innovative, and sustainable future for artificial intelligence.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Assembly Language</span><span>AI Optimization</span><span>Low-level Programming</span><span>Hardware Acceleration</span><span>AI Efficiency</span><span>Computer Architecture</span><span>Performance Computing</span><span>Neural Networks</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.wired.com/story/programming-assembly-artificial-intelligence/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Smartphones and being present</h2>
+                <span class="published-time">Published: 2025-10-13 14:20:33</span>
+                
+                <p class="summary">The narrative addresses the critical contemporary issue of maintaining personal presence and mindfulness amidst the ubiquitous integration of smartphones into daily life. It delves into the profound impact these devices, with their incessant notifications and constant connectivity, have on human attention spans and the ability to engage fully with immediate experiences. The discussion implicitly frames this challenge as a significant area where technological innovation, particularly within artificial intelligence, could play a transformative role. Potential AI applications include developing context-aware systems to intelligently filter distractions, personalized nudging mechanisms to encourage mindful device usage, and behavioral AI models designed to foster healthier digital habits. The article underscores the necessity for individuals to cultivate intentional strategies for managing smartphone interaction, while also highlighting the emerging opportunity for AI to support enhanced digital well-being, thereby helping users reclaim focus and foster a stronger sense of presence in their daily lives. This balancing act between technological advancement and human behavioral psychology is crucial for promoting mental tranquility in the digital age.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Digital Well-being</span><span>Context-aware Computing</span><span>Behavioral AI</span><span>Human-Computer Interaction</span><span>Attention Management</span><span>Personalized Nudging</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://herman.bearblog.dev/being-present/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI and the Future of American Politics</h2>
+                <span class="published-time">Published: 2025-10-13 14:51:51</span>
+                
+                <p class="summary">The article, "AI and the Future of American Politics," explores the multifaceted impact of artificial intelligence on the evolving landscape of American political processes and democratic institutions. It anticipates how AI technologies, ranging from advanced data analytics and predictive modeling to sophisticated disinformation campaigns and personalized political messaging, could fundamentally reshape elections, policy-making, and public discourse. The analysis likely delves into both the potential benefits, such as improved governmental efficiency and more informed civic engagement through AI-powered tools, and the inherent risks. Key concerns would include the exacerbation of political polarization, challenges to data privacy, the potential for autonomous decision-making in governance, and the ethical dilemmas posed by AI's influence on democratic principles. Furthermore, the discussion would touch upon the urgent need for robust regulatory frameworks and public education to navigate these technological shifts responsibly, ensuring that AI serves to strengthen rather than undermine the foundations of American democracy in the coming years.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Political Systems</span><span>Democratic Processes</span><span>Policy Making</span><span>Data Analytics</span><span>Predictive Modeling</span><span>Disinformation</span><span>Governance</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.schneier.com/blog/archives/2025/10/ai-and-the-future-of-american-politics.html" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OpenAI and Broadcom to deploy 10 GW of OpenAI-designed AI accelerators</h2>
+                <span class="published-time">Published: 2025-10-13 13:17:20</span>
+                
+                <p class="summary">OpenAI and Broadcom have announced a significant strategic collaboration aimed at dramatically scaling AI compute capabilities through the deployment of 10 gigawatts (GW) of OpenAI-designed AI accelerators. This partnership highlights OpenAI's move into hardware design, leveraging its deep understanding of AI model requirements to create highly optimized acceleration technologies. Broadcom, a leader in semiconductor solutions, is poised to be instrumental in the manufacturing, deployment, and integration of these specialized chips into the global AI infrastructure. The ambitious 10 GW target underscores an unprecedented investment in computational power, essential for training and running increasingly complex large language models and advanced AI systems. This initiative is expected to accelerate the pace of AI innovation, potentially lowering the barriers to entry for advanced AI applications and services. The synergy between OpenAI's AI expertise and Broadcom's manufacturing prowess could reshape the landscape of AI hardware, ensuring the necessary scale and efficiency for the next generation of artificial intelligence advancements. This deployment signifies a major step towards addressing the escalating demand for high-performance computing in the rapidly evolving AI sector, promising substantial implications for data center technology and energy consumption.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>OpenAI</span><span>Broadcom</span><span>AI Accelerators</span><span>Semiconductor</span><span>AI Infrastructure</span><span>Large Language Models</span><span>AI Hardware</span><span>High-Performance Computing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://openai.com/index/openai-and-broadcom-announce-strategic-collaboration/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Klavis AI</h2>
+                <span class="published-time">Published: 2025-10-13T19:31:51Z</span>
+                
+                <p class="summary">Klavis AI offers advanced Multi-Control Point (MCP) integration layers, empowering AI agents to reliably utilize tools across various services and scales. At its core, the platform introduces "Strata," a unified MCP router engineered to extend beyond conventional tool limitations. Strata facilitates scalable tool integration and employs progressive discovery, systematically guiding AI agents from initial intent to precise action. Complementing this, Klavis provides a rich ecosystem of over 50 production-grade MCP integrations for prominent services such as GitHub, Gmail, Slack, and Salesforce. These integrations boast enterprise-grade OAuth support and Docker readiness, streamlining deployment. The platform offers flexible integration options, including open-source self-hosting, a managed WebUI service, and comprehensive Python/TypeScript SDKs, alongside a direct REST API. Klavis AI is designed to ensure seamless and dependable tool interaction for AI agents, enabling them to manage thousands of tools efficiently and progressively.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agents</span><span>Tool Integration</span><span>Multi-Control Point (MCP)</span><span>Scalable AI</span><span>OAuth</span><span>Docker</span><span>API Integration</span><span>Progressive Discovery</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/Klavis-AI/klavis" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>System Prompts Leaks</h2>
+                <span class="published-time">Published: 2025-10-13T13:48:55Z</span>
+                
+                <p class="summary">The "System Prompts Leaks" GitHub repository offers a centralized and collaborative collection of system prompts, messages, and developer instructions that have been inadvertently revealed or "leaked" from various artificial intelligence systems. This initiative focuses on documenting instances where a language model's internal directives or sensitive development communications are exposed, which is critical for understanding prompt injection vulnerabilities and broader AI security concerns. The repository functions as a valuable resource for researchers, AI developers, and security experts, enabling them to study the practical implications of such leaks, develop more robust defense mechanisms, and contribute to the ethical and safe deployment of large language models. Through community-driven pull requests, the collection remains current, serving as a dynamic archive that underscores the ongoing challenges and advancements in securing AI systems against unintended information disclosure.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>System Prompts</span><span>Prompt Engineering</span><span>AI Security</span><span>Prompt Leaks</span><span>Large Language Models</span><span>AI Safety</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/asgeirtj/system_prompts_leaks" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>What is Archon?</h2>
+                <span class="published-time">Published: 2025-10-11T23:00:26Z</span>
+                
+                <p class="summary">Archon serves as a sophisticated command center for AI coding assistants, offering a streamlined interface to manage knowledge, context, and tasks across development projects. It functions as a Model Context Protocol (MCP) server, enabling various AI agents such as Claude Code, Kiro, and Cursor to access a unified knowledge base. This base integrates diverse data sources, including crawled websites, uploaded PDFs, and extracted code examples, enhanced by smart search capabilities utilizing advanced Retrieval-Augmented Generation (RAG) strategies. Archon facilitates real-time updates and collaborative task management, ensuring AI agents operate with the most current information. Architecturally, it employs a robust microservices design, separating concerns across frontend (React), API server (FastAPI), MCP server, and agents service (PydanticAI), all leveraging Supabase for database management. The system supports multiple Large Language Models, including OpenAI, Ollama, and Google Gemini, and is committed to optimizing AI-driven coding outputs through an integrated environment for comprehensive context engineering.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Coding Assistants</span><span>Knowledge Management</span><span>Task Management</span><span>Model Context Protocol (MCP)</span><span>Retrieval-Augmented Generation (RAG)</span><span>Microservices</span><span>Supabase</span><span>Large Language Models (LLMs)</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/coleam00/Archon" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Claude Code</h2>
+                <span class="published-time">Published: 2025-10-10T21:16:29Z</span>
+                
+                <p class="summary">Claude Code is an innovative agentic coding tool designed to enhance developer productivity by operating directly within the terminal, IDEs, or GitHub workflows. This AI-powered agent intelligently understands an entire codebase, enabling developers to perform routine coding tasks, obtain explanations for complex code segments, and manage git operations through intuitive natural language commands. Built on Node.js, Claude Code streamlines development cycles, offering a conversational interface for various coding needs, from initial setup and project navigation to bug reporting and community interaction via Discord. The tool emphasizes data privacy with clear policies on usage, feedback collection, and retention, ensuring user data is handled responsibly and not used for model training. Its core value lies in accelerating development through intelligent automation and understanding, making it a powerful assistant for modern coding environments.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Coding Tool</span><span>Natural Language Interface</span><span>Git Automation</span><span>Developer Productivity</span><span>Code Understanding</span><span>Terminal Applications</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/anthropics/claude-code" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Welcome to Anthropic's Prompt Engineering Interactive Tutorial</h2>
+                <span class="published-time">Published: 2024-04-08T03:17:07Z</span>
+                
+                <p class="summary">Anthropic's Prompt Engineering Interactive Tutorial provides a comprehensive, step-by-step guide to mastering prompt engineering for Claude AI models. This interactive course equips users with skills to build optimal prompts, identify common failure modes, and apply '80/20' techniques for improvement. It covers fundamental aspects such as basic prompt structure, clarity, role assignment, separating data from instructions, output formatting, precognition, and using examples. Advanced sections delve into avoiding hallucinations and constructing complex prompts for specific industry use cases like chatbots, legal, financial services, and coding. The tutorial is organized into nine chapters with practical exercises and an 'Example Playground' for hands-on experimentation, primarily utilizing Claude 3 Haiku, while acknowledging the more advanced Sonnet and Opus models. An alternative Google Sheets version is also available for enhanced user-friendliness.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Prompt Engineering</span><span>Claude AI</span><span>Large Language Model</span><span>Anthropic</span><span>AI Tutorial</span><span>LLM Applications</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/anthropics/prompt-eng-interactive-tutorial" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Instant4D: 4D Gaussian Splatting in Minutes</h2>
+                <span class="published-time">Published: 2025-10-01T17:07:21.000Z</span>
+                
+                <p class="summary">Dynamic view synthesis has seen significant advances, yet reconstructing scenes from uncalibrated, casual video remains challenging due to slow optimization and complex parameter estimation. In this work, we present Instant4D, a monocular reconstruction system that leverages native 4D representation to efficiently process casual video sequences within minutes, without calibrated cameras or depth sensors. Our method begins with geometric recovery through deep visual SLAM, followed by grid pruning to optimize scene representation. Our design significantly reduces redundancy while maintaining geometric integrity, cutting model size to under 10% of its original footprint. To handle temporal dynamics efficiently, we introduce a streamlined 4D Gaussian representation, achieving a 30x speed-up and reducing training time to within two minutes, while maintaining competitive performance across several benchmarks. Our method reconstruct a single video within 10 minutes on the Dycheck dataset or for a typical 200-frame video. We further apply our model to in-the-wild videos, showcasing its generalizability. Our project website is published at https://instant4d.github.io/.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>4D Gaussian Splatting</span><span>Dynamic view synthesis</span><span>Monocular reconstruction</span><span>Deep visual SLAM</span><span>Temporal dynamics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Video Understanding</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.01119" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Adaptive Attacks on Trusted Monitors Subvert AI Control Protocols</h2>
+                <span class="published-time">Published: 2025-10-10T15:12:44.000Z</span>
+                
+                <p class="summary">AI control protocols serve as a defense mechanism to stop untrusted LLM agents from causing harm in autonomous settings. Prior work treats this as a security problem, stress testing with exploits that use the deployment context to subtly complete harmful side tasks, such as backdoor insertion. In practice, most AI control protocols are fundamentally based on LLM monitors, which can become a central point of failure. We study adaptive attacks by an untrusted model that knows the protocol and the monitor model, which is plausible if the untrusted model was trained with a later knowledge cutoff or can search for this information autonomously. We instantiate a simple adaptive attack vector by which the attacker embeds publicly known or zero-shot prompt injections in the model outputs. Using this tactic, frontier models consistently evade diverse monitors and complete malicious tasks on two main AI control benchmarks. The attack works universally against current protocols that rely on a monitor. Furthermore, the recent Defer-to-Resample protocol even backfires, as its resampling amplifies the prompt injection and effectively reframes it as a best-of-n attack. In general, adaptive attacks on monitor models represent a major blind spot in current control protocols and should become a standard component of evaluations for future AI control mechanisms.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Adaptive Attacks</span><span>AI Control Protocols</span><span>LLM Monitors</span><span>Prompt Injections</span><span>Untrusted LLM Agents</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.09462" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Thinking with Camera: A Unified Multimodal Model for Camera-Centric Understanding and Generation</h2>
+                <span class="published-time">Published: 2025-10-09T17:59:29.000Z</span>
+                
+                <p class="summary">Camera-centric understanding and generation are two cornerstones of spatial intelligence, yet they are typically studied in isolation. We present Puffin, a unified camera-centric multimodal model that extends spatial awareness along the camera dimension. Puffin integrates language regression and diffusion-based generation to interpret and create scenes from arbitrary viewpoints. To bridge the modality gap between cameras and vision-language, we introduce a novel paradigm that treats camera as language, enabling thinking with camera. This guides the model to align spatially grounded visual cues with photographic terminology while reasoning across geometric context. Puffin is trained on Puffin-4M, a large-scale dataset of 4 million vision-language-camera triplets. We incorporate both global camera parameters and pixel-wise camera maps, yielding flexible and reliable spatial generation. Experiments demonstrate Puffin superior performance over specialized models for camera-centric generation and understanding. With instruction tuning, Puffin generalizes to diverse cross-view tasks such as spatial imagination, world exploration, and photography guidance. We will release the code, models, dataset pipeline, and benchmark to advance multimodal spatial intelligence research.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Camera-Centric Understanding</span><span>Multimodal Model</span><span>Spatial Intelligence</span><span>Diffusion-Based Generation</span><span>Vision-Language</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Computer Vision</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.08673" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>D2E: Scaling Vision-Action Pretraining on Desktop Data for Transfer to Embodied AI</h2>
+                <span class="published-time">Published: 2025-10-07T08:40:33.000Z</span>
+                
+                <p class="summary">Large language models leverage internet-scale text data, yet embodied AI remains constrained by the prohibitive costs of physical trajectory collection. Desktop environments -- particularly gaming -- offer a compelling alternative: they provide rich sensorimotor interactions at scale while maintaining the structured observation-action coupling essential for embodied learning. We present D2E (Desktop to Embodied AI), a framework that demonstrates desktop interactions can serve as an effective pretraining substrate for robotics embodied AI tasks. Unlike prior work that remained domain-specific (e.g., VPT for Minecraft) or kept data proprietary (e.g., SIMA), D2E establishes a complete pipeline from scalable desktop data collection to verified transfer in embodied domains. Our framework comprises three components: (1) the OWA Toolkit that unifies diverse desktop interactions into a standardized format with 152x compression, (2) the Generalist-IDM that achieves strong zero-shot generalization across unseen games through timestamp-based event prediction, enabling internet-scale pseudo-labeling, and (3) VAPT that transfers desktop-pretrained representations to physical manipulation and navigation. Using 1.3K+ hours of data (259 hours of human demonstrations, and 1K+ hours of pseudo-labeled gameplay), we achieve a total of 96.6% success rate on LIBERO manipulation and 83.3% on CANVAS navigation benchmarks. This validates that sensorimotor primitives in digital interactions exhibit sufficient invariance to transfer meaningfully to physical embodied tasks, establishing desktop pretraining as a practical paradigm for robotics. We will make all our work public, including the OWA toolkit, datasets of human-collected and pseudo-labeled, and VAPT-trained models available at https://worv-ai.github.io/d2e/</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Embodied AI</span><span>Vision-Action Pretraining</span><span>Desktop Data</span><span>Robotics</span><span>Sensorimotor Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Robotics</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.05684" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Webscale-RL: Automated Data Pipeline for Scaling RL Data to Pretraining Levels</h2>
+                <span class="published-time">Published: 2025-10-07T22:30:59.000Z</span>
+                
+                <p class="summary">Large Language Models (LLMs) have achieved remarkable success through imitation learning on vast text corpora, but this paradigm creates a training-generation gap and limits robust reasoning. Reinforcement learning (RL) offers a more data-efficient solution capable of bridging this gap, yet its application has been constrained by a critical data bottleneck: existing RL datasets are orders of magnitude smaller and less diverse than web-scale pre-training corpora. To address this, we introduce the Webscale-RL pipeline, a scalable data engine that systematically converts large-scale pre-training documents into millions of diverse, verifiable question-answer pairs for RL. Using this pipeline, we construct the Webscale-RL dataset, containing 1.2 million examples across more than 9 domains. Our experiments show that the model trained on this dataset significantly outperforms continual pretraining and strong data refinement baselines across a suite of benchmarks. Notably, RL training with our dataset proves substantially more efficient, achieving the performance of continual pre-training with up to 100times fewer tokens. Our work presents a viable path toward scaling RL to pre-training levels, enabling more capable and efficient language models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Large Language Models</span><span>Data Pipeline</span><span>Pre-training</span><span>Webscale-RL</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.06499" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Mind-Paced Speaking: A Dual-Brain Approach to Real-Time Reasoning in Spoken Language Models</h2>
+                <span class="published-time">Published: 2025-10-10T17:50:59.000Z</span>
+                
+                <p class="summary">Real-time Spoken Language Models (SLMs) struggle to leverage Chain-of-Thought (CoT) reasoning due to the prohibitive latency of generating the entire thought process sequentially. Enabling SLMs to think while speaking, similar to humans, is attracting increasing attention. We present, for the first time, Mind-Paced Speaking (MPS), a brain-inspired framework that enables high-fidelity, real-time reasoning. Similar to how humans utilize distinct brain regions for thinking and responding, we propose a novel dual-brain approach, employing a "Formulation Brain" for high-level reasoning to pace and guide a separate "Articulation Brain" for fluent speech generation. This division of labor eliminates mode-switching, preserving the integrity of the reasoning process. Experiments show that MPS significantly outperforms existing think-while-speaking methods and achieves reasoning performance comparable to models that pre-compute the full CoT before speaking, while drastically reducing latency. Under a zero-latency configuration, the proposed method achieves an accuracy of 92.8% on the mathematical reasoning task Spoken-MQA and attains a score of 82.5 on the speech conversation task URO-Bench. Our work effectively bridges the gap between high-quality reasoning and real-time interaction.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Spoken Language Models</span><span>Real-time Reasoning</span><span>Chain-of-Thought</span><span>Dual-Brain Approach</span><span>Mind-Paced Speaking</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.09592" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
