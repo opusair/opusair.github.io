@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-10-14</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-10-14</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>GPT-5o-mini hallucinates medical residency applicant grades</h2>
+                <span class="published-time">Published: 2025-10-14 15:12:21</span>
+                
+                <p class="summary">A recent analysis, drawing insights from a Thalamus GME blog post, has brought to light a significant issue with OpenAI's GPT-5o-mini: its tendency to 'hallucinate' medical residency applicant grades. This flaw manifests as the generation of inaccurate or entirely fabricated academic records, posing substantial integrity risks for medical residency applications and the broader medical education ecosystem. The findings underscore persistent challenges in ensuring data fidelity and factual accuracy within Large Language Models, particularly when processing sensitive and high-stakes personal information. This incident emphasizes the imperative for robust validation mechanisms and meticulous implementation of AI tools in critical domains where precision is paramount. While AI offers immense potential for efficiency gains, its current limitations in reliable factual recall and its capacity to produce synthetic yet plausible data necessitate stringent human oversight and exhaustive verification processes, especially concerning sensitive applicant data. This serves as a crucial case study on the ethical and practical considerations for deploying advanced AI systems in professional and regulatory contexts.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>GPT-5o-mini</span><span>AI Hallucination</span><span>Large Language Model</span><span>Medical Education</span><span>Data Integrity</span><span>Natural Language Processing</span><span>AI Ethics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.thalamusgme.com/blogs/cortex-core-clerkship-grades-and-transcript-normalization" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Why the push for Agentic when models can barely follow a simple instruction?</h2>
+                <span class="published-time">Published: 2025-10-14 07:08:02</span>
+                
+                <p class="summary">The provided title, "Why the push for Agentic when models can barely follow a simple instruction?", encapsulates a significant debate within the artificial intelligence community concerning the strategic direction of AI development. It raises a pertinent question about the industry's fervent pursuit of complex, autonomous "agentic" AI systems, particularly when current large language models (LLMs) frequently exhibit inconsistencies and difficulties in adhering to seemingly straightforward instructions. This query underscores a perceived gap between the aspirational goals for advanced AI agents, capable of independent decision-making and task execution, and the practical, often frustrating, challenges encountered with the reliability and predictability of foundational models. The discussion implies a critical need to bolster the robustness and instruction-following capabilities of core AI models. Experts suggest that a solid and consistent foundation in basic task execution is indispensable for agentic AI to achieve effective, reliable, and trustworthy operation, questioning the scalability and utility of sophisticated architectures if fundamental issues of model comprehension and adherence remain unresolved. This ongoing dialogue emphasizes a potential misalignment in development priorities.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Large Language Model</span><span>Instruction Following</span><span>AI Development</span><span>Model Limitations</span><span>AI Capabilities</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://forum.cursor.com/t/why-the-push-for-agentic-when-models-can-barely-follow-a-single-simple-instruction/137154" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Metorial (YC F25) – Vercel for MCP</h2>
+                <span class="published-time">Published: 2025-10-14 14:49:56</span>
+                
+                <p class="summary">Metorial, a YC F25 startup founded by Wen and Tobias, has introduced an integration platform designed to streamline the server-side deployment and management of AI agents. Positioned as the "Vercel for MCP," Metorial addresses critical challenges encountered when running MCP servers, such as complex Docker configurations, per-user OAuth flows, scaling concurrent sessions, and establishing observability. The platform automates these infrastructure-heavy tasks, significantly reducing the setup time required to connect AI agents with external tools and data. Metorial offers an open catalog of approximately 600 pre-configured MCP servers, including integrations with services like GitHub, Slack, Google Drive, and Salesforce, enabling users to deploy them with minimal effort. Users can also integrate custom MCP servers or modify existing ones. The platform fully manages the OAuth process, handling client ID/secret, token refresh, and ensuring isolated environments for each user, thus simplifying AI agent integration from weeks to just a few clicks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI agents</span><span>Integration platform</span><span>MCP deployment</span><span>Cloud infrastructure</span><span>OAuth management</span><span>Server-side applications</span><span>Scalability</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/metorial/metorial" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Intel Announces Inference-Optimized Xe3P Graphics Card with 160GB VRAM</h2>
+                <span class="published-time">Published: 2025-10-14 18:30:57</span>
+                
+                <p class="summary">Intel has officially unveiled its new Xe3P Graphics Card, specifically engineered and optimized for inference workloads. This latest addition to Intel's hardware lineup features an impressive 160GB of VRAM, positioning it as a high-capacity solution for demanding AI and machine learning applications in enterprise and data center environments. The Xe3P aims to significantly accelerate data center AI deployments, offering robust performance for critical tasks such as real-time analytics, large-scale model serving, and various advanced computer vision and natural language processing inference operations. The substantial 160GB VRAM capacity is particularly noteworthy, indicating capabilities for efficiently handling larger AI models and extensive datasets during the inference phase, which is crucial for modern AI infrastructure. This strategic release underscores Intel's ongoing commitment to expanding its presence and competitiveness within the rapidly evolving AI acceleration hardware ecosystem, providing a powerful option for businesses seeking specialized hardware for their AI deployment needs.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Intel Xe3P</span><span>Graphics Card</span><span>AI Inference</span><span>160GB VRAM</span><span>Machine Learning Hardware</span><span>Data Center AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.phoronix.com/review/intel-crescent-island" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>NVIDIA DGX Spark In-Depth Review: A New Standard for Local AI Inference</h2>
+                <span class="published-time">Published: 2025-10-14 01:07:45</span>
+                
+                <p class="summary">A comprehensive in-depth review of the NVIDIA DGX Spark has been published, highlighting its potential to set a new benchmark for local AI inference solutions. This analysis delves into the architectural innovations and performance metrics of the DGX Spark system, which is designed to accelerate AI workloads directly on premises, offering significant advantages in data privacy, low latency, and operational efficiency compared to cloud-based alternatives. The review likely examines its computational power, memory configurations, software stack integrations, and overall suitability for demanding AI model deployment scenarios, such as real-time analytics, secure enterprise AI, and advanced research. Initial findings suggest that the DGX Spark delivers exceptional throughput and energy efficiency, positioning it as a critical infrastructure component for organizations seeking robust and scalable local AI capabilities. The evaluation underscores its role in democratizing high-performance AI inference, making advanced AI applications more accessible and manageable outside of large data centers.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>NVIDIA DGX Spark</span><span>AI Inference</span><span>Local AI</span><span>GPU Acceleration</span><span>AI Hardware</span><span>On-premise AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://lmsys.org/blog/2025-10-13-nvidia-dgx-spark/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Why your boss isn't worried about AI – "can't you just turn it off?"</h2>
+                <span class="published-time">Published: 2025-10-14 18:26:00</span>
+                
+                <p class="summary">The article, titled 'Why your boss isn't worried about AI – "can't you just turn it off?"', explores the significant disconnect between executive-level perceptions and the complex realities of integrating artificial intelligence within organizations. It addresses the common, yet often misguided, assumption among some leaders that AI systems are easily controllable and reversible, akin to conventional software. This overlooks the intricate, emergent behaviors and deeply embedded nature of advanced AI and machine learning models, which can have unforeseen impacts on operations, ethics, and strategic planning. The piece highlights that such a simplified view can impede effective AI governance, robust risk management, and necessary organizational adjustments, underscoring the critical need for enhanced AI literacy among leadership to navigate the transformative challenges and opportunities presented by rapidly evolving AI technologies.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI adoption</span><span>AI governance</span><span>executive leadership</span><span>organizational change</span><span>AI literacy</span><span>risk management</span><span>AI strategy</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://boydkane.com/essays/boss" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Spring AI Alibaba</h2>
+                <span class="published-time">Published: 2025-10-14T09:38:37Z</span>
+                
+                <p class="summary">Spring AI Alibaba is an advanced agentic AI framework designed for building sophisticated ChatBot, Workflow, and Multi-agent applications. It features a graph-based multi-agent framework, allowing developers to construct complex workflows and agents, with visual debugging and Dify DSL generation capabilities. The framework is engineered for enterprise environments, offering deep integration with the Alibaba Cloud AI ecosystem, including the Aliyun Bailian platform for LLM services and RAG solutions, as well as AI observation tools like ARMS and Langfuse. It also supports enterprise-level MCP integration through Nacos MCP Registry for service discovery and routing, and leverages Higress for LLM model proxying. Spring AI Alibaba introduces specialized Plan-Act agent products like JManus for delicate plan adjustment and reuse, and DeepResearch, an agent for comprehensive research and report generation utilizing web search, crawling, and Python scripting. The platform aims to facilitate the transition of AI agents from experimental demos to production-ready solutions, emphasizing deterministic and domain-specific agent development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Spring AI</span><span>Multi-agent framework</span><span>ChatBot</span><span>Workflow</span><span>LLM</span><span>AI ecosystem</span><span>RAG</span><span>Plan-Act agents</span><span>Graph-based AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/alibaba/spring-ai-alibaba" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Happy-LLM</h2>
+                <span class="published-time">Published: 2025-10-07T02:55:59Z</span>
+                
+                <p class="summary">The "Happy-LLM" project by Datawhale offers a comprehensive, free, and open-source tutorial designed to guide learners through the principles and practical implementation of Large Language Models (LLMs). This systematic curriculum delves into fundamental Natural Language Processing (NLP) methods, the architectural foundations of LLMs like the Transformer, and the intricate details of the training process, from pre-training to fine-tuning. Participants will gain a deep understanding of core concepts such as attention mechanisms and existing LLM structures, and acquire hands-on experience by implementing a complete LLaMA2 model. The tutorial also covers advanced application techniques like Retrieval-Augmented Generation (RAG) and AI Agents, equipping learners with the skills to navigate the rapidly evolving LLM landscape. Aimed at students, researchers, and enthusiasts with some programming and deep learning background, "Happy-LLM" fosters practical engagement and encourages contributions to the broader open-source AI community.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>LLM Principles</span><span>Transformer Architecture</span><span>LLaMA2</span><span>Fine-tuning</span><span>Retrieval-Augmented Generation</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/datawhalechina/happy-llm" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Welcome to Anthropic's Prompt Engineering Interactive Tutorial</h2>
+                <span class="published-time">Published: 2024-04-08T03:17:07Z</span>
+                
+                <p class="summary">This interactive tutorial by Anthropic provides a comprehensive, step-by-step guide to engineering optimal prompts for Claude AI models, including Haiku, Sonnet, and Opus. It aims to equip users with the ability to master prompt structures, identify common failure modes, apply '80/20' techniques for improvement, understand Claude's capabilities, and build effective prompts for various applications. Structured into nine chapters with practical exercises and an advanced appendix, the course progresses from fundamental concepts like clear instructions and role assignment to intermediate topics such as data separation and output formatting. Advanced sections cover hallucination avoidance and constructing complex prompts for industry-specific use cases in areas like chatbots, legal, financial, and coding services. The tutorial emphasizes hands-on experimentation through an 'Example Playground' and is also available as a user-friendly Google Sheets version.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Prompt Engineering</span><span>Claude AI</span><span>Anthropic</span><span>Large Language Model</span><span>AI Tutorial</span><span>Haiku</span><span>Sonnet</span><span>Opus</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/anthropics/prompt-eng-interactive-tutorial" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>QeRL: Beyond Efficiency -- Quantization-enhanced Reinforcement Learning for LLMs</h2>
+                <span class="published-time">Published: 2025-10-13T17:55:09.000Z</span>
+                
+                <p class="summary">We propose QeRL, a Quantization-enhanced Reinforcement Learning framework for large language models (LLMs). While RL is essential for LLMs' reasoning capabilities, it is resource-intensive, requiring substantial GPU memory and long rollout durations. QeRL addresses these issues by combining NVFP4 quantization with Low-Rank Adaptation (LoRA), accelerating rollout phase of RL while reducing memory overhead. Beyond efficiency, our findings show that quantization noise increases policy entropy, enhancing exploration, and enabling the discovery of better strategies during RL. To further optimize exploration, QeRL introduces an Adaptive Quantization Noise (AQN) mechanism, which dynamically adjusts noise during training. Experiments demonstrate that QeRL delivers over 1.5 times speedup in the rollout phase. Moreover, this is the first framework to enable RL training of a 32B LLM on a single H100 80GB GPU, while delivering overall speedups for RL training. It also achieves faster reward growth and higher final accuracy than 16-bit LoRA and QLoRA, while matching the performance of full-parameter fine-tuning on mathematical benchmarks such as GSM8K (90.8%) and MATH 500 (77.4%) in the 7B model. These results establish QeRL as an efficient and effective framework for RL training in LLMs.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Quantization-enhanced Reinforcement Learning</span><span>Large Language Models</span><span>Quantization</span><span>Reinforcement Learning</span><span>Low-Rank Adaptation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.11696" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Stable Video Infinity: Infinite-Length Video Generation with Error Recycling</h2>
+                <span class="published-time">Published: 2025-10-10T09:45:46.000Z</span>
+                
+                <p class="summary">We propose Stable Video Infinity (SVI) that is able to generate infinite-length videos with high temporal consistency, plausible scene transitions, and controllable streaming storylines. While existing long-video methods attempt to mitigate accumulated errors via handcrafted anti-drifting (e.g., modified noise scheduler, frame anchoring), they remain limited to single-prompt extrapolation, producing homogeneous scenes with repetitive motions. We identify that the fundamental challenge extends beyond error accumulation to a critical discrepancy between the training assumption (seeing clean data) and the test-time autoregressive reality (conditioning on self-generated, error-prone outputs). To bridge this hypothesis gap, SVI incorporates Error-Recycling Fine-Tuning, a new type of efficient training that recycles the Diffusion Transformer (DiT)'s self-generated errors into supervisory prompts, thereby encouraging DiT to actively identify and correct its own errors. This is achieved by injecting, collecting, and banking errors through closed-loop recycling, autoregressively learning from error-injected feedback. Specifically, we (i) inject historical errors made by DiT to intervene on clean inputs, simulating error-accumulated trajectories in flow matching; (ii) efficiently approximate predictions with one-step bidirectional integration and calculate errors with residuals; (iii) dynamically bank errors into replay memory across discretized timesteps, which are resampled for new input. SVI is able to scale videos from seconds to infinite durations with no additional inference cost, while remaining compatible with diverse conditions (e.g., audio, skeleton, and text streams). We evaluate SVI on three benchmarks, including consistent, creative, and conditional settings, thoroughly verifying its versatility and state-of-the-art role.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Infinite-Length Video Generation</span><span>Error Recycling</span><span>Temporal Consistency</span><span>Diffusion Transformer</span><span>Long-form Video</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Deep Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.09212" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Demystifying Reinforcement Learning in Agentic Reasoning</h2>
+                <span class="published-time">Published: 2025-10-13T17:57:15.000Z</span>
+                
+                <p class="summary">Recently, the emergence of agentic RL has showcased that RL could also effectively improve the agentic reasoning ability of LLMs, yet the key design principles and optimal practices remain unclear. In this work, we conduct a comprehensive and systematic investigation to demystify reinforcement learning in agentic reasoning from three key perspectives: data, algorithm, and reasoning mode. We highlight our key insights: (i) Replacing stitched synthetic trajectories with real end-to-end tool-use trajectories yields a far stronger SFT initialization; high-diversity, model-aware datasets sustain exploration and markedly improve RL performance. (ii) Exploration-friendly techniques are crucial for agentic RL, such as clip higher, overlong reward shaping, and maintaining adequate policy entropy could improve the training efficiency. (iii) A deliberative strategy with fewer tool calls outperforms frequent tool calls or verbose self-reasoning, improving tool efficiency and final accuracy. Together, these simple practices consistently enhance agentic reasoning and training efficiency, achieving strong results on challenging benchmarks with smaller models, and establishing a practical baseline for future agentic RL research. Beyond these empirical insights, we further contribute a high-quality, real end-to-end agentic SFT dataset along with a high-quality RL dataset, and demonstrate the effectiveness of our insights in boosting the agentic reasoning ability of LLMs across four challenging benchmarks, including AIME2024/AIME2025, GPQA-Diamond, and LiveCodeBench-v6. With our recipes, 4B-sized models could also achieve superior agentic reasoning performance compared to 32B-sized models. Code and models: https://github.com/Gen-Verse/Open-AgentRL</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Agentic Reasoning</span><span>Large Language Models</span><span>Tool Use</span><span>Agentic RL</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.11701" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Diffusion Transformers with Representation Autoencoders</h2>
+                <span class="published-time">Published: 2025-10-13T17:51:39.000Z</span>
+                
+                <p class="summary">Latent generative modeling, where a pretrained autoencoder maps pixels into a latent space for the diffusion process, has become the standard strategy for Diffusion Transformers (DiT); however, the autoencoder component has barely evolved. Most DiTs continue to rely on the original VAE encoder, which introduces several limitations: outdated backbones that compromise architectural simplicity, low-dimensional latent spaces that restrict information capacity, and weak representations that result from purely reconstruction-based training and ultimately limit generative quality. In this work, we explore replacing the VAE with pretrained representation encoders (e.g., DINO, SigLIP, MAE) paired with trained decoders, forming what we term Representation Autoencoders (RAEs). These models provide both high-quality reconstructions and semantically rich latent spaces, while allowing for a scalable transformer-based architecture. Since these latent spaces are typically high-dimensional, a key challenge is enabling diffusion transformers to operate effectively within them. We analyze the sources of this difficulty, propose theoretically motivated solutions, and validate them empirically. Our approach achieves faster convergence without auxiliary representation alignment losses. Using a DiT variant equipped with a lightweight, wide DDT head, we achieve strong image generation results on ImageNet: 1.51 FID at 256x256 (no guidance) and 1.13 at both 256x256 and 512x512 (with guidance). RAE offers clear advantages and should be the new default for diffusion transformer training.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Diffusion Transformers</span><span>Representation Autoencoders</span><span>Latent Generative Modeling</span><span>Image Generation</span><span>Pretrained Encoders</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Deep Learning</span><span>Generative AI</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.11690" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Don't Just Fine-tune the Agent, Tune the Environment</h2>
+                <span class="published-time">Published: 2025-10-11T12:35:15.000Z</span>
+                
+                <p class="summary">Large Language Model (LLM) agents show great promise for complex, multi-turn tool-use tasks, but their development is often hampered by the extreme scarcity of high-quality training data. Supervised fine-tuning (SFT) on synthetic data leads to overfitting, whereas standard reinforcement learning (RL) struggles with a critical cold-start problem and training instability. To address these challenges, we introduce Environment Tuning, a novel training paradigm that enables agents to learn complex behaviors directly from problem instances without relying on pre-collected expert trajectories. Environment Tuning orchestrates this learning process through a structured curriculum, actionable environment augmentation that provides corrective feedback, and fine-grained progress rewards to ensure stable and efficient exploration. Using only 400 problem instances from Berkeley Function-Calling Leaderboard (BFCL) benchmark, our method not only achieves competitive in-distribution performance against strong baselines but also demonstrates superior out-of-distribution generalization, overcoming the performance collapse common to SFT-based approaches. Our work presents a paradigm shift from supervised fine-tuning on static trajectories to dynamic, environment-based exploration, paving the way for training more robust and data-efficient agents.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM agents</span><span>Environment Tuning</span><span>Reinforcement Learning</span><span>Supervised Fine-tuning</span><span>Data-efficient agents</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.10197" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>InfiniHuman: Infinite 3D Human Creation with Precise Control</h2>
+                <span class="published-time">Published: 2025-10-13T17:29:55.000Z</span>
+                
+                <p class="summary">Generating realistic and controllable 3D human avatars is a long-standing challenge, particularly when covering broad attribute ranges such as ethnicity, age, clothing styles, and detailed body shapes. Capturing and annotating large-scale human datasets for training generative models is prohibitively expensive and limited in scale and diversity. The central question we address in this paper is: Can existing foundation models be distilled to generate theoretically unbounded, richly annotated 3D human data? We introduce InfiniHuman, a framework that synergistically distills these models to produce richly annotated human data at minimal cost and with theoretically unlimited scalability. We propose InfiniHumanData, a fully automatic pipeline that leverages vision-language and image generation models to create a large-scale multi-modal dataset. User study shows our automatically generated identities are undistinguishable from scan renderings. InfiniHumanData contains 111K identities spanning unprecedented diversity. Each identity is annotated with multi-granularity text descriptions, multi-view RGB images, detailed clothing images, and SMPL body-shape parameters. Building on this dataset, we propose InfiniHumanGen, a diffusion-based generative pipeline conditioned on text, body shape, and clothing assets. InfiniHumanGen enables fast, realistic, and precisely controllable avatar generation. Extensive experiments demonstrate significant improvements over state-of-the-art methods in visual quality, generation speed, and controllability. Our approach enables high-quality avatar generation with fine-grained control at effectively unbounded scale through a practical and affordable solution. We will publicly release the automatic data generation pipeline, the comprehensive InfiniHumanData dataset, and the InfiniHumanGen models at https://yuxuan-xue.com/infini-human.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>3D human creation</span><span>Generative AI</span><span>Foundation models</span><span>Multi-modal data</span><span>Avatar generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.11650" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>ReLook: Vision-Grounded RL with a Multimodal LLM Critic for Agentic Web Coding</h2>
+                <span class="published-time">Published: 2025-10-13T15:05:50.000Z</span>
+                
+                <p class="summary">While Large Language Models (LLMs) excel at algorithmic code generation, they struggle with front-end development, where correctness is judged on rendered pixels and interaction. We present ReLook, an agentic, vision-grounded reinforcement learning framework that empowers an agent to close a robust generate--diagnose--refine loop by invoking a multimodal LLM (MLLM) as a tool. During training, the agent uses the MLLM-in-the-loop both as a visual critic--scoring code with screenshots--and as a source of actionable, vision-grounded feedback; a strict zero-reward rule for invalid renders anchors renderability and prevents reward hacking. To prevent behavioral collapse, we introduce Forced Optimization, a strict acceptance rule that admits only improving revisions, yielding monotonically better trajectories. At inference, we decouple the critic and run a lightweight, critic-free self-edit cycle, keeping latency comparable to base decoding while retaining most of the gains. Across three widely used benchmarks, ReLook consistently outperforms strong baselines in vision-grounded front-end code generation, highlighting the benefits of agentic perception, visual rewards, and training-inference decoupling.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Vision-Grounded RL</span><span>Multimodal LLM Critic</span><span>Agentic Web Coding</span><span>Front-end Development</span><span>Code Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.11498" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
