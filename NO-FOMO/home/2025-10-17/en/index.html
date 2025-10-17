@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-10-17</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-10-17</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Asking AI to build scrapers should be easy right?</h2>
+                <span class="published-time">Published: 2025-10-17 19:03:21</span>
+                
+                <p class="summary">The article titled 'Asking AI to build scrapers should be easy right?' explores the common misconception that leveraging artificial intelligence for web scraping is a straightforward task. While the promise of AI agents automating data extraction is appealing, the reality presents significant challenges. Websites are often dynamic, employing complex structures, JavaScript rendering, and anti-bot measures such as CAPTCHAs, which current general-purpose AI models, particularly Large Language Models (LLMs), struggle to navigate reliably. The core issue lies in the robustness and adaptability required for scrapers to handle frequent website changes, session management, and diverse data formats without constant human intervention. Effective AI-driven scraping necessitates sophisticated AI agents capable of understanding context, making decisions, and autonomously adapting to unforeseen variations in web interfaces. This discussion highlights the technical hurdles in developing truly autonomous and resilient web scraping solutions, indicating a gap between theoretical AI capabilities and practical, scalable deployment in dynamic web environments.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI</span><span>Web Scraping</span><span>Automation</span><span>AI Agent</span><span>Data Extraction</span><span>Large Language Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.skyvern.com/blog/asking-ai-to-build-scrapers-should-be-easy-right/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OpenAI Needs $400B In The Next 12 Months</h2>
+                <span class="published-time">Published: 2025-10-17 17:41:02</span>
+                
+                <p class="summary">OpenAI, a prominent leader in artificial intelligence research and development, is reportedly anticipating an unprecedented financial requirement of up to $400 billion over the next 12 months to fund its ambitious endeavors. This colossal figure highlights the escalating costs associated with pioneering advancements in the AI sector, particularly for companies operating at the forefront of large language model development. The projected capital would be critical for several key areas, including the massive procurement of advanced computing infrastructure, such as state-of-the-art GPUs, essential for training and deploying increasingly complex AI models. Additionally, these funds would support extensive research initiatives, attract top-tier AI talent, and facilitate the global scaling of its innovative AI products and services. The scale of this investment reflects the intense competition and significant infrastructure demands inherent in pushing the boundaries of artificial intelligence, as well as OpenAI's strategic intent to maintain its leadership position in the global AI race.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Large Language Models</span><span>AI Research</span><span>AI Infrastructure</span><span>GPU Computing</span><span>AI Investment</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.wheresyoured.at/openai400bn/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Claude Skills are awesome, maybe a bigger deal than MCP</h2>
+                <span class="published-time">Published: 2025-10-17 17:40:21</span>
+                
+                <p class="summary">The recent introduction of 'Claude Skills' by Anthropic marks a pivotal advancement in the field of artificial intelligence, with some observers suggesting its potential impact could exceed that of previously established benchmarks or paradigms, colloquially referred to as 'MCP'. These new capabilities are anticipated to significantly enhance Claude's ability to perform complex, multi-step tasks, utilize external tools more effectively, and interact with dynamic environments with greater autonomy. The concept of 'Skills' likely refers to a sophisticated framework allowing the AI to learn, adapt, and execute specialized functions, moving beyond conventional conversational or generative tasks. This development points towards a future where large language models are not merely predictive text engines but highly capable AI agents, capable of orchestrating sophisticated workflows and solving problems that require deep integration with real-world systems. The discussion around its significance highlights a growing trend towards more agentic AI, emphasizing practical utility and robust problem-solving, potentially redefining the landscape of AI applications and human-AI collaboration.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agents</span><span>Large Language Models</span><span>Tool Use</span><span>Anthropic Claude</span><span>AI Capabilities</span><span>Autonomous Systems</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://simonwillison.net/2025/Oct/16/claude-skills/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Andrej Karpathy – AGI is still a decade away</h2>
+                <span class="published-time">Published: 2025-10-17 17:24:18</span>
+                
+                <p class="summary">Prominent AI researcher Andrej Karpathy recently articulated his perspective on the timeline for achieving Artificial General Intelligence (AGI), suggesting that such a milestone remains approximately a decade in the future. This assessment implies that despite rapid advancements in specialized AI domains, fundamental breakthroughs are still required to reach a level of machine intelligence capable of performing any intellectual task that a human can. Karpathy's view likely stems from an analysis of current AI limitations, including challenges in common-sense reasoning, true understanding, and the ability to generalize across vastly different contexts without extensive retraining. His prediction offers a counterpoint to more optimistic timelines, emphasizing the complexity of mimicking human-level cognitive flexibility and adaptability. It underscores the ongoing need for significant research and development in areas beyond current narrow AI capabilities to bridge the gap towards truly general intelligence, influencing the strategic direction of future AI investment and research priorities across the industry.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial General Intelligence</span><span>AI Development</span><span>AI Predictions</span><span>Machine Learning</span><span>Deep Learning</span><span>AI Timelines</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.dwarkesh.com/p/andrej-karpathy" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: We packaged an MCP server inside Chromium</h2>
+                <span class="published-time">Published: 2025-10-17 16:22:07</span>
+                
+                <p class="summary">BrowserOS, a YC startup (S24) developing an open-source Chromium fork, has announced the integration of an MCP (Machine Control Protocol) server directly into its browser binary. Positioned as a privacy-first alternative to emerging AI browsers, this feature responds to significant user demand. Unlike Google's `chrome-devtools-mcp`, which requires external setup and utilizes fresh headless instances, BrowserOS's approach simplifies the developer experience. The direct packaging offers three main benefits: streamlined setup without `npx install` or specific Chrome DevTools Protocol (CDP) flags, enabling AI agents to interact with a user's currently logged-in browser sessions, and generally enhancing the efficiency of web application development and debugging through AI assistance within a familiar, privacy-focused environment. This innovation aims to provide a more integrated and user-friendly platform for leveraging AI agents.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>MCP server</span><span>Chromium fork</span><span>BrowserOS</span><span>AI browsers</span><span>privacy-first browser</span><span>AI agents</span><span>browser integration</span><span>developer tools</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/browseros-ai/BrowserOS/blob/main/docs/browseros-mcp/how-to-guide.mdx" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI has a cargo cult problem</h2>
+                <span class="published-time">Published: 2025-10-17 16:09:02</span>
+                
+                <p class="summary">The article, titled "AI has a cargo cult problem," identifies a critical issue within the artificial intelligence community: the tendency for practitioners to adopt and apply popular AI models and methodologies by merely mimicking their superficial characteristics, rather than deeply understanding their theoretical underpinnings, operational mechanisms, and inherent limitations. This phenomenon, analogous to a cargo cult, can lead to the widespread deployment of AI solutions based on observed empirical success in narrow contexts, often without sufficient scrutiny regarding their broader applicability, ethical implications, or robustness across varying data distributions. Such an approach risks the development of brittle, uninterpretable, and potentially unreliable AI systems, ultimately impeding genuine innovation and responsible progress in the field. The piece underscores the imperative for a more rigorous, principle-driven approach to AI development, advocating for a transition from simply replicating current trends to fostering a comprehensive understanding of AI's intricate complexities to build more resilient, accountable, and impactful technologies.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI ethics</span><span>AI limitations</span><span>Responsible AI</span><span>AI research methodology</span><span>Model interpretability</span><span>AI adoption challenges</span><span>Theoretical foundations</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.ft.com/content/f2025ac7-a71f-464f-a3a6-1e39c98612c7" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>MiniMind</h2>
+                <span class="published-time">Published: 2025-10-17T16:24:36Z</span>
+                
+                <p class="summary">MiniMind is an open-source project focused on enabling the training of ultra-small language models (LLMs) from scratch with minimal resources – as little as $0.50 and 2 hours on a single GPU. It offers a comprehensive, simplified framework for building LLMs, including native PyTorch implementations of essential components like tokenizers, pre-training, supervised fine-tuning (SFT), LoRA, Direct Preference Optimization (DPO), and model distillation. The project also extends to multimodal capabilities with MiniMind-V and provides cleaned, high-quality datasets. Designed as both a full-stage LLM reproduction and a learning tutorial, MiniMind aims to democratize LLM development, allowing individuals to understand and build models from the ground up, fostering broader AI community engagement and innovation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>Deep Learning</span><span>PyTorch</span><span>Low-Resource Training</span><span>Model Distillation</span><span>MoE Architecture</span><span>Fine-tuning</span><span>Natural Language Processing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/jingyaogong/minimind" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>HuLa: A Real-time Communication System built with Tauri, Vite 7, Vue 3, and TypeScript</h2>
+                <span class="published-time">Published: 2025-10-17T07:13:40Z</span>
+                
+                <p class="summary">HuLa is a robust, cross-platform instant messaging system engineered with modern web technologies including Tauri, Vite 7, Vue 3, and TypeScript. It offers a comprehensive suite of communication features, spanning individual and group chats, message recall, @mentions, read statuses, emojis, and message reactions. The system prioritizes user experience with a modern UI design, dark/light themes, and customizable skins. Core functionalities also extend to social management, enabling friend additions/deletions, group creation, and online status tracking. HuLa's technical foundation leverages Tauri for a lightweight, high-performance desktop container, Vue 3 for a responsive user interface, Vite 7 for rapid development, and TypeScript for enhanced type safety, making it an efficient and secure solution. Furthermore, the system supports various platforms including Windows, macOS, Linux, iOS, and Android, and integrates AI features such as an AI chat assistant, designed to enhance user interaction and offer multi-platform AI support.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Tauri</span><span>Vite</span><span>Vue 3</span><span>TypeScript</span><span>Instant Messaging</span><span>Cross-platform</span><span>Real-time Communication</span><span>AI Chatbot</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/HulaSpark/HuLa" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Attention Is All You Need for KV Cache in Diffusion LLMs</h2>
+                <span class="published-time">Published: 2025-10-16T17:59:48.000Z</span>
+                
+                <p class="summary">This work studies how to adaptively recompute key-value (KV) caches for diffusion large language models (DLMs) to maximize prediction accuracy while minimizing decoding latency. Prior methods' decoders recompute QKV for all tokens at every denoising step and layer, despite KV states changing little across most steps, especially in shallow layers, leading to substantial redundancy. We make three observations: (1) distant MASK tokens primarily act as a length-bias and can be cached block-wise beyond the active prediction window; (2) KV dynamics increase with depth, suggesting that selective refresh starting from deeper layers is sufficient; and (3) the most-attended token exhibits the smallest KV drift, providing a conservative lower bound on cache change for other tokens. Building on these, we propose Elastic-Cache, a training-free, architecture-agnostic strategy that jointly decides when to refresh (via an attention-aware drift test on the most-attended token) and where to refresh (via a depth-aware schedule that recomputes from a chosen layer onward while reusing shallow-layer caches and off-window MASK caches). Unlike fixed-period schemes, Elastic-Cache performs adaptive, layer-aware cache updates for diffusion LLMs, reducing redundant computation and accelerating decoding with negligible loss in generation quality. Experiments on LLaDA-Instruct, LLaDA-1.5, and LLaDA-V across mathematical reasoning and code generation tasks demonstrate consistent speedups: 8.7times on GSM8K (256 tokens), 45.1times on longer sequences, and 4.8times on HumanEval, while consistently maintaining higher accuracy than the baseline. Our method achieves significantly higher throughput (6.8times on GSM8K) than existing confidence-based approaches while preserving generation quality, enabling practical deployment of diffusion LLMs.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>KV Cache</span><span>Diffusion Large Language Models</span><span>Decoding Acceleration</span><span>Adaptive Cache Management</span><span>Attention Mechanisms</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Generative AI</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.14973" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>When Models Lie, We Learn: Multilingual Span-Level Hallucination Detection with PsiloQA</h2>
+                <span class="published-time">Published: 2025-10-06T14:36:30.000Z</span>
+                
+                <p class="summary">Hallucination detection remains a fundamental challenge for the safe and reliable deployment of large language models (LLMs), especially in applications requiring factual accuracy. Existing hallucination benchmarks often operate at the sequence level and are limited to English, lacking the fine-grained, multilingual supervision needed for a comprehensive evaluation. In this work, we introduce PsiloQA, a large-scale, multilingual dataset annotated with span-level hallucinations across 14 languages. PsiloQA is constructed through an automated three-stage pipeline: generating question-answer pairs from Wikipedia using GPT-4o, eliciting potentially hallucinated answers from diverse LLMs in a no-context setting, and automatically annotating hallucinated spans using GPT-4o by comparing against golden answers and retrieved context. We evaluate a wide range of hallucination detection methods -- including uncertainty quantification, LLM-based tagging, and fine-tuned encoder models -- and show that encoder-based models achieve the strongest performance across languages. Furthermore, PsiloQA demonstrates effective cross-lingual generalization and supports robust knowledge transfer to other benchmarks, all while being significantly more cost-efficient than human-annotated datasets. Our dataset and results advance the development of scalable, fine-grained hallucination detection in multilingual settings.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Hallucination Detection</span><span>Large Language Models</span><span>Multilingual</span><span>Span-Level</span><span>Dataset</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.04849" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Agentic Entropy-Balanced Policy Optimization</h2>
+                <span class="published-time">Published: 2025-10-16T10:40:52.000Z</span>
+                
+                <p class="summary">Recently, Agentic Reinforcement Learning (Agentic RL) has made significant progress in incentivizing the multi-turn, long-horizon tool-use capabilities of web agents. While mainstream agentic RL algorithms autonomously explore high-uncertainty tool-call steps under the guidance of entropy, excessive reliance on entropy signals can impose further constraints, leading to the training collapse. In this paper, we delve into the challenges caused by entropy and propose the Agentic Entropy-Balanced Policy Optimization (AEPO), an agentic RL algorithm designed to balance entropy in both the rollout and policy update phases. AEPO comprises two core components: (1) a dynamic entropy-balanced rollout mechanism that adaptively allocate global and branch sampling budget through entropy pre-monitoring, while imposing a branch penalty on consecutive high-entropy tool-call steps to prevent over-branching issues; and (2) Entropy-Balanced Policy Optimization that inserts a stop-gradient operation into the high-entropy clipping term to preserve and properly rescale gradients on high-entropy tokens, while incorporating entropy-aware advantage estimation to prioritize learning on high-uncertainty tokens. Results across 14 challenging datasets show that AEPO consistently outperforms 7 mainstream RL algorithms. With just 1K RL samples, Qwen3-14B with AEPO achieves impressive results: 47.6% on GAIA, 11.2% on Humanity's Last Exam, and 43.0% on WebWalker for Pass@1; 65.0% on GAIA, 26.0% on Humanity's Last Exam, and 70.0% on WebWalker for Pass@5. Further analysis reveals that AEPO improves rollout sampling diversity while maintaining stable policy entropy, facilitating scalable web agent training.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Agentic Reinforcement Learning</span><span>Entropy Balancing</span><span>Policy Optimization</span><span>Web Agents</span><span>Tool-use</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Machine Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.14545" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>VLA^2: Empowering Vision-Language-Action Models with an Agentic Framework for Unseen Concept Manipulation</h2>
+                <span class="published-time">Published: 2025-10-16T17:18:34.000Z</span>
+                
+                <p class="summary">Current vision-language-action (VLA) models, pre-trained on large-scale robotic data, exhibit strong multi-task capabilities and generalize well to variations in visual and language instructions for manipulation. However, their success rate drops significantly when faced with object concepts outside the training data, such as unseen object descriptions and textures in the dataset. To address this, we propose a novel agentic framework, VLA^2, which leverages OpenVLA as the execution backbone and effectively leverages external modules such as web retrieval and object detection to provide visual and textual knowledge about target objects to the VLA. This approach mitigates generalization failure when handling out-of-distribution objects. Based on the LIBERO simulation environment, we introduced novel objects and object descriptions to construct a new evaluation benchmark with three difficulty levels to test the effectiveness of our method. Our framework successfully outperformed the current state-of-the-art models on our designed hard-level generalization benchmark. Compared to the standalone OpenVLA baseline, VLA^2 achieves a 44.2% improvement in the success rate in the hard-level benchmark and an average improvement of 20.2% in all customized environments without any performance degradation on in-domain tasks. Project website: https://vla-2.github.io.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Vision-Language-Action Models</span><span>Agentic Framework</span><span>Unseen Concept Manipulation</span><span>Robotics</span><span>Generalization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Multimodal</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.14902" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>ImagerySearch: Adaptive Test-Time Search for Video Generation Beyond Semantic Dependency Constraints</h2>
+                <span class="published-time">Published: 2025-10-16T16:19:13.000Z</span>
+                
+                <p class="summary">Video generation models have achieved remarkable progress, particularly excelling in realistic scenarios; however, their performance degrades notably in imaginative scenarios. These prompts often involve rarely co-occurring concepts with long-distance semantic relationships, falling outside training distributions. Existing methods typically apply test-time scaling for improving video quality, but their fixed search spaces and static reward designs limit adaptability to imaginative scenarios. To fill this gap, we propose ImagerySearch, a prompt-guided adaptive test-time search strategy that dynamically adjusts both the inference search space and reward function according to semantic relationships in the prompt. This enables more coherent and visually plausible videos in challenging imaginative settings. To evaluate progress in this direction, we introduce LDT-Bench, the first dedicated benchmark for long-distance semantic prompts, consisting of 2,839 diverse concept pairs and an automated protocol for assessing creative generation capabilities. Extensive experiments show that ImagerySearch consistently outperforms strong video generation baselines and existing test-time scaling approaches on LDT-Bench, and achieves competitive improvements on VBench, demonstrating its effectiveness across diverse prompt types. We will release LDT-Bench and code to facilitate future research on imaginative video generation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Generation</span><span>Test-Time Search</span><span>Semantic Dependency</span><span>Imaginative Scenarios</span><span>LDT-Bench</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.14847" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>WithAnyone: Towards Controllable and ID Consistent Image Generation</h2>
+                <span class="published-time">Published: 2025-10-16T17:59:54.000Z</span>
+                
+                <p class="summary">Identity-consistent generation has become an important focus in text-to-image research, with recent models achieving notable success in producing images aligned with a reference identity. Yet, the scarcity of large-scale paired datasets containing multiple images of the same individual forces most approaches to adopt reconstruction-based training. This reliance often leads to a failure mode we term copy-paste, where the model directly replicates the reference face rather than preserving identity across natural variations in pose, expression, or lighting. Such over-similarity undermines controllability and limits the expressive power of generation. To address these limitations, we (1) construct a large-scale paired dataset MultiID-2M, tailored for multi-person scenarios, providing diverse references for each identity; (2) introduce a benchmark that quantifies both copy-paste artifacts and the trade-off between identity fidelity and variation; and (3) propose a novel training paradigm with a contrastive identity loss that leverages paired data to balance fidelity with diversity. These contributions culminate in WithAnyone, a diffusion-based model that effectively mitigates copy-paste while preserving high identity similarity. Extensive qualitative and quantitative experiments demonstrate that WithAnyone significantly reduces copy-paste artifacts, improves controllability over pose and expression, and maintains strong perceptual quality. User studies further validate that our method achieves high identity fidelity while enabling expressive controllable generation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Identity-consistent generation</span><span>Text-to-image</span><span>Diffusion models</span><span>Controllable image generation</span><span>Identity fidelity</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Deep Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.14975" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
