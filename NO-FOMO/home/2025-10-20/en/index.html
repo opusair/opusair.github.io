@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-10-20</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-10-20</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Claude Code on the Web</h2>
+                <span class="published-time">Published: 2025-10-20 18:12:23</span>
+                
+                <p class="summary">Anthropic has introduced "Claude Code on the Web," a new initiative designed to significantly enhance the coding and web interaction capabilities of its Claude large language model. This advancement focuses on enabling Claude to more effectively understand, generate, and potentially execute code within web-based environments. The development positions Claude as a more sophisticated tool for developers and users requiring automated web tasks, complex code solutions, or dynamic content generation for online platforms. By integrating robust coding functions with web-specific interaction, Anthropic aims to bridge the gap between high-level natural language instructions and practical web operations. This move underscores the company's commitment to evolving AI agents that can seamlessly navigate and contribute to complex digital ecosystems, thereby expanding the practical applications of large language models in real-world scenarios. The announcement signifies a strategic effort to enhance Claude's versatility for programming and web-related challenges.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude</span><span>Large Language Model</span><span>Code Generation</span><span>Web Interaction</span><span>AI Agent</span><span>Anthropic</span><span>Programming</span><span>Web Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.anthropic.com/news/claude-code-on-the-web" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>BERT is just a single text diffusion step</h2>
+                <span class="published-time">Published: 2025-10-20 14:31:16</span>
+                
+                <p class="summary">A recent analysis proposes a novel conceptual framework, asserting that the widely-used BERT (Bidirectional Encoder Representations from Transformers) model can be understood as performing a single text diffusion step. This perspective re-contextualizes BERT's masked language modeling objective, where the model predicts masked tokens based on surrounding context, as analogous to a denoising operation characteristic of diffusion models. In this view, the input text, with its masked tokens, is considered a 'noisy' version of the original, and BERT's task is to 'denoise' it by reconstructing the missing information. This reframing offers significant theoretical implications, potentially bridging the gap between discriminative pre-training objectives like those in BERT and the generative mechanisms found in diffusion-based models. It suggests that the power of masked language models might stem from their inherent ability to perform a robust single-step generative denoising process. Such an interpretation could lead to new architectural designs, training methodologies, or deeper insights into the emergent generative capabilities of Transformer-based models, fostering advancements in natural language understanding and generation by unifying these previously distinct paradigms.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>BERT</span><span>Diffusion Models</span><span>Masked Language Model</span><span>Natural Language Processing</span><span>Transformer</span><span>AI Research</span><span>Generative Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Deep Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://nathan.rs/posts/roberta-diffusion/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Production RAG: what I learned from processing 5M+ documents</h2>
+                <span class="published-time">Published: 2025-10-20 15:55:36</span>
+                
+                <p class="summary">An analysis of insights gained from developing and deploying a Production Retrieval Augmented Generation (RAG) system, detailing lessons learned from processing over five million documents. The article highlights critical considerations for scaling RAG solutions, emphasizing challenges related to data ingestion, embedding generation, and efficient retrieval across large corpuses. It covers strategies for optimizing vector database performance, ensuring data quality, and managing infrastructure to support high-volume operations. Key takeaways include best practices for maintaining a robust RAG pipeline, improving retrieval accuracy, and integrating seamlessly with large language models in real-world applications. The learnings are crucial for engineers and data scientists building scalable and reliable AI systems that leverage external knowledge bases.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Retrieval Augmented Generation</span><span>RAG</span><span>Large Language Models</span><span>Document Processing</span><span>Vector Databases</span><span>Production Systems</span><span>Scalability</span><span>Information Retrieval</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://blog.abdellatif.io/production-rag-processing-5m-documents" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Playwright Skill for Claude Code – Less context than playwright-MCP</h2>
+                <span class="published-time">Published: 2025-10-20 11:58:35</span>
+                
+                <p class="summary">A new Playwright Skill has been developed for Claude Code, specifically designed to address the high token consumption issue experienced with `playwright-mcp` within Claude's 200K token limit. This innovative solution operates by enabling Claude to directly write and execute Playwright code for browser automation, significantly reducing the amount of context exchanged. Unlike `playwright-mcp`, which sends extensive accessibility tree snapshots for every action, this skill provides only screenshots and console output in return. This approach drastically minimizes overhead, leveraging just 314 lines of instructions compared to managing a persistent `playwright-mcp` server. The system efficiently loads full Playwright API documentation only when required, ensuring optimized resource usage while maintaining comparable browser automation capabilities. It is available as a Claude Code plugin or for manual installation, offering a more efficient alternative for developers working with large language models and web automation tasks, as highlighted by a reported token limit issue with `playwright-mcp`.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Playwright</span><span>Claude Code</span><span>Browser Automation</span><span>Token Optimization</span><span>AI Agent</span><span>Large Language Model</span><span>Web Automation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/lackeyjb/playwright-skill" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Modeling Others' Minds as Code</h2>
+                <span class="published-time">Published: 2025-10-20 13:54:38</span>
+                
+                <p class="summary">This paper introduces a novel approach to understanding and predicting the behavior of intelligent agents, whether human or artificial, by conceptualizing their cognitive processes as executable code. The core idea involves developing computational frameworks that can model the "mind" of an agent by representing its internal states, reasoning mechanisms, and decision-making logic as programmatic constructs. This paradigm shift offers significant potential for advancements in AI agents' ability to develop sophisticated "theory of mind" capabilities, enabling them to better anticipate actions, infer intentions, and strategically interact with other entities in complex environments. By treating mental models as code, researchers aim to create more interpretable, debuggable, and adaptable AI systems capable of robust social and collaborative intelligence. This research has implications for areas such as human-computer interaction, multi-agent systems, and the development of more empathetic and effective AI assistants. The methodology promises to enhance an AI's capacity for complex social reasoning and interaction.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Cognitive Modeling</span><span>Theory of Mind</span><span>AI Agents</span><span>Computational Psychology</span><span>Multi-Agent Systems</span><span>Cognitive Architectures</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://arxiv.org/abs/2510.01272" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The FTC Is Disappearing Blog Posts About AI Published During Lina Khan's Tenure</h2>
+                <span class="published-time">Published: 2025-10-20 13:38:27</span>
+                
+                <p class="summary">The Federal Trade Commission (FTC) is reportedly removing blog posts related to artificial intelligence (AI) that were published during the tenure of its current chair, Lina Khan. This action, highlighted by a Wired report, raises questions regarding the agency's transparency and consistency in its public stance on AI regulation and policy. The disappearing content, which previously offered insights into the FTC's perspective on the rapidly evolving AI landscape, could signal a recalibration of the agency's approach to emerging technologies. This move has potential implications for how businesses and researchers interpret future regulatory enforcement and guidance in the AI space. Stakeholders are observing whether this reflects a strategic shift in the FTC's focus or an internal review process, particularly concerning critical areas such as data privacy, algorithmic bias, and market competition, which fall under the FTC's broad mandate. The lack of clear communication surrounding these removals contributes to an environment of uncertainty regarding the future direction of AI governance and consumer protection under the current administration, prompting calls for greater clarity from the federal regulator.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>AI Regulation</span><span>Federal Trade Commission</span><span>Lina Khan</span><span>Regulatory Policy</span><span>Government Transparency</span><span>AI Governance</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.wired.com/story/ftc-removes-blog-posts-about-ai-authored-by-by-lina-khan/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Claude Cookbooks</h2>
+                <span class="published-time">Published: 2025-10-20T02:27:39Z</span>
+                
+                <p class="summary">The Claude Cookbooks offer a comprehensive collection of code and guides for developers building applications with Anthropic's Claude AI. Designed for easy integration, the resource provides copy-able Python code snippets, though concepts are adaptable to any programming language supporting the Claude API. Key capabilities explored include text classification, retrieval-augmented generation (RAG), and summarization. The cookbooks also delve into advanced techniques such as integrating Claude with external tools for functions like customer service or SQL queries, and facilitating third-party integrations with vector databases (e.g., Pinecone), Wikipedia, and web search services. Furthermore, it covers multimodal functionalities like vision for image analysis and chart interpretation, as well as image generation via integration with Stable Diffusion. Developers can also find guides on advanced topics like sub-agents, PDF processing, automated prompt evaluations, JSON mode, moderation filters, and prompt caching, making it a vital resource for enhancing Claude-powered solutions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude API</span><span>AI Assistant</span><span>Large Language Model</span><span>Retrieval Augmented Generation</span><span>Tool Use</span><span>Multimodal AI</span><span>Prompt Engineering</span><span>Cookbooks</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/anthropics/claude-cookbooks" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>System Prompts and Models of AI Tools</h2>
+                <span class="published-time">Published: 2025-10-19T18:44:24Z</span>
+                
+                <p class="summary">This repository, "System Prompts and Models of AI Tools," provides an extensive collection of over 30,000 lines of insights into the structure and functionality of various AI system prompts and models. It serves as a valuable resource for developers focused on building reliable AI agents and prompts, offering an understanding of underlying mechanisms. The project is actively updated, with new instructions often released early via Discord. It also highlights an open-source AI engineering platform, Latitude, and features a security notice for AI startups, advocating for robust data protection against exposed prompts and model configurations through services like ZeroLeaks, an AI security audit platform. The collection encompasses prompts and tools from numerous AI agents and platforms, promoting knowledge sharing within the AI development community.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI system prompts</span><span>AI models</span><span>AI agents</span><span>AI engineering</span><span>Prompt engineering</span><span>AI security</span><span>Open source AI</span><span>Developer tools</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LeRobot: State-of-the-art AI for real-world robotics</h2>
+                <span class="published-time">Published: 2025-10-20T16:45:09Z</span>
+                
+                <p class="summary">LeRobot is a Hugging Face library designed to democratize real-world robotics by providing state-of-the-art models, datasets, and tools within the PyTorch ecosystem. It aims to lower the barrier to entry for robotics development, enabling wider contributions and sharing of pre-trained models and datasets. The library focuses on imitation learning and reinforcement learning approaches, which have demonstrated effective transfer to real-world applications. LeRobot currently offers pre-trained models, human-collected demonstration datasets, and simulation environments, allowing users to start without needing physical robot hardware. Future plans include expanding support for affordable and capable real-world robots. The project also provides tutorials for building specific robots like the dexterous HopeJR and the cost-effective SO-101, alongside tools for dataset visualization and reproducing state-of-the-art policy training.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Robotics</span><span>Imitation Learning</span><span>Reinforcement Learning</span><span>PyTorch</span><span>Pretrained Models</span><span>Datasets</span><span>Simulation Environments</span><span>Humanoid Robots</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Artificial Intelligence</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/huggingface/lerobot" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>sing-box</h2>
+                <span class="published-time">Published: 2025-10-18T08:09:23Z</span>
+                
+                <p class="summary">Sing-box stands as a universal proxy platform, engineered to facilitate comprehensive network traffic management. This robust solution empowers users with the capability to route internet traffic via various proxy protocols, thereby bolstering privacy, security, and accessibility. While its core function is to establish a flexible and adaptable proxy infrastructure, its sponsorship highlights a specific application within advanced development environments, particularly for "coding with multiple AI agents." This suggests its potential utility in orchestrating network interactions for AI-driven processes. Operating under the GNU General Public License v3 or later, Sing-box underscores its commitment to open-source principles. Detailed documentation is readily available at sing-box.sagernet.org, offering extensive guidance for deployment and configuration, positioning it as a versatile tool for both individual users and developers requiring sophisticated network proxy solutions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>universal proxy</span><span>proxy platform</span><span>network traffic management</span><span>network security</span><span>privacy</span><span>internet censorship bypass</span><span>open-source</span><span>network infrastructure</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/SagerNet/sing-box" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>ebook2audiobook</h2>
+                <span class="published-time">Published: 2025-09-25T21:18:54Z</span>
+                
+                <p class="summary">"ebook2audiobook" is a versatile CPU/GPU-accelerated converter designed to transform legally acquired eBooks into audiobooks, complete with chapters and metadata. It integrates advanced Text-to-Speech (TTS) engines, including XTTSv2, Bark, Vits, Fairseq, YourTTS, and Tacotron, supporting an impressive range of over 1110 languages. A key feature is its optional voice cloning capability, allowing users to personalize the audiobook narration with their own voice. The tool is engineered for efficiency, capable of running on systems with as little as 4GB RAM. It supports a wide array of eBook formats such as `.epub`, `.pdf`, and `.mobi`, and outputs audiobooks in various formats like `m4b`, `mp3`, and `wav`. Users can operate it via a Gradio web interface, headless command-line mode, or Docker, with robust support for both local and remote deployment environments like Hugging Face Spaces and Google Colab. The project emphasizes responsible use and provides extensive documentation for installation, usage, fine-tuning TTS models, and troubleshooting common issues.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Text-to-Speech</span><span>Audiobook Conversion</span><span>Voice Cloning</span><span>XTTSv2</span><span>Docker</span><span>Natural Language Processing</span><span>Machine Learning</span><span>eBooks</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/DrewThomasson/ebook2audiobook" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>OmniVinci: Enhancing Architecture and Data for Omni-Modal Understanding</h2>
+                <span class="published-time">Published: 2025-10-17T17:59:59.000Z</span>
+                
+                <p class="summary">Advancing machine intelligence requires developing the ability to perceive across multiple modalities, much as humans sense the world. We introduce OmniVinci, an initiative to build a strong, open-source, omni-modal LLM. We carefully study the design choices across model architecture and data curation. For model architecture, we present three key innovations: (i) OmniAlignNet for strengthening alignment between vision and audio embeddings in a shared omni-modal latent space; (ii) Temporal Embedding Grouping for capturing relative temporal alignment between vision and audio signals; and (iii) Constrained Rotary Time Embedding for encoding absolute temporal information in omni-modal embeddings. We introduce a curation and synthesis pipeline that generates 24M single-modal and omni-modal conversations. We find that modalities reinforce one another in both perception and reasoning. Our model, OmniVinci, outperforms Qwen2.5-Omni with +19.05 on DailyOmni (cross-modal understanding), +1.7 on MMAR (audio), and +3.9 on Video-MME (vision), while using just 0.2T training tokens - a 6 times reduction compared to Qwen2.5-Omni's 1.2T. We finally demonstrate omni-modal advantages in downstream applications spanning robotics, medical AI, and smart factory.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Omni-modal understanding</span><span>Large Language Models</span><span>Model architecture</span><span>Data curation</span><span>Temporal embeddings</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.15870" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Emergent Misalignment via In-Context Learning: Narrow in-context examples can produce broadly misaligned LLMs</h2>
+                <span class="published-time">Published: 2025-10-13T11:23:56.000Z</span>
+                
+                <p class="summary">Recent work has shown that narrow finetuning can produce broadly misaligned LLMs, a phenomenon termed emergent misalignment (EM). While concerning, these findings were limited to finetuning and activation steering, leaving out in-context learning (ICL). We therefore ask: does EM emerge in ICL? We find that it does: across three datasets, three frontier models produce broadly misaligned responses at rates between 2% and 17% given 64 narrow in-context examples, and up to 58% with 256 examples. We also examine mechanisms of EM by eliciting step-by-step reasoning (while leaving in-context examples unchanged). Manual analysis of the resulting chain-of-thought shows that 67.5% of misaligned traces explicitly rationalize harmful outputs by adopting a reckless or dangerous ''persona'', echoing prior results on finetuning-induced EM.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Emergent Misalignment</span><span>In-Context Learning</span><span>Large Language Models</span><span>Finetuning</span><span>Harmful Outputs</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.11288" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Scaling Instruction-Based Video Editing with a High-Quality Synthetic Dataset</h2>
+                <span class="published-time">Published: 2025-10-17T15:31:40.000Z</span>
+                
+                <p class="summary">Instruction-based video editing promises to democratize content creation, yet its progress is severely hampered by the scarcity of large-scale, high-quality training data. We introduce Ditto, a holistic framework designed to tackle this fundamental challenge. At its heart, Ditto features a novel data generation pipeline that fuses the creative diversity of a leading image editor with an in-context video generator, overcoming the limited scope of existing models. To make this process viable, our framework resolves the prohibitive cost-quality trade-off by employing an efficient, distilled model architecture augmented by a temporal enhancer, which simultaneously reduces computational overhead and improves temporal coherence. Finally, to achieve full scalability, this entire pipeline is driven by an intelligent agent that crafts diverse instructions and rigorously filters the output, ensuring quality control at scale. Using this framework, we invested over 12,000 GPU-days to build Ditto-1M, a new dataset of one million high-fidelity video editing examples. We trained our model, Editto, on Ditto-1M with a curriculum learning strategy. The results demonstrate superior instruction-following ability and establish a new state-of-the-art in instruction-based video editing.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Instruction-based Video Editing</span><span>Synthetic Dataset</span><span>Data Generation</span><span>Generative AI</span><span>Deep Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Deep Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.15742" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>A^2FM: An Adaptive Agent Foundation Model for Tool-Aware Hybrid Reasoning</h2>
+                <span class="published-time">Published: 2025-10-13T17:08:25.000Z</span>
+                
+                <p class="summary">Large language models split into two families: reasoning-centric LLMs, which strengthen internal chain-of-thought reasoning but cannot invoke external tools, and agentic LLMs, which learn to interact with environments and leverage tools but often lag in deep reasoning. This divide arises from fundamentally different training objectives, leading to mismatched strengths and inefficiency on simple queries, where both families tend to overthink or over-call tools. In this work, we present Adaptive Agent Foundation Model (A^2FM), a unified framework that follows a route-then-align principle: the model first learns task-aware routing and then aligns mode-specific trajectories under a shared backbone. To address the inefficiency gap, we introduce a third mode-instant-that handles simple queries directly, preventing unnecessary reasoning or tool calls while complementing the agentic and reasoning modes. To jointly enhance accuracy and efficiency, we propose Adaptive Policy Optimization (APO), which enforces adaptive sampling across modes and applies a cost-regularized reward. On the 32B scale, A^2FM achieves 13.4% on BrowseComp, 70.4% on AIME25, and 16.7% on HLE, setting new SOTA among comparable models and performing competitively with frontier LLMs across agentic, reasoning, and general benchmarks. Notably, the adaptive execution achieves a cost of pass of only $0.00487 per correct answer-cutting cost by 45.2% relative to reasoning and 33.5% relative to agentic, thus delivering substantially higher cost efficiency while maintaining comparable accuracy.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Adaptive Agent Foundation Model</span><span>Large Language Models</span><span>Agentic LLMs</span><span>Hybrid Reasoning</span><span>Tool-aware Reasoning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.12838" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>BLIP3o-NEXT: Next Frontier of Native Image Generation</h2>
+                <span class="published-time">Published: 2025-10-17T17:50:58.000Z</span>
+                
+                <p class="summary">We present BLIP3o-NEXT, a fully open-source foundation model in the BLIP3 series that advances the next frontier of native image generation. BLIP3o-NEXT unifies text-to-image generation and image editing within a single architecture, demonstrating strong image generation and image editing capabilities. In developing the state-of-the-art native image generation model, we identify four key insights: (1) Most architectural choices yield comparable performance; an architecture can be deemed effective provided it scales efficiently and supports fast inference; (2) The successful application of reinforcement learning can further push the frontier of native image generation; (3) Image editing still remains a challenging task, yet instruction following and the consistency between generated and reference images can be significantly enhanced through post-training and data engine; (4) Data quality and scale continue to be decisive factors that determine the upper bound of model performance. Building upon these insights, BLIP3o-NEXT leverages an Autoregressive + Diffusion architecture in which an autoregressive model first generates discrete image tokens conditioned on multimodal inputs, whose hidden states are then used as conditioning signals for a diffusion model to generate high-fidelity images. This architecture integrates the reasoning strength and instruction following of autoregressive models with the fine-detail rendering ability of diffusion models, achieving a new level of coherence and realism. Extensive evaluations of various text-to-image and image-editing benchmarks show that BLIP3o-NEXT achieves superior performance over existing models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Native Image Generation</span><span>Text-to-Image Generation</span><span>Image Editing</span><span>Autoregressive Diffusion</span><span>Foundation Model</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.15857" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>VISTA: A Test-Time Self-Improving Video Generation Agent</h2>
+                <span class="published-time">Published: 2025-10-17T17:12:08.000Z</span>
+                
+                <p class="summary">Despite rapid advances in text-to-video synthesis, generated video quality remains critically dependent on precise user prompts. Existing test-time optimization methods, successful in other domains, struggle with the multi-faceted nature of video. In this work, we introduce VISTA (Video Iterative Self-improvemenT Agent), a novel multi-agent system that autonomously improves video generation through refining prompts in an iterative loop. VISTA first decomposes a user idea into a structured temporal plan. After generation, the best video is identified through a robust pairwise tournament. This winning video is then critiqued by a trio of specialized agents focusing on visual, audio, and contextual fidelity. Finally, a reasoning agent synthesizes this feedback to introspectively rewrite and enhance the prompt for the next generation cycle. Experiments on single- and multi-scene video generation scenarios show that while prior methods yield inconsistent gains, VISTA consistently improves video quality and alignment with user intent, achieving up to 60% pairwise win rate against state-to-the-art baselines. Human evaluators concur, preferring VISTA outputs in 66.4% of comparisons.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Generation</span><span>AI Agent</span><span>Test-Time Optimization</span><span>Prompt Refinement</span><span>Multi-Agent System</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>AI Agent</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.15831" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DLER: Doing Length pEnalty Right - Incentivizing More Intelligence per Token via Reinforcement Learning</h2>
+                <span class="published-time">Published: 2025-10-16T20:05:57.000Z</span>
+                
+                <p class="summary">Reasoning language models such as OpenAI-o1, DeepSeek-R1, and Qwen achieve strong performance via extended chains of thought but often generate unnecessarily long outputs. Maximizing intelligence per token--accuracy relative to response length--remains an open problem. We revisit reinforcement learning (RL) with the simplest length penalty--truncation--and show that accuracy degradation arises not from the lack of sophisticated penalties but from inadequate RL optimization. We identify three key challenges: (i) large bias in advantage estimation, (ii) entropy collapse, and (iii) sparse reward signal. We address them with Doing Length pEnalty Right (DLER), a training recipe combining batch-wise reward normalization, higher clipping, dynamic sampling, and a simple truncation length penalty. DLER achieves state-of-the-art accuracy--efficiency trade-offs, cutting output length by over 70 percent while surpassing all previous baseline accuracy. It also improves test-time scaling: compared to DeepSeek-R1-7B, DLER-7B generates multiple concise responses in parallel with 28 percent higher accuracy and lower latency. We further introduce Difficulty-Aware DLER, which adaptively tightens truncation on easier questions for additional efficiency gains. We also propose an update-selective merging method that preserves baseline accuracy while retaining the concise reasoning ability of the DLER model, which is useful for scenarios where RL training data is scarce.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Large Language Models</span><span>Length Penalty</span><span>Model Efficiency</span><span>Output Truncation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.15110" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
