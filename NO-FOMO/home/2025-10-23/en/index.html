@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-10-23</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-10-23</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Claude Memory</h2>
+                <span class="published-time">Published: 2025-10-23 16:56:07</span>
+                
+                <p class="summary">Anthropic has introduced "Claude Memory," a new feature designed to enhance the artificial intelligence assistant's ability to retain information from past conversations and user preferences. This innovation allows Claude to provide more personalized, efficient, and contextually relevant responses over extended interactions. By remembering specifics about user needs, historical discussions, and expressed preferences, Claude can avoid repetitive questioning, build deeper rapport, and offer more tailored assistance. This development marks a significant advancement in conversational AI, moving towards more intelligent and adaptive AI agents that can maintain consistency and learn from ongoing user engagement. The memory function aims to improve user experience significantly, making Claude a more powerful and intuitive tool for a variety of applications by enabling a continuous learning and adaptation process. This strategic enhancement solidifies Claude's position as a sophisticated AI assistant capable of evolving alongside its users.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude</span><span>AI Memory</span><span>Conversational AI</span><span>Large Language Model</span><span>Personalization</span><span>AI Agents</span><span>Anthropic</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.anthropic.com/news/memory" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OpenAI acquires Sky.app</h2>
+                <span class="published-time">Published: 2025-10-23 17:04:17</span>
+                
+                <p class="summary">OpenAI, a leading artificial intelligence research and deployment company, has officially announced the acquisition of Sky.app. While specific terms of the agreement and the detailed functionalities of Sky.app have not been extensively disclosed, this strategic move signifies OpenAI's continued efforts to expand its capabilities and integrate innovative technologies into its AI ecosystem. Acquisitions often serve to bolster a company's talent pool, proprietary software, or market reach, suggesting that Sky.app likely brings valuable assets that align with OpenAI's mission to ensure artificial general intelligence benefits all of humanity. This development is expected to further accelerate OpenAI's product development, potentially enhancing its existing large language models or enabling the creation of new AI-powered applications. Analysts anticipate that the integration of Sky.app could lead to advancements in user-facing AI solutions or improvements in the underlying infrastructure supporting OpenAI's research and commercial offerings. The acquisition underscores the competitive landscape within the AI sector, as major players like OpenAI strategically invest in companies that can contribute to their long-term vision and market leadership.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>OpenAI</span><span>Acquisition</span><span>Software</span><span>Artificial Intelligence</span><span>Strategic Investment</span><span>Tech Industry</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://openai.com/index/openai-acquires-software-applications-incorporated" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Antislop: A framework for eliminating repetitive patterns in language models</h2>
+                <span class="published-time">Published: 2025-10-23 16:36:05</span>
+                
+                <p class="summary">The paper introduces "Antislop," a novel framework designed to mitigate the problem of repetitive pattern generation in large language models. Repetitiveness is a common issue that degrades the quality, coherence, and utility of generated text, often leading to less diverse and less informative outputs. Antislop addresses this challenge by implementing specific mechanisms during the language model's generation process, aiming to detect and suppress the recurrence of specific words, phrases, or structural elements that contribute to monotonous text. The framework likely incorporates advanced decoding strategies or post-processing techniques to ensure linguistic diversity and originality without compromising factual accuracy or contextual relevance. This research is crucial for enhancing the practical application of LLMs in various domains, from content creation to conversational AI, by producing more natural and engaging human-like text.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Language Models</span><span>Repetitive Patterns</span><span>Text Generation</span><span>Framework</span><span>Decoding Strategies</span><span>Generation Quality</span><span>Natural Language Processing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://arxiv.org/abs/2510.15061" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Git for LLMs – a context management interface</h2>
+                <span class="published-time">Published: 2025-10-23 15:12:57</span>
+                
+                <p class="summary">Twigg, a new context management interface for Large Language Models (LLMs), has been introduced by co-founders Jamie and Matti, likening it to "Git for LLMs." The initiative aims to resolve common inefficiencies encountered with existing LLM interfaces, such as ChatGPT and Claude. These platforms are often criticized for their linear conversational structure, which complicates project visualization and navigation, particularly in extended or complex tasks. A core problem highlighted is the inadequacy of current tools for long-term projects, where chats frequently break, and transferring crucial context becomes an arduous process. Twigg offers a more intuitive solution, integrating features like chat branching to explore different conversational paths and an transparent interactive tree diagram for clear project visualization and navigation. This development underscores the critical role of context management in optimizing LLM performance, proposing a structured and user-friendly system to handle intricate AI-driven workflows effectively.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Context Management</span><span>AI Interfaces</span><span>Chat Branching</span><span>Version Control (for AI)</span><span>Project Visualization</span><span>Natural Language Processing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Artificial Intelligence</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twigg.ai" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The game theory of how algorithms can drive up prices</h2>
+                <span class="published-time">Published: 2025-10-23 11:38:49</span>
+                
+                <p class="summary">This article delves into the application of game theory to explain how algorithms can lead to increased market prices, a phenomenon with significant implications for modern economies. It explores how automated pricing systems, particularly those employing machine learning or reinforcement learning, engage in complex strategic interactions. Even in competitive environments, these algorithms can learn to coordinate their pricing decisions over time, effectively achieving outcomes that resemble tacit collusion among human actors. This emergent behavior, occurring without explicit communication or intent to collude, challenges traditional economic assumptions and raises substantial concerns regarding market fairness and consumer welfare. The article highlights the necessity for a deeper understanding of these algorithmic dynamics to develop effective regulatory frameworks. The analysis underscores how individual algorithmic optimization, when scaled across a market, can collectively drive up costs, necessitating new approaches to market oversight and competition policy in an increasingly automated and data-driven marketplace.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Game Theory</span><span>Algorithmic Pricing</span><span>Market Dynamics</span><span>Reinforcement Learning</span><span>Economic Collusion</span><span>Automated Systems</span><span>Digital Markets</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.quantamagazine.org/the-game-theory-of-how-algorithms-can-drive-up-prices-20251022/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Armed police swarm student after AI mistakes bag of Doritos for a weapon</h2>
+                <span class="published-time">Published: 2025-10-23 18:09:37</span>
+                
+                <p class="summary">An AI-powered security system erroneously identified a bag of Doritos as a weapon, leading to an armed police response targeting a student. This incident highlights critical limitations and potential dangers in deploying artificial intelligence for public safety and surveillance, particularly concerning computer vision systems. The misidentification underscores the challenges of AI accuracy in real-world, ambiguous contexts, and the severe consequences of false positives, which can result in unnecessary escalation and distress. The event raises important questions about the reliability and ethical implications of AI technologies, emphasizing the urgent need for robust validation, human oversight, and clear accountability frameworks to prevent similar occurrences and ensure public trust and safety in AI applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Computer Vision</span><span>AI Surveillance</span><span>Object Detection</span><span>False Positives</span><span>AI Ethics</span><span>Public Safety</span><span>Misidentification</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Computer Vision</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.dexerto.com/entertainment/armed-police-swarm-student-after-ai-mistakes-bag-of-doritos-for-a-weapon-3273512/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>blind-watermark</h2>
+                <span class="published-time">Published: 2025-09-06T04:41:09Z</span>
+                
+                <p class="summary">Blind-watermark is a Python-based open-source project that implements blind digital watermarking using the DWT-DCT-SVD algorithm. This robust solution allows users to embed various types of watermarks, including text, image arrays, or raw bit arrays, into host images. It is designed to withstand common image manipulation attacks such as rotation, cropping, masking, resizing, pepper noise, and brightness adjustments, ensuring high resilience of the embedded information. The library provides flexible interfaces for both command-line (bash) and Python integration, making it accessible for developers and researchers. Its core strength lies in its ability to extract watermarks without needing the original image, which is crucial for digital rights management, content verification, and secure data embedding applications. The project also supports concurrent processing for enhanced performance and offers related tools for text-based watermarking and general information hiding.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Blind Watermark</span><span>Digital Watermarking</span><span>Image Processing</span><span>DWT-DCT-SVD</span><span>Data Hiding</span><span>Python</span><span>Robust Watermarking</span><span>Steganography</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Computer Vision</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/guofei9987/blind_watermark" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Every Attention Matters: An Efficient Hybrid Architecture for Long-Context Reasoning</h2>
+                <span class="published-time">Published: 2025-10-22T07:59:38.000Z</span>
+                
+                <p class="summary">In this technical report, we present the Ring-linear model series, specifically including Ring-mini-linear-2.0 and Ring-flash-linear-2.0. Ring-mini-linear-2.0 comprises 16B parameters and 957M activations, while Ring-flash-linear-2.0 contains 104B parameters and 6.1B activations. Both models adopt a hybrid architecture that effectively integrates linear attention and softmax attention, significantly reducing I/O and computational overhead in long-context inference scenarios. Compared to a 32 billion parameter dense model, this series reduces inference cost to 1/10, and compared to the original Ring series, the cost is also reduced by over 50%. Furthermore, through systematic exploration of the ratio between different attention mechanisms in the hybrid architecture, we have identified the currently optimal model structure. Additionally, by leveraging our self-developed high-performance FP8 operator library-linghe, overall training efficiency has been improved by 50%. Benefiting from the high alignment between the training and inference engine operators, the models can undergo long-term, stable, and highly efficient optimization during the reinforcement learning phase, consistently maintaining SOTA performance across multiple challenging complex reasoning benchmarks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Hybrid Architecture</span><span>Long-Context Reasoning</span><span>Linear Attention</span><span>Inference Optimization</span><span>Large Language Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.19338" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LoongRL:Reinforcement Learning for Advanced Reasoning over Long Contexts</h2>
+                <span class="published-time">Published: 2025-10-22T08:35:28.000Z</span>
+                
+                <p class="summary">Reasoning over long contexts is essential for large language models. While reinforcement learning (RL) enhances short-context reasoning by inducing "Aha" moments in chain-of-thought, the advanced thinking patterns required for long-context reasoning remain largely unexplored, and high-difficulty RL data are scarce. In this paper, we introduce LoongRL, a data-driven RL method for advanced long-context reasoning. Central to LoongRL is KeyChain, a synthesis approach that transforms short multi-hop QA into high-difficulty long-context tasks by inserting UUID chains that hide the true question among large collections of distracting documents. Solving these tasks requires the model to trace the correct chain step-by-step, identify the true question, retrieve relevant facts and reason over them to answer correctly. RL training on KeyChain data induces an emergent plan-retrieve-reason-recheck reasoning pattern that generalizes far beyond training length. Models trained at 16K effectively solve 128K tasks without prohibitive full-length RL rollout costs. On Qwen2.5-7B and 14B, LoongRL substantially improves long-context multi-hop QA accuracy by +23.5% and +21.1% absolute gains. The resulting LoongRL-14B reaches a score of 74.2, rivaling much larger frontier models such as o3-mini (74.5) and DeepSeek-R1 (74.9). It also improves long-context retrieval, passes all 128K needle-in-a-haystack stress tests, and preserves short-context reasoning capabilities.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Long-Context Reasoning</span><span>Large Language Models</span><span>Multi-hop QA</span><span>KeyChain</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.19363" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>BAPO: Stabilizing Off-Policy Reinforcement Learning for LLMs via Balanced Policy Optimization with Adaptive Clipping</h2>
+                <span class="published-time">Published: 2025-10-21T12:55:04.000Z</span>
+                
+                <p class="summary">Reinforcement learning (RL) has recently become the core paradigm for aligning and strengthening large language models (LLMs). Yet, applying RL in off-policy settings--where stale data from past policies are used for training--improves sample efficiency, but remains challenging: policy entropy declines sharply, optimization often becomes unstable and may even collapse. Through theoretical and empirical analysis, we identify two key insights: (i) an imbalance in optimization, where negative-advantage samples dominate the policy gradient, suppressing useful behaviors and risking gradient explosions; and (ii) the derived Entropy-Clip Rule, which reveals that the fixed clipping mechanism in PPO-like objectives systematically blocks entropy-increasing updates, thereby driving the policy toward over-exploitation at the expense of exploration. Building on these insights, we propose BAlanced Policy Optimization with Adaptive Clipping (BAPO), a simple yet effective method that dynamically adjusts clipping bounds to adaptively re-balance positive and negative contributions, preserve entropy, and stabilize RL optimization. Across diverse off-policy scenarios--including sample replay and partial rollout--BAPO achieves fast, stable, and data-efficient training. On AIME 2024 and AIME 2025 benchmarks, our 7B BAPO model surpasses open-source counterparts such as SkyWork-OR1-7B, while our 32B BAPO model not only achieves state-of-the-art results among models of the same scale but also outperforms leading proprietary systems like o3-mini and Gemini-2.5-Flash-Thinking.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Large Language Models</span><span>Off-Policy Learning</span><span>Policy Optimization</span><span>Adaptive Clipping</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.18927" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>GigaBrain-0: A World Model-Powered Vision-Language-Action Model</h2>
+                <span class="published-time">Published: 2025-10-22T09:57:13.000Z</span>
+                
+                <p class="summary">Training Vision-Language-Action (VLA) models for generalist robots typically requires large-scale real-world robot data, which is expensive and time-consuming to collect. The inefficiency of physical data collection severely limits the scalability, and generalization capacity of current VLA systems. To address this challenge, we introduce GigaBrain-0, a novel VLA foundation model empowered by world model-generated data (e.g., video generation, real2real transfer, human transfer, view transfer, sim2real transfer data). By leveraging world models to generate diverse data at scale, GigaBrain-0 significantly reduces reliance on real robot data while improving cross-task generalization. Our approach further improves policy robustness through RGBD input modeling and embodied Chain-of-Thought (CoT) supervision, enabling the model to reason about spatial geometry, object states, and long-horizon dependencies during task execution. This leads to substantial gains in real-world performance on dexterous, long-horizon, and mobile manipulation tasks. Extensive experiments demonstrate that GigaBrain-0 achieves superior generalization across variations in appearances (e.g., textures, colors), object placements, and camera viewpoints. Additionally, we present GigaBrain-0-Small, an optimized lightweight variant designed to run efficiently on devices such as the NVIDIA Jetson AGX Orin.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Vision-Language-Action Models</span><span>World Models</span><span>Robotics</span><span>Foundation Models</span><span>Data Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Multimodal</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.19430" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>ColorAgent: Building A Robust, Personalized, and Interactive OS Agent</h2>
+                <span class="published-time">Published: 2025-10-22T09:02:48.000Z</span>
+                
+                <p class="summary">With the advancements in hardware, software, and large language model technologies, the interaction between humans and operating systems has evolved from the command-line interface to the rapidly emerging AI agent interactions. Building an operating system (OS) agent capable of executing user instructions and faithfully following user desires is becoming a reality. In this technical report, we present ColorAgent, an OS agent designed to engage in long-horizon, robust interactions with the environment while also enabling personalized and proactive user interaction. To enable long-horizon interactions with the environment, we enhance the model's capabilities through step-wise reinforcement learning and self-evolving training, while also developing a tailored multi-agent framework that ensures generality, consistency, and robustness. In terms of user interaction, we explore personalized user intent recognition and proactive engagement, positioning the OS agent not merely as an automation tool but as a warm, collaborative partner. We evaluate ColorAgent on the AndroidWorld and AndroidLab benchmarks, achieving success rates of 77.2% and 50.7%, respectively, establishing a new state of the art. Nonetheless, we note that current benchmarks are insufficient for a comprehensive evaluation of OS agents and propose further exploring directions in future work, particularly in the areas of evaluation paradigms, agent collaboration, and security. Our code is available at https://github.com/MadeAgents/mobile-use.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>OS Agent</span><span>AI Agent</span><span>Reinforcement Learning</span><span>Large Language Model</span><span>Personalized Interaction</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.19386" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>TheMCPCompany: Creating General-purpose Agents with Task-specific Tools</h2>
+                <span class="published-time">Published: 2025-10-22T06:42:01.000Z</span>
+                
+                <p class="summary">Since the introduction of the Model Context Protocol (MCP), the number of available tools for Large Language Models (LLMs) has increased significantly. These task-specific tool sets offer an alternative to general-purpose tools such as web browsers, while being easier to develop and maintain than GUIs. However, current general-purpose agents predominantly rely on web browsers for interacting with the environment. Here, we introduce TheMCPCompany, a benchmark for evaluating tool-calling agents on tasks that involve interacting with various real-world services. We use the REST APIs of these services to create MCP servers, which include over 18,000 tools. We also provide manually annotated ground-truth tools for each task. In our experiments, we use the ground truth tools to show the potential of tool-calling agents for both improving performance and reducing costs assuming perfect tool retrieval. Next, we explore agent performance using tool retrieval to study the real-world practicality of tool-based agents. While all models with tool retrieval perform similarly or better than browser-based agents, smaller models cannot take full advantage of the available tools through retrieval. On the other hand, GPT-5's performance with tool retrieval is very close to its performance with ground-truth tools. Overall, our work shows that the most advanced reasoning models are effective at discovering tools in simpler environments, but seriously struggle with navigating complex enterprise environments. TheMCPCompany reveals that navigating tens of thousands of tools and combining them in non-trivial ways to solve complex problems is still a challenging task for current models and requires both better reasoning and better retrieval models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Tool-calling Agents</span><span>Large Language Models</span><span>Model Context Protocol</span><span>Tool Retrieval</span><span>Enterprise Environments</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.19286" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
