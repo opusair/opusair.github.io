@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-10-24</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-10-24</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Mesh2Motion – Open-source web application to animate 3D models</h2>
+                <span class="published-time">Published: 2025-10-24 11:01:23</span>
+                
+                <p class="summary">Mesh2Motion introduces an innovative open-source web application designed to simplify the animation of 3D models. This platform provides users with an accessible and intuitive interface to bring static 3D meshes to life directly within a web browser, eliminating the need for complex desktop software installations. By leveraging modern web technologies, Mesh2Motion democratizes 3D animation, making it available to a broader audience, including hobbyists, independent developers, and educators. The application likely incorporates various animation techniques, potentially including inverse kinematics, keyframe animation, or even basic procedural generation for movement. Its open-source nature fosters community collaboration, allowing developers to contribute to its features, enhance its capabilities, and adapt it for specific use cases. This approach not only ensures continuous improvement but also promotes transparency and customization. Mesh2Motion aims to streamline workflows for content creators in fields such as game development, virtual reality, augmented reality, and general digital media production, offering a powerful, yet freely available, tool for dynamic 3D content generation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>3D Animation</span><span>Web Application</span><span>Open Source</span><span>Computer Graphics</span><span>Mesh Processing</span><span>Motion Design</span><span>Interactive 3D</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Robotics</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mesh2motion.org/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>'Attention is all you need' coauthor says he's 'sick' of transformers</h2>
+                <span class="published-time">Published: 2025-10-24 04:40:31</span>
+                
+                <p class="summary">A prominent co-author of the groundbreaking "Attention Is All You Need" paper, which introduced the revolutionary Transformer architecture, has openly conveyed a sense of exhaustion with the widely adopted AI model. This candid perspective from an individual instrumental in the creation of Transformers, now a cornerstone of most modern large language models (LLMs) and advanced AI systems, underscores potential shifting attitudes within the artificial intelligence research community. Despite the Transformer's unprecedented achievements across natural language processing and other domains, driving innovations like generative AI models such as GPT, this statement suggests an increasing call for exploring alternative architectural designs. The stated weariness likely arises from ongoing challenges such as the high computational resource requirements, significant energy consumption, or perceived inherent limitations of the Transformer model. This critical reflection indicates a pivotal moment for the AI field, potentially catalyzing a renewed focus on pioneering more efficient, scalable, or biologically inspired AI paradigms. The discussion encourages a search for new avenues to transcend current architectural constraints and foster the next generation of AI advancements.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Transformers</span><span>Attention mechanism</span><span>AI Research</span><span>Large Language Models</span><span>Deep Learning</span><span>AI Architecture</span><span>Natural Language Processing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Deep Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://venturebeat.com/ai/sakana-ais-cto-says-hes-absolutely-sick-of-transformers-the-tech-that-powers" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>ChunkLLM: A Lightweight Pluggable Framework for Accelerating LLMs Inference</h2>
+                <span class="published-time">Published: 2025-10-24 11:41:26</span>
+                
+                <p class="summary">ChunkLLM introduces a novel, lightweight, and highly pluggable framework engineered to significantly accelerate the inference process of Large Language Models (LLMs). This innovative solution directly tackles prevalent performance bottlenecks associated with LLM deployment, promising substantial reductions in latency and improvements in computational efficiency. Its design emphasizes ease of integration, allowing developers and researchers to effortlessly incorporate ChunkLLM's optimization strategies into existing LLM pipelines with minimal architectural changes. The primary goal is to render LLM applications more scalable and cost-effective by optimizing resource utilization and speeding up response generation. This advancement is poised to particularly benefit real-time artificial intelligence systems, large-scale industrial LLM deployments, and scenarios demanding efficient execution on resource-constrained environments like edge devices. Ultimately, ChunkLLM aims to broaden the practical applicability and enhance the accessibility of sophisticated language model technologies across various domains, fostering more responsive and economically viable AI solutions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>LLM Inference</span><span>Model Acceleration</span><span>Deep Learning Optimization</span><span>Computational Efficiency</span><span>AI Frameworks</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://arxiv.org/abs/2510.02361" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The AI-collapse pre-mortem</h2>
+                <span class="published-time">Published: 2025-10-24 18:58:30</span>
+                
+                <p class="summary">The article, "The AI-collapse pre-mortem," delves into a critical hypothetical exercise aimed at anticipating and understanding potential catastrophic outcomes stemming from the development and deployment of advanced artificial intelligence. This "pre-mortem" approach involves simulating a future where an "AI collapse" has occurred and then retrospectively identifying the most likely causes, contributing factors, and overlooked vulnerabilities. The discussion likely encompasses a broad spectrum of risks, including but not limited to, issues of AI safety, the challenges of achieving human-AI alignment, the potential for autonomous systems to act contrary to human intent, and broader existential risks posed by superintelligent entities. Furthermore, it would explore scenarios involving unintended consequences, rapid loss of control, and societal disruption arising from unchecked or poorly managed AI advancements. The primary objective of such an analysis is to proactively identify these pathways to failure, allowing for the development of robust mitigation strategies, ethical guidelines, and effective governance frameworks to prevent such scenarios and ensure the beneficial and safe trajectory of AI innovation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Safety</span><span>AI Risk</span><span>Existential Risk</span><span>AI Alignment</span><span>AI Governance</span><span>Future of AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://berthub.eu/articles/posts/an-ai-premortem/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>US student handcuffed after AI system apparently mistook bag of chips for gun</h2>
+                <span class="published-time">Published: 2025-10-24 19:28:00</span>
+                
+                <p class="summary">A US student was reportedly handcuffed after an artificial intelligence (AI) security system mistakenly identified a bag of chips as a firearm. The incident, occurring in Baltimore on October 24, 2025, according to The Guardian, highlights significant concerns regarding the accuracy and reliability of automated threat detection technologies deployed in public spaces. This case illustrates a critical "false positive" scenario where an AI model, likely employing computer vision algorithms, failed to correctly differentiate an innocuous object from a dangerous weapon. Such errors can lead to serious consequences, including unnecessary detainment, psychological distress for individuals, and an erosion of public trust in AI surveillance systems. Experts suggest the incident underscores the imperative for robust testing, ethical development, and continuous improvement of AI-powered security solutions to minimize biases and enhance precision, ensuring they operate effectively without infringing upon civil liberties or causing undue alarm. The event reignites debates about the balance between security enhancements and the potential for technological overreach or failure.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Misidentification</span><span>Computer Vision</span><span>False Positive</span><span>Gun Detection System</span><span>AI Security</span><span>Machine Learning</span><span>Ethical AI</span><span>Surveillance Technology</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.theguardian.com/us-news/2025/oct/24/baltimore-student-ai-gun-detection-system-doritos" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>JupyterGIS breaks through to the next level</h2>
+                <span class="published-time">Published: 2025-10-24 04:13:01</span>
+                
+                <p class="summary">The European Space Agency (ESA) has announced a significant advancement for JupyterGIS, indicating that the platform has reached a "next level" of capability. This development is poised to enhance the analysis, visualization, and processing of geospatial data within the familiar Jupyter environment. Given the context of ESA's Earth Observation (EO) initiatives, this breakthrough likely signifies improvements in handling vast quantities of satellite imagery and other geographical information. The "next level" could involve increased performance, expanded functionalities for complex spatial analytics, better integration with cloud computing resources, or the incorporation of advanced algorithms for data interpretation and modeling. Such enhancements are crucial for researchers, developers, and policymakers working with Earth observation data, facilitating more efficient scientific discovery, environmental monitoring, and sustainable development applications. The progression of JupyterGIS underscores the growing importance of open-source tools and accessible data science platforms in the geospatial domain.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>JupyterGIS</span><span>Geographic Information Systems</span><span>Earth Observation</span><span>Geospatial Data</span><span>Data Analysis</span><span>European Space Agency</span><span>Remote Sensing</span><span>Spatial Analytics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://eo4society.esa.int/2025/10/16/jupytergis-breaks-through-to-the-next-level/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Human-Agent Collaborative Paper-to-Page Crafting for Under $0.1</h2>
+                <span class="published-time">Published: 2025-10-22T13:53:57.000Z</span>
+                
+                <p class="summary">In the quest for scientific progress, communicating research is as vital as the discovery itself. Yet, researchers are often sidetracked by the manual, repetitive chore of building project webpages to make their dense papers accessible. While automation has tackled static slides and posters, the dynamic, interactive nature of webpages has remained an unaddressed challenge. To bridge this gap, we reframe the problem, arguing that the solution lies not in a single command, but in a collaborative, hierarchical process. We introduce AutoPage, a novel multi-agent system that embodies this philosophy. AutoPage deconstructs paper-to-page creation into a coarse-to-fine pipeline from narrative planning to multimodal content generation and interactive rendering. To combat AI hallucination, dedicated "Checker" agents verify each step against the source paper, while optional human checkpoints ensure the final product aligns perfectly with the author's vision, transforming the system from a mere tool into a powerful collaborative assistant. To rigorously validate our approach, we also construct PageBench, the first benchmark for this new task. Experiments show AutoPage not only generates high-quality, visually appealing pages but does so with remarkable efficiency in under 15 minutes for less than \0.1. Code and dataset will be released at https://mqleet.github.io/AutoPage_ProjectPage/{Webpage}$.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multi-Agent Systems</span><span>Webpage Generation</span><span>Human-Agent Collaboration</span><span>Multimodal Content Generation</span><span>AI Agents</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Multimodal</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.19600" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AdaSPEC: Selective Knowledge Distillation for Efficient Speculative Decoders</h2>
+                <span class="published-time">Published: 2025-10-22T17:13:00.000Z</span>
+                
+                <p class="summary">Speculative Decoding (SD) accelerates large language model inference by employing a small draft model to generate predictions, which are then verified by a larger target model. The effectiveness of SD hinges on the alignment between these models, which is typically enhanced by Knowledge Distillation (KD). However, conventional KD methods aim to minimize the KL divergence between the draft and target models across all tokens, a goal that is misaligned with the true objective of SD, which is to maximize token acceptance rate. Therefore, draft models often struggle to fully assimilate the target model's knowledge due to capacity constraints, leading to suboptimal performance. To address this challenge, we propose AdaSPEC, a novel method that incorporates selective token filtering into the KD process. AdaSPEC utilizes a reference model to identify and filter out difficult-to-fit tokens, enabling the distillation of a draft model that better aligns with the target model on simpler tokens. This approach improves the overall token acceptance rate without compromising generation quality. We evaluate AdaSPEC across diverse tasks, including arithmetic reasoning, instruction-following, coding, and summarization, using model configurations of 31M/1.4B and 350M/2.7B parameters. Our results demonstrate that AdaSPEC consistently outperforms the state-of-the-art DistillSpec method, achieving higher acceptance rates across all tasks (up to 15%). The code is publicly available at https://github.com/yuezhouhu/adaspec.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Speculative Decoding</span><span>Knowledge Distillation</span><span>Large Language Models</span><span>Efficient Inference</span><span>Token Acceptance Rate</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.19779" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>HoloCine: Holistic Generation of Cinematic Multi-Shot Long Video Narratives</h2>
+                <span class="published-time">Published: 2025-10-23T17:59:59.000Z</span>
+                
+                <p class="summary">State-of-the-art text-to-video models excel at generating isolated clips but fall short of creating the coherent, multi-shot narratives, which are the essence of storytelling. We bridge this "narrative gap" with HoloCine, a model that generates entire scenes holistically to ensure global consistency from the first shot to the last. Our architecture achieves precise directorial control through a Window Cross-Attention mechanism that localizes text prompts to specific shots, while a Sparse Inter-Shot Self-Attention pattern (dense within shots but sparse between them) ensures the efficiency required for minute-scale generation. Beyond setting a new state-of-the-art in narrative coherence, HoloCine develops remarkable emergent abilities: a persistent memory for characters and scenes, and an intuitive grasp of cinematic techniques. Our work marks a pivotal shift from clip synthesis towards automated filmmaking, making end-to-end cinematic creation a tangible future. Our code is available at: https://holo-cine.github.io/.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>text-to-video models</span><span>multi-shot narratives</span><span>cinematic generation</span><span>narrative coherence</span><span>automated filmmaking</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Deep Learning</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.20822" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Search Self-play: Pushing the Frontier of Agent Capability without Supervision</h2>
+                <span class="published-time">Published: 2025-10-21T17:19:35.000Z</span>
+                
+                <p class="summary">Reinforcement learning with verifiable rewards (RLVR) has become the mainstream technique for training LLM agents. However, RLVR highly depends on well-crafted task queries and corresponding ground-truth answers to provide accurate rewards, which requires massive human efforts and hinders the RL scaling processes, especially under agentic scenarios. Although a few recent works explore task synthesis methods, the difficulty of generated agentic tasks can hardly be controlled to provide effective RL training advantages. To achieve agentic RLVR with higher scalability, we explore self-play training for deep search agents, in which the learning LLM utilizes multi-turn search engine calling and acts simultaneously as both a task proposer and a problem solver. The task proposer aims to generate deep search queries with well-defined ground-truth answers and increasing task difficulty. The problem solver tries to handle the generated search queries and output the correct answer predictions. To ensure that each generated search query has accurate ground truth, we collect all the searching results from the proposer's trajectory as external knowledge, then conduct retrieval-augmentation generation (RAG) to test whether the proposed query can be correctly answered with all necessary search documents provided. In this search self-play (SSP) game, the proposer and the solver co-evolve their agent capabilities through both competition and cooperation. With substantial experimental results, we find that SSP can significantly improve search agents' performance uniformly on various benchmarks without any supervision under both from-scratch and continuous RL training setups. The code is at https://github.com/Alibaba-Quark/SSP.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM Agents</span><span>Self-play</span><span>Reinforcement Learning</span><span>Deep Search</span><span>Retrieval-Augmented Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.18821" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MSC-Bench: A Rigorous Benchmark for Multi-Server Tool Orchestration</h2>
+                <span class="published-time">Published: 2025-10-22T09:45:11.000Z</span>
+                
+                <p class="summary">We introduce MSC-Bench, a large-scale benchmark for evaluating multi-hop, end-to-end tool orchestration by LLM agents in a hierarchical Model-Context Protocol (MCP) ecosystem. Existing benchmarks often evaluate tools in isolation, ignoring challenges such as functional overlap and cross-server orchestration, leading to overly optimistic assessments. MSC-Bench addresses these gaps by constructing ground truth through 'equal function sets', allowing objective metrics such as F1 score and reducing the dependency on LLM-as-a-judge evaluation. Organized as a five-level curriculum, it systematically tests agent capabilities from single-tool orchestration to complex cross-server planning, and robustness to out-of-scope requests. Experiments reveal that rigid hierarchies can hinder performance without co-designed strategies, and even state-of-the-art agents exhibit systemic weaknesses in robustness. MSC-Bench provides a diagnostic framework to expose these limitations and guide the development of more capable and efficient tool-using agents. The benchmark and resources are publicly available at https://github.com/snooow1029/MSC_Bench.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>MSC-Bench</span><span>Tool Orchestration</span><span>LLM Agents</span><span>Benchmark</span><span>Multi-server</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.19423" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Scaling Laws Meet Model Architecture: Toward Inference-Efficient LLMs</h2>
+                <span class="published-time">Published: 2025-10-21T03:08:48.000Z</span>
+                
+                <p class="summary">Scaling the number of parameters and the size of training data has proven to be an effective strategy for improving large language model (LLM) performance. Yet, as these models grow increasingly powerful and widely deployed, the cost of inference has become a pressing concern. Despite its importance, the trade-off between model accuracy and inference efficiency remains underexplored. In this work, we examine how key architectural factors, hidden size, the allocation of parameters between MLP and attention (mlp-to-attention ratio), and grouped-query attention (GQA), influence both inference cost and accuracy. We introduce a conditional scaling law that augments the Chinchilla framework with architectural information, along with a search framework for identifying architectures that are simultaneously inference-efficient and accurate. To validate our approach, we train more than 200 models spanning 80M to 3B parameters and 8B to 100B training tokens, and fit the proposed conditional scaling law. Our results show that the conditional scaling law reliably predicts optimal architectural choices and that the resulting models outperform existing open-source baselines. Under the same training budget, optimized architectures achieve up to 2.1% higher accuracy and 42% greater inference throughput compared to LLaMA-3.2.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Scaling Laws</span><span>Model Architecture</span><span>Inference Efficiency</span><span>Architectural Optimization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.18245" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
