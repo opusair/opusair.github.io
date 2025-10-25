@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-10-25</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-10-25</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>What is intelligence? (2024)</h2>
+                <span class="published-time">Published: 2025-10-25 01:21:43</span>
+                
+                <p class="summary">The Hacker News story, "What is intelligence? (2024)," presents a timely and critical re-evaluation of the concept of intelligence amidst the accelerating progress in artificial intelligence. This discourse moves beyond traditional human-centric definitions to encompass the diverse capabilities demonstrated by advanced algorithms and machine learning models. It delves into the fundamental characteristics that constitute intelligence, drawing distinctions and parallels between human cognitive processes and the emergent behaviors observed in sophisticated AI systems. The discussion likely explores the philosophical underpinnings, scientific methodologies, and practical challenges involved in formulating a comprehensive and universally accepted definition. As AI continues to achieve unprecedented feats across various domains, the article prompts a deeper inquiry into whether a unified theory of intelligence is feasible or even necessary. Ultimately, it considers the profound implications of these evolving definitions for our understanding of cognition, the future of AI development, and technology's broader role in shaping our intellectual landscape.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Intelligence Theory</span><span>Cognitive Computing</span><span>Machine Intelligence</span><span>AI Philosophy</span><span>Computational Intelligence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://whatisintelligence.antikythera.org/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>I love the smell of autopoiesis in the morning</h2>
+                <span class="published-time">Published: 2025-10-25 13:15:56</span>
+                
+                <p class="summary">The provided content, succinctly titled 'I love the smell of autopoiesis in the morning,' offers a metaphorical expression of profound appreciation for systems characterized by self-reproduction and self-maintenance. Autopoiesis, a concept primarily rooted in biology and systems theory, describes the intrinsic ability of a system to continually produce and organize its own components and structures, thereby sustaining its operational identity and existence independently. Within a broader technological lens, and notably hinted by the URL's '3dp' segment, this statement likely refers to advancements in sophisticated manufacturing techniques like 3D printing. It suggests an optimistic and perhaps even romanticized view of processes enabling the creation of increasingly complex, self-assembling, or even theoretically self-replicating physical objects and systems. The enthusiasm conveyed points towards a future where generative and autonomous production mechanisms could dramatically reduce the need for external control, mirroring the remarkable self-sustaining attributes found in living organisms. This outlook underscores a significant interest in developing technologies that embody inherent organizational intelligence and possess a robust capacity for intrinsic development and evolution, pushing the boundaries of what is conventionally considered 'manufactured'.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Autopoiesis</span><span>Self-organization</span><span>Self-replicating systems</span><span>3D Printing</span><span>Advanced Manufacturing</span><span>Systems Theory</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Robotics</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://interconnected.org/home/2025/10/15/3dp" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The Goon Squad</h2>
+                <span class="published-time">Published: 2025-10-25 05:14:16</span>
+                
+                <p class="summary">The concept of 'The Goon Squad', originating from broader social commentary, holds increasing relevance within technical discourse concerning online platforms and digital ethics. This article, while abstract in its provided content, implicitly addresses complex challenges posed by organized online harassment campaigns, sophisticated bot networks, and coordinated disinformation efforts. In the context of AI and technology, 'The Goon Squad' can be interpreted as a metaphor for advanced adversarial agents or groups leveraging sophisticated algorithms and automation to manipulate public opinion, silence dissent, or perpetrate cyberbullying. The technical community is actively exploring AI-driven solutions for detecting and mitigating these organized threats. Efforts focus on areas like natural language processing for sentiment analysis, anomaly detection for identifying coordinated malicious behavior, and reinforcement learning for developing robust content moderation systems. Understanding the dynamics of such 'goon squads' is crucial for developing resilient digital ecosystems and safeguarding online discourse from malicious influence and erosion of trust.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Adversarial AI</span><span>Content Moderation</span><span>Online Platform Security</span><span>Bot Detection</span><span>Digital Ethics</span><span>AI-powered Systems</span><span>Automated Harassment</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://harpers.org/archive/2025/11/the-goon-squad-daniel-kolitz-porn-masturbation-loneliness/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI can turn us into a society of p-zombies</h2>
+                <span class="published-time">Published: 2025-10-25 11:37:04</span>
+                
+                <p class="summary">The speculative discourse explores the profound societal implications of advanced artificial intelligence, proposing a future where humanity could devolve into a collective of 'philosophical zombies.' This hypothetical state implies that while individuals would outwardly exhibit normal behaviors and interactions, their inner conscious experience, subjective qualia, and true autonomy might be diminished or entirely absent, essentially reducing them to complex automatons. The core argument highlights the potential for ubiquitous AI systems, by progressively taking over complex decision-making, information filtering, and even shaping emotional responses, to subtly erode human agency and critical self-awareness. This erosion could stem from an over-reliance on AI for every aspect of life, leading to a state where human consciousness becomes a mere echo of AI's programming. The article therefore raises urgent ethical and philosophical questions regarding the trajectory of AI development, urging a cautious approach to safeguard the intrinsic value of human consciousness and prevent a future where genuine subjective experience is sacrificed for algorithmic efficiency.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Philosophical Zombies</span><span>AI Ethics</span><span>Human Consciousness</span><span>Societal Impact</span><span>AI Risk</span><span>Autonomy</span><span>Existential Risk</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://prahladyeri.github.io/blog/2025/10/how-ai-can-turn-us-into-society-of-p-zombies.html" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Standard Open SO-100 & SO-101 Arms</h2>
+                <span class="published-time">Published: 2025-10-15T07:46:13Z</span>
+                
+                <p class="summary">The SO-101 is the next-generation open-source robot arm, developed by RobotStudio in collaboration with Hugging Face, serving as an advanced iteration of the original SO-100. This project is dedicated to making end-to-end AI for robotics more accessible by offering a robust, easy-to-assemble hardware platform designed to integrate seamlessly with the open-source 
+LeRobot library. Key improvements include streamlined wiring, simpler assembly processes (no gear removal required), and updated motors for enhanced performance of the leader arm. Users have the flexibility to either build the SO-101 from scratch by leveraging the provided Bill of Materials, 3D printing specifications, and comprehensive assembly guides, or opt for convenience by purchasing complete kits or assembled arms from a network of international vendors. The repository further extends its utility by providing a range of optional hardware designs, such as various camera mounts, raised bases, and compliant grippers, allowing for significant customization and expanded application scenarios. Community engagement is actively encouraged through a Discord channel to foster collaborative development on both hardware and software aspects.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Robot Arm</span><span>Robotics</span><span>Open-Source Hardware</span><span>3D Printing</span><span>LeRobot</span><span>AI Robotics</span><span>SO-101</span><span>Teleoperation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/TheRobotStudio/SO-ARM100" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>x402 payments protocol</h2>
+                <span class="published-time">Published: 2025-10-24T05:09:35Z</span>
+                
+                <p class="summary">The x402 payments protocol introduces an open, internet-native standard for digital payments, addressing limitations of traditional methods like credit cards. Designed for both human and AI agents, it enables seamless, low-fee, and fast (2-second) settlements with a minimal payment threshold of $0.001. The protocol is HTTP-native, leveraging the existing `402 Payment Required` status code, and is chain and token agnostic, supporting various blockchain networks. Key principles include being an open standard, trust-minimizing, and user-friendly by abstracting away complex crypto details like gas fees. It defines roles for clients, resource servers, and facilitator servers, along with a detailed V1 protocol flow specifying how payments are initiated, verified, and settled on-chain. The system is extensible through different payment 'schemes' for varied use cases, with 'exact' payments being the initial implementation. This innovation aims to integrate programmatic payments directly into web services with minimal integration effort.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>x402 protocol</span><span>digital payments</span><span>blockchain</span><span>HTTP protocol</span><span>web services</span><span>payment schemes</span><span>facilitator server</span><span>crypto payments</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/coinbase/x402" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
