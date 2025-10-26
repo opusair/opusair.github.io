@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-10-26</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-10-26</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>A Definition of AGI</h2>
+                <span class="published-time">Published: 2025-10-26 18:09:37</span>
+                
+                <p class="summary">The paper titled "A Definition of AGI" likely presents a comprehensive proposal for formally establishing the criteria and characteristics that constitute Artificial General Intelligence. It addresses the significant challenge of differentiating AGI from current narrow AI systems by outlining a framework that encompasses advanced cognitive abilities such as cross-domain learning, complex reasoning, adaptive problem-solving, and the capacity for autonomous knowledge acquisition and application. This work is critical for guiding future research directions, enabling standardized evaluation of AI progress, and fostering a shared understanding within the scientific community regarding the ultimate goals of AI development. The authors may delve into the philosophical underpinnings of intelligence and consciousness, alongside practical technical specifications, aiming to provide a robust and actionable definition that can serve as a benchmark for assessing the emergence of truly general AI systems and their potential societal impacts. A precise definition is seen as indispensable for both ethical considerations and regulatory discussions surrounding advanced AI.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial General Intelligence</span><span>AI Definition</span><span>Cognitive Architectures</span><span>AI Research</span><span>Intelligence Theory</span><span>AI Evaluation</span><span>General Intelligence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://arxiv.org/abs/2510.18212" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Pico-Banana-400k</h2>
+                <span class="published-time">Published: 2025-10-26 02:01:17</span>
+                
+                <p class="summary">Apple has unveiled Pico-Banana-400k, a streamlined and compact version of the larger Banana-400k dataset, specifically engineered for the training of machine learning models. This new resource is tailored to empower developers and researchers in their pursuit of efficient and lightweight artificial intelligence solutions. Pico-Banana-400k integrates both structured and natural language data, offering a versatile foundation for a broad spectrum of machine learning applications, particularly those optimized for resource-constrained environments such as on-device AI. The dataset's design encourages innovation in developing smaller, high-performance models without compromising the essential diversity of training data. As a 'tiny-model' variant, it facilitates advanced research in model compression, efficient inference, and the seamless deployment of sophisticated AI functionalities on consumer hardware. This strategic release from Apple highlights the industry's sustained commitment to democratizing AI, making powerful and practical machine learning capabilities accessible for widespread adoption.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Machine Learning</span><span>AI Datasets</span><span>Natural Language Processing</span><span>Structured Data</span><span>On-device AI</span><span>Model Compression</span><span>Efficient AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Machine Learning</span><span>Natural Language Processing</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/apple/pico-banana-400k" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Tesla's "Mad Max" mode is now under federal scrutiny</h2>
+                <span class="published-time">Published: 2025-10-26 16:48:51</span>
+                
+                <p class="summary">Tesla's "Mad Max" mode, a software feature reportedly enabling more assertive or aggressive driving behaviors, has come under federal investigation. This scrutiny, initiated by regulatory bodies, focuses on the mode's safety implications and its alignment with established automotive standards for advanced driver-assistance systems (ADAS). While specific details of the "Mad Max" functionality remain under review, it is understood to be integrated with Tesla's Full Self-Driving (FSD) suite, potentially allowing for less conservative driving patterns in certain scenarios. The probe highlights ongoing regulatory concerns regarding the safe deployment and consumer understanding of autonomous and semi-autonomous driving technologies, particularly concerning potential overrides of conventional safety parameters. This development is part of a broader trend of increased oversight on emerging vehicle autonomy features, aiming to ensure public safety as these technologies evolve.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Tesla</span><span>Mad Max Mode</span><span>Autonomous Driving</span><span>ADAS</span><span>Vehicle Safety</span><span>Regulatory Scrutiny</span><span>Full Self-Driving</span><span>Automotive Technology</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Artificial Intelligence</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://arstechnica.com/cars/2025/10/feds-probe-tesla-about-its-mad-max-mode/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>GenAI Image Editing Showdown</h2>
+                <span class="published-time">Published: 2025-10-26 02:57:57</span>
+                
+                <p class="summary">The 'GenAI Image Editing Showdown' presents a comprehensive comparative analysis of various Generative AI models and tools specializing in image manipulation. This initiative aims to evaluate the performance, capabilities, and user experience of leading GenAI technologies in tasks such as inpainting, outpainting, style transfer, object replacement, and image enhancement. Participants in the showdown are assessed based on criteria including the realism and fidelity of generated edits, computational efficiency, ease of integration into existing workflows, and the overall creative control offered to users. The primary objective is to identify robust solutions, highlight emerging trends, and provide insights into the current state-of-the-art in AI-driven image editing. This evaluation serves as a crucial resource for developers, artists, and researchers seeking to understand the strengths and limitations of contemporary GenAI image editing platforms and inform future advancements in the field of computer vision and generative modeling. The showdown underscores the rapid evolution of AI in creative applications, pushing the boundaries of what is possible in digital content creation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Generative AI</span><span>Image Editing</span><span>Computer Vision</span><span>AI Models</span><span>Image Manipulation</span><span>Inpainting</span><span>Style Transfer</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://genai-showdown.specr.net/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Books by People – Defending Organic Literature in an AI World</h2>
+                <span class="published-time">Published: 2025-10-26 16:57:44</span>
+                
+                <p class="summary">Books by People is an emerging initiative dedicated to safeguarding and celebrating human-authored literature in an era increasingly influenced by artificial intelligence. The organization advocates for the concept of "organic literature," underscoring the intrinsic and irreplaceable value of human creativity, unique perspectives, and profound experiences that define genuine artistic expression, distinguishing it from machine-generated content. This movement addresses the escalating concerns surrounding the widespread proliferation of AI-produced text, which introduces significant challenges regarding content authenticity, intellectual property rights, and the critical differentiation between human and artificial creative output. By championing books created by people, the initiative endeavors to cultivate a cultural landscape where authentic human narratives and expressions retain their preeminence, ensuring that audiences can consciously identify and support original, human-centric literary works amidst the rapid advancements in generative AI technologies. This critical effort aims to preserve the integrity of literary arts and ensure the sustained recognition of human artistic contributions within the evolving digital environment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI</span><span>Generative AI</span><span>Human Creativity</span><span>Literature</span><span>Content Authenticity</span><span>Digital Ethics</span><span>Intellectual Property</span><span>Organic Content</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://booksbypeople.org/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Create-LLM – Train your own LLM in 60 seconds</h2>
+                <span class="published-time">Published: 2025-10-26 09:53:24</span>
+                
+                <p class="summary">The Hacker News post "Show HN: Create-LLM – Train your own LLM in 60 seconds" introduces a new tool designed to simplify and accelerate the process of training custom Large Language Models. This project, `create-llm`, aims to democratize access to LLM development, allowing users to quickly set up and train their own models. The associated Medium article elaborates on the motivation behind the tool, highlighting the creator's journey to overcome the complexities typically associated with LLM training. By abstracting away much of the underlying infrastructure and technical hurdles, `create-llm` enables developers and researchers to rapidly prototype and iterate on their LLM ideas, significantly reducing the time and expertise required. This initiative seeks to empower a broader audience to engage with and contribute to the rapidly evolving field of generative AI, fostering innovation by making advanced model training more accessible. The focus is on ease of use and speed, positioning it as a valuable resource for both beginners and experienced practitioners looking for efficient LLM development solutions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>LLM Training</span><span>AI Development</span><span>Developer Tools</span><span>Open-source</span><span>Rapid Prototyping</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/theaniketgiri/create-llm" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>➤ Cursor Free VIP</h2>
+                <span class="published-time">Published: 2025-09-16T03:47:39Z</span>
+                
+                <p class="summary">Cursor Free VIP is an open-source utility aimed at enhancing the user experience of the Cursor AI coding assistant for educational and research purposes. This multi-platform tool supports Windows, macOS, and Linux, and offers key functionalities such as resetting Cursor's configuration and providing multi-language support, including English, Simplified Chinese, Traditional Chinese, and Vietnamese. It is developed with a clear ethical stance, assuring users that it does not generate fake email accounts or OAuth access, and advocates for supporting the original Cursor project. The utility is designed for optimal performance, recommending administrative privileges and regular updates, and provides convenient automated installation scripts for Linux, macOS (including Archlinux via AUR), and Windows PowerShell. Advanced users can fine-tune various operational parameters, such as timing and system paths, through a comprehensive configuration file, thereby customizing their interaction with the Cursor AI Agent. This project contributes to the ecosystem around AI coding agents by offering flexibility and control over their local setup.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Cursor</span><span>AI Agent</span><span>Utility</span><span>Multi-platform</span><span>Configuration</span><span>Automation</span><span>Scripting</span><span>Software Tool</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/yeongpin/cursor-free-vip" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Handy</h2>
+                <span class="published-time">Published: 2025-10-23T17:35:31Z</span>
+                
+                <p class="summary">Handy is a robust, free, open-source, and extensible cross-platform desktop application providing privacy-focused, offline speech-to-text transcription capabilities. Developed with Tauri, combining Rust for backend system integration, audio processing, and machine learning inference, and React/TypeScript with Tailwind CSS for the frontend, Handy allows users to effortlessly transcribe spoken words directly into any active text field through a configurable keyboard shortcut. A key differentiator is its commitment to privacy, ensuring that all audio processing and transcription occurs entirely on the user's local machine, eliminating the need to transmit sensitive voice data to cloud services. The application employs sophisticated local processing techniques, including Voice Activity Detection (VAD) utilizing Silero, and offers flexible speech recognition options such as GPU-accelerated Whisper models (Small/Medium/Turbo/Large) or the highly efficient, CPU-optimized Parakeet V3 model, which also boasts automatic language detection. Handy is designed for broad compatibility, supporting Windows, macOS, and Linux, and aims to be a foundational, "forkable" tool that serves as both a useful utility and a platform for community contributions, fostering further innovation in accessible speech technology.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Speech-to-text</span><span>Offline Transcription</span><span>Open Source</span><span>Tauri</span><span>Rust</span><span>Whisper</span><span>Voice Activity Detection</span><span>Cross-platform</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/cjpais/Handy" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>🌟 Awesome LLM Apps</h2>
+                <span class="published-time">Published: 2025-10-19T17:51:52Z</span>
+                
+                <p class="summary">This GitHub repository, "Awesome LLM Apps," is a curated collection of innovative applications built using Large Language Models (LLMs). It showcases diverse implementations leveraging advanced techniques such as Retrieval Augmented Generation (RAG), AI Agents, Multi-agent Teams, Model Context Protocol (MCP), and Voice Agents. The projects integrate models from leading providers like OpenAI, Anthropic, Google, and xAI, alongside open-source alternatives such as Qwen and Llama, many of which can be run locally. The repository serves as a practical resource for discovering how LLMs can be applied across various domains, offering examples for code analysis, email management, data analysis, and more. It features a range of agent types, from starter and advanced AI agents to autonomous game-playing agents, multi-agent teams, and specialized voice-enabled agents. Additionally, it includes tutorials on RAG implementations, LLM memory concepts, chat integrations, and fine-tuning techniques for models like Gemma and Llama. This resource aims to facilitate learning and contribution to the burgeoning open-source ecosystem of LLM-powered applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>AI Agent</span><span>Retrieval Augmented Generation</span><span>Multi-agent System</span><span>LLM Fine-tuning</span><span>Voice AI</span><span>Model Context Protocol</span><span>Open-source LLM</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/Shubhamsaboo/awesome-llm-apps" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Agent Lightning⚡</h2>
+                <span class="published-time">Published: 2025-10-26T01:57:07Z</span>
+                
+                <p class="summary">Agent Lightning is a Microsoft project designed to train and optimize AI agents with minimal code changes. This versatile framework supports any agent framework, including LangChain, OpenAI Agent SDK, AutoGen, and CrewAI, or even custom Python OpenAI integrations. It enables selective optimization within multi-agent systems and incorporates advanced algorithms like Reinforcement Learning, Automatic Prompt Optimization, and Supervised Fine-tuning. The architecture is lightweight, using an `agl.emit_xxx()` helper or tracer to capture events (prompts, tool calls, rewards) into a central LightningStore. This store synchronizes tasks, resources, and traces, which are then processed by selected algorithms to learn and refine agent behavior. A Trainer component orchestrates data streaming, resource transfer, and updates to the inference engine. Agent Lightning provides a clear pathway from initial agent rollout to continuous improvement without requiring significant rewrites or vendor lock-in, making it a powerful tool for developing robust and intelligent AI agents.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agents</span><span>Reinforcement Learning</span><span>Agent Optimization</span><span>Multi-agent Systems</span><span>Automatic Prompt Optimization</span><span>Machine Learning</span><span>Agent Frameworks</span><span>Prompt Engineering</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/microsoft/agent-lightning" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
