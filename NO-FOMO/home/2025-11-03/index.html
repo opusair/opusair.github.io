@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-11-03</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-11-03</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>OpenAI signs $38B cloud computing deal with Amazon</h2>
+                <span class="published-time">Published: 2025-11-03 14:20:05</span>
+                
+                <p class="summary">OpenAI, a leading artificial intelligence research and deployment company, has reportedly secured a substantial $38 billion cloud computing agreement with Amazon. This landmark deal underscores the escalating demand for high-performance computing infrastructure necessary to fuel advanced AI development, particularly for training and deploying large language models and other complex AI systems. The partnership with Amazon's dominant cloud division, Amazon Web Services (AWS), will provide OpenAI with access to vast computational resources, including specialized hardware like GPUs, which are critical for processing the immense datasets required for cutting-edge AI research. This strategic alliance is expected to significantly enhance OpenAI's capacity for innovation, enabling the company to accelerate the development of next-generation AI technologies and expand its services globally. For Amazon, the deal solidifies its position as a premier provider of AI infrastructure, leveraging its extensive cloud capabilities to support one of the most prominent players in the AI industry. The massive investment highlights the significant capital expenditure involved in scaling AI operations and signals a long-term commitment from both entities to drive the future of artificial intelligence.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Cloud Computing</span><span>Artificial Intelligence</span><span>OpenAI</span><span>Amazon Web Services</span><span>Large Language Models</span><span>AI Infrastructure</span><span>Computational Resources</span><span>Strategic Partnership</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.nytimes.com/2025/11/03/technology/openai-amazon-cloud-computing.html" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The Case That A.I. Is Thinking</h2>
+                <span class="published-time">Published: 2025-11-03 17:55:10</span>
+                
+                <p class="summary">The article, "The Case That A.I. Is Thinking," delves into the profound and increasingly contentious debate surrounding whether contemporary artificial intelligence systems, particularly advanced large language models, possess genuine cognitive capabilities akin to human thought. It meticulously examines the philosophical and scientific arguments, exploring various criteria for defining consciousness, cognition, and sentience when applied to non-biological entities. The discussion likely encompasses perspectives ranging from proponents who argue that AI's sophisticated problem-solving, reasoning, and creative generation are evidence of true thought, to skeptics who contend that these systems merely simulate understanding without true internal states, subjective experience, or intentionality. The piece probably analyzes the performance of state-of-the-art AI in tasks that traditionally required human intellect, prompting a re-evaluation of our understanding of intelligence itself. Furthermore, it might touch upon the ethical implications and societal impact if AI were indeed capable of thinking, potentially reshaping human-machine interactions and the future trajectory of AI development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Cognition</span><span>Artificial General Intelligence</span><span>Machine Consciousness</span><span>Large Language Models</span><span>Philosophy of AI</span><span>Turing Test</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.newyorker.com/magazine/2025/11/10/the-case-that-ai-is-thinking" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Google pulls AI model after senator says it fabricated assault allegation</h2>
+                <span class="published-time">Published: 2025-11-03 16:17:22</span>
+                
+                <p class="summary">Google has temporarily withdrawn one of its artificial intelligence models following an accusation from a senator that the AI system fabricated an assault allegation. This incident highlights ongoing challenges in AI development, particularly concerning the reliability and ethical implications of generative AI systems. The withdrawal underscores the critical need for robust safety protocols and stringent content moderation mechanisms within AI applications. Concerns about AI hallucination, where models generate false or misleading information, are increasingly prominent as these technologies become more integrated into daily life. This event emphasizes the responsibility of AI developers to ensure the factual accuracy and mitigate potential harms from their products, prompting a re-evaluation of current deployment strategies and user interaction safeguards to prevent the spread of misinformation and protect individuals from AI-generated fabrications. The swift action by Google reflects the company's commitment to addressing serious concerns regarding its AI offerings, though the specific model and details of the fabricated allegation were not extensively detailed in the initial report.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Hallucination</span><span>AI Safety</span><span>Generative AI</span><span>Content Moderation</span><span>AI Ethics</span><span>Google AI</span><span>Large Language Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.theverge.com/news/812376/google-removes-gemma-senator-blackburn-hallucination" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OSS Alternative to Open WebUI – ChatGPT-Like UI, API and CLI</h2>
+                <span class="published-time">Published: 2025-11-03 12:05:28</span>
+                
+                <p class="summary">This Hacker News story introduces a new open-source project from ServiceStack, dubbed "llms", serving as a direct alternative to platforms like Open WebUI. It offers a multifaceted approach to interacting with Large Language Models (LLMs), encompassing a user-friendly interface reminiscent of ChatGPT, a comprehensive API for seamless programmatic integration, and a powerful command-line interface (CLI) designed for automation and scripting. This project is significant for developers and organizations seeking flexible, self-hostable solutions to manage their LLM workflows. By providing a customizable and community-driven platform, "llms" aims to democratize access to advanced AI capabilities, fostering innovation and reducing reliance on closed ecosystems. Its release underscores the increasing demand for robust, open-source tools that empower users with greater control over their AI deployments and interactions, thereby accelerating the adoption and application of LLM technologies across various domains.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Open Source</span><span>Large Language Models</span><span>User Interface</span><span>API</span><span>CLI</span><span>ChatGPT</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/ServiceStack/llms" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Waymo to expand robotaxi service to Las Vegas, San Diego and Detroit next year</h2>
+                <span class="published-time">Published: 2025-11-03 19:17:08</span>
+                
+                <p class="summary">Waymo, a pioneering company in autonomous driving technology, has announced ambitious plans to significantly expand its robotaxi service, targeting the major U.S. cities of Las Vegas, San Diego, and Detroit for launch next year. This strategic expansion represents a critical milestone in the commercialization and broader adoption of self-driving vehicles, showcasing Waymo's continued confidence in its fully autonomous ride-hailing platform. Operating in diverse urban environments like these will provide invaluable data and operational insights, further refining the sophisticated AI-powered systems that govern the vehicles' perception, prediction, and planning capabilities. The deployment into new geographical areas necessitates robust advancements in real-time mapping, sensor fusion, and complex decision-making algorithms to adapt to varied traffic patterns, infrastructure, and local regulations. This move underscores the ongoing progress in integrating advanced robotics and artificial intelligence into mainstream mobility solutions, aiming to enhance urban transportation's safety, efficiency, and accessibility.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Robotaxi</span><span>Autonomous Vehicles</span><span>Waymo</span><span>Self-driving Cars</span><span>AI in Transportation</span><span>Robotics</span><span>Mobility Services</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.reuters.com/technology/waymo-expand-robotaxi-service-las-vegas-san-diego-detroit-next-year-2025-11-03/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Skyfall-GS 
+– Synthesizing Immersive 3D Urban Scenes from Satellite Imagery</h2>
+                <span class="published-time">Published: 2025-11-03 13:46:19</span>
+                
+                <p class="summary">Skyfall-GS is an innovative project focused on the synthesis of immersive 3D urban scenes directly from satellite imagery. This research leverages advanced computational techniques, likely involving deep learning and computer vision, to reconstruct detailed three-dimensional models of cityscapes from two-dimensional aerial data. The primary objective is to generate highly realistic and interactive urban environments that can be explored. This approach offers significant advantages over traditional 3D modeling methods, providing a scalable and efficient way to create digital twins of urban areas. The resulting immersive scenes hold substantial potential for applications in urban planning, architectural visualization, environmental monitoring, simulation for autonomous systems, and the development of rich virtual reality and gaming experiences. The project highlights advancements in transforming geospatial data into high-fidelity, actionable 3D content, pushing the boundaries of spatial computing and generative AI in environmental reconstruction.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>3D Reconstruction</span><span>Urban Modeling</span><span>Satellite Imagery</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span><span>Scene Synthesis</span><span>Geospatial Data</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Generative AI</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://skyfall-gs.jayinnn.dev/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Weibo Public Opinion Analysis System</h2>
+                <span class="published-time">Published: 2025-11-03T17:51:24Z</span>
+                
+                <p class="summary">The "Weibo Public Opinion Analysis System," also known as "Weiyu" or "BettaFish," is an innovative multi-agent system designed to analyze public sentiment, predict trends, create decision-making support. It enables users to submit analysis requests conversationally, prompting intelligent agents to autonomously process information from over 30 mainstream domestic and international social media platforms and millions of user comments. This system boasts six key advantages: AI-driven 24/7 all-domain monitoring by an AI crawler, a composite analysis engine that integrates five specialized agents with fine-tuned and statistical models, robust multi-modal capabilities for analyzing short videos and structured data, an Agent "Forum" for collaborative intelligence, seamless integration of public and private data, and a lightweight, extensible Python-based framework. Ultimately, "Weiyu" aims to be a versatile data analysis engine beyond mere public opinion analysis.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multi-agent system</span><span>Public Opinion Analysis</span><span>AI Crawler</span><span>LLM</span><span>Multimodal Analysis</span><span>Sentiment Analysis</span><span>Data Integration</span><span>Flask</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/666ghj/BettaFish" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Nano-vLLM</h2>
+                <span class="published-time">Published: 2025-11-03T17:44:42Z</span>
+                
+                <p class="summary">Nano-vLLM is a lightweight, from-scratch implementation of the vLLM inference engine, engineered for fast offline inference of Large Language Models. It boasts comparable, and often superior, inference speeds to the original vLLM, as validated by benchmarks showcasing higher throughput. The project prioritizes code clarity with a highly readable Python implementation spanning approximately 1,200 lines, making it accessible for developers. Its robust optimization suite includes critical features such as prefix caching, Tensor Parallelism, Torch compilation, and CUDA graph integration, all designed to maximize performance and efficiency. Nano-vLLM is an ideal solution for scenarios demanding optimized LLM deployment, particularly where a lean, high-performance, and understandable inference framework is paramount. Its API mirrors vLLM's interface, simplifying adoption for existing vLLM users seeking an enhanced alternative. This tool is valuable for researchers and engineers focused on advancing LLM inference capabilities.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>vLLM</span><span>Large Language Models</span><span>Inference Optimization</span><span>Tensor Parallelism</span><span>CUDA Graph</span><span>Deep Learning</span><span>Python</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Deep Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/GeeeekExplorer/nano-vllm" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OpenCode: The AI coding agent built for the terminal.</h2>
+                <span class="published-time">Published: 2025-11-03T17:08:32Z</span>
+                
+                <p class="summary">OpenCode is an open-source AI coding agent specifically engineered for terminal environments, offering developers a versatile and powerful tool. Its core strength lies in its provider-agnostic design, supporting major AI models from Anthropic, OpenAI, and Google, alongside local models, which ensures future-proofing and cost efficiency. The agent features out-of-the-box Language Server Protocol (LSP) support, enhancing code understanding and interaction within the terminal. With a strong focus on Terminal User Interface (TUI), OpenCode is built to maximize productivity for command-line enthusiasts. Furthermore, its innovative client/server architecture enables flexible operation, allowing remote control of the agent from various frontends, including mobile applications. OpenCode aims to redefine terminal-based development by offering a highly adaptable and open alternative to proprietary coding assistants, with straightforward installation across multiple operating systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Terminal UI</span><span>Code Generation</span><span>Open Source</span><span>LSP Support</span><span>Provider-Agnostic</span><span>Client-Server Architecture</span><span>Developer Tools</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/sst/opencode" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>A Survey on Efficient Vision-Language-Action Models</h2>
+                <span class="published-time">Published: 2025-10-27T17:57:33.000Z</span>
+                
+                <p class="summary">Vision-Language-Action models (VLAs) represent a significant frontier in embodied intelligence, aiming to bridge digital knowledge with physical-world interaction. While these models have demonstrated remarkable generalist capabilities, their deployment is severely hampered by the substantial computational and data requirements inherent to their underlying large-scale foundation models. Motivated by the urgent need to address these challenges, this survey presents the first comprehensive review of Efficient Vision-Language-Action models (Efficient VLAs) across the entire data-model-training process. Specifically, we introduce a unified taxonomy to systematically organize the disparate efforts in this domain, categorizing current techniques into three core pillars: (1) Efficient Model Design, focusing on efficient architectures and model compression; (2) Efficient Training, which reduces computational burdens during model learning; and (3) Efficient Data Collection, which addresses the bottlenecks in acquiring and utilizing robotic data. Through a critical review of state-of-the-art methods within this framework, this survey not only establishes a foundational reference for the community but also summarizes representative applications, delineates key challenges, and charts a roadmap for future research. We maintain a continuously updated project page to track our latest developments: https://evla-survey.github.io/</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Vision-Language-Action models</span><span>Embodied intelligence</span><span>Efficient VLAs</span><span>Model compression</span><span>Robotics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Robotics</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.24795" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The Denario project: Deep knowledge AI agents for scientific discovery</h2>
+                <span class="published-time">Published: 2025-10-30T18:00:12.000Z</span>
+                
+                <p class="summary">We present Denario, an AI multi-agent system designed to serve as a scientific research assistant. Denario can perform many different tasks, such as generating ideas, checking the literature, developing research plans, writing and executing code, making plots, and drafting and reviewing a scientific paper. The system has a modular architecture, allowing it to handle specific tasks, such as generating an idea, or carrying out end-to-end scientific analysis using Cmbagent as a deep-research backend. In this work, we describe in detail Denario and its modules, and illustrate its capabilities by presenting multiple AI-generated papers generated by it in many different scientific disciplines such as astrophysics, biology, biophysics, biomedical informatics, chemistry, material science, mathematical physics, medicine, neuroscience and planetary science. Denario also excels at combining ideas from different disciplines, and we illustrate this by showing a paper that applies methods from quantum physics and machine learning to astrophysical data. We report the evaluations performed on these papers by domain experts, who provided both numerical scores and review-like feedback. We then highlight the strengths, weaknesses, and limitations of the current system. Finally, we discuss the ethical implications of AI-driven research and reflect on how such technology relates to the philosophy of science. We publicly release the code at https://github.com/AstroPilot-AI/Denario. A Denario demo can also be run directly on the web at https://huggingface.co/spaces/astropilot-ai/Denario, and the full app will be deployed on the cloud.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI agents</span><span>Scientific discovery</span><span>Multi-agent systems</span><span>Automated research</span><span>Interdisciplinary AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.26887" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Continuous Autoregressive Language Models</h2>
+                <span class="published-time">Published: 2025-10-31T17:58:11.000Z</span>
+                
+                <p class="summary">The efficiency of large language models (LLMs) is fundamentally limited by their sequential, token-by-token generation process. We argue that overcoming this bottleneck requires a new design axis for LLM scaling: increasing the semantic bandwidth of each generative step. To this end, we introduce Continuous Autoregressive Language Models (CALM), a paradigm shift from discrete next-token prediction to continuous next-vector prediction. CALM uses a high-fidelity autoencoder to compress a chunk of K tokens into a single continuous vector, from which the original tokens can be reconstructed with over 99.9% accuracy. This allows us to model language as a sequence of continuous vectors instead of discrete tokens, which reduces the number of generative steps by a factor of K. The paradigm shift necessitates a new modeling toolkit; therefore, we develop a comprehensive likelihood-free framework that enables robust training, evaluation, and controllable sampling in the continuous domain. Experiments show that CALM significantly improves the performance-compute trade-off, achieving the performance of strong discrete baselines at a significantly lower computational cost. More importantly, these findings establish next-vector prediction as a powerful and scalable pathway towards ultra-efficient language models. Code: https://github.com/shaochenze/calm. Project: https://shaochenze.github.io/blog/2025/CALM.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Continuous Autoregressive Language Models</span><span>Large Language Models</span><span>next-vector prediction</span><span>autoencoder</span><span>likelihood-free framework</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.27688" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Value Drifts: Tracing Value Alignment During LLM Post-Training</h2>
+                <span class="published-time">Published: 2025-10-30T17:09:09.000Z</span>
+                
+                <p class="summary">As LLMs occupy an increasingly important role in society, they are more and more confronted with questions that require them not only to draw on their general knowledge but also to align with certain human value systems. Therefore, studying the alignment of LLMs with human values has become a crucial field of inquiry. Prior work, however, mostly focuses on evaluating the alignment of fully trained models, overlooking the training dynamics by which models learn to express human values. In this work, we investigate how and at which stage value alignment arises during the course of a model's post-training. Our analysis disentangles the effects of post-training algorithms and datasets, measuring both the magnitude and time of value drifts during training. Experimenting with Llama-3 and Qwen-3 models of different sizes and popular supervised fine-tuning (SFT) and preference optimization datasets and algorithms, we find that the SFT phase generally establishes a model's values, and subsequent preference optimization rarely re-aligns these values. Furthermore, using a synthetic preference dataset that enables controlled manipulation of values, we find that different preference optimization algorithms lead to different value alignment outcomes, even when preference data is held constant. Our findings provide actionable insights into how values are learned during post-training and help to inform data curation, as well as the selection of models and algorithms for preference optimization to improve model alignment to human values.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM post-training</span><span>value alignment</span><span>supervised fine-tuning</span><span>preference optimization</span><span>training dynamics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.26707" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Phased DMD: Few-step Distribution Matching Distillation via Score Matching within Subintervals</h2>
+                <span class="published-time">Published: 2025-10-31T17:55:10.000Z</span>
+                
+                <p class="summary">Distribution Matching Distillation (DMD) distills score-based generative models into efficient one-step generators, without requiring a one-to-one correspondence with the sampling trajectories of their teachers. However, limited model capacity causes one-step distilled models underperform on complex generative tasks, e.g., synthesizing intricate object motions in text-to-video generation. Directly extending DMD to multi-step distillation increases memory usage and computational depth, leading to instability and reduced efficiency. While prior works propose stochastic gradient truncation as a potential solution, we observe that it substantially reduces the generation diversity of multi-step distilled models, bringing it down to the level of their one-step counterparts. To address these limitations, we propose Phased DMD, a multi-step distillation framework that bridges the idea of phase-wise distillation with Mixture-of-Experts (MoE), reducing learning difficulty while enhancing model capacity. Phased DMD is built upon two key ideas: progressive distribution matching and score matching within subintervals. First, our model divides the SNR range into subintervals, progressively refining the model to higher SNR levels, to better capture complex distributions. Next, to ensure the training objective within each subinterval is accurate, we have conducted rigorous mathematical derivations. We validate Phased DMD by distilling state-of-the-art image and video generation models, including Qwen-Image (20B parameters) and Wan2.2 (28B parameters). Experimental results demonstrate that Phased DMD preserves output diversity better than DMD while retaining key generative capabilities. We will release our code and models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Distribution Matching Distillation</span><span>Score Matching</span><span>Generative Models</span><span>Multi-step Distillation</span><span>Mixture-of-Experts</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Deep Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.27684" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Visual Backdoor Attacks on MLLM Embodied Decision Making via Contrastive Trigger Learning</h2>
+                <span class="published-time">Published: 2025-10-31T16:50:49.000Z</span>
+                
+                <p class="summary">Multimodal large language models (MLLMs) have advanced embodied agents by enabling direct perception, reasoning, and planning task-oriented actions from visual inputs. However, such vision driven embodied agents open a new attack surface: visual backdoor attacks, where the agent behaves normally until a visual trigger appears in the scene, then persistently executes an attacker-specified multi-step policy. We introduce BEAT, the first framework to inject such visual backdoors into MLLM-based embodied agents using objects in the environments as triggers. Unlike textual triggers, object triggers exhibit wide variation across viewpoints and lighting, making them difficult to implant reliably. BEAT addresses this challenge by (1) constructing a training set that spans diverse scenes, tasks, and trigger placements to expose agents to trigger variability, and (2) introducing a two-stage training scheme that first applies supervised fine-tuning (SFT) and then our novel Contrastive Trigger Learning (CTL). CTL formulates trigger discrimination as preference learning between trigger-present and trigger-free inputs, explicitly sharpening the decision boundaries to ensure precise backdoor activation. Across various embodied agent benchmarks and MLLMs, BEAT achieves attack success rates up to 80%, while maintaining strong benign task performance, and generalizes reliably to out-of-distribution trigger placements. Notably, compared to naive SFT, CTL boosts backdoor activation accuracy up to 39% under limited backdoor data. These findings expose a critical yet unexplored security risk in MLLM-based embodied agents, underscoring the need for robust defenses before real-world deployment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Visual Backdoor Attacks</span><span>MLLM Embodied Agents</span><span>Contrastive Trigger Learning</span><span>Multimodal Large Language Models</span><span>Security Risk</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>AI Agent</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.27623" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
