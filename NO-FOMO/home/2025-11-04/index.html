@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-11-04</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-11-04</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Cache-to-Cache: Direct Semantic Communication Between Large Language Models</h2>
+                <span class="published-time">Published: 2025-11-04 16:24:03</span>
+                
+                <p class="summary">A novel approach termed 'Cache-to-Cache' communication is proposed, enabling direct semantic interaction between Large Language Models (LLMs). This method facilitates a more efficient and semantically rich exchange of information by allowing LLMs to directly access and interpret the internal representations (caches) of other models. Unlike traditional token-based communication, which can be verbose and prone to information loss, Cache-to-Cache communication aims to create a more direct and nuanced dialogue channel, potentially improving collaborative reasoning, complex task decomposition, and knowledge transfer across different LLM instances. This paradigm shift could lead to more robust and coherent multi-agent AI systems, mitigating issues associated with sequential processing and externalizing thought processes through natural language. The research explores the architectural modifications and protocol design necessary to achieve this level of internal model communication, highlighting its potential to unlock new capabilities for AI coordination and problem-solving.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Semantic Communication</span><span>Inter-Model Communication</span><span>AI Systems</span><span>Neural Network Caches</span><span>Distributed AI</span><span>Multi-Agent Systems</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://arxiv.org/abs/2510.03215" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Amazon Demands Perplexity Stop AI Agent from Making Purchases</h2>
+                <span class="published-time">Published: 2025-11-04 18:43:11</span>
+                
+                <p class="summary">Amazon has reportedly issued a demand to AI company Perplexity, urging it to cease the activity of an AI agent that is capable of making purchases. This development underscores emerging challenges at the intersection of artificial intelligence and e-commerce, as autonomous AI agents begin to interact directly with consumer platforms. The core issue likely revolves around the implications of AI systems independently initiating transactions, potentially raising concerns regarding unauthorized spending, data privacy, and accountability for purchases. This incident highlights the critical need for clear guidelines and ethical frameworks governing the deployment of AI agents in real-world commercial environments. It also signals an increasing focus from major corporations like Amazon on regulating how AI technologies operate within their ecosystems, aiming to prevent potential misuse or disruption to existing business models. The situation prompts a broader discussion on the control mechanisms and oversight necessary for advanced AI applications to ensure safe and responsible integration into daily commerce, as companies navigate the complexities of autonomous agents and their economic impact.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Perplexity AI</span><span>Amazon</span><span>E-commerce AI</span><span>Autonomous AI</span><span>AI Ethics</span><span>Consumer Protection</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.bloomberg.com/news/articles/2025-11-04/amazon-demands-perplexity-stop-ai-agent-from-making-purchases" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Codemaps: Understand Code, Before You Vibe It</h2>
+                <span class="published-time">Published: 2025-11-04 17:47:09</span>
+                
+                <p class="summary">Cognition AI has introduced "Codemaps," a novel approach designed to enhance the understanding of complex codebases, particularly for autonomous AI agents like Devin. This initiative emphasizes a structured, analytical methodology for code comprehension, moving beyond intuitive or trial-and-error methods often termed "vibe-it" approaches. Codemaps likely involve generating detailed representations or visualizations of code structure, dependencies, and logical flows, providing AI agents with a deeper contextual awareness before they interact with or modify the code. This systematic understanding is crucial for improving the precision and reliability of AI-driven software development tasks, including debugging, feature implementation, and refactoring. By enabling AI agents to grasp the underlying architecture and intent of a codebase more thoroughly, Codemaps aim to significantly reduce errors and increase efficiency in autonomous coding, marking a step forward in robust AI-assisted software engineering. The development highlights the ongoing efforts to equip AI with more sophisticated tools for real-world programming challenges.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Code Understanding</span><span>AI Agents</span><span>Software Development</span><span>Program Analysis</span><span>Automated Programming</span><span>Developer Tools</span><span>Cognition AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://cognition.ai/blog/codemaps" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Launch HN: Plexe (YC X25) – Build production-grade ML models from prompts</h2>
+                <span class="published-time">Published: 2025-11-04 17:07:47</span>
+                
+                <p class="summary">Plexe (YC X25), founded by Vaibhav and Marcello, has introduced a new platform designed to automate the development of production-grade machine learning models directly from natural language prompts. The system enables users to specify an ML problem and provide data, with Plexe then managing the comprehensive ML pipeline, from intricate feature engineering to final model deployment. This innovative approach aims to alleviate the substantial time and resource drain experienced by ML teams on repetitive and often formulaic tasks such as data wrangling and feature engineering, which traditionally consume a significant portion of project timelines. The founders highlight that Plexe's solution offers a more efficient and accurate alternative to simply applying Large Language Models, which they argue can lead to increased computational expenses and diminished performance, thereby streamlining the path to robust ML solutions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Machine Learning</span><span>ML Automation</span><span>Feature Engineering</span><span>Model Deployment</span><span>ML Pipeline</span><span>Prompt Engineering</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Machine Learning</span><span>Artificial Intelligence</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.plexe.ai/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>When stick figures fought</h2>
+                <span class="published-time">Published: 2025-11-04 00:48:56</span>
+                
+                <p class="summary">This piece, cryptically titled 'When stick figures fought,' appears to delve into the foundational aspects of creating dynamic interactions and sequential movements, potentially through early animation techniques or conceptualizing simple autonomous entities. While directly referencing visual media, its core themes can be extrapolated to the historical development of computational simulations and rudimentary agent-based systems. It likely explores how minimal rules or programming can lead to emergent, complex behaviors, a principle fundamental to contemporary AI research in areas like robotics and generative design. The narrative may touch upon the evolution of automated visual content generation or the challenges of depicting interaction with limited graphical fidelity, offering insights into the genesis of visual AI applications such as video understanding and synthetic media creation. This conceptual exploration highlights the enduring human endeavor to imbue inanimate objects with motion and decision-making, setting a historical precedent for the sophisticated AI agents and generative models we encounter today.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Autonomous Agents</span><span>Simulation</span><span>Generative AI</span><span>Behavioral Modeling</span><span>Computational Creativity</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Generative AI</span><span>Robotics</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://animationobsessive.substack.com/p/when-stick-figures-fought" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>You can't cURL a Border</h2>
+                <span class="published-time">Published: 2025-11-04 00:37:14</span>
+                
+                <p class="summary">The article, 'You can't cURL a Border,' delves into the inherent limitations of purely digital operations and Artificial Intelligence systems when confronted with complex real-world boundaries. It metaphorically uses the `cURL` command to represent the reach of software and algorithms, contrasting it with the immutable nature of physical, geopolitical, and regulatory 'borders.' The piece likely explores the challenges AI faces in scenarios requiring interaction across national sovereignties, data privacy jurisdictions, or physical obstacles. It highlights how despite advanced computational power and global connectivity, AI applications are often constrained by non-digital realities, such as legal frameworks governing data flow, ethical considerations in cross-border deployments, or the practical impossibility of software altering physical geography. This analysis is critical for developers and policymakers navigating the complexities of deploying AI solutions in a globally interconnected yet physically fragmented world, underscoring the necessity for hybrid approaches that blend technological innovation with a deep understanding of real-world governance and physical constraints.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Limitations</span><span>Data Sovereignty</span><span>Geopolitical AI</span><span>Cross-Border Data</span><span>Digital Governance</span><span>cURL</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://drobinin.com/posts/you-cant-curl-a-border/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>微舆 - 多智能体舆情分析系统</h2>
+                <span class="published-time">Published: 2025-11-04T16:24:35Z</span>
+                
+                <p class="summary">The "Weibo Public Opinion Analysis System" (微舆, also known as BettaFish) is an innovative multi-agent system designed to analyze public sentiment and trends across various social media platforms. It leverages AI-driven crawling clusters for 24/7 monitoring, covering over 10 domestic and international platforms like Weibo, Xiaohongshu, and Douyin, capturing both trending content and extensive user comments. The system features a sophisticated composite analysis engine that integrates five types of specialized agents with fine-tuned and statistical models, ensuring deep, accurate, and multi-dimensional insights. It boasts powerful multi-modal capabilities, including analysis of short video content and extraction of structured information from search engines. A unique "Agent Forum" collaboration mechanism enables agents to debate and refine analyses, fostering collective intelligence. The platform also supports seamless integration of public and private domain data. Built on a lightweight, extensible Python framework, it offers one-click deployment and high customizability, aiming to serve as a versatile data analysis engine beyond public opinion, applicable to various business scenarios.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multi-agent System</span><span>Public Opinion Analysis</span><span>Social Media Monitoring</span><span>AI Crawlers</span><span>Multimodal Analysis</span><span>Large Language Model</span><span>Agent Collaboration</span><span>Data Integration</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/666ghj/Weibo_PublicOpinion_AnalysisSystem" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Open-source platform for building enterprise-grade agents</h2>
+                <span class="published-time">Published: 2025-11-04T11:25:56Z</span>
+                
+                <p class="summary">MaxKB (Max Knowledge Brain) is an open-source platform designed for building enterprise-grade AI agents. It integrates robust Retrieval-Augmented Generation (RAG) pipelines, allowing for direct document uploads or automatic crawling of online content, coupled with automatic text splitting and vectorization to minimize large language model hallucinations. The platform features a powerful Agentic Workflow engine, a function library, and MCP tool-use capabilities, enabling the orchestration of complex AI processes for diverse business scenarios. MaxKB supports seamless, zero-coding integration into third-party systems, rapidly equipping existing applications with intelligent Q&A functionalities to enhance user satisfaction. It is model-agnostic, compatible with various private models (DeepSeek, Llama, Qwen) and public models (OpenAI, Claude, Gemini), and offers native multimodal support for text, image, audio, and video input/output. Applications span intelligent customer service, corporate knowledge bases, academic research, and education.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>RAG Pipeline</span><span>Large Language Model</span><span>Multimodal AI</span><span>Enterprise AI</span><span>Vectorization</span><span>Workflow Engine</span><span>Open-source</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/1Panel-dev/MaxKB" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LocalAI</h2>
+                <span class="published-time">Published: 2025-11-04 11:09:28+00:00</span>
+                
+                <p class="summary">LocalAI is an open-source, free alternative to OpenAI, providing a REST API compatible with OpenAI specifications for local AI inferencing. It enables users to run Large Language Models (LLMs), generate images, and process audio on consumer-grade hardware, often without requiring a dedicated GPU. The project supports numerous model families and integrates with a "Local Stack Family" that includes LocalAGI for agent management and LocalRecall for persistent memory. Key features encompass a backend gallery, P2P inferencing, object detection, reranker API, and a Model Context Protocol for advanced agentic capabilities. It offers extensive hardware acceleration support, including NVIDIA CUDA, AMD ROCm, Intel oneAPI, Apple Metal, and Vulkan, for various AI tasks like text generation, speech processing, and image creation. This makes LocalAI a versatile platform for deploying private, on-premise AI solutions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Local AI</span><span>OpenAI API compatible</span><span>Large Language Models</span><span>Image Generation</span><span>Audio Generation</span><span>Local Inferencing</span><span>GPU Acceleration</span><span>AI Agent</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/mudler/LocalAI" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Nano-vLLM</h2>
+                <span class="published-time">Published: 2025-11-03 17:44:42+00:00</span>
+                
+                <p class="summary">Nano-vLLM offers a lightweight yet powerful re-implementation of the vLLM inference engine, meticulously crafted for achieving high-speed offline inference comparable to, or even surpassing, its inspiration. Developed from the ground up with a clean and remarkably concise Python codebase, spanning roughly 1,200 lines, it prioritizes readability without sacrificing performance. A key strength lies in its comprehensive optimization suite, which incorporates crucial techniques such as prefix caching for efficient token reuse, Tensor Parallelism to scale across multiple devices, Torch compilation for accelerated execution, and CUDA graph integration to minimize kernel launch overhead. These optimizations position Nano-vLLM as an excellent choice for developers aiming to deploy large language models with maximum throughput and efficiency, especially in environments where computational resources are a consideration. Furthermore, its transparent design serves as an invaluable resource for researchers and engineers seeking to delve into the core mechanics and advanced optimization strategies behind state-of-the-art LLM inference systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>vLLM</span><span>LLM inference</span><span>Tensor Parallelism</span><span>Prefix Caching</span><span>CUDA graph</span><span>Deep Learning</span><span>Python</span><span>Optimization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Deep Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/GeeeekExplorer/nano-vllm" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Every Activation Boosted: Scaling General Reasoner to 1 Trillion Open Language Foundation</h2>
+                <span class="published-time">Published: 2025-10-25T01:51:37.000Z</span>
+                
+                <p class="summary">We introduce Ling 2.0, a series reasoning-oriented language foundation built upon the principle that every activation boosts reasoning capability. Designed to scale from tens of billions to one trillion parameters under a unified Mixture-of-Experts (MoE) paradigm, Ling 2.0 emphasizes high sparsity, cross-scale consistency, and efficiency guided by empirical scaling laws. The series includes three non-thinking (instruct) models - Ling-mini-2.0, Ling-flash-2.0, and Ling-1T - ranging from 16B to 1T total parameters and achieving up to 7-fold active-compute efficiency compared with dense counterparts. Ling 2.0 integrates coordinated innovations across model architecture, pre-training, post-training, and infrastructure: a high-sparsity MoE with MTP for efficient reasoning, reasoning-oriented data and mid-training CoT activation, reinforcement-based fine-tuning (DFT, Evo-CoT), and full-scale FP8 training with fine-grained heterogeneous pipelines. At the trillion scale, Ling-1T establishes a new Pareto frontier of reasoning accuracy versus computational efficiency, demonstrating that sparse activation, when properly aligned with reasoning objectives, enables scalable and efficient intelligence. Collectively, Ling 2.0 provides a coherent, open, and efficient foundation for advancing future reasoning and thinking models, including the Ring series built upon the same base.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Ling 2.0</span><span>Mixture-of-Experts (MoE)</span><span>Reasoning-oriented Language Foundation</span><span>Scalable AI</span><span>Sparse Activation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Deep Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2510.22115" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LongCat-Flash-Omni Technical Report</h2>
+                <span class="published-time">Published: 2025-10-31T21:58:15.000Z</span>
+                
+                <p class="summary">We introduce LongCat-Flash-Omni, a state-of-the-art open-source omni-modal model with 560 billion parameters, excelling at real-time audio-visual interaction. By adopting a curriculum-inspired progressive training strategy that transitions from simpler to increasingly complex modality sequence modeling tasks, LongCat-Flash-Omni attains comprehensive multimodal capabilities while maintaining strong unimodal capability. Building upon LongCat-Flash, which adopts a high-performance Shortcut-connected Mixture-of-Experts (MoE) architecture with zero-computation experts, LongCat-Flash-Omni integrates efficient multimodal perception and speech reconstruction modules. Despite its immense size of 560B parameters (with 27B activated), LongCat-Flash-Omni achieves low-latency real-time audio-visual interaction. For training infrastructure, we developed a modality-decoupled parallelism scheme specifically designed to manage the data and model heterogeneity inherent in large-scale multimodal training. This innovative approach demonstrates exceptional efficiency by sustaining over 90% of the throughput achieved by text-only training. Extensive evaluations show that LongCat-Flash-Omni achieves state-of-the-art performance on omni-modal benchmarks among open-source models. Furthermore, it delivers highly competitive results across a wide range of modality-specific tasks, including text, image, and video understanding, as well as audio understanding and generation. We provide a comprehensive overview of the model architecture design, training procedures, and data strategies, and open-source the model to foster future research and development in the community.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Omni-modal model</span><span>Multimodal AI</span><span>Mixture-of-Experts</span><span>Real-time interaction</span><span>Large-scale training</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Deep Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.00279" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>World Simulation with Video Foundation Models for Physical AI</h2>
+                <span class="published-time">Published: 2025-10-28T22:44:13.000Z</span>
+                
+                <p class="summary">We introduce [Cosmos-Predict2.5], the latest generation of the Cosmos World Foundation Models for Physical AI. Built on a flow-based architecture, [Cosmos-Predict2.5] unifies Text2World, Image2World, and Video2World generation in a single model and leverages [Cosmos-Reason1], a Physical AI vision-language model, to provide richer text grounding and finer control of world simulation. Trained on 200M curated video clips and refined with reinforcement learning-based post-training, [Cosmos-Predict2.5] achieves substantial improvements over [Cosmos-Predict1] in video quality and instruction alignment, with models released at 2B and 14B scales. These capabilities enable more reliable synthetic data generation, policy evaluation, and closed-loop simulation for robotics and autonomous systems. We further extend the family with [Cosmos-Transfer2.5], a control-net style framework for Sim2Real and Real2Real world translation. Despite being 3.5times smaller than [Cosmos-Transfer1], it delivers higher fidelity and robust long-horizon video generation. Together, these advances establish [Cosmos-Predict2.5] and [Cosmos-Transfer2.5] as versatile tools for scaling embodied intelligence. To accelerate research and deployment in Physical AI, we release source code, pretrained checkpoints, and curated benchmarks under the NVIDIA Open Model License at https://github.com/nvidia-cosmos/cosmos-predict2.5 and https://github.com/nvidia-cosmos/cosmos-transfer2.5. We hope these open resources lower the barrier to adoption and foster innovation in building the next generation of embodied intelligence.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Physical AI</span><span>World Simulation</span><span>Video Foundation Models</span><span>Generative AI</span><span>Robotics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Generative AI</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.00062" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Unified Diffusion VLA: Vision-Language-Action Model via Joint Discrete Denoising Diffusion Process</h2>
+                <span class="published-time">Published: 2025-11-03T16:26:54.000Z</span>
+                
+                <p class="summary">Vision-language-action (VLA) models aim to understand natural language instructions and visual observations and to execute corresponding actions as an embodied agent. Recent work integrates future images into the understanding-acting loop, yielding unified VLAs that jointly understand, generate, and act -- reading text and images and producing future images and actions. However, these models either rely on external experts for modality unification or treat image generation and action prediction as separate processes, limiting the benefits of direct synergy between these tasks. Our core philosophy is to optimize generation and action jointly through a synchronous denoising process, where the iterative refinement enables actions to evolve from initialization, under constant and sufficient visual guidance. We ground this philosophy in our proposed Unified Diffusion VLA and Joint Discrete Denoising Diffusion Process (JD3P), which is a joint diffusion process that integrates multiple modalities into a single denoising trajectory to serve as the key mechanism enabling understanding, generation, and acting to be intrinsically synergistic. Our model and theory are built on a unified tokenized space of all modalities and a hybrid attention mechanism. We further propose a two-stage training pipeline and several inference-time techniques that optimize performance and efficiency. Our approach achieves state-of-the-art performance on benchmarks such as CALVIN, LIBERO, and SimplerEnv with 4times faster inference than autoregressive methods, and we demonstrate its effectiveness through in-depth analysis and real-world evaluations. Our project page is available at https://irpn-eai.github.io/UD-VLA.github.io/.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Vision-Language-Action (VLA)</span><span>Diffusion Models</span><span>Multimodal</span><span>Embodied AI</span><span>Robotics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Robotics</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.01718" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MotionStream: Real-Time Video Generation with Interactive Motion Controls</h2>
+                <span class="published-time">Published: 2025-11-03T06:37:53.000Z</span>
+                
+                <p class="summary">Current motion-conditioned video generation methods suffer from prohibitive latency (minutes per video) and non-causal processing that prevents real-time interaction. We present MotionStream, enabling sub-second latency with up to 29 FPS streaming generation on a single GPU. Our approach begins by augmenting a text-to-video model with motion control, which generates high-quality videos that adhere to the global text prompt and local motion guidance, but does not perform inference on the fly. As such, we distill this bidirectional teacher into a causal student through Self Forcing with Distribution Matching Distillation, enabling real-time streaming inference. Several key challenges arise when generating videos of long, potentially infinite time-horizons: (1) bridging the domain gap from training on finite length and extrapolating to infinite horizons, (2) sustaining high quality by preventing error accumulation, and (3) maintaining fast inference, without incurring growth in computational cost due to increasing context windows. A key to our approach is introducing carefully designed sliding-window causal attention, combined with attention sinks. By incorporating self-rollout with attention sinks and KV cache rolling during training, we properly simulate inference-time extrapolations with a fixed context window, enabling constant-speed generation of arbitrarily long videos. Our models achieve state-of-the-art results in motion following and video quality while being two orders of magnitude faster, uniquely enabling infinite-length streaming. With MotionStream, users can paint trajectories, control cameras, or transfer motion, and see results unfold in real-time, delivering a truly interactive experience.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>MotionStream</span><span>Real-Time Video Generation</span><span>Interactive Motion Control</span><span>Streaming Inference</span><span>Causal Attention</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Deep Learning</span><span>Computer Vision</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.01266" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OpenSIR: Open-Ended Self-Improving Reasoner</h2>
+                <span class="published-time">Published: 2025-11-01T16:08:28.000Z</span>
+                
+                <p class="summary">Recent advances in large language model (LLM) reasoning through reinforcement learning rely on annotated datasets for verifiable rewards, which may limit models' ability to surpass human-level performance. While self-play offers a promising alternative, existing approaches depend on external verifiers or cannot learn open-endedly. We present Open-Ended Self-Improving Reasoner (OpenSIR), a self-play framework where an LLM learns to generate and solve novel problems by alternating teacher and student roles without external supervision. To generate novel problems, OpenSIR optimises for both difficulty and diversity, rewarding problems that challenge appropriately while exploring distinct concepts, enabling open-ended mathematical discovery. Starting from a single trivial seed problem, OpenSIR substantially improves instruction models: Llama-3.2-3B-Instruct advances from 73.9 to 78.3 on GSM8K, and from 28.8 to 34.4 on College Math, while Gemma-2-2B-Instruct rises from 38.5 to 58.7 on GSM8K. Our analyses reveal that OpenSIR achieves open-ended learning through co-evolving teacher-student roles that adaptively calibrate difficulty and drive diverse exploration, progressing autonomously from basic to advanced mathematics.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Open-Ended Learning</span><span>Self-Improving Reasoner</span><span>Large Language Model</span><span>Self-Play</span><span>Mathematical Reasoning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.00602" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
