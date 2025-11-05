@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-11-05</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-11-05</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Kosmos: An AI Scientist for Autonomous Discovery</h2>
+                <span class="published-time">Published: 2025-11-05 14:43:26</span>
+                
+                <p class="summary">The paper "Kosmos: An AI Scientist for Autonomous Discovery" introduces a groundbreaking concept in the integration of artificial intelligence into scientific research. This advanced system is designed to function as an independent AI scientist, capable of autonomously conducting experimental procedures, analyzing extensive datasets, formulating and refining hypotheses, and ultimately deriving novel scientific insights without direct human intervention. The development of Kosmos signifies a transformative step for various scientific disciplines, promising to dramatically accelerate the speed of discovery, efficiently manage and interpret complex information, and uncover intricate patterns that might elude traditional human-led research. This AI agent's ability to automate labor-intensive experimental processes and enhance analytical capabilities positions it as a pivotal tool for future scientific endeavors, potentially leading to significant breakthroughs across fields like material science, drug development, and fundamental physics.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Scientist</span><span>Autonomous Discovery</span><span>Artificial Intelligence</span><span>AI Agents</span><span>Automated Experimentation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://arxiv.org/abs/2511.02824" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>I
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														Microsoft Copilot for Excel (truncated title, but full details provided in summary) is a tool designed to integrate AI capabilities into Microsoft Excel. It aims to assist users in performing complex data tasks, conducting advanced analysis, and enhancing overall productivity by automating repetitive actions. The tool is anticipated to streamline various data-related operations, such as generating formulas, identifying trends, creating charts, and even writing Python scripts within Excel. This includes assisting with data cleaning, transformation, and visualization, making sophisticated data operations more accessible to a wider range of users, regardless of their proficiency in data science or programming. Its core function is to act as an intelligent assistant, interpreting natural language prompts to execute commands and provide insights within the Excel environment, thereby reducing manual effort and potential errors. This represents a significant step towards democratizing data analysis and allowing users to extract more value from their spreadsheets with less effort and more accuracy. It leverages large language models and other AI technologies to understand user intent and perform the desired actions.`, </h2>
+                <span class="published-time">Published: 2025-11-05 08:54:11</span>
+                
+                <p class="summary">The integration of AI-powered assistants, such as Microsoft Copilot, into ubiquitous productivity applications like Excel has sparked significant discussions regarding its potential implications. While proponents highlight the promise of enhanced efficiency, automated data analysis, and simplified complex tasks, there are growing concerns among users and industry observers. Key anxieties revolve around the accuracy and reliability of AI-generated insights, particularly when dealing with critical business data, and the potential for 'hallucinations' to lead to erroneous conclusions. Data privacy and security represent another substantial concern, as sensitive information processed by these AI models could pose risks. Furthermore, there is apprehension about the long-term impact on human skill sets, with fears that over-reliance on AI might diminish users' foundational analytical abilities. Ethical considerations, including algorithmic bias and accountability for AI-driven recommendations, also factor into the broader debate surrounding the pervasive deployment of AI in everyday business tools.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Microsoft Excel</span><span>AI Assistants</span><span>Productivity Software</span><span>Data Privacy</span><span>Automation</span><span>Large Language Models</span><span>Ethical AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://simonwillison.net/2025/Nov/5/brenda/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>My chilling week on Roblox: sexually assaulted and shat on as a child avatar</h2>
+                <span class="published-time">Published: 2025-11-05 18:17:39</span>
+                
+                <p class="summary">The Guardian has published a stark report detailing a week-long investigation on the Roblox platform, which uncovered significant and disturbing child safety breaches. An avatar deliberately designed to appear as a child was subjected to virtual sexual assault and other highly inappropriate content, exposing critical failures within Roblox's existing content moderation and parental control mechanisms. This investigation brings to the forefront the severe risks young users face in immersive online gaming environments and questions the efficacy of current platform safeguards. The findings highlight the complex technical hurdles in effectively monitoring and policing vast virtual spaces, necessitating the development and deployment of more sophisticated technological solutions. These solutions would encompass advanced real-time content analysis, AI-driven behavioral monitoring, and robust filtering systems to detect and prevent digital abuse. The report underscores a pressing need for substantial improvements in digital safety protocols and the urgent implementation of cutting-edge technologies, potentially including machine learning for anomaly detection and natural language processing for chat moderation, to ensure a secure and protective online experience for children. This incident demands a comprehensive re-evaluation of industry standards for online child protection.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Online Safety</span><span>Child Protection</span><span>Content Moderation</span><span>Virtual World Security</span><span>Digital Abuse Prevention</span><span>Parental Controls</span><span>AI Content Filtering</span><span>Online Gaming Risks</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.theguardian.com/games/2025/nov/05/roblox-game-robux-children-child-kids-safety-parental-controls" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Flock haters cross political divides to remove error-prone cameras</h2>
+                <span class="published-time">Published: 2025-11-05 17:29:26</span>
+                
+                <p class="summary">A growing bipartisan movement is actively challenging the proliferation of Flock Safety's automated license plate recognition (ALPR) cameras across various communities. The opposition stems from significant concerns regarding the cameras' reported error rates, which critics argue lead to false positives and misidentification, potentially impacting individuals' civil liberties. Beyond technical inaccuracies, opponents from across the political spectrum cite profound privacy implications, viewing the widespread deployment of these surveillance tools as an encroachment on personal freedoms and an expansion of governmental or corporate oversight without adequate safeguards. Efforts to remove these error-prone cameras highlight a contentious debate at the intersection of public safety technology, data privacy, and civil rights. The unified front against Flock cameras underscores a collective demand for greater accountability, transparency, and public discourse on the ethical deployment and operational reliability of AI-powered surveillance systems in urban and suburban environments, prompting municipalities to reconsider their contracts and deployment strategies.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Surveillance Technology</span><span>License Plate Recognition</span><span>Computer Vision</span><span>Privacy Concerns</span><span>Public Policy</span><span>Data Accuracy</span><span>Civil Liberties</span><span>Flock Safety</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://arstechnica.com/tech-policy/2025/11/flock-haters-cross-political-divides-to-remove-error-prone-cameras/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>微舆</h2>
+                <span class="published-time">Published: 2025-11-05T16:43:54Z</span>
+                
+                <p class="summary">This multi-agent public opinion analysis system, known as "MicroYu" (BettaFish), is engineered to break through information silos, accurately depict public sentiment, predict its evolution, and support decision-making. Users simply input their analytical needs via natural language. The system then automatically processes data from over 30 global mainstream social media platforms and millions of user comments. Its robust features include an AI-driven crawler for 24/7 monitoring across diverse social media, a composite analysis engine leveraging five specialized Agents alongside fine-tuned and statistical models, and advanced multimodal capabilities for short video analysis and structured data extraction from search engines. It utilizes an innovative Agent "forum" collaboration mechanism, integrates public and private sector data seamlessly, and offers a lightweight, extensible Python framework. "MicroYu" is envisioned as a versatile data analysis engine, adaptable for various business applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multi-agent system</span><span>Public Opinion Analysis</span><span>AI Crawler</span><span>Multimodal Analysis</span><span>Agent Collaboration</span><span>Sentiment Analysis</span><span>Natural Language Processing</span><span>Data Analysis</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/666ghj/Weibo_PublicOpinion_AnalysisSystem" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Skyvern</h2>
+                <span class="published-time">Published: 2025-11-05T18:30:01Z</span>
+                
+                <p class="summary">Skyvern is an advanced platform designed to automate browser-based workflows by leveraging Large Language Models (LLMs) and computer vision. It offers a robust API endpoint to replace traditional, brittle automation solutions that often fail with website layout changes. Unlike XPath-dependent methods, Skyvern employs a swarm of AI agents, inspired by designs like BabyAGI, to comprehend, plan, and execute actions on websites, even those it hasn't encountered before. This approach ensures high resistance to layout alterations and allows for a single workflow to be applied across diverse websites, handling complex reasoning scenarios. Skyvern boasts state-of-the-art performance on the WebBench benchmark, particularly excelling in "WRITE" tasks such as form filling, logging in, and file downloading, making it ideal for Robotic Process Automation (RPA). Key features include task and workflow management, livestreaming browser activity, comprehensive form filling, data extraction, file downloading, and various authentication methods including 2FA and password manager integrations. It supports multiple LLM providers and offers integrations with tools like Zapier for expanded automation capabilities across real-world applications like invoice downloading, job applications, and insurance quote retrieval.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLMs</span><span>Computer Vision</span><span>Browser Automation</span><span>AI Agents</span><span>Robotic Process Automation</span><span>Web Automation</span><span>Workflow Automation</span><span>Data Extraction</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/Skyvern-AI/skyvern" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DeepCode: Open Agentic Coding</h2>
+                <span class="published-time">Published: 2025-11-03T06:52:22Z</span>
+                
+                <p class="summary">DeepCode is an open-source, multi-agent AI system designed to significantly advance code generation by transforming ideas into production-ready code. It excels in three key areas: Paper2Code for automated implementation of complex algorithms from research papers, Text2Web for generating functional front-end web code from textual descriptions, and Text2Backend for streamlining server-side development. DeepCode has achieved state-of-the-art results on OpenAI's PaperBench, surpassing human experts with 75.9% and leading commercial code agents with 84.8%. Its sophisticated architecture features intelligent orchestration, an efficient memory mechanism, and an advanced CodeRAG system. These core techniques coordinate specialized agents for tasks like intent understanding, document parsing, code planning, reference mining, indexing, and code generation, ensuring high-quality and production-ready outputs. The platform offers both CLI and intuitive web interfaces, leveraging the Model Context Protocol (MCP) for seamless tool integration.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multi-Agent Systems</span><span>Code Generation</span><span>AI Agent</span><span>Paper2Code</span><span>Algorithm Implementation</span><span>Web Development</span><span>LLM Applications</span><span>Software Engineering</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/HKUDS/DeepCode" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>What is NocoBase</h2>
+                <span class="published-time">Published: 2025-11-05T12:47:32Z</span>
+                
+                <p class="summary">NocoBase is an extensible, AI-powered no-code platform designed for rapid development of complex business systems, significantly cutting costs and time. It employs a data model-driven architecture, decoupling UI from data structures to offer unlimited customization with diverse blocks and actions, supporting various data sources like main, external, and third-party APIs. A key feature is its seamless integration of AI capabilities, allowing users to define 'AI employees' (e.g., translator, analyst) directly within interfaces and workflows for secure, transparent, and customizable AI-human collaboration. The platform provides an intuitive 'what you see is what you get' experience, with an accessible configuration mode for non-programmers. Its plugin-based microkernel architecture ensures infinite extensibility, where all functionalities, including pages, blocks, actions, and data sources, can be extended or customized through plugins. NocoBase offers flexible installation options, including a recommended Docker method for no-code scenarios and a CLI for low-code development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>no-code platform</span><span>AI-powered</span><span>extensibility</span><span>data model-driven</span><span>AI integration</span><span>plugin architecture</span><span>low-code development</span><span>Docker</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/nocobase/nocobase" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LocalAI</h2>
+                <span class="published-time">Published: 2025-11-04T21:19:58Z</span>
+                
+                <p class="summary">LocalAI is an open-source alternative to OpenAI, providing a drop-in replacement REST API compatible with OpenAI's specifications. It enables local and on-premise AI inferencing for Large Language Models (LLMs), image generation, and audio processing, supporting a wide array of model families on consumer-grade hardware, often without requiring a dedicated GPU. The project is part of a broader 'Local Stack Family' that includes LocalAGI for agent management and LocalRecall for persistent memory. Key features include a backend gallery for on-the-fly installations, support for various text generation models (llama.cpp, vLLM, transformers), text-to-audio and audio-to-text capabilities, image generation, OpenAI-alike tools API, embeddings, constrained grammars, and vision API. It boasts P2P inferencing for distributed AI, real-time object detection, and a Model Context Protocol (MCP) for advanced agentic functionalities. LocalAI supports extensive hardware acceleration including NVIDIA CUDA, AMD ROCm, Intel oneAPI, and Apple Metal, ensuring broad compatibility and optimized performance across different systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Local AI</span><span>OpenAI alternative</span><span>LLM inference</span><span>Image generation</span><span>Audio processing</span><span>GPU acceleration</span><span>P2P Inferencing</span><span>AI Agent</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/mudler/LocalAI" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>When Visualizing is the First Step to Reasoning: MIRA, a Benchmark for Visual Chain-of-Thought</h2>
+                <span class="published-time">Published: 2025-11-04T18:00:51.000Z</span>
+                
+                <p class="summary">We propose MIRA, a new benchmark designed to evaluate models in scenarios where generating intermediate visual images is essential for successful reasoning. Unlike traditional CoT methods that rely solely on text, tasks in MIRA require models to generate and utilize intermediate images - such as sketches, structural diagrams, or path drawings - to guide their reasoning process. This setup closely mirrors how humans solve complex problems through "drawing to think". To solve this, MIRA focuses on tasks that are intrinsically challenging and involve complex structures, spatial relationships, or reasoning steps that are difficult to express through language alone. To ensure that our evaluation data is of high-quality, we include 546 multimodal problems, annotated with intermediate visual images and final answers. We also propose a unified evaluation protocol for MIRA that spans three levels of evaluation input: direct input with image and question only, text-only CoT input with image and thinking prompts, and Visual-CoT input with both annotated image clues and textual thinking prompts. To probe the upper bound of model capacity on our benchmark, we also report pass@k and majority voting accuracies under different k settings. Experimental results show that existing multimodal large language models, including strongest private models as well as strong open-weight models, perform poorly when relying solely on textual prompts. However, when intermediate visual cues are provided, model performance improves consistently, yielding an average relative gain of 33.7% across all models and tasks. We also probe the upper bound by expanding the search space and designing textual prompts aligned with Visual-CoT, but both yield only limited improvements compared to our Visual-CoT setting. These results underscore the critical role of imagined visual information in enabling successful reasoning on MIRA.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Visual Chain-of-Thought</span><span>Multimodal</span><span>Reasoning</span><span>Intermediate Visual Images</span><span>Benchmark</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.02779" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>VCode: a Multimodal Coding Benchmark with SVG as Symbolic Visual Representation</h2>
+                <span class="published-time">Published: 2025-11-04T18:00:18.000Z</span>
+                
+                <p class="summary">Code has emerged as a precise and executable medium for reasoning and action in the agent era. Yet, progress has largely focused on language-centric tasks such as program synthesis and debugging, leaving visual-centric coding underexplored. Inspired by how humans reason over sketches, we advocate SVG code as a compact, interpretable, and executable visual representation. We introduce VCode, a benchmark that reframes multimodal understanding as code generation: given an image, a model must produce SVG that preserves symbolic meaning for downstream reasoning. VCode covers three domains - general commonsense (MM-Vet), professional disciplines (MMMU), and visual-centric perception (CV-Bench). To assess symbolic fidelity, we propose CodeVQA, a novel evaluation protocol in which a policy model answers questions over rendered SVGs; correct answers indicate faithful symbolic preservation. Empirically, frontier VLMs struggle to generate faithful SVGs, revealing a persistent gap between language-centric and visual-centric coding. To close this gap, we introduce VCoder, an agentic framework that augments VLMs along two axes: (i) Thinking with Revision, which iteratively analyzes discrepancies and refines SVG code; and (ii) Acting with Visual Tools, where detectors and parsers supply structured cues such as objects, shapes, and text beyond the model's intrinsic capacity. Across benchmarks, frontier VLMs with strong reasoning capabilities score well overall yet remain limited in professional knowledge and 3D reasoning. VCoder delivers a 12.3-point overall gain over the top-performing Claude-4-Opus. Human studies show that both humans and VLMs perform worse on rendered SVGs, their consistency reveals the promise of symbolic visual representation. The benchmark and code are available at https://github.com/CSU-JPG/VCode.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal Coding</span><span>SVG</span><span>Visual Language Models</span><span>Code Generation</span><span>AI Agent</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Computer Vision</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.02778" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The Collaboration Gap</h2>
+                <span class="published-time">Published: 2025-11-04T16:10:57.000Z</span>
+                
+                <p class="summary">The trajectory of AI development suggests that we will increasingly rely on agent-based systems composed of independently developed agents with different information, privileges, and tools. The success of these systems will critically depend on effective collaboration among these heterogeneous agents, even under partial observability. Despite intense interest, few empirical studies have evaluated such agent-agent collaboration at scale. We propose a collaborative maze-solving benchmark that (i) isolates collaborative capabilities, (ii) modulates problem complexity, (iii) enables scalable automated grading, and (iv) imposes no output-format constraints, preserving ecological plausibility. Using this framework, we evaluate 32 leading open- and closed-source models in solo, homogeneous, and heterogeneous pairings. Our results reveal a "collaboration gap": models that perform well solo often degrade substantially when required to collaborate. Collaboration can break down dramatically; for instance, small distilled models that solve mazes well alone may fail almost completely in certain pairings. We find that starting with the stronger agent often improves outcomes, motivating a "relay inference" approach where the stronger agent leads before handing off to the weaker one, closing much of the gap. Our findings argue for (1) collaboration-aware evaluation, (2) training strategies developed to enhance collaborative capabilities, and (3) interaction design that reliably elicits agents' latent skills, guidance that applies to AI-AI and human-AI collaboration.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI agent</span><span>agent collaboration</span><span>heterogeneous systems</span><span>collaborative benchmark</span><span>relay inference</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.02687" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>VidEmo: Affective-Tree Reasoning for Emotion-Centric Video Foundation Models</h2>
+                <span class="published-time">Published: 2025-11-04T16:31:09.000Z</span>
+                
+                <p class="summary">Understanding and predicting emotion from videos has gathered significant attention in recent studies, driven by advancements in video large language models (VideoLLMs). While advanced methods have made progress in video emotion analysis, the intrinsic nature of emotions poses significant challenges. Emotions are characterized by dynamic and cues-dependent properties, making it difficult to understand complex and evolving emotional states with reasonable rationale. To tackle these challenges, we propose a novel affective cues-guided reasoning framework that unifies fundamental attribute perception, expression analysis, and high-level emotional understanding in a stage-wise manner. At the core of our approach is a family of video emotion foundation models (VidEmo), specifically designed for emotion reasoning and instruction-following. These models undergo a two-stage tuning process: first, curriculum emotion learning for injecting emotion knowledge, followed by affective-tree reinforcement learning for emotion reasoning. Moreover, we establish a foundational data infrastructure and introduce a emotion-centric fine-grained dataset (Emo-CFG) consisting of 2.1M diverse instruction-based samples. Emo-CFG includes explainable emotional question-answering, fine-grained captions, and associated rationales, providing essential resources for advancing emotion understanding tasks. Experimental results demonstrate that our approach achieves competitive performance, setting a new milestone across 15 face perception tasks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Emotion Reasoning</span><span>Video Foundation Models</span><span>VideoLLMs</span><span>Affective Computing</span><span>Reinforcement Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Video Understanding</span><span>Large Language Model</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.02712" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>When Modalities Conflict: How Unimodal Reasoning Uncertainty Governs Preference Dynamics in MLLMs</h2>
+                <span class="published-time">Published: 2025-11-04T04:11:31.000Z</span>
+                
+                <p class="summary">Multimodal large language models (MLLMs) must resolve conflicts when different modalities provide contradictory information, a process we term modality following. Prior work measured this behavior only with coarse dataset-level statistics, overlooking the influence of model's confidence in unimodal reasoning. In this paper, we introduce a new framework that decomposes modality following into two fundamental factors: relative reasoning uncertainty (the case-specific confidence gap between unimodal predictions) and inherent modality preference (a model's stable bias when uncertainties are balanced). To validate this framework, we construct a controllable dataset that systematically varies the reasoning difficulty of visual and textual inputs. Using entropy as a fine-grained uncertainty metric, we uncover a universal law: the probability of following a modality decreases monotonically as its relative uncertainty increases. At the relative difficulty level where the model tends to follow both modalities with comparable probability what we call the balance point, a practical indicator of the model's inherent preference. Unlike traditional macro-level ratios, this measure offers a more principled and less confounded way to characterize modality bias, disentangling it from unimodal capabilities and dataset artifacts. Further, by probing layer-wise predictions, we reveal the internal mechanism of oscillation: in ambiguous regions near the balance point, models vacillate between modalities across layers, explaining externally observed indecision. Together, these findings establish relative uncertainty and inherent preference as the two governing principles of modality following, offering both a quantitative framework and mechanistic insight into how MLLMs resolve conflicting information.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal Large Language Models</span><span>Modality Following</span><span>Reasoning Uncertainty</span><span>Modality Preference</span><span>Conflicting Information</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.02243" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Shorter but not Worse: Frugal Reasoning via Easy Samples as Length Regularizers in Math RLVR</h2>
+                <span class="published-time">Published: 2025-11-02T17:29:16.000Z</span>
+                
+                <p class="summary">Large language models (LLMs) trained for step-by-step reasoning often become excessively verbose, raising inference cost. Standard Reinforcement Learning with Verifiable Rewards (RLVR) pipelines filter out ``easy'' problems for training efficiency, leaving the model to train primarily on harder problems that require longer reasoning chains. This skews the output length distribution upward, resulting in a model that conflates ``thinking longer'' with ``thinking better''. In this work, we show that retaining and modestly up-weighting moderately easy problems acts as an implicit length regularizer. Exposing the model to solvable short-chain tasks constrains its output distribution and prevents runaway verbosity. The result is \emph{emergent brevity for free}: the model learns to solve harder problems without inflating the output length, despite the absence of any explicit length penalization. RLVR experiments using this approach on Qwen3-4B-Thinking-2507 (with a 16k token limit) achieve baseline pass@1 AIME25 accuracy while generating solutions that are, on average, nearly twice as short. The code is available at https://github.com/MBZUAI-Paris/Frugal-AI{GitHub}, with datasets and models on https://huggingface.co/collections/MBZUAI-Paris/k2-think-mini-68dcfa8b114686a4bd3dc2bc{Hugging Face}.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Reinforcement Learning</span><span>Frugal Reasoning</span><span>Length Regularization</span><span>Mathematical Reasoning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.01937" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
