@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-11-06</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-11-06</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Kimi K2 Thinking, a SOTA open-source trillion-parameter reasoning model</h2>
+                <span class="published-time">Published: 2025-11-06 15:06:06</span>
+                
+                <p class="summary">Moonshot AI has reportedly introduced Kimi K2 Thinking, an advanced open-source reasoning model that sets a new state-of-the-art (SOTA) benchmark in its category. Distinguished by its massive scale, Kimi K2 Thinking reportedly boasts a trillion parameters, positioning it among the most formidable large language models developed to date. This development underscores a significant stride in AI research, particularly in the domain of complex reasoning capabilities, which are crucial for addressing intricate problems across various domains. The open-source nature of Kimi K2 Thinking is particularly noteworthy, as it promises to democratize access to cutting-edge AI technology, fostering collaboration and accelerating further innovations within the AI community. The model's focus on advanced reasoning suggests potential applications across diverse fields requiring sophisticated analytical and problem-solving skills, from scientific discovery and engineering to intricate logical tasks and general artificial intelligence. Its release is expected to provide researchers and developers with a powerful, accessible tool to push the boundaries of artificial intelligence and explore new avenues for AI applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Kimi K2 Thinking</span><span>Large Language Model</span><span>State-of-the-Art AI</span><span>Open-source AI</span><span>AI Reasoning</span><span>Trillion-parameter Model</span><span>AI Research</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://moonshotai.github.io/Kimi-K2/thinking.html" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LLMs Encode How Difficult Problems Are</h2>
+                <span class="published-time">Published: 2025-11-06 18:29:03</span>
+                
+                <p class="summary">A recent study titled "LLMs Encode How Difficult Problems Are" from ArXiv explores the intriguing hypothesis that Large Language Models (LLMs) inherently encode or represent the difficulty of various computational and cognitive problems within their internal structures. This research delves into how these advanced AI systems, beyond simply providing solutions, might possess an intrinsic understanding or a learned proxy for the inherent complexity of tasks presented to them. The paper likely investigates the mechanisms through which this 'difficulty encoding' manifests, potentially analyzing internal model states, activation patterns, or predictive confidence levels in relation to problem complexity. Such a capability suggests a deeper level of meta-cognition in LLMs, implying they can not only process information but also assess the challenge associated with that processing. The findings could have significant implications for advancing our understanding of AI intelligence, leading to the development of more sophisticated and adaptive AI agents capable of self-assessing task difficulty, optimizing resource allocation, and potentially offering insights into why certain problems are harder than others. This research contributes to the broader field of AI interpretability and cognitive science, shedding light on the nuanced capabilities of modern LLMs.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Problem Difficulty</span><span>AI Cognition</span><span>Model Representation</span><span>Machine Learning Research</span><span>AI Interpretability</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://arxiv.org/abs/2510.18147" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: TabPFN-2.5 – SOTA foundation model for tabular data</h2>
+                <span class="published-time">Published: 2025-11-06 18:26:53</span>
+                
+                <p class="summary">Prior Labs has announced the release of TabPFN-2.5, an advanced tabular foundation model that sets a new state-of-the-art for tabular data analysis. This latest iteration significantly expands capabilities, now processing datasets with up to 50,000 samples and 2,000 features, marking a fivefold increase over its predecessor, TabPFN v2. TabPFN-2.5 operates as a pretrained transformer, leveraging in-context learning derived from training on over a hundred million synthetic datasets. It delivers state-of-the-art predictions efficiently in a single forward pass, eliminating the need for hyperparameter tuning across both classification and regression tasks. The model also boasts native support for missing values, various feature types including categorical and text, and enhanced robustness against outliers and uninformative features, consistently outperforming traditionally tuned tree-based models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>TabPFN-2.5</span><span>tabular data</span><span>foundation model</span><span>state-of-the-art</span><span>machine learning</span><span>transformer</span><span>in-context learning</span><span>hyperparameter tuning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Machine Learning</span><span>Deep Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://priorlabs.ai/technical-reports/tabpfn-2-5-model-report" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Mathematical exploration and discovery at scale</h2>
+                <span class="published-time">Published: 2025-11-06 09:24:42</span>
+                
+                <p class="summary">The article, titled "Mathematical exploration and discovery at scale," examines the transformative potential of applying advanced computational techniques, particularly within the realms of artificial intelligence and machine learning, to fundamentally alter how mathematical research is conducted. It posits that by employing these scalable technologies, the process of mathematical exploration – encompassing conjecture generation, hypothesis testing, and the discovery of new theorems – can be dramatically amplified. This paradigm shift aims to expand the capacity for tackling intricate mathematical problems, enabling researchers to explore vast solution spaces and identify novel patterns and structures that might elude traditional human-centric methods. The discussion highlights a future where computational tools serve as powerful accelerators, not just for verifying existing proofs, but actively contributing to the generation of new mathematical knowledge, thereby pushing the frontiers of discovery and innovation in mathematics.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Mathematical Discovery</span><span>Computational Mathematics</span><span>AI in Mathematics</span><span>Automated Reasoning</span><span>Large-Scale Computation</span><span>Algorithm Design</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://terrytao.wordpress.com/2025/11/05/mathematical-exploration-and-discovery-at-scale/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: qqqa – A fast, stateless LLM-powered assistant for your shell</h2>
+                <span class="published-time">Published: 2025-11-06 10:59:42</span>
+                
+                <p class="summary">qqqa is an open-source, LLM-powered command-line assistant designed to streamline shell interactions by eliminating the need to switch to a browser or ChatGPT for common tasks. Developed with a focus on the Unix philosophy, qqqa offers a stateless approach, differentiating itself from many stateful coding agents. The project includes two distinct binaries: 'qq' for "quick questions," functioning as a read-only tool to recall forgotten commands, and 'qa' for "quick agent" actions, which proposes shell commands and requires user approval before execution. This design emphasizes safety and user control. While compatible with any OpenAI-compatible API, the developer highlights optimal performance with Groq and gpt-oss-20b, noting its near-instant response times for up to 1,000 tokens per second. The project aims to provide a fast and efficient solution for developers seeking an integrated AI assistant within their shell environment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM-powered assistant</span><span>Shell utility</span><span>Open-source</span><span>Command-line interface</span><span>AI agent</span><span>Stateless architecture</span><span>Unix philosophy</span><span>OpenAI API compatible</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/matisojka/qqqa" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI Slop vs. OSS Security</h2>
+                <span class="published-time">Published: 2025-11-06 12:05:12</span>
+                
+                <p class="summary">The discussion "AI Slop vs. OSS Security" addresses the growing concerns regarding the integration of AI-generated content and code, often termed "AI Slop," into Open Source Software (OSS) projects and its potential impact on security. As generative AI tools become more prevalent, developers might be tempted to incorporate AI-assisted or entirely AI-generated contributions without thorough vetting. This practice poses significant risks, including the introduction of subtle vulnerabilities, backdoors, or simply low-quality, buggy code that could compromise the integrity and stability of critical OSS components. The article likely explores the tension between accelerating development cycles with AI and maintaining rigorous security standards in the open-source ecosystem. It underscores the challenges in auditing AI-generated code, identifying potential malicious insertions, and ensuring the overall trustworthiness of software supply chains reliant on OSS. The narrative emphasizes the urgent need for robust verification mechanisms, developer education, and advanced security tools to mitigate these emerging threats and safeguard the future of open-source security against the influx of potentially problematic AI-derived contributions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI-generated code</span><span>Open Source Software</span><span>Software Security</span><span>Supply Chain Security</span><span>Code Quality</span><span>Generative AI</span><span>Vulnerability Management</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://devansh.bearblog.dev/ai-slop/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>微舆：多智能体舆情分析系统</h2>
+                <span class="published-time">Published: 2025-11-06T16:43:24Z</span>
+                
+                <p class="summary">"Weiyu" (BettaFish) is an innovative, multi-agent public opinion analysis system designed to empower users to break through information silos, accurately reconstruct the true landscape of public sentiment, predict future trends, and support informed decision-making. Users simply articulate their analysis requirements, and the system's intelligent agents autonomously process and analyze vast amounts of data from over 30 mainstream domestic and international social media platforms, including millions of user comments. Its core technical advantages include AI-driven 24/7 all-domain monitoring across diverse social media, a powerful hybrid analysis engine integrating five specialized agents with fine-tuned and statistical models for deep, accurate, and multi-dimensional results, and advanced multimodal capabilities to parse short video content and structured information cards. Furthermore, it features a unique Agent "Forum" collaboration mechanism, fostering higher-quality collective intelligence through moderated debates. The system also supports seamless integration of public and private data, all within a lightweight and highly extensible Python-based framework, making it a versatile data analysis engine beyond just public opinion.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multi-Agent System</span><span>Public Opinion Analysis</span><span>AI-driven Monitoring</span><span>Social Media Analytics</span><span>Sentiment Analysis</span><span>Multimodal AI</span><span>Large Language Model</span><span>Python Framework</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/666ghj/Weibo_PublicOpinion_AnalysisSystem" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Skyvern</h2>
+                <span class="published-time">Published: 2025-11-06T19:28:26Z</span>
+                
+                <p class="summary">Skyvern is an open-source platform designed to automate browser-based workflows using a combination of Large Language Models (LLMs) and computer vision. It provides a simple API for automating manual tasks across a vast number of websites, overcoming the fragility of traditional, XPath-dependent browser automation methods. Instead of relying on static code, Skyvern leverages Vision LLMs and a "swarm of agents" approach to dynamically understand and interact with web pages. This enables it to operate effectively on unfamiliar websites, resist layout changes, and apply a single workflow across diverse platforms. Key features include SOTA performance on WebBench for RPA-adjacent "WRITE" tasks, support for complex LLM reasoning, and functionalities like form filling, data extraction, file downloading, and various authentication methods including 2FA and password manager integrations. It also supports multiple LLMs and integrates with workflow tools like Zapier and Make.com, making it a versatile solution for automating real-world scenarios such as invoice downloading, job applications, materials procurement, and retrieving insurance quotes.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>Computer Vision</span><span>Browser Automation</span><span>AI Agent</span><span>Robotic Process Automation</span><span>Web Automation</span><span>Task Automation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/Skyvern-AI/skyvern" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>NocoBase</h2>
+                <span class="published-time">Published: 2025-11-06T15:16:29Z</span>
+                
+                <p class="summary">NocoBase is an advanced, AI-powered no-code platform distinguished by its profound extensibility and data model-driven architecture, enabling organizations to swiftly adapt and significantly reduce development costs. Unlike traditional form/table-driven systems, NocoBase decouples UI from data structures, offering unparalleled flexibility and supporting diverse data sources. It seamlessly integrates AI capabilities into business systems, allowing for the definition of AI employees for varied roles and fostering secure AI-human collaboration within workflows. The platform boasts an intuitive "what you see is what you get" interface, making complex system development accessible to non-programmers. Furthermore, NocoBase features a microkernel, plugin-based architecture where all functionalities are extensible, supporting custom plugins for pages, blocks, actions, APIs, and data sources. This design ensures infinite scalability and customization for any business case, eliminating the need for years of development or millions in wasted resources.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>No-code platform</span><span>AI-powered platform</span><span>Extensible architecture</span><span>Data model-driven</span><span>Plugin system</span><span>AI collaboration</span><span>Low-code development</span><span>Business process automation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/nocobase/nocobase" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LocalAI: The Free, Open Source OpenAI Alternative</h2>
+                <span class="published-time">Published: 2025-11-06T16:40:49Z</span>
+                
+                <p class="summary">LocalAI is an open-source, free alternative to OpenAI, offering a drop-in replacement REST API compatible with OpenAI's specifications for local AI inferencing. It enables users to run Large Language Models (LLMs), generate images, and process audio locally or on-premise, even with consumer-grade hardware, without necessarily requiring a dedicated GPU. The project supports a wide array of model families and various backends, including llama.cpp, vLLM, transformers, whisper.cpp, and stablediffusion.cpp, with extensive GPU acceleration options across NVIDIA, AMD, Intel, and Apple Metal architectures. Key features include P2P inferencing, object detection, a reranker API, embeddings generation, constrained grammars, and an integrated WebUI. LocalAI is also part of a larger "Local Stack Family," integrating with LocalAGI for agent management and LocalRecall for persistent memory, making it a versatile platform for building sophisticated local AI applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Local AI</span><span>OpenAI Alternative</span><span>Large Language Model</span><span>Generative AI</span><span>AI Agent</span><span>GPU Acceleration</span><span>Distributed Inferencing</span><span>Machine Learning API</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/mudler/LocalAI" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>LiveTradeBench: Seeking Real-World Alpha with Large Language Models</h2>
+                <span class="published-time">Published: 2025-11-05T16:47:26.000Z</span>
+                
+                <p class="summary">Large language models (LLMs) achieve strong performance across benchmarks--from knowledge quizzes and math reasoning to web-agent tasks--but these tests occur in static settings, lacking real dynamics and uncertainty. Consequently, they evaluate isolated reasoning or problem-solving rather than decision-making under uncertainty. To address this, we introduce LiveTradeBench, a live trading environment for evaluating LLM agents in realistic and evolving markets. LiveTradeBench follows three design principles: (i) Live data streaming of market prices and news, eliminating dependence on offline backtesting and preventing information leakage while capturing real-time uncertainty; (ii) a portfolio-management abstraction that extends control from single-asset actions to multi-asset allocation, integrating risk management and cross-asset reasoning; and (iii) multi-market evaluation across structurally distinct environments--U.S. stocks and Polymarket prediction markets--differing in volatility, liquidity, and information flow. At each step, an agent observes prices, news, and its portfolio, then outputs percentage allocations that balance risk and return. Using LiveTradeBench, we run 50-day live evaluations of 21 LLMs across families. Results show that (1) high LMArena scores do not imply superior trading outcomes; (2) models display distinct portfolio styles reflecting risk appetite and reasoning dynamics; and (3) some LLMs effectively leverage live signals to adapt decisions. These findings expose a gap between static evaluation and real-world competence, motivating benchmarks that test sequential decision making and consistency under live uncertainty.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Live Trading</span><span>AI Agents</span><span>Portfolio Management</span><span>Financial Markets</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.03628" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>UniAVGen: Unified Audio and Video Generation with Asymmetric Cross-Modal Interactions</h2>
+                <span class="published-time">Published: 2025-11-05T10:06:51.000Z</span>
+                
+                <p class="summary">Due to the lack of effective cross-modal modeling, existing open-source audio-video generation methods often exhibit compromised lip synchronization and insufficient semantic consistency. To mitigate these drawbacks, we propose UniAVGen, a unified framework for joint audio and video generation. UniAVGen is anchored in a dual-branch joint synthesis architecture, incorporating two parallel Diffusion Transformers (DiTs) to build a cohesive cross-modal latent space. At its heart lies an Asymmetric Cross-Modal Interaction mechanism, which enables bidirectional, temporally aligned cross-attention, thus ensuring precise spatiotemporal synchronization and semantic consistency. Furthermore, this cross-modal interaction is augmented by a Face-Aware Modulation module, which dynamically prioritizes salient regions in the interaction process. To enhance generative fidelity during inference, we additionally introduce Modality-Aware Classifier-Free Guidance, a novel strategy that explicitly amplifies cross-modal correlation signals. Notably, UniAVGen's robust joint synthesis design enables seamless unification of pivotal audio-video tasks within a single model, such as joint audio-video generation and continuation, video-to-audio dubbing, and audio-driven video synthesis. Comprehensive experiments validate that, with far fewer training samples (1.3M vs. 30.1M), UniAVGen delivers overall advantages in audio-video synchronization, timbre consistency, and emotion consistency.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Audio-Video Generation</span><span>Cross-Modal Interactions</span><span>Diffusion Transformers</span><span>Lip Synchronization</span><span>Semantic Consistency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Generative AI</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.03334" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Diffusion Language Models are Super Data Learners</h2>
+                <span class="published-time">Published: 2025-11-05T08:17:42.000Z</span>
+                
+                <p class="summary">Under strictly controlled pre-training settings, we observe a Crossover: when unique data is limited, diffusion language models (DLMs) consistently surpass autoregressive (AR) models by training for more epochs. The crossover shifts later with more or higher-quality data, earlier with larger models, and persists across dense and sparse architectures. We attribute the gains to three compounding factors: (1) any-order modeling, (2) super-dense compute from iterative bidirectional denoising, and (3) built-in Monte Carlo augmentation; input or parameter noise improves AR under data constraint but cannot close the gap. At scale, a 1.7B DLM trained with a ~1.5T-token compute budget on 10B unique Python tokens overtakes an AR coder trained with strictly matched settings. In addition, a 1B-parameter DLM achieves > 56% accuracy on HellaSwag and > 33% on MMLU using only 1B tokens, without any special tricks, just by repeating standard pre-training data. We also show that rising validation cross-entropy does not imply degraded downstream performance in this regime.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Diffusion Language Models</span><span>Super Data Learners</span><span>Autoregressive Models</span><span>Pre-training</span><span>Data Efficiency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Deep Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.03276" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MME-CC: A Challenging Multi-Modal Evaluation Benchmark of Cognitive Capacity</h2>
+                <span class="published-time">Published: 2025-11-05T03:09:16.000Z</span>
+                
+                <p class="summary">As reasoning models scale rapidly, the essential role of multimodality in human cognition has come into sharp relief, driving a growing need to probe vision-centric cognitive behaviors. Yet, existing multimodal benchmarks either overemphasize textual reasoning or fall short of systematically capturing vision-centric cognitive behaviors, leaving the cognitive capacity of MLLMs insufficiently assessed. To address this limitation, we introduce MME-CC (Multi-Modal Evaluation benchmark of Cognitive Capacity), a vision-grounded benchmark that organizes 11 representative reasoning tasks into three fundamental categories of visual information: spatial, geometric, and knowledge-based reasoning, and provides fine-grained analyses of MLLMs' cognitive capacity across these dimensions. Based on MME-CC, we conduct extensive experiments over 16 representative MLLMs. Our study reveals that closed-source models currently lead overall (e.g., 42.66 for Gemini-2.5-Pro vs. 30.45 for GLM-4.5V), while spatial and geometric reasoning remain broadly weak (less than or equal to 30%). We further identify common error patterns, including orientation mistakes, fragile cross-view identity persistence, and poor adherence to counterfactual instructions, and observe that Chain-of-Thought typically follows a three-stage process (extract -> reason -> verify) with heavy reliance on visual extraction. We hope this work catalyzes a shift toward treating the cognitive capacity of MLLMs as central to both evaluation and model design.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multi-Modal Evaluation</span><span>Cognitive Capacity</span><span>Vision-Centric Reasoning</span><span>MLLMs</span><span>Evaluation Benchmark</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.03146" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LEGO-Eval: Towards Fine-Grained Evaluation on Synthesizing 3D Embodied Environments with Tool Augmentation</h2>
+                <span class="published-time">Published: 2025-11-04T21:13:51.000Z</span>
+                
+                <p class="summary">Despite recent progress in using Large Language Models (LLMs) for automatically generating 3D scenes, generated scenes often lack realistic spatial layouts and object attributes found in real-world environments. As this problem stems from insufficiently detailed, coarse-grained instructions, advancing 3D scene synthesis guided by more detailed, fine-grained instructions that reflect real-world environments becomes crucial. Without such realistic scenes, training embodied agents in unrealistic environments can lead them to learn priors that diverge significantly from real-world physics and semantics, degrading their performance when deployed. Thus, verifying the alignment between the fine-grained instruction and the generated scene is essential for effective learning. However, current evaluation methods, such as CLIPScore and vision-language models (VLMs), often fail to reliably assess such alignment. This shortcoming arises primarily from their shallow understanding of 3D scenes, which often leads to improperly grounded scene components. To address this, we introduce LEGO-Eval, an evaluation framework equipped with diverse tools designed to explicitly ground scene components, enabling more accurate alignment assessments. We also present LEGO-Bench, a benchmark of detailed instructions that specify complex layouts and attributes of real-world environments. Experiments demonstrate that LEGO-Eval outperforms VLM-as-a-judge by 0.41 F1 score in assessing scene-instruction alignment. Benchmarking with LEGO-Bench reveals significant limitations in current generation methods. Across all evaluated approaches, success rates reached at most 10% in generating scenes that fully align with fine-grained instructions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>3D Scene Synthesis</span><span>Fine-Grained Evaluation</span><span>Tool Augmentation</span><span>Embodied Environments</span><span>Large Language Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Generative AI</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.03001" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The Sequential Edge: Inverse-Entropy Voting Beats Parallel Self-Consistency at Matched Compute</h2>
+                <span class="published-time">Published: 2025-11-04T06:48:34.000Z</span>
+                
+                <p class="summary">We revisit test-time scaling for language model reasoning and ask a fundamental question: at equal token budget and compute, is it better to run multiple independent chains in parallel, or to run fewer chains that iteratively refine through sequential steps? Through comprehensive evaluation across 5 state-of-the-art open source models and 3 challenging reasoning benchmarks, we find that sequential scaling where chains explicitly build upon previous attempts consistently outperforms the dominant parallel self-consistency paradigm in 95.6% of configurations with gains in accuracy upto 46.7%. Further, we introduce inverse-entropy weighted voting, a novel training-free method to further boost the accuracy of sequential scaling. By weighing answers in proportion to the inverse entropy of their reasoning chains, we increase our success rate over parallel majority and establish it as the optimal test-time scaling strategy. Our findings fundamentally challenge the parallel reasoning orthodoxy that has dominated test-time scaling since Wang et al.'s self-consistency decoding (Wang et al., 2022), positioning sequential refinement as the robust default for modern LLM reasoning and necessitating a paradigm shift in how we approach inference-time optimization.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Sequential Scaling</span><span>Inverse-Entropy Voting</span><span>Language Model Reasoning</span><span>Self-Consistency</span><span>Test-Time Scaling</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.02309" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
