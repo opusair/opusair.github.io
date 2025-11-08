@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-11-08</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-11-08</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>WriterdeckOS</h2>
+                <span class="published-time">Published: 2025-11-08 18:49:47</span>
+                
+                <p class="summary">WriterdeckOS is introduced as an innovative AI-powered operating system designed specifically for writers, aiming to streamline the content creation process and enhance productivity. The platform integrates various artificial intelligence tools to assist users with drafting, editing, and organizing their written work, functioning as a comprehensive digital workspace. It emphasizes intelligent workflow automation and robust knowledge management features, allowing writers to focus more on creative output by significantly reducing administrative and organizational burdens. By leveraging advanced AI capabilities, WriterdeckOS seeks to revolutionize how writers manage their projects, conduct research, and facilitate collaborative efforts within a unified environment. This new offering targets a broad spectrum of content creators, from professional journalists to academic researchers, promising a more efficient and integrated ecosystem for all writing-related tasks. From initial ideation and content generation to sophisticated editing and final publication, WriterdeckOS is positioned to enhance overall writing efficacy, output quality, and creative flow, marking a significant step forward in AI-assisted content production.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Writing</span><span>Content Creation</span><span>Workflow Automation</span><span>Productivity Software</span><span>Knowledge Management</span><span>AI Tools</span><span>Digital Workspace</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://writerdeckos.com" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>An Algebraic Language for the Manipulation of Symbolic Expressions (1958) [pdf]</h2>
+                <span class="published-time">Published: 2025-11-08 14:58:03</span>
+                
+                <p class="summary">This seminal 1958 paper presents a pioneering algebraic language engineered for the precise manipulation of symbolic expressions, representing a critical early milestone in the development of computer science and nascent artificial intelligence. Appearing during the foundational era of digital computing, the work systematically investigates the creation of a formal system designed to algorithmically process and transform mathematical and logical symbols. It thoroughly delineates the architectural foundations and operational protocols of this innovative language, elucidating methodologies for representing, modifying, and evaluating intricate symbolic structures within a computational environment. The research provides essential conceptual frameworks for subsequent progress in symbolic computation, the design of sophisticated computer algebra systems, and the genesis of influential high-level programming languages like LISP. It underscores the profound utility of abstracting mathematical and logical operations into a programmatic paradigm, thereby furnishing foundational insights into automated reasoning and intricate problem-solving via symbolic approaches.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Algebraic language</span><span>Symbolic manipulation</span><span>Formal systems</span><span>Early programming languages</span><span>Computer algebra</span><span>Symbolic AI</span><span>Automated reasoning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://softwarepreservation.computerhistory.org/LISP/MIT/AIM-001.pdf" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI benchmarks are a bad joke and LLM makers are the ones laughing</h2>
+                <span class="published-time">Published: 2025-11-08 14:18:22</span>
+                
+                <p class="summary">The article critically examines the current state of artificial intelligence benchmarking, particularly highlighting the inadequacy and potential misleading nature of evaluation metrics used for Large Language Models (LLMs). It suggests that existing benchmarks often fail to accurately reflect real-world performance and may be prone to manipulation or exploitation, allowing LLM developers to present an overly optimistic view of their models' capabilities. The author contends that this situation creates a 'bad joke' scenario where benchmark results contribute more to marketing hype than to genuine scientific progress or transparent model assessment. The piece implies that issues such as test set contamination, a narrow focus on synthetic tasks, and a lack of holistic evaluation frameworks contribute to the problem. Consequently, there's a growing concern that the current benchmarking landscape hinders a true understanding of LLM advancements and complicates fair comparisons between different models. The narrative advocates for more robust, transparent, and comprehensive evaluation methodologies that genuinely assess the practical utility and limitations of AI systems, moving beyond superficial performance indicators.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Benchmarks</span><span>Large Language Models</span><span>Model Evaluation</span><span>Performance Metrics</span><span>Test Set Contamination</span><span>AI Ethics</span><span>Benchmark Flaws</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.theregister.com/2025/11/07/measuring_ai_models_hampered_by/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Firefox Forcing LLM Features</h2>
+                <span class="published-time">Published: 2025-11-08 18:51:37</span>
+                
+                <p class="summary">The title 'Firefox Forcing LLM Features' introduces a speculative yet pertinent discussion point regarding the future integration of Large Language Model (LLM) capabilities into the Mozilla Firefox browser. This notion implies a scenario where AI-powered functionalities could become standard, potentially mandatory, aspects of the browsing experience, moving beyond optional add-ons. Such a strategic shift by Firefox would inevitably ignite considerable debate among its user base, developers, and privacy advocates. Key concerns would likely revolve around user autonomy, the necessity and perceived value of these 'forced' AI features, and critical privacy implications related to data processing—whether locally on a user's device or through cloud-based services. Furthermore, the discussion would extend to potential impacts on browser performance, resource consumption, and the overall user experience. This concept underscores the increasing trend of integrating advanced artificial intelligence into core applications, challenging software developers to balance innovation with user control and data protection.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Firefox</span><span>Large Language Models</span><span>Browser Features</span><span>AI Integration</span><span>User Privacy</span><span>Data Processing</span><span>Web Browsing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://equk.co.uk/2025/10/28/firefox-forcing-llm-features/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Cerebras Code now supports GLM 4.6 at 1000 tokens/sec</h2>
+                <span class="published-time">Published: 2025-11-08 00:00:27</span>
+                
+                <p class="summary">Cerebras Systems has announced a significant update to its Cerebras Code platform, which now officially supports the GLM 4.6 large language model. This integration is highlighted by an impressive performance metric, achieving a processing speed of 1000 tokens per second. This development underscores Cerebras's continuous commitment to optimizing its AI hardware and software stack for cutting-edge large language models, enabling faster and more efficient execution of complex AI workloads. The support for GLM 4.6, a notable model in the generative AI domain, suggests improved capabilities for tasks such as natural language understanding, text generation, and code completion on Cerebras's specialized AI accelerators. The reported throughput of 1000 tokens/sec is critical for applications demanding high-speed inference, reducing latency, and accelerating research and deployment cycles for large-scale AI models. This advancement further positions Cerebras as a vital infrastructure provider for high-performance computing in the evolving landscape of artificial intelligence.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Cerebras</span><span>GLM 4.6</span><span>Large Language Model</span><span>AI Accelerators</span><span>Token Processing</span><span>High Performance Computing</span><span>AI Software</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.cerebras.ai/code" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Strix</h2>
+                <span class="published-time">Published: 2025-11-08T11:07:53Z</span>
+                
+                <p class="summary">Strix is an open-source platform leveraging autonomous AI agents to perform security testing for applications. These AI agents mimic real hackers, dynamically executing code, identifying vulnerabilities, and validating them with concrete proof-of-concepts (PoCs). Designed for developers and security teams, Strix offers a fast and accurate alternative to manual penetration testing and avoids the high false-positive rates of static analysis tools. Key features include a comprehensive hacker toolkit comprising HTTP proxy, browser automation, terminal environments, and Python runtime for exploit development. It excels in detecting a wide array of vulnerabilities like access control flaws, injection attacks, server-side issues, client-side vulnerabilities, business logic errors, and authentication weaknesses. Strix employs a "Graph of Agents" for distributed, scalable, and coordinated testing. It integrates seamlessly into CI/CD pipelines, including GitHub Actions, to automatically scan for vulnerabilities on pull requests, thereby blocking insecure code pre-production. The platform supports various LLM providers and offers both a CLI for local assessments and a cloud-hosted version, with an enterprise platform providing advanced dashboards and custom models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI agents</span><span>Application security</span><span>Vulnerability detection</span><span>Penetration testing</span><span>CI/CD</span><span>Ethical hacking</span><span>Cybersecurity</span><span>LLM</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/usestrix/strix" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>What is NocoBase</h2>
+                <span class="published-time">Published: 2025-11-08T15:40:27Z</span>
+                
+                <p class="summary">NocoBase is presented as the most extensible AI-powered no-code platform, designed to provide total control, infinite extensibility, and AI collaboration, enabling teams to rapidly adapt and significantly reduce costs. It distinguishes itself through a data model-driven approach, decoupling UI from data structure, which allows for versatile block and action creation and supports various data sources including external databases and third-party APIs. A key feature is the integration of "AI employees" directly into business systems and workflows, facilitating seamless AI-human collaboration for roles like translator or analyst, ensuring secure and customizable AI usage. The platform emphasizes ease of use with a "What You See Is What You Get" interface, allowing one-click switching between usage and configuration modes, making complex system development accessible to non-programmers. Furthermore, NocoBase boasts a microkernel, plugin-based architecture, where all functionalities are extensible plugins, similar to WordPress, supporting custom extensions for pages, blocks, actions, APIs, and data sources. Installation options range from Docker for no-code scenarios to CLI and Git for low-code and contribution-focused development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>no-code platform</span><span>AI-powered</span><span>extensibility</span><span>data model</span><span>plugin architecture</span><span>low-code development</span><span>workflow automation</span><span>business systems</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/nocobase/nocobase" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
