@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-11-10</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-11-10</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Unexpected things that are people</h2>
+                <span class="published-time">Published: 2025-11-10 16:05:46</span>
+                
+                <p class="summary">The article, titled 'Unexpected things that are people,' delves into the intriguing and often philosophical discussions surrounding the nature of intelligence and personhood in the context of advanced technological development, particularly artificial intelligence. It likely explores instances or hypotheticals where non-human entities, such as sophisticated AI systems or complex algorithms, begin to exhibit characteristics traditionally associated with human beings. This could involve examining emergent properties in large language models that demonstrate advanced reasoning, creativity, or even emotional understanding, thereby blurring the lines between machine and human. The piece may also address the profound ethical and societal implications of such developments, prompting a re-evaluation of how humanity defines 'being' and what it means for an 'unexpected thing' to possess qualities deemed uniquely human. This exploration prompts critical reflection on consciousness, identity, and the potential future evolution of intelligence beyond biological forms, challenging conventional perceptions of what constitutes 'people' in an increasingly technological world.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Consciousness</span><span>Emergent Properties</span><span>Philosophy of AI</span><span>Machine Intelligence</span><span>AI Ethics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://bengoldhaber.substack.com/p/unexpected-things-that-are-people" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Benchmarking leading AI agents against Google reCAPTCHA v2</h2>
+                <span class="published-time">Published: 2025-11-10 16:38:31</span>
+                
+                <p class="summary">A recent study by Roundtable.ai has meticulously benchmarked the performance of several leading AI agents against Google reCAPTCHA v2, a widely adopted human verification system. This comprehensive research initiative aimed to thoroughly assess the current capabilities of artificial intelligence in circumventing these security mechanisms, which are fundamentally designed to distinguish between genuine human users and sophisticated automated bots. The findings from this benchmarking effort critically reveal the varying degrees of success achieved by different advanced AI models, thereby illuminating their specific strengths and inherent weaknesses when confronted with the intricate visual and contextual challenges presented by reCAPTCHA v2. This detailed evaluation provides crucial insights into the rapidly evolving landscape of AI agent capabilities, particularly concerning their proficiency in interpreting complex visual cues, processing contextual information, and interacting effectively with web-based elements. The study's results hold significant implications for both cybersecurity professionals, who must contend with potential vulnerabilities in existing verification systems, and AI developers, as they underscore the rapid and continuous progress in AI agent development. Further in-depth analysis of the study's methodology and granular performance metrics is expected to inform and guide future advancements in both robust bot detection strategies and more capable AI-driven automation technologies.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agents</span><span>Google reCAPTCHA v2</span><span>Benchmarking</span><span>Computer Vision</span><span>Cybersecurity</span><span>Human Verification</span><span>Bot Detection</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://research.roundtable.ai/captcha-benchmarking/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LLMs are steroids for your Dunning-Kruger</h2>
+                <span class="published-time">Published: 2025-11-10 15:14:05</span>
+                
+                <p class="summary">The article, succinctly titled 'LLMs are steroids for your Dunning-Kruger,' posits that the rapid adoption and powerful capabilities of Large Language Models (LLMs) may inadvertently exacerbate the Dunning-Kruger effect among users. This phenomenon describes how individuals with limited knowledge or competence in a given area tend to overestimate their own abilities. LLMs, by providing sophisticated and often convincing responses across a vast array of subjects, can create a false sense of expertise or understanding for users who rely on them without sufficient critical evaluation. The immediate and seemingly authoritative nature of AI-generated content might lead individuals to believe they grasp complex topics more thoroughly than they actually do, thereby diminishing the perceived need for deeper learning or expert consultation. This raises concerns about the potential for over-reliance on AI, underscoring the ongoing importance of critical thinking, human oversight, and a foundational understanding of subject matter to effectively leverage AI tools without falling victim to cognitive biases.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Dunning-Kruger Effect</span><span>Cognitive Bias</span><span>AI Ethics</span><span>Critical Thinking</span><span>Information Literacy</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Artificial Intelligence</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://bytesauna.com/post/dunning-kruger" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>ClickHouse acquires LibreChat, open-source AI chat platform</h2>
+                <span class="published-time">Published: 2025-11-10 16:44:40</span>
+                
+                <p class="summary">ClickHouse, a prominent open-source column-oriented database management system known for its high-performance analytics, has announced the acquisition of LibreChat, an open-source AI chat platform. This strategic move aims to integrate advanced conversational AI capabilities directly within ClickHouse's robust data infrastructure. LibreChat provides a versatile, customizable interface for interacting with various large language models and other AI services, offering features such as multi-model support, plugin integration, and a user-friendly chat experience. The acquisition is poised to accelerate the development of an "agentic data stack," a framework where AI agents can directly leverage and interact with vast datasets managed by ClickHouse to perform complex tasks, analyze information, and generate insights more efficiently. This convergence of high-speed data processing with conversational AI is expected to empower developers and enterprises to build more intelligent, data-driven applications, enhancing user interaction and unlocking new possibilities for real-time analytics and automated decision-making through natural language interfaces.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>ClickHouse</span><span>LibreChat</span><span>Open-source AI</span><span>AI chat platform</span><span>Data stack</span><span>Acquisition</span><span>Conversational AI</span><span>Database management</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://clickhouse.com/blog/librechat-open-source-agentic-data-stack" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Multistable thin-shell metastructures for multiresponsive metabots</h2>
+                <span class="published-time">Published: 2025-11-10 14:01:56</span>
+                
+                <p class="summary">This research delves into the design and application of multistable thin-shell metastructures, specifically for the creation of multiresponsive metabots. These innovative structures are engineered to inherently possess multiple stable configurations, enabling them to transition between distinct shapes and functionalities when subjected to various external stimuli. By strategically combining the principles of thin-shell mechanics with metamaterial design, the study demonstrates a pathway to developing advanced robotic systems, termed "metabots," that can dynamically alter their physical properties, such as stiffness, form, and response characteristics. The implications of this work are substantial, paving the way for adaptable and reconfigurable robotic platforms with enhanced capabilities. Potential applications span a wide range, including soft robotics, reconfigurable aerospace components, advanced biomedical devices, and smart materials that can perform complex tasks autonomously. This investigation underscores the power of integrating sophisticated structural engineering with material science to develop highly versatile and responsive autonomous systems, pushing the boundaries of what passive structures can achieve in dynamic environments.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multistable Structures</span><span>Metastructures</span><span>Soft Robotics</span><span>Thin-shell Mechanics</span><span>Reconfigurable Systems</span><span>Smart Materials</span><span>Metamaterials</span><span>Autonomous Systems</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Artificial Intelligence</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.science.org/doi/10.1126/sciadv.adx4359" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Scientists Discover "Gyromorphs" Materials to Enhance Light-Based Computers</h2>
+                <span class="published-time">Published: 2025-11-10 13:09:17</span>
+                
+                <p class="summary">Scientists have announced the discovery of novel materials termed "Gyromorphs," which hold significant promise for revolutionizing the field of light-based computing. These breakthrough materials are engineered to enhance the fundamental operations of photonic computers, potentially leading to substantial improvements in speed, energy efficiency, and data processing capabilities compared to traditional electronic systems. The research, conducted by an international team, focuses on leveraging the unique optical properties of Gyromorphs to manipulate light in unprecedented ways, facilitating more complex and efficient optical circuits. This advancement could accelerate the development of next-generation computational architectures, particularly in areas requiring high-speed data transfer and parallel processing, such as artificial intelligence, quantum computing interfaces, and advanced telecommunications. The integration of Gyromorphs into existing optical computing frameworks is expected to overcome current limitations, paving the way for more powerful and sustainable computing paradigms. This discovery marks a crucial step towards realizing the full potential of photonics in computing.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Gyromorphs</span><span>light-based computers</span><span>photonic computing</span><span>materials science</span><span>optical materials</span><span>next-generation computing</span><span>photonics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.nyu.edu/about/news-publications/news/2025/november/scientists-discover-breakthrough-materials-to-enhance-light-base.html" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Agent Development Kit (ADK) for Go</h2>
+                <span class="published-time">Published: 2025-11-10T13:34:56Z</span>
+                
+                <p class="summary">The Agent Development Kit (ADK) for Go is an open-source, code-first toolkit designed to streamline the building, evaluation, and deployment of sophisticated AI agents. Applying robust software development principles, ADK offers a flexible and modular framework for creating and orchestrating agent workflows, from simple automation tasks to complex multi-agent systems. While optimized for Google's Gemini models, it boasts model-agnostic and deployment-agnostic capabilities, ensuring compatibility across various AI models and existing frameworks. This Go-specific iteration of ADK is particularly suited for developers focusing on cloud-native agent applications, leveraging Go's inherent strengths in concurrency and performance. Key features include an idiomatic Go design, a rich ecosystem for integrating pre-built or custom tools, code-first development for ultimate flexibility and testability, and strong support for containerization and deployment in cloud environments like Google Cloud Run. ADK empowers developers to design scalable, specialized agent components directly within their Go projects, enhancing control and adaptability in AI application development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Go Programming Language</span><span>Agent Development Kit</span><span>Cloud-Native</span><span>Multi-Agent Systems</span><span>Software Development</span><span>Orchestration</span><span>Model-Agnostic</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/google/adk-go" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Strix</h2>
+                <span class="published-time">Published: 2025-11-10T10:19:18Z</span>
+                
+                <p class="summary">Strix is an open-source platform providing autonomous AI agents designed to function as ethical hackers, securing applications by dynamically identifying and validating vulnerabilities. Unlike traditional static analysis tools or manual penetration testing, Strix agents run code, discover flaws, and generate proof-of-concepts, significantly reducing false positives and accelerating security assessments. Key features include a comprehensive hacker toolkit, collaborative agent teams, developer-first CLI reports, and capabilities for auto-fixing vulnerabilities. It seamlessly integrates into CI/CD pipelines, enabling automated security scanning on pull requests to prevent insecure code from reaching production. Use cases span detecting critical vulnerabilities, expediting penetration tests for compliance, automating bug bounty research, and continuous security within development workflows. Strix supports various testing methodologies, from local codebase analysis to black-box web application assessments, and offers an enterprise cloud-hosted version with advanced features like custom AI models and executive dashboards.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI agents</span><span>security testing</span><span>vulnerability detection</span><span>penetration testing</span><span>CI/CD</span><span>application security</span><span>ethical hacking</span><span>proof-of-concept</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/usestrix/strix" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Tinker Cookbook</h2>
+                <span class="published-time">Published: 2025-11-10T06:23:54Z</span>
+                
+                <p class="summary">The Tinker Cookbook repository serves as a valuable resource for customizing language models, offering practical examples and abstractions built on the Tinker API. It complements the `tinker` training SDK, which enables researchers and developers to fine-tune language models by sending API requests, abstracting away the complexities of distributed training. Tinker Cookbook provides a wide array of recipes for various advanced fine-tuning applications, including supervised fine-tuning on conversational datasets like Tulu3, improving LLM reasoning through math reinforcement learning, and a comprehensive three-stage RLHF pipeline for preference learning. Further examples cover training LLMs for effective tool use, prompt distillation to internalize complex instructions, and multi-agent optimization. Additionally, it offers utility modules for chat rendering, LoRA hyperparameter calculation, and robust evaluation, with seamless InspectAI integration, fostering open science and collaborative development in the LLM ecosystem.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>LLM Fine-tuning</span><span>Distributed Training</span><span>Reinforcement Learning</span><span>Supervised Learning</span><span>RLHF</span><span>API for LLMs</span><span>Prompt Distillation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/thinking-machines-lab/tinker-cookbook" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Visual Spatial Tuning</h2>
+                <span class="published-time">Published: 2025-11-07T18:59:16.000Z</span>
+                
+                <p class="summary">Capturing spatial relationships from visual inputs is a cornerstone of human-like general intelligence. Several previous studies have tried to enhance the spatial awareness of Vision-Language Models (VLMs) by adding extra expert encoders, which brings extra overhead and usually harms general capabilities. To enhance the spatial ability in general architectures, we introduce Visual Spatial Tuning (VST), a comprehensive framework to cultivate VLMs with human-like visuospatial abilities, from spatial perception to reasoning. We first attempt to enhance spatial perception in VLMs by constructing a large-scale dataset termed VST-P, which comprises 4.1 million samples spanning 19 skills across single views, multiple images, and videos. Then, we present VST-R, a curated dataset with 135K samples that instruct models to reason in space. In particular, we adopt a progressive training pipeline: supervised fine-tuning to build foundational spatial knowledge, followed by reinforcement learning to further improve spatial reasoning abilities. Without the side-effect to general capabilities, the proposed VST consistently achieves state-of-the-art results on several spatial benchmarks, including 34.8% on MMSI-Bench and 61.2% on VSIBench. It turns out that the Vision-Language-Action models can be significantly enhanced with the proposed spatial tuning paradigm, paving the way for more physically grounded AI.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Visual Spatial Tuning</span><span>Vision-Language Models</span><span>Spatial Reasoning</span><span>Spatial Perception</span><span>Physically Grounded AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Computer Vision</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.05491" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Dense Motion Captioning</h2>
+                <span class="published-time">Published: 2025-11-07T15:55:10.000Z</span>
+                
+                <p class="summary">Recent advances in 3D human motion and language integration have primarily focused on text-to-motion generation, leaving the task of motion understanding relatively unexplored. We introduce Dense Motion Captioning, a novel task that aims to temporally localize and caption actions within 3D human motion sequences. Current datasets fall short in providing detailed temporal annotations and predominantly consist of short sequences featuring few actions. To overcome these limitations, we present the Complex Motion Dataset (CompMo), the first large-scale dataset featuring richly annotated, complex motion sequences with precise temporal boundaries. Built through a carefully designed data generation pipeline, CompMo includes 60,000 motion sequences, each composed of multiple actions ranging from at least two to ten, accurately annotated with their temporal extents. We further present DEMO, a model that integrates a large language model with a simple motion adapter, trained to generate dense, temporally grounded captions. Our experiments show that DEMO substantially outperforms existing methods on CompMo as well as on adapted benchmarks, establishing a robust baseline for future research in 3D motion understanding and captioning.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Dense Motion Captioning</span><span>3D Human Motion</span><span>Motion Understanding</span><span>Large Language Model</span><span>Complex Motion Dataset</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Video Understanding</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.05369" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DeepEyesV2: Toward Agentic Multimodal Model</h2>
+                <span class="published-time">Published: 2025-11-07T14:31:20.000Z</span>
+                
+                <p class="summary">Agentic multimodal models should not only comprehend text and images, but also actively invoke external tools, such as code execution environments and web search, and integrate these operations into reasoning. In this work, we introduce DeepEyesV2 and explore how to build an agentic multimodal model from the perspectives of data construction, training methods, and model evaluation. We observe that direct reinforcement learning alone fails to induce robust tool-use behavior. This phenomenon motivates a two-stage training pipeline: a cold-start stage to establish tool-use patterns, and reinforcement learning stage to further refine tool invocation. We curate a diverse, moderately challenging training dataset, specifically including examples where tool use is beneficial. We further introduce RealX-Bench, a comprehensive benchmark designed to evaluate real-world multimodal reasoning, which inherently requires the integration of multiple capabilities, including perception, search, and reasoning. We evaluate DeepEyesV2 on RealX-Bench and other representative benchmarks, demonstrating its effectiveness across real-world understanding, mathematical reasoning, and search-intensive tasks. Moreover, DeepEyesV2 exhibits task-adaptive tool invocation, tending to use image operations for perception tasks and numerical computations for reasoning tasks. Reinforcement learning further enables complex tool combinations and allows model to selectively invoke tools based on context. We hope our study can provide guidance for community in developing agentic multimodal models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Agentic Multimodal Model</span><span>Tool Use</span><span>Reinforcement Learning</span><span>Multimodal Reasoning</span><span>DeepEyesV2</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Multimodal</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.05271" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Towards Mitigating Hallucinations in Large Vision-Language Models by Refining Textual Embeddings</h2>
+                <span class="published-time">Published: 2025-11-07T06:39:54.000Z</span>
+                
+                <p class="summary">In this work, we identify an inherent bias in prevailing LVLM architectures toward the language modality, largely resulting from the common practice of simply appending visual embeddings to the input text sequence. To address this, we propose a simple yet effective method that refines textual embeddings by integrating average-pooled visual features. Our approach demonstrably improves visual grounding and significantly reduces hallucinations on established benchmarks. While average pooling offers a straightforward, robust, and efficient means of incorporating visual information, we believe that more sophisticated fusion methods could further enhance visual grounding and cross-modal alignment. Given that the primary focus of this work is to highlight the modality imbalance and its impact on hallucinations -- and to show that refining textual embeddings with visual information mitigates this issue -- we leave exploration of advanced fusion strategies for future work.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Hallucinations</span><span>Large Vision-Language Models</span><span>Textual Embeddings</span><span>Visual Grounding</span><span>Modality Imbalance</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.05017" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Too Good to be Bad: On the Failure of LLMs to Role-Play Villains</h2>
+                <span class="published-time">Published: 2025-11-07T03:50:52.000Z</span>
+                
+                <p class="summary">Large Language Models (LLMs) are increasingly tasked with creative generation, including the simulation of fictional characters. However, their ability to portray non-prosocial, antagonistic personas remains largely unexamined. We hypothesize that the safety alignment of modern LLMs creates a fundamental conflict with the task of authentically role-playing morally ambiguous or villainous characters. To investigate this, we introduce the Moral RolePlay benchmark, a new dataset featuring a four-level moral alignment scale and a balanced test set for rigorous evaluation. We task state-of-the-art LLMs with role-playing characters from moral paragons to pure villains. Our large-scale evaluation reveals a consistent, monotonic decline in role-playing fidelity as character morality decreases. We find that models struggle most with traits directly antithetical to safety principles, such as "Deceitful" and "Manipulative", often substituting nuanced malevolence with superficial aggression. Furthermore, we demonstrate that general chatbot proficiency is a poor predictor of villain role-playing ability, with highly safety-aligned models performing particularly poorly. Our work provides the first systematic evidence of this critical limitation, highlighting a key tension between model safety and creative fidelity. Our benchmark and findings pave the way for developing more nuanced, context-aware alignment methods.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Role-Playing</span><span>Villain Characters</span><span>Safety Alignment</span><span>Moral RolePlay Benchmark</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Artificial Intelligence</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.04962" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>VeriCoT: Neuro-symbolic Chain-of-Thought Validation via Logical Consistency Checks</h2>
+                <span class="published-time">Published: 2025-11-06T18:50:08.000Z</span>
+                
+                <p class="summary">LLMs can perform multi-step reasoning through Chain-of-Thought (CoT), but they cannot reliably verify their own logic. Even when they reach correct answers, the underlying reasoning may be flawed, undermining trust in high-stakes scenarios. To mitigate this issue, we introduce VeriCoT, a neuro-symbolic method that extracts and verifies formal logical arguments from CoT reasoning. VeriCoT formalizes each CoT reasoning step into first-order logic and identifies premises that ground the argument in source context, commonsense knowledge, or prior reasoning steps. The symbolic representation enables automated solvers to verify logical validity while the NL premises allow humans and systems to identify ungrounded or fallacious reasoning steps. Experiments on the ProofWriter, LegalBench, and BioASQ datasets show VeriCoT effectively identifies flawed reasoning, and serves as a strong predictor of final answer correctness. We also leverage VeriCoT's verification signal for (1) inference-time self-reflection, (2) supervised fine-tuning (SFT) on VeriCoT-distilled datasets and (3) preference fine-tuning (PFT) with direct preference optimization (DPO) using verification-based pairwise rewards, further improving reasoning validity and accuracy.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Neuro-symbolic AI</span><span>Chain-of-Thought (CoT)</span><span>Logical Consistency</span><span>LLM Reasoning</span><span>Reasoning Validation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.04662" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
