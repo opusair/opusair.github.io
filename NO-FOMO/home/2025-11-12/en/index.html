@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-11-12</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-11-12</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>GPT-5.1: A smarter, more conversational ChatGPT</h2>
+                <span class="published-time">Published: 2025-11-12 19:05:41</span>
+                
+                <p class="summary">OpenAI has reportedly introduced GPT-5.1, an incremental yet significant upgrade to its foundational large language model, promising a more intelligent and naturally conversational experience for users. This latest iteration is engineered to exhibit enhanced reasoning capabilities, allowing it to process complex queries with greater accuracy and generate more nuanced responses across a wide array of topics. Furthermore, GPT-5.1 focuses on refining the user interaction by improving its ability to maintain coherent dialogue, understand subtle contextual cues, and deliver more fluid and human-like conversations. This advancement is expected to further empower applications relying on sophisticated natural language understanding and generation, making AI interactions more intuitive and effective for various use cases, from customer service to creative writing. The update aims to push the boundaries of current conversational AI technology, offering a robust platform for developers and a more engaging tool for end-users, solidifying ChatGPT's position as a leading AI assistant. The focus on intelligence and conversational flow suggests improvements in areas like contextual awareness, emotional intelligence simulation, and overall utility in interactive scenarios.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>GPT-5.1</span><span>ChatGPT</span><span>Large Language Model</span><span>Conversational AI</span><span>Natural Language Processing</span><span>AI Development</span><span>OpenAI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://openai.com/index/gpt-5-1/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Yann LeCun to depart Meta and launch AI startup focused on 'world models'</h2>
+                <span class="published-time">Published: 2025-11-12 07:25:30</span>
+                
+                <p class="summary">Yann LeCun, a highly influential figure in the field of deep learning and currently Meta's Chief AI Scientist, is reportedly preparing to depart the tech conglomerate to found his own artificial intelligence startup. The new company is expected to center its research and development efforts on 'world models,' a cutting-edge area in AI that seeks to equip machines with an intrinsic understanding of environmental dynamics, predictive capabilities for future occurrences, and advanced reasoning faculties. This strategic move by one of AI's leading minds represents a notable shift in the industry, potentially redirecting research priorities and talent flows. LeCun's foundational work, particularly his contributions to convolutional neural networks, has been instrumental in the progression of modern AI. His independent venture is poised to push the boundaries of AI systems, fostering advancements in autonomous learning and sophisticated decision-making mechanisms that transcend current supervised learning methodologies. This transition from a major corporate research lab to an independent entrepreneurial pursuit underscores the vigorous innovation and quest for next-generation AI paradigms, including a path towards artificial general intelligence, within the global AI community.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Yann LeCun</span><span>AI Startup</span><span>World Models</span><span>Deep Learning</span><span>Artificial Intelligence</span><span>Meta AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Deep Learning</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.nasdaq.com/articles/metas-chief-ai-scientist-yann-lecun-depart-and-launch-ai-start-focused-world-models" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Marble by World Labs: Multimodal world model to create and edit 3D worlds</h2>
+                <span class="published-time">Published: 2025-11-12 17:13:30</span>
+                
+                <p class="summary">World Labs has unveiled Marble, a groundbreaking multimodal world model engineered to facilitate the creation and editing of intricate 3D environments. This sophisticated AI system is designed to interpret diverse data inputs, enabling it to construct and manipulate virtual three-dimensional spaces with unprecedented flexibility. Marble's core innovation lies in its capacity to process various modalities4such as text, images, and potentially other forms of media4to build coherent and interactive digital worlds. The initiative aims to democratize 3D content generation, streamlining workflows for professionals in fields like gaming, architectural visualization, and simulation development. This advancement represents a significant step forward in generative AI, promising to accelerate the production of immersive virtual experiences and foster new possibilities for digital design and interaction within complex virtual realities.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal AI</span><span>World Model</span><span>3D Modeling</span><span>Generative AI</span><span>Virtual Worlds</span><span>AI for Design</span><span>Content Creation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Multimodal</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="http://marble.worldlabs.ai/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Cancer diagnosis makes for an interesting RL environment for LLMs</h2>
+                <span class="published-time">Published: 2025-11-12 17:01:42</span>
+                
+                <p class="summary">David from Aluna (YC S24) has unveiled an innovative reinforcement learning (RL) environment tailored for frontier Large Language Models (LLMs) to undertake cancer diagnosis tasks. This system equips LLMs with specialized tools that enable them to navigate digitized pathology slides, performing actions like zooming and panning to pinpoint regions crucial for accurate diagnosis. Aluna, which collaborates with diagnostic labs on oncology datasets and evaluations, developed this environment to push the boundaries of AI in medical diagnostics. The announcement is accompanied by video demonstrations illustrating LLMs effectively interacting with the slides to make diagnoses, specifically highlighting cases of small-cell carcinoma of the lung and benign fibroadenoma. This work represents a significant stride in developing sophisticated AI agents capable of interpreting complex medical imagery, offering a promising avenue for augmenting diagnostic workflows and addressing critical challenges in oncology with advanced machine learning techniques.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Cancer diagnosis</span><span>Reinforcement Learning</span><span>Large Language Models</span><span>Pathology slides</span><span>Digital pathology</span><span>Oncology</span><span>AI in medicine</span><span>Medical imaging</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://news.ycombinator.com/item?id=45902590" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Waymo robotaxis are now giving rides on freeways in LA, SF and Phoenix</h2>
+                <span class="published-time">Published: 2025-11-12 16:06:29</span>
+                
+                <p class="summary">Waymo, a leader in autonomous vehicle technology, has announced a significant expansion of its robotaxi services, now offering rides on freeways in key metropolitan areas including Los Angeles, San Francisco, and Phoenix. This strategic move represents a crucial advancement in the deployment of fully autonomous ride-hailing, transitioning from urban streets to more complex freeway environments. Operating on freeways introduces new challenges for self-driving systems, demanding enhanced capabilities in high-speed navigation, lane keeping, merge maneuvers, and sophisticated perception systems to handle diverse traffic scenarios. The expansion into these major cities underscores Waymo's progress in developing robust AI and sensor technology capable of safely operating at higher speeds and within more dynamic traffic flows. This development is expected to accelerate the broader adoption and commercialization of robotaxi services, pushing the boundaries of autonomous mobility and setting new benchmarks for the industry in urban and inter-city transportation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Robotaxis</span><span>Autonomous Vehicles</span><span>Self-driving Technology</span><span>Waymo</span><span>AI in Transportation</span><span>Freeway Driving</span><span>Automotive Robotics</span><span>Urban Mobility</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Robotics</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://techcrunch.com/2025/11/12/waymo-robotaxis-are-now-giving-rides-on-freeways-in-these-3-cities/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Pakistani newspaper mistakenly prints AI prompt with the article</h2>
+                <span class="published-time">Published: 2025-11-12 11:17:06</span>
+                
+                <p class="summary">A Pakistani newspaper, The News International, recently garnered significant attention for inadvertently publishing an artificial intelligence prompt alongside a news article. The incident, quickly identified and disseminated across social media platforms, exposed the exact instructions provided to an artificial intelligence model tasked with generating the article's content. This oversight points to potential gaps in the editorial review pipeline or an excessive dependency on automated content generation without sufficient human vetting. It vividly illustrates the accelerating integration of AI into news production and highlights the paramount importance of stringent verification protocols to prevent the public display of internal AI prompts or unprocessed machine outputs. Such an occurrence acts as a significant reminder for media organizations worldwide, reinforcing the indispensable role of human editorial discernment, even when leveraging sophisticated AI tools for enhanced productivity. This error has ignited a broader conversation regarding quality assurance and the evolving landscape of journalism in an era increasingly influenced by artificial intelligence.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI in journalism</span><span>Content automation</span><span>Editorial oversight</span><span>Prompt engineering</span><span>Generative AI</span><span>AI error</span><span>Media ethics</span><span>Quality control</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/omar_quraishi/status/1988518627859951986" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>TrendRadar</h2>
+                <span class="published-time">Published: 2025-11-12T12:49:07Z</span>
+                
+                <p class="summary">TrendRadar is a light-weight, easy-to-deploy hot news aggregation and intelligent push assistant, designed to filter out irrelevant information and deliver truly important news. It supports real-time monitoring of over 11 mainstream platforms, including popular Chinese social media and financial news sources. Key features include highly customizable content filtering using keywords with various syntax (e.g., must-include, exclude), smart push strategies (daily summary, current list, incremental updates), and an innovative hotness algorithm that re-ranks news based on platform ranking, frequency, and overall hotness. The project offers multi-channel notification via WeChat Work, Feishu, DingTalk, Telegram, Email, and ntfy, along with multi-device web reports. A significant addition is its AI smart analysis capability, powered by the Model Context Protocol (MCP), enabling natural language queries and deep data insights across 13 analysis tools, providing topic trend tracking, cross-platform data comparison, and intelligent summaries. It boasts zero-technical-threshold deployment with Docker and GitHub Pages.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Hot News Aggregation</span><span>Real-time Notifications</span><span>AI Data Analysis</span><span>Model Context Protocol (MCP)</span><span>Content Filtering</span><span>Docker Deployment</span><span>GitHub Actions</span><span>Web Scraping</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/sansan0/TrendRadar" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Agent Development Kit (ADK) for Go</h2>
+                <span class="published-time">Published: 2025-11-12T12:18:43Z</span>
+                
+                <p class="summary">The Agent Development Kit (ADK) for Go is an open-source, code-first toolkit designed to streamline the building, evaluation, and deployment of sophisticated AI agents. Embodying robust software development principles, ADK offers a flexible and modular framework for orchestrating agent workflows, scaling from simple tasks to intricate multi-agent systems. While specifically optimized for Google's Gemini models, its design ensures model-agnosticism and deployment-agnosticism, providing broad compatibility across various AI models and cloud environments. This Go iteration of ADK capitalizes on the language's inherent strengths in concurrency and performance, making it an ideal choice for developers focused on creating cloud-native agent applications, especially within platforms like Google Cloud Run. Its core features include an idiomatic Go design, a rich ecosystem for integrating pre-built or custom tools to enhance agent capabilities, and a code-first development approach for maximum flexibility, testability, and version control. Furthermore, ADK facilitates the design of modular, scalable multi-agent architectures, empowering developers to construct complex AI solutions with greater control and efficiency.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent Development</span><span>Go Programming</span><span>Multi-Agent Systems</span><span>Cloud-Native Applications</span><span>Modular Framework</span><span>Code-First AI</span><span>Agent Orchestration</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/google/adk-go" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Grounding Computer Use Agents on Human Demonstrations</h2>
+                <span class="published-time">Published: 2025-11-10T17:35:21.000Z</span>
+                
+                <p class="summary">Building reliable computer-use agents requires grounding: accurately connecting natural language instructions to the correct on-screen elements. While large datasets exist for web and mobile interactions, high-quality resources for desktop environments are limited. To address this gap, we introduce GroundCUA, a large-scale desktop grounding dataset built from expert human demonstrations. It covers 87 applications across 12 categories and includes 56K screenshots, with every on-screen element carefully annotated for a total of over 3.56M human-verified annotations. From these demonstrations, we generate diverse instructions that capture a wide range of real-world tasks, providing high-quality data for model training. Using GroundCUA, we develop the GroundNext family of models that map instructions to their target UI elements. At both 3B and 7B scales, GroundNext achieves state-of-the-art results across five benchmarks using supervised fine-tuning, while requiring less than one-tenth the training data of prior work. Reinforcement learning post-training further improves performance, and when evaluated in an agentic setting on the OSWorld benchmark using o3 as planner, GroundNext attains comparable or superior results to models trained with substantially more data. These results demonstrate the critical role of high-quality, expert-driven datasets in advancing general-purpose computer-use agents.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Computer-use agents</span><span>Grounding</span><span>Human demonstrations</span><span>Desktop UI</span><span>Datasets</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.07332" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Tiny Model, Big Logic: Diversity-Driven Optimization Elicits Large-Model Reasoning Ability in VibeThinker-1.5B</h2>
+                <span class="published-time">Published: 2025-11-09T04:37:36.000Z</span>
+                
+                <p class="summary">Challenging the prevailing consensus that small models inherently lack robust reasoning, this report introduces VibeThinker-1.5B, a 1.5B-parameter dense model developed via our Spectrum-to-Signal Principle (SSP). This challenges the prevailing approach of scaling model parameters to enhance capabilities, as seen in models like DeepSeek R1 (671B) and Kimi k2 (>1T). The SSP framework first employs a Two-Stage Diversity-Exploring Distillation (SFT) to generate a broad spectrum of solutions, followed by MaxEnt-Guided Policy Optimization (RL) to amplify the correct signal. With a total training cost of only $7,800, VibeThinker-1.5B demonstrates superior reasoning capabilities compared to closed-source models like Magistral Medium and Claude Opus 4, and performs on par with open-source models like GPT OSS-20B Medium. Remarkably, it surpasses the 400x larger DeepSeek R1 on three math benchmarks: AIME24 (80.3 vs. 79.8), AIME25 (74.4 vs. 70.0), and HMMT25 (50.4 vs. 41.7). This is a substantial improvement over its base model (6.7, 4.3, and 0.6, respectively). On LiveCodeBench V6, it scores 51.1, outperforming Magistral Medium's 50.3 and its base model's 0.0. These findings demonstrate that small models can achieve reasoning capabilities comparable to large models, drastically reducing training and inference costs and thereby democratizing advanced AI research.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>VibeThinker-1.5B</span><span>Reasoning Ability</span><span>Small Models</span><span>Diversity-Driven Optimization</span><span>Model Distillation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.06221" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Adaptive Multi-Agent Response Refinement in Conversational Systems</h2>
+                <span class="published-time">Published: 2025-11-11T14:48:34.000Z</span>
+                
+                <p class="summary">Large Language Models (LLMs) have demonstrated remarkable success in conversational systems by generating human-like responses. However, they can fall short, especially when required to account for personalization or specific knowledge. In real-life settings, it is impractical to rely on users to detect these errors and request a new response. One way to address this problem is to refine the response before returning it to the user. While existing approaches focus on refining responses within a single LLM, this method struggles to consider diverse aspects needed for effective conversations. In this work, we propose refining responses through a multi-agent framework, where each agent is assigned a specific role for each aspect. We focus on three key aspects crucial to conversational quality: factuality, personalization, and coherence. Each agent is responsible for reviewing and refining one of these aspects, and their feedback is then merged to improve the overall response. To enhance collaboration among them, we introduce a dynamic communication strategy. Instead of following a fixed sequence of agents, our approach adaptively selects and coordinates the most relevant agents based on the specific requirements of each query. We validate our framework on challenging conversational datasets, demonstrating that ours significantly outperforms relevant baselines, particularly in tasks involving knowledge or user's persona, or both.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multi-Agent Systems</span><span>Conversational Systems</span><span>Large Language Models</span><span>Response Refinement</span><span>Dynamic Communication</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.08319" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>VideoSSR: Video Self-Supervised Reinforcement Learning</h2>
+                <span class="published-time">Published: 2025-11-09T08:36:40.000Z</span>
+                
+                <p class="summary">Reinforcement Learning with Verifiable Rewards (RLVR) has substantially advanced the video understanding capabilities of Multimodal Large Language Models (MLLMs). However, the rapid progress of MLLMs is outpacing the complexity of existing video datasets, while the manual annotation of new, high-quality data remains prohibitively expensive. This work investigates a pivotal question: Can the rich, intrinsic information within videos be harnessed to self-generate high-quality, verifiable training data? To investigate this, we introduce three self-supervised pretext tasks: Anomaly Grounding, Object Counting, and Temporal Jigsaw. We construct the Video Intrinsic Understanding Benchmark (VIUBench) to validate their difficulty, revealing that current state-of-the-art MLLMs struggle significantly on these tasks. Building upon these pretext tasks, we develop the VideoSSR-30K dataset and propose VideoSSR, a novel video self-supervised reinforcement learning framework for RLVR. Extensive experiments across 17 benchmarks, spanning four major video domains (General Video QA, Long Video QA, Temporal Grounding, and Complex Reasoning), demonstrate that VideoSSR consistently enhances model performance, yielding an average improvement of over 5%. These results establish VideoSSR as a potent foundational framework for developing more advanced video understanding in MLLMs. The code is available at https://github.com/lcqysl/VideoSSR.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Understanding</span><span>Self-Supervised Learning</span><span>Reinforcement Learning</span><span>Multimodal Large Language Models</span><span>Verifiable Rewards</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Video Understanding</span><span>Multimodal</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.06281" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The Path Not Taken: RLVR Provably Learns Off the Principals</h2>
+                <span class="published-time">Published: 2025-11-11T18:49:45.000Z</span>
+                
+                <p class="summary">Reinforcement Learning with Verifiable Rewards (RLVR) reliably improves the reasoning performance of large language models, yet it appears to modify only a small fraction of parameters. We revisit this paradox and show that sparsity is a surface artifact of a model-conditioned optimization bias: for a fixed pretrained model, updates consistently localize to preferred parameter regions, highly consistent across runs and largely invariant to datasets and RL recipes. We mechanistically explain these dynamics with a Three-Gate Theory: Gate I (KL Anchor) imposes a KL-constrained update; Gate II (Model Geometry) steers the step off principal directions into low-curvature, spectrum-preserving subspaces; and Gate III (Precision) hides micro-updates in non-preferred regions, making the off-principal bias appear as sparsity. We then validate this theory and, for the first time, provide a parameter-level characterization of RLVR's learning dynamics: RLVR learns off principal directions in weight space, achieving gains via minimal spectral drift, reduced principal-subspace rotation, and off-principal update alignment. In contrast, SFT targets principal weights, distorts the spectrum, and even lags RLVR. Together, these results provide the first parameter-space account of RLVR's training dynamics, revealing clear regularities in how parameters evolve. Crucially, we show that RL operates in a distinct optimization regime from SFT, so directly adapting SFT-era parameter-efficient fine-tuning (PEFT) methods can be flawed, as evidenced by our case studies on advanced sparse fine-tuning and LoRA variants. We hope this work charts a path toward a white-box understanding of RLVR and the design of geometry-aware, RLVR-native learning algorithms, rather than repurposed SFT-era heuristics.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>RLVR</span><span>Large Language Models</span><span>Learning Dynamics</span><span>Optimization Bias</span><span>Sparsity</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Machine Learning</span><span>Deep Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.08567" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DynaAct: Large Language Model Reasoning with Dynamic Action Spaces</h2>
+                <span class="published-time">Published: 2025-11-11T09:47:13.000Z</span>
+                
+                <p class="summary">In modern sequential decision-making systems, the construction of an optimal candidate action space is critical to efficient inference. However, existing approaches either rely on manually defined action spaces that lack scalability or utilize unstructured spaces that render exhaustive search computationally prohibitive. In this paper, we propose a novel framework named DynaAct for automatically constructing a compact action space to enhance sequential reasoning in complex problem-solving scenarios. Our method first estimates a proxy for the complete action space by extracting general sketches observed in a corpus covering diverse complex reasoning problems using large language models. We then formulate a submodular function that jointly evaluates candidate actions based on their utility to the current state and their diversity, and employ a greedy algorithm to select an optimal candidate set. Extensive experiments on six diverse standard benchmarks demonstrate that our approach significantly improves overall performance, while maintaining efficient inference without introducing substantial latency. The implementation is available at https://github.com/zhaoxlpku/DynaAct.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Dynamic Action Spaces</span><span>Sequential Decision-Making</span><span>Action Space Optimization</span><span>Efficient Inference</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.08043" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
