@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-11-13</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-11-13</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>SIMA 2: An agent that plays, reasons, and learns with you in virtual 3D worlds</h2>
+                <span class="published-time">Published: 2025-11-13 15:29:38</span>
+                
+                <p class="summary">DeepMind has introduced SIMA 2, an advanced artificial intelligence agent engineered to operate within virtual 3D environments, demonstrating capabilities for play, reasoning, and collaborative learning alongside human users. This iteration builds upon previous research to create a more integrated and interactive AI experience in simulated worlds. SIMA 2 aims to bridge the gap between AI capabilities and complex, open-ended virtual tasks, allowing the agent to understand and execute a wide range of instructions within diverse game-like settings. The technology represents a significant step towards developing more versatile and adaptable AI companions, capable of engaging in nuanced interactions, learning new skills dynamically, and navigating intricate 3D spaces with a deeper understanding of context and objectives. Its design emphasizes robust human-AI collaboration, positioning SIMA 2 as a foundational development for future applications in interactive entertainment, virtual training platforms, and beyond, where intelligent agents can fluidly adapt and contribute meaningfully to shared virtual experiences. This agent's ability to learn and reason in real-time within dynamic 3D worlds marks a notable progression in embodied AI research.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Embodied AI</span><span>Virtual Worlds</span><span>Human-AI Interaction</span><span>Deep Learning</span><span>Reinforcement Learning</span><span>Gaming AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://deepmind.google/blog/sima-2-an-agent-that-plays-reasons-and-learns-with-you-in-virtual-3d-worlds/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Nano Banana can be prompt engineered for nuanced AI image generation</h2>
+                <span class="published-time">Published: 2025-11-13 17:39:13</span>
+                
+                <p class="summary">This article introduces 'Nano Banana,' an innovative concept or framework designed to significantly enhance the capabilities of AI image generation through advanced prompt engineering techniques. The core premise revolves around achieving more nuanced and sophisticated visual outputs from generative AI models. By applying specialized prompt engineering methods to 'Nano Banana,' users can exert a finer degree of control over the generated imagery, moving beyond generic or broadly defined prompts to achieve highly specific and detailed artistic or functional results. This development is particularly significant for fields requiring precise visual content, such as graphic design, digital art, and virtual prototyping, as it addresses a common challenge in generative AI: the difficulty of producing exact, desired outcomes without extensive post-processing or iterative prompting. The methodology behind 'Nano Banana' aims to streamline the creative process, making AI image generation more accessible and powerful for professional applications. This enhanced control and fidelity in output could unlock new creative possibilities and improve efficiency in content creation workflows, representing a notable step forward in the evolution of generative AI tools.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Image Generation</span><span>Prompt Engineering</span><span>Generative AI</span><span>Nuanced Control</span><span>AI Art</span><span>Deep Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Deep Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://minimaxir.com/2025/11/nano-banana-prompts/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Launch HN: Tweeks (YC W25) – Browser extension to deshittify the web</h2>
+                <span class="published-time">Published: 2025-11-13 16:03:04</span>
+                
+                <p class="summary">Tweeks, a new browser extension developed by Jason and Matt (YC W25), has launched with the goal of "deshittifying" the modern web by providing users with advanced customization capabilities. Operating as a next-generation userscript manager, Tweeks allows individuals to modify any website directly within their browser to add new functionalities, filter or highlight specific content, apply custom themes, reorganize layouts, or effectively de-clutter pages. Unlike traditional userscript tools such as Violentmonkey or Tampermonkey, which demand proficiency in JavaScript, CSS, and an understanding of web selectors, Tweeks simplifies the process by enabling users to articulate their desired changes using natural language. The extension then intelligently processes these descriptions to plan, generate, and seamlessly apply the necessary edits. This innovative approach targets widespread web nuisances like intrusive advertisements, pop-up modals, unsolicited feeds, and overwhelming recommendations, offering a significantly cleaner and more tailored browsing experience without requiring any coding expertise.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Browser Extension</span><span>Web Customization</span><span>Userscript Manager</span><span>Natural Language Processing</span><span>Generative AI</span><span>Web De-cluttering</span><span>AI Agent</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Generative AI</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.tweeks.io/onboarding" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Cursor: Past, Present, and Future</h2>
+                <span class="published-time">Published: 2025-11-13 14:12:23</span>
+                
+                <p class="summary">This article, 'Cursor: Past, Present, and Future,' provides an anticipated retrospective and prospective view of Cursor, the AI-first code editor, likely following its recent Series D funding announcement. It is expected to delve into the company's evolution, starting from its foundational vision for integrating artificial intelligence into software development workflows. The 'Present' section would detail Cursor's current sophisticated capabilities, including advanced AI-powered code completion, intelligent debugging features, and seamless integration with large language models to significantly enhance developer productivity. Looking forward, the 'Future' segment is projected to outline Cursor's strategic roadmap, emphasizing innovations such as more autonomous coding agents, expanded language support, and new functionalities designed to further streamline and revolutionize the development experience. This comprehensive overview aims to solidify Cursor's position as a leader in AI-driven developer tools, showcasing its commitment to pushing the boundaries of what's possible in modern software engineering.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Code Editor</span><span>Developer Tools</span><span>Large Language Models</span><span>Code Generation</span><span>Software Development</span><span>AI Programming</span><span>Product Roadmap</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://cursor.com/blog/series-d" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Disrupting the first reported AI-orchestrated cyber espionage campaign</h2>
+                <span class="published-time">Published: 2025-11-13 18:34:12</span>
+                
+                <p class="summary">Anthropic has reported the successful disruption of what it identifies as the first documented cyber espionage campaign significantly orchestrated by artificial intelligence. This pivotal discovery underscores a critical evolution in the global threat landscape, where advanced persistent threat (APT) groups are increasingly integrating sophisticated AI tools into their operational frameworks. The campaign reportedly leveraged AI for various phases, including automating reconnaissance, crafting highly personalized and persuasive phishing lures, and potentially streamlining data exfiltration or even generating malicious code. The involvement of AI escalated the efficiency and evasiveness of the attacks, presenting new challenges for traditional cybersecurity defenses. Anthropic's intervention highlights the growing necessity for advanced threat intelligence capabilities that can detect and counteract AI-powered malicious activities. This incident serves as a stark warning to organizations and governments worldwide, emphasizing the urgent requirement for proactive AI security measures, robust defensive AI applications, and international collaboration to effectively combat the emerging era of AI-enhanced cyber warfare and espionage.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI-orchestrated attacks</span><span>Cyber espionage</span><span>Artificial Intelligence</span><span>Cybersecurity</span><span>Threat intelligence</span><span>AI security</span><span>Advanced Persistent Threat</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.anthropic.com/news/disrupting-AI-espionage" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>SlopStop: Community-driven AI slop detection in Kagi Search</h2>
+                <span class="published-time">Published: 2025-11-13 19:03:26</span>
+                
+                <p class="summary">Kagi Search has launched "SlopStop," a pioneering, community-driven initiative aimed at detecting and mitigating the growing issue of low-quality, AI-generated content, commonly referred to as "AI slop." This new feature is integrated directly into Kagi's search platform, empowering users to actively contribute to the identification and flagging of undesirable or misleading information produced by artificial intelligence models. The primary goal of SlopStop is to enhance the overall relevance, accuracy, and trustworthiness of search results by systematically filtering out content that falls short of Kagi's quality standards due to its AI-generated nature. By leveraging the collective intelligence and discernment of its user community, Kagi seeks to maintain a superior information environment, thereby counteracting the potential deluge of automated and often superficial content that threatens to dilute the value of web searches. This proactive strategy underscores Kagi's commitment to delivering a high-quality search experience in an evolving digital landscape increasingly shaped by generative AI, ensuring users receive reliable and valuable information.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Slop Detection</span><span>Kagi Search</span><span>Community Moderation</span><span>Search Engine Quality</span><span>Content Filtering</span><span>Generative AI Impact</span><span>Web Search</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://blog.kagi.com/slopstop" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>TrendRadar: 最快30秒部署的热点助手 —— 告别无效刷屏，只看真正关心的新闻资讯</h2>
+                <span class="published-time">Published: 2025-11-13T12:43:53Z</span>
+                
+                <p class="summary">TrendRadar is a lightweight, easy-to-deploy hot topic aggregation assistant designed to combat information overload and deliver personalized news. Deployable in under 30 seconds, it monitors over 11 mainstream platforms including Weibo, Douyin, Zhihu, and Baidu Hot Search, with options for custom additions. Core features include intelligent push strategies (daily summaries, current rankings, incremental monitoring), precise content filtering using custom keywords with advanced syntax, and real-time trend analysis to track news evolution. The system employs a personalized hot topic algorithm that prioritizes high-ranking, persistent, and quality news, ensuring relevance. It supports multi-channel real-time notifications via platforms like WeChat Work, Feishu, Telegram, and email, along with multi-device adaptation through GitHub Pages and Docker. A significant V3.0.0 update introduced AI intelligent analysis based on the Model Context Protocol (MCP), enabling conversational queries and deep data mining using 13 distinct analysis tools for trend tracking, cross-platform comparison, and smart summarization. TrendRadar empowers users to proactively obtain desired information, making it ideal for investors, self-media creators, and anyone seeking to understand dynamic trends and avoid algorithmic biases.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Hot Topic Aggregation</span><span>News Monitoring</span><span>Real-time Notification</span><span>Content Filtering</span><span>AI Analysis</span><span>Model Context Protocol</span><span>Docker Deployment</span><span>GitHub Actions</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/sansan0/TrendRadar" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Agent Development Kit (ADK) for Go</h2>
+                <span class="published-time">Published: 2025-11-13T16:39:24Z</span>
+                
+                <p class="summary">The Agent Development Kit (ADK) for Go is an open-source, code-first toolkit designed for building, evaluating, and deploying sophisticated AI agents with enhanced flexibility and control. This modular framework applies traditional software development principles to AI agent creation, streamlining the process of constructing, deploying, and orchestrating complex agent workflows. While optimized for Gemini, ADK maintains model and deployment agnosticism, ensuring compatibility across various AI frameworks. The Go implementation of ADK is particularly suited for developers creating cloud-native agent applications, leveraging Go's inherent strengths in concurrency and performance. Key features include an idiomatic Go design, a rich ecosystem for integrating pre-built or custom tools, and a code-first approach that enables direct definition of agent logic and orchestration for superior testability and versioning. It supports the development of scalable, modular multi-agent systems and offers robust deployment capabilities, especially for cloud-native environments like Google Cloud Run. This makes ADK a powerful solution for developing robust and manageable AI applications in Go.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Go Programming Language</span><span>Agent Development Kit</span><span>Cloud-Native</span><span>Modular Systems</span><span>AI Orchestration</span><span>Software Development Kit</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/google/adk-go" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>➤ Cursor Free VIP</h2>
+                <span class="published-time">Published: 2025-09-16T03:47:39Z</span>
+                
+                <p class="summary">Cursor Free VIP is an educational tool designed to enable 'VIP' features for the Cursor AI coding assistant, specifically supporting version 0.49.x. This multi-platform utility operates on Windows, macOS, and Linux systems, providing functionalities like resetting Cursor's configuration and offering multi-language support. The project emphasizes its purpose for learning and research, clearly stating that it does not generate fake email accounts or OAuth access. Users are advised to run the automation scripts with administrator privileges for optimal performance and to ensure Cursor is closed before execution. It serves as a practical tool for users looking to manage and customize their Cursor AI agent experience, while adhering to ethical guidelines.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Cursor AI</span><span>AI Assistant Utility</span><span>Multi-platform</span><span>Configuration Reset</span><span>Automation Script</span><span>Developer Tool</span><span>Educational Software</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Others</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/yeongpin/cursor-free-vip" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Lumine: An Open Recipe for Building Generalist Agents in 3D Open Worlds</h2>
+                <span class="published-time">Published: 2025-11-12T02:01:26.000Z</span>
+                
+                <p class="summary">We introduce Lumine, the first open recipe for developing generalist agents capable of completing hours-long complex missions in real time within challenging 3D open-world environments. Lumine adopts a human-like interaction paradigm that unifies perception, reasoning, and action in an end-to-end manner, powered by a vision-language model. It processes raw pixels at 5 Hz to produce precise 30 Hz keyboard-mouse actions and adaptively invokes reasoning only when necessary. Trained in Genshin Impact, Lumine successfully completes the entire five-hour Mondstadt main storyline on par with human-level efficiency and follows natural language instructions to perform a broad spectrum of tasks in both 3D open-world exploration and 2D GUI manipulation across collection, combat, puzzle-solving, and NPC interaction. In addition to its in-domain performance, Lumine demonstrates strong zero-shot cross-game generalization. Without any fine-tuning, it accomplishes 100-minute missions in Wuthering Waves and the full five-hour first chapter of Honkai: Star Rail. These promising results highlight Lumine's effectiveness across distinct worlds and interaction dynamics, marking a concrete step toward generalist agents in open-ended environments.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Generalist Agents</span><span>3D Open Worlds</span><span>Vision-Language Model</span><span>Zero-shot Generalization</span><span>Real-time Interaction</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Multimodal</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.08892" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MADD: Multi-Agent Drug Discovery Orchestra</h2>
+                <span class="published-time">Published: 2025-11-11T13:20:35.000Z</span>
+                
+                <p class="summary">Hit identification is a central challenge in early drug discovery, traditionally requiring substantial experimental resources. Recent advances in artificial intelligence, particularly large language models (LLMs), have enabled virtual screening methods that reduce costs and improve efficiency. However, the growing complexity of these tools has limited their accessibility to wet-lab researchers. Multi-agent systems offer a promising solution by combining the interpretability of LLMs with the precision of specialized models and tools. In this work, we present MADD, a multi-agent system that builds and executes customized hit identification pipelines from natural language queries. MADD employs four coordinated agents to handle key subtasks in de novo compound generation and screening. We evaluate MADD across seven drug discovery cases and demonstrate its superior performance compared to existing LLM-based solutions. Using MADD, we pioneer the application of AI-first drug design to five biological targets and release the identified hit molecules. Finally, we introduce a new benchmark of query-molecule pairs and docking scores for over three million compounds to contribute to the agentic future of drug design.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Drug Discovery</span><span>Multi-Agent Systems</span><span>Artificial Intelligence</span><span>Large Language Models</span><span>Hit Identification</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.08217" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Time-to-Move: Training-Free Motion Controlled Video Generation via Dual-Clock Denoising</h2>
+                <span class="published-time">Published: 2025-11-09T22:47:50.000Z</span>
+                
+                <p class="summary">Diffusion-based video generation can create realistic videos, yet existing image- and text-based conditioning fails to offer precise motion control. Prior methods for motion-conditioned synthesis typically require model-specific fine-tuning, which is computationally expensive and restrictive. We introduce Time-to-Move (TTM), a training-free, plug-and-play framework for motion- and appearance-controlled video generation with image-to-video (I2V) diffusion models. Our key insight is to use crude reference animations obtained through user-friendly manipulations such as cut-and-drag or depth-based reprojection. Motivated by SDEdit's use of coarse layout cues for image editing, we treat the crude animations as coarse motion cues and adapt the mechanism to the video domain. We preserve appearance with image conditioning and introduce dual-clock denoising, a region-dependent strategy that enforces strong alignment in motion-specified regions while allowing flexibility elsewhere, balancing fidelity to user intent with natural dynamics. This lightweight modification of the sampling process incurs no additional training or runtime cost and is compatible with any backbone. Extensive experiments on object and camera motion benchmarks show that TTM matches or exceeds existing training-based baselines in realism and motion control. Beyond this, TTM introduces a unique capability: precise appearance control through pixel-level conditioning, exceeding the limits of text-only prompting. Visit our project page for video examples and code: https://time-to-move.github.io/.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Generation</span><span>Motion Control</span><span>Diffusion Models</span><span>Image-to-Video</span><span>Training-Free</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.08633" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>TiDAR: Think in Diffusion, Talk in Autoregression</h2>
+                <span class="published-time">Published: 2025-11-12T02:59:33.000Z</span>
+                
+                <p class="summary">Diffusion language models hold the promise of fast parallel generation, while autoregressive (AR) models typically excel in quality due to their causal structure aligning naturally with language modeling. This raises a fundamental question: can we achieve a synergy with high throughput, higher GPU utilization, and AR level quality? Existing methods fail to effectively balance these two aspects, either prioritizing AR using a weaker model for sequential drafting (speculative decoding), leading to lower drafting efficiency, or using some form of left-to-right (AR-like) decoding logic for diffusion, which still suffers from quality degradation and forfeits its potential parallelizability. We introduce TiDAR, a sequence-level hybrid architecture that drafts tokens (Thinking) in Diffusion and samples final outputs (Talking) AutoRegressively - all within a single forward pass using specially designed structured attention masks. This design exploits the free GPU compute density, achieving a strong balance between drafting and verification capacity. Moreover, TiDAR is designed to be serving-friendly (low overhead) as a standalone model. We extensively evaluate TiDAR against AR models, speculative decoding, and diffusion variants across generative and likelihood tasks at 1.5B and 8B scales. Thanks to the parallel drafting and sampling as well as exact KV cache support, TiDAR outperforms speculative decoding in measured throughput and surpasses diffusion models like Dream and Llada in both efficiency and quality. Most notably, TiDAR is the first architecture to close the quality gap with AR models while delivering 4.71x to 5.91x more tokens per second.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>TiDAR</span><span>Diffusion Language Models</span><span>Autoregressive Models</span><span>Parallel Generation</span><span>Speculative Decoding</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Generative AI</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.08923" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>WMPO: World Model-based Policy Optimization for Vision-Language-Action Models</h2>
+                <span class="published-time">Published: 2025-11-12T17:54:09.000Z</span>
+                
+                <p class="summary">Vision-Language-Action (VLA) models have shown strong potential for general-purpose robotic manipulation, but their reliance on expert demonstrations limits their ability to learn from failures and perform self-corrections. Reinforcement learning (RL) addresses these through self-improving interactions with the physical environment, but suffers from high sample complexity on real robots. We introduce World-Model-based Policy Optimization (WMPO), a principled framework for on-policy VLA RL without interacting with the real environment. In contrast to widely used latent world models, WMPO focuses on pixel-based predictions that align the "imagined" trajectories with the VLA features pretrained with web-scale images. Crucially, WMPO enables the policy to perform on-policy GRPO that provides stronger performance than the often-used off-policy methods. Extensive experiments in both simulation and real-robot settings demonstrate that WMPO (i) substantially improves sample efficiency, (ii) achieves stronger overall performance, (iii) exhibits emergent behaviors such as self-correction, and (iv) demonstrates robust generalization and lifelong learning capabilities.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Vision-Language-Action Models</span><span>World Models</span><span>Reinforcement Learning</span><span>Robotics</span><span>Policy Optimization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Multimodal</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.09515" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>WebVIA: A Web-based Vision-Language Agentic Framework for Interactive and Verifiable UI-to-Code Generation</h2>
+                <span class="published-time">Published: 2025-11-09T06:58:52.000Z</span>
+                
+                <p class="summary">User interface (UI) development requires translating design mockups into functional code, a process that remains repetitive and labor-intensive. While recent Vision-Language Models (VLMs) automate UI-to-Code generation, they generate only static HTML/CSS/JavaScript layouts lacking interactivity. To address this, we propose WebVIA, the first agentic framework for interactive UI-to-Code generation and validation. The framework comprises three components: 1) an exploration agent to capture multi-state UI screenshots; 2) a UI2Code model that generates executable interactive code; 3) a validation module that verifies the interactivity. Experiments demonstrate that WebVIA-Agent achieves more stable and accurate UI exploration than general-purpose agents (e.g., Gemini-2.5-Pro). In addition, our fine-tuned WebVIA-UI2Code models exhibit substantial improvements in generating executable and interactive HTML/CSS/JavaScript code, outperforming their base counterparts across both interactive and static UI2Code benchmarks. Our code and models are available at https://zheny2751-dotcom.github.io/webvia.github.io/{https://webvia.github.io}.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>UI-to-Code Generation</span><span>Vision-Language Models</span><span>AI Agent</span><span>Interactive UI</span><span>WebVIA</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Multimodal</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.06251" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
