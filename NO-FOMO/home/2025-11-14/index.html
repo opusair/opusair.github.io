@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-11-14</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-11-14</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>AI World Clocks</h2>
+                <span class="published-time">Published: 2025-11-14 18:35:22</span>
+                
+                <p class="summary">The "AI World Clocks" project, available at clocks.brianmoore.com, showcases an innovative and continuous digital art installation where a completely new clock face is rendered every minute. This real-time generative process is powered by an intricate system involving nine distinct artificial intelligence models working in concert. Each AI model contributes uniquely to the visual output, resulting in a constantly evolving series of timepieces that blend various aesthetic styles and interpretations. The initiative serves as a compelling demonstration of advanced generative AI capabilities in producing a continuous stream of novel visual content. By continuously creating and displaying unique clock designs, the project effectively explores the dynamic interplay between art, technology, and AI-driven creativity. It provides valuable insights into how multiple AI systems can be effectively integrated to deliver a perpetually changing visual experience, pushing the boundaries of automated design, real-time artistic generation, and the practical application of diverse AI models in a creative context. This ongoing experiment highlights the potential of AI for dynamic content creation and visual experimentation beyond static outputs.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Generative AI</span><span>AI Models</span><span>Real-time Rendering</span><span>Digital Art</span><span>AI Creativity</span><span>Automated Design</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://clocks.brianmoore.com/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Structured Outputs on the Claude Developer Platform (API)</h2>
+                <span class="published-time">Published: 2025-11-14 19:04:23</span>
+                
+                <p class="summary">Anthropic has officially rolled out support for structured outputs on its Claude Developer Platform API, a pivotal enhancement designed to provide developers with predictable and machine-readable responses from its powerful large language models. This capability allows AI applications to reliably generate outputs in specified formats such as JSON, XML, or YAML, moving beyond the inherent variability of free-form text generation. This development is crucial for integrating LLMs into complex programmatic workflows, facilitating tasks like automated data extraction, content generation adhering to predefined schemas, and the development of more robust and reliable AI agents. By enabling developers to precisely define and enforce output formats, the Claude platform significantly minimizes parsing errors, streamlines subsequent data processing, and substantially improves the overall consistency and efficiency of AI-powered applications. This strategic move is poised to accelerate the creation of more sophisticated, dependable, and deeply integrated AI solutions across various industries.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>API</span><span>Structured Output</span><span>JSON</span><span>Anthropic</span><span>AI Development</span><span>Programmatic AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.claude.com/blog/structured-outputs-on-the-claude-developer-platform" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AGI fantasy is a blocker to actual engineering</h2>
+                <span class="published-time">Published: 2025-11-14 13:21:24</span>
+                
+                <p class="summary">This article contends that the prevailing </p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial General Intelligence (AGI)</span><span>AI Engineering</span><span>AI Development Strategy</span><span>Practical AI</span><span>AI Hype</span><span>Technological Roadblocks</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.tomwphillips.co.uk/2025/11/agi-fantasy-is-a-blocker-to-actual-engineering/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Chirp 
+
+– Local Windows dictation with ParakeetV3 no executable required</h2>
+                <span class="published-time">Published: 2025-11-14 19:07:45</span>
+                
+                <p class="summary">Chirp is a new local dictation application designed for Windows users operating in restricted environments where `.exe` installations are prohibited and cloud-based speech services are blocked. This tool enables accurate and fast dictation without relying on a GPU or transmitting audio data to external cloud servers. Chirp leverages NVIDIA’s ParakeetV3 model, specifically the Parakeet TDT 0.6B v3 ONNX bundle, and is engineered to run entirely locally using Python, with `uv` managing its processes. This innovative solution offers a viable and accessible alternative to conventional Windows dictation options or GPU-intensive setups, particularly in locked-down systems. The project highlights its performance, which is comparable to advanced models like Whisper-large-v3, demonstrating similar word error rates, and emphasizes its ease of deployment for anyone capable of executing Python scripts.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Speech-to-Text</span><span>Dictation</span><span>ParakeetV3</span><span>Local Processing</span><span>Windows</span><span>ONNX Runtime</span><span>Python</span><span>Machine Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/Whamp/chirp" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>I think nobody wants AI in Firefox, Mozilla</h2>
+                <span class="published-time">Published: 2025-11-14 14:05:00</span>
+                
+                <p class="summary">Recent discussions and expressed user sentiment indicate a notable resistance or lack of enthusiasm towards the integration of artificial intelligence functionalities within the Mozilla Firefox web browser. The core sentiment, encapsulated by the statement, "I think nobody wants AI in Firefox, Mozilla," suggests that users may prioritize aspects such as browser performance, privacy, and simplicity over the perceived benefits of AI-driven features. This trend highlights a significant challenge for browser developers like Mozilla, who must carefully balance innovation with user expectations and potential concerns regarding data handling, system resource consumption, and the overall user experience. The prevailing sentiment underscores a segment of the user base that values a minimalist and privacy-respecting browsing environment, prompting a critical evaluation of how AI enhancements align with these core user values and the browser's established identity.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Firefox</span><span>Mozilla</span><span>Artificial Intelligence</span><span>Browser</span><span>User Sentiment</span><span>Privacy</span><span>Software Integration</span><span>User Experience</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://manualdousuario.net/en/mozilla-firefox-window-ai/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Nvidia is gearing up to sell servers instead of just GPUs and components</h2>
+                <span class="published-time">Published: 2025-11-14 13:18:09</span>
+                
+                <p class="summary">Nvidia is reportedly initiating a significant strategic shift, transitioning from primarily selling Graphics Processing Units (GPUs) and related components to offering complete Artificial Intelligence (AI) servers. This move, highlighted by J.P. Morgan, signals a strong push towards vertical integration within the AI hardware ecosystem. This "master plan" by CEO Jensen Huang is expected to substantially boost Nvidia's profit margins by capturing a larger share of the value chain. By delivering fully integrated AI server solutions, potentially starting with platforms like "Vera Rubin," Nvidia aims to provide comprehensive, optimized systems directly to customers, rather than just supplying the underlying hardware. This strategic evolution positions Nvidia as a more holistic solution provider in the burgeoning AI infrastructure market, competing more directly with server manufacturers while leveraging its dominant position in AI accelerators. This could streamline deployment for AI developers and enterprises, offering a more tightly coupled hardware-software stack.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Nvidia</span><span>AI Servers</span><span>GPUs</span><span>Vertical Integration</span><span>AI Hardware</span><span>Data Centers</span><span>Semiconductors</span><span>Tech Strategy</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/jp-morgan-says-nvidia-is-gearing-up-to-sell-entire-ai-servers-instead-of-just-ai-gpus-and-componentry-jensens-master-plan-of-vertical-integration-will-boost-profits-purportedly-starting-with-vera-rubin" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>TrendRadar</h2>
+                <span class="published-time">Published: 2025-11-14T08:10:05Z</span>
+                
+                <p class="summary">TrendRadar is an open-source, lightweight hotspot assistant designed to provide users with relevant news and information quickly, with deployment taking as little as 30 seconds. It aggregates trending topics from over 11 major platforms, including Zhihu, Douyin, Weibo, and Baidu. The system features intelligent push strategies (daily, current, incremental), precise content filtering using custom keywords, and advanced hotspot trend analysis to track news evolution. A personalized algorithm sorts aggregated content based on rank, frequency, and hotness. It supports real-time notifications across multiple channels like WeChat Work, Feishu, DingTalk, Telegram, Email, and ntfy, alongside multi-device web reports via GitHub Pages. A significant V3.0.0 update introduced AI intelligent analysis powered by the Model Context Protocol (MCP), enabling natural language queries and deep data insights with 13 analytical tools. TrendRadar empowers users to proactively obtain desired information, reducing reliance on platform-specific algorithms, making it ideal for investors, self-media creators, and PR professionals.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Hotspot aggregation</span><span>Content filtering</span><span>Real-time notifications</span><span>AI analysis</span><span>Model Context Protocol</span><span>Docker deployment</span><span>Trend analysis</span><span>Information management</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/sansan0/TrendRadar" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Agent Development Kit (ADK) for Go</h2>
+                <span class="published-time">Published: 2025-11-14T16:18:14Z</span>
+                
+                <p class="summary">The Agent Development Kit (ADK) for Go is an open-source, code-first toolkit designed to streamline the building, evaluation, and deployment of sophisticated AI agents. It applies robust software development principles to agent creation, offering a flexible and modular framework for orchestrating workflows from simple tasks to complex multi-agent systems. While optimized for Google's Gemini, ADK is model-agnostic and deployment-agnostic, ensuring broad compatibility. The Go version specifically leverages Go's strengths in concurrency and performance, making it ideal for cloud-native agent applications. Key features include idiomatic Go design, a rich tool ecosystem for diverse agent capabilities, code-first development for ultimate flexibility and testability, and robust support for modular multi-agent systems and cloud-native deployment environments like Google Cloud Run.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Go Programming Language</span><span>Cloud-Native</span><span>Modular Systems</span><span>Multi-Agent</span><span>Software Development Kit</span><span>AI Framework</span><span>Agent Orchestration</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/google/adk-go" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>UniVA: Universal Video Agent towards Open-Source Next-Generation Video Generalist</h2>
+                <span class="published-time">Published: 2025-11-11T17:58:13.000Z</span>
+                
+                <p class="summary">While specialized AI models excel at isolated video tasks like generation or understanding, real-world applications demand complex, iterative workflows that combine these capabilities. To bridge this gap, we introduce UniVA, an open-source, omni-capable multi-agent framework for next-generation video generalists that unifies video understanding, segmentation, editing, and generation into cohesive workflows. UniVA employs a Plan-and-Act dual-agent architecture that drives a highly automated and proactive workflow: a planner agent interprets user intentions and decomposes them into structured video-processing steps, while executor agents execute these through modular, MCP-based tool servers (for analysis, generation, editing, tracking, etc.). Through a hierarchical multi-level memory (global knowledge, task context, and user-specific preferences), UniVA sustains long-horizon reasoning, contextual continuity, and inter-agent communication, enabling interactive and self-reflective video creation with full traceability. This design enables iterative and any-conditioned video workflows (e.g., text/image/video-conditioned generation rightarrow multi-round editing rightarrow object segmentation rightarrow compositional synthesis) that were previously cumbersome to achieve with single-purpose models or monolithic video-language models. We also introduce UniVA-Bench, a benchmark suite of multi-step video tasks spanning understanding, editing, segmentation, and generation, to rigorously evaluate such agentic video systems. Both UniVA and UniVA-Bench are fully open-sourced, aiming to catalyze research on interactive, agentic, and general-purpose video intelligence for the next generation of multimodal AI systems. (https://univa.online/)</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Video Understanding</span><span>Generative AI</span><span>Multimodal</span><span>Video Editing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Video Understanding</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.08521" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>PAN: A World Model for General, Interactable, and Long-Horizon World Simulation</h2>
+                <span class="published-time">Published: 2025-11-12T07:20:35.000Z</span>
+                
+                <p class="summary">A world model enables an intelligent agent to imagine, predict, and reason about how the world evolves in response to its actions, and accordingly to plan and strategize. While recent video generation models produce realistic visual sequences, they typically operate in the prompt-to-full-video manner without causal control, interactivity, or long-horizon consistency required for purposeful reasoning. Existing world modeling efforts, on the other hand, often focus on restricted domains (e.g., physical, game, or 3D-scene dynamics) with limited depth and controllability, and struggle to generalize across diverse environments and interaction formats. In this work, we introduce PAN, a general, interactable, and long-horizon world model that predicts future world states through high-quality video simulation conditioned on history and natural language actions. PAN employs the Generative Latent Prediction (GLP) architecture that combines an autoregressive latent dynamics backbone based on a large language model (LLM), which grounds simulation in extensive text-based knowledge and enables conditioning on language-specified actions, with a video diffusion decoder that reconstructs perceptually detailed and temporally coherent visual observations, to achieve a unification between latent space reasoning (imagination) and realizable world dynamics (reality). Trained on large-scale video-action pairs spanning diverse domains, PAN supports open-domain, action-conditioned simulation with coherent, long-term dynamics. Extensive experiments show that PAN achieves strong performance in action-conditioned world simulation, long-horizon forecasting, and simulative reasoning compared to other video generators and world models, taking a step towards general world models that enable predictive simulation of future world states for reasoning and acting.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>world model</span><span>generative latent prediction</span><span>large language model</span><span>video simulation</span><span>AI agent</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.09057" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Solving a Million-Step LLM Task with Zero Errors</h2>
+                <span class="published-time">Published: 2025-11-12T06:27:55.000Z</span>
+                
+                <p class="summary">LLMs have achieved remarkable breakthroughs in reasoning, insights, and tool use, but chaining these abilities into extended processes at the scale of those routinely executed by humans, organizations, and societies has remained out of reach. The models have a persistent error rate that prevents scale-up: for instance, recent experiments in the Towers of Hanoi benchmark domain showed that the process inevitably becomes derailed after at most a few hundred steps. Thus, although LLM research is often still benchmarked on tasks with relatively few dependent logical steps, there is increasing attention on the ability (or inability) of LLMs to perform long range tasks. This paper describes MAKER, the first system that successfully solves a task with over one million LLM steps with zero errors, and, in principle, scales far beyond this level. The approach relies on an extreme decomposition of a task into subtasks, each of which can be tackled by focused microagents. The high level of modularity resulting from the decomposition allows error correction to be applied at each step through an efficient multi-agent voting scheme. This combination of extreme decomposition and error correction makes scaling possible. Thus, the results suggest that instead of relying on continual improvement of current LLMs, massively decomposed agentic processes (MDAPs) may provide a way to efficiently solve problems at the level of organizations and societies.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>AI Agents</span><span>Error Correction</span><span>Task Decomposition</span><span>Scalable AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.09030" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Black-Box On-Policy Distillation of Large Language Models</h2>
+                <span class="published-time">Published: 2025-11-13T18:58:37.000Z</span>
+                
+                <p class="summary">Black-box distillation creates student large language models (LLMs) by learning from a proprietary teacher model's text outputs alone, without access to its internal logits or parameters. In this work, we introduce Generative Adversarial Distillation (GAD), which enables on-policy and black-box distillation. GAD frames the student LLM as a generator and trains a discriminator to distinguish its responses from the teacher LLM's, creating a minimax game. The discriminator acts as an on-policy reward model that co-evolves with the student, providing stable, adaptive feedback. Experimental results show that GAD consistently surpasses the commonly used sequence-level knowledge distillation. In particular, Qwen2.5-14B-Instruct (student) trained with GAD becomes comparable to its teacher, GPT-5-Chat, on the LMSYS-Chat automatic evaluation. The results establish GAD as a promising and effective paradigm for black-box LLM distillation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Black-box distillation</span><span>Large Language Models</span><span>Generative Adversarial Distillation</span><span>On-policy distillation</span><span>Knowledge distillation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Generative AI</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.10643" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>One Small Step in Latent, One Giant Leap for Pixels: Fast Latent Upscale Adapter for Your Diffusion Models</h2>
+                <span class="published-time">Published: 2025-11-13T18:54:18.000Z</span>
+                
+                <p class="summary">Diffusion models struggle to scale beyond their training resolutions, as direct high-resolution sampling is slow and costly, while post-hoc image super-resolution (ISR) introduces artifacts and additional latency by operating after decoding. We present the Latent Upscaler Adapter (LUA), a lightweight module that performs super-resolution directly on the generator's latent code before the final VAE decoding step. LUA integrates as a drop-in component, requiring no modifications to the base model or additional diffusion stages, and enables high-resolution synthesis through a single feed-forward pass in latent space. A shared Swin-style backbone with scale-specific pixel-shuffle heads supports 2x and 4x factors and remains compatible with image-space SR baselines, achieving comparable perceptual quality with nearly 3x lower decoding and upscaling time (adding only +0.42 s for 1024 px generation from 512 px, compared to 1.87 s for pixel-space SR using the same SwinIR architecture). Furthermore, LUA shows strong generalization across the latent spaces of different VAEs, making it easy to deploy without retraining from scratch for each new decoder. Extensive experiments demonstrate that LUA closely matches the fidelity of native high-resolution generation while offering a practical and efficient path to scalable, high-fidelity image synthesis in modern diffusion pipelines.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Diffusion Models</span><span>Latent Upscaler Adapter</span><span>Super-resolution</span><span>Latent Space</span><span>Image Synthesis</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Deep Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.10629" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Rubric-Based Benchmarking and Reinforcement Learning for Advancing LLM Instruction Following</h2>
+                <span class="published-time">Published: 2025-11-13T17:14:01.000Z</span>
+                
+                <p class="summary">Recent progress in large language models (LLMs) has led to impressive performance on a range of tasks, yet advanced instruction following (IF)-especially for complex, multi-turn, and system-prompted instructions-remains a significant challenge. Rigorous evaluation and effective training for such capabilities are hindered by the lack of high-quality, human-annotated benchmarks and reliable, interpretable reward signals. In this work, we introduce AdvancedIF (we will release this benchmark soon), a comprehensive benchmark featuring over 1,600 prompts and expert-curated rubrics that assess LLMs ability to follow complex, multi-turn, and system-level instructions. We further propose RIFL (Rubric-based Instruction-Following Learning), a novel post-training pipeline that leverages rubric generation, a finetuned rubric verifier, and reward shaping to enable effective reinforcement learning for instruction following. Extensive experiments demonstrate that RIFL substantially improves the instruction-following abilities of LLMs, achieving a 6.7% absolute gain on AdvancedIF and strong results on public benchmarks. Our ablation studies confirm the effectiveness of each component in RIFL. This work establishes rubrics as a powerful tool for both training and evaluating advanced IF in LLMs, paving the way for more capable and reliable AI systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Instruction Following</span><span>Reinforcement Learning</span><span>Benchmarking</span><span>Rubrics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.10507" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
