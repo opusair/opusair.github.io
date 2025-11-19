@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-11-19</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-11-19</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Building more with GPT-5.1-Codex-Max</h2>
+                <span class="published-time">Published: 2025-11-19 18:01:59</span>
+                
+                <p class="summary">OpenAI has introduced GPT-5.1-Codex-Max, a new, highly advanced iteration within its large language model series, specifically tailored to revolutionize code generation and software development workflows. This model, a significant leap from its predecessors, is engineered to empower developers by offering substantially enhanced capabilities in software creation, sophisticated debugging, and intricate code optimization. GPT-5.1-Codex-Max is anticipated to deliver superior contextual understanding, advanced problem-solving capacities for highly complex programming challenges, and exceptional efficiency in translating natural language prompts into high-quality, functional code across a diverse array of programming languages. Its deployment is set to profoundly impact the software development lifecycle by accelerating innovation, streamlining complex tasks, and reducing development cycles across various applications. The "Max" designation underlines its presumed superior performance, extensive scale, and potential to redefine the paradigm of AI-assisted code production and developer productivity.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>Code Generation</span><span>AI Development</span><span>OpenAI</span><span>Software Engineering</span><span>GPT-5.1-Codex-Max</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://openai.com/index/gpt-5-1-codex-max/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Launch HN: Mosaic (YC W25) – Agentic Video Editing</h2>
+                <span class="published-time">Published: 2025-11-19 15:28:04</span>
+                
+                <p class="summary">Mosaic, a YC W25 startup, has launched its agentic video editing platform designed to revolutionize video production. Co-founded by Adish & Kyle, the platform distinguishes itself from traditional tools like DaVinci Resolve and Adobe Premiere Pro through its unique user interface and integrated visual intelligence. Mosaic allows users to create and deploy multimodal video editing agents within a node-based canvas, automating tedious tasks such as sifting through extensive raw footage. The founders' experience, stemming from the frustration of manually identifying specific objects like Cybertrucks in hours of video, highlights the platform's core value proposition: simplifying complex editing processes. By offering an agent-driven approach, Mosaic aims to make advanced video editing more efficient and accessible, overcoming the challenges of hidden features and cumbersome workflows common in existing software.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Agentic Video Editing</span><span>Multimodal AI</span><span>Video Understanding</span><span>AI Agent</span><span>Visual Intelligence</span><span>Node-based Workflow</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Multimodal</span><span>Video Understanding</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mosaic.so" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Multimodal Diffusion Language Models for Thinking-Aware Editing and Generation</h2>
+                <span class="published-time">Published: 2025-11-19 09:27:17</span>
+                
+                <p class="summary">The research presented in the GitHub repository 'MMaDA-Parallel' introduces a novel approach utilizing Multimodal Diffusion Language Models (MDLMs) for advanced 'Thinking-Aware Editing and Generation'. This initiative aims to bridge the gap between human cognitive processes and AI-driven content creation across various modalities. By integrating the generative power of diffusion models with the semantic understanding of language models, MDLMs are designed to comprehend and respond to intricate user intentions, moving beyond simple prompt-response mechanisms. The 'thinking-aware' aspect suggests an enhanced capacity for contextual reasoning, enabling more coherent, creative, and controllable output in editing existing content or generating new material. This technology promises to revolutionize fields requiring sophisticated multimodal content manipulation, offering tools that can interpret complex instructions and produce results that align closely with nuanced human thought processes, thereby advancing the capabilities of generative AI systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal AI</span><span>Diffusion Models</span><span>Language Models</span><span>Generative AI</span><span>Content Editing</span><span>AI Generation</span><span>Deep Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Generative AI</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/tyfeld/MMaDA-Parallel" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Vibe Prolog</h2>
+                <span class="published-time">Published: 2025-11-19 15:24:52</span>
+                
+                <p class="summary">A developer has launched "Vibe Prolog," an experimental Prolog interpreter, after leveraging a $250 Claude Code credit. The project stands out due to its unique development process: it was predominantly "vibe coded" over a single weekend, largely on a mobile phone. This unconventional approach was motivated by the desire to fully utilize the Claude credit and simultaneously explore the boundaries of rapid, AI-assisted development in non-traditional environments. The creator views "Vibe Prolog" as an ongoing experiment to test the limits of what can be achieved with modern large language models and agile, mobile-first coding practices, even for complex system-level software like a programming language interpreter. This initiative offers an intriguing perspective on modern software engineering, showcasing the increasing utility of AI for quick prototyping and innovative development workflows beyond the conventional desktop setup.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Prolog Interpreter</span><span>Logic Programming</span><span>AI-assisted Development</span><span>Large Language Models</span><span>Mobile Programming</span><span>Experimental Software</span><span>Code Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/nlothian/Vibe-Prolog" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The "Learned Helplessness" of AI</h2>
+                <span class="published-time">Published: 2025-11-19 16:54:06</span>
+                
+                <p class="summary">The concept of "Learned Helplessness" in AI explores how artificial intelligence systems might develop a state of passivity or failure to act, even when solutions are feasible, due to repeated negative experiences or an inability to generalize from their training. This phenomenon could manifest when AI models are consistently exposed to scenarios where their actions yield no positive outcomes or when they are trained on biased datasets that limit their problem-solving capabilities in novel situations. The article likely delves into the psychological parallels of learned helplessness, examining its implications for AI robustness, adaptability, and ethical development. It suggests a critical need to re-evaluate training methodologies and reward structures to foster more resilient and proactive AI systems, capable of overcoming perceived limitations and actively seeking solutions rather than defaulting to inaction.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Learned Helplessness</span><span>AI Limitations</span><span>Machine Learning</span><span>AI Ethics</span><span>Reinforcement Learning</span><span>Cognitive Bias</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://himanshusinghbisht.substack.com/p/the-learned-helplessness-of-ai" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Sam 3D: Powerful 3D Reconstruction for Physical World Images</h2>
+                <span class="published-time">Published: 2025-11-19 16:28:41</span>
+                
+                <p class="summary">Meta has introduced Sam 3D, a significant advancement in the field of 3D reconstruction tailored for real-world physical images. Building upon foundational work like the Segment Anything Model (SAM), Sam 3D aims to deliver robust and highly accurate 3D representations from diverse visual inputs. This technology addresses persistent challenges in generating precise three-dimensional models from complex, unconstrained environments, which often suffer from issues like occlusions, varied lighting conditions, and intricate object geometries. By potentially integrating advanced segmentation capabilities, Sam 3D could revolutionize how digital twins are created, enhancing applications across augmented and virtual reality, robotics, and content generation. The system's power lies in its ability to reconstruct detailed and coherent 3D structures, making it a crucial step towards more immersive digital experiences and advanced environmental understanding for AI systems. This development underscores Meta's ongoing commitment to pushing the boundaries of AI-driven computer vision and spatial computing.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>3D Reconstruction</span><span>Computer Vision</span><span>Deep Learning</span><span>Segment Anything Model</span><span>Spatial AI</span><span>Meta AI</span><span>Generative AI</span><span>Real-world Imaging</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Deep Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://ai.meta.com/blog/sam-3d/?_fb_noscript=1" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>TrendRadar</h2>
+                <span class="published-time">Published: 2025-11-19T11:49:48Z</span>
+                
+                <p class="summary">TrendRadar is an open-source, lightweight, and easily deployable hot topic assistant designed to help users efficiently consume news and information, avoiding information overload. It aggregates real-time hotspots from over 11 mainstream platforms including Zhihu, Douyin, Weibo, and Baidu, with support for custom platform additions. Key functionalities encompass intelligent push strategies like daily summaries, current榜单, and incremental monitoring, precise content filtering using custom keywords, and in-depth hotspot trend analysis. The system employs a personalized algorithm to re-sort global hot searches based on rank, frequency, and quality. It offers multi-channel real-time notifications via WeChat Work, Feishu, DingTalk, Telegram, Email, and ntfy. A major update introduced AI intelligent analysis based on the Model Context Protocol (MCP), enabling natural language queries and deep data insights through 13 analysis tools. With zero technical barrier deployment via GitHub Fork and Docker, TrendRadar is ideal for investors, self-media professionals, public relations, and general users seeking targeted information.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Hotspot Aggregation</span><span>News Monitoring</span><span>AI Analysis</span><span>Model Context Protocol</span><span>Notification System</span><span>Content Filtering</span><span>Trend Analysis</span><span>Docker Deployment</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/sansan0/TrendRadar" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Agent Development Kit (ADK) for Go</h2>
+                <span class="published-time">Published: 2025-11-19T08:01:21Z</span>
+                
+                <p class="summary">The Agent Development Kit (ADK) for Go is an open-source, code-first toolkit designed to simplify the building, evaluation, and deployment of sophisticated AI agents, applying robust software development principles to agent creation. This flexible and modular framework facilitates the orchestration of agent workflows, from simple tasks to complex multi-agent systems. While optimized for Google's Gemini, ADK ensures model-agnosticism and deployment flexibility, allowing integration with various frameworks and cloud-native environments like Google Cloud Run. Leveraging Go's strengths in concurrency and performance, it is particularly suited for developers creating high-performance, scalable agent applications. Core features include an idiomatic Go design, a rich tool ecosystem for expanding agent capabilities, a code-first approach for superior flexibility and testability, and strong support for developing and deploying modular multi-agent systems efficiently.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agents</span><span>Go Programming Language</span><span>Agent Development Kit</span><span>Cloud-Native</span><span>Multi-Agent Systems</span><span>Code-First Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/google/adk-go" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>➤ Cursor Free VIP</h2>
+                <span class="published-time">Published: 2025-09-16T03:47:39Z</span>
+                
+                <p class="summary">The "Cursor Free VIP" project is a utility tool designed to enhance the Cursor AI-first IDE experience by providing </p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Cursor IDE</span><span>Developer Tool</span><span>Multi-platform</span><span>Automation Script</span><span>Configuration Management</span><span>AI Productivity</span><span>Free VIP</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/yeongpin/cursor-free-vip" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Agent-R1: Training Powerful LLM Agents with End-to-End Reinforcement Learning</h2>
+                <span class="published-time">Published: 2025-11-18T13:03:15.000Z</span>
+                
+                <p class="summary">Large Language Models (LLMs) are increasingly being explored for building Agents capable of active environmental interaction (e.g., via tool use) to solve complex problems. Reinforcement Learning (RL) is considered a key technology with significant potential for training such Agents; however, the effective application of RL to LLM Agents is still in its nascent stages and faces considerable challenges. Currently, this emerging field lacks in-depth exploration into RL approaches specifically tailored for the LLM Agent context, alongside a scarcity of flexible and easily extensible training frameworks designed for this purpose. To help advance this area, this paper first revisits and clarifies Reinforcement Learning methodologies for LLM Agents by systematically extending the Markov Decision Process (MDP) framework to comprehensively define the key components of an LLM Agent. Secondly, we introduce Agent-R1, a modular, flexible, and user-friendly training framework for RL-based LLM Agents, designed for straightforward adaptation across diverse task scenarios and interactive environments. We conducted experiments on Multihop QA benchmark tasks, providing initial validation for the effectiveness of our proposed methods and framework.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM Agents</span><span>Reinforcement Learning</span><span>Training Framework</span><span>Markov Decision Process</span><span>Multihop QA</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.14460" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Can World Simulators Reason? Gen-ViRe: A Generative Visual Reasoning Benchmark</h2>
+                <span class="published-time">Published: 2025-11-17T19:11:39.000Z</span>
+                
+                <p class="summary">While Chain-of-Thought (CoT) prompting enables sophisticated symbolic reasoning in LLMs, it remains confined to discrete text and cannot simulate the continuous, physics-governed dynamics of the real world. Recent video generation models have emerged as potential world simulators through Chain-of-Frames (CoF) reasoning -- materializing thought as frame-by-frame visual sequences, with each frame representing a physically-grounded reasoning step. Despite compelling demonstrations, a challenge persists: existing benchmarks, focusing on fidelity or alignment, do not assess CoF reasoning and thus cannot measure core cognitive abilities in multi-step planning, algorithmic logic, or abstract pattern extrapolation. This evaluation void prevents systematic understanding of model capabilities and principled guidance for improvement. We introduce Gen-ViRe (Generative Visual Reasoning Benchmark), a framework grounded in cognitive science and real-world AI applications, which decomposes CoF reasoning into six cognitive dimensions -- from perceptual logic to abstract planning -- and 24 subtasks. Through multi-source data curation, minimal prompting protocols, and hybrid VLM-assisted evaluation with detailed criteria, Gen-ViRe delivers the first quantitative assessment of video models as reasoners. Our experiments on SOTA systems reveal substantial discrepancies between impressive visual quality and actual reasoning depth, establishing baselines and diagnostic tools to advance genuine world simulators.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Generative Visual Reasoning</span><span>World Simulators</span><span>Chain-of-Frames Reasoning</span><span>Video Generation Models</span><span>AI Evaluation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.13853" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>A Style is Worth One Code: Unlocking Code-to-Style Image Generation with Discrete Style Space</h2>
+                <span class="published-time">Published: 2025-11-13T17:56:10.000Z</span>
+                
+                <p class="summary">Innovative visual stylization is a cornerstone of artistic creation, yet generating novel and consistent visual styles remains a significant challenge. Existing generative approaches typically rely on lengthy textual prompts, reference images, or parameter-efficient fine-tuning to guide style-aware image generation, but often struggle with style consistency, limited creativity, and complex style representations. In this paper, we affirm that a style is worth one numerical code by introducing the novel task, code-to-style image generation, which produces images with novel, consistent visual styles conditioned solely on a numerical style code. To date, this field has only been primarily explored by the industry (e.g., Midjourney), with no open-source research from the academic community. To fill this gap, we propose CoTyle, the first open-source method for this task. Specifically, we first train a discrete style codebook from a collection of images to extract style embeddings. These embeddings serve as conditions for a text-to-image diffusion model (T2I-DM) to generate stylistic images. Subsequently, we train an autoregressive style generator on the discrete style embeddings to model their distribution, allowing the synthesis of novel style embeddings. During inference, a numerical style code is mapped to a unique style embedding by the style generator, and this embedding guides the T2I-DM to generate images in the corresponding style. Unlike existing methods, our method offers unparalleled simplicity and diversity, unlocking a vast space of reproducible styles from minimal input. Extensive experiments validate that CoTyle effectively turns a numerical code into a style controller, demonstrating a style is worth one code.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Code-to-style Image Generation</span><span>Discrete Style Space</span><span>Visual Stylization</span><span>Text-to-Image Diffusion Models</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.10555" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Orion: A Unified Visual Agent for Multimodal Perception, Advanced Visual Reasoning and Execution</h2>
+                <span class="published-time">Published: 2025-11-18T07:41:02.000Z</span>
+                
+                <p class="summary">We introduce Orion, a visual agent framework that can take in any modality and generate any modality. Using an agentic framework with multiple tool-calling capabilities, Orion is designed for visual AI tasks and achieves state-of-the-art results. Unlike traditional vision-language models that produce descriptive outputs, Orion orchestrates a suite of specialized computer vision tools, including object detection, keypoint localization, panoptic segmentation, Optical Character Recognition, and geometric analysis, to execute complex multi-step visual workflows. The system achieves competitive performance on MMMU, MMBench, DocVQA, and MMLongBench while extending monolithic vision-language models to production-grade visual intelligence. By combining neural perception with symbolic execution, Orion enables autonomous visual reasoning, marking a transition from passive visual understanding to active, tool-driven visual intelligence.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Visual Agent</span><span>Multimodal AI</span><span>Computer Vision</span><span>Visual Reasoning</span><span>Tool-calling</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Multimodal</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.14210" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LLM-Powered Fully Automated Chaos Engineering: Towards Enabling Anyone to Build Resilient Software Systems at Low Cost</h2>
+                <span class="published-time">Published: 2025-11-11T06:03:24.000Z</span>
+                
+                <p class="summary">Chaos Engineering (CE) is an engineering technique aimed at improving the resilience of distributed systems. It involves intentionally injecting faults into a system to test its resilience, uncover weaknesses, and address them before they cause failures in production. Recent CE tools automate the execution of predefined CE experiments. However, planning such experiments and improving the system based on the experimental results still remain manual. These processes are labor-intensive and require multi-domain expertise. To address these challenges and enable anyone to build resilient systems at low cost, this paper proposes ChaosEater, a system that automates the entire CE cycle with Large Language Models (LLMs). It predefines an agentic workflow according to a systematic CE cycle and assigns subdivided processes within the workflow to LLMs. ChaosEater targets CE for software systems built on Kubernetes. Therefore, the LLMs in ChaosEater complete CE cycles through software engineering tasks, including requirement definition, code generation, testing, and debugging. We evaluate ChaosEater through case studies on small- and large-scale Kubernetes systems. The results demonstrate that it consistently completes reasonable CE cycles with significantly low time and monetary costs. Its cycles are also qualitatively validated by human engineers and LLMs.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Chaos Engineering</span><span>Large Language Models</span><span>Resilient Software Systems</span><span>Kubernetes</span><span>Automation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.07865" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>ATLAS: A High-Difficulty, Multidisciplinary Benchmark for Frontier Scientific Reasoning</h2>
+                <span class="published-time">Published: 2025-11-18T11:13:06.000Z</span>
+                
+                <p class="summary">The rapid advancement of Large Language Models (LLMs) has led to performance saturation on many established benchmarks, questioning their ability to distinguish frontier models. Concurrently, existing high-difficulty benchmarks often suffer from narrow disciplinary focus, oversimplified answer formats, and vulnerability to data contamination, creating a fidelity gap with real-world scientific inquiry. To address these challenges, we introduce ATLAS (AGI-Oriented Testbed for Logical Application in Science), a large-scale, high-difficulty, and cross-disciplinary evaluation suite composed of approximately 800 original problems. Developed by domain experts (PhD-level and above), ATLAS spans seven core scientific fields: mathematics, physics, chemistry, biology, computer science, earth science, and materials science. Its key features include: (1) High Originality and Contamination Resistance, with all questions newly created or substantially adapted to prevent test data leakage; (2) Cross-Disciplinary Focus, designed to assess models' ability to integrate knowledge and reason across scientific domains; (3) High-Fidelity Answers, prioritizing complex, open-ended answers involving multi-step reasoning and LaTeX-formatted expressions over simple multiple-choice questions; and (4) Rigorous Quality Control, employing a multi-stage process of expert peer review and adversarial testing to ensure question difficulty, scientific value, and correctness. We also propose a robust evaluation paradigm using a panel of LLM judges for automated, nuanced assessment of complex answers. Preliminary results on leading models demonstrate ATLAS's effectiveness in differentiating their advanced scientific reasoning capabilities. We plan to develop ATLAS into a long-term, open, community-driven platform to provide a reliable "ruler" for progress toward Artificial General Intelligence.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Scientific Reasoning</span><span>Multidisciplinary Benchmark</span><span>Artificial General Intelligence</span><span>Evaluation Suite</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.14366" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
