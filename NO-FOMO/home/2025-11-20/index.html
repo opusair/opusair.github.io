@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-11-20</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-11-20</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Adversarial Poetry as a Universal Single-Turn Jailbreak Mechanism in LLMs</h2>
+                <span class="published-time">Published: 2025-11-20 12:01:26</span>
+                
+                <p class="summary">Researchers have introduced a novel method for bypassing the safety mechanisms of Large Language Models (LLMs) through what they term "adversarial poetry." This technique leverages the inherent linguistic flexibility and contextual nuances of poetic structures to create single-turn jailbreak prompts, effectively tricking LLMs into generating responses that would otherwise be blocked due to safety guidelines. Unlike multi-turn attacks or more complex adversarial examples, this approach demonstrates a high degree of universality, working across various LLM architectures and for diverse malicious tasks. The study highlights a critical vulnerability in current LLM alignment and safety training, suggesting that the intricate interplay of language and context in creative forms like poetry can be exploited to circumvent protective filters. This research underscores the ongoing challenge of ensuring robust AI safety and necessitates further investigation into more sophisticated defense mechanisms against such sophisticated linguistic attacks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Adversarial Attacks</span><span>Jailbreak</span><span>Large Language Models</span><span>AI Safety</span><span>Natural Language Processing</span><span>Vulnerability</span><span>Security</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://arxiv.org/abs/2511.15304" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Nano Banana Pro</h2>
+                <span class="published-time">Published: 2025-11-20 15:04:23</span>
+                
+                <p class="summary">Google has recently indicated a new development with the title 'Nano Banana Pro', appearing on its official technology blog within the artificial intelligence section. While detailed specifications, core functionalities, and intended applications are not yet disclosed in the very brief initial announcement, the project's name provides some intriguing clues. The term 'Nano' typically signifies a focus on compact, highly efficient AI models or hardware designs, suggesting an emphasis on performance optimization for environments with limited computational resources, such as edge devices or mobile platforms. The 'Pro' designation further implies a professional-grade offering, potentially indicating advanced capabilities, enhanced reliability, or suitability for demanding enterprise and developer applications. This move by Google could represent a strategic effort to push the boundaries of on-device AI, foster greater energy efficiency in AI deployments, or enable broader accessibility of sophisticated AI technologies across diverse hardware ecosystems. The AI community awaits further official details to fully understand the scope and implications of 'Nano Banana Pro' in advancing practical AI applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Edge AI</span><span>On-device AI</span><span>Efficient AI</span><span>Machine Learning</span><span>Google AI</span><span>Compact AI Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://blog.google/technology/ai/nano-banana-pro/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Launch HN: Poly (YC S22) – Cursor for Files</h2>
+                <span class="published-time">Published: 2025-11-20 17:47:06</span>
+                
+                <p class="summary">Poly (YC S22) introduces an innovative application designed to revolutionize file management, serving as an intelligent replacement for traditional Finder/File Explorer tools. Positioned as a blend of Dropbox, NotebookLM, and Perplexity, Poly offers advanced natural language search capabilities, allowing users to find content across diverse file types down to specific details like pages, paragraphs, or pixels. A core feature is its integrated AI agent, which can perform a wide array of actions on files, including creation, editing, summarization, research, renaming, moving, tagging, annotating, and organization. This agent extends its intelligence beyond local files, capable of processing information from URLs, YouTube links, and even conducting web searches, enabling comprehensive file and knowledge management automation. Poly aims to provide a more intuitive and powerful way to interact with and manage vast amounts of digital information.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>File Management</span><span>AI Agent</span><span>Natural Language Processing</span><span>Intelligent Search</span><span>Document Management</span><span>Workflow Automation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://news.ycombinator.com/item?id=45995394" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Tangent – Security log pipeline powered by WASM</h2>
+                <span class="published-time">Published: 2025-11-20 16:41:31</span>
+                
+                <p class="summary">Tangent, a Rust-based security log pipeline developed by Ethan and Danny, addresses critical issues within the OCSF community concerning security log management. Traditional methods struggle with frequently evolving schemas, the absence of shared mapping libraries leading to duplicated effort, the laborious task of creating mappers, and the limitations of proprietary Domain-Specific Languages (DSLs) that impede collaboration and AI/LLM integration. Tangent offers a novel solution by discarding DSLs; instead, it compiles all normalization, enrichment, and detection logic into WebAssembly (WASM) plugins. This architecture fosters a robust ecosystem of shareable plugins, drastically simplifying the development, deployment, and maintenance of complex log processing rules. By standardizing logic as WASM code, Tangent enhances flexibility, adaptability to schema changes, and paves the way for improved automation and integration with modern analytical tools, including Large Language Models, for more efficient security operations.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Security Log Pipeline</span><span>WASM</span><span>Rust</span><span>OCSF</span><span>Log Processing</span><span>Data Enrichment</span><span>Plugins</span><span>Security Operations</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/telophasehq/tangent" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The Firefly and the Pulsar</h2>
+                <span class="published-time">Published: 2025-11-20 16:37:42</span>
+                
+                <p class="summary">The article 'The Firefly and the Pulsar' from Centauri Dreams likely delves into a conceptual framework for future interstellar exploration, positing the design and operational challenges of an autonomous, AI-powered probe, metaphorically named 'Firefly.' This probe would be engineered to navigate and gather data in the extreme environments surrounding pulsars – rapidly rotating neutron stars known for their intense gravitational and electromagnetic fields. The narrative would explore the critical role of advanced artificial intelligence in enabling such a mission, from autonomous course correction and hazard avoidance to sophisticated data analysis capabilities onboard. It would discuss how a 'Firefly' probe could unlock new understandings of pulsar physics, stellar evolution, and the fundamental forces of the universe, overcoming the vast distances and harsh conditions of deep space through cutting-edge robotic and AI technologies. Such a mission represents a significant leap in astrobiology and astrophysics, pushing the boundaries of what autonomous systems can achieve in cosmic discovery.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Interstellar probes</span><span>Pulsar physics</span><span>Autonomous systems</span><span>AI in space</span><span>Deep space exploration</span><span>Neutron stars</span><span>Robotics</span><span>Astrophysics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Robotics</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.centauri-dreams.org/2025/11/20/the-firefly-and-the-pulsar/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>'Calvin and Hobbes' at 40</h2>
+                <span class="published-time">Published: 2025-11-20 12:08:56</span>
+                
+                <p class="summary">The 40th anniversary of 'Calvin and Hobbes' presents an intriguing case study for long-term content engagement and cultural impact within the rapidly evolving digital landscape. While traditionally viewed through a lens of artistic and narrative analysis, the enduring popularity and influence of such media can be critically examined using modern data science techniques. Research leveraging natural language processing and sentiment analysis could explore the evolution of public perception and thematic resonance over four decades. Furthermore, the longevity of intellectual property like 'Calvin and Hobbes' highlights crucial challenges and opportunities in digital content archival, copyright management, and the potential use of generative AI to analyze artistic styles or create derivative works. This sustained relevance offers valuable insights into audience retention strategies and the potential for AI-driven platforms to recommend or curate legacy content, thereby extending its reach and contemporary relevance. The anniversary prompts contemplation on how future iterations of cultural commentary and media consumption might be shaped by advancements in AI-powered media creation and distribution, making it an indirect but valuable reference point for discussions on media technology convergence.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Content Longevity</span><span>Cultural Impact Analysis</span><span>Digital Archiving</span><span>Media Technology</span><span>AI-driven Content Curation</span><span>Intellectual Property Management</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.npr.org/2025/11/18/nx-s1-5564064/calvin-and-hobbes-bill-watterson-40-years-comic-strip-lee-salem" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Agent Development Kit (ADK) for Go</h2>
+                <span class="published-time">Published: 2025-11-20T17:00:31Z</span>
+                
+                <p class="summary">The Agent Development Kit (ADK) for Go is an open-source, code-first toolkit designed to streamline the building, evaluation, and deployment of sophisticated AI agents. It applies robust software development principles to agent creation, offering a flexible and modular framework for orchestrating workflows from simple tasks to complex multi-agent systems. While optimized for Google's Gemini, ADK maintains model and deployment agnosticism, ensuring compatibility across various environments and frameworks. Leveraging Go's strengths in concurrency and performance, this version is particularly suited for developers creating cloud-native agent applications. Key features include an idiomatic Go design, a rich tool ecosystem for diverse agent capabilities, and direct Go-based definition of agent logic for ultimate flexibility, testability, and version control. Agents built with ADK Go can be easily containerized and deployed in cloud-native environments like Google Cloud Run.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Go Programming Language</span><span>Agent Development Kit</span><span>Cloud-Native</span><span>Modular Systems</span><span>Tool Ecosystem</span><span>Code-First Development</span><span>Gemini</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/google/adk-go" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>TrendRadar</h2>
+                <span class="published-time">Published: 2025-11-20T11:29:26Z</span>
+                
+                <p class="summary">TrendRadar is an efficient and lightweight hot topic aggregation and intelligent notification assistant designed to help users quickly access relevant news without information overload. It supports rapid deployment (as fast as 30 seconds via GitHub Fork) and offers multi-platform content aggregation from 11+ mainstream sources like Zhihu, Douyin, and Weibo. Key features include three smart push modes (daily summary, current list, incremental monitoring), precise content filtering using customizable keywords, real-time hot spot trend analysis, and a personalized algorithm that prioritizes high-ranking and persistent topics. It provides multi-channel real-time notifications (WeChat Work, Feishu, DingTalk, Telegram, Email, ntfy) and multi-terminal adaptation, including GitHub Pages for web reports and Docker for containerized deployment. A significant update introduces AI intelligent analysis based on the MCP protocol, enabling natural language querying and deep data insights with 13 analytical tools, covering trend tracking, cross-platform comparison, and sentiment analysis. This project is ideal for investors, content creators, and businesses seeking to monitor market trends, public opinion, or industry news with minimal technical overhead.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Hotspot Monitoring</span><span>AI Analysis</span><span>Multi-channel Notification</span><span>Data Aggregation</span><span>Trend Analysis</span><span>Content Filtering</span><span>Docker Deployment</span><span>GitHub Actions</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/sansan0/TrendRadar" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Kandinsky 5.0: A Family of Foundation Models for Image and Video Generation</h2>
+                <span class="published-time">Published: 2025-11-19T00:23:22.000Z</span>
+                
+                <p class="summary">This report introduces Kandinsky 5.0, a family of state-of-the-art foundation models for high-resolution image and 10-second video synthesis. The framework comprises three core line-up of models: Kandinsky 5.0 Image Lite - a line-up of 6B parameter image generation models, Kandinsky 5.0 Video Lite - a fast and lightweight 2B parameter text-to-video and image-to-video models, and Kandinsky 5.0 Video Pro - 19B parameter models that achieves superior video generation quality. We provide a comprehensive review of the data curation lifecycle - including collection, processing, filtering and clustering - for the multi-stage training pipeline that involves extensive pre-training and incorporates quality-enhancement techniques such as self-supervised fine-tuning (SFT) and reinforcement learning (RL)-based post-training. We also present novel architectural, training, and inference optimizations that enable Kandinsky 5.0 to achieve high generation speeds and state-of-the-art performance across various tasks, as demonstrated by human evaluation. As a large-scale, publicly available generative framework, Kandinsky 5.0 leverages the full potential of its pre-training and subsequent stages to be adapted for a wide range of generative applications. We hope that this report, together with the release of our open-source code and training checkpoints, will substantially advance the development and accessibility of high-quality generative models for the research community.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Foundation Models</span><span>Image Generation</span><span>Video Generation</span><span>Self-supervised Fine-tuning</span><span>Reinforcement Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Deep Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.14993" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Reasoning via Video: The First Evaluation of Video Models' Reasoning Abilities through Maze-Solving Tasks</h2>
+                <span class="published-time">Published: 2025-11-19T03:18:29.000Z</span>
+                
+                <p class="summary">Video Models have achieved remarkable success in high-fidelity video generation with coherent motion dynamics. Analogous to the development from text generation to text-based reasoning in language modeling, the development of video models motivates us to ask: Can video models reason via video generation? Compared with the discrete text corpus, video grounds reasoning in explicit spatial layouts and temporal continuity, which serves as an ideal substrate for spatial reasoning. In this work, we explore the reasoning via video paradigm and introduce VR-Bench -- a comprehensive benchmark designed to systematically evaluate video models' reasoning capabilities. Grounded in maze-solving tasks that inherently require spatial planning and multi-step reasoning, VR-Bench contains 7,920 procedurally generated videos across five maze types and diverse visual styles. Our empirical analysis demonstrates that SFT can efficiently elicit the reasoning ability of video model. Video models exhibit stronger spatial perception during reasoning, outperforming leading VLMs and generalizing well across diverse scenarios, tasks, and levels of complexity. We further discover a test-time scaling effect, where diverse sampling during inference improves reasoning reliability by 10--20%. These findings highlight the unique potential and scalability of reasoning via video for spatial reasoning tasks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Models</span><span>Reasoning</span><span>Video Generation</span><span>Spatial Reasoning</span><span>Maze-Solving Tasks</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Video Understanding</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.15065" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>VisPlay: Self-Evolving Vision-Language Models from Images</h2>
+                <span class="published-time">Published: 2025-11-19T17:55:15.000Z</span>
+                
+                <p class="summary">Reinforcement learning (RL) provides a principled framework for improving Vision-Language Models (VLMs) on complex reasoning tasks. However, existing RL approaches often rely on human-annotated labels or task-specific heuristics to define verifiable rewards, both of which are costly and difficult to scale. We introduce VisPlay, a self-evolving RL framework that enables VLMs to autonomously improve their reasoning abilities using large amounts of unlabeled image data. Starting from a single base VLM, VisPlay assigns the model into two interacting roles: an Image-Conditioned Questioner that formulates challenging yet answerable visual questions, and a Multimodal Reasoner that generates silver responses. These roles are jointly trained with Group Relative Policy Optimization (GRPO), which incorporates diversity and difficulty rewards to balance the complexity of generated questions with the quality of the silver answers. VisPlay scales efficiently across two model families. When trained on Qwen2.5-VL and MiMo-VL, VisPlay achieves consistent improvements in visual reasoning, compositional generalization, and hallucination reduction across eight benchmarks, including MM-Vet and MMMU, demonstrating a scalable path toward self-evolving multimodal intelligence. The project page is available at https://bruno686.github.io/VisPlay/</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Vision-Language Models</span><span>Reinforcement Learning</span><span>Self-evolving</span><span>Multimodal AI</span><span>Visual Reasoning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Machine Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.15661" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>FreeAskWorld: An Interactive and Closed-Loop Simulator for Human-Centric Embodied AI</h2>
+                <span class="published-time">Published: 2025-11-17T15:58:46.000Z</span>
+                
+                <p class="summary">As embodied intelligence emerges as a core frontier in artificial intelligence research, simulation platforms must evolve beyond low-level physical interactions to capture complex, human-centered social behaviors. We introduce FreeAskWorld, an interactive simulation framework that integrates large language models (LLMs) for high-level behavior planning and semantically grounded interaction, informed by theories of intention and social cognition. Our framework supports scalable, realistic human-agent simulations and includes a modular data generation pipeline tailored for diverse embodied tasks.To validate the framework, we extend the classic Vision-and-Language Navigation (VLN) task into a interaction enriched Direction Inquiry setting, wherein agents can actively seek and interpret navigational guidance. We present and publicly release FreeAskWorld, a large-scale benchmark dataset comprising reconstructed environments, six diverse task types, 16 core object categories, 63,429 annotated sample frames, and more than 17 hours of interaction data to support training and evaluation of embodied AI systems. We benchmark VLN models, and human participants under both open-loop and closed-loop settings. Experimental results demonstrate that models fine-tuned on FreeAskWorld outperform their original counterparts, achieving enhanced semantic understanding and interaction competency. These findings underscore the efficacy of socially grounded simulation frameworks in advancing embodied AI systems toward sophisticated high-level planning and more naturalistic human-agent interaction. Importantly, our work underscores that interaction itself serves as an additional information modality.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Embodied AI</span><span>Simulation Framework</span><span>Large Language Models</span><span>Human-Agent Interaction</span><span>Vision-and-Language Navigation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.13524" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Aligning Generative Music AI with Human Preferences: Methods and Challenges</h2>
+                <span class="published-time">Published: 2025-11-19T02:12:27.000Z</span>
+                
+                <p class="summary">Recent advances in generative AI for music have achieved remarkable fidelity and stylistic diversity, yet these systems often fail to align with nuanced human preferences due to the specific loss functions they use. This paper advocates for the systematic application of preference alignment techniques to music generation, addressing the fundamental gap between computational optimization and human musical appreciation. Drawing on recent breakthroughs including MusicRL's large-scale preference learning, multi-preference alignment frameworks like diffusion-based preference optimization in DiffRhythm+, and inference-time optimization techniques like Text2midi-InferAlign, we discuss how these techniques can address music's unique challenges: temporal coherence, harmonic consistency, and subjective quality assessment. We identify key research challenges including scalability to long-form compositions, reliability amongst others in preference modelling. Looking forward, we envision preference-aligned music generation enabling transformative applications in interactive composition tools and personalized music services. This work calls for sustained interdisciplinary research combining advances in machine learning, music-theory to create music AI systems that truly serve human creative and experiential needs.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Generative Music AI</span><span>Human Preferences</span><span>Preference Alignment</span><span>Music Generation</span><span>Machine Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Machine Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.15038" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Mixture of States: Routing Token-Level Dynamics for Multimodal Generation</h2>
+                <span class="published-time">Published: 2025-11-15T13:24:57.000Z</span>
+                
+                <p class="summary">We introduce MoS (Mixture of States), a novel fusion paradigm for multimodal diffusion models that merges modalities using flexible, state-based interactions. The core of MoS is a learnable, token-wise router that creates denoising timestep- and input-dependent interactions between modalities' hidden states, precisely aligning token-level features with the diffusion trajectory. This router sparsely selects the top-k hidden states and is trained with an \b\b-greedy strategy, efficiently selecting contextual features with minimal learnable parameters and negligible computational overhead. We validate our design with text-to-image generation (MoS-Image) and editing (MoS-Editing), which achieve state-of-the-art results. With only 3B to 5B parameters, our models match or surpass counterparts up to 4times larger. These findings establish MoS as a flexible and compute-efficient paradigm for scaling multimodal diffusion models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal Generation</span><span>Diffusion Models</span><span>Token-Level Dynamics</span><span>Mixture of States</span><span>Text-to-Image Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Generative AI</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.12207" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
