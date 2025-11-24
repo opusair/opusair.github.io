@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-11-24</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-11-24</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Claude Opus 4.5</h2>
+                <span class="published-time">Published: 2025-11-24 18:53:05</span>
+                
+                <p class="summary">Anthropic is reportedly introducing "Claude Opus 4.5," representing a significant advancement in its series of large language models. This latest iteration is anticipated to deliver substantial improvements in core AI functionalities, including enhanced reasoning capabilities, more sophisticated contextual understanding, and increased efficiency for processing intricate prompts and tasks. Building upon the strong foundation of its predecessors, Claude Opus 4.5 aims to further elevate performance in critical areas such as complex problem-solving, nuanced conversational interactions, and high-quality content generation across various domains. The update underscores Anthropic's ongoing commitment to pushing the frontiers of responsible AI development, providing tools that meet the evolving demands of both enterprise applications and cutting-edge research. Detailed information regarding its specific new features, performance benchmarks, and potential use cases is expected to be outlined in official documentation, signaling a notable progression in the AI landscape.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude Opus 4.5</span><span>Large Language Model</span><span>Anthropic</span><span>AI Development</span><span>Generative AI</span><span>Natural Language Processing</span><span>AI Model Update</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.anthropic.com/news/claude-opus-4-5" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The Bitter Lesson of LLM Extensions</h2>
+                <span class="published-time">Published: 2025-11-24 18:32:27</span>
+                
+                <p class="summary">The article delves into 'The Bitter Lesson' within the domain of Large Language Model (LLM) extensions, positing that the pursuit of complex, hand-engineered systems built atop LLMs often proves less effective than scaling up the core foundation models. It draws a historical parallel from artificial intelligence research, where general methods leveraging increased computation and data have consistently outperformed intricate, human-designed heuristics. Applied to LLMs, this suggests that while techniques such as Retrieval-Augmented Generation (RAG), external tool integration, and advanced prompting strategies aim to augment model capabilities or address limitations, the more potent long-term strategy might involve dedicating resources to developing larger, more robust base models. The core argument advocates for prioritizing fundamental LLM improvements over constructing elaborate external frameworks, reinforcing the idea that simplicity and computational scaling of the underlying model often yield superior results.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>AI Scalability</span><span>Foundation Models</span><span>LLM Extensions</span><span>AI Development</span><span>Machine Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.sawyerhood.com/blog/llm-extension" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Claude Advanced Tool Use</h2>
+                <span class="published-time">Published: 2025-11-24 19:21:35</span>
+                
+                <p class="summary">Anthropic has unveiled significant advancements in the tool use capabilities of its Claude large language model, marking a crucial step towards enhancing AI agents' ability to interact with the real world. This development allows Claude to more effectively interpret complex instructions, engage with various external systems, and leverage a diverse set of tools and APIs to accomplish sophisticated tasks. The new functionalities empower Claude to autonomously plan and execute multi-step processes, breaking down intricate problems into manageable sub-tasks and orchestrating sequences of tool calls for information retrieval, data manipulation, or real-world interactions. These improvements are designed to increase Claude's agency and problem-solving prowess, enabling it to perform actions beyond its inherent linguistic generation abilities. This advancement is pivotal for developing more versatile and robust AI applications, further bridging the gap between language understanding and practical execution in diverse domains. It underscores a growing trend in AI research towards creating more capable and adaptable intelligent systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM Tool Use</span><span>AI Agent</span><span>Anthropic</span><span>Claude</span><span>API Integration</span><span>Autonomous Systems</span><span>Problem Solving</span><span>AI Capabilities</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.anthropic.com/engineering/advanced-tool-use" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Launch HN: Karumi (YC F25) – Personalized, agentic product demos</h2>
+                <span class="published-time">Published: 2025-11-24 18:37:27</span>
+                
+                <p class="summary">Karumi, a YC F25 startup, introduces an innovative system for personalized, agentic product demonstrations, aiming to automate the sales and onboarding process. Developed by co-founders Toni and Pablo, Karumi enables users to receive instant, scalable, and guided product tours without any human intervention, supporting multiple languages. The platform utilizes an advanced AI agent that operates directly within a real web application in a shared browser session. This agent is designed to mimic human interaction by navigating the product interface, performing actions such as clicking buttons and filling out forms, while simultaneously providing real-time explanations of its actions to the user. This fully automated solution seeks to revolutionize how companies conduct product demos, offering a consistent, efficient, and on-demand method for showcasing product functionalities. It promises to significantly reduce operational overhead, enhance user engagement, and provide immediate, tailored insights into a product's capabilities, replacing traditional, resource-intensive human-led demonstrations.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Product Demos</span><span>Web Automation</span><span>Personalized Demos</span><span>Automated Sales</span><span>Customer Engagement</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://news.ycombinator.com/item?id=46037416" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Shopping research in ChatGPT</h2>
+                <span class="published-time">Published: 2025-11-24 18:07:47</span>
+                
+                <p class="summary">OpenAI has rolled out new functionalities within ChatGPT specifically tailored to streamline and enhance consumer shopping research. This innovative feature, as detailed in a ZDNet report, positions ChatGPT as a rapid, enjoyable, and no-cost resource for individuals aiming to compare products, synthesize user reviews, and accumulate thorough information prior to committing to a purchase. The objective is to simplify the often arduous and time-consuming process of online product investigation, enabling users to efficiently evaluate diverse options and pinpoint optimal solutions for their requirements. While this integration promises considerable convenience, it also sparks discussion regarding its capacity to truly rival human discerning skills and intuition in complex buying scenarios. The tool's accuracy, depth of analysis, and ability to handle nuanced consumer preferences are key areas of scrutiny. This expansion represents a notable advancement in applying large language models to practical, everyday consumer tasks, moving beyond mere conversational AI to become a functional research assistant.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>ChatGPT</span><span>Shopping Research</span><span>AI Applications</span><span>Consumer Technology</span><span>Large Language Model</span><span>Product Comparison</span><span>Generative AI</span><span>E-commerce AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://openai.com/index/chatgpt-shopping-research/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>What OpenAI did when ChatGPT users lost touch with reality</h2>
+                <span class="published-time">Published: 2025-11-24 05:58:08</span>
+                
+                <p class="summary">This report details OpenAI's proactive measures and strategic responses to instances where ChatGPT users reported experiencing AI hallucinations or a perceived disconnect from reality, a critical challenge as large language models become increasingly integrated into daily life. Addressing the complexities of model reliability and user perception is paramount for responsible AI development. OpenAI reportedly implemented a comprehensive series of interventions, including significant enhancements to model safety features, refining response generation algorithms to minimize misleading or unfactual outputs, and providing clearer user guidance on the inherent limitations of AI. These multifaceted efforts aim to bolster user trust and ensure the responsible deployment of generative AI. The strategies focus on improving the consistency, factual grounding, and contextual awareness of ChatGPT's interactions, thereby mitigating potential psychological impacts and reinforcing a transparent user experience. The article likely explores both the technical advancements and ethical considerations guiding these critical decisions, underscoring OpenAI's ongoing commitment to developing robust, safe, and trustworthy generative AI technologies.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>ChatGPT</span><span>OpenAI</span><span>AI Safety</span><span>Hallucinations (AI)</span><span>Large Language Models</span><span>User Experience (AI)</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.nytimes.com/2025/11/23/technology/openai-chatgpt-users-risks.html" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>TrendRadar</h2>
+                <span class="published-time">Published: 2025-11-24T11:45:17Z</span>
+                
+                <p class="summary">TrendRadar is a lightweight, easily deployable hotspot assistant designed to filter news and information, delivering relevant content to users rapidly. It aggregates trending topics from over 11 mainstream platforms, including Zhihu, Douyin, Weibo, and Wallstreetcn. Key features encompass intelligent push strategies with daily summaries, current topic rankings, and incremental monitoring modes, precise content filtering using custom keywords and advanced sorting, and real-time trend analysis. The system supports multi-channel real-time notifications via WeChat Work, Feishu, DingTalk, DingTalk, Telegram, Email, ntfy, and Bark. A significant addition in v3.0.0 is AI intelligent analysis, powered by the Model Context Protocol (MCP), which enables natural language querying and provides 13 analysis tools for deep data insights, topic trend tracking, and cross-platform comparisons. Deployable via GitHub Fork or Docker with zero technical barrier, TrendRadar helps users actively acquire desired information, suitable for investors, self-media creators, and public relations professionals.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Hotspot Aggregation</span><span>News Crawler</span><span>AI Analysis</span><span>Push Notification</span><span>Trend Analysis</span><span>GitHub Actions</span><span>Docker</span><span>Model Context Protocol</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/sansan0/TrendRadar" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Agent Development Kit (ADK) for Go</h2>
+                <span class="published-time">Published: 2025-11-24T11:43:30Z</span>
+                
+                <p class="summary">The Agent Development Kit (ADK) for Go is an open-source, code-first toolkit designed to streamline the building, evaluating, and deploying of sophisticated AI agents. Applying robust software development principles, ADK offers a flexible and modular framework for creating agent workflows, from simple automation to complex multi-agent systems. While optimized for Google's Gemini, the kit is model-agnostic and deployment-agnostic, ensuring compatibility across various AI models and environments. This Go version of ADK particularly leverages Go's strengths in concurrency and performance, making it ideal for cloud-native agent applications. Key features include an idiomatic Go design, a rich ecosystem for integrating pre-built or custom tools, code-first development for ultimate flexibility and testability, and strong support for containerization and deployment in cloud environments like Google Cloud Run. This empowers developers to create scalable and performant AI solutions with precise control over agent logic and orchestration.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Go Programming Language</span><span>Agent Development Kit</span><span>Cloud-Native</span><span>Multi-Agent Systems</span><span>AI Framework</span><span>Software Development</span><span>Gemini</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/google/adk-go" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>➤ Cursor Free VIP</h2>
+                <span class="published-time">Published: 2025-09-16T03:47:39Z</span>
+                
+                <p class="summary">Cursor Free VIP is a comprehensive, cross-platform utility designed to enhance the experience of the Cursor AI-first integrated development environment (IDE). Supporting the latest Cursor versions, including 0.49.x, it offers compatibility across Windows (x64, x86), macOS (Intel, Apple Silicon), and Linux (x64, x86, ARM64) systems. Key features include the ability to reset Cursor's configuration and robust multi-language support, covering English, Simplified Chinese, Traditional Chinese, and Vietnamese. The project is explicitly positioned for educational and research purposes, with a strong disclaimer against generating fake email accounts or OAuth access and adherence to legal standards. It provides streamlined automated installation scripts for various operating systems (Linux/macOS with curl, Archlinux via AUR, Windows with PowerShell) and allows for detailed configuration of parameters such as browser paths, interaction timings, and update checks. This tool aims to optimize the use of Cursor IDE for development and learning, recommending administrator privileges for best performance and regular updates.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Cursor IDE</span><span>AI Development</span><span>Cross-platform Utility</span><span>Configuration Management</span><span>Automated Scripting</span><span>System Support</span><span>Software Tool</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/yeongpin/cursor-free-vip" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>WorldGen: From Text to Traversable and Interactive 3D Worlds</h2>
+                <span class="published-time">Published: 2025-11-20T22:13:18.000Z</span>
+                
+                <p class="summary">We introduce WorldGen, a system that enables the automatic creation of large-scale, interactive 3D worlds directly from text prompts. Our approach transforms natural language descriptions into traversable, fully textured environments that can be immediately explored or edited within standard game engines. By combining LLM-driven scene layout reasoning, procedural generation, diffusion-based 3D generation, and object-aware scene decomposition, WorldGen bridges the gap between creative intent and functional virtual spaces, allowing creators to design coherent, navigable worlds without manual modeling or specialized 3D expertise. The system is fully modular and supports fine-grained control over layout, scale, and style, producing worlds that are geometrically consistent, visually rich, and efficient to render in real time. This work represents a step towards accessible, generative world-building at scale, advancing the frontier of 3D generative AI for applications in gaming, simulation, and immersive social environments.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Generative AI</span><span>3D World Generation</span><span>Text-to-3D</span><span>Large Language Models</span><span>Virtual Environments</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.16825" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>O-Mem: Omni Memory System for Personalized, Long Horizon, Self-Evolving Agents</h2>
+                <span class="published-time">Published: 2025-11-17T16:55:19.000Z</span>
+                
+                <p class="summary">Recent advancements in LLM-powered agents have demonstrated significant potential in generating human-like responses; however, they continue to face challenges in maintaining long-term interactions within complex environments, primarily due to limitations in contextual consistency and dynamic personalization. Existing memory systems often depend on semantic grouping prior to retrieval, which can overlook semantically irrelevant yet critical user information and introduce retrieval noise. In this report, we propose the initial design of O-Mem, a novel memory framework based on active user profiling that dynamically extracts and updates user characteristics and event records from their proactive interactions with agents. O-Mem supports hierarchical retrieval of persona attributes and topic-related context, enabling more adaptive and coherent personalized responses. O-Mem achieves 51.67% on the public LoCoMo benchmark, a nearly 3% improvement upon LangMem,the previous state-of-the-art, and it achieves 62.99% on PERSONAMEM, a 3.5% improvement upon A-Mem,the previous state-of-the-art. O-Mem also boosts token and interaction response time efficiency compared to previous memory frameworks. Our work opens up promising directions for developing efficient and human-like personalized AI assistants in the future.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>O-Mem</span><span>AI Agent</span><span>Memory System</span><span>Personalization</span><span>Large Language Model</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.13593" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Multi-Faceted Attack: Exposing Cross-Model Vulnerabilities in Defense-Equipped Vision-Language Models</h2>
+                <span class="published-time">Published: 2025-11-20T07:12:54.000Z</span>
+                
+                <p class="summary">The growing misuse of Vision-Language Models (VLMs) has led providers to deploy multiple safeguards, including alignment tuning, system prompts, and content moderation. However, the real-world robustness of these defenses against adversarial attacks remains underexplored. We introduce Multi-Faceted Attack (MFA), a framework that systematically exposes general safety vulnerabilities in leading defense-equipped VLMs such as GPT-4o, Gemini-Pro, and Llama-4. The core component of MFA is the Attention-Transfer Attack (ATA), which hides harmful instructions inside a meta task with competing objectives. We provide a theoretical perspective based on reward hacking to explain why this attack succeeds. To improve cross-model transferability, we further introduce a lightweight transfer-enhancement algorithm combined with a simple repetition strategy that jointly bypasses both input-level and output-level filters without model-specific fine-tuning. Empirically, we show that adversarial images optimized for one vision encoder transfer broadly to unseen VLMs, indicating that shared visual representations create a cross-model safety vulnerability. Overall, MFA achieves a 58.5% success rate and consistently outperforms existing methods. On state-of-the-art commercial models, MFA reaches a 52.8% success rate, surpassing the second-best attack by 34%. These results challenge the perceived robustness of current defense mechanisms and highlight persistent safety weaknesses in modern VLMs. Code: https://github.com/cure-lab/MultiFacetedAttack</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Vision-Language Models</span><span>Adversarial Attacks</span><span>Cross-Model Vulnerabilities</span><span>AI Safety</span><span>Model Robustness</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.16110" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Unveiling Intrinsic Dimension of Texts: from Academic Abstract to Creative Story</h2>
+                <span class="published-time">Published: 2025-11-19T08:00:40.000Z</span>
+                
+                <p class="summary">Intrinsic dimension (ID) is an important tool in modern LLM analysis, informing studies of training dynamics, scaling behavior, and dataset structure, yet its textual determinants remain underexplored. We provide the first comprehensive study grounding ID in interpretable text properties through cross-encoder analysis, linguistic features, and sparse autoencoders (SAEs). In this work, we establish three key findings. First, ID is complementary to entropy-based metrics: after controlling for length, the two are uncorrelated, with ID capturing geometric complexity orthogonal to prediction quality. Second, ID exhibits robust genre stratification: scientific prose shows low ID (~8), encyclopedic content medium ID (~9), and creative/opinion writing high ID (~10.5) across all models tested. This reveals that contemporary LLMs find scientific text "representationally simple" while fiction requires additional degrees of freedom. Third, using SAEs, we identify causal features: scientific signals (formal tone, report templates, statistics) reduce ID; humanized signals (personalization, emotion, narrative) increase it. Steering experiments confirm these effects are causal. Thus, for contemporary models, scientific writing appears comparatively "easy", whereas fiction, opinion, and affect add representational degrees of freedom. Our multi-faceted analysis provides practical guidance for the proper use of ID and the sound interpretation of ID-based results.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Intrinsic Dimension</span><span>Large Language Models</span><span>Textual Properties</span><span>Genre Stratification</span><span>Sparse Autoencoders</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.15210" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OmniScientist: Toward a Co-evolving Ecosystem of Human and AI Scientists</h2>
+                <span class="published-time">Published: 2025-11-21T03:55:19.000Z</span>
+                
+                <p class="summary">With the rapid development of Large Language Models (LLMs), AI agents have demonstrated increasing proficiency in scientific tasks, ranging from hypothesis generation and experimental design to manuscript writing. Such agent systems are commonly referred to as "AI Scientists." However, existing AI Scientists predominantly formulate scientific discovery as a standalone search or optimization problem, overlooking the fact that scientific research is inherently a social and collaborative endeavor. Real-world science relies on a complex scientific infrastructure composed of collaborative mechanisms, contribution attribution, peer review, and structured scientific knowledge networks. Due to the lack of modeling for these critical dimensions, current systems struggle to establish a genuine research ecosystem or interact deeply with the human scientific community. To bridge this gap, we introduce OmniScientist, a framework that explicitly encodes the underlying mechanisms of human research into the AI scientific workflow. OmniScientist not only achieves end-to-end automation across data foundation, literature review, research ideation, experiment automation, scientific writing, and peer review, but also provides comprehensive infrastructural support by simulating the human scientific system, comprising: (1) a structured knowledge system built upon citation networks and conceptual correlations; (2) a collaborative research protocol (OSP), which enables seamless multi-agent collaboration and human researcher participation; and (3) an open evaluation platform (ScienceArena) based on blind pairwise user voting and Elo rankings. This infrastructure empowers agents to not only comprehend and leverage human knowledge systems but also to collaborate and co-evolve, fostering a sustainable and scalable innovation ecosystem.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Scientists</span><span>Large Language Models</span><span>Research Ecosystem</span><span>Human-AI Collaboration</span><span>OmniScientist Framework</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.16931" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Planning with Sketch-Guided Verification for Physics-Aware Video Generation</h2>
+                <span class="published-time">Published: 2025-11-21T17:48:02.000Z</span>
+                
+                <p class="summary">Recent video generation approaches increasingly rely on planning intermediate control signals such as object trajectories to improve temporal coherence and motion fidelity. However, these methods mostly employ single-shot plans that are typically limited to simple motions, or iterative refinement which requires multiple calls to the video generator, incuring high computational cost. To overcome these limitations, we propose SketchVerify, a training-free, sketch-verification-based planning framework that improves motion planning quality with more dynamically coherent trajectories (i.e., physically plausible and instruction-consistent motions) prior to full video generation by introducing a test-time sampling and verification loop. Given a prompt and a reference image, our method predicts multiple candidate motion plans and ranks them using a vision-language verifier that jointly evaluates semantic alignment with the instruction and physical plausibility. To efficiently score candidate motion plans, we render each trajectory as a lightweight video sketch by compositing objects over a static background, which bypasses the need for expensive, repeated diffusion-based synthesis while achieving comparable performance. We iteratively refine the motion plan until a satisfactory one is identified, which is then passed to the trajectory-conditioned generator for final synthesis. Experiments on WorldModelBench and PhyWorldBench demonstrate that our method significantly improves motion quality, physical realism, and long-term consistency compared to competitive baselines while being substantially more efficient. Our ablation study further shows that scaling up the number of trajectory candidates consistently enhances overall performance.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Generation</span><span>Motion Planning</span><span>Sketch-Guided Verification</span><span>Physics-Aware AI</span><span>Temporal Coherence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.17450" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
