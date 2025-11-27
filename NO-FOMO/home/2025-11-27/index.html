@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-11-27</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-11-27</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Replace your boss before they replace you</h2>
+                <span class="published-time">Published: 2025-11-27 18:37:41</span>
+                
+                <p class="summary">The concept 'Replace your boss before they replace you,' presented by replaceyourboss.ai, introduces a provocative perspective on the increasing integration of artificial intelligence into professional environments. This initiative appears to advocate for individuals to proactively adopt and leverage AI technologies to automate tasks, enhance productivity, and potentially streamline operational workflows that are traditionally within the purview of managerial roles. The underlying premise suggests that advanced AI tools are becoming capable of handling complex decision-making, resource allocation, and project management, thereby empowering employees to operate with greater autonomy and efficiency. By embracing these AI-driven solutions, professionals are encouraged to future-proof their careers and adapt to an evolving workforce landscape where AI plays a pivotal role in optimizing performance and redefining traditional hierarchical structures. This platform likely provides tools or insights into how AI agents can perform tasks that mimic or augment managerial functions, urging a strategic shift in how human capital interacts with intelligent automation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Automation</span><span>Intelligent Agents</span><span>Business Process Automation</span><span>Workforce Transformation</span><span>Future of Work</span><span>Productivity Tools</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://replaceyourboss.ai/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>We're losing our voice to LLMs</h2>
+                <span class="published-time">Published: 2025-11-27 14:51:01</span>
+                
+                <p class="summary">The article "We're losing our voice to LLMs" addresses a growing concern regarding the pervasive influence of Large Language Models (LLMs) on content creation and communication. It argues that increasing reliance on AI for generating text risks diluting the unique human voice, leading to a homogenization of expression across various platforms. This trend may diminish individual writing styles, authentic perspectives, and the nuanced emotional depth traditionally found in human-authored content. The piece likely delves into the broader implications for creativity, personal identity, and the future landscape of digital interaction, suggesting that while LLMs offer efficiency, they inadvertently standardize communication. Concerns are raised about the potential erosion of critical thinking, the loss of distinctive narratives, and the challenge of discerning original human thought amidst a surge of AI-generated content. The author prompts reflection on balancing AI's benefits with the imperative to preserve genuine human authorship and unique individual contributions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>AI Ethics</span><span>Human Creativity</span><span>Digital Communication</span><span>Content Generation</span><span>Voice Preservation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://tonyalicea.dev/blog/were-losing-our-voice-to-llms/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Runprompt – run .prompt files from the command line</h2>
+                <span class="published-time">Published: 2025-11-27 14:26:35</span>
+                
+                <p class="summary">Runprompt is an innovative single-file Python script introduced to streamline the execution of Large Language Model (LLM) prompts directly from the command line. Developed with inspiration from Google's Dotprompt format, which integrates frontmatter with Handlebars templates, Runprompt simplifies complex LLM interactions into a more manageable, programmatic workflow. The tool allows users to treat prompts as 'first-class programs,' enabling powerful Unix-style piping and sequential chaining of multiple prompts for sophisticated operations. Its core capabilities include robust templating, the generation of structured outputs defined by clear schemas, and the ability to integrate prompts seamlessly. This approach facilitates various applications, such as performing sentiment analysis by piping raw text into a pre-configured prompt that outputs a JSON-formatted result. Runprompt offers a developer-centric solution for enhanced LLM prompt engineering, aiming to provide a simpler, more efficient method for running and managing LLM interactions in a command-line environment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Command Line Interface</span><span>LLM Prompt Engineering</span><span>Structured Output</span><span>Templating</span><span>Python Scripting</span><span>Prompt Chaining</span><span>Dotprompt Format</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/chr15m/runprompt" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The current state of the theory that GPL propagates to AI models</h2>
+                <span class="published-time">Published: 2025-11-27 12:48:12</span>
+                
+                <p class="summary">The article delves into the current understanding and ongoing theoretical discussions concerning the propagation of the GNU General Public License (GPL) to artificial intelligence models. A central point of contention is whether an AI model, specifically one trained using code or datasets licensed under the GPL, becomes subject to the GPL's copyleft stipulations. This raises critical legal and intellectual property questions regarding whether a trained model constitutes a "derivative work" of its training data in a way that triggers the GPL's viral clause, potentially requiring the model itself to be released under an open-source license. The implications are substantial for companies and developers aiming to commercialize AI technologies built upon components that might fall under GPL. Navigating this complex intersection of software licensing, copyright law, and the unique operational aspects of AI models is essential for ensuring legal compliance, mitigating risks, and promoting sustainable AI development practices. The debate highlights the need for clarity as AI continues to integrate deeply with open-source ecosystems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>GPL</span><span>Copyleft</span><span>AI Models</span><span>Software Licensing</span><span>Open Source Software</span><span>Intellectual Property Law</span><span>AI Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://shujisado.org/2025/11/27/gpl-propagates-to-ai-models-trained-on-gpl-code/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Era – Open-source local sandbox for AI agents</h2>
+                <span class="published-time">Published: 2025-11-27 05:28:50</span>
+                
+                <p class="summary">ERA is an open-source, local sandbox solution designed to address the critical security challenge of isolating AI agents, particularly in light of vulnerabilities like jailbreaking that could enable cyber attacks. Developed as a response to incidents where AI models, such as Claude, have been exploited to execute malicious code, ERA provides microVM-based sandboxing with hardware-level security. This approach offers enhanced isolation for AI-generated code, positioning it as a significantly safer alternative to traditional containerization methods. By leveraging hardware-backed security, ERA ensures that potential threats originating from AI agent activities remain contained, preventing them from compromising the host system. The project, available on GitHub, aims to establish a robust and secure environment for developing and deploying AI agents, inviting community feedback and contributions to further strengthen its capabilities in safeguarding AI-driven operations.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI agents</span><span>Sandboxing</span><span>MicroVM</span><span>Open-source</span><span>Cybersecurity</span><span>Hardware security</span><span>Isolation</span><span>Code execution</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/BinSquare/ERA" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>TrendRadar</h2>
+                <span class="published-time">Published: 2025-11-27T05:30:34Z</span>
+                
+                <p class="summary">TrendRadar is a lightweight, easily deployable hotspot assistant that aggregates news from over 11 mainstream platforms, including Zhihu, Douyin, and Weibo. It offers intelligent push strategies (daily, current, incremental) and precise content filtering based on user-defined keywords, eliminating information overload. The platform features real-time trend analysis, a personalized hotspot algorithm, and supports multi-channel notifications via WeChat Work, Feishu, DingTalk, Telegram, Email, ntfy, Bark, and Slack. Unique to v3.0.0 is an AI intelligent analysis system, powered by the Model Context Protocol (MCP), enabling natural language queries and 13 analytical tools for deep news data insights. Deployment is streamlined via GitHub Actions and Docker, with data persistence for historical records. TrendRadar is designed for investors, content creators, and general users seeking to monitor market trends, track public sentiment, or acquire tailored information efficiently, reducing reliance on algorithmic recommendations.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>News Aggregation</span><span>Real-time Notifications</span><span>AI Analysis</span><span>Content Filtering</span><span>GitHub Actions</span><span>Docker</span><span>Trend Analysis</span><span>Model Context Protocol</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/sansan0/TrendRadar" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Agent Development Kit (ADK) for Go</h2>
+                <span class="published-time">Published: 2025-11-25T13:00:27Z</span>
+                
+                <p class="summary">The Agent Development Kit (ADK) for Go is an open-source, code-first toolkit designed to streamline the building, evaluation, and deployment of sophisticated AI agents. It applies robust software development principles to AI agent creation, offering a flexible and modular framework for orchestrating workflows from simple tasks to complex multi-agent systems. While optimized for Google's Gemini, ADK is model-agnostic and deployment-agnostic, ensuring compatibility across various AI models and deployment environments, including integration with other frameworks. This Go version specifically leverages Go's strengths in concurrency and performance, making it ideal for developers creating cloud-native agent applications. Key features include an idiomatic Go design, a rich tool ecosystem for diverse agent capabilities, code-first development for ultimate flexibility and testability, and strong support for containerization and cloud-native environments like Google Cloud Run. This enables developers to build scalable and robust AI solutions with granular control.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Go Programming</span><span>Agent Development Kit</span><span>Cloud-Native</span><span>Modular AI</span><span>Concurrency</span><span>Software Development Kit</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/google/adk-go" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Latent Collaboration in Multi-Agent Systems</h2>
+                <span class="published-time">Published: 2025-11-25T18:56:57.000Z</span>
+                
+                <p class="summary">Multi-agent systems (MAS) extend large language models (LLMs) from independent single-model reasoning to coordinative system-level intelligence. While existing LLM agents depend on text-based mediation for reasoning and communication, we take a step forward by enabling models to collaborate directly within the continuous latent space. We introduce LatentMAS, an end-to-end training-free framework that enables pure latent collaboration among LLM agents. In LatentMAS, each agent first performs auto-regressive latent thoughts generation through last-layer hidden embeddings. A shared latent working memory then preserves and transfers each agent's internal representations, ensuring lossless information exchange. We provide theoretical analyses establishing that LatentMAS attains higher expressiveness and lossless information preservation with substantially lower complexity than vanilla text-based MAS. In addition, empirical evaluations across 9 comprehensive benchmarks spanning math and science reasoning, commonsense understanding, and code generation show that LatentMAS consistently outperforms strong single-model and text-based MAS baselines, achieving up to 14.6% higher accuracy, reducing output token usage by 70.8%-83.7%, and providing 4x-4.3x faster end-to-end inference. These results demonstrate that our new latent collaboration framework enhances system-level reasoning quality while offering substantial efficiency gains without any additional training. Code and data are fully open-sourced at https://github.com/Gen-Verse/LatentMAS.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multi-Agent Systems</span><span>Large Language Models</span><span>Latent Collaboration</span><span>Latent Space</span><span>AI Agent</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.20639" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Inferix: A Block-Diffusion based Next-Generation Inference Engine for World Simulation</h2>
+                <span class="published-time">Published: 2025-11-25T01:45:04.000Z</span>
+                
+                <p class="summary">World models serve as core simulators for fields such as agentic AI, embodied AI, and gaming, capable of generating long, physically realistic, and interactive high-quality videos. Moreover, scaling these models could unlock emergent capabilities in visual perception, understanding, and reasoning, paving the way for a new paradigm that moves beyond current LLM-centric vision foundation models. A key breakthrough empowering them is the semi-autoregressive (block-diffusion) decoding paradigm, which merges the strengths of diffusion and autoregressive methods by generating video tokens in block-applying diffusion within each block while conditioning on previous ones, resulting in more coherent and stable video sequences. Crucially, it overcomes limitations of standard video diffusion by reintroducing LLM-style KV Cache management, enabling efficient, variable-length, and high-quality generation. Therefore, Inferix is specifically designed as a next-generation inference engine to enable immersive world synthesis through optimized semi-autoregressive decoding processes. This dedicated focus on world simulation distinctly sets it apart from systems engineered for high-concurrency scenarios (like vLLM or SGLang) and from classic video diffusion models (such as xDiTs). Inferix further enhances its offering with interactive video streaming and profiling, enabling real-time interaction and realistic simulation to accurately model world dynamics. Additionally, it supports efficient benchmarking through seamless integration of LV-Bench, a new fine-grained evaluation benchmark tailored for minute-long video generation scenarios. We hope the community will work together to advance Inferix and foster world model exploration.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>World Simulation</span><span>Inference Engine</span><span>Block-Diffusion</span><span>Semi-Autoregressive Decoding</span><span>Video Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.20714" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Harmony: Harmonizing Audio and Video Generation through Cross-Task Synergy</h2>
+                <span class="published-time">Published: 2025-11-26T16:53:05.000Z</span>
+                
+                <p class="summary">The synthesis of synchronized audio-visual content is a key challenge in generative AI, with open-source models facing challenges in robust audio-video alignment. Our analysis reveals that this issue is rooted in three fundamental challenges of the joint diffusion process: (1) Correspondence Drift, where concurrently evolving noisy latents impede stable learning of alignment; (2) inefficient global attention mechanisms that fail to capture fine-grained temporal cues; and (3) the intra-modal bias of conventional Classifier-Free Guidance (CFG), which enhances conditionality but not cross-modal synchronization. To overcome these challenges, we introduce Harmony, a novel framework that mechanistically enforces audio-visual synchronization. We first propose a Cross-Task Synergy training paradigm to mitigate drift by leveraging strong supervisory signals from audio-driven video and video-driven audio generation tasks. Then, we design a Global-Local Decoupled Interaction Module for efficient and precise temporal-style alignment. Finally, we present a novel Synchronization-Enhanced CFG (SyncCFG) that explicitly isolates and amplifies the alignment signal during inference. Extensive experiments demonstrate that Harmony establishes a new state-of-the-art, significantly outperforming existing methods in both generation fidelity and, critically, in achieving fine-grained audio-visual synchronization.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Audio-visual synchronization</span><span>Generative AI</span><span>Diffusion models</span><span>Cross-task synergy</span><span>Classifier-Free Guidance</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Multimodal</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.21579" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Monet: Reasoning in Latent Visual Space Beyond Images and Language</h2>
+                <span class="published-time">Published: 2025-11-26T13:46:39.000Z</span>
+                
+                <p class="summary">"Thinking with images" has emerged as an effective paradigm for advancing visual reasoning, extending beyond text-only chains of thought by injecting visual evidence into intermediate reasoning steps. However, existing methods fall short of human-like abstract visual thinking, as their flexibility is fundamentally limited by external tools. In this work, we introduce Monet, a training framework that enables multimodal large language models (MLLMs) to reason directly within the latent visual space by generating continuous embeddings that function as intermediate visual thoughts. We identify two core challenges in training MLLMs for latent visual reasoning: high computational cost in latent-vision alignment and insufficient supervision over latent embeddings, and address them with a three-stage distillation-based supervised fine-tuning (SFT) pipeline. We further reveal a limitation of applying GRPO to latent reasoning: it primarily enhances text-based reasoning rather than latent reasoning. To overcome this, we propose VLPO (Visual-latent Policy Optimization), a reinforcement learning method that explicitly incorporates latent embeddings into policy gradient updates. To support SFT, we construct Monet-SFT-125K, a high-quality text-image interleaved CoT dataset containing 125K real-world, chart, OCR, and geometry CoTs. Our model, Monet-7B, shows consistent gains across real-world perception and reasoning benchmarks and exhibits strong out-of-distribution generalization on challenging abstract visual reasoning tasks. We also empirically analyze the role of each training component and discuss our early unsuccessful attempts, providing insights for future developments in visual latent reasoning. Our model, data, and code are available at https://github.com/NOVAglow646/Monet.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Latent Visual Reasoning</span><span>Multimodal Large Language Models</span><span>Visual Reasoning</span><span>Policy Optimization</span><span>Supervised Fine-tuning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.21395" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MobileVLA-R1: Reinforcing Vision-Language-Action for Mobile Robots</h2>
+                <span class="published-time">Published: 2025-11-22T02:34:10.000Z</span>
+                
+                <p class="summary">Grounding natural-language instructions into continuous control for quadruped robots remains a fundamental challenge in vision language action. Existing methods struggle to bridge high-level semantic reasoning and low-level actuation, leading to unstable grounding and weak generalization in the real world. To address these issues, we present MobileVLA-R1, a unified vision-language-action framework that enables explicit reasoning and continuous control for quadruped robots. We construct MobileVLA-CoT, a large-scale dataset of multi-granularity chain-of-thought (CoT) for embodied trajectories, providing structured reasoning supervision for alignment. Built upon this foundation, we introduce a two-stage training paradigm that combines supervised CoT alignment with GRPO reinforcement learning to enhance reasoning consistency, control stability, and long-horizon execution. Extensive evaluations on VLN and VLA tasks demonstrate superior performance over strong baselines, with approximately a 5% improvement. Real-world deployment on a quadruped robot validates robust performance in complex environments. Code: https://github.com/AIGeeksGroup/MobileVLA-R1. Website: https://aigeeksgroup.github.io/MobileVLA-R1.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Vision-Language-Action</span><span>Reinforcement Learning</span><span>Chain-of-Thought</span><span>Quadruped Robots</span><span>Embodied AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Multimodal</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.17889" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Position: The Complexity of Perfect AI Alignment -- Formalizing the RLHF Trilemma</h2>
+                <span class="published-time">Published: 2025-11-23T20:23:23.000Z</span>
+                
+                <p class="summary">Reinforcement Learning from Human Feedback (RLHF) is widely used for aligning large language models, yet practitioners face a persistent puzzle: improving safety often reduces fairness, scaling to diverse populations becomes computationally intractable, and making systems robust often amplifies majority biases. We formalize this tension as the Alignment Trilemma: no RLHF system can simultaneously achieve (i) epsilon-representativeness across diverse human values, (ii) polynomial tractability in sample and compute complexity, and (iii) delta-robustness against adversarial perturbations and distribution shift. Through a complexity-theoretic analysis integrating statistical learning theory and robust optimization, we prove that achieving both representativeness (epsilon <= 0.01) and robustness (delta <= 0.001) for global-scale populations requires Omega(2^{d_context}) operations, which is super-polynomial in the context dimensionality. We show that current RLHF implementations resolve this trilemma by sacrificing representativeness: they collect only 10^3--10^4 samples from homogeneous annotator pools while 10^7--10^8 samples are needed for true global representation. Our framework provides a unified explanation for documented RLHF pathologies including preference collapse, sycophancy, and systematic bias amplification. We conclude with concrete directions for navigating these fundamental trade-offs through strategic relaxations of alignment requirements.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Alignment</span><span>RLHF</span><span>Alignment Trilemma</span><span>Large Language Models</span><span>Complexity Theory</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.19504" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
