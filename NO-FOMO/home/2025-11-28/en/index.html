@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-11-28</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-11-28</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>US Energy Department Launches "Genesis Mission" to Transform Science Through AI</h2>
+                <span class="published-time">Published: 2025-11-28 19:03:38</span>
+                
+                <p class="summary">The U.S. Department of Energy (DOE) has officially inaugurated the "Genesis Mission," a pivotal initiative designed to fundamentally transform the landscape of American science and innovation through the strategic application of artificial intelligence (AI). This ambitious program aims to harness the power of advanced AI technologies, including sophisticated machine learning algorithms, deep learning models, and predictive analytics, to accelerate discovery across critical scientific domains. The mission will focus on integrating these AI tools to enhance predictive modeling, optimize experimental design, and facilitate the analysis of vast, complex datasets that are currently challenging to process. Key areas of expected impact include energy systems, materials science, quantum computing, and climate modeling. By fostering a collaborative ecosystem among national labs, academia, and industry, the Genesis Mission seeks to push the boundaries of scientific inquiry, unlock new frontiers in understanding, and establish new paradigms for innovation, ultimately bolstering the nation's scientific competitiveness and addressing grand challenges.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Scientific Research</span><span>Energy Department</span><span>Innovation</span><span>Machine Learning</span><span>Data Analytics</span><span>National Science Initiatives</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.energy.gov/articles/energy-department-launches-genesis-mission-transform-american-science-and-innovation" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Generating 3D Meshes from Text</h2>
+                <span class="published-time">Published: 2025-11-28 15:40:49</span>
+                
+                <p class="summary">The Hacker News story discusses the innovative field of generating 3D meshes directly from text descriptions. This process represents a significant advancement in generative artificial intelligence, bridging the gap between natural language understanding and complex 3D computer graphics. The core idea involves developing sophisticated AI models that can interpret abstract or concrete textual prompts and translate them into detailed, geometrically accurate three-dimensional models. This involves addressing challenges such as semantic ambiguity, ensuring topological correctness, and creating high-fidelity surfaces. Such technology has profound implications across various industries, including game development, architectural visualization, product design, and virtual reality, by dramatically reducing the manual effort and specialized skills traditionally required for 3D asset creation. It opens new avenues for rapid prototyping and democratizing access to 3D content generation, enabling users to create complex scenes and objects with simple text commands.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>3D Generation</span><span>Text-to-3D</span><span>Generative AI</span><span>Mesh Generation</span><span>Deep Learning</span><span>Computer Graphics</span><span>Natural Language Processing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Deep Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://cprimozic.net/notes/posts/generating-3d-meshes-from-text/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Effective harnesses for long-running agents</h2>
+                <span class="published-time">Published: 2025-11-28 19:05:16</span>
+                
+                <p class="summary">Anthropic explores the crucial topic of 'effective harnesses' for 'long-running agents,' addressing the unique challenges associated with designing and managing AI systems that operate autonomously over extended periods. As AI development progresses beyond episodic tasks to persistent, goal-oriented agents, the need for robust control mechanisms, monitoring tools, and resilient architectures becomes paramount. This discussion likely delves into methodologies for ensuring agent stability, managing state, facilitating continuous adaptation, and maintaining safety alignment throughout prolonged operation. The concept of harnesses encapsulates the frameworks and best practices essential for orchestrating complex agent behaviors, handling failures gracefully, and integrating learning mechanisms. This focus underscores the industry's shift towards developing more reliable and practical AI agents for real-world deployment, emphasizing the infrastructural requirements to support their longevity and effectiveness.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Agentic Systems</span><span>Agent Orchestration</span><span>Agent Management</span><span>AI System Design</span><span>Long-term AI</span><span>Agent Reliability</span><span>AI Safety</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>So you wanna build a local RAG?</h2>
+                <span class="published-time">Published: 2025-11-28 16:54:56</span>
+                
+                <p class="summary">This piece introduces the concept of building a local Retrieval Augmented Generation (RAG) system, catering to individuals interested in implementing advanced AI capabilities without relying on cloud-based services. A local RAG setup typically involves self-hosting large language models (LLMs) and vector databases to perform information retrieval and generation tasks on private data. The primary motivations often include enhanced data privacy, reduced operational costs associated with API calls, and greater control over the model's behavior and data indexing. While the exact content of the blog post is concise, the title implies a practical guide or an overview of the necessary components, such as open-source LLMs, local embedding models, and efficient local storage solutions for vectorized data. Successfully implementing a local RAG system requires careful consideration of hardware resources, software configurations, and data management practices to ensure optimal performance and accuracy.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Retrieval Augmented Generation</span><span>RAG</span><span>Local AI</span><span>Large Language Model</span><span>Vector Database</span><span>Information Retrieval</span><span>Privacy</span><span>Open Source LLM</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://blog.yakkomajuri.com/blog/local-rag" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Anti-patterns while working with LLMs</h2>
+                <span class="published-time">Published: 2025-11-28 17:16:52</span>
+                
+                <p class="summary">This article delves into prevalent anti-patterns encountered when developing and deploying Large Language Models (LLMs), offering critical insights for practitioners to navigate common challenges and foster more effective AI implementations. It underscores the necessity of transcending simplistic prompt engineering to embrace a holistic, strategic approach for integrating LLMs into complex systems. Among the identified anti-patterns, a primary concern is the failure to clearly define problem statements and establish measurable objectives, often resulting in inefficient resource allocation and underperforming models. Another significant pitfall is an excessive dependence on "one-shot" or naive solutions, neglecting the iterative refinement and comprehensive evaluation essential for robust AI systems. The discussion likely extends to the crucial role of high-quality data preparation, a deep understanding of intrinsic model limitations, and the implementation of rigorous testing and validation frameworks to ensure both reliability and adherence to ethical guidelines. Ultimately, the piece advocates for integrating considerations of scalability, cost-efficiency, and responsible AI practices across the entire LLM development lifecycle, thereby enabling the creation of sustainable and impactful solutions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Anti-patterns</span><span>Prompt Engineering</span><span>AI Development</span><span>Model Evaluation</span><span>Scalability</span><span>Data Quality</span><span>AI Best Practices</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://instavm.io/blog/llm-anti-patterns" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>28M Hacker News comments as vector embedding search dataset</h2>
+                <span class="published-time">Published: 2025-11-28 18:02:04</span>
+                
+                <p class="summary">A substantial new dataset has been released, featuring 28 million Hacker News comments transformed into vector embeddings, specifically designed to serve as a robust resource for vector embedding search applications. This comprehensive collection offers an invaluable tool for researchers, data scientists, and developers aiming to explore, benchmark, and build advanced information retrieval systems. By converting vast amounts of user-generated text into a numerical format, the dataset facilitates sophisticated semantic search capabilities, moving beyond traditional keyword matching to understand the contextual meaning of queries and documents. It provides a real-world, large-scale environment for testing the efficiency, accuracy, and scalability of various vector search algorithms and databases. This resource is particularly relevant for training and validating models in areas such as natural language understanding, content recommendation, and intelligent data exploration, emphasizing the critical role of vector embeddings in next-generation AI and data infrastructure development. Its availability is expected to accelerate innovation in semantic search technologies.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Vector Embeddings</span><span>Vector Search</span><span>Hacker News</span><span>Dataset</span><span>Information Retrieval</span><span>Semantic Search</span><span>Data Science</span><span>Natural Language Processing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://clickhouse.com/docs/getting-started/example-datasets/hackernews-vector-search-dataset" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>TrendRadar</h2>
+                <span class="published-time">Published: 2025-11-28T01:49:06Z</span>
+                
+                <p class="summary">TrendRadar is an efficient open-source project designed to aggregate and deliver hot news topics from over 11 mainstream platforms, including Zhihu, Weibo, and Douyin. It enables users to deploy a personalized news assistant in as fast as 30 seconds, filtering out irrelevant information and focusing only on truly important news. Key features include highly customizable push strategies (daily summaries, current rankings, or incremental updates), precise content filtering using personal keywords with advanced syntax, and real-time trend analysis. The system supports multi-channel notifications to platforms like WeChat Work, Feishu, Telegram, and Email, and offers multi-device adaptation via GitHub Pages and Docker. A significant enhancement in v3.0.0 is the AI intelligent analysis, leveraging the Model Context Protocol (MCP) with 13 analytical tools for natural language querying, topic trend tracking, cross-platform data comparison, and sentiment analysis. This project is ideal for investors, content creators, and corporate PR seeking to gain control over information flow and make informed decisions, reducing reliance on algorithmic recommendations.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>News Aggregation</span><span>AI Analysis</span><span>Content Filtering</span><span>Real-time Notifications</span><span>Trend Monitoring</span><span>Docker</span><span>Model Context Protocol</span><span>GitHub Actions</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/sansan0/TrendRadar" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Agent Development Kit (ADK) for Go</h2>
+                <span class="published-time">Published: 2025-11-28T10:43:04Z</span>
+                
+                <p class="summary">The Agent Development Kit (ADK) for Go is an open-source, code-first toolkit designed to streamline the building, evaluation, and deployment of sophisticated AI agents. Applying robust software development principles, ADK offers a flexible and modular framework for orchestrating agent workflows, from simple tasks to complex multi-agent systems. While optimized for Google Gemini, it maintains model and deployment agnosticism, ensuring compatibility across various AI models and frameworks. This Go-specific version is particularly suited for developers creating cloud-native agent applications, leveraging Go's inherent strengths in concurrency and performance. Key features include an idiomatic Go design, a rich ecosystem for integrating pre-built or custom tools, and strong support for containerization and deployment in cloud environments like Google Cloud Run, empowering developers with ultimate flexibility, testability, and version control over their AI agent logic.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Go Programming Language</span><span>Agent Development Kit</span><span>Cloud-Native</span><span>Modular Systems</span><span>Tool Ecosystem</span><span>Code-First Development</span><span>AI Orchestration</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/google/adk-go" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Canvas-to-Image: Compositional Image Generation with Multimodal Controls</h2>
+                <span class="published-time">Published: 2025-11-26T18:59:56.000Z</span>
+                
+                <p class="summary">While modern diffusion models excel at generating high-quality and diverse images, they still struggle with high-fidelity compositional and multimodal control, particularly when users simultaneously specify text prompts, subject references, spatial arrangements, pose constraints, and layout annotations. We introduce Canvas-to-Image, a unified framework that consolidates these heterogeneous controls into a single canvas interface, enabling users to generate images that faithfully reflect their intent. Our key idea is to encode diverse control signals into a single composite canvas image that the model can directly interpret for integrated visual-spatial reasoning. We further curate a suite of multi-task datasets and propose a Multi-Task Canvas Training strategy that optimizes the diffusion model to jointly understand and integrate heterogeneous controls into text-to-image generation within a unified learning paradigm. This joint training enables Canvas-to-Image to reason across multiple control modalities rather than relying on task-specific heuristics, and it generalizes well to multi-control scenarios during inference. Extensive experiments show that Canvas-to-Image significantly outperforms state-of-the-art methods in identity preservation and control adherence across challenging benchmarks, including multi-person composition, pose-controlled composition, layout-constrained generation, and multi-control generation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Compositional Image Generation</span><span>Multimodal Controls</span><span>Diffusion Models</span><span>Text-to-Image Generation</span><span>Visual-Spatial Reasoning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.21691" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Agentic Learner with Grow-and-Refine Multimodal Semantic Memory</h2>
+                <span class="published-time">Published: 2025-11-26T18:55:08.000Z</span>
+                
+                <p class="summary">MLLMs exhibit strong reasoning on isolated queries, yet they operate de novo -- solving each problem independently and often repeating the same mistakes. Existing memory-augmented agents mainly store past trajectories for reuse. However, trajectory-based memory suffers from brevity bias, gradually losing essential domain knowledge. More critically, even in truly multimodal problem-solving settings, it records only a single-modality trace of past behavior, failing to preserve how visual attention and logical reasoning jointly contributed to the solution. This is fundamentally misaligned with human cognition: semantic memory is both multimodal and integrated, preserving visual and abstract knowledge through coordinated but distinct representational streams. We thus introduce ViLoMem, a dual-stream memory framework that constructs compact, schema-based memory. It separately encodes visual distraction patterns and logical reasoning errors, enabling MLLMs to learn from their successful and failed experiences. Following a grow-and-refine principle, the system incrementally accumulates and updates multimodal semantic knowledge -- preserving stable, generalizable strategies while avoiding catastrophic forgetting. Across six multimodal benchmarks, ViLoMem consistently improves pass@1 accuracy and substantially reduces repeated visual and logical errors. Ablations confirm the necessity of dual-stream memory with explicit distraction--hallucination separation, demonstrating the value of error-aware multimodal memory for lifelong and cross-domain agentic learning. Our project page will be available at https://weihao-bo.github.io/ViLoMeo-page.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal Large Language Models</span><span>AI Agent</span><span>Multimodal Semantic Memory</span><span>Lifelong Learning</span><span>Error-Aware Memory</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.21678" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Multi-Crit: Benchmarking Multimodal Judges on Pluralistic Criteria-Following</h2>
+                <span class="published-time">Published: 2025-11-26T18:35:17.000Z</span>
+                
+                <p class="summary">Large multimodal models (LMMs) are increasingly adopted as judges in multimodal evaluation systems due to their strong instruction following and consistency with human preferences. However, their ability to follow diverse, fine-grained evaluation criteria remains underexplored. We develop Multi-Crit, a benchmark for evaluating multimodal judges on their capacity to follow pluralistic criteria and produce reliable criterion-level judgments. Covering both open-ended generation and verifiable reasoning tasks, Multi-Crit is built through a rigorous data curation pipeline that gathers challenging response pairs with multi-criterion human annotations. It further introduces three novel metrics for systematically assessing pluralistic adherence, criterion-switching flexibility, and the ability to recognize criterion-level preference conflicts. Comprehensive analysis of 25 LMMs reveals that 1) proprietary models still struggle to maintain consistent adherence to pluralistic criteria--especially in open-ended evaluation; 2) open-source models lag further behind in flexibly following diverse criteria; and 3) critic fine-tuning with holistic judgment signals enhances visual grounding but fails to generalize to pluralistic criterion-level judgment. Additional analyses on reasoning fine-tuning, test-time scaling, and boundary consistency between open-source and proprietary models further probe the limits of current multimodal judges. As a pioneering study, Multi-Crit lays the foundation for building reliable and steerable multimodal AI evaluation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multi-Crit</span><span>Multimodal Judges</span><span>LMMs</span><span>Evaluation Benchmarking</span><span>Criteria-Following</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.21662" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Video Generation Models Are Good Latent Reward Models</h2>
+                <span class="published-time">Published: 2025-11-26T16:14:18.000Z</span>
+                
+                <p class="summary">Reward feedback learning (ReFL) has proven effective for aligning image generation with human preferences. However, its extension to video generation faces significant challenges. Existing video reward models rely on vision-language models designed for pixel-space inputs, confining ReFL optimization to near-complete denoising steps after computationally expensive VAE decoding. This pixel-space approach incurs substantial memory overhead and increased training time, and its late-stage optimization lacks early-stage supervision, refining only visual quality rather than fundamental motion dynamics and structural coherence. In this work, we show that pre-trained video generation models are naturally suited for reward modeling in the noisy latent space, as they are explicitly designed to process noisy latent representations at arbitrary timesteps and inherently preserve temporal information through their sequential modeling capabilities. Accordingly, we propose Process Reward Feedback Learning~(PRFL), a framework that conducts preference optimization entirely in latent space, enabling efficient gradient backpropagation throughout the full denoising chain without VAE decoding. Extensive experiments demonstrate that PRFL significantly improves alignment with human preferences, while achieving substantial reductions in memory consumption and training time compared to RGB ReFL.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Generation</span><span>Reward Models</span><span>Latent Space</span><span>Preference Optimization</span><span>Process Reward Feedback Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Deep Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.21541" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MIRA: Multimodal Iterative Reasoning Agent for Image Editing</h2>
+                <span class="published-time">Published: 2025-11-26T06:13:32.000Z</span>
+                
+                <p class="summary">Instruction-guided image editing offers an intuitive way for users to edit images with natural language. However, diffusion-based editing models often struggle to accurately interpret complex user instructions, especially those involving compositional relationships, contextual cues, or referring expressions, leading to edits that drift semantically or fail to reflect the intended changes. We tackle this problem by proposing MIRA (Multimodal Iterative Reasoning Agent), a lightweight, plug-and-play multimodal reasoning agent that performs editing through an iterative perception-reasoning-action loop, effectively simulating multi-turn human-model interaction processes. Instead of issuing a single prompt or static plan, MIRA predicts atomic edit instructions step by step, using visual feedback to make its decisions. Our 150K multimodal tool-use dataset, MIRA-Editing, combined with a two-stage SFT + GRPO training pipeline, enables MIRA to perform reasoning and editing over complex editing instructions. When paired with open-source image editing models such as Flux.1-Kontext, Step1X-Edit, and Qwen-Image-Edit, MIRA significantly improves both semantic consistency and perceptual quality, achieving performance comparable to or exceeding proprietary systems such as GPT-Image and Nano-Banana.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Image Editing</span><span>Multimodal Reasoning</span><span>AI Agent</span><span>Diffusion Models</span><span>Instruction Following</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>AI Agent</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.21087" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
