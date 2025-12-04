@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-12-04</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-12-04</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Elites could shape mass preferences as AI reduces persuasion costs</h2>
+                <span class="published-time">Published: 2025-12-04 08:38:17</span>
+                
+                <p class="summary">A recent study explores the profound implications of artificial intelligence in potentially reshaping societal preferences by significantly reducing the costs associated with persuasion. The research posits that the advanced capabilities of AI, particularly in sophisticated communication and targeted messaging, could empower 'elites' to exert unprecedented influence over mass opinions and collective decision-making. This phenomenon raises critical concerns regarding democratic processes, information integrity, and the potential for manipulation on a large scale. The paper likely delves into the mechanisms through which AI facilitates this reduction in persuasion costs, such as hyper-personalization, automated content generation, and efficient dissemination strategies. It underscores the urgent need for robust ethical frameworks and regulatory measures to mitigate the risks associated with such powerful technologies and to safeguard against potential abuses that could undermine societal stability and individual autonomy.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Persuasion Technology</span><span>Public Opinion</span><span>Social Influence</span><span>AI Ethics</span><span>Information Manipulation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://arxiv.org/abs/2512.04047" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Microsoft drops AI sales targets in half after salespeople miss their quotas</h2>
+                <span class="published-time">Published: 2025-12-04 15:31:52</span>
+                
+                <p class="summary">Microsoft has reportedly halved its internal sales targets for artificial intelligence products after its sales force consistently failed to meet initial quotas. This significant adjustment suggests a growing resistance or slower-than-anticipated adoption from customers, particularly concerning what the linked article describes as 'unproven agents.' The move highlights potential challenges in the commercialization phase of advanced AI technologies, indicating that despite the widespread hype and substantial investment, translating cutting-edge AI capabilities into immediate, tangible business value for customers remains complex. This situation may prompt Microsoft to re-evaluate its go-to-market strategies for AI solutions, potentially leading to a greater focus on demonstrating clear ROI or refining product offerings to better align with customer needs and readiness. The decision underscores the practical difficulties tech giants face in monetizing nascent yet powerful technologies, pushing companies to adapt their sales expectations to the evolving realities of the enterprise AI market.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Microsoft AI</span><span>AI sales</span><span>Market adoption</span><span>Enterprise AI</span><span>AI agents</span><span>Business strategy</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://arstechnica.com/ai/2025/12/microsoft-slashes-ai-sales-growth-targets-as-customers-resist-unproven-agents/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Launch HN: Browser Buddy (YC W24) – A recommendation system for Internet writing</h2>
+                <span class="published-time">Published: 2025-12-04 16:52:56</span>
+                
+                <p class="summary">Browser Buddy, a new venture from Y Combinator's W24 batch, has launched as a recommendation system designed to help users discover high-quality Internet writing. Developed by Arnav and Jeremy, the platform allows users to interact via chat to find content tailored to their specific interests and aspirations. The creators highlight the challenge of navigating the vast and often fragmented landscape of online content, where valuable insights are dispersed across numerous personal blogs and specialized publications. Browser Buddy aims to address this by curating and surfacing relevant articles and essays, inspired by the founders' personal experiences of discovering influential works online. This system seeks to simplify the discovery process for inspiring and informative writing, ensuring users can easily access content that broadens their perspectives and uncovers new opportunities, akin to how they themselves found inspiration from influential writers like Paul Graham. The platform's interactive chat interface is a key feature, making content discovery more intuitive and personalized.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Recommendation Systems</span><span>Natural Language Processing</span><span>Content Curation</span><span>Conversational AI</span><span>Personalized Recommendations</span><span>Information Retrieval</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.browserbuddy.com/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Crucial shutting down as Micron wants to sell RAM/SSDs to AI companies instead</h2>
+                <span class="published-time">Published: 2025-12-04 18:11:36</span>
+                
+                <p class="summary">Micron Technology, a prominent semiconductor manufacturer, is reportedly discontinuing its Crucial brand, which has historically catered to the consumer market with its range of RAM and SSD products. This strategic realignment signifies Micron's intent to reallocate manufacturing capabilities and commercial focus towards supplying high-performance components directly to artificial intelligence enterprises. The move highlights a prevailing industry trend where the escalating demands of AI infrastructure, particularly for advanced memory and storage solutions, are influencing the operational strategies of major hardware producers. By prioritizing the burgeoning AI sector, Micron aims to capitalize on the increasing need for specialized, high-capacity computing hardware, positioning itself as a key supplier for ongoing AI development and deployment initiatives. This shift underscores the significant financial opportunities and technological imperatives driving the AI industry, prompting a fundamental re-evaluation of Micron's market engagement strategy.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Micron Technology</span><span>Crucial</span><span>RAM</span><span>SSDs</span><span>Artificial Intelligence Hardware</span><span>Semiconductor Industry</span><span>Memory Solutions</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.theverge.com/news/837594/crucial-ram-ssd-micron-ai" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>US will now review H-1B applicants' social media – require them to make public</h2>
+                <span class="published-time">Published: 2025-12-04 18:48:29</span>
+                
+                <p class="summary">The United States has unveiled a new policy mandating H-1B visa applicants to make their social media profiles publicly accessible for official review. This significant policy alteration highlights a growing governmental emphasis on integrating individuals' digital footprints into the immigration vetting process. While the official communication does not detail the specific methodologies for this review, the sheer volume of data involved with widespread applicant submissions suggests a potential future reliance on advanced technological solutions. Such an approach could involve sophisticated automated social media analysis, leveraging natural language processing for textual content evaluation, and potentially computer vision for assessing images and videos. This development brings forth crucial discussions surrounding digital privacy, the security of personal data, and the ethical considerations of governmental access to online behavior records. It implies a landscape where digital identity and online conduct will increasingly influence visa decisions, potentially driving the adoption of advanced analytical tools to process and interpret extensive social media data.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Social Media Analysis</span><span>Data Privacy</span><span>Digital Identity</span><span>Natural Language Processing</span><span>Computer Vision</span><span>Automated Vetting</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.businessinsider.com/us-to-review-h-1b-applicants-social-media-state-dept-2025-12" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Let's Not Bring Back the Gatekeepers</h2>
+                <span class="published-time">Published: 2025-12-04 19:38:48</span>
+                
+                <p class="summary">The article, "Let's Not Bring Back the Gatekeepers," advocates for maintaining open and decentralized systems in technology and information dissemination, arguing against the resurgence of centralized control or undue influence over critical platforms and content. It likely explores concerns that various entities, whether corporations, governments, or influential groups, could re-establish mechanisms that restrict access, stifle innovation, or shape narratives, thereby limiting freedom and user autonomy. The piece implicitly calls for vigilance against trends that consolidate power, potentially examining historical examples of gatekeeping and drawing parallels to contemporary technological landscapes, including discussions around platform moderation, algorithm control, or the power dynamics within the development and deployment of advanced AI systems. The author's stance emphasizes the importance of open standards, transparent processes, and diverse participation to ensure that the internet and emerging technologies continue to foster innovation and equitable access without the imposition of restrictive intermediaries. This perspective highlights the ongoing debate about balancing freedom with governance in the digital age.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Decentralization</span><span>Platform Control</span><span>Open Internet</span><span>Technological Autonomy</span><span>Information Access</span><span>Digital Governance</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.conspicuouscognition.com/p/lets-not-bring-back-the-gatekeepers" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>Next AI Draw.io</h2>
+                <span class="published-time">Published: 2025-12-04T16:30:02Z</span>
+                
+                <p class="summary">Next AI Draw.io is an innovative Next.js web application that seamlessly integrates AI capabilities with the popular draw.io diagramming platform. It empowers users to create, modify, and enhance complex visual representations, including specialized AWS, GCP, and Azure architecture diagrams, directly through natural language commands. Core functionalities encompass LLM-powered diagram generation from textual prompts, intelligent replication and enhancement of diagrams from uploaded images, and robust version control to track and restore diagram history. The application features an interactive chat interface for real-time AI-driven refinement and supports dynamic animated connectors for improved visualization. Leveraging Next.js, Vercel AI SDK, and react-drawio, it offers extensive multi-provider AI compatibility, supporting major platforms like AWS Bedrock, OpenAI, and Anthropic, making it a powerful and versatile tool for intelligent and efficient diagramming workflows.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI-Powered Diagram</span><span>Large Language Model</span><span>Diagram Generation</span><span>Next.js</span><span>draw.io</span><span>Architecture Diagrams</span><span>Natural Language Processing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/DayuanJiang/next-ai-draw-io" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Codex CLI</h2>
+                <span class="published-time">Published: 2025-12-04T20:00:18Z</span>
+                
+                <p class="summary">Codex CLI is a powerful coding agent developed by OpenAI, designed to operate locally on a user's computer. It facilitates coding tasks through a command-line interface, offering seamless integration with various development workflows. Users can install Codex globally via `npm` or `Homebrew`, and get started with a simple `codex` command. The tool supports authentication through existing ChatGPT plans (Plus, Pro, Team, Edu, Enterprise) or via an OpenAI API key for usage-based billing, with clear migration paths for existing API key users. Key features include support for the Model Context Protocol (MCP), extensive configuration options stored in `~/.codex/config.toml`, and a robust Execpolicy system for defining command execution rules. Codex CLI also offers automation capabilities through a dedicated GitHub Action and a TypeScript SDK, alongside a non-interactive `codex exec` mode for advanced use cases. It aims to empower developers with an intelligent local assistant for enhancing productivity and streamlining coding processes.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Coding Assistant</span><span>CLI Tool</span><span>OpenAI</span><span>ChatGPT Integration</span><span>Software Development</span><span>Code Automation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/openai/codex" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Qwen3-VL Technical Report</h2>
+                <span class="published-time">Published: 2025-11-26T17:59:08.000Z</span>
+                
+                <p class="summary">We introduce Qwen3-VL, the most capable vision-language model in the Qwen series to date, achieving superior performance across a broad range of multimodal benchmarks. It natively supports interleaved contexts of up to 256K tokens, seamlessly integrating text, images, and video. The model family includes both dense (2B/4B/8B/32B) and mixture-of-experts (30B-A3B/235B-A22B) variants to accommodate diverse latency-quality trade-offs. Qwen3-VL delivers three core pillars: (i) markedly stronger pure-text understanding, surpassing comparable text-only backbones in several cases; (ii) robust long-context comprehension with a native 256K-token window for both text and interleaved multimodal inputs, enabling faithful retention, retrieval, and cross-referencing across long documents and videos; and (iii) advanced multimodal reasoning across single-image, multi-image, and video tasks, demonstrating leading performance on comprehensive evaluations such as MMMU and visual-math benchmarks (e.g., MathVista and MathVision). Architecturally, we introduce three key upgrades: (i) an enhanced interleaved-MRoPE for stronger spatial-temporal modeling across images and video; (ii) DeepStack integration, which effectively leverages multi-level ViT features to tighten vision-language alignment; and (iii) text-based time alignment for video, evolving from T-RoPE to explicit textual timestamp alignment for more precise temporal grounding. Under comparable token budgets and latency constraints, Qwen3-VL achieves superior performance in both dense and Mixture-of-Experts (MoE) architectures. We envision Qwen3-VL serving as a foundational engine for image-grounded reasoning, agentic decision-making, and multimodal code intelligence in real-world workflows.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Qwen3-VL</span><span>vision-language model</span><span>multimodal benchmarks</span><span>long-context comprehension</span><span>Mixture-of-Experts</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.21631" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>PretrainZero: Reinforcement Active Pretraining</h2>
+                <span class="published-time">Published: 2025-12-03T04:51:32.000Z</span>
+                
+                <p class="summary">Mimicking human behavior to actively learning from general experience and achieve artificial general intelligence has always been a human dream. Recent reinforcement learning (RL) based large-thinking models demonstrate impressive expert-level abilities, i.e., software and math, but still rely heavily on verifiable rewards in specific domains, placing a significant bottleneck to extend the performance boundary of general reasoning capabilities. In this work, we propose PretrainZero, a reinforcement active learning framework built on the pretraining corpus to extend RL from domain-specific post-training to general pretraining. PretrainZero features the following characteristics: 1) Active pretraining: inspired by the active learning ability of humans, PretrainZero learns a unified reasoning policy to actively identify reasonable and informative contents from pretraining corpus, and reason to predict these contents by RL. 2) Self-supervised learning: without any verifiable labels, pretrained reward models, or supervised fine-tuning, we directly pretrain reasoners from 3 to 30B base models on the general Wikipedia corpus using RL, significantly breaking the verification data-wall for general reasoning. 3) Verification scaling: by tackling increasingly challenging masked spans, PretrainZero substantially enhances the general reasoning abilities of pretrained base models. In reinforcement pretraining, PretrainZero improves Qwen3-4B-Base for 8.43, 5.96 and 10.60 on MMLU-Pro, SuperGPQA and math average benchmarks. In post-training, the pretrained models can also serve as reasoning foundation models for downstream RLVR tasks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Active Pretraining</span><span>Self-supervised Learning</span><span>General Reasoning</span><span>Artificial General Intelligence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.03442" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>SpaceTools: Tool-Augmented Spatial Reasoning via Double Interactive RL</h2>
+                <span class="published-time">Published: 2025-12-03T18:50:04.000Z</span>
+                
+                <p class="summary">Vision Language Models (VLMs) demonstrate strong qualitative visual understanding, but struggle with metrically precise spatial reasoning required for embodied applications. The agentic paradigm promises that VLMs can use a wide variety of tools that could augment these capabilities, such as depth estimators, segmentation models, and pose estimators. Yet it remains an open challenge how to realize this vision without solely relying on handcrafted prompting strategies or enforcing fixed, predefined tool pipelines that limit VLMs' ability to discover optimal tool-use patterns. Reinforcement Learning could overcome this gap, but has so far been limited to reasoning with a single visual tool due to the large search space in multi-tool reasoning. We introduce Double Interactive Reinforcement Learning (DIRL), a two-phase training framework where VLMs learn to coordinate multiple tools through interactive exploration and feedback. In the teaching phase, we combine demonstrations from a single tool specialist trained via interactive RL with traces from a frontier model using all tools. In the exploration phase, the model further refines multi-tool coordination through continued RL. Our model, SpaceTools, with tool-augmented spatial reasoning ability, achieves state-of-the-art performance on spatial understanding benchmarks (RoboSpatial-Home, BLINK, BOP-ASK) and demonstrates reliable real-world manipulation using a 7-DOF robot as a tool. DIRL provides substantial improvements over the vanilla SFT (+12% on RoboSpatial) and RL (+16% on RoboSpatial) baselines. Project page: https://spacetools.github.io/.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Vision Language Models</span><span>Spatial Reasoning</span><span>Reinforcement Learning</span><span>Tool Use</span><span>AI Agent</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>AI Agent</span><span>Robotics</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.04069" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>RELIC: Interactive Video World Model with Long-Horizon Memory</h2>
+                <span class="published-time">Published: 2025-12-03T18:29:20.000Z</span>
+                
+                <p class="summary">A truly interactive world model requires three key ingredients: real-time long-horizon streaming, consistent spatial memory, and precise user control. However, most existing approaches address only one of these aspects in isolation, as achieving all three simultaneously is highly challenging-for example, long-term memory mechanisms often degrade real-time performance. In this work, we present RELIC, a unified framework that tackles these three challenges altogether. Given a single image and a text description, RELIC enables memory-aware, long-duration exploration of arbitrary scenes in real time. Built upon recent autoregressive video-diffusion distillation techniques, our model represents long-horizon memory using highly compressed historical latent tokens encoded with both relative actions and absolute camera poses within the KV cache. This compact, camera-aware memory structure supports implicit 3D-consistent content retrieval and enforces long-term coherence with minimal computational overhead. In parallel, we fine-tune a bidirectional teacher video model to generate sequences beyond its original 5-second training horizon, and transform it into a causal student generator using a new memory-efficient self-forcing paradigm that enables full-context distillation over long-duration teacher as well as long student self-rollouts. Implemented as a 14B-parameter model and trained on a curated Unreal Engine-rendered dataset, RELIC achieves real-time generation at 16 FPS while demonstrating more accurate action following, more stable long-horizon streaming, and more robust spatial-memory retrieval compared with prior work. These capabilities establish RELIC as a strong foundation for the next generation of interactive world modeling.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Interactive World Model</span><span>Long-Horizon Memory</span><span>Video Diffusion</span><span>Real-time Generation</span><span>Spatial Memory</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.04040" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Rethinking Prompt Design for Inference-time Scaling in Text-to-Visual Generation</h2>
+                <span class="published-time">Published: 2025-12-03T07:54:05.000Z</span>
+                
+                <p class="summary">Achieving precise alignment between user intent and generated visuals remains a central challenge in text-to-visual generation, as a single attempt often fails to produce the desired output. To handle this, prior approaches mainly scale the visual generation process (e.g., increasing sampling steps or seeds), but this quickly leads to a quality plateau. This limitation arises because the prompt, crucial for guiding generation, is kept fixed. To address this, we propose Prompt Redesign for Inference-time Scaling, coined PRIS, a framework that adaptively revises the prompt during inference in response to the scaled visual generations. The core idea of PRIS is to review the generated visuals, identify recurring failure patterns across visuals, and redesign the prompt accordingly before regenerating the visuals with the revised prompt. To provide precise alignment feedback for prompt revision, we introduce a new verifier, element-level factual correction, which evaluates the alignment between prompt attributes and generated visuals at a fine-grained level, achieving more accurate and interpretable assessments than holistic measures. Extensive experiments on both text-to-image and text-to-video benchmarks demonstrate the effectiveness of our approach, including a 15% gain on VBench 2.0. These results highlight that jointly scaling prompts and visuals is key to fully leveraging scaling laws at inference-time. Visualizations are available at the website: https://subin-kim-cv.github.io/PRIS.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Prompt Design</span><span>Text-to-Visual Generation</span><span>Inference-time Scaling</span><span>Adaptive Prompting</span><span>Factual Correction</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.03534" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Adversarial Confusion Attack: Disrupting Multimodal Large Language Models</h2>
+                <span class="published-time">Published: 2025-11-25T17:00:31.000Z</span>
+                
+                <p class="summary">We introduce the Adversarial Confusion Attack, a new class of threats against multimodal large language models (MLLMs). Unlike jailbreaks or targeted misclassification, the goal is to induce systematic disruption that makes the model generate incoherent or confidently incorrect outputs. Practical applications include embedding such adversarial images into websites to prevent MLLM-powered AI Agents from operating reliably. The proposed attack maximizes next-token entropy using a small ensemble of open-source MLLMs. In the white-box setting, we show that a single adversarial image can disrupt all models in the ensemble, both in the full-image and Adversarial CAPTCHA settings. Despite relying on a basic adversarial technique (PGD), the attack generates perturbations that transfer to both unseen open-source (e.g., Qwen3-VL) and proprietary (e.g., GPT-5.1) models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Adversarial Attack</span><span>Multimodal Large Language Models</span><span>AI Agents</span><span>Model Disruption</span><span>Transferability</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Multimodal</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2511.20494" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
