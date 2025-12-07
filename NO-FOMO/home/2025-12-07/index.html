@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-12-07</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-12-07</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Google Titans architecture, helping AI have long-term memory</h2>
+                <span class="published-time">Published: 2025-12-07 12:23:45</span>
+                
+                <p class="summary">Google has unveiled its "Titans" architecture, complemented by "Miras", presenting a significant breakthrough designed to equip artificial intelligence systems with robust long-term memory capabilities. This development directly tackles a fundamental challenge faced by contemporary AI models: their inherent difficulty in maintaining contextual information and learning from past interactions over extended durations. Such limitations often impede AI's effectiveness in tasks requiring sustained dialogue, complex problem-solving, or the accumulation of knowledge over time. The Titans architecture proposes a novel approach to building advanced memory systems that enable AI to store, retrieve, and utilize information more effectively. This enhancement is crucial for fostering continuous learning, improving the coherence of AI responses, and supporting more intricate reasoning processes. Google Research's work in this area represents a pivotal stride towards developing more adaptive, autonomous, and context-aware AI agents, ultimately paving the way for more sophisticated and human-like interactions across diverse applications, from intelligent assistants to advanced decision-support systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Google Titans</span><span>AI Architecture</span><span>Long-term Memory</span><span>Artificial Intelligence</span><span>Memory Systems</span><span>Deep Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://research.google/blog/titans-miras-helping-ai-have-long-term-memory/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Nested Learning: A new ML paradigm for continual learning</h2>
+                <span class="published-time">Published: 2025-12-07 14:47:02</span>
+                
+                <p class="summary">Google Research has introduced "Nested Learning," a novel machine learning paradigm specifically designed to address the significant challenge of catastrophic forgetting in continual learning systems. This new approach aims to enable AI models to continuously acquire and integrate new knowledge from sequential tasks without degrading performance on previously learned information. By proposing a structured, potentially hierarchical or embedded, learning framework, Nested Learning seeks to mitigate the tendency of traditional models to overwrite critical prior knowledge when exposed to new data. This paradigm represents a crucial advancement towards developing more robust and adaptable artificial intelligence capable of lifelong learning. The initiative suggests a sophisticated architectural or training methodology that could redefine how future continual learning systems are developed and implemented, moving beyond existing regularization or memory-based techniques to foster more stable and efficient knowledge retention.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Nested Learning</span><span>Continual Learning</span><span>Machine Learning</span><span>ML Paradigm</span><span>Catastrophic Forgetting</span><span>AI Research</span><span>Google Research</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://research.google/blog/introducing-nested-learning-a-new-ml-paradigm-for-continual-learning/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Using LLMs at Oxide</h2>
+                <span class="published-time">Published: 2025-12-07 01:17:40</span>
+                
+                <p class="summary">This document outlines Oxide's strategic considerations and practical approach to integrating Large Language Models (LLMs) into its operational framework and product development lifecycle. It explores the diverse applications where LLMs can significantly enhance internal processes, such as automating documentation generation, assisting with code development and review, and optimizing customer support interactions. The analysis also addresses critical aspects of LLM deployment, including safeguarding data privacy, ensuring the accuracy and reliability of AI outputs, managing the associated computational resources and costs, and facilitating seamless integration with existing software infrastructure. By detailing a structured methodology for evaluating and implementing LLMs, Oxide aims to leverage advanced AI capabilities to boost productivity, foster innovation, and maintain its commitment to robust and efficient systems, while also navigating the inherent complexities and ethical considerations of adopting cutting-edge AI technologies within an enterprise environment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>AI Integration</span><span>Enterprise AI</span><span>Software Development</span><span>Code Generation</span><span>Productivity Tools</span><span>Data Privacy</span><span>AI Strategy</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://rfd.shared.oxide.computer/rfd/0576" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Over fifty new hallucinations in ICLR 2026 submissions</h2>
+                <span class="published-time">Published: 2025-12-07 13:16:26</span>
+                
+                <p class="summary">A recent report highlights a significant concern within the academic community, identifying over fifty instances of 'hallucinations' in submissions to the International Conference on Learning Representations (ICLR) 2026. Hallucinations, in the context of artificial intelligence, refer to the generation of plausible but factually incorrect or nonsensical content by AI models, particularly large language models. The discovery of such occurrences within pre-peer-reviewed research papers raises questions about the quality control mechanisms in academic publishing and the increasing reliance on AI-generated content in research workflows. This trend underscores the challenges in verifying the accuracy and integrity of scientific output, especially as AI tools become more integrated into the research and writing process. Experts suggest a need for more robust detection methods and author guidelines to ensure the reliability of submitted work. The findings prompt a critical re-evaluation of how AI-assisted research is conducted and presented, emphasizing the importance of human oversight to maintain scholarly rigor and prevent the propagation of misinformation within the scientific discourse.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Hallucinations</span><span>Large Language Models</span><span>Academic Research</span><span>ICLR Conference</span><span>Generative AI</span><span>Scientific Integrity</span><span>AI Ethics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://gptzero.me/news/iclr-2026/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Trains cancelled over fake bridge collapse image</h2>
+                <span class="published-time">Published: 2025-12-07 00:37:15</span>
+                
+                <p class="summary">The cancellation of train services following the widespread dissemination of a fake image depicting a bridge collapse underscores a significant and growing threat posed by digital misinformation to critical infrastructure and public safety. This incident vividly illustrates how rapidly unverified visual content can spread, leading to tangible disruptions and potential economic and social costs. It highlights the urgent necessity for advanced technological solutions capable of authenticating digital media and detecting sophisticated manipulations, especially in an era where generative AI tools make creating convincing fake imagery more accessible. The event brings into sharp focus the challenges faced by authorities in verifying information quickly and effectively, emphasizing the critical need for improved digital literacy, robust platform policies, and AI-driven verification systems to combat the proliferation of deepfakes and other forms of visual disinformation. Such incidents mandate a proactive approach to developing countermeasures that protect public trust and prevent operational vulnerabilities from being exploited by malicious actors.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Image Manipulation</span><span>Misinformation Detection</span><span>Digital Forensics</span><span>Visual Deception</span><span>Media Authenticity</span><span>Deepfake Detection</span><span>AI-driven Verification</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Computer Vision</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.bbc.com/news/articles/cwygqqll9k2o" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>I failed to recreate the 1996 Space Jam Website with Claude</h2>
+                <span class="published-time">Published: 2025-12-07 17:18:54</span>
+                
+                <p class="summary">A recent exploratory project underscored the current limitations of large language models in accurately replicating historical digital artifacts, specifically the iconic 1996 Space Jam website. The experiment involved using the Claude AI model with the objective of faithfully recreating the original site's distinctive design, layout, and functionality. Despite the advanced capabilities of the AI, the attempt to regenerate the vintage web page was unsuccessful. This outcome suggests inherent challenges in AI's capacity to interpret and produce nuanced, era-specific web development code and aesthetic details that may not be extensively represented or adequately understood within its training datasets. The failure provides critical insights into the practical boundaries of current AI models for tasks demanding precise historical adherence or intricate creative reconstruction, particularly concerning web design principles from a bygone internet era. It highlights that while AI can generate code, the fidelity to highly specific, culturally embedded design contexts remains a significant hurdle, necessitating further advancements in AI's contextual understanding and granular creative synthesis.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI limitations</span><span>web development</span><span>Claude AI</span><span>retro web design</span><span>AI code generation</span><span>digital recreation</span><span>historical accuracy</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://j0nah.com/i-failed-to-recreate-the-1996-space-jam-website-with-claude/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">GitHub</h2>
+
+            <article class="item-card">
+                <h2>VibeVoice: Open-Source Frontier Voice AI</h2>
+                <span class="published-time">Published: 2025-12-05T13:49:07Z</span>
+                
+                <p class="summary">VibeVoice is an open-source, frontier voice AI framework from Microsoft, designed for generating expressive, long-form, multi-speaker conversational audio, such as podcasts, from text. It addresses critical challenges in traditional Text-to-Speech (TTS) systems, including scalability, speaker consistency, and natural turn-taking. The framework includes two primary model variants: a long-form multi-speaker model capable of synthesizing speech up to 90 minutes with up to four distinct speakers, and a real-time streaming TTS model that produces initial audible speech in approximately 300 milliseconds while supporting streaming text input for low-latency single-speaker generation. A key innovation lies in its use of continuous speech tokenizers (Acoustic and Semantic) operating at an ultra-low frame rate of 7.5 Hz, enhancing computational efficiency for long sequences. VibeVoice also leverages a next-token diffusion framework, combining a Large Language Model (LLM) for contextual understanding and dialogue flow with a diffusion head for high-fidelity acoustic detail generation. While intended for research, Microsoft temporarily disabled the repository due to concerns about misuse inconsistent with responsible AI principles, indicating an ongoing commitment to ethical deployment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Text-to-Speech</span><span>Voice AI</span><span>Speech Synthesis</span><span>Multi-speaker</span><span>Real-time TTS</span><span>Diffusion Models</span><span>Large Language Model</span><span>Speech Tokenizers</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Deep Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/microsoft/VibeVoice" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI Engineering Hub 🚀</h2>
+                <span class="published-time">Published: 2025-12-06T08:02:15Z</span>
+                
+                <p class="summary">The AI Engineering Hub is a comprehensive GitHub repository designed as a central resource for learning and practical application in AI engineering. It boasts over 93 production-ready projects, carefully structured by difficulty from beginner to advanced, covering a broad spectrum of AI concepts. The hub provides extensive tutorials on pivotal topics such as Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), and sophisticated AI Agents, complemented by numerous real-world application examples. Projects span critical areas including OCR and computer vision, intuitive chat interfaces, advanced multimodal AI, voice and audio processing, fine-tuning of models, and robust production-grade systems. It facilitates hands-on experience with diverse technologies like Llama, DeepSeek, Gemma, Qwen, CrewAI, AutoGen, and LlamaIndex. Catering to all skill levels from novices to researchers, the repository empowers users to implement, adapt, and scale AI solutions, fostering skill development and innovation in the rapidly advancing field of AI engineering through practical learning and experimentation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Engineering</span><span>Large Language Model</span><span>Retrieval-Augmented Generation</span><span>AI Agent</span><span>Machine Learning</span><span>Deep Learning</span><span>Multimodal AI</span><span>Fine-tuning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/patchy631/ai-engineering-hub" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Claude Quickstarts</h2>
+                <span class="published-time">Published: 2025-12-06 00:39:26+00:00</span>
+                
+                <p class="summary">Claude Quickstarts is a collection of projects designed to assist developers in rapidly building applications using the Claude API. Each quickstart provides a foundational template that can be easily extended and customized. Key offerings include a Customer Support Agent leveraging Claude's natural language understanding and generation for AI-assisted support with a knowledge base, a Financial Data Analyst demonstrating Claude's capabilities with interactive data visualization for financial insights, and a Computer Use Demo showcasing Claude's desktop control features, including the `computer_use_20251124` tool. Additionally, an Autonomous Coding Agent powered by the Claude Agent SDK illustrates a two-agent pattern for persistent, multi-session application development via git and incremental feature completion. The repository offers clear setup instructions, general usage guidelines, and resources for further learning, making it an invaluable resource for practical Claude API implementation and AI agent development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude API</span><span>AI Agent</span><span>Natural Language Processing</span><span>Customer Support</span><span>Financial Analysis</span><span>Autonomous Coding</span><span>Quickstarts</span><span>API Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/anthropics/claude-quickstarts" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
