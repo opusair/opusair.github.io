@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-12-10</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-12-10</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Qwen3-Omni-Flash-2025-12-01：a next-generation native multimodal large model</h2>
+                <span class="published-time">Published: 2025-12-10 16:13:38</span>
+                
+                <p class="summary">Qwen3-Omni-Flash-2025-12-01 represents a pivotal development in the field of artificial intelligence, heralding a next-generation native multimodal large model. This latest offering from the Qwen series is designed to advance beyond current capabilities by providing seamless, integrated processing of diverse data modalities, including but not limited to text, images, and audio. The 'Omni-Flash' moniker suggests a dual focus on comprehensive understanding across all sensory inputs and significantly enhanced speed and efficiency, critical for deployment in dynamic, real-world applications. This native multimodal architecture is poised to unlock new possibilities for AI systems that require sophisticated contextual interpretation from varied information sources, moving towards a more holistic AI understanding. Such models are crucial for driving innovation in areas like advanced human-computer interaction, complex data analysis, and unified content generation. The project's versioning indicates a strategic, forward-looking trajectory in multimodal AI research and practical application.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal AI</span><span>Large Language Model</span><span>Deep Learning</span><span>Foundation Models</span><span>AI Architecture</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Multimodal</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://qwen.ai/blog?id=qwen3-omni-flash-20251201" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: MCPShark – Traffic Inspector for Model Context Protocol</h2>
+                <span class="published-time">Published: 2025-12-10 17:27:09</span>
+                
+                <p class="summary">MCPShark is presented as an innovative traffic inspector specifically engineered for the Model Context Protocol (MCP), a critical component in modern AI system architectures. This tool functions as an intermediary layer, strategically placed between an editor or Large Language Model (LLM) client and MCP servers. Its core utility lies in offering unparalleled visibility into all facets of MCP traffic, encompassing granular details of requests, responses, utilized tools, and associated resources. This comprehensive oversight is crucial for developers and engineers working with complex AI applications. A key benefit of MCPShark is its ability to facilitate in-depth debugging of sessions, proving invaluable when integrated tools fail to perform as anticipated, thereby streamlining the troubleshooting process. Furthermore, the platform incorporates an optional "Smart Scan" feature designed to proactively identify and flag potentially risky tools or configurations, bolstering the security and reliability of AI deployments. MCPShark thus serves as an essential utility for enhancing transparency, diagnosing issues, and ensuring robust operation within environments leveraging the Model Context Protocol.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Model Context Protocol</span><span>Traffic Inspector</span><span>LLM Client</span><span>Debugging Tools</span><span>AI Security</span><span>Protocol Analysis</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://news.ycombinator.com/item?id=46220577" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DeepSeek uses banned Nvidia chips for AI model, report says</h2>
+                <span class="published-time">Published: 2025-12-10 16:34:52</span>
+                
+                <p class="summary">A recent report indicates that DeepSeek, a prominent Chinese artificial intelligence firm, is reportedly utilizing Nvidia chips that are subject to stringent export restrictions. These banned high-performance computing chips are being employed by DeepSeek in its ambitious efforts to develop advanced AI models, highlighting ongoing challenges and potential circumvention strategies in the technology sector amidst escalating geopolitical tensions. The reported use of restricted hardware underscores the intense competitive drive among global AI developers and the sophisticated methods employed to secure critical high-performance computing resources despite trade limitations. This situation brings to light the complexities surrounding technology transfer, national security concerns, and the global race to achieve breakthroughs in artificial intelligence. It also raises significant questions about the effectiveness of current export controls imposed by nations like the U.S. and the potential broader implications for the global supply chain of critical AI components. The incident reflects a broader trend of companies seeking to push technological boundaries, even if it means navigating complex regulatory landscapes, to accelerate their AI research and development objectives and maintain a competitive edge.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Nvidia Chips</span><span>AI Models</span><span>Export Controls</span><span>Semiconductor Technology</span><span>DeepSeek</span><span>Artificial Intelligence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://finance.yahoo.com/news/china-deepseek-uses-banned-nvidia-131207746.html" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>New benchmark shows top LLMs struggle in real mental health care</h2>
+                <span class="published-time">Published: 2025-12-10 13:39:16</span>
+                
+                <p class="summary">Sword Health has unveiled MindEval, a novel benchmark specifically crafted to evaluate the real-world performance of prominent Large Language Models (LLMs) within the sensitive domain of mental health care. Initial evaluations using MindEval indicate that even the most sophisticated LLMs currently available face considerable challenges when tasked with providing effective and appropriate mental health support. These difficulties underscore significant limitations in their capacity for empathetic interaction, nuanced contextual understanding, and the ability to generate reliable and safe responses in critical health scenarios. The introduction of MindEval aims to set a new standard for assessing LLMs beyond general language tasks, focusing on the unique demands of healthcare applications. This benchmark highlights the pressing need for enhanced AI development, particularly in areas concerning ethical considerations, emotional intelligence, and robust contextual interpretation. The findings imply that while LLMs offer broad potential, their current state necessitates substantial improvements before widespread, safe, and effective integration into direct mental health interventions can occur, ensuring that AI tools truly augment human care rather than inadvertently compromising patient well-being.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Mental Health Care</span><span>AI Evaluation</span><span>Benchmarking</span><span>Healthcare AI</span><span>Natural Language Processing</span><span>AI Limitations</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://swordhealth.com/newsroom/sword-introduces-mindeval" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Terrain Diffusion: A Diffusion-Based Successor to Perlin Noise</h2>
+                <span class="published-time">Published: 2025-12-10 18:37:27</span>
+                
+                <p class="summary">This paper introduces "Terrain Diffusion," a novel generative approach positioned as a successor to the widely adopted Perlin Noise algorithm for procedural content generation. Leveraging advanced diffusion models, a prominent class of generative artificial intelligence techniques, Terrain Diffusion aims to synthesize complex and realistic terrain features. Unlike traditional noise functions such as Perlin Noise, which rely on deterministic mathematical formulations, this new method harnesses the probabilistic capabilities of diffusion processes to create diverse and high-fidelity topographical landscapes. The research addresses limitations inherent in classical procedural generation, such as pattern repetition and restricted artistic control, by enabling more dynamic and adaptable terrain creation. By integrating a diffusion-based framework, Terrain Diffusion promises enhanced realism, greater variability, and potentially more intuitive control over the generation process, representing a notable advancement in computer graphics and procedural asset development for virtual environments and simulations. This innovation has the potential to foster the creation of more compelling and unpredictable digital worlds, benefiting applications in game development, architectural visualization, and scientific simulations.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Terrain Diffusion</span><span>Diffusion Models</span><span>Perlin Noise</span><span>Procedural Generation</span><span>Generative AI</span><span>Computer Graphics</span><span>Noise Algorithms</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Machine Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://arxiv.org/abs/2512.08309" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Launch HN: InspectMind (YC W24) – AI agent for reviewing construction drawings</h2>
+                <span class="published-time">Published: 2025-12-10 16:05:03</span>
+                
+                <p class="summary">InspectMind, a Y Combinator W24 startup co-founded by Aakash and Shuangling, has introduced an innovative AI agent specifically developed for reviewing construction drawings, details, and specifications. Dubbed an "AI plan checker," this technology targets the prevalent problem of errors in construction documentation, which often include dimension conflicts, coordination gaps, material mismatches, and overlooked details. Such inaccuracies are major contributors to costly delays and extensive rework during the actual construction process. InspectMind's platform is engineered to analyze a complete set of construction project drawings in mere minutes, performing comprehensive cross-checks across architectural, engineering, and specification documents. By identifying critical issues proactively, the system aims to prevent rework before construction even begins, thereby saving significant time and substantial financial resources, potentially hundreds of thousands of dollars. A demonstration video illustrates the agent's capability to enhance accuracy and efficiency in the pre-construction review workflow.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI agent</span><span>Construction technology</span><span>Drawing analysis</span><span>Error detection</span><span>Automated review</span><span>Project management</span><span>Quality assurance</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://news.ycombinator.com/item?id=46219386" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Wan-Move: Motion-controllable Video Generation via Latent Trajectory Guidance</h2>
+                <span class="published-time">Published: 2025-12-09T16:13:55.000Z</span>
+                
+                <p class="summary">We present Wan-Move, a simple and scalable framework that brings motion control to video generative models. Existing motion-controllable methods typically suffer from coarse control granularity and limited scalability, leaving their outputs insufficient for practical use. We narrow this gap by achieving precise and high-quality motion control. Our core idea is to directly make the original condition features motion-aware for guiding video synthesis. To this end, we first represent object motions with dense point trajectories, allowing fine-grained control over the scene. We then project these trajectories into latent space and propagate the first frame's features along each trajectory, producing an aligned spatiotemporal feature map that tells how each scene element should move. This feature map serves as the updated latent condition, which is naturally integrated into the off-the-shelf image-to-video model, e.g., Wan-I2V-14B, as motion guidance without any architecture change. It removes the need for auxiliary motion encoders and makes fine-tuning base models easily scalable. Through scaled training, Wan-Move generates 5-second, 480p videos whose motion controllability rivals Kling 1.5 Pro's commercial Motion Brush, as indicated by user studies. To support comprehensive evaluation, we further design MoveBench, a rigorously curated benchmark featuring diverse content categories and hybrid-verified annotations. It is distinguished by larger data volume, longer video durations, and high-quality motion annotations. Extensive experiments on MoveBench and the public dataset consistently show Wan-Move's superior motion quality. Code, models, and benchmark data are made publicly available.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Generation</span><span>Motion Control</span><span>Latent Trajectory Guidance</span><span>Generative Models</span><span>Image-to-Video</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.08765" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Visionary: The World Model Carrier Built on WebGPU-Powered Gaussian Splatting Platform</h2>
+                <span class="published-time">Published: 2025-12-09T10:54:58.000Z</span>
+                
+                <p class="summary">Neural rendering, particularly 3D Gaussian Splatting (3DGS), has evolved rapidly and become a key component for building world models. However, existing viewer solutions remain fragmented, heavy, or constrained by legacy pipelines, resulting in high deployment friction and limited support for dynamic content and generative models. In this work, we present Visionary, an open, web-native platform for real-time various Gaussian Splatting and meshes rendering. Built on an efficient WebGPU renderer with per-frame ONNX inference, Visionary enables dynamic neural processing while maintaining a lightweight, "click-to-run" browser experience. It introduces a standardized Gaussian Generator contract, which not only supports standard 3DGS rendering but also allows plug-and-play algorithms to generate or update Gaussians each frame. Such inference also enables us to apply feedforward generative post-processing. The platform further offers a plug in three.js library with a concise TypeScript API for seamless integration into existing web applications. Experiments show that, under identical 3DGS assets, Visionary achieves superior rendering efficiency compared to current Web viewers due to GPU-based primitive sorting. It already supports multiple variants, including MLP-based 3DGS, 4DGS, neural avatars, and style transformation or enhancement networks. By unifying inference and rendering directly in the browser, Visionary significantly lowers the barrier to reproduction, comparison, and deployment of 3DGS-family methods, serving as a unified World Model Carrier for both reconstructive and generative paradigms.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>3D Gaussian Splatting</span><span>WebGPU</span><span>Neural Rendering</span><span>World Models</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.08478" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>ThreadWeaver: Adaptive Threading for Efficient Parallel Reasoning in Language Models</h2>
+                <span class="published-time">Published: 2025-11-24T18:55:59.000Z</span>
+                
+                <p class="summary">Scaling inference-time computation has enabled Large Language Models (LLMs) to achieve strong reasoning performance, but inherently sequential decoding leads to substantial latency, especially on complex tasks. Recent work on adaptive parallel reasoning aims to improve inference efficiency by decomposing the problem-solving process into concurrent reasoning threads when beneficial. However, existing methods on realistic tasks are either limited to supervised behavior cloning or exhibit significant accuracy drops compared to widely-used sequential long chain-of-thought (CoT) baselines. Moreover, many require customized inference engines, complicating deployment. We introduce ThreadWeaver, a framework for adaptive parallel reasoning that achieves accuracy on par with popular sequential reasoning models of comparable size while significantly reducing inference latency. ThreadWeaver's performance stems from three key innovations: 1) a two-stage parallel trajectory generator that produces large-scale, high-quality CoT data with parallel annotations for supervised fine-tuning; 2) a trie-based training-inference co-design that enables parallel reasoning on any off-the-shelf autoregressive inference engine without modifying position embeddings or KV caches; and 3) a parallelization-aware reinforcement learning framework that teaches the model to balance accuracy with effective parallelization. Across six challenging mathematical reasoning benchmarks, ThreadWeaver trained atop Qwen3-8B achieves accuracy comparable to cutting-edge sequential reasoning models (71.9% on average and 79.9% on AIME24) while delivering up to 1.53x average speedup in token latency, establishing a new Pareto frontier between accuracy and efficiency.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Parallel Reasoning</span><span>Inference Efficiency</span><span>Adaptive Threading</span><span>Reinforcement Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.07843" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DeepCode: Open Agentic Coding</h2>
+                <span class="published-time">Published: 2025-12-08T16:07:13.000Z</span>
+                
+                <p class="summary">Recent advances in large language models (LLMs) have given rise to powerful coding agents, making it possible for code assistants to evolve into code engineers. However, existing methods still face significant challenges in achieving high-fidelity document-to-codebase synthesis--such as scientific papers to code--primarily due to a fundamental conflict between information overload and the context bottlenecks of LLMs. In this work, we introduce DeepCode, a fully autonomous framework that fundamentally addresses this challenge through principled information-flow management. By treating repository synthesis as a channel optimization problem, DeepCode seamlessly orchestrates four information operations to maximize task-relevant signals under finite context budgets: source compression via blueprint distillation, structured indexing using stateful code memory, conditional knowledge injection via retrieval-augmented generation, and closed-loop error correction. Extensive evaluations on the PaperBench benchmark demonstrate that DeepCode achieves state-of-the-art performance, decisively outperforming leading commercial agents such as Cursor and Claude Code, and crucially, surpassing PhD-level human experts from top institutes on key reproduction metrics. By systematically transforming paper specifications into production-grade implementations comparable to human expert quality, this work establishes new foundations for autonomous scientific reproduction that can accelerate research evaluation and discovery.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Coding Agents</span><span>Large Language Models</span><span>Code Synthesis</span><span>Autonomous Framework</span><span>Scientific Reproduction</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.07921" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>TreeGRPO: Tree-Advantage GRPO for Online RL Post-Training of Diffusion Models</h2>
+                <span class="published-time">Published: 2025-12-09T01:17:34.000Z</span>
+                
+                <p class="summary">Reinforcement learning (RL) post-training is crucial for aligning generative models with human preferences, but its prohibitive computational cost remains a major barrier to widespread adoption. We introduce TreeGRPO, a novel RL framework that dramatically improves training efficiency by recasting the denoising process as a search tree. From shared initial noise samples, TreeGRPO strategically branches to generate multiple candidate trajectories while efficiently reusing their common prefixes. This tree-structured approach delivers three key advantages: (1) High sample efficiency, achieving better performance under same training samples (2) Fine-grained credit assignment via reward backpropagation that computes step-specific advantages, overcoming the uniform credit assignment limitation of trajectory-based methods, and (3) Amortized computation where multi-child branching enables multiple policy updates per forward pass. Extensive experiments on both diffusion and flow-based models demonstrate that TreeGRPO achieves 2.4times faster training while establishing a superior Pareto frontier in the efficiency-reward trade-off space. Our method consistently outperforms GRPO baselines across multiple benchmarks and reward models, providing a scalable and effective pathway for RL-based visual generative model alignment. The project website is available at treegrpo.github.io.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>TreeGRPO</span><span>Reinforcement Learning</span><span>Diffusion Models</span><span>Generative AI</span><span>Sample Efficiency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Machine Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.08153" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Same Content, Different Answers: Cross-Modal Inconsistency in MLLMs</h2>
+                <span class="published-time">Published: 2025-12-09T18:57:07.000Z</span>
+                
+                <p class="summary">We introduce two new benchmarks REST and REST+(Render-Equivalence Stress Tests) to enable systematic evaluation of cross-modal inconsistency in multimodal large language models (MLLMs). MLLMs are trained to represent vision and language in the same embedding space, yet they cannot perform the same tasks in both modalities. Our benchmarks contain samples with the same semantic information in three modalities (image, text, mixed) and we show that state-of-the-art MLLMs cannot consistently reason over these different modalities. We evaluate 15 MLLMs and find that the degree of modality inconsistency varies substantially, even when accounting for problems with text recognition (OCR). Neither rendering text as image nor rendering an image as text solves the inconsistency. Even if OCR is correct, we find that visual characteristics (text colour and resolution, but not font) and the number of vision tokens have an impact on model performance. Finally, we find that our consistency score correlates with the modality gap between text and images, highlighting a mechanistic interpretation of cross-modal inconsistent MLLMs.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal Large Language Models</span><span>Cross-Modal Inconsistency</span><span>Modality Inconsistency</span><span>Benchmarks</span><span>Vision and Language</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.08923" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
