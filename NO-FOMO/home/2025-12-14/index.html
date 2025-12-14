@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-12-14</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-12-14</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Kimi K2 1T model runs on 2 512GB M3 Ultras</h2>
+                <span class="published-time">Published: 2025-12-14 13:04:34</span>
+                
+                <p class="summary">A notable advancement in the field of artificial intelligence demonstrates the Kimi K2 1T model successfully executing on a system powered by two 512GB M3 Ultra chips. This development underscores significant progress in optimizing vast language models, likely comprising one trillion parameters, for high-performance and potentially more accessible hardware platforms. The ability to run such a large-scale model on what can be considered workstation-class hardware, rather than requiring extensive data center resources, highlights impressive efficiencies in model architecture, software optimization, or the inherent capabilities of Apple's M3 Ultra silicon for demanding AI inference tasks. This achievement has substantial implications for the broader AI landscape, suggesting a potential future where sophisticated large language models can be deployed more widely in localized or edge computing environments, reducing reliance on cloud infrastructure. Furthermore, it points to ongoing innovation in making massive AI models more power-efficient and cost-effective to operate, paving the way for new applications and enhanced accessibility of cutting-edge AI technologies outside traditional supercomputing environments.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Kimi K2</span><span>1T model</span><span>M3 Ultra</span><span>Large Language Model</span><span>AI Inference</span><span>Hardware Acceleration</span><span>Apple Silicon</span><span>Model Optimization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/awnihannun/status/1943723599971443134" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Six Big Bets</h2>
+                <span class="published-time">Published: 2025-12-14 18:51:02</span>
+                
+                <p class="summary">The article, titled 'Six Big Bets', outlines several forward-looking projections and strategic investments in the rapidly evolving technology landscape. While specific details on each bet are not elaborated in the provided content, it generally points towards critical areas expected to drive significant innovation and market disruption. These likely encompass advancements in artificial intelligence, including the development of more sophisticated large language models and autonomous AI agents, alongside progress in machine learning applications across various industries. Other potential areas could involve breakthroughs in robotics, sustainable technologies, or new paradigms in computing infrastructure. The overall theme suggests a focus on identifying and capitalizing on high-impact technological trends that are poised to reshape industries and human interaction in the coming decade, urging stakeholders to consider these strategic shifts for future growth and competitive advantage. The intent is to spark discussion around where future efforts and capital should be directed.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Models</span><span>AI Agents</span><span>Technological Innovation</span><span>Strategic Investments</span><span>Future Tech</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.jerry.wtf/posts/six-big-bets/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI and the ironies of automation – Part 2</h2>
+                <span class="published-time">Published: 2025-12-14 13:19:15</span>
+                
+                <p class="summary">The article, 'AI and the ironies of automation – Part 2,' delves into the paradoxical challenges that arise with the increasing integration of artificial intelligence into automated systems. Building on the classic 'ironies of automation' concept, it explores how advanced AI, while designed to enhance efficiency and reliability, can inadvertently create new complexities and shift the nature of human work. The discussion likely highlights instances where human operators, instead of being removed, transition to roles of monitoring and intervention, often dealing with highly unusual or critical scenarios that AI systems struggle with. This shift can lead to skill degradation for routine tasks and an increased cognitive load during emergencies. Furthermore, the piece examines how AI's opaque decision-making processes can complicate troubleshooting and accountability, introducing unforeseen vulnerabilities and requiring sophisticated human oversight to manage the 'automation surprise' and maintain robust human-AI collaboration in complex operational environments.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Automation Systems</span><span>Human-AI Collaboration</span><span>System Reliability</span><span>Cognitive Automation</span><span>AI Deployment Challenges</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.ufried.com/blog/ironies_of_ai_2/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Lean theorem prover mathlib</h2>
+                <span class="published-time">Published: 2025-12-14 01:49:11</span>
+                
+                <p class="summary">The "Lean theorem prover mathlib" project highlights a major development in the field of formal mathematics and automated proof verification. Mathlib, a large-scale, community-maintained library, provides a comprehensive collection of formalized mathematical theories for the Lean interactive theorem prover. Lean is a sophisticated proof assistant developed to facilitate the construction of rigorous mathematical proofs and to enable the formal verification of software and hardware systems. The mathlib library spans a broad spectrum of mathematical disciplines, ranging from foundational concepts in logic, set theory, and number theory to more advanced areas like algebra, analysis, and topology, all encoded in a machine-checkable format. This collaborative effort is pivotal for enhancing the trustworthiness and precision of mathematical knowledge and for applying formal methods to ensure the correctness of intricate algorithms and protocols. It signifies a growing trend in both computer science and pure mathematics towards achieving absolute certainty in proofs through computational tools, effectively bridging the divide between intuitive mathematical reasoning and formally verified, machine-checked truth.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Lean theorem prover</span><span>Mathlib</span><span>Formal verification</span><span>Proof assistant</span><span>Automated reasoning</span><span>Deductive logic</span><span>Mathematical proof</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/leanprover-community/mathlib4" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Price of a bot army revealed across online platforms</h2>
+                <span class="published-time">Published: 2025-12-14 16:09:44</span>
+                
+                <p class="summary">A new study, likely originating from the University of Cambridge, has shed light on the economic models and pricing strategies behind 'bot armies' operating across various online platforms. This research delves into the costs associated with acquiring and deploying large networks of automated accounts designed for tasks such as social media manipulation, propagating misinformation, or executing coordinated influence campaigns. By surveying different online marketplaces and service providers, the study aims to quantify the financial investment required to launch such operations. The findings reveal a spectrum of costs, demonstrating the varying accessibility of these services to malicious actors, from low-cost options to more sophisticated, high-end botnet packages. This comprehensive analysis provides critical insights into the underlying economics driving digital deception and exploitation, underscoring significant implications for global cybersecurity, the integrity of online discourse, and the challenges faced by platforms in combating automated threats. The research is vital for policymakers, platform developers, and security professionals seeking to understand and mitigate the societal risks posed by these digital armies.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Botnets</span><span>Cybercrime economics</span><span>Online manipulation</span><span>Social media security</span><span>Digital influence operations</span><span>Misinformation</span><span>Platform integrity</span><span>Cybersecurity research</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.cam.ac.uk/stories/price-bot-army-global-index" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
