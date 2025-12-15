@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-12-15</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-12-15</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>It seems that OpenAI is scraping [certificate transparency] logs</h2>
+                <span class="published-time">Published: 2025-12-15 13:48:03</span>
+                
+                <p class="summary">Recent observations indicate that OpenAI, a prominent artificial intelligence research organization, may be actively scraping Certificate Transparency (CT) logs. CT logs serve as public, auditable records of all SSL/TLS certificates issued by Certificate Authorities, primarily designed to bolster internet security and detect fraudulent certificate issuances. OpenAI's engagement in this activity prompts inquiry into their extensive data acquisition strategies. While the precise objective remains conjectural, potential motivations include accumulating exhaustive data on newly registered websites, discerning domain ownership trends, or enriching datasets essential for training sophisticated AI models. This information could significantly contribute to comprehending the evolving web environment, refining web-crawling efficiencies, or augmenting the factual accuracy and real-time knowledge of large language models. This practice underscores the diverse and often innovative methodologies AI companies utilize to secure vast quantities of varied data, crucial for their technological progress and research endeavors.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>OpenAI</span><span>Certificate Transparency</span><span>Web Scraping</span><span>Data Collection</span><span>AI Training Data</span><span>Internet Infrastructure</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://benjojo.co.uk/u/benjojo/h/Gxy2qrCkn1Y327Y6D3" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>I'm Kenyan. I don't write like ChatGPT, ChatGPT writes like me</h2>
+                <span class="published-time">Published: 2025-12-15 12:12:24</span>
+                
+                <p class="summary">This article, titled 'I'm Kenyan. I don't write like ChatGPT, ChatGPT writes like me,' delves into the distinctiveness of human writing, particularly from a specific cultural perspective, in contrast to the often generalized output of large language models (LLMs). The author posits that their unique, culturally-inflected writing style is an original expression, asserting that if an AI like ChatGPT produces similar text, it is due to the AI learning from diverse human-generated content, not the other way around. The piece challenges the idea that human communication is becoming homogenized by AI, instead highlighting how LLMs are trained to mimic existing human patterns. It underscores the critical importance of a wide array of training data, including contributions from varied cultural backgrounds, for AI to accurately reflect the richness and specificity of human language. Ultimately, the essay champions the authenticity and originality of human thought and expression amidst the growing influence of artificial intelligence.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>ChatGPT</span><span>Large Language Models</span><span>AI Writing</span><span>Cultural Representation</span><span>Natural Language Processing</span><span>Human-AI Interaction</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://marcusolang.substack.com/p/im-kenyan-i-dont-write-like-chatgpt" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>We Put Flock Under Surveillance: Go Make Them Behave Differently [video]</h2>
+                <span class="published-time">Published: 2025-12-15 14:57:17</span>
+                
+                <p class="summary">The Hacker News entry 'We Put Flock Under Surveillance: Go Make Them Behave Differently' refers to a video presentation that likely explores a system or research initiative centered on the observation and modification of group behavior. Without explicit details from the video itself, the title suggests a technological application where a 'flock' - potentially referring to autonomous agents, animal groups, or even human collectives - is subjected to continuous monitoring. The primary objective appears to be the subsequent implementation of strategies designed to induce specific behavioral changes within the observed group. This project likely integrates sophisticated surveillance techniques, potentially leveraging computer vision, sensor networks, and data analytics to gather comprehensive information on collective actions. Furthermore, it would involve the development and application of control mechanisms or AI-driven interventions to influence and direct the 'flock's' behavior towards desired outcomes. The presentation likely discusses the technical challenges, methodologies, and potential implications of such advanced behavioral control systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Surveillance Technology</span><span>Behavior Modification</span><span>Control Systems</span><span>Group Dynamics</span><span>Artificial Intelligence</span><span>Autonomous Systems</span><span>Data Analytics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Computer Vision</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.youtube.com/watch?v=W420BOqga_s" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>If AI replaces workers, should it also pay taxes?</h2>
+                <span class="published-time">Published: 2025-12-15 00:17:02</span>
+                
+                <p class="summary">The discussion centers on the burgeoning debate regarding the economic and societal impact of Artificial Intelligence on the global workforce. As AI technologies become more sophisticated, their capacity to automate tasks traditionally performed by humans raises significant questions about job displacement and future economic models. A key proposal emerging from this discourse is the concept of implementing a "robot tax" or "AI tax." This tax, which would be levied on AI systems or companies utilizing them to replace human labor, aims to mitigate the adverse effects of automation, such as increased unemployment and income inequality. Proponents argue that such a tax could fund social safety nets, retraining programs for displaced workers, or even universal basic income initiatives, ensuring a more equitable distribution of the wealth generated by AI. Opponents, however, caution that taxing AI could stifle innovation, slow technological progress, and potentially disadvantage economies that adopt such policies. The debate underscores the urgent need for policymakers to address the intricate challenges posed by advanced AI and its transformative potential on the future of work and fiscal policy.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>AI Ethics</span><span>Future of Work</span><span>Automation</span><span>Robot Tax</span><span>Economic Policy</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://english.elpais.com/technology/2025-11-30/if-ai-replaces-workers-should-it-also-pay-taxes.html" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Falcon 9 rocket launches Starlink satellites before making 550th SpaceX landing</h2>
+                <span class="published-time">Published: 2025-12-15 18:45:50</span>
+                
+                <p class="summary">SpaceX achieved a notable milestone with the successful launch of a Falcon 9 rocket, deploying another batch of Starlink internet satellites into low Earth orbit. Following the orbital delivery, the Falcon 9 first-stage booster executed a precision autonomous landing, marking the 550th successful recovery for SpaceX across its operational history. This accomplishment further solidifies SpaceX's leadership in reusable rocket technology, a fundamental pillar for drastically reducing launch costs and increasing the frequency of space missions. The continued expansion of the Starlink constellation is critical for providing high-speed, low-latency broadband internet access globally, especially in remote and underserved regions. Such missions exemplify the operational reliability and advanced engineering capabilities of the Falcon 9 program, crucial for both commercial satellite deployment and the long-term vision of making humanity multi-planetary. The consistent success in reusability is a testament to the robust control systems and sophisticated automated operations integral to modern spaceflight.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Falcon 9</span><span>SpaceX</span><span>Starlink</span><span>Rocket Launch</span><span>Reusable Rocket</span><span>Space Exploration</span><span>Autonomous Landing</span><span>Satellite Internet</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Artificial Intelligence</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.space.com/space-exploration/launches-spacecraft/spacex-starlink-15-12-b1093-vsfb-ocisly" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>There Are No Cows in Louis Pasteur's Crypt</h2>
+                <span class="published-time">Published: 2025-12-15 17:05:40</span>
+                
+                <p class="summary">The article, titled 'There Are No Cows in Louis Pasteur's Crypt,' delves into a historical examination of Louis Pasteur's contributions, potentially challenging common historical narratives or popular misconceptions surrounding his work. By critically analyzing historical evidence, the piece likely highlights the importance of fact-checking and the rigorous pursuit of scientific truth, themes highly relevant to contemporary research methodologies. In the context of AI and machine learning, this historical perspective can serve as a valuable reminder of the necessity for data validation, algorithm transparency, and the continuous evaluation of models to prevent the propagation of errors or biases. It underscores the foundational principle that scientific progress, whether in historical microbiology or advanced AI development, relies heavily on objective verification and the courage to re-examine established 'truths' in light of new insights or clearer historical understanding. The narrative implicitly encourages a disciplined approach to knowledge building across all scientific disciplines.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Knowledge Representation</span><span>Data Validation</span><span>Bias Detection</span><span>Scientific Computing</span><span>AI Ethics</span><span>Model Interpretation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.mcgill.ca/oss/article/health-and-nutrition-history/there-are-no-cows-louis-pasteurs-crypt" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>DentalGPT: Incentivizing Multimodal Complex Reasoning in Dentistry</h2>
+                <span class="published-time">Published: 2025-12-12T13:42:57.000Z</span>
+                
+                <p class="summary">Reliable interpretation of multimodal data in dentistry is essential for automated oral healthcare, yet current multimodal large language models (MLLMs) struggle to capture fine-grained dental visual details and lack sufficient reasoning ability for precise diagnosis. To address these limitations, we present DentalGPT, a specialized dental MLLM developed through high-quality domain knowledge injection and reinforcement learning. Specifically, the largest annotated multimodal dataset for dentistry to date was constructed by aggregating over 120k dental images paired with detailed descriptions that highlight diagnostically relevant visual features, making it the multimodal dataset with the most extensive collection of dental images to date. Training on this dataset significantly enhances the MLLM's visual understanding of dental conditions, while the subsequent reinforcement learning stage further strengthens its capability for multimodal complex reasoning. Comprehensive evaluations on intraoral and panoramic benchmarks, along with dental subsets of medical VQA benchmarks, show that DentalGPT achieves superior performance in disease classification and dental VQA tasks, outperforming many state-of-the-art MLLMs despite having only 7B parameters. These results demonstrate that high-quality dental data combined with staged adaptation provides an effective pathway for building capable and domain-specialized dental MLLMs.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>DentalGPT</span><span>Multimodal Large Language Models</span><span>Dentistry</span><span>Reinforcement Learning</span><span>Dental VQA</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.11558" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>V-RGBX: Video Editing with Accurate Controls over Intrinsic Properties</h2>
+                <span class="published-time">Published: 2025-12-12T18:59:54.000Z</span>
+                
+                <p class="summary">Large-scale video generation models have shown remarkable potential in modeling photorealistic appearance and lighting interactions in real-world scenes. However, a closed-loop framework that jointly understands intrinsic scene properties (e.g., albedo, normal, material, and irradiance), leverages them for video synthesis, and supports editable intrinsic representations remains unexplored. We present V-RGBX, the first end-to-end framework for intrinsic-aware video editing. V-RGBX unifies three key capabilities: (1) video inverse rendering into intrinsic channels, (2) photorealistic video synthesis from these intrinsic representations, and (3) keyframe-based video editing conditioned on intrinsic channels. At the core of V-RGBX is an interleaved conditioning mechanism that enables intuitive, physically grounded video editing through user-selected keyframes, supporting flexible manipulation of any intrinsic modality. Extensive qualitative and quantitative results show that V-RGBX produces temporally consistent, photorealistic videos while propagating keyframe edits across sequences in a physically plausible manner. We demonstrate its effectiveness in diverse applications, including object appearance editing and scene-level relighting, surpassing the performance of prior methods.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Editing</span><span>Intrinsic Properties</span><span>Video Synthesis</span><span>Inverse Rendering</span><span>Photorealistic Video</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Deep Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.11799" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Sliding Window Attention Adaptation</h2>
+                <span class="published-time">Published: 2025-12-11T08:21:24.000Z</span>
+                
+                <p class="summary">The self-attention mechanism in Transformer-based Large Language Models (LLMs) scales quadratically with input length, making long-context inference expensive. Sliding window attention (SWA) reduces this cost to linear complexity, but naively enabling complete SWA at inference-time for models pretrained with full attention (FA) causes severe long-context performance degradation due to training-inference mismatch. This makes us wonder: Can FA-pretrained LLMs be well adapted to SWA without pretraining? We investigate this by proposing Sliding Window Attention Adaptation (SWAA), a set of practical recipes that combine five methods for better adaptation: (1) applying SWA only during prefilling; (2) preserving "sink" tokens; (3) interleaving FA/SWA layers; (4) chain-of-thought (CoT); and (5) fine-tuning. Our experiments show that SWA adaptation is feasible while non-trivial: no single method suffices, yet specific synergistic combinations effectively recover the original long-context performance. We further analyze the performance-efficiency trade-offs of different SWAA configurations and provide recommended recipes for diverse scenarios. Our code is available at https://github.com/yuyijiong/sliding-window-attention-adaptation</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Sliding Window Attention</span><span>Large Language Models</span><span>Self-attention</span><span>Long-context inference</span><span>Fine-tuning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.10411" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Exploring MLLM-Diffusion Information Transfer with MetaCanvas</h2>
+                <span class="published-time">Published: 2025-12-12T11:07:11.000Z</span>
+                
+                <p class="summary">Multimodal learning has rapidly advanced visual understanding, largely via multimodal large language models (MLLMs) that use powerful LLMs as cognitive cores. In visual generation, however, these powerful core models are typically reduced to global text encoders for diffusion models, leaving most of their reasoning and planning ability unused. This creates a gap: current multimodal LLMs can parse complex layouts, attributes, and knowledge-intensive scenes, yet struggle to generate images or videos with equally precise and structured control. We propose MetaCanvas, a lightweight framework that lets MLLMs reason and plan directly in spatial and spatiotemporal latent spaces and interface tightly with diffusion generators. We empirically implement MetaCanvas on three different diffusion backbones and evaluate it across six tasks, including text-to-image generation, text/image-to-video generation, image/video editing, and in-context video generation, each requiring precise layouts, robust attribute binding, and reasoning-intensive control. MetaCanvas consistently outperforms global-conditioning baselines, suggesting that treating MLLMs as latent-space planners is a promising direction for narrowing the gap between multimodal understanding and generation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal Large Language Models</span><span>Diffusion Models</span><span>Generative AI</span><span>Latent Space Planning</span><span>MetaCanvas</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Generative AI</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.11464" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LEO-RobotAgent: A General-purpose Robotic Agent for Language-driven Embodied Operator</h2>
+                <span class="published-time">Published: 2025-12-11T12:58:36.000Z</span>
+                
+                <p class="summary">We propose LEO-RobotAgent, a general-purpose language-driven intelligent agent framework for robots. Under this framework, LLMs can operate different types of robots to complete unpredictable complex tasks across various scenarios. This framework features strong generalization, robustness, and efficiency. The application-level system built around it can fully enhance bidirectional human-robot intent understanding and lower the threshold for human-robot interaction. Regarding robot task planning, the vast majority of existing studies focus on the application of large models in single-task scenarios and for single robot types. These algorithms often have complex structures and lack generalizability. Thus, the proposed LEO-RobotAgent framework is designed with a streamlined structure as much as possible, enabling large models to independently think, plan, and act within this clear framework. We provide a modular and easily registrable toolset, allowing large models to flexibly call various tools to meet different requirements. Meanwhile, the framework incorporates a human-robot interaction mechanism, enabling the algorithm to collaborate with humans like a partner. Experiments have verified that this framework can be easily adapted to mainstream robot platforms including unmanned aerial vehicles (UAVs), robotic arms, and wheeled robot, and efficiently execute a variety of carefully designed tasks with different complexity levels. Our code is available at https://github.com/LegendLeoChen/LEO-RobotAgent.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Robotic Agent</span><span>Language-driven</span><span>LLMs</span><span>Human-Robot Interaction</span><span>Robot Platforms</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.10605" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Fairy2i: Training Complex LLMs from Real LLMs with All Parameters in {pm 1, pm i}</h2>
+                <span class="published-time">Published: 2025-12-02T16:14:08.000Z</span>
+                
+                <p class="summary">Large language models (LLMs) have revolutionized artificial intelligence, yet their massive memory and computational demands necessitate aggressive quantization, increasingly pushing representations toward the theoretical limit of a single bit. While complex-valued LLMs, such as iFairy, offer a superior chance for low-bit representation compared to real-valued counterparts, they require training from scratch, preventing the utilization of the vast ecosystem of pre-trained real-valued foundation models. Here we present Fairy2i, a universal framework that transforms pre-trained real-valued layers into an equivalent widely-linear complex form, enabling extremely low-bit quantization while reusing existing checkpoints. By proving a lossless mathematical equivalence between real and widely-linear maps, we convert standard Transformers into the complex domain and employ a phase-aware quantization scheme with a highly efficient codebook of fourth roots of unity. Furthermore, we introduce a recursive residual quantization mechanism that iteratively minimizes quantization error, allowing inference to proceed via efficient multiplication-free accumulation. We demonstrate that Fairy2i restores the performance of LLaMA-2 7B at an effective 2-bit precision to levels nearly comparable with full-precision baselines, significantly outperforming state-of-the-art real-valued binary and ternary quantization methods. This work bridges the gap between the representational efficiency of complex-valued arithmetic and the practical utility of pre-trained models, paving a new way for efficient inference on commodity hardware.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Quantization</span><span>Complex-valued AI</span><span>Efficient Inference</span><span>Low-bit Precision</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.02901" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
