@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-12-18</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-12-18</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Agent Skills is now an open standard</h2>
+                <span class="published-time">Published: 2025-12-18 17:04:32</span>
+                
+                <p class="summary">The announcement that 'Agent Skills is now an open standard' signifies a pivotal advancement in the development and deployment of artificial intelligence agents. This initiative focuses on establishing a common, publicly accessible specification for defining and integrating the diverse capabilities, or 'skills,' that AI agents can possess. By creating an open standard, the objective is to significantly enhance interoperability, foster collaborative development, and drive innovation across the broader AI agent ecosystem. This standardization effort promises to benefit developers and organizations by providing a unified framework for designing, implementing, and sharing agent functionalities, thereby accelerating the creation of more sophisticated and adaptable AI systems. The move is crucial for improving the modularity and reusability of agent components, enabling agents to more effectively acquire, manage, and execute a wide array of tasks. Such a standard could lead to a more organized 'organization skills and directory,' facilitating the discovery and seamless integration of agent capabilities across various platforms and applications, ultimately streamlining development and reducing fragmentation in the AI agent landscape.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Open Standard</span><span>Agent Skills</span><span>Interoperability</span><span>AI Development</span><span>Standardization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://claude.com/blog/organization-skills-and-directory" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>GPT-5.2-Codex</h2>
+                <span class="published-time">Published: 2025-12-18 18:14:48</span>
+                
+                <p class="summary">OpenAI has officially announced the introduction of GPT-5.2-Codex, representing a notable evolution in their suite of large language models. This latest version is specifically developed to significantly enhance capabilities in code generation, building upon the robust foundation established by earlier models. GPT-5.2-Codex is anticipated to deliver superior performance in comprehending intricate programming paradigms, producing highly accurate and optimized code across a diverse range of programming languages, and providing comprehensive assistance to developers for tasks such as debugging, refactoring, and general code optimization. This launch underscores OpenAI's ongoing dedication to advancing artificial intelligence within the realm of software engineering, with the objective of streamlining development workflows, accelerating innovation, and substantially increasing productivity for both professional engineers and AI researchers. The model's advanced ability to interpret natural language prompts and translate them into functional code is expected to revolutionize how software is developed, potentially lowering barriers to entry for new programmers and enabling more complex projects to be undertaken with greater efficiency. Further technical specifications, architectural details, and benchmark performance comparisons are eagerly awaited, solidifying GPT-5.2-Codex's position as a pivotal technology for the future of AI-driven software development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>Code Generation</span><span>Artificial Intelligence</span><span>Software Development</span><span>AI Development</span><span>OpenAI</span><span>Programming</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Artificial Intelligence</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://openai.com/index/introducing-gpt-5-2-codex/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>FunctionGemma 270M Model</h2>
+                <span class="published-time">Published: 2025-12-18 18:26:52</span>
+                
+                <p class="summary">Google has unveiled FunctionGemma 270M, a new lightweight and open-source model specifically engineered for robust function calling capabilities. This compact model, featuring 270 million parameters, is designed to enable AI systems to seamlessly interact with external tools, APIs, and services. FunctionGemma 270M addresses the growing need for efficient and cost-effective AI solutions that can extend their functionalities beyond their training data by executing specific functions or accessing real-world information. Its small footprint makes it particularly suitable for deployment in resource-constrained environments, including edge devices and applications where latency and computational overhead are critical considerations. Developers can leverage FunctionGemma 270M to build more sophisticated and versatile AI agents, integrate dynamic tool-use into their applications, and enhance the interactivity of AI-powered systems. This release signifies a strategic move towards democratizing advanced AI capabilities, making powerful function-calling features more accessible to a broader range of developers and use cases.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>FunctionGemma</span><span>Large Language Model</span><span>Function Calling</span><span>Open Source</span><span>AI Agent</span><span>Efficiency</span><span>Tool Use</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://blog.google/technology/developers/functiongemma/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>How China built its ‘Manhattan Project’ to rival the West in AI chips</h2>
+                <span class="published-time">Published: 2025-12-18 18:55:34</span>
+                
+                <p class="summary">The article, "How China built its ‘Manhattan Project’ to rival the West in AI chips," details China's comprehensive and ambitious national strategy to achieve self-sufficiency and global leadership in artificial intelligence hardware. Likening the initiative to the historical "Manhattan Project," the report underscores a highly centralized and well-funded endeavor aimed at accelerating domestic innovation in AI chip design, development, and manufacturing. This strategic push is a direct response to increasing geopolitical tensions and Western export controls, highlighting China's imperative to reduce its reliance on foreign technology and establish a robust, independent supply chain. The project involves substantial state investment, collaboration between academia and industry, and a concerted effort to cultivate top-tier engineering talent within the country. By focusing on advanced semiconductor technologies, China aims to develop cutting-edge AI processors that can power its burgeoning AI industry across various sectors, from data centers to autonomous systems, ultimately challenging the technological dominance of the West and securing its long-term strategic and economic advantages in the global AI race.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Chips</span><span>Semiconductor Technology</span><span>National Strategy</span><span>Technological Sovereignty</span><span>Artificial Intelligence</span><span>Hardware Development</span><span>Geopolitics</span><span>Innovation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.japantimes.co.jp/business/2025/12/18/tech/china-west-ai-chips/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Launch HN: Pulse (YC S24) – Production-grade unstructured document extraction</h2>
+                <span class="published-time">Published: 2025-12-18 15:35:52</span>
+                
+                <p class="summary">Pulse, a new platform launched by co-founders Sid and Ritvik (YC S24), introduces a production-grade document extraction system designed to generate highly accurate, LLM-ready text from unstructured documents. This innovative system employs a hybrid methodology, integrating advanced Vision Language Models (VLMs) with robust Optical Character Recognition (OCR) technology. The primary objective of Pulse is to address the inherent challenges in current data ingestion processes, particularly where existing foundation models and VLMs, despite their ability to produce plausible text, fall short in delivering the requisite accuracy for critical applications. The co-founders emphasize that plausibility is insufficient for reliable OCR and data extraction, positioning Pulse as a solution focused on precision and reliability. The platform is engineered to handle complex and tricky document cases, ensuring data integrity for subsequent Large Language Model applications and other downstream AI processes, thereby providing a more dependable solution for enterprise-level document processing.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Document Extraction</span><span>LLM-ready text</span><span>Vision Language Models</span><span>OCR</span><span>Data Ingestion</span><span>Unstructured Data</span><span>Hybrid Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Natural Language Processing</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://news.ycombinator.com/item?id=46313930" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI helps ship faster but it produces 1.7× more bugs</h2>
+                <span class="published-time">Published: 2025-12-18 13:06:51</span>
+                
+                <p class="summary">A recent report analyzing the state of AI versus human code generation highlights a significant paradox in modern software development. While the integration of artificial intelligence tools demonstrably accelerates the shipping process, leading to faster project delivery, it also correlates with a substantial increase in the incidence of bugs. Specifically, the findings indicate that software projects leveraging AI for code generation produce 1.7 times more defects compared to those developed exclusively by human programmers. This outcome underscores a critical challenge for the industry: how to effectively balance the undeniable productivity gains offered by AI with the necessity of maintaining robust code quality and minimizing post-release issues. The report suggests that while AI streamlines development workflows, further advancements or improved implementation strategies are needed to mitigate the elevated bug count associated with current AI-assisted coding practices.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Code Generation</span><span>Software Development</span><span>Code Quality</span><span>Developer Productivity</span><span>Bugs</span><span>AI in Software Engineering</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Step-GUI Technical Report</h2>
+                <span class="published-time">Published: 2025-12-17T13:26:30.000Z</span>
+                
+                <p class="summary">Recent advances in multimodal large language models unlock unprecedented opportunities for GUI automation. However, a fundamental challenge remains: how to efficiently acquire high-quality training data while maintaining annotation reliability? We introduce a self-evolving training pipeline powered by the Calibrated Step Reward System, which converts model-generated trajectories into reliable training signals through trajectory-level calibration, achieving >90% annotation accuracy with 10-100x lower cost. Leveraging this pipeline, we introduce Step-GUI, a family of models (4B/8B) that achieves state-of-the-art GUI performance (8B: 80.2% AndroidWorld, 48.5% OSWorld, 62.6% ScreenShot-Pro) while maintaining robust general capabilities. As GUI agent capabilities improve, practical deployment demands standardized interfaces across heterogeneous devices while protecting user privacy. To this end, we propose GUI-MCP, the first Model Context Protocol for GUI automation with hierarchical architecture that combines low-level atomic operations and high-level task delegation to local specialist models, enabling high-privacy execution where sensitive data stays on-device. Finally, to assess whether agents can handle authentic everyday usage, we introduce AndroidDaily, a benchmark grounded in real-world mobile usage patterns with 3146 static actions and 235 end-to-end tasks across high-frequency daily scenarios (8B: static 89.91%, end-to-end 52.50%). Our work advances the development of practical GUI agents and demonstrates strong potential for real-world deployment in everyday digital interactions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>GUI Automation</span><span>Multimodal Large Language Models</span><span>AI Agents</span><span>Training Pipeline</span><span>GUI Benchmarking</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Multimodal</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.15431" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Can LLMs Guide Their Own Exploration? Gradient-Guided Reinforcement Learning for LLM Reasoning</h2>
+                <span class="published-time">Published: 2025-12-17T18:44:45.000Z</span>
+                
+                <p class="summary">Reinforcement learning has become essential for strengthening the reasoning abilities of large language models, yet current exploration mechanisms remain fundamentally misaligned with how these models actually learn. Entropy bonuses and external semantic comparators encourage surface level variation but offer no guarantee that sampled trajectories differ in the update directions that shape optimization. We propose G2RL, a gradient guided reinforcement learning framework in which exploration is driven not by external heuristics but by the model own first order update geometry. For each response, G2RL constructs a sequence level feature from the model final layer sensitivity, obtainable at negligible cost from a standard forward pass, and measures how each trajectory would reshape the policy by comparing these features within a sampled group. Trajectories that introduce novel gradient directions receive a bounded multiplicative reward scaler, while redundant or off manifold updates are deemphasized, yielding a self referential exploration signal that is naturally aligned with PPO style stability and KL control. Across math and general reasoning benchmarks (MATH500, AMC, AIME24, AIME25, GPQA, MMLUpro) on Qwen3 base 1.7B and 4B models, G2RL consistently improves pass@1, maj@16, and pass@k over entropy based GRPO and external embedding methods. Analyzing the induced geometry, we find that G2RL expands exploration into substantially more orthogonal and often opposing gradient directions while maintaining semantic coherence, revealing that a policy own update space provides a far more faithful and effective basis for guiding exploration in large language model reinforcement learning.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Reinforcement Learning</span><span>Gradient-Guided Exploration</span><span>LLM Reasoning</span><span>G2RL</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.15687" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>SAGE: Training Smart Any-Horizon Agents for Long Video Reasoning with Reinforcement Learning</h2>
+                <span class="published-time">Published: 2025-12-15T20:14:19.000Z</span>
+                
+                <p class="summary">Humans naturally adapt their approach to video consumption, either skimming long videos or watching short ones fully, based on the task. Current state-of-the-art video reasoning models, however, process numerous frames in a single turn, mimicking full video consumption and demanding extensive resources. This work addresses the challenge of developing performant any-horizon video reasoning systems. We introduce SAGE, an agent system capable of multi-turn reasoning for long videos while efficiently handling simpler problems in a single turn. To train SAGE-MM, the core orchestrator of SAGE, we propose an easy synthetic data generation pipeline utilizing Gemini-2.5-Flash. Additionally, we develop an effective Reinforcement Learning post-training recipe crucial for imbuing SAGE-MM with any-horizon reasoning capabilities. We also curate SAGE-Bench, a benchmark with an average duration exceeding 700 seconds, specifically designed for evaluating video reasoning in real-world entertainment contexts. Empirical validation demonstrates the effectiveness of our system, data, and RL recipe, yielding notable improvements of up to 6.1% on open-ended video reasoning tasks and an impressive 8.2% improvement on videos longer than 10 minutes.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Long Video Reasoning</span><span>Reinforcement Learning</span><span>Any-Horizon Agents</span><span>Multi-turn Reasoning</span><span>Video Understanding</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Machine Learning</span><span>Video Understanding</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.13874" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DEER: Draft with Diffusion, Verify with Autoregressive Models</h2>
+                <span class="published-time">Published: 2025-12-17T08:19:04.000Z</span>
+                
+                <p class="summary">Efficiency, as a critical practical challenge for LLM-driven agentic and reasoning systems, is increasingly constrained by the inherent latency of autoregressive (AR) decoding. Speculative decoding mitigates this cost through a draft-verify scheme, yet existing approaches rely on AR draft models (a.k.a., drafters), which introduce two fundamental issues: (1) step-wise uncertainty accumulation leads to a progressive collapse of trust between the target model and the drafter, and (2) inherently sequential decoding of AR drafters. Together, these factors cause limited speedups. In this paper, we show that a diffusion large language model (dLLM) drafters can naturally overcome these issues through its fundamentally different probabilistic modeling and efficient parallel decoding strategy. Building on this insight, we introduce DEER, an efficient speculative decoding framework that drafts with diffusion and verifies with AR models. To enable high-quality drafting, DEER employs a two-stage training pipeline to align the dLLM-based drafters with the target AR model, and further adopts single-step decoding to generate long draft segments. Experiments show DEER reaches draft acceptance lengths of up to 32 tokens, far surpassing the 10 tokens achieved by EAGLE-3. Moreover, on HumanEval with Qwen3-30B-A3B, DEER attains a 5.54x speedup, while EAGLE-3 achieves only 2.41x. Code, model, demo, etc, will be available at https://czc726.github.io/DEER/</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Speculative Decoding</span><span>Diffusion Models</span><span>Autoregressive Models</span><span>LLM Efficiency</span><span>Parallel Decoding</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.15176" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DiffusionVL: Translating Any Autoregressive Models into Diffusion Vision Language Models</h2>
+                <span class="published-time">Published: 2025-12-17T18:59:55.000Z</span>
+                
+                <p class="summary">In recent multimodal research, the diffusion paradigm has emerged as a promising alternative to the autoregressive paradigm (AR), owing to its unique decoding advantages. However, due to the capability limitations of the base diffusion language model, the performance of the diffusion vision language model (dVLM) still lags significantly behind that of mainstream models. This leads to a simple yet fundamental question: Is it possible to construct dVLMs based on existing powerful AR models? In response, we propose DiffusionVL, a dVLM family that could be translated from any powerful AR models. Through simple fine-tuning, we successfully adapt AR pre-trained models into the diffusion paradigm. This approach yields two key observations: (1) The paradigm shift from AR-based multimodal models to diffusion is remarkably effective. (2) Direct conversion of an AR language model to a dVLM is also feasible, achieving performance competitive with LLaVA-style visual-instruction-tuning. Further, we introduce a block-decoding design into dVLMs that supports arbitrary-length generation and KV cache reuse, achieving a significant inference speedup. We conduct a large number of experiments. Despite training with less than 5% of the data required by prior methods, DiffusionVL achieves a comprehensive performance improvement-a 34.4% gain on the MMMU-Pro (vision) bench and 37.5% gain on the MME (Cog.) bench-alongside a 2x inference speedup. The model and code are released at https://github.com/hustvl/DiffusionVL.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Diffusion Models</span><span>Vision Language Models</span><span>Autoregressive Models</span><span>Multimodal Learning</span><span>Fine-tuning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Deep Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.15713" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>End-to-End Training for Autoregressive Video Diffusion via Self-Resampling</h2>
+                <span class="published-time">Published: 2025-12-17T18:53:29.000Z</span>
+                
+                <p class="summary">Autoregressive video diffusion models hold promise for world simulation but are vulnerable to exposure bias arising from the train-test mismatch. While recent works address this via post-training, they typically rely on a bidirectional teacher model or online discriminator. To achieve an end-to-end solution, we introduce Resampling Forcing, a teacher-free framework that enables training autoregressive video models from scratch and at scale. Central to our approach is a self-resampling scheme that simulates inference-time model errors on history frames during training. Conditioned on these degraded histories, a sparse causal mask enforces temporal causality while enabling parallel training with frame-level diffusion loss. To facilitate efficient long-horizon generation, we further introduce history routing, a parameter-free mechanism that dynamically retrieves the top-k most relevant history frames for each query. Experiments demonstrate that our approach achieves performance comparable to distillation-based baselines while exhibiting superior temporal consistency on longer videos owing to native-length training.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Autoregressive Video Diffusion</span><span>Self-Resampling</span><span>Exposure Bias</span><span>Video Generation</span><span>Temporal Consistency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.15702" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
