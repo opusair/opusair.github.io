@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-12-19</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-12-19</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Show HN: Linggen – A local-first memory layer for your AI (Cursor, Zed, Claude)</h2>
+                <span class="published-time">Published: 2025-12-19 17:54:55</span>
+                
+                <p class="summary">Linggen is presented as a local-first memory layer designed to enhance AI interactions by providing immediate contextual understanding for Large Language Models (LLMs). Developed to address the inefficiency of repeatedly explaining complex multi-node systems to AI across various projects, Linggen indexes documentation, allowing users to instantly load comprehensive architectural context. This approach eliminates the "cold start" problem often encountered when initiating new AI sessions or projects. The technology leverages Rust and LanceDB, ensuring that all code and embeddings remain on the user's local machine, thus requiring no external accounts. Key features include team memory capabilities, which automatically provide context to teammates' LLMs, and a visual map for understanding file dependencies and potential "blast radius" during refactoring. Linggen is compatible with popular AI development environments like Cursor, Zed, and Claude Desktop, positioning itself as a productivity tool for developers working with AI.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Local-first AI</span><span>Memory Layer</span><span>Large Language Models</span><span>Context Management</span><span>Documentation Indexing</span><span>Vector Database</span><span>AI Tools</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/linggen/linggen" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Graphite Is Joining Cursor</h2>
+                <span class="published-time">Published: 2025-12-19 15:57:01</span>
+                
+                <p class="summary">The Hacker News story announces the strategic integration of Graphite, a prominent developer tools provider specializing in advanced code review workflows, with Cursor, an innovative AI-native code editor. Graphite has built a reputation for enhancing developer productivity through its robust platform, which includes features like stacked diffs, improved Git CLI, and seamless integration with GitHub, all designed to make code reviews faster and more efficient. Cursor distinguishes itself as a next-generation coding environment that leverages artificial intelligence to facilitate code generation, understanding, and debugging, aiming to significantly accelerate the development process. This union is poised to create a more comprehensive and synergistic platform for software engineers. By combining Graphite's sophisticated code review capabilities with Cursor's cutting-edge AI-driven editing features, the joint entity aims to deliver an end-to-end solution that streamlines the entire software development lifecycle, from initial coding to final deployment. This development is expected to empower developers with advanced tools that enhance both the speed and quality of their work, potentially reshaping the landscape of modern developer tooling.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Developer Tools</span><span>Code Review</span><span>AI-native Editor</span><span>Software Development</span><span>Developer Productivity</span><span>AI Coding Assistant</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://cursor.com/blog/graphite" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI's Unpaid Debt: How LLM Scrapers Destroy the Social Contract of Open Source</h2>
+                <span class="published-time">Published: 2025-12-19 19:37:32</span>
+                
+                <p class="summary">This article critically examines the emerging ethical and economic challenges posed by Large Language Model (LLM) developers' extensive use of open-source data through automated scraping. It argues that this practice, often conducted without explicit consent, proper attribution, licensing adherence, or fair compensation, fundamentally undermines the established "social contract" of the open-source community. Traditionally, open source thrives on principles of mutual contribution, reciprocity, and shared innovation. However, LLM scrapers are increasingly viewed as unilaterally extracting immense value from publicly available code, text, and datasets without giving back to the creators, thereby accumulating an "unpaid debt." This behavior threatens the sustainability and collaborative spirit of the ecosystem. The piece highlights growing concerns about intellectual property rights, fair use interpretations, and the potential for a significant chilling effect, reducing creators' willingness to contribute to open-source projects if their work is exploited without acknowledgment or commensurate benefit. This dynamic necessitates an urgent re-evaluation of data governance policies and ethical guidelines to safeguard the long-term health of both advanced AI development and the vital open-source communities it relies upon.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Open Source</span><span>Data Scraping</span><span>Intellectual Property</span><span>Ethical AI</span><span>Data Governance</span><span>Copyright</span><span>AI Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.quippd.com/writing/2025/12/17/AIs-unpaid-debt-how-llm-scrapers-destroy-the-social-contract-of-open-source.html" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Gamers Are Overwhelmingly Negative About Gen AI in Video Games</h2>
+                <span class="published-time">Published: 2025-12-19 17:57:18</span>
+                
+                <p class="summary">A recent study indicates a significant wave of negative sentiment within the gaming community concerning the integration of generative artificial intelligence (Gen AI) into video games. The findings highlight that a substantial majority of gamers express strong disapproval, pointing to various concerns across game development and player experience. Key objections frequently center on fears of potential job displacement for human creatives, a perceived threat to artistic integrity and originality in game design, and doubts about Gen AI's capability to produce high-quality, engaging content that genuinely resonates with players. Furthermore, ethical considerations regarding intellectual property and data usage in AI training datasets often contribute to this apprehension. This widespread skepticism poses a considerable challenge for game developers and publishers aiming to leverage Gen AI for content creation, character design, or procedural generation, underscoring the necessity for transparent communication, careful implementation, and a clear demonstration of how AI can genuinely enhance the gaming experience.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Generative AI</span><span>Video Games</span><span>Gamer Perception</span><span>AI in Gaming</span><span>Game Development</span><span>Player Sentiment</span><span>AI Ethics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://quanticfoundry.com/2025/12/18/gen-ai/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Zuckerberg Cut Ties with Pro-Immigration Organization He Founded</h2>
+                <span class="published-time">Published: 2025-12-19 18:17:21</span>
+                
+                <p class="summary">Mark Zuckerberg's decision to sever ties with FWD.us, the pro-immigration organization he co-founded, carries significant, albeit indirect, implications for the global landscape of artificial intelligence development. FWD.us has historically advocated for policies aimed at attracting and retaining high-skilled immigrants, a demographic crucial for fueling innovation in advanced technological fields, including AI research, machine learning engineering, and large language model development. This strategic shift in Zuckerberg's philanthropic focus could potentially influence the availability of diverse talent pools that Meta, and the broader tech industry, relies upon to advance its ambitious AI initiatives. As companies worldwide vie for top AI researchers and engineers, changes in immigration advocacy and policy directly impact the competitive edge in developing cutting-edge technologies. The move prompts questions about future talent pipelines and their capacity to sustain the rapid progress seen in areas like generative AI and robotics, underscoring the interconnectedness of socio-political actions and technological advancement in the highly competitive artificial intelligence domain.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Talent</span><span>Immigration Policy</span><span>Tech Workforce</span><span>Meta AI Strategy</span><span>Global AI Competition</span><span>AI Development</span><span>Generative AI</span><span>Robotics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Robotics</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.bloomberg.com/news/articles/2025-12-19/mark-zuckerberg-s-philanthropy-cut-ties-with-pro-immigration-organization-fwd-us" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>TP-Link Tapo C200: Hardcoded Keys, Buffer Overflows and Privacy</h2>
+                <span class="published-time">Published: 2025-12-19 18:19:32</span>
+                
+                <p class="summary">A recent security analysis of the TP-Link Tapo C200 IP camera has unveiled critical vulnerabilities, including the discovery of hardcoded cryptographic keys and several buffer overflows. These severe flaws introduce significant security and privacy risks for device users, potentially enabling unauthorized access to camera feeds, data exfiltration, or complete device compromise. Researchers employed advanced AI-assisted reverse engineering techniques to meticulously uncover these weaknesses, showcasing how artificial intelligence is becoming an increasingly powerful tool in identifying complex security issues within embedded systems. The existence of hardcoded keys compromises the fundamental security architecture, allowing attackers to bypass authentication or decrypt encrypted communications. Concurrently, buffer overflows present avenues for remote code execution or denial-of-service attacks, further jeopardizing the camera's operational integrity and user privacy. This investigation underscores the persistent security challenges prevalent in the Internet of Things (IoT) landscape, urging manufacturers to implement more rigorous security-by-design principles and users to remain aware of potential privacy implications in smart home devices. The report highlights a critical need for enhanced cybersecurity measures to protect consumer data in an interconnected world, especially as AI-driven methods make vulnerability discovery more efficient.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>TP-Link Tapo C200</span><span>Hardcoded Keys</span><span>Buffer Overflows</span><span>IoT Security</span><span>Cybersecurity</span><span>Privacy</span><span>Reverse Engineering</span><span>AI-Assisted Reverse Engineering</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Computer Vision</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.evilsocket.net/2025/12/18/TP-Link-Tapo-C200-Hardcoded-Keys-Buffer-Overflows-and-Privacy-in-the-Era-of-AI-Assisted-Reverse-Engineering/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Kling-Omni Technical Report</h2>
+                <span class="published-time">Published: 2025-12-18T17:08:12.000Z</span>
+                
+                <p class="summary">We present Kling-Omni, a generalist generative framework designed to synthesize high-fidelity videos directly from multimodal visual language inputs. Adopting an end-to-end perspective, Kling-Omni bridges the functional separation among diverse video generation, editing, and intelligent reasoning tasks, integrating them into a holistic system. Unlike disjointed pipeline approaches, Kling-Omni supports a diverse range of user inputs, including text instructions, reference images, and video contexts, processing them into a unified multimodal representation to deliver cinematic-quality and highly-intelligent video content creation. To support these capabilities, we constructed a comprehensive data system that serves as the foundation for multimodal video creation. The framework is further empowered by efficient large-scale pre-training strategies and infrastructure optimizations for inference. Comprehensive evaluations reveal that Kling-Omni demonstrates exceptional capabilities in in-context generation, reasoning-based editing, and multimodal instruction following. Moving beyond a content creation tool, we believe Kling-Omni is a pivotal advancement toward multimodal world simulators capable of perceiving, reasoning, generating and interacting with the dynamic and complex worlds.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Kling-Omni</span><span>Video Generation</span><span>Multimodal AI</span><span>Generative Framework</span><span>High-Fidelity Video Synthesis</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Multimodal</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.16776" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LLaDA2.0: Scaling Up Diffusion Language Models to 100B</h2>
+                <span class="published-time">Published: 2025-12-10T09:26:18.000Z</span>
+                
+                <p class="summary">This paper presents LLaDA2.0 -- a tuple of discrete diffusion large language models (dLLM) scaling up to 100B total parameters through systematic conversion from auto-regressive (AR) models -- establishing a new paradigm for frontier-scale deployment. Instead of costly training from scratch, LLaDA2.0 upholds knowledge inheritance, progressive adaption and efficiency-aware design principle, and seamless converts a pre-trained AR model into dLLM with a novel 3-phase block-level WSD based training scheme: progressive increasing block-size in block diffusion (warm-up), large-scale full-sequence diffusion (stable) and reverting back to compact-size block diffusion (decay). Along with post-training alignment with SFT and DPO, we obtain LLaDA2.0-mini (16B) and LLaDA2.0-flash (100B), two instruction-tuned Mixture-of-Experts (MoE) variants optimized for practical deployment. By preserving the advantages of parallel decoding, these models deliver superior performance and efficiency at the frontier scale. Both models were open-sourced.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Diffusion Language Models</span><span>Large Language Models</span><span>Discrete Diffusion</span><span>Mixture-of-Experts</span><span>Parallel Decoding</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.15745" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Adaptation of Agentic AI</h2>
+                <span class="published-time">Published: 2025-12-18T08:38:51.000Z</span>
+                
+                <p class="summary">Cutting-edge agentic AI systems are built on foundation models that can be adapted to plan, reason, and interact with external tools to perform increasingly complex and specialized tasks. As these systems grow in capability and scope, adaptation becomes a central mechanism for improving performance, reliability, and generalization. In this paper, we unify the rapidly expanding research landscape into a systematic framework that spans both agent adaptations and tool adaptations. We further decompose these into tool-execution-signaled and agent-output-signaled forms of agent adaptation, as well as agent-agnostic and agent-supervised forms of tool adaptation. We demonstrate that this framework helps clarify the design space of adaptation strategies in agentic AI, makes their trade-offs explicit, and provides practical guidance for selecting or switching among strategies during system design. We then review the representative approaches in each category, analyze their strengths and limitations, and highlight key open challenges and future opportunities. Overall, this paper aims to offer a conceptual foundation and practical roadmap for researchers and practitioners seeking to build more capable, efficient, and reliable agentic AI systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Agentic AI</span><span>Adaptation Strategies</span><span>Foundation Models</span><span>Tool Adaptation</span><span>Agent Adaptation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.16301" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Seedance 1.5 pro: A Native Audio-Visual Joint Generation Foundation Model</h2>
+                <span class="published-time">Published: 2025-12-15T16:36:52.000Z</span>
+                
+                <p class="summary">Recent strides in video generation have paved the way for unified audio-visual generation. In this work, we present Seedance 1.5 pro, a foundational model engineered specifically for native, joint audio-video generation. Leveraging a dual-branch Diffusion Transformer architecture, the model integrates a cross-modal joint module with a specialized multi-stage data pipeline, achieving exceptional audio-visual synchronization and superior generation quality. To ensure practical utility, we implement meticulous post-training optimizations, including Supervised Fine-Tuning (SFT) on high-quality datasets and Reinforcement Learning from Human Feedback (RLHF) with multi-dimensional reward models. Furthermore, we introduce an acceleration framework that boosts inference speed by over 10X. Seedance 1.5 pro distinguishes itself through precise multilingual and dialect lip-syncing, dynamic cinematic camera control, and enhanced narrative coherence, positioning it as a robust engine for professional-grade content creation. Seedance 1.5 pro is now accessible on Volcano Engine at https://console.volcengine.com/ark/region:ark+cn-beijing/experience/vision?type=GenVideo.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Audio-Visual Generation</span><span>Foundation Model</span><span>Diffusion Transformer</span><span>Lip-syncing</span><span>Reinforcement Learning from Human Feedback</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Multimodal</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.13507" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>JustRL: Scaling a 1.5B LLM with a Simple RL Recipe</h2>
+                <span class="published-time">Published: 2025-12-18T15:21:25.000Z</span>
+                
+                <p class="summary">Recent advances in reinforcement learning for large language models have converged on increasing complexity: multi-stage training pipelines, dynamic hyperparameter schedules, and curriculum learning strategies. This raises a fundamental question: Is this complexity necessary? We present JustRL, a minimal approach using single-stage training with fixed hyperparameters that achieves state-of-the-art performance on two 1.5B reasoning models (54.9% and 64.3% average accuracy across nine mathematical benchmarks) while using 2times less compute than sophisticated approaches. The same hyperparameters transfer across both models without tuning, and training exhibits smooth, monotonic improvement over 4,000+ steps without the collapses or plateaus that typically motivate interventions. Critically, ablations reveal that adding "standard tricks" like explicit length penalties and robust verifiers may degrade performance by collapsing exploration. These results suggest that the field may be adding complexity to solve problems that disappear with a stable, scaled-up baseline. We release our models and code to establish a simple, validated baseline for the community.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Large Language Models</span><span>LLM Training</span><span>Hyperparameters</span><span>Model Scaling</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Machine Learning</span><span>Deep Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.16649" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AdaTooler-V: Adaptive Tool-Use for Images and Videos</h2>
+                <span class="published-time">Published: 2025-12-18T18:59:55.000Z</span>
+                
+                <p class="summary">Recent advances have shown that multimodal large language models (MLLMs) benefit from multimodal interleaved chain-of-thought (CoT) with vision tool interactions. However, existing open-source models often exhibit blind tool-use reasoning patterns, invoking vision tools even when they are unnecessary, which significantly increases inference overhead and degrades model performance. To this end, we propose AdaTooler-V, an MLLM that performs adaptive tool-use by determining whether a visual problem truly requires tools. First, we introduce AT-GRPO, a reinforcement learning algorithm that adaptively adjusts reward scales based on the Tool Benefit Score of each sample, encouraging the model to invoke tools only when they provide genuine improvements. Moreover, we construct two datasets to support training: AdaTooler-V-CoT-100k for SFT cold start and AdaTooler-V-300k for RL with verifiable rewards across single-image, multi-image, and video data. Experiments across twelve benchmarks demonstrate the strong reasoning capability of AdaTooler-V, outperforming existing methods in diverse visual reasoning tasks. Notably, AdaTooler-V-7B achieves an accuracy of 89.8% on the high-resolution benchmark V*, surpassing the commercial proprietary model GPT-4o and Gemini 1.5 Pro. All code, models, and data are released.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Adaptive Tool-Use</span><span>Multimodal Large Language Models</span><span>Reinforcement Learning</span><span>Vision Tool Interactions</span><span>Visual Reasoning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.16918" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
