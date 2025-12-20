@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-12-20</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-12-20</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Show HN: HN Wrapped 2025 - an LLM reviews your year on HN</h2>
+                <span class="published-time">Published: 2025-12-20 13:39:47</span>
+                
+                <p class="summary">A new project, 'HN Wrapped 2025,' has been launched, leveraging the latest Gemini-3-flash and Gemini-3-pro-image models to provide personalized insights and humorous content based on a user's Hacker News activity. The web application allows users to input their Hacker News username to receive a variety of AI-generated outputs. These include humorous 'roasts' and statistics derived from their 2025 HN engagement, a personalized simulated Hacker News front page from 2035, and a custom xkcd-style comic illustrating their unique HN persona. The developer highlights the impressive and entertaining results delivered by the advanced Gemini models. This project demonstrates a creative application of large language and image generation models for personalized user engagement and content creation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM</span><span>Gemini models</span><span>Hacker News</span><span>Generative AI</span><span>Personalized Content</span><span>Web Application</span><span>AI humor</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://hn-wrapped.kadoa.com?year=2025" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Skills Officially Comes to Codex</h2>
+                <span class="published-time">Published: 2025-12-20 08:09:17</span>
+                
+                <p class="summary">The official integration of 'Skills' into OpenAI's Codex marks a pivotal advancement for the AI-powered code generation platform. Codex, renowned for its ability to translate natural language into executable code, is now empowered with a new layer of capabilities that enhance its functionality and versatility. This development implies that the model can perform more intricate programming tasks, leverage external APIs and tools, and execute multi-step operations with greater precision. For developers, the introduction of skills means a more robust and efficient coding assistant, capable of understanding complex prompts and generating more sophisticated, context-aware solutions. This enhancement is expected to broaden the scope of applications for Codex, from advanced software development to automated scripting, by enabling it to adapt to diverse technical requirements. It signifies OpenAI's continued commitment to advancing large language models beyond simple text generation, moving towards more intelligent, task-oriented AI agents in the realm of programming.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Codex</span><span>AI Code Generation</span><span>Large Language Model</span><span>Programming Tools</span><span>Software Development</span><span>OpenAI</span><span>AI Skills</span><span>API Integration</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://developers.openai.com/codex/skills/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Reflections on AI at the End of 2025</h2>
+                <span class="published-time">Published: 2025-12-20 09:38:51</span>
+                
+                <p class="summary">The article, "Reflections on AI at the End of 2025," offers a prospective analysis of the artificial intelligence domain, imagining its state at the close of the year 2025. This reflective piece is anticipated to examine the significant technological advancements and persistent challenges that would characterize the AI landscape by that point. It would likely delve into the continuous evolution of large language models, the emergence and proliferation of sophisticated AI agents, and the deepening integration of AI across diverse industries. The author is expected to explore the practical implications of these developments, touching upon their societal, economic, and ethical ramifications, while also scrutinizing the sustainability and future direction of AI research and deployment. Key themes might include breakthroughs in multimodal AI, the ongoing debate surrounding Artificial General Intelligence, and the real-world impact of AI on automation and human-computer interaction, providing a nuanced perspective beyond prevailing hype.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>AI Trends</span><span>Large Language Models</span><span>AI Agents</span><span>Future of AI</span><span>Technological Forecasting</span><span>AI Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://antirez.com/news/157" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Claude Code Plugin to play music when waiting on user input</h2>
+                <span class="published-time">Published: 2025-12-20 16:06:44</span>
+                
+                <p class="summary">A new plugin for Claude Code has been developed to address the issue of user distraction during waiting periods. The plugin leverages Claude Code's internal hooks to automatically play music when the AI is awaiting user input. This innovation aims to enhance user experience and productivity by keeping users engaged rather than allowing them to tab away and forget about the ongoing task. The creator notes that Claude Code's processing can be slow enough to cause significant idle time, making this solution practical for preventing situations where users might leave the AI unattended for extended durations. This approach highlights a focus on optimizing human-AI interaction in applications where processing latency is a factor.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude Code</span><span>AI plugin</span><span>User Experience</span><span>Developer Tools</span><span>AI Agent</span><span>Productivity</span><span>Human-AI Interaction</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/Sevii/agent-marketplace/blob/main/plugins/elevator-music/README.md" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI will make our children stupid</h2>
+                <span class="published-time">Published: 2025-12-20 19:24:34</span>
+                
+                <p class="summary">The provocative title "AI will make our children stupid" encapsulates a growing societal concern regarding the pervasive integration of artificial intelligence into the educational environment and the daily lives of children. This perspective posits that an increasing reliance on AI tools for critical tasks such as problem-solving, information acquisition, and creative expression may inadvertently impede the natural development of fundamental cognitive skills. Arguments often highlight the risk of diminished critical thinking, analytical reasoning, and memory retention, suggesting that outsourcing intellectual effort to AI could foster a passive learning approach. This raises significant questions about the long-term impact on intellectual curiosity and the capacity for independent thought, challenging educators and parents to find a balanced integration of AI that supports learning without undermining essential human intellectual development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Education Technology</span><span>Cognitive Impact</span><span>Child Development</span><span>Critical Thinking</span><span>AI Ethics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://thecritic.co.uk/ai-will-make-our-children-stupid/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
