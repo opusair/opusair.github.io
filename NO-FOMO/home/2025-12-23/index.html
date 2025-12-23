@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-12-23</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-12-23</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Local AI is driving the biggest change in laptops in decades</h2>
+                <span class="published-time">Published: 2025-12-23 00:12:16</span>
+                
+                <p class="summary">The integration of local AI capabilities directly into laptops is heralded as the most significant transformation in personal computing hardware in decades. This paradigm shift enables artificial intelligence tasks to be processed on-device rather than relying solely on cloud infrastructure, offering substantial benefits in terms of data privacy, reduced latency, and enhanced offline functionality. The move toward local AI necessitates the development of specialized hardware, such as Neural Processing Units (NPUs), which are becoming standard components in new laptop architectures to efficiently handle complex AI workloads. This evolution is not merely an incremental upgrade but a foundational change, promising to unlock new levels of performance and user experience across various applications, from creative content generation and advanced productivity tools to more sophisticated personal assistants. As manufacturers embed more powerful AI engines directly into their devices, laptops are set to become intelligent and self-sufficient platforms, redefining the scope and potential of mobile computing.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Local AI</span><span>On-device AI</span><span>AI hardware</span><span>Neural Processing Unit</span><span>Personal computing</span><span>Edge AI</span><span>AI acceleration</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://spectrum.ieee.org/ai-models-locally" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Test, don't (just) verify</h2>
+                <span class="published-time">Published: 2025-12-23 12:56:50</span>
+                
+                <p class="summary">The adage 'Test, don't (just) verify' advocates for a proactive and comprehensive approach to software quality assurance, moving beyond mere confirmation of expected outcomes to actively discovering unforeseen defects and vulnerabilities. This philosophy underscores the importance of exploratory testing and continuous integration, where the goal is to break the system under various conditions rather than simply confirming its adherence to specifications. In modern software development, this principle is increasingly intertwined with advancements in Artificial Intelligence and Machine Learning. AI-powered testing agents can intelligently explore software functionalities, identify edge cases, and even predict potential failure points with greater efficiency and depth than traditional methods. Machine learning algorithms can analyze vast datasets of code and user interactions to optimize test suites, prioritize critical test cases, and dynamically adapt testing strategies. This paradigm shift emphasizes building robust, resilient systems by leveraging intelligent automation to ensure quality, pushing the boundaries from passive verification to dynamic, intelligent assurance across the development lifecycle.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Software Testing</span><span>Quality Assurance</span><span>AI in Testing</span><span>Test Automation</span><span>Exploratory Testing</span><span>Intelligent Systems</span><span>Software Development Life Cycle</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://alperenkeles.com/posts/test-dont-verify/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Social media encourages the worst of AI boosterism</h2>
+                <span class="published-time">Published: 2025-12-23 19:16:43</span>
+                
+                <p class="summary">The article critically examines the detrimental role of social media platforms in fostering an overly optimistic and often unrealistic perception of Artificial Intelligence. It argues that the inherent mechanisms of social media, such as algorithmic amplification, character limits, and the pursuit of viral content, inadvertently promote exaggerated claims and speculative narratives about AI's capabilities. This environment encourages 'AI boosterism,' where nuanced discussions about technological limitations, ethical concerns, and potential societal risks are frequently overshadowed by sensational headlines and simplified, often misleading, portrayals of advancements. Such pervasive hype can lead to a distorted public understanding of AI, influencing investment trends, policy decisions, and the allocation of research resources towards potentially unsustainable or unproven directions. The piece suggests that the rapid dissemination of unverified information and the echo chamber effect on social media hinder critical evaluation, contributing to a cycle of unrealistic expectations and eventual disillusionment regarding the true progress and impact of AI technologies. This phenomenon underscores the need for greater media literacy and critical engagement with AI-related content shared across digital platforms.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Hype</span><span>Social Media Influence</span><span>Misinformation</span><span>Public Perception</span><span>Ethical AI</span><span>Technological Boosterism</span><span>AI Criticism</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.technologyreview.com/2025/12/23/1130393/how-social-media-encourages-the-worst-of-ai-boosterism/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Nature Is Laughing at the AI Build Out</h2>
+                <span class="published-time">Published: 2025-12-23 19:07:01</span>
+                
+                <p class="summary">The article, titled 'Nature Is Laughing at the AI Build Out,' critiques the accelerating expansion of artificial intelligence infrastructure and its environmental implications. It suggests that the current pace and scale of AI development are unsustainable, highlighting significant concerns regarding resource consumption, energy demands, and carbon footprint. The piece likely delves into the massive computational power required for training large AI models, the significant water usage for cooling data centers, and the raw materials needed for hardware production. It challenges the industry to consider the ecological costs associated with its rapid growth, advocating for more sustainable practices and a greater awareness of AI's broader environmental impact. The author implicitly argues that while technological progress is celebrated, the natural world's capacity to absorb these demands is being severely tested, prompting a reevaluation of AI's long-term sustainability.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Sustainability</span><span>Environmental Impact</span><span>Resource Consumption</span><span>Data Centers</span><span>Energy Efficiency</span><span>AI Ethics</span><span>Climate Change AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://markmaunder.com/2025/nature-is-laughing-at-the-ai-build-out/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Meta is using the Linux scheduler designed for Valve's Steam Deck on its servers</h2>
+                <span class="published-time">Published: 2025-12-23 17:08:34</span>
+                
+                <p class="summary">Meta Platforms is reportedly integrating the SCX (Scheduler Core X) Linux scheduler, initially developed for Valve's Steam Deck, into its vast server infrastructure. This adoption signifies a strategic move to leverage a scheduler optimized for interactive, low-latency applications within a large-scale data center environment, moving beyond its initial gaming-centric purpose. The SCX scheduler's design principles, focused on efficient resource utilization, fairness, and responsiveness, are now being applied to Meta's diverse workloads, which likely include demanding AI/ML computations and media processing. This cross-domain deployment highlights an interesting development in operating system kernel optimization, suggesting potential benefits in areas such as improved overall system performance, reduced latency for critical services, and enhanced resource management across Meta's extensive server farms. The initiative underscores the adaptability of specialized kernel components to broader enterprise applications, potentially impacting how major tech companies manage their computational resources for a wide array of services and highlighting Valve's contribution to broader Linux ecosystem.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Linux scheduler</span><span>Meta Platforms</span><span>Steam Deck</span><span>SCX</span><span>Server infrastructure</span><span>Operating systems</span><span>Performance optimization</span><span>Data centers</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.phoronix.com/news/Meta-SCX-LAVD-Steam-Deck-Server" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Carnap – A formal logic framework for Haskell</h2>
+                <span class="published-time">Published: 2025-12-23 09:17:42</span>
+                
+                <p class="summary">Carnap is presented as a dedicated formal logic framework built for the Haskell programming language, offering a robust environment for developing applications that demand rigorous logical reasoning and formal verification. This framework is designed to empower developers and researchers by integrating advanced logical capabilities directly within Haskell's functional programming paradigm. It leverages the language's strong type system to ensure precision and correctness, making it suitable for tasks such as automated theorem proving, model checking, and the development of declarative knowledge representation systems. Carnap’s utility extends across various domains, including higher education for teaching logic and computer science principles, as well as in professional settings where software correctness is critical, such as in formal methods for critical software systems or the construction of symbolic Artificial Intelligence components. By providing a solid foundation for building intelligent systems with explicit and verifiable logical structures, Carnap significantly contributes to advancements in automated reasoning and the broader field of symbolic AI.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Formal Logic</span><span>Haskell</span><span>Programming Framework</span><span>Automated Reasoning</span><span>Theorem Proving</span><span>Symbolic AI</span><span>Software Verification</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Others</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://carnap.io/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>GenEnv: Difficulty-Aligned Co-Evolution Between LLM Agents and Environment Simulators</h2>
+                <span class="published-time">Published: 2025-12-22T18:57:13.000Z</span>
+                
+                <p class="summary">Training capable Large Language Model (LLM) agents is critically bottlenecked by the high cost and static nature of real-world interaction data. We address this by introducing GenEnv, a framework that establishes a difficulty-aligned co-evolutionary game between an agent and a scalable, generative environment simulator. Unlike traditional methods that evolve models on static datasets, GenEnv instantiates a data-evolving: the simulator acts as a dynamic curriculum policy, continuously generating tasks specifically tailored to the agent's ``zone of proximal development''. This process is guided by a simple but effective α-Curriculum Reward, which aligns task difficulty with the agent's current capabilities. We evaluate GenEnv on five benchmarks, including API-Bank, ALFWorld, BFCL, Bamboogle, and TravelPlanner. Across these tasks, GenEnv improves agent performance by up to +40.3% over 7B baselines and matches or exceeds the average performance of larger models. Compared to Gemini 2.5 Pro-based offline data augmentation, GenEnv achieves better performance while using 3.3times less data. By shifting from static supervision to adaptive simulation, GenEnv provides a data-efficient pathway for scaling agent capabilities.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM Agents</span><span>Environment Simulators</span><span>Co-evolution</span><span>Curriculum Learning</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.19682" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>WorldWarp: Propagating 3D Geometry with Asynchronous Video Diffusion</h2>
+                <span class="published-time">Published: 2025-12-22T18:53:50.000Z</span>
+                
+                <p class="summary">Generating long-range, geometrically consistent video presents a fundamental dilemma: while consistency demands strict adherence to 3D geometry in pixel space, state-of-the-art generative models operate most effectively in a camera-conditioned latent space. This disconnect causes current methods to struggle with occluded areas and complex camera trajectories. To bridge this gap, we propose WorldWarp, a framework that couples a 3D structural anchor with a 2D generative refiner. To establish geometric grounding, WorldWarp maintains an online 3D geometric cache built via Gaussian Splatting (3DGS). By explicitly warping historical content into novel views, this cache acts as a structural scaffold, ensuring each new frame respects prior geometry. However, static warping inevitably leaves holes and artifacts due to occlusions. We address this using a Spatio-Temporal Diffusion (ST-Diff) model designed for a "fill-and-revise" objective. Our key innovation is a spatio-temporal varying noise schedule: blank regions receive full noise to trigger generation, while warped regions receive partial noise to enable refinement. By dynamically updating the 3D cache at every step, WorldWarp maintains consistency across video chunks. Consequently, it achieves state-of-the-art fidelity by ensuring that 3D logic guides structure while diffusion logic perfects texture. Project page: https://hyokong.github.io/worldwarp-page/{https://hyokong.github.io/worldwarp-page/}.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Generation</span><span>3D Geometry</span><span>Diffusion Models</span><span>Gaussian Splatting</span><span>Geometric Consistency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.19678" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>StoryMem: Multi-shot Long Video Storytelling with Memory</h2>
+                <span class="published-time">Published: 2025-12-22T16:23:24.000Z</span>
+                
+                <p class="summary">Visual storytelling requires generating multi-shot videos with cinematic quality and long-range consistency. Inspired by human memory, we propose StoryMem, a paradigm that reformulates long-form video storytelling as iterative shot synthesis conditioned on explicit visual memory, transforming pre-trained single-shot video diffusion models into multi-shot storytellers. This is achieved by a novel Memory-to-Video (M2V) design, which maintains a compact and dynamically updated memory bank of keyframes from historical generated shots. The stored memory is then injected into single-shot video diffusion models via latent concatenation and negative RoPE shifts with only LoRA fine-tuning. A semantic keyframe selection strategy, together with aesthetic preference filtering, further ensures informative and stable memory throughout generation. Moreover, the proposed framework naturally accommodates smooth shot transitions and customized story generation applications. To facilitate evaluation, we introduce ST-Bench, a diverse benchmark for multi-shot video storytelling. Extensive experiments demonstrate that StoryMem achieves superior cross-shot consistency over previous methods while preserving high aesthetic quality and prompt adherence, marking a significant step toward coherent minute-long video storytelling.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Visual Storytelling</span><span>Multi-shot Video Generation</span><span>Memory-to-Video</span><span>Video Diffusion Models</span><span>Cross-shot Consistency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Deep Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.19539" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MobileWorld: Benchmarking Autonomous Mobile Agents in Agent-User Interactive, and MCP-Augmented Environments</h2>
+                <span class="published-time">Published: 2025-12-22T14:31:28.000Z</span>
+                
+                <p class="summary">Among existing online mobile-use benchmarks, AndroidWorld has emerged as the dominant benchmark due to its reproducible environment and deterministic evaluation; however, recent agents achieving over 90% success rates indicate its saturation and motivate the need for a more challenging benchmark. In addition, its environment lacks key application categories, such as e-commerce and enterprise communication, and does not reflect realistic mobile-use scenarios characterized by vague user instructions and hybrid tool usage. To bridge this gap, we introduce MobileWorld, a substantially more challenging benchmark designed to better reflect real-world mobile usage, comprising 201 tasks across 20 applications, while maintaining the same level of reproducible evaluation as AndroidWorld. The difficulty of MobileWorld is twofold. First, it emphasizes long-horizon tasks with cross-application interactions: MobileWorld requires nearly twice as many task-completion steps on average (27.8 vs. 14.3) and includes far more multi-application tasks (62.2% vs. 9.5%) compared to AndroidWorld. Second, MobileWorld extends beyond standard GUI manipulation by introducing novel task categories, including agent-user interaction and MCP-augmented tasks. To ensure robust evaluation, we provide snapshot-based container environment and precise functional verifications, including backend database inspection and task callback APIs. We further develop a planner-executor agentic framework with extended action spaces to support user interactions and MCP calls. Our results reveal a sharp performance drop compared to AndroidWorld, with the best agentic framework and end-to-end model achieving 51.7% and 20.9% success rates, respectively. Our analysis shows that current models struggle significantly with user interaction and MCP calls, offering a strategic roadmap toward more robust, next-generation mobile intelligence.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>MobileWorld</span><span>Autonomous Mobile Agents</span><span>Benchmarking</span><span>Agent-User Interaction</span><span>Mobile Intelligence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.19432" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Brain-Grounded Axes for Reading and Steering LLM States</h2>
+                <span class="published-time">Published: 2025-12-22T13:51:03.000Z</span>
+                
+                <p class="summary">Interpretability methods for large language models (LLMs) typically derive directions from textual supervision, which can lack external grounding. We propose using human brain activity not as a training signal but as a coordinate system for reading and steering LLM states. Using the SMN4Lang MEG dataset, we construct a word-level brain atlas of phase-locking value (PLV) patterns and extract latent axes via ICA. We validate axes with independent lexica and NER-based labels (POS/log-frequency used as sanity checks), then train lightweight adapters that map LLM hidden states to these brain axes without fine-tuning the LLM. Steering along the resulting brain-derived directions yields a robust lexical (frequency-linked) axis in a mid TinyLlama layer, surviving perplexity-matched controls, and a brain-vs-text probe comparison shows larger log-frequency shifts (relative to the text probe) with lower perplexity for the brain axis. A function/content axis (axis 13) shows consistent steering in TinyLlama, Qwen2-0.5B, and GPT-2, with PPL-matched text-level corroboration. Layer-4 effects in TinyLlama are large but inconsistent, so we treat them as secondary (Appendix). Axis structure is stable when the atlas is rebuilt without GPT embedding-change features or with word2vec embeddings (|r|=0.64-0.95 across matched axes), reducing circularity concerns. Exploratory fMRI anchoring suggests potential alignment for embedding change and log frequency, but effects are sensitive to hemodynamic modeling assumptions and are treated as population-level evidence only. These results support a new interface: neurophysiology-grounded axes provide interpretable and controllable handles for LLM behavior.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Neurophysiology</span><span>Interpretability</span><span>Model Steering</span><span>Brain-Grounded Axes</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.19399" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>QuCo-RAG: Quantifying Uncertainty from the Pre-training Corpus for Dynamic Retrieval-Augmented Generation</h2>
+                <span class="published-time">Published: 2025-12-22T08:28:05.000Z</span>
+                
+                <p class="summary">Dynamic Retrieval-Augmented Generation adaptively determines when to retrieve during generation to mitigate hallucinations in large language models (LLMs). However, existing methods rely on model-internal signals (e.g., logits, entropy), which are fundamentally unreliable because LLMs are typically ill-calibrated and often exhibit high confidence in erroneous outputs. We propose QuCo-RAG, which shifts from subjective confidence to objective statistics computed from pre-training data. Our method quantifies uncertainty through two stages: (1) before generation, we identify low-frequency entities indicating long-tail knowledge gaps; (2) during generation, we verify entity co-occurrence in the pre-training corpus, where zero co-occurrence often signals hallucination risk. Both stages leverage Infini-gram for millisecond-latency queries over 4 trillion tokens, triggering retrieval when uncertainty is high. Experiments on multi-hop QA benchmarks show QuCo-RAG achieves EM gains of 5--12 points over state-of-the-art baselines with OLMo-2 models, and transfers effectively to models with undisclosed pre-training data (Llama, Qwen, GPT), improving EM by up to 14 points. Domain generalization on biomedical QA further validates the robustness of our paradigm. These results establish corpus-grounded verification as a principled, practically model-agnostic paradigm for dynamic RAG. Our code is publicly available at https://github.com/ZhishanQ/QuCo-RAG.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Retrieval-Augmented Generation</span><span>Large Language Models</span><span>Uncertainty Quantification</span><span>Hallucination Mitigation</span><span>Pre-training Corpus</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.19134" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
