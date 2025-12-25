@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-12-25</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-12-25</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>We invited a man into our home at Christmas and he stayed with us for 45 years</h2>
+                <span class="published-time">Published: 2025-12-25 10:35:34</span>
+                
+                <p class="summary">This Hacker News discussion explores the metaphor of a long-term, unexpectedly persistent technological integration, framed by the narrative "We invited a man into our home at Christmas and he stayed with us for 45 years." It delves into the technical implications of foundational AI systems or software components that, initially deployed as experiments or temporary solutions, evolve into indispensable, deeply integrated parts of an organization's infrastructure. The story highlights critical challenges associated with system longevity, including continuous maintenance, adaptation to evolving technological landscapes, and the often-overlooked accumulation of technical debt over decades. Analysis focuses on the initial architectural decisions that lead to such unexpected permanence, the operational resilience required for systems to function far beyond their anticipated lifespans, and the strategic implications of managing legacy AI. This metaphorical case study prompts reflection on the "stickiness" of effective or deeply embedded solutions, emphasizing the long-term impact on digital strategy and resource allocation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Longevity</span><span>Legacy Systems</span><span>System Integration</span><span>Software Maintenance</span><span>Persistent AI</span><span>Operational Resilience</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.bbc.co.uk/news/articles/cdxwllqz1l0o" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>All I Want for Xmas Is Your Secrets: LangGrinch Hits LangChain (CVE-2025-68664)</h2>
+                <span class="published-time">Published: 2025-12-25 18:06:44</span>
+                
+                <p class="summary">The article "All I Want for Xmas Is Your Secrets: LangGrinch Hits LangChain (CVE-2025-68664)" details a critical security vulnerability discovered within the widely-used LangChain framework, identified as CVE-2025-68664. Dubbed "LangGrinch," this flaw reportedly facilitates unauthorized access to sensitive information or "secrets" processed and managed by applications built upon the LangChain ecosystem. Given LangChain's pivotal role in developing advanced large language model (LLM) applications and sophisticated AI agents, the potential for exploitation presents significant risks to data confidentiality, system integrity, and overall user trust. The disclosure emphasizes the urgent need for developers and organizations leveraging LangChain to promptly address the vulnerability. This includes reviewing official security advisories, applying recommended patches, and implementing robust mitigation strategies to protect against potential data breaches or unauthorized operations. The incident highlights the growing importance of embedding comprehensive security measures throughout the development lifecycle of AI-driven systems and frameworks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LangChain</span><span>Security Vulnerability</span><span>CVE-2025-68664</span><span>AI Security</span><span>Large Language Models</span><span>Framework Security</span><span>Data Confidentiality</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://cyata.ai/blog/langgrinch-langchain-core-cve-2025-68664/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Who Watches the Waymos? I do [video]</h2>
+                <span class="published-time">Published: 2025-12-25 00:10:12</span>
+                
+                <p class="summary">The Hacker News story, titled 'Who Watches the Waymos? I do [video]', references a video-based observation of Waymo's autonomous vehicle operations. While specific details of the video content are not provided within the initial submission, the title strongly implies a direct, possibly public, monitoring of self-driving cars. This type of content often explores the real-world performance, safety protocols, and general behavior of autonomous vehicles in urban environments. Public observation of autonomous vehicle fleets like Waymo's is crucial for fostering transparency and building trust in self-driving technology. Such videos can highlight both the advancements and potential challenges faced by these systems, offering insights into their interaction with human drivers, pedestrians, and dynamic road conditions. Discussions around these observations frequently touch upon regulatory frameworks, ethical considerations, and the future integration of autonomous transportation into daily life, underscoring the ongoing public interest and scrutiny of this rapidly evolving field.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Autonomous Vehicles</span><span>Self-driving Technology</span><span>Waymo</span><span>Robotics</span><span>Urban Mobility</span><span>Vehicle Monitoring</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Artificial Intelligence</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.youtube.com/watch?v=oYU2hAbx_Fc" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>No Longer Evil – new life for dead/outdated Nest Generation 1 and 2 thermostats</h2>
+                <span class="published-time">Published: 2025-12-25 03:32:42</span>
+                
+                <p class="summary">The "No Longer Evil" project offers a significant initiative to combat electronic waste and proprietary obsolescence by providing "new life" to dead or outdated Nest Generation 1 and 2 thermostats. This project aims to deliver alternative firmware or software solutions, enabling these early smart home devices to regain functionality and potentially gain new capabilities, effectively extending their operational lifespan. This open-source approach empowers users to maintain control over their hardware, circumventing issues of vendor lock-in and discontinued support that often render smart devices unusable. The effort underscores a growing emphasis on sustainability within the Internet of Things (IoT) ecosystem, promoting the responsible reuse of technology and reducing environmental impact. By revitalizing these intelligent thermostats, the project not only offers practical utility to owners but also sets a precedent for community-driven maintenance and enhancement of legacy smart devices, potentially allowing for renewed "smart" integrations or even enhanced AI-driven temperature management beyond original specifications. This initiative is crucial for fostering a more sustainable and user-centric future for connected home technology.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Nest Thermostat</span><span>Smart Home</span><span>IoT</span><span>Firmware</span><span>Hardware Hacking</span><span>Sustainability</span><span>Electronic Waste</span><span>Open Source</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://nolongerevil.com/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Donald Knuth's 2025 Christmas lecture: the Knight's Tours</h2>
+                <span class="published-time">Published: 2025-12-25 17:09:09</span>
+                
+                <p class="summary">Donald Knuth, the celebrated computer scientist and esteemed author of the multi-volume series "The Art of Computer Programming," is scheduled to present his highly anticipated annual Christmas lecture in 2025, dedicating it to the fascinating and complex mathematical problem known as "The Knight's Tours." This forthcoming lecture is expected to offer an in-depth exploration of the various algorithmic strategies and combinatorial complexities involved in determining a sequence of moves for a knight on a standard chessboard that visits every square precisely once. Knuth's Christmas lectures are a hallmark event, celebrated for their unparalleled ability to illuminate fundamental computational problems by merging rigorous theoretical analysis with elegant practical considerations. The Knight's Tour, a classic challenge deeply rooted in recreational mathematics and graph theory, provides a rich framework for discussing topics such as efficient backtracking algorithms, the existence and construction of Hamiltonian paths, and the comparative analysis of search methodologies. The 2025 event is poised to draw a significant international audience of researchers, students, and computer science enthusiasts, eager to gain insights from one of the discipline's most influential figures and engage with advanced concepts in algorithmic design, discrete mathematics, and computational problem-solving.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Donald Knuth</span><span>Knight's Tour</span><span>Computer Science</span><span>Algorithms</span><span>Graph Theory</span><span>Combinatorial Optimization</span><span>Discrete Mathematics</span><span>Search Algorithms</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://thenewstack.io/donald-knuths-2025-christmas-lecture-the-knights-tours/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>NVIDIA Nemotron 3: Efficient and Open Intelligence</h2>
+                <span class="published-time">Published: 2025-12-24T00:24:05.000Z</span>
+                
+                <p class="summary">We introduce the Nemotron 3 family of models - Nano, Super, and Ultra. These models deliver strong agentic, reasoning, and conversational capabilities. The Nemotron 3 family uses a Mixture-of-Experts hybrid Mamba-Transformer architecture to provide best-in-class throughput and context lengths of up to 1M tokens. Super and Ultra models are trained with NVFP4 and incorporate LatentMoE, a novel approach that improves model quality. The two larger models also include MTP layers for faster text generation. All Nemotron 3 models are post-trained using multi-environment reinforcement learning enabling reasoning, multi-step tool use, and support granular reasoning budget control. Nano, the smallest model, outperforms comparable models in accuracy while remaining extremely cost-efficient for inference. Super is optimized for collaborative agents and high-volume workloads such as IT ticket automation. Ultra, the largest model, provides state-of-the-art accuracy and reasoning performance. Nano is released together with its technical report and this white paper, while Super and Ultra will follow in the coming months. We will openly release the model weights, pre- and post-training software, recipes, and all data for which we hold redistribution rights.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Nemotron 3</span><span>Mixture-of-Experts</span><span>Mamba-Transformer</span><span>Reinforcement Learning</span><span>AI Agent</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.20856" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Streaming Video Instruction Tuning</h2>
+                <span class="published-time">Published: 2025-12-24T18:59:36.000Z</span>
+                
+                <p class="summary">We present Streamo, a real-time streaming video LLM that serves as a general-purpose interactive assistant. Unlike existing online video models that focus narrowly on question answering or captioning, Streamo performs a broad spectrum of streaming video tasks, including real-time narration, action understanding, event captioning, temporal event grounding, and time-sensitive question answering. To develop such versatility, we construct Streamo-Instruct-465K, a large-scale instruction-following dataset tailored for streaming video understanding. The dataset covers diverse temporal contexts and multi-task supervision, enabling unified training across heterogeneous streaming tasks. After training end-to-end on the instruction-following dataset through a streamlined pipeline, Streamo exhibits strong temporal reasoning, responsive interaction, and broad generalization across a variety of streaming benchmarks. Extensive experiments show that Streamo bridges the gap between offline video perception models and real-time multimodal assistants, making a step toward unified, intelligent video understanding in continuous video streams.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Streaming Video</span><span>Large Language Model</span><span>Instruction Tuning</span><span>Real-time AI</span><span>Multimodal Assistants</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Video Understanding</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.21334" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>SWE-EVO: Benchmarking Coding Agents in Long-Horizon Software Evolution Scenarios</h2>
+                <span class="published-time">Published: 2025-12-20T19:08:15.000Z</span>
+                
+                <p class="summary">Existing benchmarks for AI coding agents focus on isolated, single-issue tasks such as fixing a bug or implementing a small feature. However, real-world software engineering is fundamentally a long-horizon endeavor: developers must interpret high-level requirements, plan coordinated changes across many files, and evolve codebases over multiple iterations while preserving existing functionality. We introduce SWE-EVO, a benchmark that evaluates agents on this long-horizon software evolution challenge. Constructed from release notes and version histories of seven mature open-source Python projects, Tool comprises 48 evolution tasks that require agents to implement multi-step modifications spanning an average of 21 files, validated against comprehensive test suites averaging 874 tests per instance. Experiments with state-of-the-art models reveal a striking capability gap: even GPT-5 with OpenHands achieves only a 21 percent resolution rate on Tool, compared to 65 percent on the single-issue SWE-Bench Verified. This demonstrates that current agents struggle with sustained, multi-file reasoning. We also propose Fix Rate, a fine-grained metric that captures partial progress toward solving these complex, long-horizon tasks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Coding Agents</span><span>Software Evolution</span><span>Benchmarking</span><span>Long-Horizon Tasks</span><span>Software Engineering</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.18470" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>HiStream: Efficient High-Resolution Video Generation via Redundancy-Eliminated Streaming</h2>
+                <span class="published-time">Published: 2025-12-24T18:59:58.000Z</span>
+                
+                <p class="summary">High-resolution video generation, while crucial for digital media and film, is computationally bottlenecked by the quadratic complexity of diffusion models, making practical inference infeasible. To address this, we introduce HiStream, an efficient autoregressive framework that systematically reduces redundancy across three axes: i) Spatial Compression: denoising at low resolution before refining at high resolution with cached features; ii) Temporal Compression: a chunk-by-chunk strategy with a fixed-size anchor cache, ensuring stable inference speed; and iii) Timestep Compression: applying fewer denoising steps to subsequent, cache-conditioned chunks. On 1080p benchmarks, our primary HiStream model (i+ii) achieves state-of-the-art visual quality while demonstrating up to 76.2x faster denoising compared to the Wan2.1 baseline and negligible quality loss. Our faster variant, HiStream+, applies all three optimizations (i+ii+iii), achieving a 107.5x acceleration over the baseline, offering a compelling trade-off between speed and quality, thereby making high-resolution video generation both practical and scalable.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>High-Resolution Video Generation</span><span>Diffusion Models</span><span>Redundancy Elimination</span><span>Video Streaming</span><span>Denoising</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Deep Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.21338" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>T2AV-Compass: Towards Unified Evaluation for Text-to-Audio-Video Generation</h2>
+                <span class="published-time">Published: 2025-12-24T10:30:35.000Z</span>
+                
+                <p class="summary">Text-to-Audio-Video (T2AV) generation aims to synthesize temporally coherent video and semantically synchronized audio from natural language, yet its evaluation remains fragmented, often relying on unimodal metrics or narrowly scoped benchmarks that fail to capture cross-modal alignment, instruction following, and perceptual realism under complex prompts. To address this limitation, we present T2AV-Compass, a unified benchmark for comprehensive evaluation of T2AV systems, consisting of 500 diverse and complex prompts constructed via a taxonomy-driven pipeline to ensure semantic richness and physical plausibility. Besides, T2AV-Compass introduces a dual-level evaluation framework that integrates objective signal-level metrics for video quality, audio quality, and cross-modal alignment with a subjective MLLM-as-a-Judge protocol for instruction following and realism assessment. Extensive evaluation of 11 representative T2AVsystems reveals that even the strongest models fall substantially short of human-level realism and cross-modal consistency, with persistent failures in audio realism, fine-grained synchronization, instruction following, etc. These results indicate significant improvement room for future models and highlight the value of T2AV-Compass as a challenging and diagnostic testbed for advancing text-to-audio-video generation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Text-to-Audio-Video Generation</span><span>Unified Evaluation</span><span>Benchmark</span><span>Multimodal Learning</span><span>Cross-modal Alignment</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Generative AI</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.21094" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>PhononBench:A Large-Scale Phonon-Based Benchmark for Dynamical Stability in Crystal Generation</h2>
+                <span class="published-time">Published: 2025-12-24T15:07:36.000Z</span>
+                
+                <p class="summary">In this work, we introduce PhononBench, the first large-scale benchmark for dynamical stability in AI-generated crystals. Leveraging the recently developed MatterSim interatomic potential, which achieves DFT-level accuracy in phonon predictions across more than 10,000 materials, PhononBench enables efficient large-scale phonon calculations and dynamical-stability analysis for 108,843 crystal structures generated by six leading crystal generation models. PhononBench reveals a widespread limitation of current generative models in ensuring dynamical stability: the average dynamical-stability rate across all generated structures is only 25.83%, with the top-performing model, MatterGen, reaching just 41.0%. Further case studies show that in property-targeted generation-illustrated here by band-gap conditioning with MatterGen--the dynamical-stability rate remains as low as 23.5% even at the optimal band-gap condition of 0.5 eV. In space-group-controlled generation, higher-symmetry crystals exhibit better stability (e.g., cubic systems achieve rates up to 49.2%), yet the average stability across all controlled generations is still only 34.4%. An important additional outcome of this study is the identification of 28,119 crystal structures that are phonon-stable across the entire Brillouin zone, providing a substantial pool of reliable candidates for future materials exploration. By establishing the first large-scale dynamical-stability benchmark, this work systematically highlights the current limitations of crystal generation models and offers essential evaluation criteria and guidance for their future development toward the design and discovery of physically viable materials. All model-generated crystal structures, phonon calculation results, and the high-throughput evaluation workflows developed in PhononBench will be openly released at https://github.com/xqh19970407/PhononBench</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>PhononBench</span><span>Crystal Generation</span><span>Dynamical Stability</span><span>Generative Models</span><span>AI-Generated Materials</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.21227" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
