@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-12-26</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-12-26</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>TurboDiffusion: 100
+R200
+RAcceleration for Video Diffusion Models</h2>
+                <span class="published-time">Published: 2025-12-26 03:19:49</span>
+                
+                <p class="summary">A significant advancement in video diffusion models, named TurboDiffusion, has been introduced, demonstrating a remarkable 100 to 200 times acceleration in processing speeds. This breakthrough addresses one of the primary challenges in deploying video diffusion models, which traditionally suffer from high computational costs and slow inference times. By optimizing underlying architectural components and inference procedures, TurboDiffusion enables faster generation and manipulation of video content without compromising quality. The enhanced efficiency has profound implications for various applications, including real-time video synthesis, improved content creation workflows, and more accessible research in generative video AI. This development is expected to democratize access to sophisticated video generation capabilities, making them viable for a broader range of practical and research-oriented tasks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Diffusion Models</span><span>Model Acceleration</span><span>Generative AI</span><span>Deep Learning Optimization</span><span>Real-time Video Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/thu-ml/TurboDiffusion" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MiniMax M2.1: Built for Real-World Complex Tasks, Multi-Language Programming</h2>
+                <span class="published-time">Published: 2025-12-26 01:02:53</span>
+                
+                <p class="summary">Minimax has officially unveiled its M2.1 model, a new artificial intelligence offering specifically designed for navigating and solving complex real-world tasks. This advanced system is notably distinguished by its extensive support for multi-language programming, positioning it as a highly versatile tool for a broad spectrum of development and operational needs. The M2.1 aims to empower users with enhanced capabilities for intricate problem-solving, suggesting significant advancements in its underlying reasoning, logical processing, and contextual comprehension faculties. Its architectural design is geared towards robust performance in demanding computational environments, making it particularly suitable for enterprise-level applications, sophisticated data processing challenges, and automated workflow enhancements. By emphasizing multi-language programming, Minimax M2.1 seeks to streamline development workflows and foster innovation across various technological stacks, thereby reducing barriers for integrating advanced AI into diverse software ecosystems. This release underscores Minimax's strategic focus on developing practical, high-utility AI solutions that directly address contemporary industry demands for adaptability, efficiency, and comprehensive problem-solving in complex digital landscapes. The model's ability to handle diverse programming languages implies a sophisticated understanding of syntax and semantics, crucial for automating and assisting in software development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>MiniMax M2.1</span><span>Large Language Model</span><span>Multilingual Programming</span><span>AI Development</span><span>Complex Task Automation</span><span>Real-World AI</span><span>Software Engineering</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.minimaxi.com/news/minimax-m21" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>High School Student Discovers 1.5M Potential New Astronomical Objects</h2>
+                <span class="published-time">Published: 2025-12-26 15:13:21</span>
+                
+                <p class="summary">A high school student has achieved a significant scientific breakthrough, discovering 1.5 million potential new astronomical objects through the development of a sophisticated artificial intelligence algorithm. Utilizing publicly available data from the European Space Agency's Gaia observatory, the student engineered and trained an AI model to autonomously analyze immense datasets, effectively identifying celestial bodies that had previously gone unnoticed by conventional methods. This extraordinary accomplishment not only highlights the student's advanced aptitude in computational science and machine learning but also exemplifies how accessible AI tools can democratize and accelerate scientific research, irrespective of academic background. The project's methodology offers a scalable and efficient approach to cataloging astronomical phenomena, presenting a novel solution for professional astronomers confronting the ever-expanding volume of observational data. This innovative application of AI is poised to enhance our understanding of galactic structures and stellar populations, potentially leading to numerous future discoveries and advancements in astrophysics.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Astronomy</span><span>Astrophysics</span><span>Data Analysis</span><span>AI Algorithms</span><span>Celestial Objects</span><span>Scientific Discovery</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.smithsonianmag.com/smart-news/high-school-student-discovers-1-5-million-potential-new-astronomical-objects-by-developing-an-ai-algorithm-180986429/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Rob Pike Goes Nuclear over GenAI</h2>
+                <span class="published-time">Published: 2025-12-26 14:08:47</span>
+                
+                <p class="summary">Rob Pike, a highly influential computer scientist renowned for his foundational work on Unix, Plan 9, the Go programming language, and UTF-8, has reportedly expressed exceptionally strong criticism regarding Generative AI. The phrase 'goes nuclear' suggests a profound level of disapproval and potential concerns about the technology's underlying principles, ethical implications, or practical applications. While the specific details of his critique are not outlined in the provided content, Pike's eminent standing in the computer science community means his commentary carries significant weight, potentially sparking considerable debate among developers and researchers. His 'nuclear' stance likely points to deep-seated issues he perceives within the current trajectory or implementation of generative artificial intelligence systems, prompting reflection on the future of AI development and its impact on software engineering and digital culture. This strong position from a revered figure underscores growing conversations around the responsible and effective deployment of AI technologies.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Generative AI</span><span>AI Criticism</span><span>Rob Pike</span><span>Technology Ethics</span><span>Computer Science</span><span>Software Development</span><span>AI Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://skyview.social/?url=https%3A%2F%2Fbsky.app%2Fprofile%2Frobpike.io%2Fpost%2F3matwg6w3ic2s&viewtype=tree" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Building an AI agent inside a 7-year-old Rails monolith</h2>
+                <span class="published-time">Published: 2025-12-26 07:35:15</span>
+                
+                <p class="summary">This story explores the intricate process of embedding an AI agent within a mature, seven-year-old Ruby on Rails monolithic application. The challenge lies in harmonizing cutting-edge artificial intelligence capabilities with an established, potentially complex legacy codebase. Key considerations would typically include architectural decisions, such as whether to integrate the AI agent directly into the monolith or deploy it as a separate microservice to minimize disruption and enhance scalability. The article likely delves into strategies for managing dependencies, upgrading older components, and ensuring compatibility between modern AI frameworks and the existing Rails environment. Furthermore, it would address the complexities of data handling, performance optimization, and maintaining code quality during such a significant technological integration. The narrative is expected to offer insights into overcoming the hurdles inherent in modernizing legacy systems with advanced AI functionalities, providing valuable lessons for developers tackling similar projects in enterprise environments.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Rails Monolith</span><span>Legacy Systems</span><span>Software Integration</span><span>Ruby on Rails</span><span>Software Architecture</span><span>System Modernization</span><span>Technical Debt</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://catalinionescu.dev/ai-agent/building-ai-agent-part-1/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Gaussian Splatting 3 Ways</h2>
+                <span class="published-time">Published: 2025-12-26 19:23:28</span>
+                
+                <p class="summary">The project titled "Gaussian Splatting 3 Ways" likely represents a technical exploration or implementation offering diverse methodologies for applying the Gaussian Splatting technique, a cutting-edge real-time 3D reconstruction and rendering approach. Hosted on GitHub as `NullSplats`, this initiative is expected to provide source code, comparative examples, or detailed insights into three distinct avenues for utilizing Gaussian Splatting. This technology has rapidly emerged as a powerful alternative to traditional neural radiance fields (NeRFs) due to its superior speed and often comparable or enhanced visual quality in synthesizing novel views from sparse camera inputs. The repository's probable objective is to showcase various rendering pipelines, optimization strategies, or integration paradigms related to 3D scene representation and view synthesis using Gaussian Splatting. Such a comparative or multi-faceted approach is invaluable for researchers and developers seeking to understand and leverage efficient 3D graphics and computer vision applications, highlighting different trade-offs and performance characteristics inherent in its various implementations.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Gaussian Splatting</span><span>3D Rendering</span><span>Computer Graphics</span><span>View Synthesis</span><span>Real-time Rendering</span><span>3D Reconstruction</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Generative AI</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/NullandKale/NullSplats" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Latent Implicit Visual Reasoning</h2>
+                <span class="published-time">Published: 2025-12-24T14:59:49.000Z</span>
+                
+                <p class="summary">While Large Multimodal Models (LMMs) have made significant progress, they remain largely text-centric, relying on language as their core reasoning modality. As a result, they are limited in their ability to handle reasoning tasks that are predominantly visual. Recent approaches have sought to address this by supervising intermediate visual steps with helper images, depth maps, or image crops. However, these strategies impose restrictive priors on what "useful" visual abstractions look like, add heavy annotation costs, and struggle to generalize across tasks. To address this critical limitation, we propose a task-agnostic mechanism that trains LMMs to discover and use visual reasoning tokens without explicit supervision. These tokens attend globally and re-encode the image in a task-adaptive way, enabling the model to extract relevant visual information without hand-crafted supervision. Our approach outperforms direct fine-tuning and achieves state-of-the-art results on a diverse range of vision-centric tasks -- including those where intermediate abstractions are hard to specify -- while also generalizing to multi-task instruction tuning.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Multimodal Models</span><span>Visual Reasoning</span><span>Computer Vision</span><span>Implicit Learning</span><span>Task-agnostic</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.21218" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Emergent temporal abstractions in autoregressive models enable hierarchical reinforcement learning</h2>
+                <span class="published-time">Published: 2025-12-23T18:51:50.000Z</span>
+                
+                <p class="summary">Large-scale autoregressive models pretrained on next-token prediction and finetuned with reinforcement learning (RL) have achieved unprecedented success on many problem domains. During RL, these models explore by generating new outputs, one token at a time. However, sampling actions token-by-token can result in highly inefficient learning, particularly when rewards are sparse. Here, we show that it is possible to overcome this problem by acting and exploring within the internal representations of an autoregressive model. Specifically, to discover temporally-abstract actions, we introduce a higher-order, non-causal sequence model whose outputs control the residual stream activations of a base autoregressive model. On grid world and MuJoCo-based tasks with hierarchical structure, we find that the higher-order model learns to compress long activation sequence chunks onto internal controllers. Critically, each controller executes a sequence of behaviorally meaningful actions that unfold over long timescales and are accompanied with a learned termination condition, such that composing multiple controllers over time leads to efficient exploration on novel tasks. We show that direct internal controller reinforcement, a process we term "internal RL", enables learning from sparse rewards in cases where standard RL finetuning fails. Our results demonstrate the benefits of latent action generation and reinforcement in autoregressive models, suggesting internal RL as a promising avenue for realizing hierarchical RL within foundation models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>hierarchical reinforcement learning</span><span>autoregressive models</span><span>internal RL</span><span>latent action generation</span><span>foundation models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Machine Learning</span><span>Deep Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.20605" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Spatia: Video Generation with Updatable Spatial Memory</h2>
+                <span class="published-time">Published: 2025-12-17T18:59:59.000Z</span>
+                
+                <p class="summary">Existing video generation models struggle to maintain long-term spatial and temporal consistency due to the dense, high-dimensional nature of video signals. To overcome this limitation, we propose Spatia, a spatial memory-aware video generation framework that explicitly preserves a 3D scene point cloud as persistent spatial memory. Spatia iteratively generates video clips conditioned on this spatial memory and continuously updates it through visual SLAM. This dynamic-static disentanglement design enhances spatial consistency throughout the generation process while preserving the model's ability to produce realistic dynamic entities. Furthermore, Spatia enables applications such as explicit camera control and 3D-aware interactive editing, providing a geometrically grounded framework for scalable, memory-driven video generation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Generation</span><span>Spatial Memory</span><span>3D Scene Point Cloud</span><span>Visual SLAM</span><span>Spatial Consistency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.15716" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Schoenfeld's Anatomy of Mathematical Reasoning by Language Models</h2>
+                <span class="published-time">Published: 2025-12-23T02:44:25.000Z</span>
+                
+                <p class="summary">Large language models increasingly expose reasoning traces, yet their underlying cognitive structure and steps remain difficult to identify and analyze beyond surface-level statistics. We adopt Schoenfeld's Episode Theory as an inductive, intermediate-scale lens and introduce ThinkARM (Anatomy of Reasoning in Models), a scalable framework that explicitly abstracts reasoning traces into functional reasoning steps such as Analysis, Explore, Implement, Verify, etc. When applied to mathematical problem solving by diverse models, this abstraction reveals reproducible thinking dynamics and structural differences between reasoning and non-reasoning models, which are not apparent from token-level views. We further present two diagnostic case studies showing that exploration functions as a critical branching step associated with correctness, and that efficiency-oriented methods selectively suppress evaluative feedback steps rather than uniformly shortening responses. Together, our results demonstrate that episode-level representations make reasoning steps explicit, enabling systematic analysis of how reasoning is structured, stabilized, and altered in modern language models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Reasoning Traces</span><span>Episode Theory</span><span>Mathematical Problem Solving</span><span>ThinkARM</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Artificial Intelligence</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.19995" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>VA-
+: Variational Policy Alignment for Pixel-Aware Autoregressive Generation</h2>
+                <span class="published-time">Published: 2025-12-22T18:54:30.000Z</span>
+                
+                <p class="summary">Autoregressive (AR) visual generation relies on tokenizers to map images to and from discrete sequences. However, tokenizers are trained to reconstruct clean images from ground-truth tokens, while AR generators are optimized only for token likelihood. This misalignment leads to generated token sequences that may decode into low-quality images, without direct supervision from the pixel space. We propose VA-
+, a lightweight post-training framework that directly optimizes AR models with a principled pixel-space objective. VA-
+ formulates the generator-tokenizer alignment as a variational optimization, deriving an evidence lower bound (ELBO) that unifies pixel reconstruction and autoregressive modeling. To optimize under the discrete token space, VA-
+ introduces a reinforcement-based alignment strategy that treats the AR generator as a policy, uses pixel-space reconstruction quality as its intrinsic reward. The reward is measured by how well the predicted token sequences can reconstruct the original image under teacher forcing, giving the model direct pixel-level guidance without expensive free-running sampling. The regularization term of the ELBO serves as a natural regularizer, maintaining distributional consistency of tokens. VA-
+ enables rapid adaptation of existing AR generators, without neither tokenizer retraining nor external reward models. With only 1% ImageNet-1K data and 25 minutes of tuning, it reduces FID from 14.36 to 7.65 and improves IS from 86.55 to 116.70 on LlamaGen-XXL, while also yielding notable gains in the text-to-image task on GenEval for both visual generation model (LlamaGen: from 0.306 to 0.339) and unified multi-modal model (Janus-Pro: from 0.725 to 0.744). Code is available at https://github.com/Lil-Shake/VA-Pi.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Autoregressive Generation</span><span>Variational Optimization</span><span>Pixel-Aware</span><span>Reinforcement Learning</span><span>Text-to-Image Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.19680" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>GTR-Turbo: Merged Checkpoint is Secretly a Free Teacher for Agentic VLM Training</h2>
+                <span class="published-time">Published: 2025-12-15T07:11:56.000Z</span>
+                
+                <p class="summary">Multi-turn reinforcement learning (RL) for multi-modal agents built upon vision-language models (VLMs) is hampered by sparse rewards and long-horizon credit assignment. Recent methods densify the reward by querying a teacher that provides step-level feedback, e.g., Guided Thought Reinforcement (GTR) and On-Policy Distillation, but rely on costly, often privileged models as the teacher, limiting practicality and reproducibility. We introduce GTR-Turbo, a highly efficient upgrade to GTR, which matches the performance without training or querying an expensive teacher model. Specifically, GTR-Turbo merges the weights of checkpoints produced during the ongoing RL training, and then uses this merged model as a "free" teacher to guide the subsequent RL via supervised fine-tuning or soft logit distillation. This design removes dependence on privileged VLMs (e.g., GPT or Gemini), mitigates the "entropy collapse" observed in prior work, and keeps training stable. Across diverse visual agentic tasks, GTR-Turbo improves the accuracy of the baseline model by 10-30% while reducing wall-clock training time by 50% and compute cost by 60% relative to GTR.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>GTR-Turbo</span><span>Agentic VLM Training</span><span>Reinforcement Learning</span><span>Vision-Language Models</span><span>Checkpoint Merging</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>AI Agent</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.13043" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
