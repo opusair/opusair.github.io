@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2025-12-29</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2025-12-29</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Meta's ads tools started switching out top-performing ads with AI-generated ones</h2>
+                <span class="published-time">Published: 2025-12-29 19:51:47</span>
+                
+                <p class="summary">Meta's advertising tools have reportedly initiated a process of automatically substituting top-performing ads with AI-generated versions, marking a significant advancement in the platform's integration of artificial intelligence. This shift, particularly within features like Advantage Plus, indicates Meta's push towards greater automation in advertising creative development. While the objective is likely to enhance efficiency and optimize campaign outcomes through algorithmic decision-making, the report also suggests potential for 'bizarre' or unconventional ad outputs, raising questions about quality control and brand consistency. This strategic move highlights the increasing role of generative AI in digital marketing, moving beyond mere ad targeting to actual content creation. It represents a critical evolution in how businesses might leverage Meta's ecosystem, promising streamlined processes but also necessitating a closer examination of AI's impact on creative integrity and user experience. The implications for advertisers include both unprecedented automation capabilities and new considerations for managing AI-driven content.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Generative AI</span><span>AI in Advertising</span><span>Digital Marketing</span><span>Ad Automation</span><span>Meta Platforms</span><span>Advantage Plus</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.businessinsider.com/meta-ai-generating-bizarre-ads-advantage-plus-2025-10" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Z80-μLM, a 'Conversational AI' That Fits in 40KB</h2>
+                <span class="published-time">Published: 2025-12-29 05:41:24</span>
+                
+                <p class="summary">Z80-μLM is an innovative character-level language model demonstrating the viability of 'conversational AI' within extreme hardware limitations, specifically a Z80 processor with 64KB RAM. The entire system, encompassing inference, 2-bit quantized weights, and a chat user interface, is confined to a 40KB .COM file executable on CP/M environments or real hardware. This project explores the minimum viable size for a functional language model, proving it can be trained for specific, constrained tasks like a simplified 20 Questions game or maintaining brief, personality-driven conversations. The development process necessitated significant engineering compromises, including the use of trigram hashing for efficiency and typo tolerance, 16-bit integer arithmetic, and meticulous quantization-aware training techniques. This work highlights creative solutions for deploying AI in severely resource-constrained settings, pushing the boundaries of what's possible with minimal computational overhead.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Z80</span><span>micro-language model</span><span>quantization</span><span>character-level LM</span><span>CP/M</span><span>trigram hashing</span><span>resource-constrained AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/HarryR/z80ai" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Evidex – AI Clinical Search (RAG over PubMed/OpenAlex and SOAP Notes)</h2>
+                <span class="published-time">Published: 2025-12-29 17:17:01</span>
+                
+                <p class="summary">Evidex is a newly developed AI clinical search engine designed to offer a clean, privacy-first alternative to existing, often expensive and ad-heavy medical search tools like UpToDate. Built by a solo developer to assist resident physicians, Evidex leverages a Real-time Retrieval-Augmented Generation (RAG) pattern. Unlike systems relying on potentially stale pre-indexed vector databases, Evidex employs a Node.js backend orchestrator that performs "Smart Routing" on user queries. This smart routing uses regex and keyword analysis to dynamically decide which external APIs to query, including PubMed, Europe PMC, OpenAlex, and ClinicalTrials.gov. The system then executes parallel fetches to these sources at runtime, ensuring access to the most current clinical data for medical professionals.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Clinical Search</span><span>RAG</span><span>Real-time RAG</span><span>PubMed</span><span>OpenAlex</span><span>SOAP Notes</span><span>ClinicalTrials.gov</span><span>Node.js</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.getevidex.com" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Vibe coding a bookshelf with Claude Code</h2>
+                <span class="published-time">Published: 2025-12-29 13:22:59</span>
+                
+                <p class="summary">The Hacker News submission, titled 'Show HN: Vibe coding a bookshelf with Claude Code,' showcases a project that explores a novel approach to software development, termed 'vibe coding,' using an AI code assistant. Specifically, the author demonstrates how Anthropic's Claude Code, a sophisticated large language model tailored for programming tasks, can be integrated into a developer's workflow to facilitate a more intuitive and less structured coding experience. The practical application chosen for this demonstration is the development of a digital bookshelf interface, implying a focus on front-end development, UI/UX implementation, or data display. This initiative underscores the growing potential of AI agents to not only automate repetitive coding tasks but also to act as creative collaborators, providing suggestions, generating code snippets, and assisting in problem-solving in real-time. The project likely aims to illustrate how such AI-driven tools can enhance developer productivity, accelerate the prototyping phase, and potentially lower the barrier to entry for complex coding projects, thereby evolving the paradigm of human-computer interaction in modern software engineering.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude Code</span><span>AI code assistant</span><span>Generative AI</span><span>Frontend development</span><span>Software development</span><span>Human-AI collaboration</span><span>Large Language Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://balajmarius.com/writings/vibe-coding-a-bookshelf-with-claude-code/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>UK accounting body to halt remote exams amid AI cheating</h2>
+                <span class="published-time">Published: 2025-12-29 13:06:49</span>
+                
+                <p class="summary">A prominent UK accounting body, reportedly the Association of Chartered Certified Accountants (ACCA) based on the article's source, has announced its decision to suspend remote examinations, citing growing concerns over the proliferation of AI-powered cheating methods. This decisive action underscores the significant challenges posed by advanced artificial intelligence technologies in maintaining the integrity and fairness of professional qualifications across various sectors. The move reflects a broader struggle faced by educational and certification institutions globally to adapt assessment methodologies in an era where sophisticated AI tools, particularly generative AI, can produce highly convincing responses and potentially bypass traditional remote proctoring mechanisms. By halting remote exams, the accounting body aims to develop more robust and secure examination protocols that can effectively counteract AI-assisted deception before potentially reinstating online options. This critical development highlights an urgent need for innovative solutions in exam security, prompting a fundamental re-evaluation of how professional competencies are assessed in a rapidly technologically evolving landscape, ensuring that qualifications remain credible and reflect genuine knowledge and skill rather than automated assistance. The decision serves as a stark reminder of AI's disruptive potential beyond its intended beneficial applications, compelling institutions to prioritize ethical considerations and secure evaluation practices.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI cheating</span><span>Remote exams</span><span>Accounting certification</span><span>Exam integrity</span><span>Educational technology</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Online assessment</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.theguardian.com/business/2025/dec/29/uk-accounting-remote-exams-ai-cheating-acca" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Per-instance TSP Solver with No Pre-training (1.66% gap on d1291)</h2>
+                <span class="published-time">Published: 2025-12-29 13:43:14</span>
+                
+                <p class="summary">This Hacker News 'Show HN' entry introduces a novel per-instance TSP (Traveling Salesperson Problem) solver developed by the author, which operates without the need for extensive pre-training on large datasets, a common requirement in many traditional deep learning approaches. The solver employs Proximal Policy Optimization (PPO) to learn "on the fly" for specific problem instances from scratch. It demonstrated a competitive performance, achieving an impressive 1.66% optimality gap on the challenging TSPLIB d1291 instance after approximately 5.6 hours of training on a single A100 GPU. The core innovation of this approach resides in an inductive bias specifically designed around the topological and geometric structures of 'exception edges'—critical connections that extend beyond local scope and significantly influence the solution's difficulty. The agent is guided by insights into micro/macro structures to identify potentially promising edges, with PPO subsequently refining the solution through iterative trial and error. This research offers a compelling exploration into the application of reinforcement learning for solving complex combinatorial optimization problems without reliance on prior large-scale data.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>TSP Solver</span><span>Reinforcement Learning</span><span>Proximal Policy Optimization (PPO)</span><span>Combinatorial Optimization</span><span>Per-instance Learning</span><span>Inductive Bias</span><span>Deep Learning</span><span>TSPLIB</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://news.ycombinator.com/item?id=46420670" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Mindscape-Aware Retrieval Augmented Generation for Improved Long Context Understanding</h2>
+                <span class="published-time">Published: 2025-12-19T04:08:29.000Z</span>
+                
+                <p class="summary">Humans understand long and complex texts by relying on a holistic semantic representation of the content. This global view helps organize prior knowledge, interpret new information, and integrate evidence dispersed across a document, as revealed by the Mindscape-Aware Capability of humans in psychology. Current Retrieval-Augmented Generation (RAG) systems lack such guidance and therefore struggle with long-context tasks. In this paper, we propose Mindscape-Aware RAG (MiA-RAG), the first approach that equips LLM-based RAG systems with explicit global context awareness. MiA-RAG builds a mindscape through hierarchical summarization and conditions both retrieval and generation on this global semantic representation. This enables the retriever to form enriched query embeddings and the generator to reason over retrieved evidence within a coherent global context. We evaluate MiA-RAG across diverse long-context and bilingual benchmarks for evidence-based understanding and global sense-making. It consistently surpasses baselines, and further analysis shows that it aligns local details with a coherent global representation, enabling more human-like long-context retrieval and reasoning.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Retrieval Augmented Generation</span><span>Long Context Understanding</span><span>Large Language Model</span><span>Global Context Awareness</span><span>Hierarchical Summarization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.17220" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>InsertAnywhere: Bridging 4D Scene Geometry and Diffusion Models for Realistic Video Object Insertion</h2>
+                <span class="published-time">Published: 2025-12-19T12:14:36.000Z</span>
+                
+                <p class="summary">Recent advances in diffusion-based video generation have opened new possibilities for controllable video editing, yet realistic video object insertion (VOI) remains challenging due to limited 4D scene understanding and inadequate handling of occlusion and lighting effects. We present InsertAnywhere, a new VOI framework that achieves geometrically consistent object placement and appearance-faithful video synthesis. Our method begins with a 4D aware mask generation module that reconstructs the scene geometry and propagates user specified object placement across frames while maintaining temporal coherence and occlusion consistency. Building upon this spatial foundation, we extend a diffusion based video generation model to jointly synthesize the inserted object and its surrounding local variations such as illumination and shading. To enable supervised training, we introduce ROSE++, an illumination aware synthetic dataset constructed by transforming the ROSE object removal dataset into triplets of object removed video, object present video, and a VLM generated reference image. Through extensive experiments, we demonstrate that our framework produces geometrically plausible and visually coherent object insertions across diverse real world scenarios, significantly outperforming existing research and commercial models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Object Insertion</span><span>Diffusion Models</span><span>4D Scene Geometry</span><span>Realistic Video Synthesis</span><span>Occlusion Consistency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Generative AI</span><span>Video Understanding</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.17504" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MAI-UI Technical Report: Real-World Centric Foundation GUI Agents</h2>
+                <span class="published-time">Published: 2025-12-26T14:51:52.000Z</span>
+                
+                <p class="summary">The development of GUI agents could revolutionize the next generation of human-computer interaction. Motivated by this vision, we present MAI-UI, a family of foundation GUI agents spanning the full spectrum of sizes, including 2B, 8B, 32B, and 235B-A22B variants. We identify four key challenges to realistic deployment: the lack of native agent-user interaction, the limits of UI-only operation, the absence of a practical deployment architecture, and brittleness in dynamic environments. MAI-UI addresses these issues with a unified methodology: a self-evolving data pipeline that expands the navigation data to include user interaction and MCP tool calls, a native device-cloud collaboration system routes execution by task state, and an online RL framework with advanced optimizations to scale parallel environments and context length. MAI-UI establishes new state-of-the-art across GUI grounding and mobile navigation. On grounding benchmarks, it reaches 73.5% on ScreenSpot-Pro, 91.3% on MMBench GUI L2, 70.9% on OSWorld-G, and 49.2% on UI-Vision, surpassing Gemini-3-Pro and Seed1.8 on ScreenSpot-Pro. On mobile GUI navigation, it sets a new SOTA of 76.7% on AndroidWorld, surpassing UI-Tars-2, Gemini-2.5-Pro and Seed1.8. On MobileWorld, MAI-UI obtains 41.7% success rate, significantly outperforming end-to-end GUI models and competitive with Gemini-3-Pro based agentic frameworks. Our online RL experiments show significant gains from scaling parallel environments from 32 to 512 (+5.2 points) and increasing environment step budget from 15 to 50 (+4.3 points). Finally, the native device-cloud collaboration system improves on-device performance by 33%, reduces cloud model calls by over 40%, and preserves user privacy.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Foundation GUI Agents</span><span>Human-Computer Interaction</span><span>Online Reinforcement Learning</span><span>Device-Cloud Collaboration</span><span>Mobile GUI Navigation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.22047" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>UniPercept: Towards Unified Perceptual-Level Image Understanding across Aesthetics, Quality, Structure, and Texture</h2>
+                <span class="published-time">Published: 2025-12-25T13:35:52.000Z</span>
+                
+                <p class="summary">Multimodal large language models (MLLMs) have achieved remarkable progress in visual understanding tasks such as visual grounding, segmentation, and captioning. However, their ability to perceive perceptual-level image features remains limited. In this work, we present UniPercept-Bench, a unified framework for perceptual-level image understanding across three key domains: Aesthetics, Quality, Structure and Texture. We establish a hierarchical definition system and construct large-scale datasets to evaluate perceptual-level image understanding. Based on this foundation, we develop a strong baseline UniPercept trained via Domain-Adaptive Pre-Training and Task-Aligned RL, enabling robust generalization across both Visual Rating (VR) and Visual Question Answering (VQA) tasks. UniPercept outperforms existing MLLMs on perceptual-level image understanding and can serve as a plug-and-play reward model for text-to-image generation. This work defines Perceptual-Level Image Understanding in the era of MLLMs and, through the introduction of a comprehensive benchmark together with a strong baseline, provides a solid foundation for advancing perceptual-level multimodal image understanding.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Perceptual-Level Image Understanding</span><span>Multimodal Large Language Models</span><span>Visual Question Answering</span><span>Visual Rating</span><span>Text-to-Image Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.21675" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>SWE-RM: Execution-free Feedback For Software Engineering Agents</h2>
+                <span class="published-time">Published: 2025-12-26T08:26:18.000Z</span>
+                
+                <p class="summary">Execution-based feedback like unit testing is widely used in the development of coding agents through test-time scaling (TTS) and reinforcement learning (RL). This paradigm requires scalable and reliable collection of unit test cases to provide accurate feedback, and the resulting feedback is often sparse and cannot effectively distinguish between trajectories that are both successful or both unsuccessful. In contrast, execution-free feedback from reward models can provide more fine-grained signals without depending on unit test cases. Despite this potential, execution-free feedback for realistic software engineering (SWE) agents remains underexplored. Aiming to develop versatile reward models that are effective across TTS and RL, however, we observe that two verifiers with nearly identical TTS performance can nevertheless yield very different results in RL. Intuitively, TTS primarily reflects the model's ability to select the best trajectory, but this ability does not necessarily generalize to RL. To address this limitation, we identify two additional aspects that are crucial for RL training: classification accuracy and calibration. We then conduct comprehensive controlled experiments to investigate how to train a robust reward model that performs well across these metrics. In particular, we analyze the impact of various factors such as training data scale, policy mixtures, and data source composition. Guided by these investigations, we introduce SWE-RM, an accurate and robust reward model adopting a mixture-of-experts architecture with 30B total parameters and 3B activated during inference. SWE-RM substantially improves SWE agents on both TTS and RL performance. For example, it increases the accuracy of Qwen3-Coder-Flash from 51.6% to 62.0%, and Qwen3-Coder-Max from 67.0% to 74.6% on SWE-Bench Verified using TTS, achieving new state-of-the-art performance among open-source models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Software Engineering Agents</span><span>Execution-free Feedback</span><span>Reward Models</span><span>Reinforcement Learning</span><span>Test-Time Scaling</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.21919" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Rethinking Sample Polarity in Reinforcement Learning with Verifiable Rewards</h2>
+                <span class="published-time">Published: 2025-12-25T11:15:46.000Z</span>
+                
+                <p class="summary">Large reasoning models (LRMs) are typically trained using reinforcement learning with verifiable reward (RLVR) to enhance their reasoning abilities. In this paradigm, policies are updated using both positive and negative self-generated rollouts, which correspond to distinct sample polarities. In this paper, we provide a systematic investigation into how these sample polarities affect RLVR training dynamics and behaviors. We find that positive samples sharpen existing correct reasoning patterns, while negative samples encourage exploration of new reasoning paths. We further explore how adjusting the advantage values of positive and negative samples at both the sample level and the token level affects RLVR training. Based on these insights, we propose an Adaptive and Asymmetric token-level Advantage shaping method for Policy Optimization, namely A3PO, that more precisely allocates advantage signals to key tokens across different polarities. Experiments across five reasoning benchmarks demonstrate the effectiveness of our approach.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Verifiable Rewards</span><span>Large Reasoning Models</span><span>Sample Polarity</span><span>Policy Optimization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2512.21625" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
