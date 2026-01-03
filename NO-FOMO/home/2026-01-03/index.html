@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-01-03</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-01-03</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>IQuest-Coder: A new open-source code model beats Claude Sonnet 4.5 and GPT 5.1</h2>
+                <span class="published-time">Published: 2026-01-03 04:01:03</span>
+                
+                <p class="summary">A significant advancement in artificial intelligence has been announced with the introduction of IQuest-Coder, a novel open-source code generation model. This new model is reported to surpass the performance of established commercial AI models, specifically Claude Sonnet 4.5 and a purported GPT 5.1, in various coding benchmarks and tasks. The technical details, capabilities, and evaluation methodology of IQuest-Coder are elaborated in a recently released technical report, which is accessible to the public. The development of IQuest-Coder represents a notable contribution to the open-source AI community, potentially fostering further innovation in code-related AI applications and setting new performance standards. Its ability to outperform proprietary models suggests a powerful and efficient architecture, making it a compelling tool for developers and researchers. This release underscores the accelerating pace of AI development and the growing competitiveness of open-source solutions against closed-source counterparts in specialized domains like code generation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>IQuest-Coder</span><span>Open-source AI</span><span>Code generation</span><span>Large Language Model</span><span>Performance benchmarks</span><span>AI models</span><span>Competitive AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/IQuestLab/IQuest-Coder-V1/blob/main/papers/IQuest_Coder_Technical_Report.pdf" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Recursive Language Models</h2>
+                <span class="published-time">Published: 2026-01-03 11:29:33</span>
+                
+                <p class="summary">Recursive Language Models represent an advanced paradigm in artificial intelligence, designed to process and generate language through inherent recursive structures. This architectural approach aims to overcome limitations of purely sequential models by enabling a deeper understanding of hierarchical dependencies and nested relationships within natural language. By incorporating recursive mechanisms, these models are poised to enhance capabilities in complex reasoning, disambiguating intricate grammatical constructions, and producing more coherent and contextually rich outputs. Such models could significantly improve performance in tasks requiring iterative processing, long-range dependency handling, and compositionality. The development of Recursive Language Models signifies a push towards AI systems that can better mirror the structured nature of human cognition and language, offering potential breakthroughs in natural language understanding and advanced text generation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Language Models</span><span>Recursion</span><span>Hierarchical Processing</span><span>Natural Language Processing</span><span>Deep Learning</span><span>AI Research</span><span>Neural Networks</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Large Language Model</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://arxiv.org/abs/2512.24601" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Chatbots could be harmful for teens' mental health and social development</h2>
+                <span class="published-time">Published: 2026-01-03 18:06:21</span>
+                
+                <p class="summary">A growing body of concern suggests that the increasing integration of chatbots into the daily lives of teenagers could pose significant risks to their mental health and social development. Experts warn that prolonged interaction with AI-powered conversational agents might hinder the formation of crucial real-world social skills, as these interactions often lack the nuances and complexities of human relationships. There are also apprehensions regarding the potential for chatbots to expose young users to inappropriate or harmful content, given the challenges in fully controlling AI outputs and the evolving regulatory landscape. Furthermore, the addictive nature of engaging with readily available and non-judgmental AI companions could lead to social isolation, exacerbate feelings of loneliness, and impact self-esteem. As these technologies become more sophisticated and prevalent, discussions are intensifying around the ethical responsibilities of developers, the need for robust safeguards, parental guidance, and digital literacy initiatives to mitigate these potential negative impacts on adolescent well-being and foster healthy development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Chatbots</span><span>AI Ethics</span><span>Adolescent Mental Health</span><span>Social Development</span><span>Generative AI</span><span>Digital Well-being</span><span>AI Safety</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.npr.org/2025/12/29/nx-s1-5646633/teens-ai-chatbot-sex-violence-mental-health" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: FP-pack – Functional pipelines in TypeScript without monads</h2>
+                <span class="published-time">Published: 2026-01-03 15:00:23</span>
+                
+                <p class="summary">A new TypeScript functional utility library, `fp-pack`, has been released, emphasizing pipe-first composition for creating simple and readable pipelines. The library aims to facilitate functional programming paradigms by supporting features like early exits and side effects, crucially without the need to implement monads such as Option or Either. Its core functionality revolves around `pipe` and `pipeAsync` for general use, and a `SideEffect`-based pipeline is provided for safely handling short-circuiting in scenarios requiring early termination. Additionally, the developer has created an “AI agent skills” document, specifically designed to assist Large Language Models (LLMs) in generating code that adheres to the `fp-pack` style, thereby promoting consistency in AI-assisted development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Functional Programming</span><span>TypeScript</span><span>Pipeline Composition</span><span>Utility Library</span><span>Monads</span><span>Side Effects</span><span>Early Exit</span><span>AI Agent Skills</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/superlucky84/fp-pack" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Website that plays the lottery every second</h2>
+                <span class="published-time">Published: 2026-01-03 00:12:55</span>
+                
+                <p class="summary">A new project, 'Lottery Every Second,' recently showcased on Hacker News, introduces a web-based application engineered to automatically participate in a lottery at an extraordinarily high frequency, specifically executing an attempt every second. This novel demonstration emphasizes key principles of continuous automated task execution, real-time system design, and persistent online interaction. The technical underpinnings of such a system likely involve robust scheduling mechanisms, possibly utilizing serverless functions or dedicated background processes to ensure uninterrupted operation. Furthermore, effective implementation would require resilient web automation techniques, potentially involving browser automation tools or direct API interactions, to interface with the lottery system. The project offers a practical case study for exploring the challenges of maintaining system reliability under constant, high-frequency load and managing the state of continuous operations. It provides insight into how digital platforms can be engineered for perpetual engagement with external services, presenting a unique perspective on automated decision-making and rapid event processing in a dynamic online environment. This initiative could stimulate discussions on the ethics and technical feasibility of hyper-automated digital participation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Web Automation</span><span>Real-time Systems</span><span>Automated Task Execution</span><span>High-Frequency Operations</span><span>Scheduled Tasks</span><span>Web Applications</span><span>System Reliability</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://lotteryeverysecond.lffl.me/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
