@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-01-15</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-01-15</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Raspberry Pi's New AI Hat Adds 8GB of RAM for Local LLMs</h2>
+                <span class="published-time">Published: 2026-01-15 08:23:02</span>
+                
+                <p class="summary">Raspberry Pi has unveiled a new AI Hat, a significant hardware addition designed to bolster the capabilities of its single-board computers for on-device artificial intelligence tasks. This new accessory is notable for its inclusion of 8GB of dedicated RAM, a critical feature aimed at facilitating the efficient execution of local Large Language Models (LLMs). By providing substantial memory directly on the device, the AI Hat enables developers and enthusiasts to deploy and run sophisticated AI applications and smaller LLMs without relying on remote cloud infrastructure. This innovation is poised to open up new frontiers for edge AI development, fostering the creation of more private, responsive, and energy-efficient AI solutions in embedded systems, robotics, and Internet of Things (IoT) applications. It underscores a strategic move towards democratizing access to robust local AI computation, empowering a wider range of projects with enhanced processing power for AI workloads.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Raspberry Pi</span><span>AI Hat</span><span>Local LLMs</span><span>Edge AI</span><span>On-device AI</span><span>Artificial Intelligence Hardware</span><span>Single-board Computer</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.jeffgeerling.com/blog/2026/raspberry-pi-ai-hat-2/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Bubblewrap: A nimble way to prevent agents from accessing your .env files</h2>
+                <span class="published-time">Published: 2026-01-15 01:45:22</span>
+                
+                <p class="summary">The article introduces "Bubblewrap" as an innovative approach to enhance security by preventing AI agents, such as those powered by large language models like Claude, and other coding agents from accessing sensitive `.env` files. This method directly addresses a critical security vulnerability inherent in granting autonomous agents broad file system access, particularly during development or testing where misconfigurations could expose critical credentials. Bubblewrap aims to create a secure sandbox or isolation mechanism, ensuring that even if an agent's logic is compromised or misdirected, it cannot exfiltrate or misuse environment variables like API keys or database credentials. The solution emphasizes proactive secret management and access control tailored for the evolving landscape of AI-powered development tools, advocating for robust security practices to safeguard intellectual property and operational integrity against potential agent-related data breaches. This initiative offers developers a practical tool to integrate secure coding principles directly into their AI-assisted workflows.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent Security</span><span>Secret Management</span><span>Environment Variables</span><span>.env files</span><span>Access Control</span><span>Developer Tools</span><span>Security Best Practices</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://patrickmccanna.net/a-better-way-to-limit-claude-code-and-other-coding-agents-access-to-secrets/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Programming, Evolved: Lessons and Observations</h2>
+                <span class="published-time">Published: 2026-01-15 13:18:10</span>
+                
+                <p class="summary">This analysis of "Programming, Evolved: Lessons and Observations" delves into the transformative journey of software development, exploring the continuous shifts in methodologies, tools, and paradigms that define modern programming practices. The article is presumed to distill essential lessons learned over decades, covering observations regarding maintainability, scalability, and collaborative workflows. It likely discusses the integration of advanced technologies, such as Artificial Intelligence and Large Language Models, which are increasingly influencing and shaping the development lifecycle. The piece aims to offer comprehensive insights for developers and organizations navigating the complexities of contemporary and future programming landscapes, highlighting the evolution from foundational concepts to AI-assisted and agent-driven development paradigms.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Software Development</span><span>Programming Paradigms</span><span>Software Engineering</span><span>Code Quality</span><span>Development Methodologies</span><span>AI-assisted Programming</span><span>Large Language Models</span><span>AI Agents</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/kulesh/dotfiles/blob/main/dev/dev/docs/programming-evolved.md" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>To those who fired or didn't hire tech writers because of AI</h2>
+                <span class="published-time">Published: 2026-01-15 07:58:23</span>
+                
+                <p class="summary">This Hacker News story addresses the contentious issue of companies dismissing or opting against hiring technical writers, citing the advancements in Artificial Intelligence. The underlying premise challenges the notion that AI can fully replace the intricate skills possessed by human technical communicators. The discussion emphasizes that while AI tools, particularly large language models, can assist in generating basic text or automating repetitive tasks in documentation, they often fall short in critical areas such as understanding nuanced user needs, strategic communication planning, ensuring accuracy in complex technical contexts, and applying human empathy in content design. The narrative advocates for a symbiotic relationship where AI serves as an augmentative tool to enhance human productivity rather than a substitute for the irreplaceable cognitive and creative contributions of professional technical writers.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Technical Writing</span><span>AI Impact</span><span>Job Displacement</span><span>Generative AI</span><span>Human-AI Collaboration</span><span>Content Creation</span><span>Documentation</span><span>Workforce Automation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://passo.uno/letter-those-who-fired-tech-writers-ai/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The 500k-ton typo: Why data center copper math doesn't add up</h2>
+                <span class="published-time">Published: 2026-01-15 12:53:34</span>
+                
+                <p class="summary">A critical analysis has uncovered a potentially significant miscalculation in the projected copper requirements for global data center expansion, provocatively termed 'the 500k-ton typo.' This revelation points to a substantial underestimation of the essential metal needed to support the rapidly burgeoning digital infrastructure, driven primarily by the escalating demands of artificial intelligence, advanced cloud computing, and complex data analytics. Copper is an indispensable component throughout data centers, serving crucial roles in power distribution, high-speed data transmission cabling, and efficient thermal management systems. An unaddressed shortfall of this magnitude – half a million tons – could precipitate severe ramifications across multiple sectors. It threatens to strain global copper supply chains, significantly inflate material costs, and potentially impede the timely development and scaling of critical digital infrastructure worldwide. This discrepancy underscores the intricate interdependencies between technological progress, finite resource availability, and sustainable infrastructure planning. The findings advocate for a more precise and comprehensive methodology in forecasting material demand to mitigate future supply bottlenecks and ensure the uninterrupted expansion of the global digital economy.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Data centers</span><span>Copper demand</span><span>Infrastructure</span><span>Resource management</span><span>Supply chain</span><span>AI infrastructure</span><span>Material science</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://investinglive.com/news/the-500000-ton-typo-why-data-center-copper-math-doesnt-add-up-20260113/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Apple is fighting for TSMC capacity as Nvidia takes center stage</h2>
+                <span class="published-time">Published: 2026-01-15 15:02:42</span>
+                
+                <p class="summary">In a significant development reflecting shifting priorities within the high-tech manufacturing landscape, Apple is reportedly intensifying its efforts to secure crucial chip production capacity from Taiwan Semiconductor Manufacturing Company (TSMC). This comes as Nvidia, a prominent leader in GPU and AI acceleration technologies, increasingly commands a larger share of TSMC's advanced process node capabilities. The heightened competition underscores the critical strategic importance of TSMC's cutting-edge fabrication facilities, particularly for leading-edge semiconductors essential for powering next-generation devices and artificial intelligence infrastructure. For Apple, traditionally a dominant client, maintaining access to sufficient capacity is vital for its product roadmap, including upcoming iPhone and Mac generations. Meanwhile, Nvidia's escalating demand, fueled by the booming AI and data center markets, is exerting unprecedented pressure on the global semiconductor supply chain. This scenario highlights a broader industry trend where the immense computational requirements of AI are reshaping manufacturing priorities, potentially leading to supply constraints and strategic re-evaluations for major tech players reliant on advanced chip production.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>TSMC</span><span>Semiconductor Manufacturing</span><span>Chip Capacity</span><span>AI Chips</span><span>Supply Chain</span><span>Tech Competition</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.culpium.com/p/exclusiveapple-is-fighting-for-tsmc" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>The AI Hippocampus: How Far are We From Human Memory?</h2>
+                <span class="published-time">Published: 2026-01-14T03:24:08.000Z</span>
+                
+                <p class="summary">Memory plays a foundational role in augmenting the reasoning, adaptability, and contextual fidelity of modern Large Language Models and Multi-Modal LLMs. As these models transition from static predictors to interactive systems capable of continual learning and personalized inference, the incorporation of memory mechanisms has emerged as a central theme in their architectural and functional evolution. This survey presents a comprehensive and structured synthesis of memory in LLMs and MLLMs, organizing the literature into a cohesive taxonomy comprising implicit, explicit, and agentic memory paradigms. Specifically, the survey delineates three primary memory frameworks. Implicit memory refers to the knowledge embedded within the internal parameters of pre-trained transformers, encompassing their capacity for memorization, associative retrieval, and contextual reasoning. Recent work has explored methods to interpret, manipulate, and reconfigure this latent memory. Explicit memory involves external storage and retrieval components designed to augment model outputs with dynamic, queryable knowledge representations, such as textual corpora, dense vectors, and graph-based structures, thereby enabling scalable and updatable interaction with information sources. Agentic memory introduces persistent, temporally extended memory structures within autonomous agents, facilitating long-term planning, self-consistency, and collaborative behavior in multi-agent systems, with relevance to embodied and interactive AI. Extending beyond text, the survey examines the integration of memory within multi-modal settings, where coherence across vision, language, audio, and action modalities is essential. Key architectural advances, benchmark tasks, and open challenges are discussed, including issues related to memory capacity, alignment, factual consistency, and cross-system interoperability.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Memory Mechanisms</span><span>Multi-Modal LLMs</span><span>AI Agents</span><span>Continual Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Multimodal</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.09113" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Efficient Camera-Controlled Video Generation of Static Scenes via Sparse Diffusion and 3D Rendering</h2>
+                <span class="published-time">Published: 2026-01-14T18:50:06.000Z</span>
+                
+                <p class="summary">Modern video generative models based on diffusion models can produce very realistic clips, but they are computationally inefficient, often requiring minutes of GPU time for just a few seconds of video. This inefficiency poses a critical barrier to deploying generative video in applications that require real-time interactions, such as embodied AI and VR/AR. This paper explores a new strategy for camera-conditioned video generation of static scenes: using diffusion-based generative models to generate a sparse set of keyframes, and then synthesizing the full video through 3D reconstruction and rendering. By lifting keyframes into a 3D representation and rendering intermediate views, our approach amortizes the generation cost across hundreds of frames while enforcing geometric consistency. We further introduce a model that predicts the optimal number of keyframes for a given camera trajectory, allowing the system to adaptively allocate computation. Our final method, SRENDER, uses very sparse keyframes for simple trajectories and denser ones for complex camera motion. This results in video generation that is more than 40 times faster than the diffusion-based baseline in generating 20 seconds of video, while maintaining high visual fidelity and temporal stability, offering a practical path toward efficient and controllable video synthesis.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Generation</span><span>Diffusion Models</span><span>3D Rendering</span><span>Sparse Diffusion</span><span>Camera Control</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Deep Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.09697" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Distribution-Aligned Sequence Distillation for Superior Long-CoT Reasoning</h2>
+                <span class="published-time">Published: 2026-01-14T02:43:17.000Z</span>
+                
+                <p class="summary">In this report, we introduce DASD-4B-Thinking, a lightweight yet highly capable, fully open-source reasoning model. It achieves SOTA performance among open-source models of comparable scale across challenging benchmarks in mathematics, scientific reasoning, and code generation -- even outperforming several larger models. We begin by critically reexamining a widely adopted distillation paradigm in the community: SFT on teacher-generated responses, also known as sequence-level distillation. Although a series of recent works following this scheme have demonstrated remarkable efficiency and strong empirical performance, they are primarily grounded in the SFT perspective. Consequently, these approaches focus predominantly on designing heuristic rules for SFT data filtering, while largely overlooking the core principle of distillation itself -- enabling the student model to learn the teacher's full output distribution so as to inherit its generalization capability. Specifically, we identify three critical limitations in current practice: i) Inadequate representation of the teacher's sequence-level distribution; ii) Misalignment between the teacher's output distribution and the student's learning capacity; and iii) Exposure bias arising from teacher-forced training versus autoregressive inference. In summary, these shortcomings reflect a systemic absence of explicit teacher-student interaction throughout the distillation process, leaving the essence of distillation underexploited. To address these issues, we propose several methodological innovations that collectively form an enhanced sequence-level distillation training pipeline. Remarkably, DASD-4B-Thinking obtains competitive results using only 448K training samples -- an order of magnitude fewer than those employed by most existing open-source efforts. To support community research, we publicly release our models and the training dataset.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Sequence Distillation</span><span>Long-CoT Reasoning</span><span>Reasoning Model</span><span>Output Distribution</span><span>Teacher-Student Interaction</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.09088" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>EvoFSM: Controllable Self-Evolution for Deep Research with Finite State Machines</h2>
+                <span class="published-time">Published: 2026-01-14T13:19:13.000Z</span>
+                
+                <p class="summary">While LLM-based agents have shown promise for deep research, most existing approaches rely on fixed workflows that struggle to adapt to real-world, open-ended queries. Recent work therefore explores self-evolution by allowing agents to rewrite their own code or prompts to improve problem-solving ability, but unconstrained optimization often triggers instability, hallucinations, and instruction drift. We propose EvoFSM, a structured self-evolving framework that achieves both adaptability and control by evolving an explicit Finite State Machine (FSM) instead of relying on free-form rewriting. EvoFSM decouples the optimization space into macroscopic Flow (state-transition logic) and microscopic Skill (state-specific behaviors), enabling targeted improvements under clear behavioral boundaries. Guided by a critic mechanism, EvoFSM refines the FSM through a small set of constrained operations, and further incorporates a self-evolving memory that distills successful trajectories as reusable priors and failure patterns as constraints for future queries. Extensive evaluations on five multi-hop QA benchmarks demonstrate the effectiveness of EvoFSM. In particular, EvoFSM reaches 58.0% accuracy on the DeepSearch benchmark. Additional results on interactive decision-making tasks further validate its generalization.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>EvoFSM</span><span>Self-Evolution</span><span>Finite State Machines</span><span>LLM Agents</span><span>Deep Research</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.09465" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Omni-R1: Towards the Unified Generative Paradigm for Multimodal Reasoning</h2>
+                <span class="published-time">Published: 2026-01-14T14:57:33.000Z</span>
+                
+                <p class="summary">Multimodal Large Language Models (MLLMs) are making significant progress in multimodal reasoning. Early approaches focus on pure text-based reasoning. More recent studies have incorporated multimodal information into the reasoning steps; however, they often follow a single task-specific reasoning pattern, which limits their generalizability across various multimodal tasks. In fact, there are numerous multimodal tasks requiring diverse reasoning skills, such as zooming in on a specific region or marking an object within an image. To address this, we propose unified generative multimodal reasoning, which unifies diverse multimodal reasoning skills by generating intermediate images during the reasoning process. We instantiate this paradigm with Omni-R1, a two-stage SFT+RL framework featuring perception alignment loss and perception reward, thereby enabling functional image generation. Additionally, we introduce Omni-R1-Zero, which eliminates the need for multimodal annotations by bootstrapping step-wise visualizations from text-only reasoning data. Empirical results show that Omni-R1 achieves unified generative reasoning across a wide range of multimodal tasks, and Omni-R1-Zero can match or even surpass Omni-R1 on average, suggesting a promising direction for generative multimodal reasoning.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal Reasoning</span><span>Large Language Models</span><span>Generative AI</span><span>Image Generation</span><span>Unified Paradigm</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.09536" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Are LLMs Vulnerable to Preference-Undermining Attacks (PUA)? A Factorial Analysis Methodology for Diagnosing the Trade-off between Preference Alignment and Real-World Validity</h2>
+                <span class="published-time">Published: 2026-01-10T15:16:23.000Z</span>
+                
+                <p class="summary">Large Language Model (LLM) training often optimizes for preference alignment, rewarding outputs that are perceived as helpful and interaction-friendly. However, this preference-oriented objective can be exploited: manipulative prompts can steer responses toward user-appeasing agreement and away from truth-oriented correction. In this work, we investigate whether aligned models are vulnerable to Preference-Undermining Attacks (PUA), a class of manipulative prompting strategies designed to exploit the model's desire to please user preferences at the expense of truthfulness. We propose a diagnostic methodology that provides a finer-grained and more directive analysis than aggregate benchmark scores, using a factorial evaluation framework to decompose prompt-induced shifts into interpretable effects of system objectives (truth- vs. preference-oriented) and PUA-style dialogue factors (directive control, personal derogation, conditional approval, reality denial) within a controlled 2 times 2^4 design. Surprisingly, more advanced models are sometimes more susceptible to manipulative prompts. Beyond the dominant reality-denial factor, we observe model-specific sign reversals and interactions with PUA-style factors, suggesting tailored defenses rather than uniform robustness. These findings offer a novel, reproducible factorial evaluation methodology that provides finer-grained diagnostics for post-training processes like RLHF, enabling better trade-offs in the product iteration of LLMs by offering a more nuanced understanding of preference alignment risks and the impact of manipulative prompts.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Preference-Undermining Attacks</span><span>Preference Alignment</span><span>Factorial Analysis</span><span>Manipulative Prompts</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.06596" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
