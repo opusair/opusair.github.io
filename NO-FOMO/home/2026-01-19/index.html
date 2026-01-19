@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-01-19</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-01-19</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Bypassing Gemma and Qwen safety with raw strings</h2>
+                <span class="published-time">Published: 2026-01-19 05:11:24</span>
+                
+                <p class="summary">This report details a consistent vulnerability found in several small-scale open-weight large language models, including Qwen2.5-1.5B, Qwen3-1.7B, Gemma-3-1b-it, and SmolLM2-1.7B. The researcher discovered that the safety alignment mechanisms of these models are heavily reliant on the presence of specific chat templates and instruction tokens (e.g., &lt;|im_start|&gt;). By stripping these template elements and providing raw string inputs, the models' refusal rates for generating potentially harmful content significantly decreased. For instance, Gemma-3's refusal rate dropped from 100% to 60%, and Qwen3's from 80% to 40%, while SmolLM2 exhibited 0% refusal. Qualitatively, models that previously rejected requests for explosive tutorials or explicit fiction readily complied without the template. The findings suggest that current AI safety implementations may be over-relying on client-side string formatting as a primary safety barrier, highlighting a critical area for improvement in model robustness and alignment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>AI Safety</span><span>Vulnerability</span><span>Red Teaming</span><span>Chat Templates</span><span>Model Alignment</span><span>Gemma</span><span>Qwen</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://teendifferent.substack.com/p/apply_chat_template-is-the-safety" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>GLM-4.7-Flash</h2>
+                <span class="published-time">Published: 2026-01-19 15:12:12</span>
+                
+                <p class="summary">GLM-4.7-Flash represents a significant advancement in the domain of large language models, specifically a new iteration within the General Language Model (GLM) series. Hosted on Hugging Face by zai-org, this model is positioned as an optimized or "Flash" version, indicating a focus on enhanced speed, efficiency, or reduced resource consumption compared to its predecessors. Such optimization is crucial for broader accessibility and deployment in real-world applications where computational resources and latency are critical considerations. The release of GLM-4.7-Flash on a prominent platform like Hugging Face suggests its availability for the broader AI research community and developers, enabling them to leverage its capabilities for various natural language processing tasks. It is expected to support applications ranging from text generation and summarization to complex conversational AI systems, potentially offering a more performant alternative for high-throughput scenarios. This development contributes to the ongoing efforts in making advanced AI models more practical and scalable for diverse use cases.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>GLM-4.7-Flash</span><span>Large Language Model</span><span>Generative AI</span><span>Model Optimization</span><span>Hugging Face</span><span>Natural Language Processing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Generative AI</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/zai-org/GLM-4.7-Flash" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Robust Conditional 3D Shape Generation from Casual Captures</h2>
+                <span class="published-time">Published: 2026-01-19 11:48:59</span>
+                
+                <p class="summary">Researchers have introduced a novel method for robust conditional 3D shape generation, enabling the creation of high-quality three-dimensional models even from casual, unconstrained captures. This advancement addresses a notable challenge in computer vision and graphics, where conventional methods often falter with imperfect or noisy input data. The proposed system employs sophisticated deep learning techniques to infer and construct intricate 3D geometries, conditioned on various input modalities sourced from everyday scenarios. By emphasizing robustness, the methodology aims to broaden the accessibility of 3D content creation, allowing users to transform informal photographs or sensor data into structured 3D representations. This research holds significant implications for applications spanning augmented reality, virtual reality content generation, rapid prototyping, and digital asset creation, pushing the boundaries of what generative AI can achieve in the 3D domain.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>3D Shape Generation</span><span>Conditional Generative Models</span><span>Computer Vision</span><span>Deep Learning</span><span>Robustness</span><span>Generative AI</span><span>Neural Networks</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Deep Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://facebookresearch.github.io/ShapeR/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The Code-Only Agent</h2>
+                <span class="published-time">Published: 2026-01-19 02:27:07</span>
+                
+                <p class="summary">The concept of "The Code-Only Agent" introduces an AI agent paradigm where the primary mode of operation, reasoning, and planning is conducted through code generation and execution, rather than relying predominantly on natural language processing for internal thought processes. This approach posits that by leveraging code as the core representational and operational medium, AI agents can achieve greater precision, determinism, and reliability in executing complex tasks. Unlike traditional Large Language Model (LLM) agents that often "think" in natural language before translating to actions, code-only agents directly generate and interact with programming constructs, potentially reducing issues like hallucination and ambiguity inherent in natural language. This method is particularly relevant for tasks requiring rigorous logical steps, interacting with APIs, or manipulating data structures in software environments. While promising increased robustness and direct integration with computational tools, developing effective code-only agents presents challenges in generating sufficiently complex and correct code for diverse scenarios and ensuring robust error handling and debugging capabilities within the agent architecture. This research direction aims to enhance the capabilities and trustworthiness of autonomous AI systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Code-Only Agent</span><span>AI Agent</span><span>Code Generation</span><span>Large Language Model</span><span>Autonomous Systems</span><span>Agentic AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://rijnard.com/blog/the-code-only-agent" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Nvidia contacted Anna's Archive to access books</h2>
+                <span class="published-time">Published: 2026-01-19 11:11:10</span>
+                
+                <p class="summary">Nvidia, a leading technology firm renowned for its graphics processing units and significant investments in artificial intelligence, reportedly made contact with Anna's Archive, a prominent and controversial digital library recognized for hosting millions of pirated books. The purpose of this outreach was to secure access to the archive's extensive collection. This development underscores the escalating and critical demand within the AI industry for vast and diverse datasets, particularly for the rigorous training of sophisticated large language models (LLMs). Nvidia's apparent interest suggests a proactive strategy to acquire substantial textual resources, which are indispensable for advancing and refining various AI capabilities, including natural language processing, comprehension, and generative AI applications. Although the exact details of the discussions and their ultimate resolution have not been publicly disclosed, this incident accentuates the substantial data acquisition challenges faced by top AI developers and illuminates the intricate, often legally ambiguous, terrain of content sourcing for AI training. It further highlights ongoing debates regarding intellectual property and ethical data procurement in the rapidly expanding AI landscape.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Large Language Models</span><span>AI Training Data</span><span>Data Acquisition</span><span>Textual Data</span><span>Intellectual Property</span><span>Digital Content</span><span>AI Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://torrentfreak.com/nvidia-contacted-annas-archive-to-secure-access-to-millions-of-pirated-books/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Raccoons break into liquor stores, scale skyscrapers and pick locks – studying their clever brains can clarify human intelligence too</h2>
+                <span class="published-time">Published: 2026-01-19 17:12:19</span>
+                
+                <p class="summary">The story delves into the extraordinary cognitive capabilities of raccoons, showcased through their complex problem-solving behaviors, including breaching secure locations like liquor stores, adeptly scaling urban structures, and manipulating intricate locks. These advanced behaviors position raccoons as a prime subject for comprehensive research in cognitive science. Scientists are actively investigating the neural underpinnings and adaptive strategies that enable such sophisticated intelligence. By dissecting these mechanisms, researchers aim to uncover universal principles governing learning, memory, and reasoning. The insights gleaned from these comparative intelligence studies are profoundly significant, offering a window into the evolutionary trajectory of cognition and providing a valuable framework for understanding the intricacies of human intelligence. Furthermore, this research holds considerable promise for informing the design and development of next-generation artificial intelligence systems, particularly those focused on creating autonomous agents capable of adaptive problem-solving and navigating complex, dynamic environments. The study ultimately contributes to a holistic understanding of intelligence across the biological spectrum and its applications in synthetic intelligence.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Cognitive Science</span><span>Animal Cognition</span><span>Comparative Intelligence</span><span>Problem Solving</span><span>Behavioral Adaptability</span><span>Intelligence Research</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://theconversation.com/raccoons-break-into-liquor-stores-scale-skyscrapers-and-pick-locks-studying-their-clever-brains-can-clarify-human-intelligence-too-272487" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Building Production-Ready Probes For Gemini</h2>
+                <span class="published-time">Published: 2026-01-16T18:54:29.000Z</span>
+                
+                <p class="summary">Frontier language model capabilities are improving rapidly. We thus need stronger mitigations against bad actors misusing increasingly powerful systems. Prior work has shown that activation probes may be a promising misuse mitigation technique, but we identify a key remaining challenge: probes fail to generalize under important production distribution shifts. In particular, we find that the shift from short-context to long-context inputs is difficult for existing probe architectures. We propose several new probe architecture that handle this long-context distribution shift. We evaluate these probes in the cyber-offensive domain, testing their robustness against various production-relevant shifts, including multi-turn conversations, static jailbreaks, and adaptive red teaming. Our results demonstrate that while multimax addresses context length, a combination of architecture choice and training on diverse distributions is required for broad generalization. Additionally, we show that pairing probes with prompted classifiers achieves optimal accuracy at a low cost due to the computational efficiency of probes. These findings have informed the successful deployment of misuse mitigation probes in user-facing instances of Gemini, Google's frontier language model. Finally, we find early positive results using AlphaEvolve to automate improvements in both probe architecture search and adaptive red teaming, showing that automating some AI safety research is already possible.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Language Models</span><span>Misuse Mitigation</span><span>AI Safety</span><span>Probes</span><span>Distribution Shifts</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.11516" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>ShapeR: Robust Conditional 3D Shape Generation from Casual Captures</h2>
+                <span class="published-time">Published: 2026-01-16T18:51:24.000Z</span>
+                
+                <p class="summary">Recent advances in 3D shape generation have achieved impressive results, but most existing methods rely on clean, unoccluded, and well-segmented inputs. Such conditions are rarely met in real-world scenarios. We present ShapeR, a novel approach for conditional 3D object shape generation from casually captured sequences. Given an image sequence, we leverage off-the-shelf visual-inertial SLAM, 3D detection algorithms, and vision-language models to extract, for each object, a set of sparse SLAM points, posed multi-view images, and machine-generated captions. A rectified flow transformer trained to effectively condition on these modalities then generates high-fidelity metric 3D shapes. To ensure robustness to the challenges of casually captured data, we employ a range of techniques including on-the-fly compositional augmentations, a curriculum training scheme spanning object- and scene-level datasets, and strategies to handle background clutter. Additionally, we introduce a new evaluation benchmark comprising 178 in-the-wild objects across 7 real-world scenes with geometry annotations. Experiments show that ShapeR significantly outperforms existing approaches in this challenging setting, achieving an improvement of 2.7x in Chamfer distance compared to state of the art.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>3D Shape Generation</span><span>Conditional Generation</span><span>Robustness</span><span>SLAM</span><span>Vision-Language Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Generative AI</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.11514" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The Poisoned Apple Effect: Strategic Manipulation of Mediated Markets via Technology Expansion of AI Agents</h2>
+                <span class="published-time">Published: 2026-01-16T18:18:03.000Z</span>
+                
+                <p class="summary">The integration of AI agents into economic markets fundamentally alters the landscape of strategic interaction. We investigate the economic implications of expanding the set of available technologies in three canonical game-theoretic settings: bargaining (resource division), negotiation (asymmetric information trade), and persuasion (strategic information transmission). We find that simply increasing the choice of AI delegates can drastically shift equilibrium payoffs and regulatory outcomes, often creating incentives for regulators to proactively develop and release technologies. Conversely, we identify a strategic phenomenon termed the "Poisoned Apple" effect: an agent may release a new technology, which neither they nor their opponent ultimately uses, solely to manipulate the regulator's choice of market design in their favor. This strategic release improves the releaser's welfare at the expense of their opponent and the regulator's fairness objectives. Our findings demonstrate that static regulatory frameworks are vulnerable to manipulation via technology expansion, necessitating dynamic market designs that adapt to the evolving landscape of AI capabilities.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agents</span><span>Strategic Manipulation</span><span>Game Theory</span><span>Market Design</span><span>Regulatory Outcomes</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.11496" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>ACoT-VLA: Action Chain-of-Thought for Vision-Language-Action Models</h2>
+                <span class="published-time">Published: 2026-01-16T16:17:06.000Z</span>
+                
+                <p class="summary">Vision-Language-Action (VLA) models have emerged as essential generalist robot policies for diverse manipulation tasks, conventionally relying on directly translating multimodal inputs into actions via Vision-Language Model (VLM) embeddings. Recent advancements have introduced explicit intermediary reasoning, such as sub-task prediction (language) or goal image synthesis (vision), to guide action generation. However, these intermediate reasoning are often indirect and inherently limited in their capacity to convey the full, granular information required for precise action execution. Instead, we posit that the most effective form of reasoning is one that deliberates directly in the action space. We introduce Action Chain-of-Thought (ACoT), a paradigm where the reasoning process itself is formulated as a structured sequence of coarse action intents that guide the final policy. In this paper, we propose ACoT-VLA, a novel architecture that materializes the ACoT paradigm. Specifically, we introduce two complementary components: an Explicit Action Reasoner (EAR) and Implicit Action Reasoner (IAR). The former proposes coarse reference trajectories as explicit action-level reasoning steps, while the latter extracts latent action priors from internal representations of multimodal input, co-forming an ACoT that conditions the downstream action head to enable grounded policy learning. Extensive experiments in real-world and simulation environments demonstrate the superiority of our proposed method, which achieves 98.5%, 84.1%, and 47.4% on LIBERO, LIBERO-Plus and VLABench, respectively.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Vision-Language-Action Models</span><span>Action Chain-of-Thought</span><span>Robot Policies</span><span>Multimodal Inputs</span><span>Action-level Reasoning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Multimodal</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.11404" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AstroReason-Bench: Evaluating Unified Agentic Planning across Heterogeneous Space Planning Problems</h2>
+                <span class="published-time">Published: 2026-01-16T15:02:41.000Z</span>
+                
+                <p class="summary">Recent advances in agentic Large Language Models (LLMs) have positioned them as generalist planners capable of reasoning and acting across diverse tasks. However, existing agent benchmarks largely focus on symbolic or weakly grounded environments, leaving their performance in physics-constrained real-world domains underexplored. We introduce AstroReason-Bench, a comprehensive benchmark for evaluating agentic planning in Space Planning Problems (SPP), a family of high-stakes problems with heterogeneous objectives, strict physical constraints, and long-horizon decision-making. AstroReason-Bench integrates multiple scheduling regimes, including ground station communication and agile Earth observation, and provides a unified agent-oriented interaction protocol. Evaluating on a range of state-of-the-art open- and closed-source agentic LLM systems, we find that current agents substantially underperform specialized solvers, highlighting key limitations of generalist planning under realistic constraints. AstroReason-Bench offers a challenging and diagnostic testbed for future agentic research.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Agentic Planning</span><span>Space Planning Problems</span><span>Large Language Models</span><span>AI Agent</span><span>Benchmark</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.11354" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Language of Thought Shapes Output Diversity in Large Language Models</h2>
+                <span class="published-time">Published: 2026-01-16T12:14:16.000Z</span>
+                
+                <p class="summary">Output diversity is crucial for Large Language Models as it underpins pluralism and creativity. In this work, we reveal that controlling the language used during model thinking-the language of thought-provides a novel and structural source of output diversity. Our preliminary study shows that different thinking languages occupy distinct regions in a model's thinking space. Based on this observation, we study two repeated sampling strategies under multilingual thinking-Single-Language Sampling and Mixed-Language Sampling-and conduct diversity evaluation on outputs that are controlled to be in English, regardless of the thinking language used. Across extensive experiments, we demonstrate that switching the thinking language from English to non-English languages consistently increases output diversity, with a clear and consistent positive correlation such that languages farther from English in the thinking space yield larger gains. We further show that aggregating samples across multiple thinking languages yields additional improvements through compositional effects, and that scaling sampling with linguistic heterogeneity expands the model's diversity ceiling. Finally, we show that these findings translate into practical benefits in pluralistic alignment scenarios, leading to broader coverage of cultural knowledge and value orientations in LLM outputs. Our code is publicly available at https://github.com/iNLP-Lab/Multilingual-LoT-Diversity.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Language of Thought</span><span>Output Diversity</span><span>Large Language Models</span><span>Multilingual Thinking</span><span>Pluralistic Alignment</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.11227" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
