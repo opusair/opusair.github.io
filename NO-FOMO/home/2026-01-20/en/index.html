@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-01-20</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-01-20</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Show HN: Mastra 1.0, open-source JavaScript agent framework from the Gatsby devs</h2>
+                <span class="published-time">Published: 2026-01-20 16:38:56</span>
+                
+                <p class="summary">Mastra 1.0, an open-source TypeScript agent framework developed by the creators of Gatsby, has officially launched in stable release. Following its initial debut on Hacker News nearly a year ago, the project has experienced substantial growth, now boasting over 300,000 weekly npm downloads and 19,400 GitHub stars. Licensed under Apache 2.0, Mastra is already deployed in production environments at companies like Replit, PayPal, and Sanity. The framework provides a comprehensive toolkit for agent development, including features for creating multi-agent workflows, running evaluations, conducting inspections in a local studio, and emitting observability data. This stable release underscores its maturity and capacity to support the rapidly advancing landscape of AI agent technologies, offering developers a robust platform to build, manage, and monitor complex agent systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Mastra</span><span>TypeScript</span><span>Agent Framework</span><span>Open-source</span><span>Multi-agent Workflows</span><span>Observability</span><span>NPM</span><span>GitHub</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/mastra-ai/mastra" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Running Claude Code dangerously (safely)</h2>
+                <span class="published-time">Published: 2026-01-20 11:58:34</span>
+                
+                <p class="summary">This article critically examines the challenges and solutions involved in executing code generated by large language models, particularly focusing on Anthropic's Claude, in practical environments. The central theme revolves around reconciling the inherent risks of running untrusted, AI-produced code with the desire to leverage its potential for automation and development. It delves into strategies for creating secure execution environments, such as sandboxing, containerization, or virtual machines, to isolate and control the impact of potentially malicious or flawed code snippets. The discussion likely emphasizes best practices for code validation, threat modeling, and implementing stringent access controls. By outlining methods to safely operationalize AI-generated code, the piece provides crucial guidance for developers and organizations looking to integrate advanced AI agents into their workflows without compromising system integrity or data security, thereby turning a seemingly "dangerous" capability into a controlled and "safe" asset for innovation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude</span><span>Large Language Model</span><span>Code Execution</span><span>AI Security</span><span>Sandboxing</span><span>Safety</span><span>AI Agent</span><span>Secure Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://blog.emilburzo.com/2026/01/running-claude-code-dangerously-safely/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Scaling long-running autonomous coding</h2>
+                <span class="published-time">Published: 2026-01-20 00:23:01</span>
+                
+                <p class="summary">The article titled "Scaling long-running autonomous coding" explores the significant challenges and prospective solutions involved in developing and deploying AI systems capable of generating and managing code autonomously over extended operational periods. This emerging domain of autonomous coding agents demands robust architectural designs to handle continuous tasks, adapt to evolving project requirements, and maintain code quality at scale. Critical considerations include efficient management of computational resources, ensuring consistent performance, and devising effective error handling and self-correction mechanisms for these intelligent systems. The discussion likely covers strategies for orchestrating multiple agents, optimizing their collaboration, and designing feedback loops that facilitate continuous improvement. Overcoming these scaling hurdles is essential for realizing the full potential of AI in software development, paving the way for more efficient and self-sufficient coding environments where AI assumes an increasingly integral role throughout the software lifecycle.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Autonomous Coding</span><span>AI Agents</span><span>Scalability</span><span>Code Generation</span><span>Software Engineering</span><span>AI Systems</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://simonwillison.net/2026/Jan/19/scaling-long-running-autonomous-coding/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>How Hightouch built their long-running agent harness</h2>
+                <span class="published-time">Published: 2026-01-20 18:31:49</span>
+                
+                <p class="summary">Hightouch has engineered a sophisticated long-running agent harness, a critical infrastructure designed to manage and orchestrate persistent software agents over extended operational periods. This development likely addresses fundamental challenges in distributed systems, including ensuring high availability, fault tolerance, and efficient resource allocation for autonomous tasks. The article is expected to delve into the core architectural principles, design patterns, and engineering decisions that underpin this robust and scalable system. Key areas of focus would include state management, resilient inter-process communication, comprehensive error handling mechanisms, and streamlined deployment strategies, all essential for maintaining operational integrity in complex, dynamic environments. The harness aims to significantly simplify the development and deployment lifecycle of agents by offering a standardized framework that abstracts away inherent complexities associated with lifecycle management and operational reliability. This technical deep-dive provides invaluable insights for engineers and architects tasked with designing and implementing similar distributed agent-based systems, highlighting best practices for creating reliable and performant agent infrastructures.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Agent Systems</span><span>Distributed Systems</span><span>Software Architecture</span><span>System Design</span><span>Fault Tolerance</span><span>Scalability</span><span>Infrastructure Engineering</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.amplifypartners.com/blog-posts/how-hightouch-built-their-long-running-agent-harness" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Giving university exams in the age of chatbots</h2>
+                <span class="published-time">Published: 2026-01-20 07:32:58</span>
+                
+                <p class="summary">The emergence of advanced AI chatbots presents a significant paradigm shift for higher education, compelling universities to critically re-evaluate traditional examination structures and assessment methodologies. With sophisticated AI tools capable of generating human-like text, the integrity of written assignments and exams is under considerable scrutiny. This scenario necessitates innovative approaches to academic evaluation, moving beyond rote memorization towards fostering critical thinking, problem-solving, and analytical skills that are less susceptible to automated generation. Educational institutions are exploring adaptive strategies, including the redesign of curricula, implementation of project-based assessments, oral examinations, and integrating AI tools responsibly within learning environments. The core challenge lies in developing assessment frameworks that effectively measure genuine student comprehension and intellectual capabilities in an era where AI can readily assist in content creation, thereby ensuring academic rigor and fairness.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Chatbots</span><span>Academic Integrity</span><span>Educational Technology</span><span>Assessment Methods</span><span>Higher Education</span><span>Large Language Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://ploum.net/2026-01-19-exam-with-chatbots.html" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OpenAI is rolling out age prediction</h2>
+                <span class="published-time">Published: 2026-01-20 19:34:48</span>
+                
+                <p class="summary">OpenAI has announced the implementation of an age prediction system, signaling a strategic move towards enhancing user safety and ensuring responsible AI deployment. This initiative, highlighted by a dedicated page on their website, aims to allow for tailored content experiences, enforce age-appropriate access controls, and align with global regulatory standards designed to protect minors online. The integration of such technology underscores the company's commitment to ethical AI practices and addressing the complex societal implications of advanced artificial intelligence. While specific technical details are not fully disclosed in this brief announcement, age prediction systems often leverage machine learning models to analyze various data points, including behavioral patterns and contextual information, all while maintaining a strong emphasis on user privacy and data security. This development aligns with broader industry trends focusing on more robust content governance and protective measures for digital users.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>OpenAI</span><span>Age Prediction</span><span>AI Safety</span><span>Responsible AI</span><span>User Protection</span><span>Content Moderation</span><span>Machine Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://openai.com/index/our-approach-to-age-prediction/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>ABC-Bench: Benchmarking Agentic Backend Coding in Real-World Development</h2>
+                <span class="published-time">Published: 2026-01-16T08:23:52.000Z</span>
+                
+                <p class="summary">The evolution of Large Language Models (LLMs) into autonomous agents has expanded the scope of AI coding from localized code generation to complex, repository-level, and execution-driven problem solving. However, current benchmarks predominantly evaluate code logic in static contexts, neglecting the dynamic, full-process requirements of real-world engineering, particularly in backend development which demands rigorous environment configuration and service deployment. To address this gap, we introduce ABC-Bench, a benchmark explicitly designed to evaluate agentic backend coding within a realistic, executable workflow. Using a scalable automated pipeline, we curated 224 practical tasks spanning 8 languages and 19 frameworks from open-source repositories. Distinct from previous evaluations, ABC-Bench require the agents to manage the entire development lifecycle from repository exploration to instantiating containerized services and pass the external end-to-end API tests. Our extensive evaluation reveals that even state-of-the-art models struggle to deliver reliable performance on these holistic tasks, highlighting a substantial disparity between current model capabilities and the demands of practical backend engineering. Our code is available at https://github.com/OpenMOSS/ABC-Bench.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Agentic Backend Coding</span><span>Large Language Models</span><span>Autonomous Agents</span><span>Benchmarking</span><span>Real-World Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.11077" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Multiplex Thinking: Reasoning via Token-wise Branch-and-Merge</h2>
+                <span class="published-time">Published: 2026-01-13T18:48:00.000Z</span>
+                
+                <p class="summary">Large language models often solve complex reasoning tasks more effectively with Chain-of-Thought (CoT), but at the cost of long, low-bandwidth token sequences. Humans, by contrast, often reason softly by maintaining a distribution over plausible next steps. Motivated by this, we propose Multiplex Thinking, a stochastic soft reasoning mechanism that, at each thinking step, samples K candidate tokens and aggregates their embeddings into a single continuous multiplex token. This preserves the vocabulary embedding prior and the sampling dynamics of standard discrete generation, while inducing a tractable probability distribution over multiplex rollouts. Consequently, multiplex trajectories can be directly optimized with on-policy reinforcement learning (RL). Importantly, Multiplex Thinking is self-adaptive: when the model is confident, the multiplex token is nearly discrete and behaves like standard CoT; when it is uncertain, it compactly represents multiple plausible next steps without increasing sequence length. Across challenging math reasoning benchmarks, Multiplex Thinking consistently outperforms strong discrete CoT and RL baselines from Pass@1 through Pass@1024, while producing shorter sequences. The code and checkpoints are available at https://github.com/GMLR-Penn/Multiplex-Thinking.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multiplex Thinking</span><span>Large Language Models</span><span>Chain-of-Thought</span><span>Reasoning</span><span>Reinforcement Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.08808" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Spurious Rewards Paradox: Mechanistically Understanding How RLVR Activates Memorization Shortcuts in LLMs</h2>
+                <span class="published-time">Published: 2026-01-16T07:55:38.000Z</span>
+                
+                <p class="summary">Reinforcement Learning with Verifiable Rewards (RLVR) is highly effective for enhancing LLM reasoning, yet recent evidence shows models like Qwen 2.5 achieve significant gains even with spurious or incorrect rewards. We investigate this phenomenon and identify a "Perplexity Paradox": spurious RLVR triggers a divergence where answer-token perplexity drops while prompt-side coherence degrades, suggesting the model is bypassing reasoning in favor of memorization. Using Path Patching, Logit Lens, JSD analysis, and Neural Differential Equations, we uncover a hidden Anchor-Adapter circuit that facilitates this shortcut. We localize a Functional Anchor in the middle layers (L18-20) that triggers the retrieval of memorized solutions, followed by Structural Adapters in later layers (L21+) that transform representations to accommodate the shortcut signal. Finally, we demonstrate that scaling specific MLP keys within this circuit allows for bidirectional causal steering-artificially amplifying or suppressing contamination-driven performance. Our results provide a mechanistic roadmap for identifying and mitigating data contamination in RLVR-tuned models. Code is available at https://github.com/idwts/How-RLVR-Activates-Memorization-Shortcuts.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning with Verifiable Rewards</span><span>Large Language Models</span><span>Memorization Shortcuts</span><span>Mechanistic Interpretability</span><span>Data Contamination</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.11061" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The Assistant Axis: Situating and Stabilizing the Default Persona of Language Models</h2>
+                <span class="published-time">Published: 2026-01-15T13:40:06.000Z</span>
+                
+                <p class="summary">Large language models can represent a variety of personas but typically default to a helpful Assistant identity cultivated during post-training. We investigate the structure of the space of model personas by extracting activation directions corresponding to diverse character archetypes. Across several different models, we find that the leading component of this persona space is an "Assistant Axis," which captures the extent to which a model is operating in its default Assistant mode. Steering towards the Assistant direction reinforces helpful and harmless behavior; steering away increases the model's tendency to identify as other entities. Moreover, steering away with more extreme values often induces a mystical, theatrical speaking style. We find this axis is also present in pre-trained models, where it primarily promotes helpful human archetypes like consultants and coaches and inhibits spiritual ones. Measuring deviations along the Assistant Axis predicts "persona drift," a phenomenon where models slip into exhibiting harmful or bizarre behaviors that are uncharacteristic of their typical persona. We find that persona drift is often driven by conversations demanding meta-reflection on the model's processes or featuring emotionally vulnerable users. We show that restricting activations to a fixed region along the Assistant Axis can stabilize model behavior in these scenarios -- and also in the face of adversarial persona-based jailbreaks. Our results suggest that post-training steers models toward a particular region of persona space but only loosely tethers them to it, motivating work on training and steering strategies that more deeply anchor models to a coherent persona.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large language models</span><span>Model personas</span><span>Assistant Axis</span><span>Persona drift</span><span>Model behavior stabilization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.10387" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>NAACL: Noise-AwAre Verbal Confidence Calibration for LLMs in RAG Systems</h2>
+                <span class="published-time">Published: 2026-01-16T05:38:25.000Z</span>
+                
+                <p class="summary">Accurately assessing model confidence is essential for deploying large language models (LLMs) in mission-critical factual domains. While retrieval-augmented generation (RAG) is widely adopted to improve grounding, confidence calibration in RAG settings remains poorly understood. We conduct a systematic study across four benchmarks, revealing that LLMs exhibit poor calibration performance due to noisy retrieved contexts. Specifically, contradictory or irrelevant evidence tends to inflate the model's false certainty, leading to severe overconfidence. To address this, we propose NAACL Rules (Noise-AwAre Confidence CaLibration Rules) to provide a principled foundation for resolving overconfidence under noise. We further design NAACL, a noise-aware calibration framework that synthesizes supervision from about 2K HotpotQA examples guided by these rules. By performing supervised fine-tuning (SFT) with this data, NAACL equips models with intrinsic noise awareness without relying on stronger teacher models. Empirical results show that NAACL yields substantial gains, improving ECE scores by 10.9% in-domain and 8.0% out-of-domain. By bridging the gap between retrieval noise and verbal calibration, NAACL paves the way for both accurate and epistemically reliable LLMs.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Retrieval-Augmented Generation</span><span>Confidence Calibration</span><span>Noise Awareness</span><span>Supervised Fine-tuning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.11004" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>SIN-Bench: Tracing Native Evidence Chains in Long-Context Multimodal Scientific Interleaved Literature</h2>
+                <span class="published-time">Published: 2026-01-15T06:25:25.000Z</span>
+                
+                <p class="summary">Evaluating whether multimodal large language models truly understand long-form scientific papers remains challenging: answer-only metrics and synthetic "Needle-In-A-Haystack" tests often reward answer matching without requiring a causal, evidence-linked reasoning trace in the document. We propose the "Fish-in-the-Ocean" (FITO) paradigm, which requires models to construct explicit cross-modal evidence chains within native scientific documents. To operationalize FITO, we build SIN-Data, a scientific interleaved corpus that preserves the native interleaving of text and figures. On top of it, we construct SIN-Bench with four progressive tasks covering evidence discovery (SIN-Find), hypothesis verification (SIN-Verify), grounded QA (SIN-QA), and evidence-anchored synthesis (SIN-Summary). We further introduce "No Evidence, No Score", scoring predictions when grounded to verifiable anchors and diagnosing evidence quality via matching, relevance, and logic. Experiments on eight MLLMs show that grounding is the primary bottleneck: Gemini-3-pro achieves the best average overall score (0.573), while GPT-5 attains the highest SIN-QA answer accuracy (0.767) but underperforms on evidence-aligned overall scores, exposing a gap between correctness and traceable support.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal Large Language Models</span><span>Long-Context Reasoning</span><span>Scientific Literature</span><span>Evidence Chains</span><span>Benchmarking</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.10108" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
