@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-01-22</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-01-22</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Qwen3-TTS Family Is Now Open Sourced: Voice Design, Clone, and Generation</h2>
+                <span class="published-time">Published: 2026-01-22 13:51:25</span>
+                
+                <p class="summary">The Qwen3-TTS family, a sophisticated suite of text-to-speech models, has been officially open-sourced, marking a significant advancement in synthetic voice technology. This release empowers developers and researchers with advanced capabilities for voice design, voice cloning, and high-fidelity voice generation. The voice design feature allows for the creation of unique vocal characteristics, offering extensive customization for various applications. Furthermore, the robust voice cloning functionality enables users to replicate specific voices with remarkable accuracy from minimal audio input, opening new possibilities for personalized digital experiences. The core voice generation component excels at converting text into natural and expressive speech, suitable for a wide array of uses, from content creation and virtual assistants to accessibility tools. By making the Qwen3-TTS family open source, its creators aim to foster collaborative innovation and accelerate the development of next-generation AI-driven audio solutions across diverse industries. This move underscores a commitment to advancing generative AI in the audio domain, providing a powerful toolkit for speech synthesis.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Qwen3-TTS</span><span>Text-to-Speech</span><span>Voice Synthesis</span><span>Voice Cloning</span><span>Voice Generation</span><span>Open Source</span><span>Generative AI</span><span>Audio AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://qwen.ai/blog?id=qwen3tts-0115" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>GPTZero finds 100 new hallucinations in NeurIPS 2025 accepted papers</h2>
+                <span class="published-time">Published: 2026-01-22 15:20:48</span>
+                
+                <p class="summary">A significant report from GPTZero reveals the detection of 100 instances of "hallucinations" within papers accepted for the prestigious NeurIPS 2025 conference. This finding raises considerable concerns regarding the integrity and factual accuracy of scientific research submissions, particularly in an era where AI-generated content is becoming increasingly prevalent. The identification of such a large number of anomalies by an AI detection tool like GPTZero underscores the critical need for robust verification processes in academic publishing. Hallucinations, typically defined as plausible but factually incorrect outputs generated by AI models, can undermine the credibility of research findings and impede scientific progress. This discovery prompts a re-evaluation of current peer-review mechanisms and the role of AI detection technologies in maintaining high standards for scholarly work. The incident highlights the growing challenges faced by top-tier conferences like NeurIPS in ensuring the originality and veracity of contributions, calling for enhanced vigilance against AI-induced inaccuracies in research papers. It also emphasizes the evolving landscape of academic publishing, where the intersection of AI generation and human review necessitates new protocols and tools to uphold scientific rigor.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Content Detection</span><span>Hallucinations</span><span>NeurIPS</span><span>Academic Integrity</span><span>AI Research</span><span>Machine Learning Ethics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://gptzero.me/news/neurips/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: BrowserOS – "Claude Cowork" in the browser</h2>
+                <span class="published-time">Published: 2026-01-22 16:30:58</span>
+                
+                <p class="summary">BrowserOS, an open-source and privacy-first AI browser developed by Nithin and Nikhil (YC S24), has launched with a core architectural innovation: running AI agents entirely on the client side. This allows users to leverage local Large Language Models (LLMs) or bring their own API keys, ensuring that sensitive company and user data remains securely on the local machine. This client-side processing approach fundamentally differentiates BrowserOS from server-side agent loops found in competitors like ChatGPT Atlas and Perplexity Comet, addressing significant privacy concerns. The latest feature release introduces comprehensive filesystem access, enabling the browser agent to read and write files and execute shell commands, akin to advanced functionalities seen in platforms suchs as Claude Cowork. This capability, unexpectedly derived from their initial privacy-focused design, positions BrowserOS as a compelling alternative for users prioritizing data security and local control in their AI-powered browsing experiences.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>BrowserOS</span><span>Open-source</span><span>Client-side AI</span><span>Privacy-first AI</span><span>Local LLMs</span><span>AI Agent</span><span>Filesystem Access</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/browseros-ai/BrowserOS" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Stealing Isn't Innovation – America's creative community message against AI</h2>
+                <span class="published-time">Published: 2026-01-22 16:24:57</span>
+                
+                <p class="summary">The campaign "Stealing Isn't Innovation" represents a significant pushback from America's creative community against the perceived appropriation of copyrighted works by artificial intelligence technologies. This initiative highlights widespread concerns among artists, writers, musicians, and other creators regarding the ethical implications and legal ramifications of using their intellectual property to train AI models without explicit consent or fair compensation. The core message emphasizes that while AI offers new tools and possibilities, its development should not come at the expense of creators' rights, nor should it be seen as innovative to merely reproduce or derive from existing works without proper licensing. The campaign advocates for robust legal frameworks and industry standards that protect intellectual property in the age of generative AI, ensuring that innovation fosters creativity rather than undermining it by devaluing human artistry. It calls for transparency in AI training data sourcing and equitable compensation models for creators whose works contribute to AI development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence Ethics</span><span>Intellectual Property</span><span>Copyright Law</span><span>Generative AI</span><span>Content Creation</span><span>AI Regulation</span><span>Creative Rights</span><span>Data Sourcing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.stealingisntinnovation.com" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>I was banned from Claude for scaffolding a Claude.md file</h2>
+                <span class="published-time">Published: 2026-01-22 18:38:27</span>
+                
+                <p class="summary">A user reported an unexpected ban from Anthropic's Claude AI service, attributing the suspension to the creation of a file named 'Claude.md' during a code scaffolding process. This incident, documented in a personal blog post, highlights potential issues with automated content moderation or policy enforcement within AI platforms. The user's account suggests that the mere presence or creation of a file directly referencing the AI's own name, even in a development context, triggered a severe account action without prior warning. This raises significant concerns about the sensitivity and specificity of AI content filtering mechanisms and the implications for developers or users who might innocently reference the AI service in their work, potentially limiting their creative freedom or workflow. The event prompts a discussion on the boundaries of acceptable use, the transparency of reasons for account suspensions, and the need for clearer communication from AI service providers in the evolving landscape of human-AI interaction and platform governance.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Moderation</span><span>Large Language Model</span><span>Content Policy</span><span>User Suspension</span><span>AI Ethics</span><span>Platform Governance</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://hugodaniel.com/posts/claude-code-banned-me/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Launch HN: Constellation Space (YC W26) – AI for satellite mission assurance</h2>
+                <span class="published-time">Published: 2026-01-22 17:03:21</span>
+                
+                <p class="summary">Constellation Space, a YC W26 company, announced the launch of its AI system focused on satellite mission assurance. Founded by engineers with extensive backgrounds at SpaceX, Blue Origin, and NASA, the team developed a predictive artificial intelligence solution designed to identify and forecast satellite link failures before they occur. Their collective experience, including managing constellation health for Starlink and deep space communications, consistently revealed a critical operational challenge: data loss often happens because degrading radio frequency (RF) links are only detected reactively. Constellation Space's innovative AI system directly addresses this by analyzing dozens of complex, interacting variables that influence satellite RF link performance. This sophisticated analysis enables real-time predictions of link stability for upcoming operational windows, thereby ensuring proactive intervention. The technology promises to significantly enhance the reliability and operational efficiency of modern satellite constellations and critical space missions by preventing costly data loss and ensuring continuous communication.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Satellite Mission Assurance</span><span>AI System</span><span>Link Failure Prediction</span><span>Satellite Operations</span><span>RF Links</span><span>Predictive Analytics</span><span>Space Technology</span><span>Constellation Management</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://constellation-io.com/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Agentic Reasoning for Large Language Models</h2>
+                <span class="published-time">Published: 2026-01-18T18:58:23.000Z</span>
+                
+                <p class="summary">Reasoning is a fundamental cognitive process underlying inference, problem-solving, and decision-making. While large language models (LLMs) demonstrate strong reasoning capabilities in closed-world settings, they struggle in open-ended and dynamic environments. Agentic reasoning marks a paradigm shift by reframing LLMs as autonomous agents that plan, act, and learn through continual interaction. In this survey, we organize agentic reasoning along three complementary dimensions. First, we characterize environmental dynamics through three layers: foundational agentic reasoning, which establishes core single-agent capabilities including planning, tool use, and search in stable environments; self-evolving agentic reasoning, which studies how agents refine these capabilities through feedback, memory, and adaptation; and collective multi-agent reasoning, which extends intelligence to collaborative settings involving coordination, knowledge sharing, and shared goals. Across these layers, we distinguish in-context reasoning, which scales test-time interaction through structured orchestration, from post-training reasoning, which optimizes behaviors via reinforcement learning and supervised fine-tuning. We further review representative agentic reasoning frameworks across real-world applications and benchmarks, including science, robotics, healthcare, autonomous research, and mathematics. This survey synthesizes agentic reasoning methods into a unified roadmap bridging thought and action, and outlines open challenges and future directions, including personalization, long-horizon interaction, world modeling, scalable multi-agent training, and governance for real-world deployment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Agentic Reasoning</span><span>Large Language Models</span><span>Autonomous Agents</span><span>Multi-agent Systems</span><span>Reinforcement Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.12538" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Rethinking Video Generation Model for the Embodied World</h2>
+                <span class="published-time">Published: 2026-01-21T18:59:18.000Z</span>
+                
+                <p class="summary">Video generation models have significantly advanced embodied intelligence, unlocking new possibilities for generating diverse robot data that capture perception, reasoning, and action in the physical world. However, synthesizing high-quality videos that accurately reflect real-world robotic interactions remains challenging, and the lack of a standardized benchmark limits fair comparisons and progress. To address this gap, we introduce a comprehensive robotics benchmark, RBench, designed to evaluate robot-oriented video generation across five task domains and four distinct embodiments. It assesses both task-level correctness and visual fidelity through reproducible sub-metrics, including structural consistency, physical plausibility, and action completeness. Evaluation of 25 representative models highlights significant deficiencies in generating physically realistic robot behaviors. Furthermore, the benchmark achieves a Spearman correlation coefficient of 0.96 with human evaluations, validating its effectiveness. While RBench provides the necessary lens to identify these deficiencies, achieving physical realism requires moving beyond evaluation to address the critical shortage of high-quality training data. Driven by these insights, we introduce a refined four-stage data pipeline, resulting in RoVid-X, the largest open-source robotic dataset for video generation with 4 million annotated video clips, covering thousands of tasks and enriched with comprehensive physical property annotations. Collectively, this synergistic ecosystem of evaluation and data establishes a robust foundation for rigorous assessment and scalable training of video models, accelerating the evolution of embodied AI toward general intelligence.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Generation Models</span><span>Embodied Intelligence</span><span>Robotics Benchmarks</span><span>Robot Datasets</span><span>Physical Realism</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Robotics</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.15282" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Numina-Lean-Agent: An Open and General Agentic Reasoning System for Formal Mathematics</h2>
+                <span class="published-time">Published: 2026-01-20T14:51:45.000Z</span>
+                
+                <p class="summary">Agentic systems have recently become the dominant paradigm for formal theorem proving, achieving strong performance by coordinating multiple models and tools. However, existing approaches often rely on task-specific pipelines and trained formal provers, limiting their flexibility and reproducibility. In this paper, we propose the paradigm that directly uses a general coding agent as a formal math reasoner. This paradigm is motivated by (1) A general coding agent provides a natural interface for diverse reasoning tasks beyond proving, (2) Performance can be improved by simply replacing the underlying base model, without training, and (3) MCP enables flexible extension and autonomous calling of specialized tools, avoiding complex design. Based on this paradigm, we introduce Numina-Lean-Agent, which combines Claude Code with Numina-Lean-MCP to enable autonomous interaction with Lean, retrieval of relevant theorems, informal proving and auxiliary reasoning tools. Using Claude Opus 4.5 as the base model, Numina-Lean-Agent solves all problems in Putnam 2025 (12 / 12), matching the best closed-source system. Beyond benchmark evaluation, we further demonstrate its generality by interacting with mathematicians to successfully formalize the Brascamp-Lieb theorem. We release Numina-Lean-Agent and all solutions at https://github.com/project-numina/numina-lean-agent.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Formal Mathematics</span><span>Theorem Proving</span><span>Mathematical Reasoning</span><span>Lean</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.14027" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>FinVault: Benchmarking Financial Agent Safety in Execution-Grounded Environments</h2>
+                <span class="published-time">Published: 2026-01-09T03:25:45.000Z</span>
+                
+                <p class="summary">Financial agents powered by large language models (LLMs) are increasingly deployed for investment analysis, risk assessment, and automated decision-making, where their abilities to plan, invoke tools, and manipulate mutable state introduce new security risks in high-stakes and highly regulated financial environments. However, existing safety evaluations largely focus on language-model-level content compliance or abstract agent settings, failing to capture execution-grounded risks arising from real operational workflows and state-changing actions. To bridge this gap, we propose FinVault, the first execution-grounded security benchmark for financial agents, comprising 31 regulatory case-driven sandbox scenarios with state-writable databases and explicit compliance constraints, together with 107 real-world vulnerabilities and 963 test cases that systematically cover prompt injection, jailbreaking, financially adapted attacks, as well as benign inputs for false-positive evaluation. Experimental results reveal that existing defense mechanisms remain ineffective in realistic financial agent settings, with average attack success rates (ASR) still reaching up to 50.0% on state-of-the-art models and remaining non-negligible even for the most robust systems (ASR 6.7%), highlighting the limited transferability of current safety designs and the need for stronger financial-specific defenses. Our code can be found at https://github.com/aifinlab/FinVault.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Financial Agents</span><span>LLMs Security</span><span>Execution-Grounded Benchmark</span><span>FinVault</span><span>Prompt Injection</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.07853" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>FARE: Fast-Slow Agentic Robotic Exploration</h2>
+                <span class="published-time">Published: 2026-01-21T05:56:24.000Z</span>
+                
+                <p class="summary">This work advances autonomous robot exploration by integrating agent-level semantic reasoning with fast local control. We introduce FARE, a hierarchical autonomous exploration framework that integrates a large language model (LLM) for global reasoning with a reinforcement learning (RL) policy for local decision making. FARE follows a fast-slow thinking paradigm. The slow-thinking LLM module interprets a concise textual description of the unknown environment and synthesizes an agent-level exploration strategy, which is then grounded into a sequence of global waypoints through a topological graph. To further improve reasoning efficiency, this module employs a modularity-based pruning mechanism that reduces redundant graph structures. The fast-thinking RL module executes exploration by reacting to local observations while being guided by the LLM-generated global waypoints. The RL policy is additionally shaped by a reward term that encourages adherence to the global waypoints, enabling coherent and robust closed-loop behavior. This architecture decouples semantic reasoning from geometric decision, allowing each module to operate in its appropriate temporal and spatial scale. In challenging simulated environments, our results show that FARE achieves substantial improvements in exploration efficiency over state-of-the-art baselines. We further deploy FARE on hardware and validate it in complex, large scale 200mtimes130m building environment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Robotic Exploration</span><span>Large Language Model</span><span>Reinforcement Learning</span><span>AI Agent</span><span>Autonomous Systems</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.14681" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The Responsibility Vacuum: Organizational Failure in Scaled Agent Systems</h2>
+                <span class="published-time">Published: 2026-01-21T15:05:27.000Z</span>
+                
+                <p class="summary">Modern CI/CD pipelines integrating agent-generated code exhibit a structural failure in responsibility attribution. Decisions are executed through formally correct approval processes, yet no entity possesses both the authority to approve those decisions and the epistemic capacity to meaningfully understand their basis. We define this condition as responsibility vacuum: a state in which decisions occur, but responsibility cannot be attributed because authority and verification capacity do not coincide. We show that this is not a process deviation or technical defect, but a structural property of deployments where decision generation throughput exceeds bounded human verification capacity. We identify a scaling limit under standard deployment assumptions, including parallel agent generation, CI-based validation, and individualized human approval gates. Beyond a throughput threshold, verification ceases to function as a decision criterion and is replaced by ritualized approval based on proxy signals. Personalized responsibility becomes structurally unattainable in this regime. We further characterize a CI amplification dynamic, whereby increasing automated validation coverage raises proxy signal density without restoring human capacity. Under fixed time and attention constraints, this accelerates cognitive offloading in the broad sense and widens the gap between formal approval and epistemic understanding. Additional automation therefore amplifies, rather than mitigates, the responsibility vacuum. We conclude that unless organizations explicitly redesign decision boundaries or reassign responsibility away from individual decisions toward batch- or system-level ownership, responsibility vacuum remains an invisible but persistent failure mode in scaled agent deployments.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>responsibility vacuum</span><span>scaled agent systems</span><span>organizational failure</span><span>CI/CD pipelines</span><span>automated validation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.15059" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
