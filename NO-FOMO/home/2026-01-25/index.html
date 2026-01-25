@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-01-25</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-01-25</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Will Your AI Teammate Bring Bagels to Standup?</h2>
+                <span class="published-time">Published: 2026-01-25 17:21:57</span>
+                
+                <p class="summary">The article titled 'Will Your AI Teammate Bring Bagels to Standup?' delves into the evolving discussion surrounding the integration of artificial intelligence into human workforces, moving beyond mere task automation to explore the socio-technical dimensions of AI as a genuine team member. It prompts reflection on whether AI systems can or should participate in non-functional, social aspects of team dynamics, such as bringing bagels to a standup meeting. This seemingly trivial question underscores deeper considerations about human-AI collaboration, the development of 'teammate' qualities in AI agents, and the impact on workplace culture. The piece likely examines the technical advancements required for AI to exhibit such nuanced understanding and initiative, alongside the organizational and ethical implications of fostering true partnership between humans and intelligent machines. It encourages stakeholders to consider the future of work where AI is not just a tool but an active, integrated participant in team rituals and shared responsibilities, challenging conventional perceptions of AI's role in the professional environment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Teammates</span><span>Human-AI Collaboration</span><span>AI Integration</span><span>Future of Work</span><span>Workplace Dynamics</span><span>Organizational AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://redmonk.com/kholterhoff/2026/01/16/will-your-ai-teammate-bring-bagels-to-standup/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: LLMNet  The Offline Internet, Search the web without the web</h2>
+                <span class="published-time">Published: 2026-01-25 14:10:12</span>
+                
+                <p class="summary">LLMNet, introduced as \"The Offline Internet,\" presents an innovative solution for accessing web information without a live internet connection. This project leverages Large Language Models (LLMs) to perform local indexing and processing of web content, enabling users to conduct searches and interact with information stored directly on their devices. The fundamental idea is to establish a localized version of the internet where pre-downloaded or cached web data can be queried effectively using natural language, mirroring the functionality of online search engines. LLMNet aims to overcome obstacles related to internet dependency, enhance data privacy, and provide instant information access in scenarios with limited or no connectivity. By facilitating web search computations at the edge, the initiative envisions a future where extensive digital content is continuously searchable offline, offering users consistent knowledge access regardless of internet availability. This highlights the growing potential of local AI deployments for greater autonomy and resilience in information retrieval.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>Offline Search</span><span>Information Retrieval</span><span>Local AI</span><span>Edge Computing</span><span>Web Indexing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/skorotkiewicz/llmnet" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: AutoShorts  Local, GPU-accelerated AI video pipeline for creators</h2>
+                <span class="published-time">Published: 2026-01-25 07:36:20</span>
+                
+                <p class="summary">AutoShorts is presented as a local, GPU-accelerated artificial intelligence video pipeline designed to assist creators. This project aims to streamline video production workflows by leveraging AI capabilities directly on a user's machine, benefiting from GPU power for enhanced performance. The solution likely automates various stages of video creation, such as content analysis, summarization, scene detection, and potentially even editing or short-form video generation, targeting efficiency and speed. By keeping processing local, AutoShorts offers privacy and potentially lower latency compared to cloud-based alternatives, appealing to creators who prioritize control over their data and production environment. Its focus on acceleration indicates optimization for demanding video processing tasks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI video pipeline</span><span>GPU acceleration</span><span>Local AI</span><span>Video creation</span><span>Content creation</span><span>Automation</span><span>Video editing</span><span>Open-source</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Video Understanding</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/divyaprakash0426/autoshorts" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Challenges and Research Directions for Large Language Model Inference Hardware</h2>
+                <span class="published-time">Published: 2026-01-25 02:48:36</span>
+                
+                <p class="summary">A recent publication titled 'Challenges and Research Directions for Large Language Model Inference Hardware' identifies the critical bottlenecks and outlines future research avenues for hardware platforms supporting the deployment of Large Language Models (LLMs). The paper emphasizes the immense computational and memory demands of LLM inference, which often exceed the capabilities of general-purpose hardware. Key challenges include optimizing memory bandwidth, improving energy efficiency, and developing specialized architectures that can handle the massive parameter counts and unique computational patterns of LLMs. It reviews the current landscape of inference hardware, from GPUs to custom AI accelerators, highlighting their respective strengths and limitations. The authors propose several crucial research directions, such as exploring novel chip designs, advancing quantization techniques, developing hardware-aware sparsity exploitation methods, and implementing system-level optimizations to enhance throughput and reduce latency. The ultimate objective is to pave the way for more efficient, scalable, and economically viable LLM inference, making advanced AI capabilities more accessible across various applications and industries.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>LLM Inference</span><span>Hardware Acceleration</span><span>AI Accelerators</span><span>Deep Learning Hardware</span><span>Computational Efficiency</span><span>Memory Bandwidth</span><span>Specialized Architectures</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://arxiv.org/abs/2601.05047" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
