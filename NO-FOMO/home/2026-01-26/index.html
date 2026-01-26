@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-01-26</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-01-26</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Qwen3-Max-Thinking</h2>
+                <span class="published-time">Published: 2026-01-26 15:23:00</span>
+                
+                <p class="summary">The announcement titled "Qwen3-Max-Thinking" from Qwen.ai likely indicates a significant upgrade or a new feature introduction for the Qwen3-Max large language model. While specific technical details are not immediately available from the provided content, the term "Thinking" strongly implies advancements in the model's cognitive capabilities, particularly in areas like logical reasoning, complex problem-solving, and sophisticated decision-making. This enhancement suggests Qwen3-Max is being equipped with more advanced internal mechanisms to process information, infer meaning, and generate more coherent and contextually relevant responses, moving beyond mere pattern recognition. Such a development would be pivotal for applications requiring deeper analytical prowess and strategic planning, potentially impacting fields from scientific research to enterprise automation. This release reinforces the competitive landscape of large language models, emphasizing the continuous drive towards more intelligent and autonomous AI systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Qwen3-Max</span><span>Large Language Model</span><span>AI</span><span>Reasoning</span><span>Cognitive AI</span><span>Neural Networks</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://qwen.ai/blog?id=qwen3-max-thinking" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OSS ChatGPT WebUI – 530 Models, MCP, Tools, Gemini RAG, Image/Audio Gen</h2>
+                <span class="published-time">Published: 2026-01-26 15:01:03</span>
+                
+                <p class="summary">The OSS ChatGPT WebUI project, detailed at llmspy.org/docs/v3, introduces an advanced open-source web interface engineered for comprehensive interaction with a multitude of artificial intelligence models. This robust platform is designed to support an impressive range of over 530 distinct models, offering unparalleled flexibility and choice for both developers and end-users. Central to its feature set are capabilities such as Multi-Agent Conversation Protocol (MCP) integration, a diverse suite of AI tools, and sophisticated Gemini Retrieval Augmented Generation (RAG) functionality, which significantly enhances the accuracy and relevance of AI responses. Moreover, the WebUI extends its utility into multimodal content creation, incorporating powerful image and audio generation features. This initiative aims to provide a versatile and powerful ecosystem for exploring, experimenting with, and deploying various large language models, thereby advancing conversational AI applications and streamlining generative media workflows within an open and collaborative framework. Its commitment to open-source principles encourages community engagement and democratizes access to state-of-the-art AI technologies.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Open-source</span><span>Large Language Models</span><span>ChatGPT WebUI</span><span>Retrieval Augmented Generation</span><span>Multimodal AI</span><span>Image Generation</span><span>Audio Generation</span><span>AI Tools</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Multimodal</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://llmspy.org/docs/v3" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Only 1 LLM can fly a drone</h2>
+                <span class="published-time">Published: 2026-01-26 11:00:44</span>
+                
+                <p class="summary">A new project, "snapbench," has been unveiled, proposing a novel benchmark designed to rigorously assess the capacity of Large Language Models (LLMs) to perform real-world control tasks, specifically focusing on the complex domain of drone flight. The accompanying title, "Only 1 LLM can fly a drone," starkly illustrates the current limitations and significant challenges faced by contemporary LLMs in translating abstract understanding into concrete physical actions. This initiative underscores the critical gap between advanced language processing capabilities and the precise, real-time control required for autonomous robotic systems. The snapbench platform aims to standardize the evaluation of LLMs in areas such as environmental perception, strategic mission planning, and accurate execution of commands within a dynamic, physical environment. By establishing clear metrics for success in drone operation, this benchmark is expected to catalyze further research and development towards creating more robust and physically capable AI agents, thereby accelerating the integration of LLMs into advanced robotics and automation scenarios.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>Robotics</span><span>Drone Control</span><span>AI Agent</span><span>Benchmarking</span><span>Autonomous Systems</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Robotics</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/kxzk/snapbench" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Porting 100k lines from TypeScript to Rust using Claude Code in a month</h2>
+                <span class="published-time">Published: 2026-01-26 13:58:27</span>
+                
+                <p class="summary">A significant project successfully migrated a 100,000-line codebase from TypeScript to Rust within a single month, an accomplishment largely facilitated by the use of Claude Code, an advanced AI code assistant. This initiative highlights the burgeoning capabilities of large language models in streamlining complex software engineering challenges, particularly in the domain of language porting and large-scale code refactoring. The rapid turnaround for such an extensive code transformation demonstrates the transformative potential of AI-driven development to drastically shorten traditional development cycles and overcome the manual overhead typically associated with large-scale code migrations. This case study signals a new era for developer productivity, showcasing how sophisticated AI tools can enable efficient and swift modernization of software systems by automating substantial portions of the code translation process. The success of this project suggests that AI assistants are poised to play a pivotal role in accelerating cross-language development and maintenance efforts, offering considerable implications for enterprise-level software upgrades and platform transitions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>TypeScript</span><span>Rust</span><span>Code Porting</span><span>AI Code Assistant</span><span>Large Language Model</span><span>Software Migration</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://blog.vjeux.com/2026/analysis/porting-100k-lines-from-typescript-to-rust-using-claude-code-in-a-month.html" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: TetrisBench – Gemini Flash reaches 66% win rate on Tetris against Opus</h2>
+                <span class="published-time">Published: 2026-01-26 18:42:40</span>
+                
+                <p class="summary">TetrisBench, a new platform showcased on Hacker News, provides a dedicated environment for benchmarking the performance of artificial intelligence models in the classic game of Tetris. Recent findings from TetrisBench reveal a significant achievement by Google's Gemini Flash model, demonstrating a 66% win rate when pitted against the more powerful Gemini Opus model. This outcome is particularly compelling as it suggests that a more compact and potentially faster iteration, such as Gemini Flash, can achieve superior or highly competitive performance in a specific, rule-bound task like Tetris, even when compared to its larger counterpart. This benchmark highlights the growing efficacy of specialized AI models and optimizations that allow for efficient resource utilization without compromising performance in targeted domains. This development has important implications for the design and deployment of AI agents, emphasizing that model size does not always directly correlate with optimal performance across all applications. TetrisBench could serve as a valuable tool for future research into AI game playing, model efficiency, and comparative analysis of different AI architectures.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Gaming</span><span>Gemini AI</span><span>AI Benchmark</span><span>Model Performance</span><span>Machine Learning</span><span>Game AI</span><span>AI Efficiency</span><span>Tetris</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://tetrisbench.com/tetrisbench/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Google AI Overviews cite YouTube more than any medical site for health queries</h2>
+                <span class="published-time">Published: 2026-01-26 14:27:00</span>
+                
+                <p class="summary">A recent study indicates that Google's AI Overviews, a feature designed to provide synthesized answers directly within search results, disproportionately cites YouTube content over established medical websites when responding to health-related queries. This finding raises significant concerns regarding the accuracy, reliability, and potential for misinformation within AI-generated health information. The analysis suggests that the underlying AI models may prioritize readily available or highly trafficked content, even if it lacks the authoritative medical vetting of dedicated health platforms. Experts are highlighting the critical implications for public health, emphasizing the necessity for robust content provenance and stringent fact-checking mechanisms within AI systems, particularly when dealing with sensitive domains such as health. The study underscores a pivotal challenge in the responsible deployment of AI in information retrieval, stressing the need for search providers to refine their AI algorithms to ensure that the information presented is consistently sourced from credible and expert-reviewed entities, thereby safeguarding user trust and public well-being.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Google AI Overviews</span><span>AI in healthcare</span><span>information retrieval</span><span>source reliability</span><span>health queries</span><span>AI ethics</span><span>search engines</span><span>large language models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.theguardian.com/technology/2026/jan/24/google-ai-overviews-youtube-medical-citations-study" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>LongCat-Flash-Thinking-2601 Technical Report</h2>
+                <span class="published-time">Published: 2026-01-23T13:20:09.000Z</span>
+                
+                <p class="summary">We introduce LongCat-Flash-Thinking-2601, a 560-billion-parameter open-source Mixture-of-Experts (MoE) reasoning model with superior agentic reasoning capability. LongCat-Flash-Thinking-2601 achieves state-of-the-art performance among open-source models on a wide range of agentic benchmarks, including agentic search, agentic tool use, and tool-integrated reasoning. Beyond benchmark performance, the model demonstrates strong generalization to complex tool interactions and robust behavior under noisy real-world environments. Its advanced capability stems from a unified training framework that combines domain-parallel expert training with subsequent fusion, together with an end-to-end co-design of data construction, environments, algorithms, and infrastructure spanning from pre-training to post-training. In particular, the model's strong generalization capability in complex tool-use are driven by our in-depth exploration of environment scaling and principled task construction. To optimize long-tailed, skewed generation and multi-turn agentic interactions, and to enable stable training across over 10,000 environments spanning more than 20 domains, we systematically extend our asynchronous reinforcement learning framework, DORA, for stable and efficient large-scale multi-environment training. Furthermore, recognizing that real-world tasks are inherently noisy, we conduct a systematic analysis and decomposition of real-world noise patterns, and design targeted training procedures to explicitly incorporate such imperfections into the training process, resulting in improved robustness for real-world applications. To further enhance performance on complex reasoning tasks, we introduce a Heavy Thinking mode that enables effective test-time scaling by jointly expanding reasoning depth and width through intensive parallel thinking.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Mixture-of-Experts</span><span>Agentic Reasoning</span><span>Reinforcement Learning</span><span>Large Language Model</span><span>Tool Use</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.16725" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Memory-V2V: Augmenting Video-to-Video Diffusion Models with Memory</h2>
+                <span class="published-time">Published: 2026-01-22T19:59:17.000Z</span>
+                
+                <p class="summary">Recent foundational video-to-video diffusion models have achieved impressive results in editing user provided videos by modifying appearance, motion, or camera movement. However, real-world video editing is often an iterative process, where users refine results across multiple rounds of interaction. In this multi-turn setting, current video editors struggle to maintain cross-consistency across sequential edits. In this work, we tackle, for the first time, the problem of cross-consistency in multi-turn video editing and introduce Memory-V2V, a simple, yet effective framework that augments existing video-to-video models with explicit memory. Given an external cache of previously edited videos, Memory-V2V employs accurate retrieval and dynamic tokenization strategies to condition the current editing step on prior results. To further mitigate redundancy and computational overhead, we propose a learnable token compressor within the DiT backbone that compresses redundant conditioning tokens while preserving essential visual cues, achieving an overall speedup of 30%. We validate Memory-V2V on challenging tasks including video novel view synthesis and text-conditioned long video editing. Extensive experiments show that Memory-V2V produces videos that are significantly more cross-consistent with minimal computational overhead, while maintaining or even improving task-specific performance over state-of-the-art baselines. Project page: https://dohunlee1.github.io/MemoryV2V</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video-to-Video Diffusion Models</span><span>Multi-turn Video Editing</span><span>Cross-consistency</span><span>Memory-V2V</span><span>Token Compressor</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Deep Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.16296" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>SWE-Pruner: Self-Adaptive Context Pruning for Coding Agents</h2>
+                <span class="published-time">Published: 2026-01-23T13:51:59.000Z</span>
+                
+                <p class="summary">LLM agents have demonstrated remarkable capabilities in software development, but their performance is hampered by long interaction contexts, which incur high API costs and latency. While various context compression approaches such as LongLLMLingua has emerged to tackle this challenge, they typically rely on fixed metrics such as PPL, ignoring the task-specific nature of code understanding. As a result, they frequently disrupt syntactic and logical structure and fail to retain critical implementation details. In this paper, we propose SWE-Pruner, a self-adaptive context pruning framework tailored for coding agents. Drawing inspiration from how human programmers "selectively skim" source code during development and debugging, SWE-Pruner performs task-aware adaptive pruning for long contexts. Given the current task, the agent formulates an explicit goal (e.g., "focus on error handling") as a hint to guide the pruning targets. A lightweight neural skimmer (0.6B parameters) is trained to dynamically select relevant lines from the surrounding context given the goal. Evaluations across four benchmarks and multiple models validate SWE-Pruner's effectiveness in various scenarios, achieving 23-54% token reduction on agent tasks like SWE-Bench Verified and up to 14.84x compression on single-turn tasks like LongCodeQA with minimal performance impact.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM agents</span><span>context pruning</span><span>coding agents</span><span>self-adaptive</span><span>software development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.16746" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Jet-RL: Enabling On-Policy FP8 Reinforcement Learning with Unified Training and Rollout Precision Flow</h2>
+                <span class="published-time">Published: 2026-01-20T18:54:31.000Z</span>
+                
+                <p class="summary">Reinforcement learning (RL) is essential for enhancing the complex reasoning capabilities of large language models (LLMs). However, existing RL training pipelines are computationally inefficient and resource-intensive, with the rollout phase accounting for over 70% of total training time. Quantized RL training, particularly using FP8 precision, offers a promising approach to mitigating this bottleneck. A commonly adopted strategy applies FP8 precision during rollout while retaining BF16 precision for training. In this work, we present the first comprehensive study of FP8 RL training and demonstrate that the widely used BF16-training + FP8-rollout strategy suffers from severe training instability and catastrophic accuracy collapse under long-horizon rollouts and challenging tasks. Our analysis shows that these failures stem from the off-policy nature of the approach, which introduces substantial numerical mismatch between training and inference. Motivated by these observations, we propose Jet-RL, an FP8 RL training framework that enables robust and stable RL optimization. The key idea is to adopt a unified FP8 precision flow for both training and rollout, thereby minimizing numerical discrepancies and eliminating the need for inefficient inter-step calibration. Extensive experiments validate the effectiveness of Jet-RL: our method achieves up to 33% speedup in the rollout phase, up to 41% speedup in the training phase, and a 16% end-to-end speedup over BF16 training, while maintaining stable convergence across all settings and incurring negligible accuracy degradation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>FP8 Quantization</span><span>Large Language Models</span><span>Training Stability</span><span>Computational Efficiency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Machine Learning</span><span>Deep Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.14243" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Inference-Time Scaling of Verification: Self-Evolving Deep Research Agents via Test-Time Rubric-Guided Verification</h2>
+                <span class="published-time">Published: 2026-01-22T09:47:31.000Z</span>
+                
+                <p class="summary">Recent advances in Deep Research Agents (DRAs) are transforming automated knowledge discovery and problem-solving. While the majority of existing efforts focus on enhancing policy capabilities via post-training, we propose an alternative paradigm: self-evolving the agent's ability by iteratively verifying the policy model's outputs, guided by meticulously crafted rubrics. This approach gives rise to the inference-time scaling of verification, wherein an agent self-improves by evaluating its generated answers to produce iterative feedback and refinements. We derive the rubrics based on an automatically constructed DRA Failure Taxonomy, which systematically classifies agent failures into five major categories and thirteen sub-categories. We present DeepVerifier, a rubrics-based outcome reward verifier that leverages the asymmetry of verification and outperforms vanilla agent-as-judge and LLM judge baselines by 12%-48% in meta-evaluation F1 score. To enable practical self-evolution, DeepVerifier integrates as a plug-and-play module during test-time inference. The verifier produces detailed rubric-based feedback, which is fed back to the agent for iterative bootstrapping, refining responses without additional training. This test-time scaling delivers 8%-11% accuracy gains on challenging subsets of GAIA and XBench-DeepResearch when powered by capable closed-source LLMs. Finally, to support open-source advancement, we release DeepVerifier-4K, a curated supervised fine-tuning dataset of 4,646 high-quality agent steps focused on DRA verification. These examples emphasize reflection and self-critique, enabling open models to develop robust verification capabilities.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Deep Research Agents</span><span>Inference-Time Verification</span><span>Self-Evolving Agents</span><span>Rubric-Guided Feedback</span><span>DeepVerifier</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.15808" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>VisGym: Diverse, Customizable, Scalable Environments for Multimodal Agents</h2>
+                <span class="published-time">Published: 2026-01-23T18:43:34.000Z</span>
+                
+                <p class="summary">Modern Vision-Language Models (VLMs) remain poorly characterized in multi-step visual interactions, particularly in how they integrate perception, memory, and action over long horizons. We introduce VisGym, a gymnasium of 17 environments for evaluating and training VLMs. The suite spans symbolic puzzles, real-image understanding, navigation, and manipulation, and provides flexible controls over difficulty, input representation, planning horizon, and feedback. We also provide multi-step solvers that generate structured demonstrations, enabling supervised finetuning. Our evaluations show that all frontier models struggle in interactive settings, achieving low success rates in both the easy (46.6%) and hard (26.0%) configurations. Our experiments reveal notable limitations: models struggle to effectively leverage long context, performing worse with an unbounded history than with truncated windows. Furthermore, we find that several text-based symbolic tasks become substantially harder once rendered visually. However, explicit goal observations, textual feedback, and exploratory demonstrations in partially observable or unknown-dynamics settings for supervised finetuning yield consistent gains, highlighting concrete failure modes and pathways for improving multi-step visual decision-making. Code, data, and models can be found at: https://visgym.github.io/.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Vision-Language Models</span><span>Multimodal Agents</span><span>Interactive Environments</span><span>Visual Decision-Making</span><span>Supervised Finetuning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>AI Agent</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.16973" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
