@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-01-27</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-01-27</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Prism</h2>
+                <span class="published-time">Published: 2026-01-27 18:03:10</span>
+                
+                <p class="summary">OpenAI has introduced Prism, a groundbreaking new multimodal AI model specifically engineered for advanced video understanding. Positioned as a foundational model for video, Prism aims to process raw pixel data from videos to generate rich, structured descriptions of events, objects, and actions occurring within dynamic scenes. This capability is analogous to how large language models comprehend and generate human-like text, but applied to the complex domain of temporal visual data. Prism's development signifies a major leap in artificial intelligence, enabling machines to develop a more sophisticated 'perception for video' and reason about dynamic real-world environments. Its potential applications span various fields, including enhancing autonomous systems, improving content moderation and analysis, and developing more interactive and intelligent AI agents. By providing a robust framework for interpreting continuous visual information, Prism is expected to accelerate research and development in multimodal AI, paving the way for systems that can truly understand and interact with the physical world in unprecedented ways.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Understanding</span><span>Multimodal AI</span><span>Computer Vision</span><span>Foundation Models</span><span>AI Perception</span><span>Video Analysis</span><span>Deep Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Multimodal</span><span>Video Understanding</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://openai.com/index/introducing-prism" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Kimi Released Kimi K2.5, Open-Source Visual SOTA-Agentic Model</h2>
+                <span class="published-time">Published: 2026-01-27 05:42:27</span>
+                
+                <p class="summary">Kimi has officially announced the launch of Kimi K2.5, a significant advancement in the field of artificial intelligence. This new offering is presented as an open-source visual SOTA-Agentic model, signaling a strategic move towards democratizing cutting-edge AI technologies. The 'SOTA-Agentic' designation implies that K2.5 not only achieves State-Of-The-Art performance in certain visual tasks but also incorporates agentic capabilities, suggesting advanced reasoning, planning, and interaction within visual environments. This release positions Kimi as a key contributor to the open-source AI community, providing researchers and developers with access to a powerful tool for developing next-generation AI applications. The visual component indicates a strong focus on tasks such as image recognition, object detection, scene understanding, and potentially visual interaction or manipulation. The open-source nature of K2.5 is expected to foster innovation and accelerate the development of AI solutions across various industries, from autonomous systems to advanced human-computer interfaces. This model's capabilities could potentially set new benchmarks for efficiency and effectiveness in complex visual problem-solving.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Kimi K2.5</span><span>Open-Source AI</span><span>Visual Models</span><span>SOTA-Agentic Model</span><span>Artificial Intelligence</span><span>Computer Vision</span><span>AI Agents</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Computer Vision</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.kimi.com/blog/kimi-k2-5.html" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>'Ralph Wiggum' loop prompts Claude to vibe-clone commercial software for $10 HR</h2>
+                <span class="published-time">Published: 2026-01-27 20:05:54</span>
+                
+                <p class="summary">A recent report from The Register highlights a novel application of AI, where Anthropic's Claude model was reportedly used to "vibe-clone" commercial software for an astonishingly low rate of $10 per hour. The method, dubbed the "'Ralph Wiggum' loop," suggests a repetitive or deceptively simple prompting technique that enables the AI to emulate the core functionalities and user experience of existing commercial applications without direct code copying. This development underscores the rapidly advancing capabilities of large language models to understand and replicate complex software logic, raising significant questions about intellectual property rights and the future of software development. The low operational cost involved in such AI-driven replication could disrupt traditional software markets, potentially devaluing established products and creating new challenges for developers and businesses. Experts are beginning to scrutinize the ethical implications of using AI for 'cloning' proprietary software, examining whether this constitutes infringement or a new form of legitimate imitation. This incident serves as a crucial case study for understanding the economic and legal ramifications of sophisticated AI agents entering creative and technical domains, prompting a reevaluation of current frameworks governing digital intellectual property in the age of advanced generative AI.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude AI</span><span>Large Language Model</span><span>Software Replication</span><span>Prompt Engineering</span><span>Intellectual Property</span><span>AI Ethics</span><span>Generative AI</span><span>Commercial Software</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.theregister.com/2026/01/27/ralph_wiggum_claude_loops/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Zuckerberg blocked curbs on sex-talking chatbots for minors court filing alleges</h2>
+                <span class="published-time">Published: 2026-01-27 20:01:42</span>
+                
+                <p class="summary">A recent court filing has brought forth serious allegations against Meta CEO Mark Zuckerberg, claiming he actively prevented the implementation of restrictions on chatbots capable of engaging in sexually suggestive conversations with minors. This development underscores a growing legal and ethical controversy surrounding the development and deployment of artificial intelligence, particularly conversational AI, by major technology companies. The allegations suggest a potential failure in safeguarding young users from harmful interactions on platforms overseen by Meta. This incident highlights critical questions about corporate accountability in managing AI risks, the effectiveness of internal oversight mechanisms, and the broader societal implications of AI technologies interacting with vulnerable populations. The court filing implies a direct executive decision that potentially prioritized other considerations over child safety, raising concerns among regulators, parents, and child advocacy groups. The outcome of these allegations could significantly influence future regulations on AI development and content moderation policies for AI-powered services targeting or accessible by minors.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Chatbots</span><span>AI Safety</span><span>Natural Language Processing</span><span>AI Ethics</span><span>Content Moderation</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.reuters.com/legal/government/meta-ceo-zuckerberg-blocked-curbs-sex-talking-chatbots-minors-court-filing-2026-01-27/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: LemonSlice – Upgrade your voice agents to real-time video</h2>
+                <span class="published-time">Published: 2026-01-27 17:55:15</span>
+                
+                <p class="summary">LemonSlice has launched an API that upgrades conventional voice agents to interactive, real-time video avatars. The platform utilizes advanced interactive avatar video models, allowing users to upload a single photo and immediately engage in a FaceTime-like video call with the generated character. The co-founders express a strong conviction that video avatars will ultimately emerge as the most prevalent form factor for conversational AI, driven by the inherent human preference for visual content over text. They acknowledge the substantial technical difficulties associated with real-time video generation and the profound challenge of overcoming the "uncanny valley" effect in computer graphics. Despite these complexities, LemonSlice reports significant progress in developing photorealistic rendering techniques, aiming to achieve highly immersive and believable video interactions for AI agents. This initiative seeks to bridge the gap between current voice AI and a future dominated by visually rich, conversational AI experiences.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Real-time Video</span><span>AI Avatars</span><span>Conversational AI</span><span>Generative AI</span><span>Uncanny Valley</span><span>API</span><span>Photorealistic Rendering</span><span>Multimodal AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://news.ycombinator.com/item?id=46783600" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI2: Open Coding Agents</h2>
+                <span class="published-time">Published: 2026-01-27 17:17:54</span>
+                
+                <p class="summary">The Allen Institute for AI (AI2) is reportedly focusing on 'Open Coding Agents,' an initiative aimed at developing and sharing AI-powered tools designed to assist in software development tasks. This project likely emphasizes an open-source approach, promoting transparency, collaboration, and accessibility in the domain of AI agents for coding. Such agents could perform functions like automated code generation, intelligent debugging, code refactoring, and comprehensive analysis, thereby enhancing developer productivity and streamlining software creation workflows. By making these agents open, AI2 seeks to foster a community-driven development environment, allowing researchers and developers worldwide to contribute to and benefit from advancements in AI-assisted coding. The effort aligns with the broader goal of democratizing advanced AI capabilities, potentially setting new standards for human-AI collaboration in software engineering and driving innovation in automated programming.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agents</span><span>Open Source AI</span><span>Code Generation</span><span>Software Development</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://allenai.org/blog/open-coding-agents" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>MortalMATH: Evaluating the Conflict Between Reasoning Objectives and Emergency Contexts</h2>
+                <span class="published-time">Published: 2026-01-26T18:55:07.000Z</span>
+                
+                <p class="summary">Large Language Models are increasingly optimized for deep reasoning, prioritizing the correct execution of complex tasks over general conversation. We investigate whether this focus on calculation creates a "tunnel vision" that ignores safety in critical situations. We introduce MortalMATH, a benchmark of 150 scenarios where users request algebra help while describing increasingly life-threatening emergencies (e.g., stroke symptoms, freefall). We find a sharp behavioral split: generalist models (like Llama-3.1) successfully refuse the math to address the danger. In contrast, specialized reasoning models (like Qwen-3-32b and GPT-5-nano) often ignore the emergency entirely, maintaining over 95 percent task completion rates while the user describes dying. Furthermore, the computational time required for reasoning introduces dangerous delays: up to 15 seconds before any potential help is offered. These results suggest that training models to relentlessly pursue correct answers may inadvertently unlearn the survival instincts required for safe deployment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Reasoning Objectives</span><span>Emergency Contexts</span><span>AI Safety</span><span>Benchmarking</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Artificial Intelligence</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.18790" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>HalluGuard: Demystifying Data-Driven and Reasoning-Driven Hallucinations in LLMs</h2>
+                <span class="published-time">Published: 2026-01-26T18:23:09.000Z</span>
+                
+                <p class="summary">The reliability of Large Language Models (LLMs) in high-stakes domains such as healthcare, law, and scientific discovery is often compromised by hallucinations. These failures typically stem from two sources: data-driven hallucinations and reasoning-driven hallucinations. However, existing detection methods usually address only one source and rely on task-specific heuristics, limiting their generalization to complex scenarios. To overcome these limitations, we introduce the Hallucination Risk Bound, a unified theoretical framework that formally decomposes hallucination risk into data-driven and reasoning-driven components, linked respectively to training-time mismatches and inference-time instabilities. This provides a principled foundation for analyzing how hallucinations emerge and evolve. Building on this foundation, we introduce HalluGuard, an NTK-based score that leverages the induced geometry and captured representations of the NTK to jointly identify data-driven and reasoning-driven hallucinations. We evaluate HalluGuard on 10 diverse benchmarks, 11 competitive baselines, and 9 popular LLM backbones, consistently achieving state-of-the-art performance in detecting diverse forms of LLM hallucinations.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>LLM Hallucinations</span><span>Hallucination Detection</span><span>Neural Tangent Kernel</span><span>AI Reliability</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.18753" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Paying Less Generalization Tax: A Cross-Domain Generalization Study of RL Training for LLM Agents</h2>
+                <span class="published-time">Published: 2026-01-26T07:07:03.000Z</span>
+                
+                <p class="summary">Generalist LLM agents are often post-trained on a narrow set of environments but deployed across far broader, unseen domains. In this work, we investigate the challenge of agentic post-training when the eventual test domains are unknown. Specifically, we analyze which properties of reinforcement learning (RL) environments and modeling choices have the greatest influence on out-of-domain performance. First, we identify two environment axes that strongly correlate with cross-domain generalization: (i) state information richness, i.e., the amount of information for the agent to process from the state, and (ii) planning complexity, estimated via goal reachability and trajectory length under a base policy. Notably, domain realism and text-level similarity are not the primary factors; for instance, the simple grid-world domain Sokoban leads to even stronger generalization in SciWorld than the more realistic ALFWorld. Motivated by these findings, we further show that increasing state information richness alone can already effectively improve cross-domain robustness. We propose a randomization technique, which is low-overhead and broadly applicable: add small amounts of distractive goal-irrelevant features to the state to make it richer without altering the task. Beyond environment-side properties, we also examine several modeling choices: (a) SFT warmup or mid-training helps prevent catastrophic forgetting during RL but undermines generalization to domains that are not included in the mid-training datamix; and (b) turning on step-by-step thinking during RL, while not always improving in-domain performance, plays a crucial role in preserving generalization.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM Agents</span><span>Cross-Domain Generalization</span><span>Reinforcement Learning</span><span>State Information Richness</span><span>Planning Complexity</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.18217" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>RouteMoA: Dynamic Routing without Pre-Inference Boosts Efficient Mixture-of-Agents</h2>
+                <span class="published-time">Published: 2026-01-26T04:22:22.000Z</span>
+                
+                <p class="summary">Mixture-of-Agents (MoA) improves LLM performance through layered collaboration, but its dense topology raises costs and latency. Existing methods employ LLM judges to filter responses, yet still require all models to perform inference before judging, failing to cut costs effectively. They also lack model selection criteria and struggle with large model pools, where full inference is costly and can exceed context limits. To address this, we propose RouteMoA, an efficient mixture-of-agents framework with dynamic routing. It employs a lightweight scorer to perform initial screening by predicting coarse-grained performance from the query, narrowing candidates to a high-potential subset without inference. A mixture of judges then refines these scores through lightweight self- and cross-assessment based on existing model outputs, providing posterior correction without additional inference. Finally, a model ranking mechanism selects models by balancing performance, cost, and latency. RouteMoA outperforms MoA across varying tasks and model pool sizes, reducing cost by 89.8% and latency by 63.6% in the large-scale model pool.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Mixture-of-Agents</span><span>Dynamic Routing</span><span>Large Language Model</span><span>Model Selection</span><span>Cost-Efficiency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.18130" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The Script is All You Need: An Agentic Framework for Long-Horizon Dialogue-to-Cinematic Video Generation</h2>
+                <span class="published-time">Published: 2026-01-25T08:10:28.000Z</span>
+                
+                <p class="summary">Recent advances in video generation have produced models capable of synthesizing stunning visual content from simple text prompts. However, these models struggle to generate long-form, coherent narratives from high-level concepts like dialogue, revealing a "semantic gap" between a creative idea and its cinematic execution. To bridge this gap, we introduce a novel, end-to-end agentic framework for dialogue-to-cinematic-video generation. Central to our framework is ScripterAgent, a model trained to translate coarse dialogue into a fine-grained, executable cinematic script. To enable this, we construct ScriptBench, a new large-scale benchmark with rich multimodal context, annotated via an expert-guided pipeline. The generated script then guides DirectorAgent, which orchestrates state-of-the-art video models using a cross-scene continuous generation strategy to ensure long-horizon coherence. Our comprehensive evaluation, featuring an AI-powered CriticAgent and a new Visual-Script Alignment (VSA) metric, shows our framework significantly improves script faithfulness and temporal fidelity across all tested video models. Furthermore, our analysis uncovers a crucial trade-off in current SOTA models between visual spectacle and strict script adherence, providing valuable insights for the future of automated filmmaking.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Generation</span><span>Agentic Framework</span><span>Dialogue-to-Cinematic Video</span><span>AI Agent</span><span>Multimodal</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>AI Agent</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.17737" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AR-Omni: A Unified Autoregressive Model for Any-to-Any Generation</h2>
+                <span class="published-time">Published: 2026-01-25T09:17:36.000Z</span>
+                
+                <p class="summary">Real-world perception and interaction are inherently multimodal, encompassing not only language but also vision and speech, which motivates the development of "Omni" MLLMs that support both multimodal inputs and multimodal outputs. While a sequence of omni MLLMs has emerged, most existing systems still rely on additional expert components to achieve multimodal generation, limiting the simplicity of unified training and inference. Autoregressive (AR) modeling, with a single token stream, a single next-token objective, and a single decoder, is an elegant and scalable foundation in the text domain. Motivated by this, we present AR-Omni, a unified any-to-any model in the autoregressive paradigm without any expert decoders. AR-Omni supports autoregressive text and image generation, as well as streaming speech generation, all under a single Transformer decoder. We further address three practical issues in unified AR modeling: modality imbalance via task-aware loss reweighting, visual fidelity via a lightweight token-level perceptual alignment loss for image tokens, and stability-creativity trade-offs via a finite-state decoding mechanism. Empirically, AR-Omni achieves strong quality across three modalities while remaining real-time, achieving a 0.88 real-time factor for speech generation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Autoregressive Model</span><span>Multimodal</span><span>Any-to-Any Generation</span><span>Unified Model</span><span>Transformer Decoder</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Generative AI</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.17761" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
