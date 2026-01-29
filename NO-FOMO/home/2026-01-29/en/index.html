@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-01-29</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-01-29</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Project Genie: Experimenting with infinite, interactive worlds</h2>
+                <span class="published-time">Published: 2026-01-29 17:02:39</span>
+                
+                <p class="summary">Google DeepMind's Project Genie introduces an innovative research initiative focused on creating AI models capable of generating "infinite, interactive worlds." This project aims to explore the frontiers of generative AI by developing systems that can build virtual environments with dynamic elements and interactive capabilities, moving beyond static content generation. The core idea is to train AI to learn from a wide array of visual data and human actions, enabling it to synthesize novel and consistent virtual spaces where users or other AI agents can engage. This research holds significant implications for various applications, including advanced game development, realistic simulations for training AI, and novel forms of creative expression. Project Genie represents a step towards truly immersive and autonomously evolving digital realities, pushing the boundaries of AI-powered world creation and interaction. The experimentation explores how AI can master the complexities of environmental design and interactive narrative within a dynamically expanding digital canvas.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Generative AI</span><span>Interactive Worlds</span><span>AI Research</span><span>Virtual Environments</span><span>DeepMind</span><span>World Generation</span><span>AI Agents</span><span>Simulation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Artificial Intelligence</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/project-genie/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Claude Code Daily Benchmarks for Degradation Tracking</h2>
+                <span class="published-time">Published: 2026-01-29 13:59:07</span>
+                
+                <p class="summary">MarginLab has implemented a robust system for 'Claude Code Daily Benchmarks for Degradation Tracking,' an essential initiative aimed at continuously monitoring the performance of Claude's code generation capabilities. This system is designed to execute a comprehensive suite of coding benchmarks on a daily basis, meticulously tracking key metrics to identify any potential degradation in the model's output quality or efficiency. The primary objective is to ensure the consistent high performance of Claude, a prominent large language model, particularly in complex programming tasks where precision and reliability are critical. By establishing daily performance baselines and actively comparing subsequent results, the platform can promptly detect and alert developers to any regressions caused by model updates, infrastructure changes, or other factors. This proactive degradation tracking is indispensable for maintaining the integrity and utility of advanced AI models in production environments, facilitating rapid intervention and corrective actions to safeguard the user experience and the overall quality of AI-generated code.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude</span><span>Code Generation</span><span>Performance Tracking</span><span>AI Benchmarking</span><span>Degradation Tracking</span><span>Large Language Model</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://marginlab.ai/trackers/claude-code/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Launch HN: AgentMail (YC S25) – An API that gives agents their own email inboxes</h2>
+                <span class="published-time">Published: 2026-01-29 16:42:33</span>
+                
+                <p class="summary">AgentMail (YC S25), founded by Haakam, Michael, and Adi, has launched an API specifically designed to provide AI agents with their own dedicated email inboxes. The founders clarify that their innovation focuses on providing email capabilities *for* AI, rather than applying AI *to* email. Email is presented as an ideal interface for long-running autonomous agents due to its multithreaded and asynchronous nature, comprehensive support for rich text and file attachments, and its status as a universal protocol with built-in identity and authentication. A key advantage is that significant workflow context already exists within email ecosystems. The impetus for AgentMail arose from the limitations of existing email APIs, such as Gmail's, which restrict programmatic inbox creation and impose prohibitive rate limits, thereby impeding the development of truly independent agents. AgentMail aims to empower agents to autonomously receive and complete tasks, and to communicate proactively via email when human intervention is necessary, all without requiring users to delegate their personal identity.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AgentMail</span><span>API</span><span>AI Agents</span><span>Email Inboxes</span><span>Autonomous Agents</span><span>Programmatic Email</span><span>Workflow Automation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://news.ycombinator.com/item?id=46812608" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>US cybersecurity chief leaked sensitive government files to ChatGPT: Report</h2>
+                <span class="published-time">Published: 2026-01-29 16:12:19</span>
+                
+                <p class="summary">A recent report has brought to light an alleged incident where a US cybersecurity chief is accused of leaking sensitive government files by inputting them into ChatGPT. This revelation immediately triggers profound concerns regarding national security, data confidentiality, and the ethical frameworks governing the use of advanced artificial intelligence technologies within critical governmental infrastructure. The incident underscores the inherent risks associated with integrating public-facing large language models (LLMs) into environments handling classified or highly sensitive information, potentially exposing vulnerabilities that could be exploited by malicious actors or lead to unintended data compromise. Experts are now emphasizing the urgent need for comprehensive policy revisions, enhanced employee education on secure AI interaction protocols, and the potential development of specialized, secure AI solutions tailored for government use to mitigate such risks. This event serves as a critical case study, highlighting the imperative for robust cybersecurity measures and stringent guidelines to prevent inadvertent information disclosures when leveraging powerful AI systems in sensitive operational contexts.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Cybersecurity</span><span>Data Leak</span><span>ChatGPT</span><span>Large Language Model</span><span>Information Security</span><span>AI Ethics</span><span>Government Data</span><span>Data Confidentiality</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.dexerto.com/entertainment/us-cybersecurity-chief-leaked-sensitive-government-files-to-chatgpt-report-3311462/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>SpaceX in Merger Talks with xAI</h2>
+                <span class="published-time">Published: 2026-01-29 18:53:30</span>
+                
+                <p class="summary">Reports indicate that Elon Musk's aerospace and satellite internet company, SpaceX, is engaged in advanced merger discussions with xAI, his artificial intelligence venture. This potential consolidation, which sources suggest is being pursued in anticipation of a planned initial public offering (IPO), signifies a strategic move to integrate or align the ambitious technological endeavors of both entities. xAI, known for its focus on developing large language models and advanced AI capabilities, could potentially benefit from SpaceX's vast infrastructure, data resources, or computational power, while SpaceX might seek to leverage xAI's AI advancements for various applications within its space exploration, satellite internet, or other technological initiatives. The proposed merger underscores a growing trend of cross-sector integration among technology giants, particularly those helmed by visionary leaders like Musk, aiming to create synergistic value and accelerate innovation across diverse domains. Observers are closely watching how this potential merger might reshape the competitive landscape in both the AI and aerospace sectors, particularly given Musk's significant influence in both fields and the ambitious goals of his companies.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span><span>AI Systems</span><span>Neural Networks</span><span>xAI</span><span>SpaceX</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.reuters.com/world/musks-spacex-merger-talks-with-xai-ahead-planned-ipo-source-says-2026-01-29/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Waymo robotaxi hits a child near an elementary school in Santa Monica</h2>
+                <span class="published-time">Published: 2026-01-29 14:08:56</span>
+                
+                <p class="summary">A Waymo robotaxi was involved in an incident where it struck a child near an elementary school in Santa Monica, immediately drawing significant attention to the safety and operational reliability of autonomous vehicles. This event is poised to intensify public and regulatory scrutiny on Waymo, a prominent player in the self-driving sector, and could have substantial implications for the broader autonomous vehicle industry's ongoing expansion and acceptance. The incident highlights the inherent complexities and unique challenges associated with deploying AI-driven transportation systems in dense urban environments, particularly those with vulnerable road users like children. It underscores the critical need for continuous advancements in AI perception and decision-making capabilities, robust safety protocols, and transparent incident reporting mechanisms. The accident reignites discussions surrounding the readiness of self-driving technology for widespread commercial deployment and the rigorous testing required to ensure absolute safety, as autonomous vehicle companies navigate the intricate balance between technological innovation and public trust.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Robotaxi</span><span>Autonomous Vehicles</span><span>Waymo</span><span>AI Safety</span><span>Self-driving Technology</span><span>Urban Mobility</span><span>Regulatory Scrutiny</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Artificial Intelligence</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://techcrunch.com/2026/01/29/waymo-robotaxi-hits-a-child-near-an-elementary-school-in-santa-monica/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Spark: Strategic Policy-Aware Exploration via Dynamic Branching for Long-Horizon Agentic Learning</h2>
+                <span class="published-time">Published: 2026-01-28T03:15:34.000Z</span>
+                
+                <p class="summary">Reinforcement learning has empowered large language models to act as intelligent agents, yet training them for long-horizon tasks remains challenging due to the scarcity of high-quality trajectories, especially under limited resources. Existing methods typically scale up rollout sizes and indiscriminately allocate computational resources among intermediate steps. Such attempts inherently waste substantial computation budget on trivial steps while failing to guarantee sample quality. To address this, we propose Spark (Strategic Policy-Aware exploRation via Key-state dynamic branching), a novel framework that selectively branches at critical decision states for resource-efficient exploration. Our key insight is to activate adaptive branching exploration at critical decision points to probe promising trajectories, thereby achieving precise resource allocation that prioritizes sampling quality over blind coverage. This design leverages the agent's intrinsic decision-making signals to reduce dependence on human priors, enabling the agent to autonomously expand exploration and achieve stronger generalization. Experiments across diverse tasks (e.g., embodied planning), demonstrate that Spark achieves superior success rates with significantly fewer training samples, exhibiting robust generalization even in unseen scenarios.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Large Language Models</span><span>AI Agent</span><span>Strategic Exploration</span><span>Dynamic Branching</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.20209" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OmegaUse: Building a General-Purpose GUI Agent for Autonomous Task Execution</h2>
+                <span class="published-time">Published: 2026-01-28T08:45:17.000Z</span>
+                
+                <p class="summary">Graphical User Interface (GUI) agents show great potential for enabling foundation models to complete real-world tasks, revolutionizing human-computer interaction and improving human productivity. In this report, we present OmegaUse, a general-purpose GUI agent model for autonomous task execution on both mobile and desktop platforms, supporting computer-use and phone-use scenarios. Building an effective GUI agent model relies on two factors: (1) high-quality data and (2) effective training methods. To address these, we introduce a carefully engineered data-construction pipeline and a decoupled training paradigm. For data construction, we leverage rigorously curated open-source datasets and introduce a novel automated synthesis framework that integrates bottom-up autonomous exploration with top-down taxonomy-guided generation to create high-fidelity synthetic data. For training, to better leverage these data, we adopt a two-stage strategy: Supervised Fine-Tuning (SFT) to establish fundamental interaction syntax, followed by Group Relative Policy Optimization (GRPO) to improve spatial grounding and sequential planning. To balance computational efficiency with agentic reasoning capacity, OmegaUse is built on a Mixture-of-Experts (MoE) backbone. To evaluate cross-terminal capabilities in an offline setting, we introduce OS-Nav, a benchmark suite spanning multiple operating systems: ChiM-Nav, targeting Chinese Android mobile environments, and Ubu-Nav, focusing on routine desktop interactions on Ubuntu. Extensive experiments show that OmegaUse is highly competitive across established GUI benchmarks, achieving a state-of-the-art (SOTA) score of 96.3% on ScreenSpot-V2 and a leading 79.1% step success rate on AndroidControl. OmegaUse also performs strongly on OS-Nav, reaching 74.24% step success on ChiM-Nav and 55.9% average success on Ubu-Nav.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>GUI Agents</span><span>Autonomous Task Execution</span><span>Foundation Models</span><span>Mixture-of-Experts</span><span>Data Synthesis</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Deep Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.20380" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Innovator-VL: A Multimodal Large Language Model for Scientific Discovery</h2>
+                <span class="published-time">Published: 2026-01-27T08:12:18.000Z</span>
+                
+                <p class="summary">We present Innovator-VL, a scientific multimodal large language model designed to advance understanding and reasoning across diverse scientific domains while maintaining excellent performance on general vision tasks. Contrary to the trend of relying on massive domain-specific pretraining and opaque pipelines, our work demonstrates that principled training design and transparent methodology can yield strong scientific intelligence with substantially reduced data requirements. (i) First, we provide a fully transparent, end-to-end reproducible training pipeline, covering data collection, cleaning, preprocessing, supervised fine-tuning, reinforcement learning, and evaluation, along with detailed optimization recipes. This facilitates systematic extension by the community. (ii) Second, Innovator-VL exhibits remarkable data efficiency, achieving competitive performance on various scientific tasks using fewer than five million curated samples without large-scale pretraining. These results highlight that effective reasoning can be achieved through principled data selection rather than indiscriminate scaling. (iii) Third, Innovator-VL demonstrates strong generalization, achieving competitive performance on general vision, multimodal reasoning, and scientific benchmarks. This indicates that scientific alignment can be integrated into a unified model without compromising general-purpose capabilities. Our practices suggest that efficient, reproducible, and high-performing scientific multimodal models can be built even without large-scale data, providing a practical foundation for future research.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal Large Language Model</span><span>Scientific Discovery</span><span>Data Efficiency</span><span>Reproducible Training</span><span>Multimodal Reasoning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.19325" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>VERGE: Formal Refinement and Guidance Engine for Verifiable LLM Reasoning</h2>
+                <span class="published-time">Published: 2026-01-27T20:59:11.000Z</span>
+                
+                <p class="summary">Despite the syntactic fluency of Large Language Models (LLMs), ensuring their logical correctness in high-stakes domains remains a fundamental challenge. We present a neurosymbolic framework that combines LLMs with SMT solvers to produce verification-guided answers through iterative refinement. Our approach decomposes LLM outputs into atomic claims, autoformalizes them into first-order logic, and verifies their logical consistency using automated theorem proving. We introduce three key innovations: (1) multi-model consensus via formal semantic equivalence checking to ensure logic-level alignment between candidates, eliminating the syntactic bias of surface-form metrics, (2) semantic routing that directs different claim types to appropriate verification strategies: symbolic solvers for logical claims and LLM ensembles for commonsense reasoning, and (3) precise logical error localization via Minimal Correction Subsets (MCS), which pinpoint the exact subset of claims to revise, transforming binary failure signals into actionable feedback. Our framework classifies claims by their logical status and aggregates multiple verification signals into a unified score with variance-based penalty. The system iteratively refines answers using structured feedback until acceptance criteria are met or convergence is achieved. This hybrid approach delivers formal guarantees where possible and consensus verification elsewhere, advancing trustworthy AI. With the GPT-OSS-120B model, VERGE demonstrates an average performance uplift of 18.7% at convergence across a set of reasoning benchmarks compared to single-pass approaches.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Neurosymbolic AI</span><span>Formal Verification</span><span>SMT Solvers</span><span>Iterative Refinement</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Artificial Intelligence</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.20055" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Advancing Open-source World Models</h2>
+                <span class="published-time">Published: 2026-01-28T12:37:01.000Z</span>
+                
+                <p class="summary">We present LingBot-World, an open-sourced world simulator stemming from video generation. Positioned as a top-tier world model, LingBot-World offers the following features. (1) It maintains high fidelity and robust dynamics in a broad spectrum of environments, including realism, scientific contexts, cartoon styles, and beyond. (2) It enables a minute-level horizon while preserving contextual consistency over time, which is also known as "long-term memory". (3) It supports real-time interactivity, achieving a latency of under 1 second when producing 16 frames per second. We provide public access to the code and model in an effort to narrow the divide between open-source and closed-source technologies. We believe our release will empower the community with practical applications across areas like content creation, gaming, and robot learning.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>World Models</span><span>Open-source</span><span>Video Generation</span><span>Real-time Interactivity</span><span>Robot Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Robotics</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.20540" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Reinforcement Learning via Self-Distillation</h2>
+                <span class="published-time">Published: 2026-01-28T17:45:12.000Z</span>
+                
+                <p class="summary">Large language models are increasingly post-trained with reinforcement learning in verifiable domains such as code and math. Yet, current methods for reinforcement learning with verifiable rewards (RLVR) learn only from a scalar outcome reward per attempt, creating a severe credit-assignment bottleneck. Many verifiable environments actually provide rich textual feedback, such as runtime errors or judge evaluations, that explain why an attempt failed. We formalize this setting as reinforcement learning with rich feedback and introduce Self-Distillation Policy Optimization (SDPO), which converts tokenized feedback into a dense learning signal without any external teacher or explicit reward model. SDPO treats the current model conditioned on feedback as a self-teacher and distills its feedback-informed next-token predictions back into the policy. In this way, SDPO leverages the model's ability to retrospectively identify its own mistakes in-context. Across scientific reasoning, tool use, and competitive programming on LiveCodeBench v6, SDPO improves sample efficiency and final accuracy over strong RLVR baselines. Notably, SDPO also outperforms baselines in standard RLVR environments that only return scalar feedback by using successful rollouts as implicit feedback for failed attempts. Finally, applying SDPO to individual questions at test time accelerates discovery on difficult binary-reward tasks, achieving the same discovery probability as best-of-k sampling or multi-turn conversations with 3x fewer attempts.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Self-Distillation</span><span>Large Language Models</span><span>Rich Feedback</span><span>Policy Optimization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Machine Learning</span><span>Natural Language Processing</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.20802" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
