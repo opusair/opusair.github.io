@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-02-02</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-02-02</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Claude Code is suddenly everywhere inside Microsoft</h2>
+                <span class="published-time">Published: 2026-02-02 11:58:58</span>
+                
+                <p class="summary">Microsoft is reportedly experiencing a rapid and extensive integration of "Claude Code" across its internal systems and potentially customer-facing products, signaling a significant expansion of its partnership with Anthropic, the developer of the Claude large language model. This widespread adoption suggests Microsoft's strategic move to embed Anthropic's advanced AI capabilities into various facets of its software ecosystem, potentially complementing its existing AI collaborations. The integration of Claude's technology, known for its strong performance in natural language processing and sophisticated reasoning, is expected to enhance functionalities such as code generation, content creation, and intelligent assistance within Microsoft applications, as hinted by the URL mentioning Notepad. This development underscores Microsoft's commitment to accelerating the deployment of generative AI, offering its developers and users access to diverse, state-of-the-art AI models. The initiative aims to boost productivity, foster innovation, and enrich user experiences by bringing advanced conversational and analytical AI directly into daily workflows, marking a pivotal moment in the competitive landscape of AI adoption among tech giants.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude AI</span><span>Anthropic</span><span>Microsoft</span><span>Large Language Model</span><span>AI Integration</span><span>Generative AI</span><span>Code Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.theverge.com/tech/865689/microsoft-claude-code-anthropic-partnership-notepad" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The Codex App</h2>
+                <span class="published-time">Published: 2026-02-02 18:02:48</span>
+                
+                <p class="summary">OpenAI introduced the Codex App, a sophisticated artificial intelligence model designed to translate natural language into code. This innovative application represents a significant advancement in AI's ability to understand and generate programming instructions, enabling users to describe desired software functionalities in plain English and have the system generate the corresponding code. Based on OpenAI's advanced language models, Codex aims to democratize programming by making it more accessible to a wider audience, including non-developers, while also boosting the productivity of experienced programmers. The technology has notable implications for various development workflows, from rapid prototyping to debugging and script generation, solidifying its position as a transformative tool in the realm of AI-assisted software engineering.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>OpenAI Codex</span><span>Code Generation</span><span>Natural Language Processing</span><span>AI Programming</span><span>Developer Tools</span><span>Large Language Model</span><span>Software Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://openai.com/index/introducing-the-codex-app/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Nano-vLLM: How a vLLM-style inference engine works</h2>
+                <span class="published-time">Published: 2026-02-02 12:52:35</span>
+                
+                <p class="summary">The article "Nano-vLLM: How a vLLM-style inference engine works" dissects the foundational architectural and operational principles of efficient Large Language Model (LLM) inference engines, particularly those adopting the vLLM paradigm. It elucidates key mechanisms designed to achieve superior throughput and reduced latency in LLM serving. Core concepts elaborated include continuous batching, which maximizes GPU utilization by concurrently processing multiple requests without idle periods, and PagedAttention. PagedAttention is critical for managing the KV cache by treating it as a paged memory system, akin to operating system memory management. This innovative approach effectively mitigates memory fragmentation and varying KV cache lengths across diverse requests, substantially decreasing memory wastage and optimizing memory access patterns. Grasping these components is crucial for developers and engineers aiming to optimize LLM serving infrastructure for production environments, emphasizing the importance of efficient resource allocation and scheduling in modern AI systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>vLLM</span><span>Large Language Models</span><span>Inference Engine</span><span>PagedAttention</span><span>KV Cache</span><span>Continuous Batching</span><span>GPU Optimization</span><span>Deep Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://neutree.ai/blog/nano-vllm-part-1" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Waymo seeking about $16B near $110B valuation</h2>
+                <span class="published-time">Published: 2026-02-02 15:08:52</span>
+                
+                <p class="summary">Waymo, a pioneering company in autonomous driving technology, is reportedly engaged in discussions to raise approximately $16 billion in new funding. This significant capital injection would position the company's valuation near $110 billion, signaling robust investor confidence in the long-term potential and market leadership of self-driving solutions. The substantial valuation reflects Waymo's extensive operational experience, continuous advancements in artificial intelligence and machine learning for perception and decision-making, and its strategic plans for commercial scaling across various sectors such as ride-hailing, trucking, and logistics. This fundraising initiative highlights the immense financial requirements associated with the sophisticated research, development, and deployment of fully autonomous vehicle systems. A successful funding round would further empower Waymo to accelerate its technological development, expand its service areas, and strengthen its competitive edge in the rapidly evolving global autonomous vehicle market, solidifying its role at the forefront of AI-driven mobility innovation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Autonomous Vehicles</span><span>Self-Driving Technology</span><span>AI Robotics</span><span>Venture Capital</span><span>Market Valuation</span><span>Machine Learning</span><span>Transportation Tech</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Robotics</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.bloomberg.com/news/articles/2026-01-31/waymo-seeking-about-16-billion-near-110-billion-valuation" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Hacking Moltbook</h2>
+                <span class="published-time">Published: 2026-02-02 16:08:36</span>
+                
+                <p class="summary">Cybersecurity firm Wiz has unveiled a critical security vulnerability affecting Moltbook, an innovative social media platform recognized for its integration of AI agents. This severe flaw resulted in the exposure of a database holding millions of API keys, presenting a significant and immediate risk for widespread data breaches and unauthorized system access. The implications extend to user privacy, platform integrity, and potential misuse of exposed credentials. This discovery underscores the escalating security challenges inherent in developing and operating sophisticated platforms that not only utilize artificial intelligence but also handle extensive volumes of sensitive user and operational data. Industry experts are stressing the urgent need for comprehensive security audits, continuous threat monitoring, and advanced vulnerability management strategies to fortify such AI-driven technological infrastructures against potential exploitation. The Moltbook incident serves as a crucial case study, highlighting the paramount importance of robust cybersecurity defenses in the rapidly evolving landscape of AI-powered applications to prevent similar future occurrences and protect digital assets.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Moltbook</span><span>API keys</span><span>Database exposure</span><span>Security vulnerability</span><span>AI agents</span><span>Cybersecurity</span><span>Data breach</span><span>Wiz</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.wiz.io/blog/exposed-moltbook-database-reveals-millions-of-api-keys" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Advancing AI Benchmarking with Game Arena</h2>
+                <span class="published-time">Published: 2026-02-02 17:49:07</span>
+                
+                <p class="summary">Google DeepMind, in collaboration with Kaggle, is making significant strides in advancing AI benchmarking through recent updates to its Game Arena platform. This initiative is designed to create a more robust and dynamic environment for rigorously evaluating the capabilities of artificial intelligence models and agents. By leveraging complex game-based scenarios, the platform offers a standardized yet diverse set of problems, allowing researchers and developers to rigorously test AI algorithms against a wide range of strategic and tactical challenges. These gaming environments are particularly effective as they can mirror real-world complexities and dynamic decision-making processes, providing deeper insights into AI performance beyond traditional datasets. The ongoing updates likely aim to enhance the accessibility, fairness, and scalability of these benchmarks, fostering innovation and accelerating progress in AI research. This approach is crucial for identifying breakthroughs and areas for improvement in AI agent development, ultimately pushing the boundaries of what AI can achieve in complex, interactive environments and facilitating a more standardized comparison of different AI approaches across the global research community.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Benchmarking</span><span>Game Arena</span><span>Google DeepMind</span><span>Kaggle</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Evaluation Metrics</span><span>Competitive AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/kaggle-game-arena-updates/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>ASTRA: Automated Synthesis of agentic Trajectories and Reinforcement Arenas</h2>
+                <span class="published-time">Published: 2026-01-29T11:22:23.000Z</span>
+                
+                <p class="summary">Large language models (LLMs) are increasingly used as tool-augmented agents for multi-step decision making, yet training robust tool-using agents remains challenging. Existing methods still require manual intervention, depend on non-verifiable simulated environments, rely exclusively on either supervised fine-tuning (SFT) or reinforcement learning (RL), and struggle with stable long-horizon, multi-turn learning. To address these challenges, we introduce ASTRA, a fully automated end-to-end framework for training tool-augmented language model agents via scalable data synthesis and verifiable reinforcement learning. ASTRA integrates two complementary components. First, a pipeline that leverages the static topology of tool-call graphs synthesizes diverse, structurally grounded trajectories, instilling broad and transferable tool-use competence. Second, an environment synthesis framework that captures the rich, compositional topology of human semantic reasoning converts decomposed question-answer traces into independent, code-executable, and rule-verifiable environments, enabling deterministic multi-turn RL. Based on this method, we develop a unified training methodology that integrates SFT with online RL using trajectory-level rewards to balance task completion and interaction efficiency. Experiments on multiple agentic tool-use benchmarks demonstrate that ASTRA-trained models achieve state-of-the-art performance at comparable scales, approaching closed-source systems while preserving core reasoning ability. We release the full pipelines, environments, and trained models at https://github.com/LianjiaTech/astra.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>AI Agent</span><span>Reinforcement Learning</span><span>Data Synthesis</span><span>Automated Synthesis</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.21558" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Quartet II: Accurate LLM Pre-Training in NVFP4 by Improved Unbiased Gradient Estimation</h2>
+                <span class="published-time">Published: 2026-01-30T10:39:11.000Z</span>
+                
+                <p class="summary">The NVFP4 lower-precision format, supported in hardware by NVIDIA Blackwell GPUs, promises to allow, for the first time, end-to-end fully-quantized pre-training of massive models such as LLMs. Yet, existing quantized training methods still sacrifice some of the representation capacity of this format in favor of more accurate unbiased quantized gradient estimation by stochastic rounding (SR), losing noticeable accuracy relative to standard FP16 and FP8 training. In this paper, improve the state of the art for quantized training in NVFP4 via a novel unbiased quantization routine for micro-scaled formats, called MS-EDEN, that has more than 2x lower quantization error than SR. We integrate it into a novel fully-NVFP4 quantization scheme for linear layers, called Quartet II. We show analytically that Quartet II achieves consistently better gradient estimation across all major matrix multiplications, both on the forward and on the backward passes. In addition, our proposal synergizes well with recent training improvements aimed specifically at NVFP4. We further validate Quartet II on end-to-end LLM training with up to 1.9B parameters on 38B tokens. We provide kernels for execution on NVIDIA Blackwell GPUs with up to 4.2x speedup over BF16. Our code is available at https://github.com/IST-DASLab/Quartet-II .</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>NVFP4</span><span>LLM Pre-Training</span><span>Quantized Training</span><span>Gradient Estimation</span><span>NVIDIA Blackwell GPUs</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.22813" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>THINKSAFE: Self-Generated Safety Alignment for Reasoning Models</h2>
+                <span class="published-time">Published: 2026-01-30T16:31:02.000Z</span>
+                
+                <p class="summary">Large reasoning models (LRMs) achieve remarkable performance by leveraging reinforcement learning (RL) on reasoning tasks to generate long chain-of-thought (CoT) reasoning. However, this over-optimization often prioritizes compliance, making models vulnerable to harmful prompts. To mitigate this safety degradation, recent approaches rely on external teacher distillation, yet this introduces a distributional discrepancy that degrades native reasoning. We propose ThinkSafe, a self-generated alignment framework that restores safety alignment without external teachers. Our key insight is that while compliance suppresses safety mechanisms, models often retain latent knowledge to identify harm. ThinkSafe unlocks this via lightweight refusal steering, guiding the model to generate in-distribution safety reasoning traces. Fine-tuning on these self-generated responses effectively realigns the model while minimizing distribution shift. Experiments on DeepSeek-R1-Distill and Qwen3 show ThinkSafe significantly improves safety while preserving reasoning proficiency. Notably, it achieves superior safety and comparable reasoning to GRPO, with significantly reduced computational cost. Code, models, and datasets are available at https://github.com/seanie12/ThinkSafe.git.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Self-Generated Safety Alignment</span><span>Reasoning Models</span><span>Large Language Models</span><span>Reinforcement Learning</span><span>Chain-of-Thought</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.23143" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DreamActor-M2: Universal Character Image Animation via Spatiotemporal In-Context Learning</h2>
+                <span class="published-time">Published: 2026-01-29T13:43:17.000Z</span>
+                
+                <p class="summary">Character image animation aims to synthesize high-fidelity videos by transferring motion from a driving sequence to a static reference image. Despite recent advancements, existing methods suffer from two fundamental challenges: (1) suboptimal motion injection strategies that lead to a trade-off between identity preservation and motion consistency, manifesting as a "see-saw", and (2) an over-reliance on explicit pose priors (e.g., skeletons), which inadequately capture intricate dynamics and hinder generalization to arbitrary, non-humanoid characters. To address these challenges, we present DreamActor-M2, a universal animation framework that reimagines motion conditioning as an in-context learning problem. Our approach follows a two-stage paradigm. First, we bridge the input modality gap by fusing reference appearance and motion cues into a unified latent space, enabling the model to jointly reason about spatial identity and temporal dynamics by leveraging the generative prior of foundational models. Second, we introduce a self-bootstrapped data synthesis pipeline that curates pseudo cross-identity training pairs, facilitating a seamless transition from pose-dependent control to direct, end-to-end RGB-driven animation. This strategy significantly enhances generalization across diverse characters and motion scenarios. To facilitate comprehensive evaluation, we further introduce AW Bench, a versatile benchmark encompassing a wide spectrum of characters types and motion scenarios. Extensive experiments demonstrate that DreamActor-M2 achieves state-of-the-art performance, delivering superior visual fidelity and robust cross-domain generalization. Project Page: https://grisoon.github.io/DreamActor-M2/</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Character Image Animation</span><span>Spatiotemporal In-Context Learning</span><span>Generative AI</span><span>Motion Conditioning</span><span>Data Synthesis</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Generative AI</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.21716" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Scaling Multiagent Systems with Process Rewards</h2>
+                <span class="published-time">Published: 2026-01-30T17:55:27.000Z</span>
+                
+                <p class="summary">While multiagent systems have shown promise for tackling complex tasks via specialization, finetuning multiple agents simultaneously faces two key challenges: (1) credit assignment across agents, and (2) sample efficiency of expensive multiagent rollouts. In this work, we propose finetuning multiagent systems with per-action process rewards from AI feedback (MAPPA) to address both. Through assigning credit to individual agent actions rather than only at task completion, MAPPA enables fine-grained supervision without ground truth labels while extracting maximal training signal from each rollout. We demonstrate our approach on competition math problems and tool-augmented data analysis tasks. On unseen math problems, MAPPA achieves +5.0--17.5pp on AIME and +7.8--17.2pp on AMC. For data analysis tasks, our method improves success rate by +12.5pp while quality metrics improve by up to 30%, validating that per-action supervision can lead to improvements across different multiagent system on various domains. By addressing these challenges, our work takes a first step toward scaling multiagent systems for complex, long-horizon tasks with minimal human supervision.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>multiagent systems</span><span>process rewards</span><span>AI feedback</span><span>credit assignment</span><span>sample efficiency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.23228" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Value-Based Pre-Training with Downstream Feedback</h2>
+                <span class="published-time">Published: 2026-01-29T18:38:09.000Z</span>
+                
+                <p class="summary">Can a small amount of verified goal information steer the expensive self-supervised pretraining of foundation models? Standard pretraining optimizes a fixed proxy objective (e.g., next-token prediction), which can misallocate compute away from downstream capabilities of interest. We introduce V-Pretraining: a value-based, modality-agnostic method for controlled continued pretraining in which a lightweight task designer reshapes the pretraining task to maximize the value of each gradient step. For example, consider self-supervised learning (SSL) with sample augmentation. The V-Pretraining task designer selects pretraining tasks (e.g., augmentations) for which the pretraining loss gradient is aligned with a gradient computed over a downstream task (e.g., image segmentation). This helps steer pretraining towards relevant downstream capabilities. Notably, the pretrained model is never updated on downstream task labels; they are used only to shape the pretraining task. Under matched learner update budgets, V-Pretraining of 0.5B--7B language models improves reasoning (GSM8K test Pass@1) by up to 18% relative over standard next-token prediction using only 12% of GSM8K training examples as feedback. In vision SSL, we improve the state-of-the-art results on ADE20K by up to 1.07 mIoU and reduce NYUv2 RMSE while improving ImageNet linear accuracy, and we provide pilot evidence of improved token efficiency in continued pretraining.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Value-Based Pre-Training</span><span>Downstream Feedback</span><span>Self-supervised learning</span><span>Foundation Models</span><span>Large Language Model</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Deep Learning</span><span>Natural Language Processing</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2601.22108" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
