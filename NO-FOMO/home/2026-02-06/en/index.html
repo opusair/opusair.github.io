@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-02-06</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-02-06</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Man who videotaped himself BASE jumping in Yosemite arrested. He says it was AI</h2>
+                <span class="published-time">Published: 2026-02-06 19:20:53</span>
+                
+                <p class="summary">A man has been arrested by federal officials in Yosemite National Park on charges related to allegedly performing an illegal BASE jump, an activity strictly forbidden within the park's protected boundaries. Authorities claim they possess compelling video evidence that clearly shows the individual participating in the unauthorized jump. However, in a unique and potentially precedent-setting defense, the arrested man has asserted that the incriminating footage is entirely fabricated by artificial intelligence and does not represent a genuine event. This incident brings to the forefront the complex legal and evidentiary challenges posed by the rapid advancements in generative AI and deepfake technologies. The case is anticipated to scrutinize how legal systems verify digital evidence when faced with sophisticated claims of AI manipulation, raising significant questions for law enforcement and the judiciary worldwide regarding the authenticity of visual content in investigations and prosecutions. The outcome could have broad implications for how digital media is treated in courtrooms amidst an era of increasingly convincing synthetic media.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Deepfake</span><span>Digital Evidence</span><span>AI Ethics</span><span>Legal Challenges</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Video Understanding</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.latimes.com/california/story/2026-02-05/man-videotaped-himself-base-jumping-in-yosemite-federal-officials-say-he-says-it-was-ai" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>How to effectively write quality code with AI</h2>
+                <span class="published-time">Published: 2026-02-06 18:49:59</span>
+                
+                <p class="summary">The burgeoning integration of artificial intelligence into modern software development workflows is fundamentally reshaping how engineers approach code creation, optimization, and maintenance. This article delves into practical methodologies for effectively harnessing AI tools, particularly advanced Large Language Models, to significantly enhance code quality and streamline development processes. Key strategies discussed encompass sophisticated prompt engineering techniques to guide AI in generating accurate, secure, and robust code snippets, alongside leveraging AI for intelligent code review, refactoring suggestions, and proactive bug detection. Furthermore, it explores optimal integration points for AI assistance within continuous integration and continuous delivery (CI/CD) pipelines, emphasizing the synergistic relationship between human developers and AI copilots. The central tenet remains the critical role of human expertise in validating, refining, and overseeing AI outputs to ensure software reliability, maintainability, and adherence to architectural standards. Ultimately, the objective is to empower developers to achieve superior code excellence and accelerated productivity through strategic and thoughtful AI application.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI-assisted coding</span><span>Code quality</span><span>Software development</span><span>Prompt engineering</span><span>Large Language Model</span><span>Developer tools</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://heidenstedt.org/posts/2026/how-to-effectively-write-quality-code-with-ai/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Bits About Money: Fraud Investigation Is Believing Your Lying Eyes</h2>
+                <span class="published-time">Published: 2026-02-06 17:24:32</span>
+                
+                <p class="summary">The article 'Fraud Investigation Is Believing Your Lying Eyes' delves into the complex and often counter-intuitive nature of fraud detection, highlighting the inherent challenges in relying solely on human perception and traditional investigative methods. It explores the psychological biases and deceptive tactics that can mislead investigators, making it difficult to discern genuine patterns from expertly crafted falsehoods. The piece likely discusses how initial impressions or seemingly clear evidence can be intentionally misleading, requiring a deeper, more analytical approach to uncover the truth. This perspective underscores the need for robust frameworks and advanced analytical tools to augment human decision-making, ensuring that investigations move beyond subjective interpretations to fact-based conclusions. The article implicitly advocates for methodologies that can systematically overcome cognitive pitfalls and enhance the accuracy and efficiency of fraud detection efforts in financial systems, hinting at the potential role of intelligent systems and data analytics.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Fraud Detection</span><span>Financial Crime</span><span>Investigation Methods</span><span>Cognitive Bias</span><span>Data Analysis</span><span>Risk Management</span><span>Deception Analytics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.bitsaboutmoney.com/archive/fraud-investigation/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The Waymo World Model: A New Frontier for Autonomous Driving Simulation</h2>
+                <span class="published-time">Published: 2026-02-06 16:20:42</span>
+                
+                <p class="summary">Waymo has introduced its groundbreaking Waymo World Model, an advanced simulation platform designed to significantly enhance the development and testing of autonomous driving systems. This innovative model creates highly realistic and interactive virtual environments, enabling Waymo's self-driving technology to learn from an vast array of complex scenarios that are difficult or unsafe to encounter in real-world testing. By leveraging state-of-the-art AI techniques, the World Model generates diverse traffic situations, pedestrian behaviors, and environmental conditions, simulating intricate interactions and unpredictable events. This capability facilitates robust training and validation of Waymo's AI drivers, allowing them to rapidly iterate on perception, prediction, and planning algorithms. This new frontier in simulation promises to accelerate the progress of autonomous vehicles by providing a scalable, safe, and efficient method for continuous improvement, ultimately leading to more reliable and safer self-driving technology. It represents a crucial step towards deploying fully autonomous systems by rigorously challenging and refining their decision-making capabilities in a controlled digital space, pushing the boundaries of what is possible in virtual testing for AVs.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Waymo World Model</span><span>Autonomous Driving</span><span>Simulation</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Robotics</span><span>Self-driving technology</span><span>Virtual environments</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Robotics</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://waymo.com/blog/2026/02/the-waymo-world-model-a-new-frontier-for-autonomous-driving-simulation" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LLMs could be, but shouldn't be compilers</h2>
+                <span class="published-time">Published: 2026-02-06 13:48:01</span>
+                
+                <p class="summary">The discussion centers on the feasibility and appropriateness of leveraging Large Language Models (LLMs) to perform the function of compilers. While LLMs exhibit advanced capabilities in understanding and generating code, their fundamental probabilistic nature makes them inherently ill-suited for the deterministic, error-intolerant tasks required of a compiler. Compilers demand absolute precision in syntax validation, semantic analysis, and the generation of optimized, verifiable machine code, areas where the statistical output of an LLM would introduce unacceptable levels of inconsistency and potential for subtle, hard-to-debug errors. The core argument suggests that relying on LLMs for critical software infrastructure like compilation could compromise software reliability, introduce non-deterministic outcomes, and impede formal verification processes. Therefore, despite their potential in code assistance and generation, the consensus leans towards restricting LLMs from assuming the role of a full-fledged compiler, emphasizing the need to distinguish between AI's supportive capabilities and its suitability for foundational, deterministic programming tasks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Compilers</span><span>Code Generation</span><span>Software Engineering</span><span>AI Applications</span><span>Programming Paradigms</span><span>Language Processing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://alperenkeles.com/posts/llms-could-be-but-shouldnt-be-compilers/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>A new bill in New York would require disclaimers on AI-generated news content</h2>
+                <span class="published-time">Published: 2026-02-06 09:56:55</span>
+                
+                <p class="summary">New York lawmakers are proposing a new bill that would mandate the inclusion of clear disclaimers on all AI-generated news content. This legislative effort aims to enhance transparency for consumers, ensuring they can distinguish between human-authored and artificial intelligence-produced journalistic material. The initiative underscores a growing global concern regarding the ethical implications, potential for misinformation, and the responsible deployment of AI technologies within the media landscape. Proponents argue that such a requirement is crucial for maintaining journalistic integrity and public trust in an era of rapidly advancing generative AI. This move could establish a significant precedent for other jurisdictions grappling with the challenges of regulating AI applications in sensitive sectors like news and information dissemination. It highlights the urgent need for regulatory frameworks to govern the responsible use of AI, particularly in areas where credibility and factual accuracy are paramount. The bill reflects a proactive approach to address the complexities introduced by sophisticated AI models, emphasizing that clear disclosure mechanisms are essential to prevent confusion and ensure accountability in the evolving digital information ecosystem.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Regulation</span><span>Generative AI</span><span>Media Ethics</span><span>Transparency</span><span>News Content</span><span>Artificial Intelligence</span><span>Content Moderation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.niemanlab.org/2026/02/a-new-bill-in-new-york-would-require-disclaimers-on-ai-generated-news-content/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Spider-Sense: Intrinsic Risk Sensing for Efficient Agent Defense with Hierarchical Adaptive Screening</h2>
+                <span class="published-time">Published: 2026-02-05T07:11:05.000Z</span>
+                
+                <p class="summary">As large language models (LLMs) evolve into autonomous agents, their real-world applicability has expanded significantly, accompanied by new security challenges. Most existing agent defense mechanisms adopt a mandatory checking paradigm, in which security validation is forcibly triggered at predefined stages of the agent lifecycle. In this work, we argue that effective agent security should be intrinsic and selective rather than architecturally decoupled and mandatory. We propose Spider-Sense framework, an event-driven defense framework based on Intrinsic Risk Sensing (IRS), which allows agents to maintain latent vigilance and trigger defenses only upon risk perception. Once triggered, the Spider-Sense invokes a hierarchical defence mechanism that trades off efficiency and precision: it resolves known patterns via lightweight similarity matching while escalating ambiguous cases to deep internal reasoning, thereby eliminating reliance on external models. To facilitate rigorous evaluation, we introduce S^2Bench, a lifecycle-aware benchmark featuring realistic tool execution and multi-stage attacks. Extensive experiments demonstrate that Spider-Sense achieves competitive or superior defense performance, attaining the lowest Attack Success Rate (ASR) and False Positive Rate (FPR), with only a marginal latency overhead of 8.3%.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Agent Defense</span><span>Large Language Models</span><span>Risk Sensing</span><span>Hierarchical Screening</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.05386" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Context Forcing: Consistent Autoregressive Video Generation with Long Context</h2>
+                <span class="published-time">Published: 2026-02-05T18:58:01.000Z</span>
+                
+                <p class="summary">Recent approaches to real-time long video generation typically employ streaming tuning strategies, attempting to train a long-context student using a short-context (memoryless) teacher. In these frameworks, the student performs long rollouts but receives supervision from a teacher limited to short 5-second windows. This structural discrepancy creates a critical student-teacher mismatch: the teacher's inability to access long-term history prevents it from guiding the student on global temporal dependencies, effectively capping the student's context length. To resolve this, we propose Context Forcing, a novel framework that trains a long-context student via a long-context teacher. By ensuring the teacher is aware of the full generation history, we eliminate the supervision mismatch, enabling the robust training of models capable of long-term consistency. To make this computationally feasible for extreme durations (e.g., 2 minutes), we introduce a context management system that transforms the linearly growing context into a Slow-Fast Memory architecture, significantly reducing visual redundancy. Extensive results demonstrate that our method enables effective context lengths exceeding 20 seconds -- 2 to 10 times longer than state-of-the-art methods like LongLive and Infinite-RoPE. By leveraging this extended context, Context Forcing preserves superior consistency across long durations, surpassing state-of-the-art baselines on various long video evaluation metrics.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Context Forcing</span><span>Video Generation</span><span>Long Context</span><span>Autoregressive</span><span>Slow-Fast Memory</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.06028" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Reinforcement World Model Learning for LLM-based Agents</h2>
+                <span class="published-time">Published: 2026-02-05T16:30:08.000Z</span>
+                
+                <p class="summary">Large language models (LLMs) have achieved strong performance in language-centric tasks. However, in agentic settings, LLMs often struggle to anticipate action consequences and adapt to environment dynamics, highlighting the need for world-modeling capabilities in LLM-based agents. We propose Reinforcement World Model Learning (RWML), a self-supervised method that learns action-conditioned world models for LLM-based agents on textual states using sim-to-real gap rewards. Our method aligns simulated next states produced by the model with realized next states observed from the environment, encouraging consistency between internal world simulations and actual environment dynamics in a pre-trained embedding space. Unlike next-state token prediction, which prioritizes token-level fidelity (i.e., reproducing exact wording) over semantic equivalence and can lead to model collapse, our method provides a more robust training signal and is empirically less susceptible to reward hacking than LLM-as-a-judge. We evaluate our method on ALFWorld and τ^2 Bench and observe significant gains over the base model, despite being entirely self-supervised. When combined with task-success rewards, our method outperforms direct task-success reward RL by 6.9 and 5.7 points on ALFWorld and τ^2 Bench respectively, while matching the performance of expert-data training.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement World Model Learning</span><span>LLM-based Agents</span><span>World Models</span><span>Self-supervised Learning</span><span>Reinforcement Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.05842" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>PhysicsAgentABM: Physics-Guided Generative Agent-Based Modeling</h2>
+                <span class="published-time">Published: 2026-02-05T18:59:01.000Z</span>
+                
+                <p class="summary">Large language model (LLM)-based multi-agent systems enable expressive agent reasoning but are expensive to scale and poorly calibrated for timestep-aligned state-transition simulation, while classical agent-based models (ABMs) offer interpretability but struggle to integrate rich individual-level signals and non-stationary behaviors. We propose PhysicsAgentABM, which shifts inference to behaviorally coherent agent clusters: state-specialized symbolic agents encode mechanistic transition priors, a multimodal neural transition model captures temporal and interaction dynamics, and uncertainty-aware epistemic fusion yields calibrated cluster-level transition distributions. Individual agents then stochastically realize transitions under local constraints, decoupling population inference from entity-level variability. We further introduce ANCHOR, an LLM agent-driven clustering strategy based on cross-contextual behavioral responses and a novel contrastive loss, reducing LLM calls by up to 6-8 times. Experiments across public health, finance, and social sciences show consistent gains in event-time accuracy and calibration over mechanistic, neural, and LLM baselines. By re-architecting generative ABM around population-level inference with uncertainty-aware neuro-symbolic fusion, PhysicsAgentABM establishes a new paradigm for scalable and calibrated simulation with LLMs.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>PhysicsAgentABM</span><span>Agent-Based Modeling</span><span>Large Language Model</span><span>Multi-agent systems</span><span>Neuro-symbolic AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.06030" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>UniAudio 2.0: A Unified Audio Language Model with Text-Aligned Factorized Audio Tokenization</h2>
+                <span class="published-time">Published: 2026-02-04T15:53:41.000Z</span>
+                
+                <p class="summary">We study two foundational problems in audio language models: (1) how to design an audio tokenizer that can serve as an intermediate representation for both understanding and generation; and (2) how to build an audio foundation model that generalizes in few-shot and zero-shot settings, analogous to large language models. To this end, we make the following two contributions. First, we propose ReasoningCodec, a discrete audio codec that factorizes audio into (i) reasoning tokens, which encode text-aligned, high-level analysis and planning representations for audio understanding and hierarchical generation, and (ii) reconstruction tokens, which encode semantic-rich acoustic cues for high-fidelity waveform reconstruction. This design achieves understanding performance comparable to strong continuous representations while improving generation quality and reconstruction fidelity over prior discrete tokenizers. Second, we introduce a unified autoregressive architecture for text and audio, together with multi-stage training and multi-task data construction. Using this framework, we train UniAudio 2.0 on 100B text tokens and 60B audio tokens. Across a wide range of speech, sound, and music tasks, UniAudio 2.0 performs competitively on in-domain evaluations and demonstrates strong few-shot and zero-shot generalization to unseen tasks. Demo, code, and checkpoints will be available at https://dongchaoyang.top/UniAudio2Demo/{https://dongchaoyang.top/UniAudio2Demo/}.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>UniAudio 2.0</span><span>Audio Language Model</span><span>Audio Tokenization</span><span>ReasoningCodec</span><span>Few-shot Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Deep Learning</span><span>Multimodal</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.04683" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>CoPE: Clipped RoPE as A Scalable Free Lunch for Long Context LLMs</h2>
+                <span class="published-time">Published: 2026-02-05T03:31:14.000Z</span>
+                
+                <p class="summary">Rotary Positional Embedding (RoPE) is a key component of context scaling in Large Language Models (LLMs). While various methods have been proposed to adapt RoPE to longer contexts, their guiding principles generally fall into two categories: (1) out-of-distribution (OOD) mitigation, which scales RoPE frequencies to accommodate unseen positions, and (2) Semantic Modeling, which posits that the attention scores computed with RoPE should always prioritize semantically similar tokens. In this work, we unify these seemingly distinct objectives through a minimalist intervention, namely CoPE: soft clipping lowfrequency components of RoPE. CoPE not only eliminates OOD outliers and refines semantic signals, but also prevents spectral leakage caused by hard clipping. Extensive experiments demonstrate that simply applying our soft clipping strategy to RoPE yields significant performance gains that scale up to 256k context length, validating our theoretical analysis and establishing CoPE as a new state-of-the-art for length generalization. Our code, data, and models are available at https://github.com/hrlics/CoPE.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Rotary Positional Embedding</span><span>Large Language Models</span><span>Long Context</span><span>Clipped RoPE</span><span>Length Generalization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.05258" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
