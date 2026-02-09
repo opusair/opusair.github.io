@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-02-09</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-02-09</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Hard-braking events as indicators of road segment crash risk</h2>
+                <span class="published-time">Published: 2026-02-09 17:09:37</span>
+                
+                <p class="summary">This research investigates the utility of hard-braking events as a significant indicator for assessing road segment crash risk. By analyzing anonymized vehicle telemetry data, the study explores how the frequency and characteristics of hard-braking incidents on specific road segments can serve as a robust proxy for identifying areas with elevated accident probabilities. The methodology involves correlating observed hard-braking patterns with historical crash data to build predictive models that go beyond traditional reactive safety measures. This data-driven approach aims to provide transportation authorities and urban planners with more proactive tools to enhance road safety. The insights derived could facilitate the prioritization of infrastructure improvements, enable the implementation of targeted safety interventions, and ultimately reduce the incidence of road accidents by identifying high-risk zones before a substantial number of crashes occur. This innovative application of predictive analytics underscores the potential of large-scale driving behavior data to inform critical decision-making in traffic management and accident prevention strategies.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Road Safety</span><span>Predictive Analytics</span><span>Telematics Data</span><span>Crash Prediction</span><span>Driving Behavior</span><span>Risk Assessment</span><span>Machine Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://research.google/blog/hard-braking-events-as-indicators-of-road-segment-crash-risk/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Testing Ads in ChatGPT</h2>
+                <span class="published-time">Published: 2026-02-09 19:04:16</span>
+                
+                <p class="summary">OpenAI is reportedly exploring avenues for monetization within its popular conversational AI platform, ChatGPT, by initiating tests for integrating advertisements. This strategic move signifies a potential shift in the company's business model, aiming to diversify revenue streams beyond its current subscription services and API access. The introduction of ads could involve various formats, such as sponsored responses, contextual advertisements, or premium features supported by ad revenue. Industry analysts suggest that this exploration reflects the substantial operational costs associated with running large language models and the intense competition in the AI sector. While such a development could raise concerns among users regarding data privacy and the integrity of AI-generated responses, it also presents an opportunity for OpenAI to make ChatGPT more accessible to a wider audience, possibly through a freemium model. This pilot program will provide critical insights into user acceptance and the technical feasibility of advertising within a conversational AI environment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>ChatGPT</span><span>Large Language Model</span><span>AI Monetization</span><span>Digital Advertising</span><span>Conversational AI</span><span>AI Business Model</span><span>Ad Tech</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://openai.com/index/testing-ads-in-chatgpt/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Thoughts on Generating C</h2>
+                <span class="published-time">Published: 2026-02-09 13:54:48</span>
+                
+                <p class="summary">The article "Thoughts on Generating C" explores the intricate considerations and methodologies involved in programmatically producing C code. It delves into the inherent advantages of C, such as its unparalleled performance characteristics, widespread portability across diverse hardware, and direct memory access capabilities, which collectively make it a compelling target for code generation in various advanced applications. The discussion likely covers critical challenges associated with C code generation, including meticulous manual memory management, ensuring strict type safety, handling complex data structures, and optimizing for specific hardware architectures to extract maximum efficiency. Key insights would pertain to developing effective strategies for maintaining code correctness, enhancing readability, and ensuring optimal performance when translating higher-level constructs, domain-specific logic, or even abstract designs into low-level C. This includes topics relevant to sophisticated compiler development, robust embedded systems programming, and advanced tools that automate code synthesis, underscoring the delicate balance between generating highly performant and reliable C code while effectively managing its intrinsic complexities.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>C programming</span><span>code generation</span><span>compiler design</span><span>low-level programming</span><span>program synthesis</span><span>software engineering</span><span>performance optimization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://wingolog.org/archives/2026/02/09/six-thoughts-on-generating-c" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Sandboxels</h2>
+                <span class="published-time">Published: 2026-02-09 15:31:09</span>
+                
+                <p class="summary">Sandboxels, an innovative interactive web application from developer Neal Agarwal's acclaimed neal.fun platform, presents a dynamic and engaging digital sandbox environment designed for open-ended experimentation. This browser-based experience empowers users to manipulate a diverse array of elements, observing their intricate real-time interactions and the emergent behaviors that arise from simple rules. Functioning as a sophisticated physics-driven simulation, Sandboxels allows individuals to create, destroy, and combine various virtual substances or particles, encouraging exploration into the consequences of their actions within a self-contained digital ecosystem. The project stands as a testament to creative coding and accessible web development, offering both a source of entertainment and a valuable, casual educational tool for understanding fundamental physical and chemical principles through direct, hands-on engagement. It showcases the robust capabilities of modern web technologies to deliver highly interactive and visually rich experiences that stimulate curiosity and foster experimental play across a broad audience.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Interactive Simulation</span><span>Web Development</span><span>Physics Engine</span><span>Sandbox Game</span><span>Generative Systems</span><span>Real-time Graphics</span><span>Creative Coding</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Artificial Intelligence</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://neal.fun/sandboxels/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>From watchdogs to mouthpieces: Washington Post and the wreckage of legacy media</h2>
+                <span class="published-time">Published: 2026-02-09 17:48:24</span>
+                
+                <p class="summary">This article, titled "From watchdogs to mouthpieces: Washington Post and the wreckage of legacy media," discusses the perceived decline of traditional journalistic institutions. While the original content focuses on the Washington Post's shift, an AI-centric analysis could explore how artificial intelligence tools might detect such transformations in media integrity. AI models, particularly those leveraging Natural Language Processing and sentiment analysis, could monitor journalistic output over time to identify shifts in editorial stance, bias, or independence. Furthermore, the "wreckage of legacy media" raises questions about AI's potential role in future journalism, from automated content generation and fact-checking to personalized news delivery. Understanding these dynamics through AI-driven media analytics becomes crucial for maintaining informed public discourse in an evolving information landscape, where the distinction between objective reporting and biased narratives is increasingly blurred by various influences, including technological ones.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Natural Language Processing</span><span>Sentiment Analysis</span><span>Media Bias Detection</span><span>Computational Journalism</span><span>Automated Content Analysis</span><span>Information Retrieval</span><span>AI Ethics in Media</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>AI Agent</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.thejournal.ie/readme/bezos-washington-post-trump-6950317-Feb2026/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Nobody knows how the whole system works</h2>
+                <span class="published-time">Published: 2026-02-09 05:28:15</span>
+                
+                <p class="summary">The concise statement, "Nobody knows how the whole system works," highlights a critical and pervasive challenge in contemporary technology, particularly within large-scale and rapidly evolving domains like artificial intelligence. This issue stems from the inherent complexity of modern software and hardware architectures, where numerous interconnected components, intricate interdependencies, and often emergent behaviors make a holistic understanding nearly impossible for any single individual or even a dedicated team. This lack of comprehensive insight can lead to significant operational hurdles, including difficulties in debugging, performance optimization, security vulnerability identification, and accurate prediction of system behavior under various conditions. The article implicitly advocates for strategies such as enhanced observability, modular design, robust documentation, and collaborative knowledge sharing to mitigate the risks associated with managing such opaque and complex systems, emphasizing the continuous effort required to navigate rather than fully conquer system complexity.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>System Complexity</span><span>Distributed Systems</span><span>Technical Debt</span><span>Emergent Behavior</span><span>Software Architecture</span><span>Observability</span><span>System Understanding</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://surfingcomplexity.blog/2026/02/08/nobody-knows-how-the-whole-system-works/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Learning a Generative Meta-Model of LLM Activations</h2>
+                <span class="published-time">Published: 2026-02-06T18:59:56.000Z</span>
+                
+                <p class="summary">Existing approaches for analyzing neural network activations, such as PCA and sparse autoencoders, rely on strong structural assumptions. Generative models offer an alternative: they can uncover structure without such assumptions and act as priors that improve intervention fidelity. We explore this direction by training diffusion models on one billion residual stream activations, creating "meta-models" that learn the distribution of a network's internal states. We find that diffusion loss decreases smoothly with compute and reliably predicts downstream utility. In particular, applying the meta-model's learned prior to steering interventions improves fluency, with larger gains as loss decreases. Moreover, the meta-model's neurons increasingly isolate concepts into individual units, with sparse probing scores that scale as loss decreases. These results suggest generative meta-models offer a scalable path toward interpretability without restrictive structural assumptions. Project page: https://generative-latent-prior.github.io.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Generative Models</span><span>LLM Activations</span><span>Diffusion Models</span><span>Interpretability</span><span>Neural Networks</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Generative AI</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.06964" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>InftyThink+: Effective and Efficient Infinite-Horizon Reasoning via Reinforcement Learning</h2>
+                <span class="published-time">Published: 2026-02-06T18:59:27.000Z</span>
+                
+                <p class="summary">Large reasoning models achieve strong performance by scaling inference-time chain-of-thought, but this paradigm suffers from quadratic cost, context length limits, and degraded reasoning due to lost-in-the-middle effects. Iterative reasoning mitigates these issues by periodically summarizing intermediate thoughts, yet existing methods rely on supervised learning or fixed heuristics and fail to optimize when to summarize, what to preserve, and how to resume reasoning. We propose InftyThink+, an end-to-end reinforcement learning framework that optimizes the entire iterative reasoning trajectory, building on model-controlled iteration boundaries and explicit summarization. InftyThink+ adopts a two-stage training scheme with supervised cold-start followed by trajectory-level reinforcement learning, enabling the model to learn strategic summarization and continuation decisions. Experiments on DeepSeek-R1-Distill-Qwen-1.5B show that InftyThink+ improves accuracy by 21% on AIME24 and outperforms conventional long chain-of-thought reinforcement learning by a clear margin, while also generalizing better to out-of-distribution benchmarks. Moreover, InftyThink+ significantly reduces inference latency and accelerates reinforcement learning training, demonstrating improved reasoning efficiency alongside stronger performance.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Iterative Reasoning</span><span>Large Reasoning Models</span><span>Chain-of-Thought</span><span>Strategic Summarization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.06960" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DreamDojo: A Generalist Robot World Model from Large-Scale Human Videos</h2>
+                <span class="published-time">Published: 2026-02-06T18:49:43.000Z</span>
+                
+                <p class="summary">Being able to simulate the outcomes of actions in varied environments will revolutionize the development of generalist agents at scale. However, modeling these world dynamics, especially for dexterous robotics tasks, poses significant challenges due to limited data coverage and scarce action labels. As an endeavor towards this end, we introduce DreamDojo, a foundation world model that learns diverse interactions and dexterous controls from 44k hours of egocentric human videos. Our data mixture represents the largest video dataset to date for world model pretraining, spanning a wide range of daily scenarios with diverse objects and skills. To address the scarcity of action labels, we introduce continuous latent actions as unified proxy actions, enhancing interaction knowledge transfer from unlabeled videos. After post-training on small-scale target robot data, DreamDojo demonstrates a strong understanding of physics and precise action controllability. We also devise a distillation pipeline that accelerates DreamDojo to a real-time speed of 10.81 FPS and further improves context consistency. Our work enables several important applications based on generative world models, including live teleoperation, policy evaluation, and model-based planning. Systematic evaluation on multiple challenging out-of-distribution (OOD) benchmarks verifies the significance of our method for simulating open-world, contact-rich tasks, paving the way for general-purpose robot world models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>DreamDojo</span><span>Robot World Model</span><span>Human Videos</span><span>Dexterous Robotics</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>AI Agent</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.06949" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Uncovering Cross-Objective Interference in Multi-Objective Alignment</h2>
+                <span class="published-time">Published: 2026-02-06T16:55:27.000Z</span>
+                
+                <p class="summary">We study a persistent failure mode in multi-objective alignment for large language models (LLMs): training improves performance on only a subset of objectives while causing others to degrade. We formalize this phenomenon as cross-objective interference and conduct the first systematic study across classic scalarization algorithms, showing that interference is pervasive and exhibits strong model dependence. To explain this phenomenon, we derive a local covariance law showing that an objective improves at first order when its reward exhibits positive covariance with the scalarized score. We extend this analysis to clipped surrogate objectives used in modern alignment, demonstrating that the covariance law remains valid under mild conditions despite clipping. Building on this analysis, we propose Covariance Targeted Weight Adaptation (CTWA), a plug-and-play method that maintains positive covariance between objective rewards and the training signal to effectively mitigate cross-objective interference. Finally, we complement these local improvement conditions with a global convergence analysis under the Polyak--Łojasiewicz condition, establishing when non-convex scalarized optimization achieves global convergence and how cross-objective interference depends on specific model geometric properties.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multi-objective Alignment</span><span>Large Language Models</span><span>Cross-Objective Interference</span><span>Covariance Law</span><span>Covariance Targeted Weight Adaptation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.06869" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>SEMA: Simple yet Effective Learning for Multi-Turn Jailbreak Attacks</h2>
+                <span class="published-time">Published: 2026-02-06T16:44:57.000Z</span>
+                
+                <p class="summary">Multi-turn jailbreaks capture the real threat model for safety-aligned chatbots, where single-turn attacks are merely a special case. Yet existing approaches break under exploration complexity and intent drift. We propose SEMA, a simple yet effective framework that trains a multi-turn attacker without relying on any existing strategies or external data. SEMA comprises two stages. Prefilling self-tuning enables usable rollouts by fine-tuning on non-refusal, well-structured, multi-turn adversarial prompts that are self-generated with a minimal prefix, thereby stabilizing subsequent learning. Reinforcement learning with intent-drift-aware reward trains the attacker to elicit valid multi-turn adversarial prompts while maintaining the same harmful objective. We anchor harmful intent in multi-turn jailbreaks via an intent-drift-aware reward that combines intent alignment, compliance risk, and level of detail. Our open-loop attack regime avoids dependence on victim feedback, unifies single- and multi-turn settings, and reduces exploration complexity. Across multiple datasets, victim models, and jailbreak judges, our method achieves state-of-the-art (SOTA) attack success rates (ASR), outperforming all single-turn baselines, manually scripted and template-driven multi-turn baselines, as well as our SFT (Supervised Fine-Tuning) and DPO (Direct Preference Optimization) variants. For instance, SEMA performs an average 80.1% ASR@1 across three closed-source and open-source victim models on AdvBench, 33.9% over SOTA. The approach is compact, reproducible, and transfers across targets, providing a stronger and more realistic stress test for large language model (LLM) safety and enabling automatic redteaming to expose and localize failure modes. Our code is available at: https://github.com/fmmarkmq/SEMA.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multi-turn jailbreaks</span><span>Large Language Models</span><span>LLM safety</span><span>Reinforcement learning</span><span>Adversarial attacks</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.06854" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Table-as-Search: Formulate Long-Horizon Agentic Information Seeking as Table Completion</h2>
+                <span class="published-time">Published: 2026-02-06T14:18:26.000Z</span>
+                
+                <p class="summary">Current Information Seeking (InfoSeeking) agents struggle to maintain focus and coherence during long-horizon exploration, as tracking search states, including planning procedure and massive search results, within one plain-text context is inherently fragile. To address this, we introduce Table-as-Search (TaS), a structured planning framework that reformulates the InfoSeeking task as a Table Completion task. TaS maps each query into a structured table schema maintained in an external database, where rows represent search candidates and columns denote constraints or required information. This table precisely manages the search states: filled cells strictly record the history and search results, while empty cells serve as an explicit search plan. Crucially, TaS unifies three distinct InfoSeeking tasks: Deep Search, Wide Search, and the challenging DeepWide Search. Extensive experiments demonstrate that TaS significantly outperforms numerous state-of-the-art baselines across three kinds of benchmarks, including multi-agent framework and commercial systems. Furthermore, our analysis validates the TaS's superior robustness in long-horizon InfoSeeking, alongside its efficiency, scalability and flexibility. Code and datasets are publicly released at https://github.com/AIDC-AI/Marco-Search-Agent.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Information Seeking</span><span>AI Agent</span><span>Table Completion</span><span>Structured Planning</span><span>Long-horizon Search</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.06724" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
