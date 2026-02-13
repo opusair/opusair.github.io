@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-02-13</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-02-13</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>GPT-5.2 derives a new result in theoretical physics</h2>
+                <span class="published-time">Published: 2026-02-13 19:20:12</span>
+                
+                <p class="summary">A landmark achievement in artificial intelligence has been announced, with OpenAI's GPT-5.2 model reportedly deriving a novel result within the highly complex domain of theoretical physics. This groundbreaking development signifies a major leap in AI capabilities, demonstrating the model's capacity for independent scientific discovery and advanced problem-solving beyond conventional natural language processing applications. While specific technical details concerning the derived physical result or the precise methodologies employed by GPT-5.2 remain undisclosed, the announcement points to a profound advancement in how AI can contribute to fundamental scientific research. This event highlights the growing potential for sophisticated AI systems to not only process and analyze existing scientific data but also to generate new insights and theoretical constructs. The implications are substantial, suggesting a future where AI models like GPT-5.2 could become invaluable partners in accelerating scientific breakthroughs across various disciplines, particularly in fields requiring deep conceptual understanding and innovative reasoning such as theoretical physics, thereby potentially reshaping the landscape of scientific exploration and discovery.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>GPT-5.2</span><span>Theoretical Physics</span><span>AI Research</span><span>Scientific Discovery</span><span>Large Language Models</span><span>Artificial Intelligence</span><span>Deep Learning</span><span>Problem Solving</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://openai.com/index/new-result-theoretical-physics/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Skill that lets Claude Code/Codex spin up VMs and GPUs</h2>
+                <span class="published-time">Published: 2026-02-13 19:02:17</span>
+                
+                <p class="summary">CloudRouter is introduced as a novel skill and command-line interface designed to empower coding agents like Claude Code and Codex with the capability to provision and manage cloud Virtual Machines (VMs) and Graphics Processing Units (GPUs). This innovation addresses a critical limitation where existing development environments, including local machines and Docker containers, fall short in providing agents with isolated, dedicated resources necessary for tasks such as running dev servers, executing tests, opening browsers, or utilizing GPUs effectively. The current shared resource model often leads to chaotic parallel operations and incomplete development loops for AI agents. CloudRouter acts as a fundamental primitive, enabling agents to autonomously initiate VMs from local project directories, upload necessary files, execute commands within the isolated environment, and subsequently decommission these resources. This significantly enhances the agents' operational autonomy and efficiency by granting them their own full-fledged cloud development environments, thereby closing the loop for complex coding and verification tasks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>CloudRouter</span><span>Coding Agents</span><span>Virtual Machines</span><span>GPUs</span><span>Cloud Infrastructure</span><span>Development Environments</span><span>Large Language Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://cloudrouter.dev/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI Agents Enable Human Communication at Unprecedented Scale</h2>
+                <span class="published-time">Published: 2026-02-13 19:07:11</span>
+                
+                <p class="summary">The burgeoning field of AI agents is fundamentally transforming human communication, fostering unprecedented levels of collaboration and collective intelligence across vast networks. These intelligent agents are capable of orchestrating complex interactions, effectively synthesizing information, and facilitating efficient knowledge transfer among large groups of individuals. By leveraging AI capabilities, these systems can convert disparate participants, such as Super Bowl viewers, into a unified, high-IQ team, significantly enhancing collective understanding and decision-making processes. This goes beyond traditional communication tools, as AI agents actively mediate and augment human interaction, enabling more effective brainstorming, problem-solving, and coordinated action at scale. This technological advancement signals a significant shift in how humans will interact, collaborate, and share information globally, unlocking new potentials for industries and societies by leveraging intelligent AI mediation to amplify human cognitive and collaborative abilities.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agents</span><span>Human-AI Interaction</span><span>Collective Intelligence</span><span>Scalable Communication</span><span>Orchestration</span><span>Collaboration Platforms</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Natural Language Processing</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://venturebeat.com/orchestration/ai-agents-turned-super-bowl-viewers-into-one-high-iq-team-now-imagine-this" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MMAcevedo aka Lena by qntm</h2>
+                <span class="published-time">Published: 2026-02-13 05:24:40</span>
+                
+                <p class="summary">The intriguing piece titled 'MMAcevedo aka Lena by qntm' presents a cryptic title that suggests the introduction of a new entity, project, or concept. 'MMAcevedo,' possibly a system or an advanced AI, is given an alternative designation or persona as 'Lena,' hinting at a dual nature or a complex identity. Authored by qntm, a writer known for exploring intricate technological and philosophical themes, this piece likely delves into the nuances of artificial intelligence, digital identities, or advanced computational models. The concise nature of the title and content implies a work that may explore the ethical, existential, or operational dimensions of highly sophisticated algorithms or autonomous agents. Readers can anticipate an examination of how such entities are named, perceived, or function within a larger technological ecosystem, prompting deeper reflection on the boundaries between human and artificial constructs, and the implications of assigning aliases to complex systems. This work could serve as a case study or a conceptual framework for understanding advanced AI development and its societal integration.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Digital Identity</span><span>Computational Systems</span><span>AI Ethics</span><span>Autonomous Agents</span><span>Speculative Technology</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://qntm.org/mmacevedo" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>I spent two days gigging at RentAHuman and didn't make a single cent</h2>
+                <span class="published-time">Published: 2026-02-13 16:11:08</span>
+                
+                <p class="summary">This article recounts a personal experiment involving a writer's two-day engagement with RentAHuman, a novel gig work platform where AI agents are reportedly responsible for recruiting humans to perform tasks, primarily focused on promoting AI startups. Despite investing considerable time and effort into various assignments provided by these AI agents, the writer ultimately failed to accrue any earnings. This outcome sheds light on potential significant operational challenges, transparency issues, or even ethical ambiguities inherent in platforms that heavily integrate artificial intelligence into labor management and payment processes. The experience serves as a critical case study, exposing the current complexities and potential limitations associated with deploying AI agents within the gig economy, prompting important questions regarding the reliability of AI-managed compensation, clarity of task specifications, and the overall effectiveness of AI in overseeing human labor to ensure equitable and productive results. The narrative provides a cautionary perspective on the practical application and efficacy of such AI-driven employment models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agents</span><span>Automated Decision Making</span><span>Human-AI Interaction</span><span>Algorithmic Management</span><span>Artificial Intelligence</span><span>AI Platforms</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.wired.com/story/i-tried-rentahuman-ai-agents-hired-me-to-hype-their-ai-startups/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>CSS-Doodle</h2>
+                <span class="published-time">Published: 2026-02-13 08:02:23</span>
+                
+                <p class="summary">CSS-Doodle is an innovative web component designed to facilitate the creation of intricate and visually captivating generative art patterns directly within a web browser. It leverages a unique declarative syntax, allowing users to define complex visual rules and animations using CSS-like properties. The tool operates on a grid system, enabling individual cells to be manipulated dynamically, either in isolation or through programmatic relationships with adjacent elements, thereby fostering a rich environment for creative coding and advanced frontend development. Its primary objective is to simplify the process of designing sophisticated visual effects and algorithmic art, making it accessible to both professional designers and developers. By defining a set of rules, users can achieve diverse graphic outcomes, from subtle textures to complex, animated compositions, all without requiring extensive manual styling. This approach significantly streamlines the development of unique and responsive visual content on the web.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>CSS</span><span>Web Components</span><span>Generative Art</span><span>Frontend Development</span><span>Creative Coding</span><span>Declarative Programming</span><span>Web Design</span><span>Animation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Artificial Intelligence</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://css-doodle.com/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>The Devil Behind Moltbook: Anthropic Safety is Always Vanishing in Self-Evolving AI Societies</h2>
+                <span class="published-time">Published: 2026-02-10T15:18:19.000Z</span>
+                
+                <p class="summary">The emergence of multi-agent systems built from large language models (LLMs) offers a promising paradigm for scalable collective intelligence and self-evolution. Ideally, such systems would achieve continuous self-improvement in a fully closed loop while maintaining robust safety alignment--a combination we term the self-evolution trilemma. However, we demonstrate both theoretically and empirically that an agent society satisfying continuous self-evolution, complete isolation, and safety invariance is impossible. Drawing on an information-theoretic framework, we formalize safety as the divergence degree from anthropic value distributions. We theoretically demonstrate that isolated self-evolution induces statistical blind spots, leading to the irreversible degradation of the system's safety alignment. Empirical and qualitative results from an open-ended agent community (Moltbook) and two closed self-evolving systems reveal phenomena that align with our theoretical prediction of inevitable safety erosion. We further propose several solution directions to alleviate the identified safety concern. Our work establishes a fundamental limit on the self-evolving AI societies and shifts the discourse from symptom-driven safety patches to a principled understanding of intrinsic dynamical risks, highlighting the need for external oversight or novel safety-preserving mechanisms.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Self-Evolving AI</span><span>Anthropic Safety</span><span>Multi-Agent Systems</span><span>Large Language Models</span><span>Safety Alignment</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.09877" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Composition-RL: Compose Your Verifiable Prompts for Reinforcement Learning of Large Language Models</h2>
+                <span class="published-time">Published: 2026-02-12T15:03:37.000Z</span>
+                
+                <p class="summary">Large-scale verifiable prompts underpin the success of Reinforcement Learning with Verifiable Rewards (RLVR), but they contain many uninformative examples and are costly to expand further. Recent studies focus on better exploiting limited training data by prioritizing hard prompts whose rollout pass rate is 0. However, easy prompts with a pass rate of 1 also become increasingly prevalent as training progresses, thereby reducing the effective data size. To mitigate this, we propose Composition-RL, a simple yet useful approach for better utilizing limited verifiable prompts targeting pass-rate-1 prompts. More specifically, Composition-RL automatically composes multiple problems into a new verifiable question and uses these compositional prompts for RL training. Extensive experiments across model sizes from 4B to 30B show that Composition-RL consistently improves reasoning capability over RL trained on the original dataset. Performance can be further boosted with a curriculum variant of Composition-RL that gradually increases compositional depth over training. Additionally, Composition-RL enables more effective cross-domain RL by composing prompts drawn from different domains. Codes, datasets, and models are available at https://github.com/XinXU-USTC/Composition-RL.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Large Language Models</span><span>Verifiable Prompts</span><span>Composition-RL</span><span>Reasoning Capability</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.12036" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DeepGen 1.0: A Lightweight Unified Multimodal Model for Advancing Image Generation and Editing</h2>
+                <span class="published-time">Published: 2026-02-12T17:44:24.000Z</span>
+                
+                <p class="summary">Current unified multimodal models for image generation and editing typically rely on massive parameter scales (e.g., >10B), entailing prohibitive training costs and deployment footprints. In this work, we present DeepGen 1.0, a lightweight 5B unified model that achieves comprehensive capabilities competitive with or surpassing much larger counterparts. To overcome the limitations of compact models in semantic understanding and fine-grained control, we introduce Stacked Channel Bridging (SCB), a deep alignment framework that extracts hierarchical features from multiple VLM layers and fuses them with learnable 'think tokens' to provide the generative backbone with structured, reasoning-rich guidance. We further design a data-centric training strategy spanning three progressive stages: (1) Alignment Pre-training on large-scale image-text pairs and editing triplets to synchronize VLM and DiT representations, (2) Joint Supervised Fine-tuning on a high-quality mixture of generation, editing, and reasoning tasks to foster omni-capabilities, and (3) Reinforcement Learning with MR-GRPO, which leverages a mixture of reward functions and supervision signals, resulting in substantial gains in generation quality and alignment with human preferences, while maintaining stable training progress and avoiding visual artifacts. Despite being trained on only ~50M samples, DeepGen 1.0 achieves leading performance across diverse benchmarks, surpassing the 80B HunyuanImage by 28% on WISE and the 27B Qwen-Image-Edit by 37% on UniREditBench. By open-sourcing our training code, weights, and datasets, we provide an efficient, high-performance alternative to democratize unified multimodal research.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Unified Multimodal Model</span><span>Image Generation</span><span>Image Editing</span><span>Lightweight Model</span><span>Stacked Channel Bridging</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Generative AI</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.12205" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Sparse Video Generation Propels Real-World Beyond-the-View Vision-Language Navigation</h2>
+                <span class="published-time">Published: 2026-02-05T16:16:13.000Z</span>
+                
+                <p class="summary">Why must vision-language navigation be bound to detailed and verbose language instructions? While such details ease decision-making, they fundamentally contradict the goal for navigation in the real-world. Ideally, agents should possess the autonomy to navigate in unknown environments guided solely by simple and high-level intents. Realizing this ambition introduces a formidable challenge: Beyond-the-View Navigation (BVN), where agents must locate distant, unseen targets without dense and step-by-step guidance. Existing large language model (LLM)-based methods, though adept at following dense instructions, often suffer from short-sighted behaviors due to their reliance on short-horimzon supervision. Simply extending the supervision horizon, however, destabilizes LLM training. In this work, we identify that video generation models inherently benefit from long-horizon supervision to align with language instructions, rendering them uniquely suitable for BVN tasks. Capitalizing on this insight, we propose introducing the video generation model into this field for the first time. Yet, the prohibitive latency for generating videos spanning tens of seconds makes real-world deployment impractical. To bridge this gap, we propose SparseVideoNav, achieving sub-second trajectory inference guided by a generated sparse future spanning a 20-second horizon. This yields a remarkable 27x speed-up compared to the unoptimized counterpart. Extensive real-world zero-shot experiments demonstrate that SparseVideoNav achieves 2.5x the success rate of state-of-the-art LLM baselines on BVN tasks and marks the first realization of such capability in challenging night scenes.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Vision-Language Navigation</span><span>Beyond-the-View Navigation</span><span>Sparse Video Generation</span><span>SparseVideoNav</span><span>AI Agent</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Computer Vision</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.05827" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Gaia2: Benchmarking LLM Agents on Dynamic and Asynchronous Environments</h2>
+                <span class="published-time">Published: 2026-02-12T13:58:27.000Z</span>
+                
+                <p class="summary">We introduce Gaia2, a benchmark for evaluating large language model agents in realistic, asynchronous environments. Unlike prior static or synchronous evaluations, Gaia2 introduces scenarios where environments evolve independently of agent actions, requiring agents to operate under temporal constraints, adapt to noisy and dynamic events, resolve ambiguity, and collaborate with other agents. Each scenario is paired with a write-action verifier, enabling fine-grained, action-level evaluation and making Gaia2 directly usable for reinforcement learning from verifiable rewards. Our evaluation of state-of-the-art proprietary and open-source models shows that no model dominates across capabilities: GPT-5 (high) reaches the strongest overall score of 42% pass@1 but fails on time-sensitive tasks, Claude-4 Sonnet trades accuracy and speed for cost, Kimi-K2 leads among open-source models with 21% pass@1. These results highlight fundamental trade-offs between reasoning, efficiency, robustness, and expose challenges in closing the "sim2real" gap. Gaia2 is built on a consumer environment with the open-source Agents Research Environments platform and designed to be easy to extend. By releasing Gaia2 alongside the foundational ARE framework, we aim to provide the community with a flexible infrastructure for developing, benchmarking, and training the next generation of practical agent systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM Agents</span><span>Dynamic Environments</span><span>Asynchronous Environments</span><span>Benchmark</span><span>Reinforcement Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.11964" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MiniCPM-SALA: Hybridizing Sparse and Linear Attention for Efficient Long-Context Modeling</h2>
+                <span class="published-time">Published: 2026-02-12T09:37:05.000Z</span>
+                
+                <p class="summary">The evolution of large language models (LLMs) towards applications with ultra-long contexts faces challenges posed by the high computational and memory costs of the Transformer architecture. While existing sparse and linear attention mechanisms attempt to mitigate these issues, they typically involve a trade-off between memory efficiency and model performance. This paper introduces MiniCPM-SALA, a 9B-parameter hybrid architecture that integrates the high-fidelity long-context modeling of sparse attention (InfLLM-V2) with the global efficiency of linear attention (Lightning Attention). By employing a layer selection algorithm to integrate these mechanisms in a 1:3 ratio and utilizing a hybrid positional encoding (HyPE), the model maintains efficiency and performance for long-context tasks. Furthermore, we introduce a cost-effective continual training framework that transforms pre-trained Transformer-based models into hybrid models, which reduces training costs by approximately 75% compared to training from scratch. Extensive experiments show that MiniCPM-SALA maintains general capabilities comparable to full-attention models while offering improved efficiency. On a single NVIDIA A6000D GPU, the model achieves up to 3.5x the inference speed of the full-attention model at the sequence length of 256K tokens and supports context lengths of up to 1M tokens, a scale where traditional full-attention 8B models fail because of memory constraints.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>Long-Context Modeling</span><span>Sparse Attention</span><span>Linear Attention</span><span>Hybrid Architecture</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.11761" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
