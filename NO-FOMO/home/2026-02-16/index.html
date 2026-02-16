@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-02-16</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-02-16</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Qwen3.5: Towards Native Multimodal Agents</h2>
+                <span class="published-time">Published: 2026-02-16 09:32:21</span>
+                
+                <p class="summary">Qwen3.5 marks a notable advancement in artificial intelligence, primarily focusing on the development of native multimodal agents. This iteration of the Qwen model series is engineered to deeply integrate and process diverse data types, including textual, visual, and potentially auditory information, within a unified and coherent framework. The core innovation of Qwen3.5 lies in its enhanced capability to function as an intelligent agent, adept at understanding intricate user requests, performing complex reasoning across multiple modalities, and executing multi-step tasks autonomously. By emphasizing "native" multimodal capabilities, Qwen3.5 aims to move beyond modular approaches, fostering more integrated and robust AI behaviors. This development is pivotal for creating more sophisticated and versatile AI systems that can interact with the world in a human-like manner, significantly expanding the scope of AI applications beyond traditional large language models to encompass a broader spectrum of real-world interactive and problem-solving scenarios.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Qwen3.5</span><span>Multimodal AI</span><span>AI Agent</span><span>Large Language Model</span><span>Multimodal Learning</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://qwen.ai/blog?id=qwen3.5" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>WebMCP Proposal</h2>
+                <span class="published-time">Published: 2026-02-16 17:08:20</span>
+                
+                <p class="summary">The Web Machine Learning Community Proposal (WebMCP) presents a comprehensive framework for standardizing the integration of machine learning functionalities directly within web browsers. Developed under the auspices of the Web Machine Learning Community Group, this proposal aims to establish consistent APIs and best practices, thereby empowering developers to deploy and execute artificial intelligence models on the client side. A primary goal is to leverage on-device inference, enhancing both performance and user privacy by processing data locally. The proposal specifically addresses key technical areas, including the utilization of underlying hardware acceleration technologies like WebGPU and WebNN, alongside robust mechanisms to ensure data privacy. By standardizing these essential capabilities, WebMCP intends to cultivate a more accessible, efficient, and secure ecosystem for machine learning on the web, reducing dependence on server-side computations and unlocking novel opportunities for interactive, privacy-centric AI applications. This initiative is pivotal for advancing the frontier of web application development to effectively manage sophisticated AI tasks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Web Machine Learning</span><span>Web Standards</span><span>On-device AI</span><span>Browser-based ML</span><span>WebGPU</span><span>WebNN</span><span>Client-side AI</span><span>Privacy-preserving Machine Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Machine Learning</span><span>Artificial Intelligence</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://webmachinelearning.github.io/webmcp/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Anthropic tries to hide Claude's AI actions. Devs hate it</h2>
+                <span class="published-time">Published: 2026-02-16 11:06:28</span>
+                
+                <p class="summary">Anthropic, a prominent AI research company, is reportedly facing significant backlash from the developer community over allegations that it is actively attempting to obscure the underlying actions and decision-making processes of its advanced large language model, Claude. This perceived lack of transparency is drawing considerable ire, as developers emphasize the critical need for insight into an AI's operational logic for effective debugging, robust integration into complex systems, and ensuring ethical compliance. The developer community argues that withholding visibility into Claude's internal workings hampers their ability to innovate, build trustworthy applications, and understand potential biases or limitations. Many are calling for Anthropic to adopt more open and transparent development practices, highlighting that opacity could erode trust, slow down adoption, and create unforeseen challenges in deploying AI responsibly. This incident underscores a growing tension between proprietary AI development and the community's demand for greater interpretability and control over powerful AI agents.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI transparency</span><span>Anthropic</span><span>Claude AI</span><span>developer frustration</span><span>AI ethics</span><span>model interpretability</span><span>AI governance</span><span>developer relations</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.theregister.com/2026/02/16/anthropic_claude_ai_edits/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Evaluating AGENTS.md: are they helpful for coding agents?</h2>
+                <span class="published-time">Published: 2026-02-16 12:15:39</span>
+                
+                <p class="summary">A recent study investigates the utility and effectiveness of AGENTS.md specifications in the development and performance of AI coding agents. The research evaluates whether adhering to these markdown-based guidelines can significantly enhance the operational capabilities, design consistency, and overall helpfulness of agents designed for software development tasks. By examining various coding agent implementations and their adherence to AGENTS.md, the study aims to identify best practices and potential shortcomings of the specification standard. Preliminary findings suggest that while AGENTS.md provides a structured framework for defining agent behaviors and interactions, its practical impact on agent efficiency and error reduction in complex coding scenarios warrants further investigation. The evaluation highlights areas where AGENTS.md can be refined to better serve the evolving landscape of AI-driven software engineering, offering insights for both developers and standard-setters in the agent community.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agents</span><span>Coding Agents</span><span>Agent Evaluation</span><span>AGENTS.md</span><span>Software Engineering</span><span>Large Language Models</span><span>Agent Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://arxiv.org/abs/2602.11988" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Thanks a lot, AI: Hard drives are sold out for the year, says WD</h2>
+                <span class="published-time">Published: 2026-02-16 12:28:31</span>
+                
+                <p class="summary">The surging demand for data storage solutions, primarily driven by the rapid expansion of artificial intelligence development and deployment, has reportedly led to significant supply chain constraints for hard disk drives (HDDs). This increased consumption by AI-related infrastructure, including large data centers and specialized training environments, is causing a notable impact on hardware availability. Western Digital, a prominent global manufacturer of storage devices, has publicly confirmed that its hard drive inventory is fully allocated for the remainder of the current year. This situation underscores the immense pressure that accelerated AI innovation is exerting on the technology supply chain, potentially affecting various industries reliant on substantial storage capacity. The necessity for vast amounts of storage for training data, model parameters, and operational logs within the rapidly expanding AI sector, particularly for large language models, is a direct contributor to this global shortage, indicating a broader challenge for foundational hardware infrastructure to keep pace with AI industry demands.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Demand</span><span>Hard Drives</span><span>Western Digital</span><span>Storage Shortage</span><span>Supply Chain</span><span>Data Centers</span><span>Hardware</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mashable.com/article/ai-hard-drive-hdd-shortages-western-digital-sold-out" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>"token anxiety"; or, a slot machine by any other name</h2>
+                <span class="published-time">Published: 2026-02-16 18:23:36</span>
+                
+                <p class="summary">The article, titled "token anxiety"; or, a slot machine by any other name, explores the psychological and practical implications of interacting with Large Language Models (LLMs), drawing a critical parallel to the experience of playing a slot machine. It delves into the concept of "token anxiety," a phenomenon where users or developers experience apprehension due to the unpredictable consumption of computational tokens during LLM inference. This unpredictability directly impacts financial costs and resource allocation, creating a user experience akin to gambling. The piece likely examines how the generative process of LLMs, where outputs are revealed without prior certainty of cost or quality, fosters a variable reinforcement schedule. It critically analyzes the current design paradigms of LLM interfaces, suggesting they may inadvertently induce behaviors associated with gambling due to the inherent uncertainty and financial stakes. The author probably advocates for enhanced transparency in token usage, more predictable pricing models, and innovative interaction designs to mitigate user anxiety and provide greater control over LLM interactions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Tokenization</span><span>Large Language Models</span><span>User Experience</span><span>AI Ethics</span><span>Generative AI</span><span>Human-Computer Interaction</span><span>Cost Management</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://jkap.io/token-anxiety-or-a-slot-machine-by-any-other-name/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Less is Enough: Synthesizing Diverse Data in Feature Space of LLMs</h2>
+                <span class="published-time">Published: 2026-02-11T00:23:13.000Z</span>
+                
+                <p class="summary">The diversity of post-training data is critical for effective downstream performance in large language models (LLMs). Many existing approaches to constructing post-training data quantify diversity using text-based metrics that capture linguistic variation, but such metrics provide only weak signals for the task-relevant features that determine downstream performance. In this work, we introduce Feature Activation Coverage (FAC) which measures data diversity in an interpretable feature space. Building upon this metric, we further propose a diversity-driven data synthesis framework, named FAC Synthesis, that first uses a sparse autoencoder to identify missing features from a seed dataset, and then generates synthetic samples that explicitly reflect these features. Experiments show that our approach consistently improves both data diversity and downstream performance on various tasks, including instruction following, toxicity detection, reward modeling, and behavior steering. Interestingly, we identify a shared, interpretable feature space across model families (i.e., LLaMA, Mistral, and Qwen), enabling cross-model knowledge transfer. Our work provides a solid and practical methodology for exploring data-centric optimization of LLMs.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLMs</span><span>Data Diversity</span><span>Feature Space</span><span>Data Synthesis</span><span>Feature Activation Coverage</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.10388" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>SciAgentGym: Benchmarking Multi-Step Scientific Tool-use in LLM Agents</h2>
+                <span class="published-time">Published: 2026-02-13T14:58:18.000Z</span>
+                
+                <p class="summary">Scientific reasoning inherently demands integrating sophisticated toolkits to navigate domain-specific knowledge. Yet, current benchmarks largely overlook agents' ability to orchestrate tools for such rigorous workflows. To bridge this gap, we introduce SciAgentGym, a scalable interactive environment featuring 1,780 domain-specific tools across four natural science disciplines, supported by a robust execution infrastructure. Complementing this, we present SciAgentBench, a tiered evaluation suite designed to stress-test agentic capabilities from elementary actions to long-horizon workflows. Our evaluation identifies a critical bottleneck: state-of-the-art models struggle with complex scientific tool-use. Even for a leading model like GPT-5, success rates drop sharply from 60.6% to 30.9% as interaction horizons extend, primarily due to failures in multi-step workflow execution. To address this, we propose SciForge, a data synthesis method that models the tool action space as a dependency graph to generate logic-aware training trajectories. By fine-tuning on these trajectories, our SciAgent-8B outperforms the significantly larger Qwen3-VL-235B-Instruct while exhibiting positive cross-domain transfer of scientific tool-use capabilities. These results underscore the promising potential of next-generation autonomous scientific agents.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM Agents</span><span>Scientific Tool-use</span><span>Benchmarks</span><span>Data Synthesis</span><span>Scientific Agents</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.12984" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Xiaomi-Robotics-0: An Open-Sourced Vision-Language-Action Model with Real-Time Execution</h2>
+                <span class="published-time">Published: 2026-02-13T07:30:43.000Z</span>
+                
+                <p class="summary">In this report, we introduce Xiaomi-Robotics-0, an advanced vision-language-action (VLA) model optimized for high performance and fast and smooth real-time execution. The key to our method lies in a carefully designed training recipe and deployment strategy. Xiaomi-Robotics-0 is first pre-trained on large-scale cross-embodiment robot trajectories and vision-language data, endowing it with broad and generalizable action-generation capabilities while avoiding catastrophic forgetting of the visual-semantic knowledge of the underlying pre-trained VLM. During post-training, we propose several techniques for training the VLA model for asynchronous execution to address the inference latency during real-robot rollouts. During deployment, we carefully align the timesteps of consecutive predicted action chunks to ensure continuous and seamless real-time rollouts. We evaluate Xiaomi-Robotics-0 extensively in simulation benchmarks and on two challenging real-robot tasks that require precise and dexterous bimanual manipulation. Results show that our method achieves state-of-the-art performance across all simulation benchmarks. Moreover, Xiaomi-Robotics-0 can roll out fast and smoothly on real robots using a consumer-grade GPU, achieving high success rates and throughput on both real-robot tasks. To facilitate future research, code and model checkpoints are open-sourced at https://xiaomi-robotics-0.github.io</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Vision-Language-Action Model</span><span>Real-Time Execution</span><span>Robotics</span><span>Robot Learning</span><span>Bimanual Manipulation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Multimodal</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.12684" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>FLAC: Maximum Entropy RL via Kinetic Energy Regularized Bridge Matching</h2>
+                <span class="published-time">Published: 2026-02-13T11:32:10.000Z</span>
+                
+                <p class="summary">Iterative generative policies, such as diffusion models and flow matching, offer superior expressivity for continuous control but complicate Maximum Entropy Reinforcement Learning because their action log-densities are not directly accessible. To address this, we propose Field Least-Energy Actor-Critic (FLAC), a likelihood-free framework that regulates policy stochasticity by penalizing the kinetic energy of the velocity field. Our key insight is to formulate policy optimization as a Generalized Schrödinger Bridge (GSB) problem relative to a high-entropy reference process (e.g., uniform). Under this view, the maximum-entropy principle emerges naturally as staying close to a high-entropy reference while optimizing return, without requiring explicit action densities. In this framework, kinetic energy serves as a physically grounded proxy for divergence from the reference: minimizing path-space energy bounds the deviation of the induced terminal action distribution. Building on this view, we derive an energy-regularized policy iteration scheme and a practical off-policy algorithm that automatically tunes the kinetic energy via a Lagrangian dual mechanism. Empirically, FLAC achieves superior or comparable performance on high-dimensional benchmarks relative to strong baselines, while avoiding explicit density estimation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Maximum Entropy RL</span><span>Kinetic Energy Regularization</span><span>Generative Policies</span><span>Schrödinger Bridge</span><span>Off-policy Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Machine Learning</span><span>Deep Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.12829" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Code2Worlds: Empowering Coding LLMs for 4D World Generation</h2>
+                <span class="published-time">Published: 2026-02-12T09:34:28.000Z</span>
+                
+                <p class="summary">Achieving spatial intelligence requires moving beyond visual plausibility to build world simulators grounded in physical laws. While coding LLMs have advanced static 3D scene generation, extending this paradigm to 4D dynamics remains a critical frontier. This task presents two fundamental challenges: multi-scale context entanglement, where monolithic generation fails to balance local object structures with global environmental layouts; and a semantic-physical execution gap, where open-loop code generation leads to physical hallucinations lacking dynamic fidelity. We introduce Code2Worlds, a framework that formulates 4D generation as language-to-simulation code generation. First, we propose a dual-stream architecture that disentangles retrieval-augmented object generation from hierarchical environmental orchestration. Second, to ensure dynamic fidelity, we establish a physics-aware closed-loop mechanism in which a PostProcess Agent scripts dynamics, coupled with a VLM-Motion Critic that performs self-reflection to iteratively refine simulation code. Evaluations on the Code4D benchmark show Code2Worlds outperforms baselines with a 41% SGS gain and 49% higher Richness, while uniquely generating physics-aware dynamics absent in prior static methods. Code: https://github.com/AIGeeksGroup/Code2Worlds. Website: https://aigeeksgroup.github.io/Code2Worlds.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>4D World Generation</span><span>Coding LLMs</span><span>Physics-aware Dynamics</span><span>Language-to-Simulation</span><span>AI Agent</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.11757" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>BPDQ: Bit-Plane Decomposition Quantization on a Variable Grid for Large Language Models</h2>
+                <span class="published-time">Published: 2026-02-04T02:54:37.000Z</span>
+                
+                <p class="summary">Large language model (LLM) inference is often bounded by memory footprint and memory bandwidth in resource-constrained deployments, making quantization a fundamental technique for efficient serving. While post-training quantization (PTQ) maintains high fidelity at 4-bit, it deteriorates at 2-3 bits. Fundamentally, existing methods enforce a shape-invariant quantization grid (e.g., the fixed uniform intervals of UINT2) for each group, severely restricting the feasible set for error minimization. To address this, we propose Bit-Plane Decomposition Quantization (BPDQ), which constructs a variable quantization grid via bit-planes and scalar coefficients, and iteratively refines them using approximate second-order information while progressively compensating quantization errors to minimize output discrepancy. In the 2-bit regime, BPDQ enables serving Qwen2.5-72B on a single RTX 3090 with 83.85% GSM8K accuracy (vs. 90.83% at 16-bit). Moreover, we provide theoretical analysis showing that the variable grid expands the feasible set, and that the quantization process consistently aligns with the optimization objective in Hessian-induced geometry. Code: github.com/KingdalfGoodman/BPDQ.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Quantization</span><span>Bit-Plane Decomposition Quantization</span><span>Variable Grid</span><span>Post-Training Quantization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.04163" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
