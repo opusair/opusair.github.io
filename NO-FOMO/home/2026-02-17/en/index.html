@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-02-17</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-02-17</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Claude Sonnet 4.6</h2>
+                <span class="published-time">Published: 2026-02-17 17:48:52</span>
+                
+                <p class="summary">Anthropic has unveiled Claude Sonnet 4.6, the latest iteration in its advanced line of large language models, signaling a significant leap forward in AI capabilities. This release builds upon the robust architecture and performance of previous Sonnet versions, aiming to deliver enhanced efficiency and sophistication for a wide array of applications. The official announcement directs users to a comprehensive system card, provided in PDF format, which typically outlines the model's technical specifications, improved functionalities, and the safety measures implemented during its development. Furthermore, a promotional video has been released to offer a dynamic overview of Claude Sonnet 4.6's new features and potential use cases. As with its predecessors, Sonnet 4.6 is anticipated to excel in complex reasoning, nuanced content generation, and interactive conversational tasks, aligning with Anthropic's commitment to developing powerful and responsible AI. This launch reinforces the company's dedication to innovation in the field of artificial intelligence, providing more capable and trustworthy AI tools for diverse user needs.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude Sonnet 4.6</span><span>Large Language Model</span><span>Anthropic</span><span>AI Model</span><span>System Card</span><span>AI Research</span><span>Generative AI</span><span>AI Safety</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.anthropic.com/news/claude-sonnet-4-6" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Launch HN: Sonarly (YC W26) – AI agent to triage and fix your production alerts</h2>
+                <span class="published-time">Published: 2026-02-17 17:03:09</span>
+                
+                <p class="summary">Sonarly, an AI agent from YC W26, has been launched to revolutionize production alert management and significantly reduce incident resolution times for engineering teams. The platform seamlessly integrates with popular observability tools like Sentry and Datadog, alongside various user feedback channels, to provide an autonomous AI engineer capable of triaging and resolving production issues. Sonarly's key functionality includes intelligently grouping duplicate alerts to minimize noise and performing detailed root cause analysis, thereby saving critical time for on-call engineers. This automated approach is designed to substantially decrease the Mean Time To Resolution (MTTR). The co-founders developed Sonarly based on their firsthand experience with the overwhelming volume of bugs and alerts encountered while running a B2C edtech application, highlighting the platform's practical foundation in solving real-world operational challenges in fast-paced development environments.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI agent</span><span>Production alerts</span><span>Observability tools</span><span>Root cause analysis</span><span>MTTR</span><span>Incident management</span><span>Sentry</span><span>Datadog</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://sonarly.com/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Semantic ablation: Why AI writing is generic and boring</h2>
+                <span class="published-time">Published: 2026-02-17 16:12:29</span>
+                
+                <p class="summary">The article introduces the concept of 'semantic ablation' to explain why AI-generated text often appears generic and lacks originality. Semantic ablation refers to the process where large language models, in their attempt to generalize from vast datasets, effectively 'average out' unique expressions and nuanced meanings, leading to bland and predictable outputs. This phenomenon suggests that while AI excels at synthesizing common patterns, it struggles to generate truly novel or distinct content, as its training inherently prioritizes statistical probability over semantic richness and individual style. The discussion highlights a fundamental limitation in current generative AI approaches, pointing to the need for models to develop a deeper understanding beyond surface-level textual patterns to produce more engaging and creative writing.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Semantic Ablation</span><span>AI Writing</span><span>Generative AI</span><span>Natural Language Generation</span><span>Large Language Models</span><span>Text Generation</span><span>AI Limitations</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.theregister.com/2026/02/16/semantic_ablation_ai_writing/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: I taught LLMs to play Magic: The Gathering against each other</h2>
+                <span class="published-time">Published: 2026-02-17 16:22:49</span>
+                
+                <p class="summary">A developer has successfully implemented a system enabling Large Language Models (LLMs) to engage in competitive play of Magic: The Gathering against each other. This innovative project integrates proprietary MCP (Magic Card Parser) tools with the widely recognized open-source XMage codebase, providing a robust platform for LLM interaction within the complex card game's rules and mechanics. While the current iteration is acknowledged to be 'pretty buggy,' the developer confirms its operational status and emphasizes considerable scope for performance enhancements through continuous tooling improvements. The evaluation system presently shows artificially deflated ratings for high-cost, frontier LLMs; this anomaly is a deliberate consequence of prioritizing the refinement of system bugs using more economical models before extensive testing with advanced LLMs commences. This endeavor represents a notable step in exploring the capabilities of AI, particularly LLMs, in mastering intricate strategic games and decision-making environments, paving the way for further research into AI agents' adaptability and strategic prowess.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Magic: The Gathering</span><span>AI Agents</span><span>Game AI</span><span>XMage</span><span>MCP tools</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mage-bench.com/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Sub-Millisecond RAG on Apple Silicon. No Server. No API. One File</h2>
+                <span class="published-time">Published: 2026-02-17 15:43:37</span>
+                
+                <p class="summary">This project highlights a significant advancement in the deployment and efficiency of Retrieval Augmented Generation (RAG) systems, specifically tailored for Apple Silicon architectures. It demonstrates the unprecedented capability to perform RAG operations in sub-millisecond times, directly on a local device, without relying on external servers or API calls. This entire functionality is encapsulated within a single, self-contained file. This local-first approach to RAG offers substantial benefits in terms of enhanced privacy, superior cost-effectiveness, and real-time performance, by adeptly leveraging the dedicated neural engines and unified memory architecture intrinsic to Apple's M-series processors. The innovation fundamentally democratizes access to powerful generative AI functionalities, enabling developers and end-users to run sophisticated AI applications directly on their personal devices. By emphasizing self-contained execution, the project significantly reduces operational overhead and diminishes dependency on cloud infrastructure for typical RAG workflows, thereby making advanced AI more accessible, efficient, and practical for edge computing scenarios and the development of robust personal AI assistants.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Retrieval Augmented Generation</span><span>RAG</span><span>Apple Silicon</span><span>Local Inference</span><span>Generative AI</span><span>Edge Computing</span><span>AI Efficiency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/christopherkarani/Wax" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>In Arson Case, a Judge Wrestles with A.I.-Assisted Apology Letters</h2>
+                <span class="published-time">Published: 2026-02-17 19:31:58</span>
+                
+                <p class="summary">A pivotal legal case in New Zealand has brought to the forefront the intricate challenges posed by artificial intelligence within the judicial system, specifically concerning AI-assisted apology letters. In an arson case, a judge found themselves wrestling with the implications of submissions that appeared to have been drafted using generative AI tools. This unprecedented situation compelled the court to critically examine the authenticity, sincerity, and legal validity of such technologically mediated communications. The incident underscores a significant and rapidly emerging global challenge for legal frameworks: how to judiciously integrate AI technologies while upholding the integrity of justice and maintaining the human element of remorse and accountability. It ignites broader discussions on the ethical considerations of employing AI for personal statements in legal contexts, emphasizing the urgent need for comprehensive guidelines, and probing the potential impact on judicial impartiality. Courts worldwide are increasingly confronted with the necessity to establish clear standards regarding AI's role in evidentiary procedures and procedural fairness, as this case exemplifies the judiciary's ongoing effort to navigate the evolving landscape of AI.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Legal Tech</span><span>AI Ethics</span><span>Judicial System</span><span>Natural Language Processing</span><span>Court Proceedings</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.nytimes.com/2026/02/17/world/asia/new-zealand-court-ai-apology.html" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>WebWorld: A Large-Scale World Model for Web Agent Training</h2>
+                <span class="published-time">Published: 2026-02-16T13:06:49.000Z</span>
+                
+                <p class="summary">Web agents require massive trajectories to generalize, yet real-world training is constrained by network latency, rate limits, and safety risks. We introduce WebWorld series, the first open-web simulator trained at scale. While existing simulators are restricted to closed environments with thousands of trajectories, WebWorld leverages a scalable data pipeline to train on 1M+ open-web interactions, supporting reasoning, multi-format data, and long-horizon simulations of 30+ steps. For intrinsic evaluation, we introduce WebWorld-Bench with dual metrics spanning nine dimensions, where WebWorld achieves simulation performance comparable to Gemini-3-Pro. For extrinsic evaluation, Qwen3-14B trained on WebWorld-synthesized trajectories improves by +9.2% on WebArena, reaching performance comparable to GPT-4o. WebWorld enables effective inference-time search, outperforming GPT-5 as a world model. Beyond web simulation, WebWorld exhibits cross-domain generalization to code, GUI, and game environments, providing a replicable recipe for world model construction.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>WebWorld</span><span>Web Agent</span><span>World Model</span><span>Web Simulator</span><span>Large-Scale Training</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.14721" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Nanbeige4.1-3B: A Small General Model that Reasons, Aligns, and Acts</h2>
+                <span class="published-time">Published: 2026-02-13T13:10:46.000Z</span>
+                
+                <p class="summary">We present Nanbeige4.1-3B, a unified generalist language model that simultaneously achieves strong agentic behavior, code generation, and general reasoning with only 3B parameters. To the best of our knowledge, it is the first open-source small language model (SLM) to achieve such versatility in a single model. To improve reasoning and preference alignment, we combine point-wise and pair-wise reward modeling, ensuring high-quality, human-aligned responses. For code generation, we design complexity-aware rewards in Reinforcement Learning, optimizing both correctness and efficiency. In deep search, we perform complex data synthesis and incorporate turn-level supervision during training. This enables stable long-horizon tool interactions, allowing Nanbeige4.1-3B to reliably execute up to 600 tool-call turns for complex problem-solving. Extensive experimental results show that Nanbeige4.1-3B significantly outperforms prior models of similar scale, such as Nanbeige4-3B-2511 and Qwen3-4B, even achieving superior performance compared to much larger models, such as Qwen3-30B-A3B. Our results demonstrate that small models can achieve both broad competence and strong specialization simultaneously, redefining the potential of 3B parameter models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Small Language Model</span><span>Agentic Behavior</span><span>Code Generation</span><span>General Reasoning</span><span>Reinforcement Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.13367" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Experiential Reinforcement Learning</h2>
+                <span class="published-time">Published: 2026-02-15T01:23:48.000Z</span>
+                
+                <p class="summary">Reinforcement learning has become the central approach for language models (LMs) to learn from environmental reward or feedback. In practice, the environmental feedback is usually sparse and delayed. Learning from such signals is challenging, as LMs must implicitly infer how observed failures should translate into behavioral changes for future iterations. We introduce Experiential Reinforcement Learning (ERL), a training paradigm that embeds an explicit experience-reflection-consolidation loop into the reinforcement learning process. Given a task, the model generates an initial attempt, receives environmental feedback, and produces a reflection that guides a refined second attempt, whose success is reinforced and internalized into the base policy. This process converts feedback into structured behavioral revision, improving exploration and stabilizing optimization while preserving gains at deployment without additional inference cost. Across sparse-reward control environments and agentic reasoning benchmarks, ERL consistently improves learning efficiency and final performance over strong reinforcement learning baselines, achieving gains of up to +81% in complex multi-step environments and up to +11% in tool-using reasoning tasks. These results suggest that integrating explicit self-reflection into policy training provides a practical mechanism for transforming feedback into durable behavioral improvement.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Language Models</span><span>Self-Reflection</span><span>Agentic Reasoning</span><span>Learning Efficiency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Machine Learning</span><span>Natural Language Processing</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.13949" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Exposing the Systematic Vulnerability of Open-Weight Models to Prefill Attacks</h2>
+                <span class="published-time">Published: 2026-02-16T12:24:21.000Z</span>
+                
+                <p class="summary">As the capabilities of large language models continue to advance, so does their potential for misuse. While closed-source models typically rely on external defenses, open-weight models must primarily depend on internal safeguards to mitigate harmful behavior. Prior red-teaming research has largely focused on input-based jailbreaking and parameter-level manipulations. However, open-weight models also natively support prefilling, which allows an attacker to predefine initial response tokens before generation begins. Despite its potential, this attack vector has received little systematic attention. We present the largest empirical study to date of prefill attacks, evaluating over 20 existing and novel strategies across multiple model families and state-of-the-art open-weight models. Our results show that prefill attacks are consistently effective against all major contemporary open-weight models, revealing a critical and previously underexplored vulnerability with significant implications for deployment. While certain large reasoning models exhibit some robustness against generic prefilling, they remain vulnerable to tailored, model-specific strategies. Our findings underscore the urgent need for model developers to prioritize defenses against prefill attacks in open-weight LLMs.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Open-Weight Models</span><span>Prefill Attacks</span><span>Large Language Models</span><span>Vulnerability</span><span>Red-Teaming</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Generative AI</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.14689" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>EditCtrl: Disentangled Local and Global Control for Real-Time Generative Video Editing</h2>
+                <span class="published-time">Published: 2026-02-16T18:59:58.000Z</span>
+                
+                <p class="summary">High-fidelity generative video editing has seen significant quality improvements by leveraging pre-trained video foundation models. However, their computational cost is a major bottleneck, as they are often designed to inefficiently process the full video context regardless of the inpainting mask's size, even for sparse, localized edits. In this paper, we introduce EditCtrl, an efficient video inpainting control framework that focuses computation only where it is needed. Our approach features a novel local video context module that operates solely on masked tokens, yielding a computational cost proportional to the edit size. This local-first generation is then guided by a lightweight temporal global context embedder that ensures video-wide context consistency with minimal overhead. Not only is EditCtrl 10 times more compute efficient than state-of-the-art generative editing methods, it even improves editing quality compared to methods designed with full-attention. Finally, we showcase how EditCtrl unlocks new capabilities, including multi-region editing with text prompts and autoregressive content propagation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Generative Video Editing</span><span>Video Inpainting</span><span>Computational Efficiency</span><span>Local Global Control</span><span>Video Foundation Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.15031" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AnchorWeave: World-Consistent Video Generation with Retrieved Local Spatial Memories</h2>
+                <span class="published-time">Published: 2026-02-16T17:23:08.000Z</span>
+                
+                <p class="summary">Maintaining spatial world consistency over long horizons remains a central challenge for camera-controllable video generation. Existing memory-based approaches often condition generation on globally reconstructed 3D scenes by rendering anchor videos from the reconstructed geometry in the history. However, reconstructing a global 3D scene from multiple views inevitably introduces cross-view misalignment, as pose and depth estimation errors cause the same surfaces to be reconstructed at slightly different 3D locations across views. When fused, these inconsistencies accumulate into noisy geometry that contaminates the conditioning signals and degrades generation quality. We introduce AnchorWeave, a memory-augmented video generation framework that replaces a single misaligned global memory with multiple clean local geometric memories and learns to reconcile their cross-view inconsistencies. To this end, AnchorWeave performs coverage-driven local memory retrieval aligned with the target trajectory and integrates the selected local memories through a multi-anchor weaving controller during generation. Extensive experiments demonstrate that AnchorWeave significantly improves long-term scene consistency while maintaining strong visual quality, with ablation and analysis studies further validating the effectiveness of local geometric conditioning, multi-anchor control, and coverage-driven retrieval.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Generation</span><span>World Consistency</span><span>Local Spatial Memories</span><span>Memory-augmented</span><span>Scene Consistency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Generative AI</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.14941" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
