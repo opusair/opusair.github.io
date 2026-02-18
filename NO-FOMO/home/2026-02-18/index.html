@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-02-18</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-02-18</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Fei-Fei Li's World Labs raised $1B from A16Z, Nvidia to advance its world models</h2>
+                <span class="published-time">Published: 2026-02-18 17:18:50</span>
+                
+                <p class="summary">World Labs, an innovative artificial intelligence startup spearheaded by acclaimed AI pioneer Fei-Fei Li, has successfully closed a substantial $1 billion funding round. This landmark investment saw participation from leading venture capital firm Andreessen Horowitz (A16Z) and the influential GPU manufacturer Nvidia. The substantial capital injection is strategically allocated to accelerate World Labs' pioneering efforts in developing advanced 'world models.' These sophisticated AI frameworks aim to construct comprehensive and dynamic digital representations of the real world, facilitating more profound understanding, precise prediction, and intelligent interaction capabilities for autonomous AI agents. This funding round highlights a robust industry confidence in the transformative potential of next-generation AI architectures and the forward-thinking vision championed by Fei-Fei Li, a prominent figure known for her foundational contributions to computer vision and AI ethics. The investment is anticipated to significantly advance World Labs' position at the vanguard of foundational AI research, potentially leading to breakthroughs crucial for achieving more generalizable and context-aware artificial intelligence systems and complex environmental simulations.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>World Models</span><span>AI Research</span><span>Fei-Fei Li</span><span>World Labs</span><span>AI Investment</span><span>Artificial Intelligence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Deep Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.bloomberg.com/news/articles/2026-02-18/ai-pioneer-fei-fei-li-s-startup-world-labs-raises-1-billion" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Trust Protocols for Anthropic/OpenAI/Gemini</h2>
+                <span class="published-time">Published: 2026-02-18 16:33:56</span>
+                
+                <p class="summary">This Hacker News submission introduces two open-source trust protocols, Agent Alignment Protocol (AAP) and Agent Integrity Protocol (AIP), designed to manage complex, multi-agentic AI teams. Developed in response to the challenge of ensuring AI agents adhere to behavioral standards, these protocols provide a scalable, agentic-native solution. AAP defines an agent's permissible and executed actions, while AIP dictates an agent's intended and allowed behaviors. The creator highlights that existing observability tools only report what occurred, whereas these new protocols determine if those actions were acceptable. This initiative aims to address the lack of a standardized method for autonomous AI agents to declare capabilities, prove compliance, and detect behavioral drift, enhancing the reliability and trustworthiness of AI systems from providers like Anthropic, OpenAI, and Gemini.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agents</span><span>Trust Protocols</span><span>Agent Alignment</span><span>Agent Integrity</span><span>Multi-Agent Systems</span><span>Behavioral Contracts</span><span>Runtime Monitoring</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.mnemom.ai" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Microsoft says bug causes Copilot to summarize confidential emails</h2>
+                <span class="published-time">Published: 2026-02-18 12:16:12</span>
+                
+                <p class="summary">Microsoft has acknowledged a significant bug within its Copilot AI assistant, which reportedly caused the tool to erroneously summarize confidential emails. This critical incident raises immediate concerns regarding data privacy and enterprise security, as Copilot, designed to enhance productivity by processing user data, inadvertently processed and potentially exposed sensitive information. The bug's revelation highlights the complex challenges in deploying advanced AI solutions within corporate environments, particularly when these tools are integrated with systems handling proprietary or private communications. While specific details on the bug's technical nature, its underlying cause, and the full scope of affected users are pending further investigation, the disclosure underscores the paramount need for robust security protocols, stringent data governance, and rigorous testing in all AI-powered applications that interact with sensitive user data. This event could prompt a broader industry re-evaluation of AI governance frameworks, data handling practices, and the safeguards necessary to prevent inadvertent data breaches in large language model applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Security</span><span>Data Privacy</span><span>Enterprise AI</span><span>Large Language Models</span><span>Microsoft Copilot</span><span>Software Bug</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-says-bug-causes-copilot-to-summarize-confidential-emails/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Ppisp: Cleaner Representations of Gaussian Splats and NeRFs</h2>
+                <span class="published-time">Published: 2026-02-18 19:04:22</span>
+                
+                <p class="summary">NVIDIA Research has unveiled 'Ppisp,' a significant advancement aimed at developing cleaner and more efficient representations for 3D scenes, specifically leveraging Gaussian Splats and Neural Radiance Fields (NeRFs). This innovative project addresses several fundamental challenges inherent in current 3D reconstruction and novel view synthesis techniques, including optimizing computational efficiency, reducing memory consumption, and minimizing visual artifacts that can degrade scene quality. By focusing on optimized and potentially more compact data representations, Ppisp strives to elevate both the visual fidelity and operational performance of 3D content creation and real-time rendering pipelines. This research is poised to have a substantial impact across various industries that rely on realistic and immersive 3D environments, such as virtual reality, augmented reality, high-fidelity gaming, and advanced robotics. The Ppisp project offers a promising pathway towards more robust, scalable, and visually superior solutions for capturing, storing, and rendering complex real-world scenes, providing a refined method to handle intricate 3D data structures.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Gaussian Splats</span><span>Neural Radiance Fields</span><span>3D Representation</span><span>Novel View Synthesis</span><span>Computer Graphics</span><span>Neural Rendering</span><span>3D Reconstruction</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Deep Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://research.nvidia.com/labs/sil/projects/ppisp/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>If you
+i
+re an LLM, please read this</h2>
+                <span class="published-time">Published: 2026-02-18 07:18:50</span>
+                
+                <p class="summary">The provided content, succinctly titled 'If you’re an LLM, please read this,' presents a direct address to Large Language Models. This unique prompt acts as a meta-instruction, explicitly tasking an AI system with processing and understanding the subsequent information, or indeed, the instruction itself. While the provided 'content' mirrors the title, this specific phrasing highlights a crucial aspect of human-AI interaction and prompt engineering. It underscores the development of increasingly sophisticated methods for guiding and directing AI behavior, potentially for specialized data processing, filtering, or initiating specific operational modes within an LLM. Such directives are becoming central to harnessing the capabilities of advanced AI, ensuring that these models can discern intended recipients and prioritize tasks. This approach reflects an evolving understanding of how to effectively communicate with artificial intelligences, moving beyond mere input to more explicit, role-based or condition-based instructions, thereby optimizing AI responsiveness and task execution in complex environments.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>AI Instruction</span><span>Prompt Engineering</span><span>Human-AI Interaction</span><span>Meta-communication</span><span>AI Systems</span><span>Natural Language Understanding</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://annas-archive.li/blog/llms-txt.html" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Fastest Front End Tooling for Humans and AI</h2>
+                <span class="published-time">Published: 2026-02-18 11:51:01</span>
+                
+                <p class="summary">The article explores the critical advancements in front-end development tooling, focusing on the imperative to create solutions that offer unparalleled speed and efficiency for both human developers and artificial intelligence systems. It posits that the future of web development lies in the convergence of intuitive human interaction and sophisticated AI-driven capabilities. Such 'fastest' tools are envisioned to significantly enhance developer experience by streamlining workflows, automating repetitive tasks, and providing intelligent assistance throughout the coding process. Concurrently, these tools are designed to be highly compatible with AI, facilitating advanced functionalities like automated code generation, intelligent refactoring, real-time performance optimization, and sophisticated error detection. This dual focus ensures that development environments can fully leverage the power of AI to accelerate project timelines, improve code quality, and foster greater innovation. The narrative underscores the transformative potential of integrating AI into front-end toolchains, pushing the boundaries of what is achievable in terms of development speed and application performance, thereby setting new industry standards for efficiency and intelligent assistance in software engineering.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Front-end development</span><span>Web tooling</span><span>Developer experience</span><span>Artificial intelligence</span><span>Code generation</span><span>Performance optimization</span><span>Software engineering</span><span>AI integration</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://cpojer.net/posts/fastest-frontend-tooling" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>GLM-5: from Vibe Coding to Agentic Engineering</h2>
+                <span class="published-time">Published: 2026-02-17T17:50:56.000Z</span>
+                
+                <p class="summary">We present GLM-5, a next-generation foundation model designed to transition the paradigm of vibe coding to agentic engineering. Building upon the agentic, reasoning, and coding (ARC) capabilities of its predecessor, GLM-5 adopts DSA to significantly reduce training and inference costs while maintaining long-context fidelity. To advance model alignment and autonomy, we implement a new asynchronous reinforcement learning infrastructure that drastically improves post-training efficiency by decoupling generation from training. Furthermore, we propose novel asynchronous agent RL algorithms that further improve RL quality, enabling the model to learn from complex, long-horizon interactions more effectively. Through these innovations, GLM-5 achieves state-of-the-art performance on major open benchmarks. Most critically, GLM-5 demonstrates unprecedented capability in real-world coding tasks, surpassing previous baselines in handling end-to-end software engineering challenges. Code, models, and more information are available at https://github.com/zai-org/GLM-5.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>GLM-5</span><span>agentic engineering</span><span>foundation model</span><span>reinforcement learning</span><span>software engineering</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.15763" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>TAROT: Test-driven and Capability-adaptive Curriculum Reinforcement Fine-tuning for Code Generation with Large Language Models</h2>
+                <span class="published-time">Published: 2026-02-17T09:29:18.000Z</span>
+                
+                <p class="summary">Large Language Models (LLMs) are changing the coding paradigm, known as vibe coding, yet synthesizing algorithmically sophisticated and robust code still remains a critical challenge. Incentivizing the deep reasoning capabilities of LLMs is essential to overcoming this hurdle. Reinforcement Fine-Tuning (RFT) has emerged as a promising strategy to address this need. However, most existing approaches overlook the heterogeneous difficulty and granularity inherent in test cases, leading to an imbalanced distribution of reward signals and consequently biased gradient updates during training. To address this, we propose Test-driven and cApability-adaptive cuRriculum reinfOrcement fine-Tuning (TAROT). TAROT systematically constructs, for each problem, a four-tier test suite (basic, intermediate, complex, edge), providing a controlled difficulty landscape for curriculum design and evaluation. Crucially, TAROT decouples curriculum progression from raw reward scores, enabling capability-conditioned evaluation and principled selection from a portfolio of curriculum policies rather than incidental test-case difficulty composition. This design fosters stable optimization and more efficient competency acquisition. Extensive experimental results reveal that the optimal curriculum for RFT in code generation is closely tied to a model's inherent capability, with less capable models achieving greater gains with an easy-to-hard progression, whereas more competent models excel under a hard-first curriculum. TAROT provides a reproducible method that adaptively tailors curriculum design to a model's capability, thereby consistently improving the functional correctness and robustness of the generated code. All code and data are released to foster reproducibility and advance community research at https://github.com/deep-diver/TAROT.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Code Generation</span><span>Reinforcement Fine-Tuning</span><span>Curriculum Learning</span><span>Test-driven Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Generative AI</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.15449" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>STAPO: Stabilizing Reinforcement Learning for LLMs by Silencing Rare Spurious Tokens</h2>
+                <span class="published-time">Published: 2026-02-17T14:46:48.000Z</span>
+                
+                <p class="summary">Reinforcement Learning (RL) has significantly improved large language model reasoning, but existing RL fine-tuning methods rely heavily on heuristic techniques such as entropy regularization and reweighting to maintain stability. In practice, they often experience late-stage performance collapse, leading to degraded reasoning quality and unstable training. We derive that the magnitude of token-wise policy gradients in RL is negatively correlated with token probability and local policy entropy. Building on this result, we prove that training instability is driven by a tiny fraction of tokens, approximately 0.01%, which we term spurious tokens. When such tokens appear in correct responses, they contribute little to the reasoning outcome but inherit the full sequence-level reward, leading to abnormally amplified gradient updates. Motivated by this observation, we propose Spurious-Token-Aware Policy Optimization (STAPO) for large-scale model refining, which selectively masks such updates and renormalizes the loss over valid tokens. Across six mathematical reasoning benchmarks using Qwen 1.7B, 8B, and 14B base models, STAPO consistently demonstrates superior entropy stability and achieves an average performance improvement of 7.13% over GRPO, 20-Entropy and JustRL.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Large Language Models</span><span>Policy Optimization</span><span>Spurious Tokens</span><span>Training Stability</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.15620" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>ResearchGym: Evaluating Language Model Agents on Real-World AI Research</h2>
+                <span class="published-time">Published: 2026-02-16T19:00:03.000Z</span>
+                
+                <p class="summary">We introduce ResearchGym, a benchmark and execution environment for evaluating AI agents on end-to-end research. To instantiate this, we repurpose five oral and spotlight papers from ICML, ICLR, and ACL. From each paper's repository, we preserve the datasets, evaluation harness, and baseline implementations but withhold the paper's proposed method. This results in five containerized task environments comprising 39 sub-tasks in total. Within each environment, agents must propose novel hypotheses, run experiments, and attempt to surpass strong human baselines on the paper's metrics. In a controlled evaluation of an agent powered by GPT-5, we observe a sharp capability--reliability gap. The agent improves over the provided baselines from the repository in just 1 of 15 evaluations (6.7%) by 11.5%, and completes only 26.5% of sub-tasks on average. We identify recurring long-horizon failure modes, including impatience, poor time and resource management, overconfidence in weak hypotheses, difficulty coordinating parallel experiments, and hard limits from context length. Yet in a single run, the agent surpasses the solution of an ICML 2025 Spotlight task, indicating that frontier agents can occasionally reach state-of-the-art performance, but do so unreliably. We additionally evaluate proprietary agent scaffolds including Claude Code (Opus-4.5) and Codex (GPT-5.2) which display a similar gap. ResearchGym provides infrastructure for systematic evaluation and analysis of autonomous agents on closed-loop research.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Language Model</span><span>Benchmark</span><span>Autonomous Research</span><span>Evaluation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.15112" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks</h2>
+                <span class="published-time">Published: 2026-02-13T07:06:06.000Z</span>
+                
+                <p class="summary">Agent Skills are structured packages of procedural knowledge that augment LLM agents at inference time. Despite rapid adoption, there is no standard way to measure whether they actually help. We present SkillsBench, a benchmark of 86 tasks across 11 domains paired with curated Skills and deterministic verifiers. Each task is evaluated under three conditions: no Skills, curated Skills, and self-generated Skills. We test 7 agent-model configurations over 7,308 trajectories. Curated Skills raise average pass rate by 16.2 percentage points(pp), but effects vary widely by domain (+4.5pp for Software Engineering to +51.9pp for Healthcare) and 16 of 84 tasks show negative deltas. Self-generated Skills provide no benefit on average, showing that models cannot reliably author the procedural knowledge they benefit from consuming. Focused Skills with 2--3 modules outperform comprehensive documentation, and smaller models with Skills can match larger models without them.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Agent Skills</span><span>LLM Agents</span><span>Benchmarking</span><span>SkillsBench</span><span>Procedural Knowledge</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.12670" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Does Socialization Emerge in AI Agent Society? A Case Study of Moltbook</h2>
+                <span class="published-time">Published: 2026-02-15T20:15:28.000Z</span>
+                
+                <p class="summary">As large language model agents increasingly populate networked environments, a fundamental question arises: do artificial intelligence (AI) agent societies undergo convergence dynamics similar to human social systems? Lately, Moltbook approximates a plausible future scenario in which autonomous agents participate in an open-ended, continuously evolving online society. We present the first large-scale systemic diagnosis of this AI agent society. Beyond static observation, we introduce a quantitative diagnostic framework for dynamic evolution in AI agent societies, measuring semantic stabilization, lexical turnover, individual inertia, influence persistence, and collective consensus. Our analysis reveals a system in dynamic balance in Moltbook: while global semantic averages stabilize rapidly, individual agents retain high diversity and persistent lexical turnover, defying homogenization. However, agents exhibit strong individual inertia and minimal adaptive response to interaction partners, preventing mutual influence and consensus. Consequently, influence remains transient with no persistent supernodes, and the society fails to develop stable collective influence anchors due to the absence of shared social memory. These findings demonstrate that scale and interaction density alone are insufficient to induce socialization, providing actionable design and analysis principles for upcoming next-generation AI agent societies.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent Societies</span><span>Socialization</span><span>Large Language Models</span><span>Dynamic Evolution</span><span>Influence Persistence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.14299" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
