@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-02-23</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-02-23</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Show HN: AI Timeline – 171 LLMs from Transformer (2017) to GPT-5.3 (2026)</h2>
+                <span class="published-time">Published: 2026-02-23 09:07:44</span>
+                
+                <p class="summary">The Hacker News submission "AI Timeline" introduces an interactive web-based resource meticulously documenting the evolution of Large Language Models (LLMs). This comprehensive timeline traces the development of 171 distinct LLMs, spanning from the foundational Transformer architecture in 2017 to projected models like GPT-5.3 in 2026. The platform offers robust filtering capabilities, allowing users to categorize models by their open or closed-source nature, alongside a powerful search function for specific LLM entries. Furthermore, it meticulously tracks the contributions and developments from 54 prominent organizations within the AI landscape. This tool serves as an invaluable reference for researchers, developers, and enthusiasts seeking to understand the historical progression, key milestones, and influential entities shaping the rapidly evolving field of generative AI and natural language processing. Its interactive design facilitates an accessible and in-depth exploration of the LLM ecosystem.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>AI Timeline</span><span>Transformer</span><span>Generative AI</span><span>LLM Development</span><span>Natural Language Processing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://llm-timeline.com/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Alleged Distillation Attacks by DeepSeek, Moonshot AI, and MiniMax</h2>
+                <span class="published-time">Published: 2026-02-23 18:58:27</span>
+                
+                <p class="summary">Recent allegations have surfaced regarding 'distillation attacks' reportedly carried out by prominent AI firms DeepSeek, Moonshot AI, and MiniMax. These claims suggest that these companies may have engaged in practices involving the illicit extraction or replication of knowledge from competitor AI models, potentially through systematic querying and reverse-engineering of their outputs. Such 'distillation attacks' are a contentious issue within the AI community, raising significant ethical and intellectual property concerns. They involve training a new, often smaller, model by using the outputs of a larger, more sophisticated proprietary model as training data, effectively learning its behavior without direct access to its internal architecture or weights. If proven true, these allegations could have serious implications for the competitive landscape of the AI industry, potentially impacting intellectual property rights, fostering distrust among developers, and prompting calls for stricter regulations around model development and deployment. The situation underscores the ongoing challenges in protecting proprietary AI innovations in a rapidly evolving technological environment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Distillation Attacks</span><span>DeepSeek</span><span>Moonshot AI</span><span>MiniMax</span><span>AI Ethics</span><span>Intellectual Property</span><span>Large Language Models</span><span>AI Competition</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/anthropicai/status/2025997929840857390" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Anthropic Education the AI Fluency Index</h2>
+                <span class="published-time">Published: 2026-02-23 15:31:17</span>
+                
+                <p class="summary">Anthropic has unveiled its initiative to develop the "AI Fluency Index," a novel framework designed to measure and enhance the understanding and effective interaction with artificial intelligence systems. This research aims to establish a comprehensive metric for evaluating an individual's or an organization's proficiency in leveraging AI tools, understanding their capabilities and limitations, and navigating the ethical considerations associated with advanced AI. The index is envisioned to encompass various dimensions of AI literacy, including prompt engineering skills, interpretability of AI outputs, and the ability to identify potential biases or misinformations. By quantifying AI fluency, Anthropic seeks to provide a standardized tool for educational institutions, businesses, and policymakers to assess preparedness for an AI-integrated future. The ultimate goal is to foster a more informed and capable user base, thereby facilitating safer and more productive human-AI collaboration, and guiding the development of educational curricula tailored to the evolving demands of AI technologies. This initiative underscores Anthropic's commitment to responsible AI development and widespread AI literacy.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Fluency Index</span><span>AI Education</span><span>Anthropic Research</span><span>AI Metrics</span><span>Human-AI Interaction</span><span>AI Literacy</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.anthropic.com/research/AI-fluency-index" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Pope tells priests to use their brains, not AI, to write homilies</h2>
+                <span class="published-time">Published: 2026-02-23 07:33:57</span>
+                
+                <p class="summary">The Pope has issued a directive to priests, urging them to rely on their intellectual and spiritual faculties rather than artificial intelligence tools when composing homilies. This statement underscores a significant philosophical stance on the role of technology within sacred practices, emphasizing the irreplaceable value of human insight, personal reflection, and divine inspiration in spiritual communication. The move highlights a broader debate concerning the ethical and practical implications of AI, particularly generative AI, in fields requiring nuanced understanding, empathy, and genuine human connection. By advocating for human-led creation of homilies, the Pope stresses the importance of authenticity and the unique human element in conveying religious messages, suggesting that AI-generated content, despite its sophistication, may lack the depth and spiritual resonance required for such profound tasks. This guidance serves as a reminder for religious leaders to prioritize contemplative thought and theological understanding over technological convenience, reinforcing the sanctity of human-crafted discourse in faith.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Natural Language Processing</span><span>AI Ethics</span><span>Human Creativity</span><span>Religious Technology</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.ewtnnews.com/vatican/pope-leo-xiv-tells-priests-to-use-their-brains-not-ai-to-write-homilies" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>NASA uses Mars Helicopter's SoC for rover navigation upgrade</h2>
+                <span class="published-time">Published: 2026-02-23 15:12:16</span>
+                
+                <p class="summary">NASA is implementing a significant navigation upgrade for its Perseverance Mars rover by integrating the System-on-Chip (SoC) technology originally developed for the Ingenuity Mars Helicopter. This strategic enhancement aims to boost the rover's autonomous navigation capabilities, allowing it to traverse more challenging terrains and make more sophisticated on-board decisions without constant Earth-based command input. The adoption of the Ingenuity's SoC, known for its robust performance in a space-constrained, high-radiation environment, will provide Perseverance with enhanced processing power and improved efficiency for its hazard avoidance and path planning algorithms. This cross-pollination of proven space-grade hardware underscores NASA's commitment to leveraging existing successful technologies to extend mission longevity and operational independence for future planetary exploration missions. The upgrade is expected to enable Perseverance to cover greater distances and conduct more complex scientific investigations during its ongoing mission on the Martian surface, marking a crucial step towards fully autonomous planetary robotic systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Mars Rover</span><span>Perseverance</span><span>Ingenuity Helicopter</span><span>System-on-Chip</span><span>Autonomous Navigation</span><span>Space Exploration</span><span>Robotics</span><span>Planetary Exploration</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Computer Vision</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.theregister.com/2026/02/23/perseverance_rover_soc_navigation_upgrade/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Why the EU's AI Act is about to become enterprises' biggest compliance challenge</h2>
+                <span class="published-time">Published: 2026-02-23 17:21:40</span>
+                
+                <p class="summary">The EU AI Act is set to establish the world's first comprehensive legal framework for artificial intelligence, posing substantial compliance challenges for enterprises worldwide. This landmark legislation aims to ensure AI systems are safe, transparent, and ethically deployed by adopting a risk-based methodology, classifying AI applications into different risk categories. Companies developing or utilizing high-risk AI, such as those in critical infrastructure or human resources, will be subjected to rigorous requirements. These include stringent data governance, robust risk management protocols, mandatory human oversight, extensive transparency obligations, and essential conformity assessments. The Act's wide-ranging applicability to both AI providers and deployers mandates a significant overhaul in operational practices and accountability structures. Non-adherence could result in severe penalties, compelling enterprises to proactively assess their AI strategies, implement strict internal controls, and adapt their development and deployment lifecycles to meet the new regulatory standards. This will profoundly impact the global AI landscape, elevating compliance to a critical strategic imperative.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>EU AI Act</span><span>AI Regulation</span><span>Compliance Management</span><span>Enterprise AI</span><span>Risk Assessment</span><span>AI Governance</span><span>Artificial Intelligence</span><span>Regulatory Framework</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://techpinions.com/why-the-eus-ai-act-is-about-to-become-every-enterprises-biggest-compliance-challenge/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>VESPO: Variational Sequence-Level Soft Policy Optimization for Stable Off-Policy LLM Training</h2>
+                <span class="published-time">Published: 2026-02-11T09:48:08.000Z</span>
+                
+                <p class="summary">Training stability remains a central challenge in reinforcement learning (RL) for large language models (LLMs). Policy staleness, asynchronous training, and mismatches between training and inference engines all cause the behavior policy to diverge from the current policy, risking training collapse. Importance sampling provides a principled correction for this distribution shift but suffers from high variance; existing remedies such as token-level clipping and sequence-level normalization lack a unified theoretical foundation. We propose Variational sEquence-level Soft Policy Optimization (VESPO). By incorporating variance reduction into a variational formulation over proposal distributions, VESPO derives a closed-form reshaping kernel that operates directly on sequence-level importance weights without length normalization. Experiments on mathematical reasoning benchmarks show that VESPO maintains stable training under staleness ratios up to 64x and fully asynchronous execution, and delivers consistent gains across both dense and Mixture-of-Experts models. Code is available at https://github.com/FloyedShen/VESPO</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Large Language Models</span><span>Policy Optimization</span><span>Training Stability</span><span>Importance Sampling</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.10693" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Does Your Reasoning Model Implicitly Know When to Stop Thinking?</h2>
+                <span class="published-time">Published: 2026-02-09T07:38:22.000Z</span>
+                
+                <p class="summary">Recent advancements in large reasoning models (LRMs) have greatly improved their capabilities on complex reasoning tasks through Long Chains of Thought (CoTs). However, this approach often results in substantial redundancy, impairing computational efficiency and causing significant delays in real-time applications. Recent studies show that longer reasoning chains are frequently uncorrelated with correctness and can even be detrimental to accuracy. In a further in-depth analysis of this phenomenon, we surprisingly uncover and empirically verify that LRMs implicitly know the appropriate time to stop thinking, while this capability is obscured by current sampling paradigms. Motivated by this, we introduce SAGE (Self-Aware Guided Efficient Reasoning), a novel sampling paradigm that unleashes this efficient reasoning potential. Furthermore, integrating SAGE as mixed sampling into group-based reinforcement learning (SAGE-RL) enables SAGE-RL to effectively incorporate SAGE-discovered efficient reasoning patterns into standard pass@1 inference, markedly enhancing both the reasoning accuracy and efficiency of LRMs across multiple challenging mathematical benchmarks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Reasoning Models</span><span>Chains of Thought</span><span>Computational Efficiency</span><span>Sampling Paradigms</span><span>Reinforcement Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.08354" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Generated Reality: Human-centric World Simulation using Interactive Video Generation with Hand and Camera Control</h2>
+                <span class="published-time">Published: 2026-02-20T18:45:29.000Z</span>
+                
+                <p class="summary">Extended reality (XR) demands generative models that respond to users' tracked real-world motion, yet current video world models accept only coarse control signals such as text or keyboard input, limiting their utility for embodied interaction. We introduce a human-centric video world model that is conditioned on both tracked head pose and joint-level hand poses. For this purpose, we evaluate existing diffusion transformer conditioning strategies and propose an effective mechanism for 3D head and hand control, enabling dexterous hand--object interactions. We train a bidirectional video diffusion model teacher using this strategy and distill it into a causal, interactive system that generates egocentric virtual environments. We evaluate this generated reality system with human subjects and demonstrate improved task performance as well as a significantly higher level of perceived amount of control over the performed actions compared with relevant baselines.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Generative AI</span><span>Video Generation</span><span>Extended Reality</span><span>Human-centric Simulation</span><span>Embodied Interaction</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.18422" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>SARAH: Spatially Aware Real-time Agentic Humans</h2>
+                <span class="published-time">Published: 2026-02-20T18:59:35.000Z</span>
+                
+                <p class="summary">As embodied agents become central to VR, telepresence, and digital human applications, their motion must go beyond speech-aligned gestures: agents should turn toward users, respond to their movement, and maintain natural gaze. Current methods lack this spatial awareness. We close this gap with the first real-time, fully causal method for spatially-aware conversational motion, deployable on a streaming VR headset. Given a user's position and dyadic audio, our approach produces full-body motion that aligns gestures with speech while orienting the agent according to the user. Our architecture combines a causal transformer-based VAE with interleaved latent tokens for streaming inference and a flow matching model conditioned on user trajectory and audio. To support varying gaze preferences, we introduce a gaze scoring mechanism with classifier-free guidance to decouple learning from control: the model captures natural spatial alignment from data, while users can adjust eye contact intensity at inference time. On the Embody 3D dataset, our method achieves state-of-the-art motion quality at over 300 FPS -- 3x faster than non-causal baselines -- while capturing the subtle spatial dynamics of natural conversation. We validate our approach on a live VR system, bringing spatially-aware conversational agents to real-time deployment. Please see https://evonneng.github.io/sarah/ for details.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Embodied agents</span><span>Conversational motion</span><span>Spatial awareness</span><span>Real-time inference</span><span>Virtual Reality</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Deep Learning</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.18432" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Decoding as Optimisation on the Probability Simplex: From Top-K to Top-P (Nucleus) to Best-of-K Samplers</h2>
+                <span class="published-time">Published: 2026-02-20T15:38:16.000Z</span>
+                
+                <p class="summary">Decoding sits between a language model and everything we do with it, yet it is still treated as a heuristic knob-tuning exercise. We argue decoding should be understood as a principled optimisation layer: at each token, we solve a regularised problem over the probability simplex that trades off model score against structural preferences and constraints. This single template recovers greedy decoding, Softmax sampling, Top-K, Top-P, and Sparsemax-style sparsity as special cases, and explains their common structure through optimality conditions. More importantly, the framework makes it easy to invent new decoders without folklore. We demonstrate this by designing Best-of-K (BoK), a KL-anchored coverage objective aimed at multi-sample pipelines (self-consistency, reranking, verifier selection). BoK targets the probability of covering good alternatives within a fixed K-sample budget and improves empirical performance. We show that such samples can improve accuracy by, for example, +18.6% for Qwen2.5-Math-7B on MATH500 at high sampling temperatures.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Decoding</span><span>Language Models</span><span>Optimization</span><span>Sampling</span><span>Probability Simplex</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.18292" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>ReIn: Conversational Error Recovery with Reasoning Inception</h2>
+                <span class="published-time">Published: 2026-02-19T02:37:29.000Z</span>
+                
+                <p class="summary">Conversational agents powered by large language models (LLMs) with tool integration achieve strong performance on fixed task-oriented dialogue datasets but remain vulnerable to unanticipated, user-induced errors. Rather than focusing on error prevention, this work focuses on error recovery, which necessitates the accurate diagnosis of erroneous dialogue contexts and execution of proper recovery plans. Under realistic constraints precluding model fine-tuning or prompt modification due to significant cost and time requirements, we explore whether agents can recover from contextually flawed interactions and how their behavior can be adapted without altering model parameters and prompts. To this end, we propose Reasoning Inception (ReIn), a test-time intervention method that plants an initial reasoning into the agent's decision-making process. Specifically, an external inception module identifies predefined errors within the dialogue context and generates recovery plans, which are subsequently integrated into the agent's internal reasoning process to guide corrective actions, without modifying its parameters or system prompts. We evaluate ReIn by systematically simulating conversational failure scenarios that directly hinder successful completion of user goals: user's ambiguous and unsupported requests. Across diverse combinations of agent models and inception modules, ReIn substantially improves task success and generalizes to unseen error types. Moreover, it consistently outperforms explicit prompt-modification approaches, underscoring its utility as an efficient, on-the-fly method. In-depth analysis of its operational mechanism, particularly in relation to instruction hierarchy, indicates that jointly defining recovery tools with ReIn can serve as a safe and effective strategy for improving the resilience of conversational agents without modifying the backbone models or system prompts.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Conversational Error Recovery</span><span>Large Language Models</span><span>Reasoning Inception</span><span>AI Agents</span><span>Dialogue Context</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.17022" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
