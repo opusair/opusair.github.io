@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-03-02</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-03-02</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Language Model Contains Personality Subnetworks</h2>
+                <span class="published-time">Published: 2026-03-02 15:41:08</span>
+                
+                <p class="summary">Recent research indicates that large language models (LLMs) may contain distinct 'personality subnetworks' within their complex architectures. This novel finding suggests that specific components of an LLM are primarily responsible for generating text that aligns with particular personality traits, moving beyond the traditional view of LLMs as monolithic systems for text generation. The study likely identifies these subnetworks through advanced interpretability techniques, examining how different layers or sets of neurons contribute to the model's expressive range in terms of personality. This discovery holds significant implications for the field of AI, particularly in understanding and controlling emergent behaviors in LLMs, mitigating biases related to persona generation, and potentially enabling more granular control over an AI's conversational style and output. The existence of such subnetworks could pave the way for developing more nuanced and ethically aligned AI assistants that can adapt their communication based on defined personality profiles, offering new avenues for personalized user interactions and advanced AI development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Language Models</span><span>Personality Subnetworks</span><span>AI Interpretability</span><span>Neural Networks</span><span>LLM Architecture</span><span>Natural Language Processing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://arxiv.org/abs/2602.07164" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>New iPad Air, powered by M4</h2>
+                <span class="published-time">Published: 2026-03-02 14:11:23</span>
+                
+                <p class="summary">Apple has unveiled the latest generation of its iPad Air, now powered by the advanced M4 chip, marking a significant upgrade in performance and capabilities for the popular tablet line. The integration of the M4 chip brings substantial enhancements in CPU and GPU performance, critical for demanding applications, professional workflows, and high-fidelity gaming. Crucially, the M4 chip features an improved Neural Engine, designed to accelerate on-device artificial intelligence and machine learning tasks, making the new iPad Air a more powerful platform for generative AI applications and advanced computational photography. This move positions the iPad Air as a more formidable contender in the portable computing market, offering users a blend of power efficiency and robust performance.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>M4 chip</span><span>iPad Air</span><span>Apple Silicon</span><span>neural engine</span><span>mobile processor</span><span>performance upgrade</span><span>tablet computing</span><span>product launch</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.apple.com/newsroom/2026/03/apple-introduces-the-new-ipad-air-powered-by-m4/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>If AI writes code, should the session be part of the commit?</h2>
+                <span class="published-time">Published: 2026-03-02 00:27:52</span>
+                
+                <p class="summary">The central question explored is the integration of AI-assisted code generation into standard software development practices, specifically whether the interactive sessions with AI tools should be recorded and included within version control commits. This inquiry underscores a critical discussion around the transparency and provenance of code in an increasingly AI-driven development environment. Incorporating AI interaction logs into commit histories could provide invaluable context for debugging, understanding design decisions, and tracking the complete lifecycle of code, thereby enhancing maintainability and accountability. Such a paradigm shift in workflow could redefine best practices for modern software engineering, addressing concerns related to code ownership, future debugging efforts, and the auditing of AI-generated components. The topic further prompts consideration of the necessary tooling and standards to effectively capture and manage these AI-assisted development artifacts, influencing developer workflows and the overall governance of projects leveraging artificial intelligence for code production.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Code Generation</span><span>Software Development</span><span>Version Control</span><span>Developer Workflow</span><span>Code Provenance</span><span>Generative AI</span><span>Software Engineering</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/mandel-macaque/memento" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Parallel coding agents with tmux and Markdown specs</h2>
+                <span class="published-time">Published: 2026-03-02 14:24:15</span>
+                
+                <p class="summary">A recent article introduces an innovative methodology for orchestrating artificial intelligence-powered coding agents, emphasizing parallel execution and structured task definition. This system effectively leverages tmux, a versatile terminal multiplexer, to manage multiple concurrent agent environments, thereby enabling agents to operate simultaneously on diverse programming tasks. Critical task specifications and detailed project requirements are meticulously outlined using Markdown, providing a clear, human-readable, and easily parseable format for agent instruction. This approach is designed to significantly enhance efficiency in software development by facilitating the parallel handling of various coding processes, including code generation, refactoring, debugging, and testing. By integrating widely adopted and robust tools such as tmux and Markdown, the framework presents a practical and accessible solution for developers aiming to integrate AI agents into complex software projects. The focus on parallel processing and standardized communication via Markdown not only fosters a more organized and scalable workflow but also promises to accelerate development cycles and potentially elevate code quality through distributed intelligent automation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI agents</span><span>Parallel computing</span><span>Coding agents</span><span>Tmux</span><span>Markdown</span><span>Software development</span><span>Orchestration</span><span>Automation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://schipper.ai/posts/parallel-coding-agents/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Civis Romanus Sum</h2>
+                <span class="published-time">Published: 2026-03-02 19:08:33</span>
+                
+                <p class="summary">The article, bearing the evocative Latin title "Civis Romanus Sum" (I am a Roman citizen), appears to delve into a contemporary philosophical and ethical discussion concerning the evolving role and potential status of artificial intelligence within human society. While the literal content provided is minimal, the title, when contextualized in a modern technological discourse, suggests an exploration of concepts such as digital citizenship, the rights and responsibilities of advanced AI entities, and their integration into established societal frameworks. It likely draws metaphorical parallels between the historical declaration of Roman citizenship, which conferred specific rights and protections, and the ongoing debate surrounding AI personhood, autonomy, and governance. The piece may critically analyze existing ethical guidelines for AI development, propose future legal or social structures for human-AI coexistence, and stimulate broader reflections on what it means to be a 'citizen' in an increasingly AI-driven world. This perspective positions the discussion as a crucial contribution to the field of AI ethics and societal impact.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI ethics</span><span>AI governance</span><span>Digital citizenship</span><span>AI personhood</span><span>Autonomous systems</span><span>Human-AI interaction</span><span>Societal integration</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://minutes.substack.com/p/civis-romanus-sum" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Omni – Open-source workplace search and chat, built on Postgres</h2>
+                <span class="published-time">Published: 2026-03-02 08:58:14</span>
+                
+                <p class="summary">Omni is a newly unveiled open-source workplace search and chat platform, presented as a self-hosted, more extensible, and cost-effective alternative to existing commercial solutions like Glean. It is engineered for small to mid-size teams and boasts seamless integration with popular enterprise applications such as Google Drive, Gmail, Slack, and Confluence. A core architectural innovation of Omni is its exclusive reliance on Postgres, specifically utilizing ParadeDB for advanced BM25 indexing and pgvector for HNSW vector indexing, thereby obviating the need for separate Elasticsearch instances or dedicated vector databases. This PostgreSQL-centric approach simplifies deployment and maintenance, requiring only a single `docker compose up` command for setup. The platform's robust search capabilities are powered by a hybrid search mechanism, intelligently combining results from both its BM25 and HNSW vector indices to deliver highly relevant and comprehensive information retrieval across all integrated data sources. Additionally, Omni is designed to support integration with Large Language Models (LLMs) for enhanced chat and search functionalities.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Open-source</span><span>Workplace Search</span><span>Postgres</span><span>ParadeDB</span><span>pgvector</span><span>Hybrid Search</span><span>BM25 Index</span><span>HNSW Index</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/getomnico/omni" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>CUDA Agent: Large-Scale Agentic RL for High-Performance CUDA Kernel Generation</h2>
+                <span class="published-time">Published: 2026-02-27T18:58:05.000Z</span>
+                
+                <p class="summary">GPU kernel optimization is fundamental to modern deep learning but remains a highly specialized task requiring deep hardware expertise. Despite strong performance in general programming, large language models (LLMs) remain uncompetitive with compiler-based systems such as torch.compile for CUDA kernel generation. Existing CUDA code generation approaches either rely on training-free refinement or fine-tune models within fixed multi-turn execution-feedback loops, but both paradigms fail to fundamentally improve the model's intrinsic CUDA optimization ability, resulting in limited performance gains. We present CUDA Agent, a large-scale agentic reinforcement learning system that develops CUDA kernel expertise through three components: a scalable data synthesis pipeline, a skill-augmented CUDA development environment with automated verification and profiling to provide reliable reward signals, and reinforcement learning algorithmic techniques enabling stable training. CUDA Agent achieves state-of-the-art results on KernelBench, delivering 100%, 100%, and 92% faster rate over torch.compile on KernelBench Level-1, Level-2, and Level-3 splits, outperforming the strongest proprietary models such as Claude Opus 4.5 and Gemini 3 Pro by about 40% on the hardest Level-3 setting.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>CUDA Kernel Generation</span><span>Agentic Reinforcement Learning</span><span>GPU Optimization</span><span>Large Language Models</span><span>Deep Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Deep Learning</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.24286" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LongVideo-R1: Smart Navigation for Low-cost Long Video Understanding</h2>
+                <span class="published-time">Published: 2026-02-24T13:49:47.000Z</span>
+                
+                <p class="summary">This paper addresses the critical and underexplored challenge of long video understanding with low computational budgets. We propose LongVideo-R1, an active, reasoning-equipped multimodal large language model (MLLM) agent designed for efficient video context navigation, avoiding the redundancy of exhaustive search. At the core of LongVideo-R1 lies a reasoning module that leverages high-level visual cues to infer the most informative video clip for subsequent processing. During inference, the agent initiates traversal from top-level visual summaries and iteratively refines its focus, immediately halting the exploration process upon acquiring sufficient knowledge to answer the query. To facilitate training, we first extract hierarchical video captions from CGBench, a video corpus with grounding annotations, and guide GPT-5 to generate 33K high-quality chain-of-thought-with-tool trajectories. The LongVideo-R1 agent is fine-tuned upon the Qwen-3-8B model through a two-stage paradigm: supervised fine-tuning (SFT) followed by reinforcement learning (RL), where RL employs a specifically designed reward function to maximize selective and efficient clip navigation. Experiments on multiple long video benchmarks validate the effectiveness of name, which enjoys superior tradeoff between QA accuracy and efficiency. All curated data and source code are provided in the supplementary material and will be made publicly available. Code and data are available at: https://github.com/qiujihao19/LongVideo-R1</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Long Video Understanding</span><span>Multimodal Large Language Model</span><span>AI Agent</span><span>Video Navigation</span><span>Reinforcement Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Video Understanding</span><span>Multimodal</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.20913" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>CL4SE: A Context Learning Benchmark For Software Engineering Tasks</h2>
+                <span class="published-time">Published: 2026-02-26T14:28:57.000Z</span>
+                
+                <p class="summary">Context engineering has emerged as a pivotal paradigm for unlocking the potential of Large Language Models (LLMs) in Software Engineering (SE) tasks, enabling performance gains at test time without model fine-tuning. Despite its success, existing research lacks a systematic taxonomy of SE-specific context types and a dedicated benchmark to quantify the heterogeneous effects of different contexts across core SE workflows. To address this gap, we propose CL4SE (Context Learning for Software Engineering), a comprehensive benchmark featuring a fine-grained taxonomy of four SE-oriented context types (interpretable examples, project-specific context, procedural decision-making context, and positive & negative context), each mapped to a representative task (code generation, code summarization, code review, and patch correctness assessment). We construct high-quality datasets comprising over 13,000 samples from more than 30 open-source projects and evaluate five mainstream LLMs across nine metrics. Extensive experiments demonstrate that context learning yields an average performance improvement of 24.7% across all tasks. Specifically, procedural context boosts code review performance by up to 33% (Qwen3-Max), mixed positive-negative context improves patch assessment by 30% (DeepSeek-V3), project-specific context increases code summarization BLEU by 14.78% (GPT-Oss-120B), and interpretable examples enhance code generation PASS@1 by 5.72% (DeepSeek-V3). CL4SE establishes the first standardized evaluation framework for SE context learning, provides actionable empirical insights into task-specific context design, and releases a large-scale dataset to facilitate reproducible research in this domain.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Context Learning</span><span>Software Engineering</span><span>Large Language Models</span><span>Benchmark</span><span>Code Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.23047" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Mode Seeking meets Mean Seeking for Fast Long Video Generation</h2>
+                <span class="published-time">Published: 2026-02-27T18:59:02.000Z</span>
+                
+                <p class="summary">Scaling video generation from seconds to minutes faces a critical bottleneck: while short-video data is abundant and high-fidelity, coherent long-form data is scarce and limited to narrow domains. To address this, we propose a training paradigm where Mode Seeking meets Mean Seeking, decoupling local fidelity from long-term coherence based on a unified representation via a Decoupled Diffusion Transformer. Our approach utilizes a global Flow Matching head trained via supervised learning on long videos to capture narrative structure, while simultaneously employing a local Distribution Matching head that aligns sliding windows to a frozen short-video teacher via a mode-seeking reverse-KL divergence. This strategy enables the synthesis of minute-scale videos that learns long-range coherence and motions from limited long videos via supervised flow matching, while inheriting local realism by aligning every sliding-window segment of the student to a frozen short-video teacher, resulting in a few-step fast long video generator. Evaluations show that our method effectively closes the fidelity-horizon gap by jointly improving local sharpness, motion and long-range consistency. Project website: https://primecai.github.io/mmm/.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Long Video Generation</span><span>Diffusion Transformer</span><span>Flow Matching</span><span>Mode Seeking</span><span>Mean Seeking</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.24289" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DUET-VLM: Dual stage Unified Efficient Token reduction for VLM Training and Inference</h2>
+                <span class="published-time">Published: 2026-02-21T14:22:49.000Z</span>
+                
+                <p class="summary">Vision-language models (VLMs) have achieved remarkable multimodal understanding and reasoning capabilities, yet remain computationally expensive due to dense visual tokenization. Existing efficiency approaches either merge redundant visual tokens or drop them progressively in language backbone, often trading accuracy for speed. In this work, we propose DUET-VLM, a versatile plug-and-play dual compression framework that consists of (a) vision-only redundancy aware compression of vision encoder's output into information-preserving tokens, followed by (b) layer-wise, salient text-guided dropping of visual tokens within the language backbone to progressively prune less informative tokens. This coordinated token management enables aggressive compression while retaining critical semantics. On LLaVA-1.5-7B, our approach maintains over 99% of baseline accuracy with 67% fewer tokens, and still retains >97% even at 89% reduction. With this dual-stage compression during training, it achieves 99.7% accuracy at 67% and 97.6% at 89%, surpassing prior SoTA visual token reduction methods across multiple benchmarks. When integrated into Video-LLaVA-7B, it even surpasses the baseline -- achieving >100% accuracy with a substantial 53.1% token reduction and retaining 97.6% accuracy under an extreme 93.4% setting. These results highlight end-to-end training with DUET-VLM, enabling robust adaptation to reduced visual (image/video) input without sacrificing accuracy, producing compact yet semantically rich representations within the same computational budget. Our code is available at https://github.com/AMD-AGI/DUET-VLM.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Vision-Language Models</span><span>Token Reduction</span><span>Dual-Stage Compression</span><span>LLaVA</span><span>Computational Efficiency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.18846" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Vectorizing the Trie: Efficient Constrained Decoding for LLM-based Generative Retrieval on Accelerators</h2>
+                <span class="published-time">Published: 2026-02-26T06:00:56.000Z</span>
+                
+                <p class="summary">Generative retrieval has emerged as a powerful paradigm for LLM-based recommendation. However, industrial recommender systems often benefit from restricting the output space to a constrained subset of items based on business logic (e.g. enforcing content freshness or product category), which standard autoregressive decoding cannot natively support. Moreover, existing constrained decoding methods that make use of prefix trees (Tries) incur severe latency penalties on hardware accelerators (TPUs/GPUs). In this work, we introduce STATIC (Sparse Transition Matrix-Accelerated Trie Index for Constrained Decoding), an efficient and scalable constrained decoding technique designed specifically for high-throughput LLM-based generative retrieval on TPUs/GPUs. By flattening the prefix tree into a static Compressed Sparse Row (CSR) matrix, we transform irregular tree traversals into fully vectorized sparse matrix operations, unlocking massive efficiency gains on hardware accelerators. We deploy STATIC on a large-scale industrial video recommendation platform serving billions of users. STATIC produces significant product metric impact with minimal latency overhead (0.033 ms per step and 0.25% of inference time), achieving a 948x speedup over a CPU trie implementation and a 47-1033x speedup over a hardware-accelerated binary-search baseline. Furthermore, the runtime overhead of STATIC remains extremely low across a wide range of practical configurations. To the best of our knowledge, STATIC enables the first production-scale deployment of strictly constrained generative retrieval. In addition, evaluation on academic benchmarks demonstrates that STATIC can considerably improve cold-start performance for generative retrieval. Our code is available at https://github.com/youtube/static-constraint-decoding.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Generative Retrieval</span><span>Constrained Decoding</span><span>Large Language Models</span><span>Trie</span><span>Hardware Accelerators</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Generative AI</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2602.22647" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
