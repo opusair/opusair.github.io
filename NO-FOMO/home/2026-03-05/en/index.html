@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-03-05</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-03-05</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>GPT-5.4</h2>
+                <span class="published-time">Published: 2026-03-05 18:08:10</span>
+                
+                <p class="summary">OpenAI has officially announced the introduction of GPT-5.4, representing a notable advancement in its series of large language models. This new iteration is accompanied by a dedicated "Thinking System Card," signaling a strong emphasis on developing more robust reasoning capabilities, enhanced system reliability, and comprehensive ethical considerations within its operational architecture. While initial details suggest a focus on refining cognitive processes, this release is poised to significantly impact the landscape of artificial intelligence. It anticipates delivering superior performance across complex tasks, including advanced problem-solving and nuanced understanding. The introduction of GPT-5.4 further solidifies OpenAI's commitment to pushing the boundaries of AI research and development, influencing future applications in natural language processing and various generative AI domains. This launch marks another critical step in the rapid evolution of intelligent systems, setting new standards for sophisticated AI models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>GPT-5.4</span><span>Large Language Model</span><span>AI Development</span><span>OpenAI</span><span>Generative AI</span><span>AI Reasoning</span><span>Neural Networks</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://openai.com/index/introducing-gpt-5-4/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Jido 2.0, Elixir Agent Framework</h2>
+                <span class="published-time">Published: 2026-03-05 15:48:52</span>
+                
+                <p class="summary">Jido, an Elixir Agent Framework, has announced its 2.0 release, delivering a production-hardened platform for building, managing, and running AI Agents on the BEAM. This significant update introduces a comprehensive suite of agentic features, including advanced Tool Calling and Agent Skills, alongside robust multi-agent support across distributed BEAM processes with integrated Supervision. Jido 2.0 offers diverse reasoning strategies such as ReAct, Chain of Thought, and Tree of Thought, enabling complex AI workflows. The framework ensures durability through a sophisticated Storage and Persistence layer, provides Agentic Memory, and facilitates external service integration via MCP and Sensors. Furthermore, it boasts deep observability and debugging capabilities, including full-stack OTel. This release leverages the BEAM's architecture, which is increasingly recognized as highly suitable for agentic workloads, positioning Jido 2.0 as a crucial development for the Elixir ecosystem in the burgeoning field of AI agents.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Elixir</span><span>AI Agent Framework</span><span>BEAM</span><span>Multi-agent systems</span><span>ReAct</span><span>Tree of Thought</span><span>Distributed Systems</span><span>Agentic Memory</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://jido.run/blog/jido-2-0-is-here" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>A GitHub Issue Title Compromised 4k Developer Machines</h2>
+                <span class="published-time">Published: 2026-03-05 16:22:01</span>
+                
+                <p class="summary">A critical vulnerability, dubbed 'clinejection,' has been identified, demonstrating how a carefully crafted GitHub issue title can lead to the compromise of developer machines. The attack vector leverages AI-powered developer tools, which, when processing the malicious issue title, are tricked into executing arbitrary commands on the host system. This sophisticated injection technique, explored in detail by Grith AI, highlights a significant security flaw where AI tools designed to enhance productivity inadvertently become conduits for supply chain attacks. The incident reportedly led to the compromise of 4,000 developer machines, underscoring the severe risks associated with integrating AI into sensitive development workflows without robust security measures. This research warns of emerging threats where the interfaces of AI tools, particularly those interacting with external, untrusted content like GitHub issue titles, can be exploited for remote code execution and system compromise, urging developers and organizations to re-evaluate their AI tooling security posture.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>clinejection</span><span>AI Security</span><span>GitHub Vulnerability</span><span>Supply Chain Attack</span><span>Developer Tools</span><span>Command Injection</span><span>Remote Code Execution</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://grith.ai/blog/clinejection-when-your-ai-tool-installs-another" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: PageAgent, A GUI agent that lives inside your web app</h2>
+                <span class="published-time">Published: 2026-03-05 17:01:47</span>
+                
+                <p class="summary">PageAgent introduces an innovative open-source (MIT) library for embedding AI agents directly into web application frontends, moving away from traditional external client or server-side AI operations. The project promotes an "inside-out" paradigm, enabling a client-side agent to interact natively with the live DOM tree and inherit the user's active session, which is highly beneficial for Single Page Applications (SPAs). This approach aims to unlock a significant design space for deploying general AI agents natively within the web apps users already utilize, transforming the web into an integral part of the AI ecosystem rather than merely a passive target. By integrating the agent directly, it offers seamless interaction and efficient context retention. An optional browser extension is also developed to serve as a "bridge," facilitating cross-page tasks and expanding the agent's operational scope within the broader browsing experience. This unique architecture promises more dynamic and integrated AI functionalities for web users.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI agent</span><span>Frontend development</span><span>Client-side scripting</span><span>Web applications</span><span>Open source</span><span>DOM manipulation</span><span>Browser extensions</span><span>Single Page Applications</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://alibaba.github.io/page-agent/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Pentagon Formally Labels Anthropic Supply-Chain Risk</h2>
+                <span class="published-time">Published: 2026-03-05 19:24:35</span>
+                
+                <p class="summary">The Pentagon has officially designated Anthropic, a prominent artificial intelligence developer recognized for its large language models, as a formal supply-chain risk. This unprecedented move signals heightened concerns within the U.S. Department of Defense regarding the security, reliability, or broader national security implications associated with integrating Anthropic's advanced AI technologies into defense systems or critical infrastructure. The formal labeling indicates an escalation in governmental scrutiny of leading AI companies, particularly those that may contribute to or be integrated within the defense industrial base. This decision underscores the complex challenges inherent in managing the dual-use nature of cutting-edge AI, prompting a re-evaluation of procurement processes and vendor relationships to mitigate potential vulnerabilities. This development reflects ongoing efforts to establish comprehensive AI governance frameworks and to assess the strategic implications of technological dependencies on external AI providers. It anticipates a more cautious and regulated approach to the adoption of advanced AI within the national security apparatus, potentially influencing future collaborations and contracts between AI firms and government agencies.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Supply Chain Risk</span><span>National Security</span><span>AI Governance</span><span>Large Language Models</span><span>Defense Technology</span><span>Anthropic</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.wsj.com/politics/national-security/pentagon-formally-labels-anthropic-supply-chain-risk-escalating-conflict-ebdf0523" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Relicensing with AI-Assisted Rewrite</h2>
+                <span class="published-time">Published: 2026-03-05 05:07:33</span>
+                
+                <p class="summary">The initiative of 'Relicensing with AI-Assisted Rewrite' focuses on leveraging artificial intelligence technologies to modernize and accelerate the complex process of changing software licenses. This innovative approach involves utilizing AI's advanced capabilities in natural language processing and code generation to automatically identify, adapt, and rewrite sections of existing code, documentation, or legal agreements to conform to new licensing terms. The primary objective is to significantly improve efficiency and reduce the manual effort typically associated with license transitions, thereby minimizing human error and accelerating project timelines. This method presents a compelling solution for organizations and open-source projects navigating legal compliance changes. However, it also necessitates careful consideration of the AI's output accuracy, its adherence to specific legal frameworks, and the potential for introducing unintended semantic shifts. This development highlights a crucial convergence of legal informatics, software engineering, and sophisticated AI applications, aiming to revolutionize how software licenses are managed and updated in the digital age.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI-Assisted Rewriting</span><span>Software Licensing</span><span>Code Generation</span><span>Natural Language Processing</span><span>Legal Tech</span><span>Automation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://tuananh.net/2026/03/05/relicensing-with-ai-assisted-rewrite/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Helios: Real Real-Time Long Video Generation Model</h2>
+                <span class="published-time">Published: 2026-03-04T18:45:21.000Z</span>
+                
+                <p class="summary">We introduce Helios, the first 14B video generation model that runs at 19.5 FPS on a single NVIDIA H100 GPU and supports minute-scale generation while matching the quality of a strong baseline. We make breakthroughs along three key dimensions: (1) robustness to long-video drifting without commonly used anti-drifting heuristics such as self-forcing, error-banks, or keyframe sampling; (2) real-time generation without standard acceleration techniques such as KV-cache, sparse/linear attention, or quantization; and (3) training without parallelism or sharding frameworks, enabling image-diffusion-scale batch sizes while fitting up to four 14B models within 80 GB of GPU memory. Specifically, Helios is a 14B autoregressive diffusion model with a unified input representation that natively supports T2V, I2V, and V2V tasks. To mitigate drifting in long-video generation, we characterize typical failure modes and propose simple yet effective training strategies that explicitly simulate drifting during training, while eliminating repetitive motion at its source. For efficiency, we heavily compress the historical and noisy context and reduce the number of sampling steps, yielding computational costs comparable to -- or lower than -- those of 1.3B video generative models. Moreover, we introduce infrastructure-level optimizations that accelerate both inference and training while reducing memory consumption. Extensive experiments demonstrate that Helios consistently outperforms prior methods on both short- and long-video generation. We plan to release the code, base model, and distilled model to support further development by the community.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Generation</span><span>Real-time</span><span>Diffusion Model</span><span>Long-Video Drifting</span><span>Computational Efficiency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Deep Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.04379" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Heterogeneous Agent Collaborative Reinforcement Learning</h2>
+                <span class="published-time">Published: 2026-03-03T05:09:49.000Z</span>
+                
+                <p class="summary">We introduce Heterogeneous Agent Collaborative Reinforcement Learning (HACRL), a new learning paradigm that addresses the inefficiencies of isolated on-policy optimization. HACRL enables collaborative optimization with independent execution: heterogeneous agents share verified rollouts during training to mutually improve, while operating independently at inference time. Unlike LLM-based multi-agent reinforcement learning (MARL), HACRL does not require coordinated deployment, and unlike on-/off-policy distillation, it enables bidirectional mutual learning among heterogeneous agents rather than one-directional teacher-to-student transfer. Building on this paradigm, we propose HACPO, a collaborative RL algorithm that enables principled rollout sharing to maximize sample utilization and cross-agent knowledge transfer. To mitigate capability discrepancies and policy distribution shifts, HACPO introduces four tailored mechanisms with theoretical guarantees on unbiased advantage estimation and optimization correctness. Extensive experiments across diverse heterogeneous model combinations and reasoning benchmarks show that HACPO consistently improves all participating agents, outperforming GSPO by an average of 3.3% while using only half the rollout cost.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Heterogeneous Agents</span><span>Collaborative Reinforcement Learning</span><span>Multi-Agent Reinforcement Learning</span><span>Policy Optimization</span><span>Knowledge Transfer</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.02604" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>T2S-Bench & Structure-of-Thought: Benchmarking and Prompting Comprehensive Text-to-Structure Reasoning</h2>
+                <span class="published-time">Published: 2026-03-04T07:05:09.000Z</span>
+                
+                <p class="summary">Think about how human handles complex reading tasks: marking key points, inferring their relationships, and structuring information to guide understanding and responses. Likewise, can a large language model benefit from text structure to enhance text-processing performance? To explore it, in this work, we first introduce Structure of Thought (SoT), a prompting technique that explicitly guides models to construct intermediate text structures, consistently boosting performance across eight tasks and three model families. Building upon this insight, we present T2S-Bench, the first benchmark designed to evaluate and improve text-to-structure capabilities of models. T2S-Bench includes 1.8K samples across 6 scientific domains and 32 structural types, rigorously constructed to ensure accuracy, fairness, and quality. Evaluation on 45 mainstream models reveals substantial improvement potential: the average accuracy on the multi-hop reasoning task is only 52.1%, and even the most advanced model achieves 58.1% node accuracy in end-to-end extraction. Furthermore, on Qwen2.5-7B-Instruct, SoT alone yields an average +5.7% improvement across eight diverse text-processing tasks, and fine-tuning on T2S-Bench further increases this gain to +8.6%. These results highlight the value of explicit text structuring and the complementary contributions of SoT and T2S-Bench. Dataset and eval code have been released at https://t2s-bench.github.io/T2S-Bench-Page/.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Text-to-Structure Reasoning</span><span>Structure-of-Thought</span><span>Large Language Models</span><span>Benchmarking</span><span>Prompting Techniques</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.03790" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Phi-4-reasoning-vision-15B Technical Report</h2>
+                <span class="published-time">Published: 2026-03-04T12:16:53.000Z</span>
+                
+                <p class="summary">We present Phi-4-reasoning-vision-15B, a compact open-weight multimodal reasoning model, and share the motivations, design choices, experiments, and learnings that informed its development. Our goal is to contribute practical insight to the research community on building smaller, efficient multimodal reasoning models and to share the result of these learnings as an open-weight model that is good at common vision and language tasks and excels at scientific and mathematical reasoning and understanding user interfaces. Our contributions include demonstrating that careful architecture choices and rigorous data curation enable smaller, open-weight multimodal models to achieve competitive performance with significantly less training and inference-time compute and tokens. The most substantial improvements come from systematic filtering, error correction, and synthetic augmentation -- reinforcing that data quality remains the primary lever for model performance. Systematic ablations show that high-resolution, dynamic-resolution encoders yield consistent improvements, as accurate perception is a prerequisite for high-quality reasoning. Finally, a hybrid mix of reasoning and non-reasoning data with explicit mode tokens allows a single model to deliver fast direct answers for simpler tasks and chain-of-thought reasoning for complex problems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Phi-4-reasoning-vision-15B</span><span>multimodal reasoning</span><span>open-weight models</span><span>data quality</span><span>computational efficiency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Computer Vision</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.03975" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Memex(RL): Scaling Long-Horizon LLM Agents via Indexed Experience Memory</h2>
+                <span class="published-time">Published: 2026-03-04T16:45:06.000Z</span>
+                
+                <p class="summary">Large language model (LLM) agents are fundamentally bottlenecked by finite context windows on long-horizon tasks. To overcome this, we introduce Memex, an indexed experience memory mechanism that compresses context without discarding evidence. Memex maintains a compact working context using structured summaries and stable indices, storing full-fidelity interactions in an external experience database. Agents can dereference indices to retrieve exact past evidence. We optimize this with MemexRL, a reinforcement learning framework using reward shaping for indexed memory usage under context budgets, enabling agents to learn summarizing, archiving, indexing, and retrieval. This approach offers a less lossy form of long-horizon memory compared to summary-only methods. Theoretical analysis shows Memex's potential to preserve decision quality with bounded dereferencing and effective in-context computation. Empirically, Memex agents trained with MemexRL improve task success on challenging long-horizon tasks while using significantly smaller working contexts.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM Agents</span><span>Long-Horizon Tasks</span><span>Context Window</span><span>Experience Memory</span><span>Reinforcement Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.04257" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MUSE: A Run-Centric Platform for Multimodal Unified Safety Evaluation of Large Language Models</h2>
+                <span class="published-time">Published: 2026-03-03T00:10:23.000Z</span>
+                
+                <p class="summary">Safety evaluation and red-teaming of large language models remain predominantly text-centric, and existing frameworks lack the infrastructure to systematically test whether alignment generalizes to audio, image, and video inputs. We present MUSE (Multimodal Unified Safety Evaluation), an open-source, run-centric platform that integrates automatic cross-modal payload generation, three multi-turn attack algorithms (Crescendo, PAIR, Violent Durian), provider-agnostic model routing, and an LLM judge with a five-level safety taxonomy into a single browser-based system. A dual-metric framework distinguishes hard Attack Success Rate (Compliance only) from soft ASR (including Partial Compliance), capturing partial information leakage that binary metrics miss. To probe whether alignment generalizes across modality boundaries, we introduce Inter-Turn Modality Switching (ITMS), which augments multi-turn attacks with per-turn modality rotation. Experiments across six multimodal LLMs from four providers show that multi-turn strategies can achieve up to 90-100% ASR against models with near-perfect single-turn refusal. ITMS does not uniformly raise final ASR on already-saturated baselines, but accelerates convergence by destabilizing early-turn defenses, and ablation reveals that the direction of modality effects is model-family-specific rather than universal, underscoring the need for provider-aware cross-modal safety testing.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal</span><span>Large Language Models</span><span>Safety Evaluation</span><span>Red-teaming</span><span>Cross-modal</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Multimodal</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.02482" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
