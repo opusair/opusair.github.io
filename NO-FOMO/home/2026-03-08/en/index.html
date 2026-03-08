@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-03-08</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-03-08</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Living human brain cells play DOOM on a CL1 [video]</h2>
+                <span class="published-time">Published: 2026-03-08 15:07:28</span>
+                
+                <p class="summary">Recent groundbreaking research has showcased an extraordinary experiment where living human brain cells, cultivated in vitro, demonstrated the ability to interact with and 'play' the classic 1993 video game DOOM. Documented in a compelling video, this project established a sophisticated interface enabling neural organoids to receive sensory inputs from the game's environment and, in turn, generate electrical signals that translate into in-game commands. This pioneering work underscores the remarkable potential of biological computing systems to process complex information and exhibit adaptive learning behaviors, providing profound new insights into the foundational mechanisms of intelligence and computation. While the 'gameplay' is necessarily rudimentary when compared to human players or advanced AI agents, it nonetheless signifies a monumental stride towards comprehending how biological neural networks can manifest goal-directed behavior and respond to intricate, dynamic stimuli. This innovative research critically blurs the conventional boundaries between neuroscience, artificial intelligence, and advanced computation, paving the way for future exploration into bio-inspired AI architectures and the development of novel computational paradigms.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Biological Computing</span><span>In Vitro Intelligence</span><span>Neuroscience</span><span>Neural Organoids</span><span>Brain-Computer Interface</span><span>Artificial Intelligence</span><span>Video Games</span><span>DOOM</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.youtube.com/watch?v=yRV8fSw6HaE" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>SWE-CI: Evaluating Agent Capabilities in Maintaining Codebases via CI</h2>
+                <span class="published-time">Published: 2026-03-08 08:11:50</span>
+                
+                <p class="summary">The research introduces SWE-CI, a novel framework designed for evaluating the capabilities of AI agents in performing software engineering tasks, specifically focusing on codebase maintenance within a continuous integration (CI) environment. This framework aims to provide a standardized and realistic benchmark for assessing how effectively autonomous agents can identify, diagnose, and resolve issues in active software projects. By integrating with CI pipelines, SWE-CI simulates real-world development workflows, allowing for rigorous testing of agents' abilities to understand code, propose changes, and ensure the stability and correctness of software. The study highlights the critical need for robust evaluation methodologies in the burgeoning field of AI-driven software development, providing insights into the current state and future potential of AI agents in automating and assisting complex coding tasks. It emphasizes objective metrics for performance, paving the way for more reliable and efficient AI tools in software engineering.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Software Engineering</span><span>AI Agents</span><span>Continuous Integration</span><span>Code Maintenance</span><span>Codebase Evaluation</span><span>Autonomous Agents</span><span>Software Development</span><span>Benchmarking</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://arxiv.org/abs/2603.03823" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Claude struggles to cope with ChatGPT exodus</h2>
+                <span class="published-time">Published: 2026-03-08 17:14:53</span>
+                
+                <p class="summary">Reports indicate that Anthropic's Claude, a prominent large language model, is experiencing significant operational difficulties as it grapples with an influx of users migrating from OpenAI's ChatGPT. This 'exodus' of users, possibly driven by recent enhancements, new features, or changing pricing structures within the ChatGPT ecosystem, has reportedly put substantial strain on Claude's infrastructure and services. The increased demand is leading to performance bottlenecks, slower response times, and potential degradation in user experience for existing and new Claude users. This competitive shift highlights the dynamic and rapidly evolving landscape within the generative AI market, where user loyalty can quickly pivot based on perceived value, model capabilities, and accessibility. Anthropic is likely facing pressure to scale its resources and potentially refine its service offerings to retain its user base and remain competitive amidst this significant market fluctuation. The situation underscores the ongoing race among leading AI developers to secure and maintain market dominance through continuous innovation and robust infrastructure.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>AI Competition</span><span>Market Share</span><span>Anthropic Claude</span><span>OpenAI ChatGPT</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.forbes.com/sites/barrycollins/2026/03/06/claude-struggles-to-cope-with-chatgpt-exodus/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The changing goalposts of AGI and timelines</h2>
+                <span class="published-time">Published: 2026-03-08 17:16:38</span>
+                
+                <p class="summary">The discussion surrounding Artificial General Intelligence (AGI) is frequently marked by the phenomenon of 'changing goalposts,' where the definition of AGI continuously evolves as AI capabilities advance. As artificial intelligence systems achieve tasks previously considered benchmarks for general intelligence, these accomplishments are often reclassified as specialized AI problems, shifting the perceived requirements for true AGI. This perpetual re-evaluation significantly influences projections and timelines for AGI realization, creating an uncertain and dynamic future outlook. The article implicitly delves into how historical and recent breakthroughs in AI technology continuously redefine our understanding and expectations of general intelligence. This evolving perspective has profound implications for research priorities, funding allocations, and public discourse, as the target for achieving genuinely general AI remains a fluid concept, challenging the AI community to establish more robust and stable criteria for its eventual development amidst rapid technological progress.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial General Intelligence</span><span>AGI Timelines</span><span>AI Development</span><span>AI Progress</span><span>AI Definitions</span><span>Technological Singularity</span><span>Cognitive Computing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mlumiste.com/general/openai-charter/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The new Apple begins to emerge</h2>
+                <span class="published-time">Published: 2026-03-08 13:08:44</span>
+                
+                <p class="summary">The tech giant Apple is reportedly embarking on a significant strategic transformation, signifying a potential pivot in its long-term vision and product development approach. This 'new Apple' is widely anticipated to emphasize a deeper integration of advanced technologies, particularly in the realm of artificial intelligence, across its hardware, software, and services ecosystem. Analysts suggest the company may be re-evaluating its core market focus, potentially exploring new frontiers in augmented reality, advanced health monitoring, or innovative computing paradigms. This strategic reorientation aims to address evolving consumer expectations, intensifying market competition, and the rapid pace of technological change. Key announcements detailing this shift are expected in upcoming product launches or developer conferences, as Apple seeks to solidify its position as a leader in future tech segments and drive its next phase of growth. The transformation is indicative of a comprehensive effort to innovate and adapt within a dynamic global technology landscape.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Tech Innovation</span><span>Product Strategy</span><span>Ecosystem Development</span><span>Augmented Reality</span><span>Future Computing</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://parkerortolani.blog/2026/03/07/the-new-apple-finally-begins.html" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI CEOs worry the government will nationalize AI</h2>
+                <span class="published-time">Published: 2026-03-08 19:04:37</span>
+                
+                <p class="summary">Executives leading the artificial intelligence industry have voiced considerable apprehension regarding the prospect of government nationalizing AI technologies. This concern is rooted in fears that such extensive state control could severely disrupt the innovative ecosystem, curtail the robust competition currently driving rapid advancements, and centralize the development of critical technological infrastructure. Industry leaders are particularly worried that nationalization might lead to a significant decline in private investment, protracted development timelines, and a less agile, more bureaucratic AI landscape. This could, in turn, impede the pace of scientific discovery and limit the diverse applications of AI across various sectors. The prevailing sentiment among these CEOs emphasizes the necessity of a competitive, privately-led environment to ensure the continuous and responsible evolution of AI capabilities. These anxieties highlight the complex and evolving dialogue surrounding the balance between private sector autonomy, national security interests, and public governance within the burgeoning field of artificial intelligence, impacting future policy discussions and industry strategies globally.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI governance</span><span>AI regulation</span><span>Nationalization</span><span>Artificial Intelligence</span><span>Tech policy</span><span>Industry concerns</span><span>Government control</span><span>Innovation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://yro.slashdot.org/story/26/03/07/2058213/ai-ceos-worry-the-government-will-nationalize-ai" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
