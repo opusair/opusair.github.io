@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-03-12</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-03-12</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Kotlin creator's new language: a formal way to talk to LLMs instead of English</h2>
+                <span class="published-time">Published: 2026-03-12 14:22:43</span>
+                
+                <p class="summary">Andrey Breslav, the distinguished creator of the Kotlin programming language, has unveiled a new, specialized language specifically engineered to enable a more formal and precise method of communication with Large Language Models (LLMs), departing from the inherent ambiguities of natural English. This innovative endeavor directly addresses the critical challenge of inconsistent and often unpredictable outputs that frequently arise when interacting with advanced AI systems through conventional human language. The proposed formal language aims to equip developers and AI engineers with a structured, deterministic framework for crafting prompts and defining expected responses. This enhanced precision is anticipated to significantly improve the reliability, reproducibility, and overall efficiency of applications built upon LLMs. By providing a clear, programmatic interface, this development is poised to streamline the creation of sophisticated AI-powered tools and elevate the controllability and performance of LLM systems, representing a substantial advancement towards more robust and dependable human-AI collaboration across various domains, including software engineering.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Formal Language</span><span>LLM Interaction</span><span>Programming Language</span><span>Prompt Engineering</span><span>AI Development</span><span>Natural Language Processing</span><span>Domain-Specific Language</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://codespeak.dev/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Claude now creates interactive charts, diagrams and visualizations</h2>
+                <span class="published-time">Published: 2026-03-12 15:59:00</span>
+                
+                <p class="summary">Anthropic's AI model, Claude, has introduced a significant new capability: the generation of interactive charts, diagrams, and various visualizations. This enhancement allows Claude to directly translate user prompts and data into rich visual representations, moving beyond text-only outputs. The update is expected to improve data analysis, communication, and decision-making by making complex information more accessible and understandable. Users can now leverage Claude to quickly produce visual aids for presentations, reports, or data exploration, streamlining workflows and expanding the practical applications of the large language model. This advancement underscores the ongoing trend of LLMs evolving to handle multimodal outputs and provide more comprehensive solutions beyond traditional text generation. The ability to create interactive visuals marks a notable step in making AI tools more versatile and user-friendly for a wider range of professional and analytical tasks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>Data Visualization</span><span>Interactive Graphics</span><span>Generative AI</span><span>AI Capabilities</span><span>Claude</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Generative AI</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://claude.com/blog/claude-builds-visuals" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Launch HN: IonRouter (YC W26) – High-throughput, low-cost inference</h2>
+                <span class="published-time">Published: 2026-03-12 18:52:36</span>
+                
+                <p class="summary">Cumulus Labs (YC W26), founded by Veer and Suryaa, has launched IonRouter, an inference API designed to provide high-throughput and low-cost inference for both open-source and fine-tuned AI models. IonRouter addresses a critical challenge in the AI industry where existing inference providers are typically either prohibitively expensive due to always-on GPU costs or require significant do-it-yourself configuration, leading to slow cold starts. By simply swapping a base URL, teams can integrate IonRouter into their existing OpenAI client code, gaining seamless access to various models running on Cumulus Labs' proprietary inference engine. This solution aims to streamline the deployment process for development teams, allowing them to focus on shipping products rather than managing complex GPU orchestration. Suryaa's background includes building GPU infrastructure at TensorDock and production systems at Palantir, while Veer has experience in ML infrastructure and Linux kernel development, underscoring the team's expertise in this domain. IonRouter positions itself as a practical alternative for efficient and accessible AI model deployment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Inference API</span><span>High-throughput inference</span><span>Low-cost inference</span><span>Open-source models</span><span>Fine-tuned models</span><span>GPU orchestration</span><span>AI infrastructure</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://ionrouter.io" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: OneCLI – Vault for AI Agents in Rust</h2>
+                <span class="published-time">Published: 2026-03-12 16:41:06</span>
+                
+                <p class="summary">OneCLI is an open-source security gateway, built in Rust, that addresses the critical vulnerability of AI agents being provisioned with raw API keys. Recognizing the significant security risks associated with agents having direct access to sensitive credentials, OneCLI positions itself as an essential intermediary. It functions as a proxy between AI agents and the various external services they need to interact with. Within OneCLI's encrypted vault, real credentials are securely stored. AI agents are then given placeholder keys, which they use when making HTTP calls. When a request passes through the OneCLI proxy, the system intelligently matches the request by host/path, verifies the agent's authorization, and dynamically swaps the placeholder key for the actual, securely stored credential before forwarding the request to its destination. This innovative approach ensures that AI agents can perform their tasks effectively without ever directly handling, storing, or exposing sensitive secrets, thereby drastically enhancing the security posture of AI-driven applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agents</span><span>Security</span><span>Credential Management</span><span>Proxy</span><span>Rust</span><span>Open Source</span><span>API Security</span><span>Encrypted Vault</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/onecli/onecli" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Reliable Software in the LLM Era</h2>
+                <span class="published-time">Published: 2026-03-12 08:19:46</span>
+                
+                <p class="summary">The article 'Reliable Software in the LLM Era' addresses the critical challenges of ensuring software reliability in a landscape increasingly shaped by Large Language Models (LLMs). It highlights how LLMs, despite their powerful capabilities, introduce complexities such as non-determinism, potential for hallucinations, and difficulties in verification, which can undermine traditional software engineering practices. The discussion likely advocates for new approaches and methodologies to build dependable systems, possibly emphasizing the integration of formal methods or rigorous specification languages (like Quint) to manage the inherent uncertainties of AI components. By focusing on robust design principles, enhanced testing strategies, and formal verification techniques, the piece aims to guide developers and architects in constructing resilient software applications that can harness the benefits of LLMs while mitigating their risks, ensuring long-term stability and trustworthiness in AI-powered systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>Software Reliability</span><span>Formal Methods</span><span>Software Engineering</span><span>System Verification</span><span>AI Safety</span><span>Non-determinism</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://quint-lang.org/posts/llm_era" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The Emotional Labor Behind AI Intimacy (2025)</h2>
+                <span class="published-time">Published: 2026-03-12 16:12:04</span>
+                
+                <p class="summary">This document, titled "The Emotional Labor Behind AI Intimacy," explores the often-overlooked human effort and psychological toll involved in developing and maintaining artificial intelligence systems designed to simulate emotional connection and intimacy. It likely delves into the 'ghost work' performed by human data annotators and trainers who imbue AI with empathetic capabilities, extending the concept of emotional labor to these unseen roles. The paper is expected to highlight potential issues such as burnout, psychological distress, and exploitation among the workforce contributing to the development of human-like AI. Furthermore, referencing related discussions about 'African Intelligence' and worker advocacy, the analysis likely examines global labor practices, ethical considerations in data sourcing, and the broader socio-economic impacts on individuals within the expanding AI industry, particularly concerning the ethics of creating intimate AI relationships and the conditions of the workers enabling them.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Intimacy</span><span>Emotional Labor</span><span>AI Ethics</span><span>Data Annotation</span><span>Human-in-the-Loop</span><span>AI Workforce</span><span>Ethical AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://data-workers.org/wp-content/uploads/2025/12/The-Emotional-Labor-Behind-AI-Intimacy-1.pdf" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>OpenClaw-RL: Train Any Agent Simply by Talking</h2>
+                <span class="published-time">Published: 2026-03-10T18:59:01.000Z</span>
+                
+                <p class="summary">Every agent interaction generates a next-state signal, namely the user reply, tool output, terminal or GUI state change that follows each action, yet no existing agentic RL system recovers it as a live, online learning source. We present OpenClaw-RL, a framework built on a simple observation: next-state signals are universal, and policy can learn from all of them simultaneously. Personal conversations, terminal executions, GUI interactions, SWE tasks, and tool-call traces are not separate training problems. They are all interactions that can be used to train the same policy in the same loop. Next-state signals encode two forms of information: evaluative signals, which indicate how well the action performed and are extracted as scalar rewards via a PRM judge; and directive signals, which indicate how the action should have been different and are recovered through Hindsight-Guided On-Policy Distillation (OPD). We extract textual hints from the next state, construct an enhanced teacher context, and provide token-level directional advantage supervision that is richer than any scalar reward. Due to the asynchronous design, the model serves live requests, the PRM judges ongoing interactions, and the trainer updates the policy at the same time, with zero coordination overhead between them. Applied to personal agents, OpenClaw-RL enables an agent to improve simply by being used, recovering conversational signals from user re-queries, corrections, and explicit feedback. Applied to general agents, the same infrastructure supports scalable RL across terminal, GUI, SWE, and tool-call settings, where we additionally demonstrate the utility of process rewards. Code: https://github.com/Gen-Verse/OpenClaw-RL</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Reinforcement Learning</span><span>Online Learning</span><span>Policy Distillation</span><span>Next-State Signals</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.10165" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LLM2Vec-Gen: Generative Embeddings from Large Language Models</h2>
+                <span class="published-time">Published: 2026-03-11T15:58:47.000Z</span>
+                
+                <p class="summary">LLM-based text embedders typically encode the semantic content of their input. However, embedding tasks require mapping diverse inputs to similar outputs. Typically, this input-output is addressed by training embedding models with paired data using contrastive learning. In this work, we propose a novel self-supervised approach, LLM2Vec-Gen, which adopts a different paradigm: rather than encoding the input, we learn to represent the model's potential response. Specifically, we add trainable special tokens to the LLM's vocabulary, append them to input, and optimize them to represent the LLM's response in a fixed-length sequence. Training is guided by the LLM's own completion for the query, along with an unsupervised embedding teacher that provides distillation targets. This formulation helps to bridge the input-output gap and transfers LLM capabilities such as safety alignment and reasoning to embedding tasks. Crucially, the LLM backbone remains frozen and training requires only unlabeled queries. LLM2Vec-Gen achieves state-of-the-art self-supervised performance on the Massive Text Embedding Benchmark (MTEB), improving by 9.3% over the best unsupervised embedding teacher. We also observe up to 43.2% reduction in harmful content retrieval and 29.3% improvement in reasoning capabilities for embedding tasks. Finally, the learned embeddings are interpretable and can be decoded into text to reveal their semantic content.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Generative Embeddings</span><span>Large Language Models</span><span>Self-supervised learning</span><span>Text embedding</span><span>LLM2Vec-Gen</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.10913" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>In-Context Reinforcement Learning for Tool Use in Large Language Models</h2>
+                <span class="published-time">Published: 2026-03-09T08:06:18.000Z</span>
+                
+                <p class="summary">While large language models (LLMs) exhibit strong reasoning abilities, their performance on complex tasks is often constrained by the limitations of their internal knowledge. A compelling approach to overcome this challenge is to augment these models with external tools -- such as Python interpreters for mathematical computations or search engines for retrieving factual information. However, enabling models to use these tools effectively remains a significant challenge. Existing methods typically rely on cold-start pipelines that begin with supervised fine-tuning (SFT), followed by reinforcement learning (RL). These approaches often require substantial amounts of labeled data for SFT, which is expensive to annotate or synthesize. In this work, we propose In-Context Reinforcement Learning (ICRL), an RL-only framework that eliminates the need for SFT by leveraging few-shot prompting during the rollout stage of RL. Specifically, ICRL introduces in-context examples within the rollout prompts to teach the model how to invoke external tools. Furthermore, as training progresses, the number of in-context examples is gradually reduced, eventually reaching a zero-shot setting where the model learns to call tools independently. We conduct extensive experiments across a range of reasoning and tool-use benchmarks. Results show that ICRL achieves state-of-the-art performance, demonstrating its effectiveness as a scalable, data-efficient alternative to traditional SFT-based pipelines.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Large Language Models</span><span>Tool Use</span><span>In-Context Learning</span><span>Few-shot Prompting</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.08068" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>RetroAgent: From Solving to Evolving via Retrospective Dual Intrinsic Feedback</h2>
+                <span class="published-time">Published: 2026-03-09T16:23:33.000Z</span>
+                
+                <p class="summary">Large language model (LLM)-based agents trained with reinforcement learning (RL) have shown strong potential on complex interactive tasks. However, standard RL paradigms favor static problem-solving over continuous adaptation: agents often converge to suboptimal strategies due to insufficient exploration, while learned knowledge remains implicit within parameters rather than explicitly retrievable, limiting effective experiential learning. To address these limitations, we introduce RetroAgent, an online RL framework that empowers agents to master complex interactive environments not just by solving, but by evolving. Concretely, RetroAgent features a hindsight self-reflection mechanism that produces dual intrinsic feedback: (1) intrinsic numerical feedback that that tracks incremental subtask completion relative to prior attempts, rewarding promising explorations, and (2) intrinsic language feedback that distills reusable lessons into a memory buffer, retrieved via our proposed Similarity & Utility-Aware Upper Confidence Bound (SimUtil-UCB) strategy balancing relevance, utility, and exploration to effectively leverage past experiences. Extensive experiments on two model families across four challenging agentic tasks demonstrate that RetroAgent significantly outperforms existing methods, achieving state-of-the-art results -- e.g., surpassing Group Relative Policy Optimization (GRPO)-trained agents by +18.3% on ALFWorld, +15.4% on WebShop, +27.1% on Sokoban, and +8.9% on MineSweeper -- while exhibiting strong test-time adaptation and generalization to out-of-distribution scenarios.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>RetroAgent</span><span>Reinforcement Learning</span><span>Large Language Models</span><span>AI Agent</span><span>Intrinsic Feedback</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.08561" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>ID-LoRA: Identity-Driven Audio-Video Personalization with In-Context LoRA</h2>
+                <span class="published-time">Published: 2026-03-10T22:23:36.000Z</span>
+                
+                <p class="summary">Existing video personalization methods preserve visual likeness but treat video and audio separately. Without access to the visual scene, audio models cannot synchronize sounds with on-screen actions; and because classical voice-cloning models condition only on a reference recording, a text prompt cannot redirect speaking style or acoustic environment. We propose ID-LoRA (Identity-Driven In-Context LoRA), which jointly generates a subject's appearance and voice in a single model, letting a text prompt, a reference image, and a short audio clip govern both modalities together. ID-LoRA adapts the LTX-2 joint audio-video diffusion backbone via parameter-efficient In-Context LoRA and, to our knowledge, is the first method to personalize visual appearance and voice in a single generative pass. Two challenges arise. Reference and generation tokens share the same positional-encoding space, making them hard to distinguish; we address this with negative temporal positions, placing reference tokens in a disjoint RoPE region while preserving their internal temporal structure. Speaker characteristics also tend to be diluted during denoising; we introduce identity guidance, a classifier-free guidance variant that amplifies speaker-specific features by contrasting predictions with and without the reference signal. In human preference studies, ID-LoRA is preferred over Kling 2.6 Pro by 73% of annotators for voice similarity and 65% for speaking style. On cross-environment settings, speaker similarity improves by 24% over Kling, with the gap widening as conditions diverge. A preliminary user study further suggests that joint generation provides a useful inductive bias for physically grounded sound synthesis. ID-LoRA achieves these results with only ~3K training pairs on a single GPU. Code, models, and data will be released.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>ID-LoRA</span><span>Audio-Video Personalization</span><span>In-Context LoRA</span><span>Identity Guidance</span><span>Diffusion Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Multimodal</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.10256" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>COMIC: Agentic Sketch Comedy Generation</h2>
+                <span class="published-time">Published: 2026-03-11T17:59:59.000Z</span>
+                
+                <p class="summary">We propose a fully automated AI system that produces short comedic videos similar to sketch shows such as Saturday Night Live. Starting with character references, the system employs a population of agents loosely based on real production studio roles, structured to optimize the quality and diversity of ideas and outputs through iterative competition, evaluation, and improvement. A key contribution is the introduction of LLM critics aligned with real viewer preferences through the analysis of a corpus of comedy videos on YouTube to automatically evaluate humor. Our experiments show that our framework produces results approaching the quality of professionally produced sketches while demonstrating state-of-the-art performance in video generation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Agentic AI Systems</span><span>Sketch Comedy Generation</span><span>Large Language Models</span><span>Video Generation</span><span>Humor Evaluation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Generative AI</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.11048" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
