@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-03-13</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-03-13</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Show HN: Context Gateway – Compress agent context before it hits the LLM</h2>
+                <span class="published-time">Published: 2026-03-13 17:58:22</span>
+                
+                <p class="summary">Context Gateway is an innovative open-source proxy designed to enhance the efficiency of AI coding agents by optimizing context management for Large Language Models (LLMs). Positioned between agents such as Claude Code and OpenClaw and the LLM, it specifically compresses tool outputs before they populate the LLM's context window. This development addresses a critical challenge in AI agent performance: their tendency to generate verbose and noisy outputs from tools like file reads or grep commands, which not only drives up computational costs but also significantly degrades the LLM's accuracy. The problem is underscored by benchmarks revealing steep drops in LLM accuracy with increasing context lengths. Context Gateway leverages small language models (SLMs) to intelligently filter and compress this data, ensuring that LLMs receive more concise and relevant information. This approach is expected to improve the overall quality, reduce expenses, and maintain higher accuracy for agent-driven tasks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Context Gateway</span><span>Large Language Models</span><span>AI Agents</span><span>Context Compression</span><span>Small Language Models</span><span>Agent Context Management</span><span>Tool Outputs</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/Compresr-ai/Context-Gateway" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Launch HN: Captain (YC W26) – Automated RAG for Files</h2>
+                <span class="published-time">Published: 2026-03-13 15:45:33</span>
+                
+                <p class="summary">Captain, a new venture by Lewis and Edgar (YC W26), has launched a platform designed to automate Retrieval Augmented Generation (RAG) pipelines for unstructured data search. This innovative solution simplifies the typically complex process of indexing and querying file-based content, offering a streamlined approach to information retrieval. Captain automatically integrates with and indexes data from various cloud storage providers, including Amazon S3 and Google Cloud Storage, alongside popular SaaS sources like Google Drive. To demonstrate its capabilities, the founders presented an "Ask PG's Essays" demo site, which allows users to search Paul Graham's extensive collection of essays. Notably, the RAG component for this entire corpus was set up using Captain in approximately three minutes, highlighting the platform's efficiency and ease of use. Captain aims to empower businesses with advanced, AI-driven search functionalities, significantly reducing the manual effort involved in managing and extracting insights from large volumes of unstructured documents.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Automated RAG</span><span>Unstructured Data</span><span>File Indexing</span><span>Cloud Storage Integration</span><span>SaaS Data Management</span><span>Retrieval Augmented Generation</span><span>AI Search</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.runcaptain.com/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Launch HN: Spine Swarm (YC S23) – AI agents that collaborate on a visual canvas</h2>
+                <span class="published-time">Published: 2026-03-13 13:22:40</span>
+                
+                <p class="summary">Spine AI, founded by Ashwin and Akshay and a YC S23 alumnus, has introduced Spine Swarm, an innovative multi-agent system that leverages an infinite visual canvas to complete complex non-coding projects. This platform is designed to handle diverse tasks such as competitive analysis, financial modeling, SEO audits, and the creation of pitch decks and interactive prototypes. The central idea driving Spine Swarm is the belief that conventional chat-based interfaces are inherently limiting for intricate AI-driven work, which often demands a non-linear, collaborative environment. By providing a spatial canvas, Spine Swarm enables multiple AI agents to work together seamlessly, facilitating more effective problem-solving and project execution. The founders, who have dedicated three years to developing Spine through various product iterations, highlight how this visual interface overcomes the limitations of linear conversational threads, offering a more intuitive and powerful tool for advanced AI applications in business and creative fields.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI agents</span><span>Multi-agent system</span><span>Visual canvas</span><span>Collaborative AI</span><span>Non-coding projects</span><span>AI interface</span><span>Spine Swarm</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.getspine.ai/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Can I run AI locally?</h2>
+                <span class="published-time">Published: 2026-03-13 12:46:10</span>
+                
+                <p class="summary">The `canirun.ai` platform addresses the increasingly common question regarding the feasibility of running artificial intelligence models directly on local hardware. This resource is designed to assist users in evaluating their system's capabilities against the demanding computational requirements of modern AI applications, especially large language models (LLMs) and other sophisticated machine learning tasks. It likely provides insights into crucial hardware specifications, such as GPU compatibility and VRAM, CPU performance, and memory availability, alongside software environment considerations. The platform aims to simplify the often-complex process of local AI deployment by offering guidance on model selection, optimization techniques like quantization, and best practices for setting up necessary development tools. By empowering users to assess and configure their systems for on-device AI, `canirun.ai` supports the broader movement towards democratizing access to powerful AI technologies, reducing reliance on cloud infrastructure, and fostering privacy-centric AI use cases for individuals and small development teams.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Local AI</span><span>On-device AI</span><span>Hardware Requirements</span><span>Large Language Models</span><span>AI Deployment</span><span>GPU Computing</span><span>Machine Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.canirun.ai/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Microsoft Copilot Health Centralizes Personal Medical Records</h2>
+                <span class="published-time">Published: 2026-03-13 19:24:29</span>
+                
+                <p class="summary">Microsoft has unveiled Copilot Health, an innovative new service focused on centralizing personal medical records to enhance patient accessibility and data management. This platform is designed to consolidate an individual's health information from various healthcare providers, laboratories, and personal health devices into a single, cohesive digital hub. Leveraging advanced artificial intelligence capabilities, Copilot Health aims to offer users a comprehensive overview of their medical history, simplifying the navigation of complex health data, tracking medication, and managing healthcare appointments. The system is expected to utilize AI to provide personalized insights and facilitate better understanding of health conditions, ultimately empowering individuals to make more informed decisions about their well-being. This strategic move underscores Microsoft's commitment to extending its AI-powered Copilot ecosystem into the critical healthcare sector, emphasizing the importance of secure, centralized data for improving personal health management and patient engagement. The initiative highlights the growing trend of integrating AI for practical applications in personal health, promising a more streamlined and intuitive experience for users.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Microsoft Copilot</span><span>Digital Health</span><span>Medical Records</span><span>Healthcare AI</span><span>Data Centralization</span><span>Patient Engagement</span><span>Personal Health Management</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://reclaimthenet.org/microsoft-copilot-health-centralizes-personal-medical-records" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Elon Musk pushes out more xAI founders as AI coding effort falters</h2>
+                <span class="published-time">Published: 2026-03-13 16:40:42</span>
+                
+                <p class="summary">Reports indicate that Elon Musk has continued to remove founders from his artificial intelligence startup, xAI, amidst growing concerns over the company's AI coding initiatives. This development suggests internal turmoil or strategic shifts within the nascent AI firm. The move follows unconfirmed reports that xAI's efforts in developing advanced AI coding capabilities are not meeting expectations or are experiencing significant setbacks. Such leadership changes, particularly involving founding members, often signal a re-evaluation of project directions, technological approaches, or personnel performance within high-stakes technology ventures. For xAI, which aims to compete with leading AI entities, the stability of its foundational team and the progress of its core technological projects are critical. The faltering of its AI coding efforts could have broader implications for the development of its Grok chatbot and other ambitious AI projects, potentially impacting its competitive standing in the rapidly evolving AI landscape. Industry observers will be closely monitoring xAI for further details on its strategic adjustments and the future of its AI development trajectory under Musk's leadership.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>AI Development</span><span>xAI</span><span>AI Coding</span><span>Tech Leadership</span><span>Startup Management</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.ft.com/content/e5fbc6c2-d5a6-4b97-a105-6a96ea849de5" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Strategic Navigation or Stochastic Search? How Agents and Humans Reason Over Document Collections</h2>
+                <span class="published-time">Published: 2026-03-12T17:11:22.000Z</span>
+                
+                <p class="summary">Multimodal agents offer a promising path to automating complex document-intensive workflows. Yet, a critical question remains: do these agents demonstrate genuine strategic reasoning, or merely stochastic trial-and-error search? To address this, we introduce MADQA, a benchmark of 2,250 human-authored questions grounded in 800 heterogeneous PDF documents. Guided by Classical Test Theory, we design it to maximize discriminative power across varying levels of agentic abilities. To evaluate agentic behaviour, we introduce a novel evaluation protocol measuring the accuracy-effort trade-off. Using this framework, we show that while the best agents can match human searchers in raw accuracy, they succeed on largely different questions and rely on brute-force search to compensate for weak strategic planning. They fail to close the nearly 20% gap to oracle performance, persisting in unproductive loops. We release the dataset and evaluation harness to help facilitate the transition from brute-force retrieval to calibrated, efficient reasoning.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal agents</span><span>Strategic reasoning</span><span>Document collections</span><span>Benchmarking</span><span>AI Agent</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.12180" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Understanding by Reconstruction: Reversing the Software Development Process for LLM Pretraining</h2>
+                <span class="published-time">Published: 2026-03-11T09:23:20.000Z</span>
+                
+                <p class="summary">While Large Language Models (LLMs) have achieved remarkable success in code generation, they often struggle with the deep, long-horizon reasoning required for complex software engineering. We attribute this limitation to the nature of standard pre-training data: static software repositories represent only the terminal state of an intricate intellectual process, abstracting away the intermediate planning, debugging, and iterative refinement. To bridge this gap, we propose a novel paradigm: understanding via reconstruction. We hypothesize that reverse-engineering the latent agentic trajectories -- the planning, reasoning, and debugging steps -- behind static repositories provides a far richer supervision signal than raw code alone. To operationalize this, we introduce a framework that synthesizes these trajectories using a multi-agent simulation. This process is grounded in the structural realities of the source repositories (e.g., dependency graphs and file hierarchies) to ensure fidelity. Furthermore, to guarantee the logical rigor of the synthetic data, we employ a search-based optimization technique that iteratively refines the Chain-of-Thought (CoT) reasoning to maximize the likelihood of the ground-truth code. Empirical results demonstrate that continuous pre-training on these reconstructed trajectories significantly enhances Llama-3-8B's performance across diverse benchmarks, including long-context understanding, coding proficiency, and agentic capabilities.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM Pretraining</span><span>Software Development</span><span>Agentic Reasoning</span><span>Chain-of-Thought</span><span>Code Understanding</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.11103" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DreamVideo-Omni: Omni-Motion Controlled Multi-Subject Video Customization with Latent Identity Reinforcement Learning</h2>
+                <span class="published-time">Published: 2026-03-12T17:59:12.000Z</span>
+                
+                <p class="summary">While large-scale diffusion models have revolutionized video synthesis, achieving precise control over both multi-subject identity and multi-granularity motion remains a significant challenge. Recent attempts to bridge this gap often suffer from limited motion granularity, control ambiguity, and identity degradation, leading to suboptimal performance on identity preservation and motion control. In this work, we present DreamVideo-Omni, a unified framework enabling harmonious multi-subject customization with omni-motion control via a progressive two-stage training paradigm. In the first stage, we integrate comprehensive control signals for joint training, encompassing subject appearances, global motion, local dynamics, and camera movements. To ensure robust and precise controllability, we introduce a condition-aware 3D rotary positional embedding to coordinate heterogeneous inputs and a hierarchical motion injection strategy to enhance global motion guidance. Furthermore, to resolve multi-subject ambiguity, we introduce group and role embeddings to explicitly anchor motion signals to specific identities, effectively disentangling complex scenes into independent controllable instances. In the second stage, to mitigate identity degradation, we design a latent identity reward feedback learning paradigm by training a latent identity reward model upon a pretrained video diffusion backbone. This provides motion-aware identity rewards in the latent space, prioritizing identity preservation aligned with human preferences. Supported by our curated large-scale dataset and the comprehensive DreamOmni Bench for multi-subject and omni-motion control evaluation, DreamVideo-Omni demonstrates superior performance in generating high-quality videos with precise controllability.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Synthesis</span><span>Multi-Subject Customization</span><span>Omni-Motion Control</span><span>Diffusion Models</span><span>Reinforcement Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.12257" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>EndoCoT: Scaling Endogenous Chain-of-Thought Reasoning in Diffusion Models</h2>
+                <span class="published-time">Published: 2026-03-12T17:58:48.000Z</span>
+                
+                <p class="summary">Recently, Multimodal Large Language Models (MLLMs) have been widely integrated into diffusion frameworks primarily as text encoders to tackle complex tasks such as spatial reasoning. However, this paradigm suffers from two critical limitations: (i) MLLMs text encoder exhibits insufficient reasoning depth. Single-step encoding fails to activate the Chain-of-Thought process, which is essential for MLLMs to provide accurate guidance for complex tasks. (ii) The guidance remains invariant during the decoding process. Invariant guidance during decoding prevents DiT from progressively decomposing complex instructions into actionable denoising steps, even with correct MLLM encodings. To this end, we propose Endogenous Chain-of-Thought (EndoCoT), a novel framework that first activates MLLMs' reasoning potential by iteratively refining latent thought states through an iterative thought guidance module, and then bridges these states to the DiT's denoising process. Second, a terminal thought grounding module is applied to ensure the reasoning trajectory remains grounded in textual supervision by aligning the final state with ground-truth answers. With these two components, the MLLM text encoder delivers meticulously reasoned guidance, enabling the DiT to execute it progressively and ultimately solve complex tasks in a step-by-step manner. Extensive evaluations across diverse benchmarks (e.g., Maze, TSP, VSP, and Sudoku) achieve an average accuracy of 92.1%, outperforming the strongest baseline by 8.3 percentage points.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Diffusion Models</span><span>Multimodal Large Language Models</span><span>Chain-of-Thought</span><span>Reasoning</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Deep Learning</span><span>Multimodal</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.12252" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OmniStream: Mastering Perception, Reconstruction and Action in Continuous Streams</h2>
+                <span class="published-time">Published: 2026-03-12T17:59:55.000Z</span>
+                
+                <p class="summary">Modern visual agents require representations that are general, causal, and physically structured to operate in real-time streaming environments. However, current vision foundation models remain fragmented, specializing narrowly in image semantic perception, offline temporal modeling, or spatial geometry. This paper introduces OmniStream, a unified streaming visual backbone that effectively perceives, reconstructs, and acts from diverse visual inputs. By incorporating causal spatiotemporal attention and 3D rotary positional embeddings (3D-RoPE), our model supports efficient, frame-by-frame online processing of video streams via a persistent KV-cache. We pre-train OmniStream using a synergistic multi-task framework coupling static and temporal representation learning, streaming geometric reconstruction, and vision-language alignment on 29 datasets. Extensive evaluations show that, even with a strictly frozen backbone, OmniStream achieves consistently competitive performance with specialized experts across image and video probing, streaming geometric reconstruction, complex video and spatial reasoning, as well as robotic manipulation (unseen at training). Rather than pursuing benchmark-specific dominance, our work demonstrates the viability of training a single, versatile vision backbone that generalizes across semantic, spatial, and temporal reasoning, i.e., a more meaningful step toward general-purpose visual understanding for interactive and embodied agents.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>OmniStream</span><span>Streaming Visual Backbone</span><span>Spatiotemporal Attention</span><span>Geometric Reconstruction</span><span>Embodied AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Video Understanding</span><span>Robotics</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.12265" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Trust Your Critic: Robust Reward Modeling and Reinforcement Learning for Faithful Image Editing and Generation</h2>
+                <span class="published-time">Published: 2026-03-12T17:57:21.000Z</span>
+                
+                <p class="summary">Reinforcement learning (RL) has emerged as a promising paradigm for enhancing image editing and text-to-image (T2I) generation. However, current reward models, which act as critics during RL, often suffer from hallucinations and assign noisy scores, inherently misguiding the optimization process. In this paper, we present FIRM (Faithful Image Reward Modeling), a comprehensive framework that develops robust reward models to provide accurate and reliable guidance for faithful image generation and editing. First, we design tailored data curation pipelines to construct high-quality scoring datasets. Specifically, we evaluate editing using both execution and consistency, while generation is primarily assessed via instruction following. Using these pipelines, we collect the FIRM-Edit-370K and FIRM-Gen-293K datasets, and train specialized reward models (FIRM-Edit-8B and FIRM-Gen-8B) that accurately reflect these criteria. Second, we introduce FIRM-Bench, a comprehensive benchmark specifically designed for editing and generation critics. Evaluations demonstrate that our models achieve superior alignment with human judgment compared to existing metrics. Furthermore, to seamlessly integrate these critics into the RL pipeline, we formulate a novel "Base-and-Bonus" reward strategy that balances competing objectives: Consistency-Modulated Execution (CME) for editing and Quality-Modulated Alignment (QMA) for generation. Empowered by this framework, our resulting models FIRM-Qwen-Edit and FIRM-SD3.5 achieve substantial performance breakthroughs. Comprehensive experiments demonstrate that FIRM mitigates hallucinations, establishing a new standard for fidelity and instruction adherence over existing general models. All of our datasets, models, and code have been publicly available at https://firm-reward.github.io.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reward Modeling</span><span>Reinforcement Learning</span><span>Image Editing</span><span>Text-to-Image Generation</span><span>Faithful Image Editing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.12247" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
