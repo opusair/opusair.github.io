@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-03-15</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-03-15</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Let your Coding Agent debug the browser session with Chrome DevTools MCP</h2>
+                <span class="published-time">Published: 2026-03-15 19:12:53</span>
+                
+                <p class="summary">The article highlights a new development enabling coding agents to directly debug browser sessions utilizing the Chrome DevTools Machine Control Protocol (MCP). This innovation signifies a crucial step forward in automating web application testing and debugging. By integrating AI-driven tools with the robust capabilities of Chrome DevTools, developers can now deploy autonomous agents that inspect, diagnose, and even interact with the browser environment to identify and resolve issues. This functionality allows for the creation of more intelligent debugging workflows, where agents can proactively detect anomalies, suggest precise fixes, and potentially implement them without human intervention. Such a paradigm shift is poised to significantly enhance developer productivity, accelerate development cycles, and improve the reliability of web applications by embedding advanced AI into continuous integration and deployment pipelines. This move democratizes sophisticated debugging, making it accessible for automated systems and paving the way for a new era of intelligent, self-correcting web development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Coding Agent</span><span>Chrome DevTools</span><span>Browser Debugging</span><span>Automated Debugging</span><span>Web Development</span><span>AI Agent</span><span>Developer Tools</span><span>Machine Control Protocol</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://developer.chrome.com/blog/chrome-devtools-mcp-debug-your-browser-session" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LLM Architecture Gallery</h2>
+                <span class="published-time">Published: 2026-03-15 16:01:09</span>
+                
+                <p class="summary">The 'LLM Architecture Gallery' presents a curated collection of visual representations and concise explanations detailing the internal structures and design principles of various Large Language Models. This resource serves as an educational tool for researchers, developers, and enthusiasts seeking to understand the intricate components, data flows, and architectural paradigms that underpin contemporary LLMs. It aims to demystify complex neural network designs, illustrating how different models like transformers, recurrent neural networks, and their modern variants are constructed to process and generate human language. By providing clear diagrams and accompanying descriptions, the gallery facilitates a deeper comprehension of concepts such as attention mechanisms, encoder-decoder structures, and various scaling strategies, ultimately aiding in the comparison and analysis of different LLM approaches. This initiative by Sebastian Raschka helps bridge the gap between theoretical knowledge and practical understanding of leading AI models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM Architectures</span><span>Large Language Models</span><span>Neural Network Design</span><span>Transformer Models</span><span>Deep Learning</span><span>AI Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://sebastianraschka.com/llm-architecture-gallery/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Learning athletic humanoid tennis skills from imperfect human motion data</h2>
+                <span class="published-time">Published: 2026-03-15 15:21:04</span>
+                
+                <p class="summary">This research presents a novel methodology for endowing humanoid robots with advanced athletic capabilities, specifically focusing on tennis skills, by utilizing imperfect human motion data. The study addresses a critical challenge in robotics: effectively learning from real-world human demonstrations that are often noisy, incomplete, or inconsistent. Through the development of robust learning algorithms, the proposed system can interpret and distill high-fidelity movement patterns from such flawed datasets, enabling humanoid agents to not only imitate but also adapt and refine complex motor skills. This approach significantly enhances the robots' ability to perform dynamic and precise actions required in sports. The findings demonstrate a substantial leap in autonomous skill acquisition for humanoid platforms, paving the way for more dexterous and intelligent robots capable of navigating and interacting proficiently in complex physical environments, ultimately pushing the boundaries of embodied AI and robotic control.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Humanoid Robotics</span><span>Motion Imitation</span><span>Reinforcement Learning</span><span>Imperfect Data</span><span>Athletic Skills</span><span>Robotic Control</span><span>Machine Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Machine Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://zzk273.github.io/LATENT/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Hollywood Enters Oscars Weekend in Existential Crisis</h2>
+                <span class="published-time">Published: 2026-03-15 12:41:56</span>
+                
+                <p class="summary">Hollywood enters its Oscars weekend amidst a profound existential crisis, a situation increasingly framed by the transformative potential and challenges posed by artificial intelligence. The entertainment industry grapples with the accelerating integration of AI in various facets, from script development and pre-visualization to post-production and digital effects. This technological shift introduces complex questions regarding job displacement for writers, actors, and various creative professionals, intellectual property rights in AI-generated content, and the fundamental nature of human creativity. As traditional revenue models and audience consumption habits evolve, partially driven by AI-powered personalization and content generation, the industry faces immense pressure to innovate and adapt. The looming threat of strikes, coupled with debates over ethical AI deployment, underscores a period of significant uncertainty and re-evaluation for Hollywood as it navigates a future shaped by advanced technological capabilities.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI in Entertainment</span><span>Generative AI</span><span>Hollywood Disruption</span><span>Creative AI</span><span>Content Automation</span><span>Intellectual Property AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.theculturenewspaper.com/hollywood-enters-oscars-weekend-in-existential-crisis/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Signet – Autonomous wildfire tracking from satellite and weather data</h2>
+                <span class="published-time">Published: 2026-03-15 12:01:00</span>
+                
+                <p class="summary">Signet is an autonomous wildfire tracking system developed in Go, designed to automate the complex, manual process of monitoring wildfires using diverse data sources. The system addresses the challenge of integrating information from NASA FIRMS (thermal detections), GOES-19 imagery, NWS forecasts, LANDFIRE fuel models, USGS elevation, Census population data, and OpenStreetMap, which arrive in various formats and cadences. While much of Signet's functionality involves deterministic data plumbing like ingestion, spatial indexing, and deduplication, it leverages Gemini to orchestrate 23 specialized tools. This AI orchestration is crucial for handling situations where predefined rules are inadequate, such as deciding which weak detections warrant further investigation, determining subsequent contextual data to retrieve, and synthesizing noisy evidence into coherent, structured assessments. This approach aims to provide a more efficient and consistent method for wildfire monitoring.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Wildfire tracking</span><span>Autonomous systems</span><span>Satellite data</span><span>Weather data</span><span>Data integration</span><span>AI orchestration</span><span>Gemini</span><span>Remote sensing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://signet.watch" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Europe takes first step to banning AI-generated child sexual abuse images</h2>
+                <span class="published-time">Published: 2026-03-15 17:50:21</span>
+                
+                <p class="summary">The European Union has commenced legislative proceedings to outlaw the creation and distribution of AI-generated child sexual abuse images (CSAI). This initiative marks a critical first step by a major global bloc to address the illicit use of advanced generative artificial intelligence technologies for producing harmful content. The move signals a growing international concern over the ethical implications and potential misuse of AI, particularly in areas involving vulnerable populations. Lawmakers are focusing on developing frameworks that can effectively identify, prosecute, and prevent the proliferation of such synthetic imagery, which poses significant challenges due to the rapid advancements in AI image generation capabilities. The legislation aims to establish legal precedence and robust enforcement mechanisms to safeguard children online, reflecting a broader societal push for responsible AI development and deployment. This development underscores the urgent need for collaboration between governments, technology companies, and cybersecurity experts to combat the evolving threat landscape presented by malicious AI applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Generative AI</span><span>AI Regulation</span><span>Content Moderation</span><span>Child Protection</span><span>Digital Safety</span><span>AI Ethics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.reuters.com/business/europe-takes-first-step-banning-ai-generated-child-sexual-abuse-images-2026-03-13/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
