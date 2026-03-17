@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-03-17</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-03-17</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>GPT
+
+5.4 Mini and Nano</h2>
+                <span class="published-time">Published: 2026-03-17 17:07:06</span>
+                
+                <p class="summary">OpenAI has reportedly announced the introduction of new, more compact iterations of its foundational language models, designated as GPT-5.4 Mini and Nano. These new models are expected to extend the accessibility and deployment flexibility of OpenAI's advanced artificial intelligence capabilities. While specific technical details regarding their architecture, training data, and performance benchmarks are yet to be fully disclosed, the 'Mini' and 'Nano' nomenclature typically indicates a focus on optimized efficiency, reduced computational overhead, and potentially lower operational costs. This strategic expansion suggests OpenAI's ongoing commitment to developing a diversified portfolio of models tailored for various application scales, from resource-constrained environments to specialized tasks requiring lightweight, high-performance AI. The release aims to address the growing demand for smaller, more efficient large language models capable of running on edge devices or within applications where the full power of larger models like GPT-5.4 might be excessive or economically unfeasible. This move aligns with broader industry trends towards making powerful AI more ubiquitous and adaptable across a wider array of platforms and use cases.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>GPT-5.4</span><span>Large Language Models</span><span>Model Optimization</span><span>Efficient AI</span><span>Generative AI</span><span>OpenAI</span><span>Natural Language Processing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://openai.com/index/introducing-gpt-5-4-mini-and-nano" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Nvidia's DLSS 5 uses generative AI to boost photorealism in video games</h2>
+                <span class="published-time">Published: 2026-03-17 19:35:24</span>
+                
+                <p class="summary">Nvidia is advancing its Deep Learning Super Sampling (DLSS) technology with the introduction of DLSS 5, which incorporates generative AI to significantly enhance photorealism in video games. This next iteration aims to push the boundaries of visual fidelity, offering gamers more lifelike graphics and immersive experiences. By leveraging generative AI models, DLSS 5 will intelligently reconstruct and upscale game frames, filling in missing details and creating highly realistic textures and lighting effects that were previously challenging to achieve through traditional rendering techniques. This innovative approach moves beyond simple upscaling and frame generation, utilizing AI to "imagine" and create visual information, thereby improving both performance and visual quality simultaneously. While the immediate application is focused on boosting realism in gaming, Nvidia's strategic move suggests broader ambitions for generative AI's role in real-time graphics and simulations, potentially extending into professional visualization, virtual reality, and other interactive media beyond the gaming industry. This development marks a significant step in integrating advanced AI directly into the graphics pipeline, promising a new era of visual quality for digital environments.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Nvidia</span><span>DLSS 5</span><span>Generative AI</span><span>Video Games</span><span>Photorealism</span><span>Graphics Technology</span><span>AI Upscaling</span><span>Deep Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Artificial Intelligence</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://techcrunch.com/2026/03/16/nvidias-dlss-5-uses-generative-ai-to-boost-photo-realism-in-video-games-with-ambitions-beyond-gaming/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Antfly: Distributed, Multimodal Search and Memory and Graphs in Go</h2>
+                <span class="published-time">Published: 2026-03-17 15:45:15</span>
+                
+                <p class="summary">Antfly is a newly introduced distributed document database and search engine built in Go, designed to integrate full-text, vector, and graph search capabilities into a unified system. It offers a single-binary deployment, making it suitable for both local development and small-scale distributed multimodal search and memory applications. A significant differentiator is its native ML inference service, Termite, which facilitates vector search directly within the platform, thereby reducing the dependency on external API calls. The system supports comprehensive multimodal indexing for images, audio, and video data, alongside advanced features like MongoDB-style in-place updates and streaming Retrieval Augmented Generation (RAG). From a distributed systems perspective, Antfly employs a multi-Raft setup, leveraging etcd's library and backed by CockroachDB's Pebble storage engine. It further enhances its distributed architecture by assigning independent Raft groups to metadata and data shards, ensuring high availability and consistency in a developer-friendly package.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Distributed Database</span><span>Multimodal Search</span><span>Vector Search</span><span>Go Programming Language</span><span>Graph Database</span><span>Raft Consensus</span><span>ML Inference</span><span>Retrieval Augmented Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Machine Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/antflydb/antfly" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: March Madness Bracket Challenge for AI Agents Only</h2>
+                <span class="published-time">Published: 2026-03-17 12:56:24</span>
+                
+                <p class="summary">A novel March Madness bracket challenge has been launched, designed exclusively for AI agents rather than human participants. The system allows human users to prompt their AI agents with a URL, enabling the agents to autonomously read API documentation, register, select winners for all 63 games, and submit a bracket. A live leaderboard then tracks the performance of participating AI agents throughout the tournament.
+The creator encountered unique design challenges in developing an agent-first user experience. A key solution involved differentiating content delivery: agents accessing the homepage receive plain-text API instructions, while human users view the standard visual website. Early observations revealed agents attempting to browse the site using tools like Playwright instead of utilizing the API. This led to further refinements, including detecting HeadlessChrome to serve agent-specific HTML, emphasizing the importance of dedicated AI agent user experience considerations in the development process.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agents</span><span>March Madness</span><span>API design</span><span>Autonomous systems</span><span>Agent-first UX</span><span>Headless Chrome detection</span><span>AI competition</span><span>Bracket challenge</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.Bracketmadness.ai" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Node.js blocks PR from dev because he used Claude Code to create it</h2>
+                <span class="published-time">Published: 2026-03-17 18:37:52</span>
+                
+                <p class="summary">The Node.js project recently took the decision to block a pull request (PR) submitted by a developer, citing the use of 'Claude Code' for its generation. This incident brings to the forefront a burgeoning debate within the open-source community concerning the acceptance and integration of AI-generated code. The decision by Node.js maintainers signals a potential precedent or at least a significant point of discussion regarding the policies and guidelines for contributions that leverage large language models or other generative AI tools. Key considerations include code ownership, intellectual property rights, potential licensing issues, the maintainability and quality of AI-generated code, and the broader implications for project governance. This event underscores the evolving landscape of software development, where AI tools are becoming increasingly prevalent, prompting project leads to formulate clear stances on their usage and ethical considerations within collaborative, community-driven environments. It highlights the challenges in balancing innovation with established best practices and ensuring the integrity of foundational projects.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Node.js</span><span>Open Source</span><span>AI-generated code</span><span>Claude AI</span><span>Code generation</span><span>Software development</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/nodejs/node/pull/61478" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Unsloth Studio</h2>
+                <span class="published-time">Published: 2026-03-17 15:26:32</span>
+                
+                <p class="summary">Unsloth Studio represents a new development environment or platform designed to streamline and accelerate the process of fine-tuning Large Language Models (LLMs). Building upon the core Unsloth library, which is celebrated for its significant speed and memory efficiency improvements in LLM training, the Studio aims to provide a more integrated and user-friendly experience. It likely offers tools and features that abstract away complexities, allowing developers and researchers to more easily deploy, customize, and optimize LLMs for specific tasks and datasets. This initiative seeks to democratize advanced LLM fine-tuning, making it accessible to a broader audience without requiring deep expertise in low-level optimization techniques. By leveraging Unsloth's proven capabilities, the Studio is poised to dramatically reduce the computational resources and time traditionally associated with high-performance LLM development, thereby fostering innovation and faster iteration cycles in the AI community. Its introduction marks a step towards more efficient and scalable LLM application development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>Fine-tuning</span><span>AI Development</span><span>Machine Learning</span><span>Optimization</span><span>AI Tools</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://unsloth.ai/docs/new/studio" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>AI Can Learn Scientific Taste</h2>
+                <span class="published-time">Published: 2026-03-15T16:31:51.000Z</span>
+                
+                <p class="summary">Great scientists have strong judgement and foresight, closely tied to what we call scientific taste. Here, we use the term to refer to the capacity to judge and propose research ideas with high potential impact. However, most relative research focuses on improving an AI scientist's executive capability, while enhancing an AI's scientific taste remains underexplored. In this work, we propose Reinforcement Learning from Community Feedback (RLCF), a training paradigm that uses large-scale community signals as supervision, and formulate scientific taste learning as a preference modeling and alignment problem. For preference modeling, we train Scientific Judge on 700K field- and time-matched pairs of high- vs. low-citation papers to judge ideas. For preference alignment, using Scientific Judge as a reward model, we train a policy model, Scientific Thinker, to propose research ideas with high potential impact. Experiments show Scientific Judge outperforms SOTA LLMs (e.g., GPT-5.2, Gemini 3 Pro) and generalizes to future-year test, unseen fields, and peer-review preference. Furthermore, Scientific Thinker proposes research ideas with higher potential impact than baselines. Our findings show that AI can learn scientific taste, marking a key step toward reaching human-level AI scientists.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Scientific taste</span><span>AI scientists</span><span>Reinforcement Learning from Community Feedback</span><span>Preference modeling</span><span>Large Language Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.14473" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OpenSeeker: Democratizing Frontier Search Agents by Fully Open-Sourcing Training Data</h2>
+                <span class="published-time">Published: 2026-03-16T17:52:04.000Z</span>
+                
+                <p class="summary">Deep search capabilities have become an indispensable competency for frontier Large Language Model (LLM) agents, yet the development of high-performance search agents remains dominated by industrial giants due to a lack of transparent, high-quality training data. This persistent data scarcity has fundamentally hindered the progress of the broader research community in developing and innovating within this domain. To bridge this gap, we introduce OpenSeeker, the first fully open-source search agent (i.e., model and data) that achieves frontier-level performance through two core technical innovations: (1) Fact-grounded scalable controllable QA synthesis, which reverse-engineers the web graph via topological expansion and entity obfuscation to generate complex, multi-hop reasoning tasks with controllable coverage and complexity. (2) Denoised trajectory synthesis, which employs a retrospective summarization mechanism to denoise the trajectory, therefore promoting the teacher LLMs to generate high-quality actions. Experimental results demonstrate that OpenSeeker, trained (a single training run) on only 11.7k synthesized samples, achieves state-of-the-art performance across multiple benchmarks including BrowseComp, BrowseComp-ZH, xbench-DeepSearch, and WideSearch. Notably, trained with simple SFT, OpenSeeker significantly outperforms the second-best fully open-source agent DeepDive (e.g., 29.5% v.s. 15.3% on BrowseComp), and even surpasses industrial competitors such as Tongyi DeepResearch (trained via extensive continual pre-training, SFT, and RL) on BrowseComp-ZH (48.4% v.s. 46.7%). We fully open-source the complete training dataset and the model weights to democratize frontier search agent research and foster a more transparent, collaborative ecosystem.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Search Agents</span><span>Open-Source</span><span>LLM Agents</span><span>Training Data</span><span>Deep Search</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.15594" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Tri-Prompting: Video Diffusion with Unified Control over Scene, Subject, and Motion</h2>
+                <span class="published-time">Published: 2026-03-16T17:59:05.000Z</span>
+                
+                <p class="summary">Recent video diffusion models have made remarkable strides in visual quality, yet precise, fine-grained control remains a key bottleneck that limits practical customizability for content creation. For AI video creators, three forms of control are crucial: (i) scene composition, (ii) multi-view consistent subject customization, and (iii) camera-pose or object-motion adjustment. Existing methods typically handle these dimensions in isolation, with limited support for multi-view subject synthesis and identity preservation under arbitrary pose changes. This lack of a unified architecture makes it difficult to support versatile, jointly controllable video. We introduce Tri-Prompting, a unified framework and two-stage training paradigm that integrates scene composition, multi-view subject consistency, and motion control. Our approach leverages a dual-condition motion module driven by 3D tracking points for background scenes and downsampled RGB cues for foreground subjects. To ensure a balance between controllability and visual realism, we further propose an inference ControlNet scale schedule. Tri-Prompting supports novel workflows, including 3D-aware subject insertion into any scenes and manipulation of existing subjects in an image. Experimental results demonstrate that Tri-Prompting significantly outperforms specialized baselines such as Phantom and DaS in multi-view subject identity, 3D consistency, and motion accuracy.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Diffusion</span><span>Unified Control</span><span>Scene Composition</span><span>Subject Customization</span><span>Motion Control</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.15614" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>HorizonMath: Measuring AI Progress Toward Mathematical Discovery with Automatic Verification</h2>
+                <span class="published-time">Published: 2026-03-16T17:59:53.000Z</span>
+                
+                <p class="summary">Can AI make progress on important, unsolved mathematical problems? Large language models are now capable of sophisticated mathematical and scientific reasoning, but whether they can perform novel research is still widely debated and underexplored. We introduce HorizonMath, a benchmark of over 100 predominantly unsolved problems spanning 8 domains in computational and applied mathematics, paired with an open-source evaluation framework for automated verification. Our benchmark targets a class of problems where discovery is hard, requiring meaningful mathematical insight, but verification is computationally efficient and simple. Because these solutions are unknown, HorizonMath is immune to data contamination, and most state-of-the-art models score near 0%. Existing research-level benchmarks instead rely on formal proof verification or manual review, both of which are expensive to scale. Using this platform, we find two problems for which GPT 5.4 Pro proposes solutions that improve on the best-known published results, representing potential novel contributions (pending expert review). We release HorizonMath as an open challenge and a growing community resource, where correct solutions to problems in the unsolved problem classes could constitute novel results in the mathematical literature.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Progress</span><span>Mathematical Discovery</span><span>Automatic Verification</span><span>Large Language Models</span><span>HorizonMath</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.15617" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OxyGen: Unified KV Cache Management for Vision-Language-Action Models under Multi-Task Parallelism</h2>
+                <span class="published-time">Published: 2026-03-15T13:23:56.000Z</span>
+                
+                <p class="summary">Embodied AI agents increasingly require parallel execution of multiple tasks, such as manipulation, conversation, and memory construction, from shared observations under distinct time constraints. Recent Mixture-of-Transformers (MoT) Vision-Language-Action Models (VLAs) architecturally support such heterogeneous outputs, yet existing inference systems fail to achieve efficient multi-task parallelism for on-device deployment due to redundant computation and resource contention. We identify isolated KV cache management as the root cause. To address this, we propose unified KV cache management, an inference paradigm that treats KV cache as a first-class shared resource across tasks and over time. This abstraction enables two key optimizations: cross-task KV sharing eliminates redundant prefill of shared observations, while cross-frame continuous batching decouples variable-length language decoding from fixed-rate action generation across control cycles. We implement this paradigm for "pi"_{0.5}, the most popular MoT VLA, and evaluate under representative robotic configurations. OxyGen achieves up to 3.7times speedup over isolated execution, delivering over 200 tokens/s language throughput and 70 Hz action frequency simultaneously without action quality degradation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>KV Cache Management</span><span>Vision-Language-Action Models</span><span>Multi-Task Parallelism</span><span>Embodied AI</span><span>Robotics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Robotics</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.14371" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Supervised Fine-Tuning versus Reinforcement Learning: A Study of Post-Training Methods for Large Language Models</h2>
+                <span class="published-time">Published: 2026-03-14T15:24:38.000Z</span>
+                
+                <p class="summary">Pre-trained Large Language Model (LLM) exhibits broad capabilities, yet, for specific tasks or domains their attainment of higher accuracy and more reliable reasoning generally depends on post-training through Supervised Fine-Tuning (SFT) or Reinforcement Learning (RL). Although often treated as distinct methodologies, recent theoretical and empirical developments demonstrate that SFT and RL are closely connected. This study presents a comprehensive and unified perspective on LLM post-training with SFT and RL. We first provide an in-depth overview of both techniques, examining their objectives, algorithmic structures, and data requirements. We then systematically analyze their interplay, highlighting frameworks that integrate SFT and RL, hybrid training pipelines, and methods that leverage their complementary strengths. Drawing on a representative set of recent application studies from 2023 to 2025, we identify emerging trends, characterize the rapid shift toward hybrid post-training paradigms, and distill key takeaways that clarify when and why each method is most effective. By synthesizing theoretical insights, practical methodologies, and empirical evidence, this study establishes a coherent understanding of SFT and RL within a unified framework and outlines promising directions for future research in scalable, efficient, and generalizable LLM post-training.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Supervised Fine-Tuning</span><span>Reinforcement Learning</span><span>Post-training methods</span><span>Hybrid training</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.13985" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
