@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-03-21</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-03-21</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Thinking Fast, Slow, and Artificial: How AI Is Reshaping Human Reasoning</h2>
+                <span class="published-time">Published: 2026-03-21 15:30:29</span>
+                
+                <p class="summary">This paper delves into the transformative influence of artificial intelligence on human reasoning, conceptualizing AI as a distinct "artificial" mode alongside human "fast" and "slow" thinking. It explores how AI systems are not merely tools but active participants in cognitive processes, fundamentally reshaping human decision-making, problem-solving, and perception across various domains. The analysis likely examines how AI's analytical prowess and computational speed interact with and either augment or challenge human intuition (System 1) and deliberative thought (System 2). The study probably highlights the emergence of new human-AI cognitive partnerships, the potential for AI to identify and mitigate cognitive biases, and the critical need to understand the evolving interplay between human and machine intelligence. Ultimately, the paper provides a framework for re-evaluating traditional cognitive models in an era where artificial intelligence increasingly integrates with and influences the very fabric of human thought processes, paving the way for a redefined understanding of cognition.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Human Reasoning</span><span>Cognitive Science</span><span>Decision Making</span><span>Human-AI Interaction</span><span>Cognitive Bias</span><span>Systems Thinking</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6097646" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Joonote – A note-taking app on your lock screen and notification panel</h2>
+                <span class="published-time">Published: 2026-03-21 15:02:30</span>
+                
+                <p class="summary">Joonote is an innovative native Android note-taking application designed to enhance user convenience by allowing direct access to notes from the device's lock screen and notification panel. The app's core motivation stems from the developer's frustration with repeatedly unlocking their phone for simple note access, particularly for tasks like managing a grocery list. Developed in Kotlin, the project represents a significant personal accomplishment for its creator, a seasoned web developer, who had no prior experience in native Android development. Crucially, the entire application's construction was heavily facilitated by an AI assistant, Gemini. The developer utilized Gemini's chat interface for generating and integrating code snippets, effectively learning Android development, architecture patterns, and Kotlin syntax on the fly. This case highlights the transformative potential of AI tools in enabling cross-domain development, empowering individuals to build complex native applications efficiently, and bridging skill gaps for non-native developers without necessitating paid AI subscriptions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Android Development</span><span>Kotlin</span><span>Note-taking App</span><span>AI Assistant</span><span>Mobile Application</span><span>Gemini AI</span><span>App Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://joonote.com/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Blocking Internet Archive Won't Stop AI, but Will Erase Web's Historical Record</h2>
+                <span class="published-time">Published: 2026-03-21 07:30:16</span>
+                
+                <p class="summary">The article critically examines the notion that blocking the Internet Archive could somehow impede the advancement of artificial intelligence. It asserts that such measures are largely ineffective in halting AI development, which relies on a vast and diverse range of data sources. Instead, the primary consequence of restricting access to or functionality of the Internet Archive would be the catastrophic erasure of the internet's historical record. The Internet Archive functions as an indispensable digital library, meticulously preserving billions of web pages, multimedia, and software that document the evolution of the internet and human knowledge within the digital realm. The piece argues that instead of futilely targeting essential public resources like the Archive, efforts should focus on more nuanced and effective strategies for AI regulation that do not inadvertently dismantle critical historical and cultural repositories. This approach underscores the public good served by digital archives and warns against collateral damage in the pursuit of AI control.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Internet Archive</span><span>Digital Preservation</span><span>AI Regulation</span><span>Web History</span><span>Data Sourcing</span><span>Copyright Law</span><span>Public Interest</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.eff.org/deeplinks/2026/03/blocking-internet-archive-wont-stop-ai-it-will-erase-webs-historical-record" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Senior European journalist suspended over AI-generated quotes</h2>
+                <span class="published-time">Published: 2026-03-21 14:50:13</span>
+                
+                <p class="summary">The suspension of a senior European journalist by Mediahuis due to the alleged use of AI-generated quotes has brought to the forefront critical ethical dilemmas facing the media industry in the age of artificial intelligence. This incident profoundly underscores the increasing necessity for stringent journalistic integrity and transparency, especially as advanced generative AI technologies become more prevalent and sophisticated. The controversy instigates vital discussions across newsrooms concerning the authenticity of reported information, the potential for AI-driven fabrication, and the urgent requirement for media organizations to implement clear policies, verification processes, and possibly detection mechanisms for AI-created content. It also raises serious questions about the long-term implications for news credibility and the potential for public trust to erode if AI-produced material is not rigorously fact-checked and openly disclosed. This event serves as a significant case study, compelling the journalism sector to proactively address the ethical boundaries and operational standards for integrating AI while steadfastly maintaining core professional principles.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Ethics</span><span>Generative AI</span><span>Journalism AI</span><span>Content Integrity</span><span>AI Detection</span><span>Media Ethics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.theguardian.com/technology/2026/mar/20/mediahuis-suspends-senior-journalist-over-ai-generated-quotes" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Atuin v18.13 – better search, a PTY proxy, and AI for your shell</h2>
+                <span class="published-time">Published: 2026-03-21 10:35:20</span>
+                
+                <p class="summary">Atuin, a prominent shell history management utility, has unveiled version 18.13, introducing a suite of significant enhancements designed to elevate user efficiency and interaction within the command-line interface. This update features a substantially improved search functionality, promising more precise and rapid retrieval of previous commands, thereby streamlining the process of navigating command history. A key technical addition is the integration of a PTY (pseudo-terminal) proxy, which could facilitate advanced session management, monitoring, or enhanced security for shell environments. Most notably, Atuin v18.13 incorporates artificial intelligence directly into the shell experience. While specific AI capabilities are not exhaustively detailed, this integration suggests the potential for intelligent command suggestions, context-aware assistance, or even automated task completion, leveraging patterns derived from the user's historical commands to optimize workflows. These collective improvements position Atuin as a more sophisticated and intelligent tool for developers and power users.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Atuin</span><span>shell</span><span>command line interface</span><span>AI</span><span>PTY proxy</span><span>search</span><span>developer tools</span><span>productivity</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://blog.atuin.sh/atuin-v18-13/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Iran launched unsuccessful attack on UK's Diego Garcia</h2>
+                <span class="published-time">Published: 2026-03-21 14:54:38</span>
+                
+                <p class="summary">The report of an unsuccessful attack on the UK's Diego Garcia by Iran brings to the forefront the escalating need for sophisticated technological defenses in critical geopolitical hotspots. While specific details of the incident remain unconfirmed, such events inherently drive advancements in national security paradigms, particularly in the realm of artificial intelligence. AI-driven solutions are becoming indispensable for enhancing situational awareness, facilitating rapid threat assessment, and bolstering defensive capabilities against both conventional and asymmetric warfare. This includes leveraging machine learning algorithms for real-time intelligence gathering, predictive modeling of hostile intent, and the autonomous monitoring of vast operational theaters. The ongoing developments in international security underscore a growing imperative for nations to integrate cutting-edge AI technologies, such as advanced sensor fusion, data analytics, and autonomous decision-support systems, to protect vital strategic assets and ensure regional stability. The continuous evolution of these threats necessitates a proactive approach to AI research and deployment in defense, focusing on resilience and responsiveness in complex operational environments.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI in Defense</span><span>Geopolitical Analysis</span><span>Threat Detection</span><span>Situational Awareness</span><span>Predictive Analytics</span><span>Autonomous Systems</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.bbc.com/news/articles/c5yljdgwppzo" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
