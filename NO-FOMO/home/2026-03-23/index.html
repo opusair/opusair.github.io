@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-03-23</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-03-23</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>iPhone 17 Pro Demonstrated Running a 400B LLM</h2>
+                <span class="published-time">Published: 2026-03-23 14:30:10</span>
+                
+                <p class="summary">A recent technical demonstration has revealed an iPhone 17 Pro successfully running a 400-billion parameter Large Language Model (LLM) entirely on the device. This achievement marks a significant milestone in on-device artificial intelligence, demonstrating the rapidly evolving capabilities of mobile hardware. Running such an extensive model, which typically demands substantial computational power often found in data centers, directly on a smartphone indicates considerable advancements in chip design, memory management, and AI inference optimization. This breakthrough suggests that future iterations of mobile devices could host increasingly sophisticated AI functionalities, enabling highly personalized and privacy-centric applications without constant reliance on cloud services. The implications extend to areas such as real-time language translation, advanced personal assistants, and complex data analysis performed at the edge. While specifics regarding the model's performance, power consumption, and the underlying software stack are eagerly awaited, this demonstration underscores a pivotal shift towards more powerful, self-contained AI experiences on consumer electronics.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>iPhone 17 Pro</span><span>Large Language Model</span><span>On-device AI</span><span>Mobile AI</span><span>Edge AI</span><span>AI inference</span><span>LLM optimization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/anemll/status/2035901335984611412" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Mark Zuckerberg Is Building an AI Agent to Help Him Be CEO</h2>
+                <span class="published-time">Published: 2026-03-23 16:04:20</span>
+                
+                <p class="summary">Mark Zuckerberg, CEO of Meta Platforms, is reportedly developing a bespoke artificial intelligence agent designed to enhance his effectiveness in leading the company. This initiative signifies a strategic move towards integrating advanced AI capabilities directly into high-level executive functions, aiming to assist Zuckerberg with complex decision-making processes, information synthesis, and potentially automating routine aspects of his role. The development underscores a growing trend in the tech industry to create highly personalized AI tools capable of understanding and adapting to specific leadership styles and operational demands. Such an agent could revolutionize how top executives manage vast organizations by providing real-time insights, streamlining communication, and optimizing strategic planning. This project, if successful, could set a precedent for future applications of AI in corporate governance, demonstrating the potential for AI to serve as a powerful co-pilot for human leaders, augmenting their cognitive abilities and operational efficiency. It also highlights the increasing investment in and belief in the transformative power of AI at Meta's highest echelons, potentially influencing broader industry adoption of similar executive AI assistants.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Executive AI</span><span>Personalized AI</span><span>Mark Zuckerberg</span><span>Meta Platforms</span><span>CEO Assistance</span><span>Artificial Intelligence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.wsj.com/tech/ai/mark-zuckerberg-is-building-an-ai-agent-to-help-him-be-ceo-eddab2d5" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>I tried Karpathy's Autoresearch on an old research project</h2>
+                <span class="published-time">Published: 2026-03-23 18:40:58</span>
+                
+                <p class="summary">The blog post titled "I tried Karpathy's Autoresearch on an old research project" describes an individual's practical application of Andrej Karpathy's conceptual framework for "Autoresearch." This initiative likely involves leveraging advanced AI systems, potentially large language models or AI agents, to automate various stages of scientific inquiry and experimentation. The author's endeavor focuses on integrating these automated research techniques into an existing, previously completed research project, aiming to evaluate the efficacy and potential benefits of such an approach. This experiment could shed light on whether AI-driven methodologies can accelerate discovery, refine existing results, or uncover novel insights that might have been overlooked in traditional human-led research processes. The outcome of this trial is anticipated to provide valuable empirical data on the feasibility and limitations of AI-assisted research, particularly in the context of re-examining established work. It contributes to the broader discussion on the evolving role of artificial intelligence in scientific advancement and research methodology.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Autoresearch</span><span>AI Agent</span><span>Research Automation</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Experimental Design</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://ykumar.me/blog/eclip-autoresearch/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>If DSPy is so great, why isn't anyone using it?</h2>
+                <span class="published-time">Published: 2026-03-23 14:52:52</span>
+                
+                <p class="summary">The article titled "If DSPy is so great, why isn't anyone using it?" investigates the discrepancy between the perceived capabilities of DSPy and its observed adoption within the AI development community. DSPy is presented as a novel programming framework designed to enhance the reliability and modularity of applications built with Large Language Models (LLMs) by offering a more structured and programmatic approach to prompt engineering and pipeline optimization. The piece critically examines potential reasons for its seemingly limited widespread use, despite its promise in simplifying complex LLM workflows and improving performance through techniques like few-shot learning and self-correction. Discussion points likely include the challenges associated with integrating new frameworks into existing development stacks, the learning curve for developers accustomed to traditional prompt engineering, the maturity of DSPy's ecosystem, and the clear articulation of its unique value proposition in practical scenarios. By exploring these factors, the article aims to foster a deeper understanding of the barriers to adoption for innovative AI tools and to illuminate the practical benefits and engineering patterns that could accelerate DSPy's broader acceptance.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>DSPy</span><span>Large Language Models</span><span>Prompt Engineering</span><span>AI Programming Framework</span><span>Software Engineering</span><span>AI Application Development</span><span>Machine Learning Framework</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://skylarbpayne.com/posts/dspy-engineering-patterns/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI Risks "Hypernormal" Science</h2>
+                <span class="published-time">Published: 2026-03-23 18:19:05</span>
+                
+                <p class="summary">The concept of "hypernormal science" presents a significant cautionary tale for the rapidly advancing field of AI-driven research, hinting at a future where the sheer volume and velocity of AI-generated scientific outputs could overwhelm traditional mechanisms of validation, scrutiny, and human comprehension. This phenomenon risks creating an environment where scientific progress becomes superficially rapid yet lacks depth, reproducibility, or genuine human insight. Potential dangers include the proliferation of unverified findings, the loss of human intuition in guiding research directions, and an increasing reliance on opaque AI models whose outputs may be difficult to interpret or contextualize. The article implicitly warns against an era where AI optimizes for metrics and novel results without a corresponding emphasis on robust methodology, ethical considerations, or long-term societal impact. Mitigating these risks necessitates the development of explainable AI, strong ethical guidelines for research automation, and a renewed focus on interdisciplinary collaboration to ensure that AI serves to augment, rather than undermine, the foundational principles of sound scientific inquiry.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Scientific Research</span><span>AI Ethics</span><span>Research Automation</span><span>Reproducibility</span><span>Epistemic Risks</span><span>Science Governance</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.asimov.press/p/ai-science" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Littlebird – Screenreading is the missing link in AI</h2>
+                <span class="published-time">Published: 2026-03-23 17:39:08</span>
+                
+                <p class="summary">Littlebird, introduced on Hacker News, proposes that advanced screenreading capabilities are a critical, yet largely unaddressed, component for the next generation of artificial intelligence. The initiative suggests that while AI excels in areas like natural language processing and specific computer vision tasks, its ability to comprehensively interpret, understand, and interact with dynamic graphical user interfaces and digital screen content—mimicking human perception—remains underdeveloped. This goes beyond simple text extraction, encompassing the recognition of visual layouts, interactive elements, and contextual cues within a digital environment. Littlebird aims to fill this void, potentially empowering AI agents to navigate, extract complex information from, and control software applications more autonomously. Such an innovation is crucial for developing more sophisticated AI assistants, enhancing intelligent automation, and creating truly versatile AI agents capable of operating seamlessly across diverse digital platforms.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Screenreading AI</span><span>AI Agents</span><span>Multimodal AI</span><span>User Interface Understanding</span><span>Visual AI</span><span>Automation</span><span>Digital Interaction</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Multimodal</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://littlebird.ai/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Breaking the Capability Ceiling of LLM Post-Training by Reintroducing Markov States</h2>
+                <span class="published-time">Published: 2026-03-20T14:35:49.000Z</span>
+                
+                <p class="summary">Reinforcement learning (RL) has become a standard paradigm for post-training and aligning Large Language Models (LLMs), yet recent evidence suggests it faces a persistent "capability ceiling": unlike classical RL systems that discover novel strategies, RL for LLMs often acts as a mere refiner of patterns already latent in pre-trained weights. In this work, we identify a fundamental structural bottleneck: while classical RL relies on compact, informative Markov states, current LLM post-training formulations are tethered to an ever-expanding history of actions. We revisit a classical principle long central to RL yet absent from LLM post-training: explicit Markov states. Theoretically, we provide rigorous guarantees demonstrating that leveraging estimated Markov states can significantly reduce sample complexity. Empirically, we show that introducing Markov states consistently breaks the performance boundaries of standard RL post-training across a suite of complex logic puzzles. Our findings suggest that moving beyond "history-as-state" modeling in favor of structured Markovian representations is essential for unlocking open-ended discovery and genuinely new reasoning capabilities in Generative AI.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Large Language Models</span><span>Markov States</span><span>Post-training</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Generative AI</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.19987" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>A Subgoal-driven Framework for Improving Long-Horizon LLM Agents</h2>
+                <span class="published-time">Published: 2026-03-20T06:32:16.000Z</span>
+                
+                <p class="summary">Large language model (LLM)-based agents have emerged as powerful autonomous controllers for digital environments, including mobile interfaces, operating systems, and web browsers. Web navigation, for example, requires handling dynamic content and long sequences of actions, making it particularly challenging. Existing LLM-based agents struggle with long-horizon planning in two main ways. During online execution, they often lose track as new information arrives, lacking a clear and adaptive path toward the final goal. This issue is further exacerbated during reinforcement learning (RL) fine-tuning, where sparse and delayed rewards make it difficult for agents to identify which actions lead to success, preventing them from maintaining coherent reasoning over extended tasks. To address these challenges, we propose two contributions. First, we introduce an agent framework that leverages proprietary models for online planning through subgoal decomposition. Second, we present MiRA (Milestoning your Reinforcement Learning Enhanced Agent), an RL training framework that uses dense, milestone-based reward signals. The real-time planning mechanism improves proprietary models such as Gemini by approximately a 10% absolute increase in success rate (SR) on the WebArena-Lite benchmark. Meanwhile, applying MiRA to the open Gemma3-12B model increases its success rate from 6.4% to 43.0%. This performance surpasses proprietary systems such as GPT-4-Turbo (17.6%) and GPT-4o (13.9%), as well as the previous open-model state of the art, WebRL (38.4%). Overall, our findings demonstrate that combining explicit inference-time planning with milestone-based rewards significantly improves an agent's long-horizon capabilities, paving the way for more robust and general-purpose autonomous systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM agents</span><span>Long-horizon planning</span><span>Subgoal decomposition</span><span>Reinforcement learning</span><span>Milestone-based rewards</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.19685" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LumosX: Relate Any Identities with Their Attributes for Personalized Video Generation</h2>
+                <span class="published-time">Published: 2026-03-20T17:59:46.000Z</span>
+                
+                <p class="summary">Recent advances in diffusion models have significantly improved text-to-video generation, enabling personalized content creation with fine-grained control over both foreground and background elements. However, precise face-attribute alignment across subjects remains challenging, as existing methods lack explicit mechanisms to ensure intra-group consistency. Addressing this gap requires both explicit modeling strategies and face-attribute-aware data resources. We therefore propose LumosX, a framework that advances both data and model design. On the data side, a tailored collection pipeline orchestrates captions and visual cues from independent videos, while multimodal large language models (MLLMs) infer and assign subject-specific dependencies. These extracted relational priors impose a finer-grained structure that amplifies the expressive control of personalized video generation and enables the construction of a comprehensive benchmark. On the modeling side, Relational Self-Attention and Relational Cross-Attention intertwine position-aware embeddings with refined attention dynamics to inscribe explicit subject-attribute dependencies, enforcing disciplined intra-group cohesion and amplifying the separation between distinct subject clusters. Comprehensive evaluations on our benchmark demonstrate that LumosX achieves state-of-the-art performance in fine-grained, identity-consistent, and semantically aligned personalized multi-subject video generation. Code and models are available at https://jiazheng-xing.github.io/lumosx-home/.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Personalized Video Generation</span><span>Diffusion Models</span><span>Multimodal Large Language Models</span><span>Face-Attribute Alignment</span><span>Relational Attention</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.20192" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>BEAVER: A Training-Free Hierarchical Prompt Compression Method via Structure-Aware Page Selection</h2>
+                <span class="published-time">Published: 2026-03-20T04:35:04.000Z</span>
+                
+                <p class="summary">The exponential expansion of context windows in LLMs has unlocked capabilities for long-document understanding but introduced severe bottlenecks in inference latency and information utilization. Existing compression methods often suffer from high training costs or semantic fragmentation due to aggressive token pruning. In this paper, we propose BEAVER, a novel training-free framework that shifts compression from linear token removal to structure-aware hierarchical selection. BEAVER maximizes hardware parallelism by mapping variable-length contexts into dense page-level tensors via dual-path pooling, and preserves discourse integrity through a hybrid planner combining semantic and lexical dual-branch selection with sentence smoothing. Extensive evaluations on four long-context benchmarks demonstrate that BEAVER achieves comparable performance to state-of-the-art (SOTA) methods like LongLLMLingua. Notably, on the RULER benchmark, BEAVER maintains high fidelity in multi-needle retrieval where baselines deteriorate. Regarding efficiency, BEAVER reduces latency by 26.4x on 128k contexts, offering a scalable solution for high-throughput applications. Our code is available at https://cslikai.cn/BEAVER/.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Prompt Compression</span><span>Large Language Models</span><span>Hierarchical Selection</span><span>Training-Free</span><span>Context Windows</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Large Language Model</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.19635" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Hyperagents</h2>
+                <span class="published-time">Published: 2026-03-19T20:50:08.000Z</span>
+                
+                <p class="summary">Self-improving AI systems aim to reduce reliance on human engineering by learning to improve their own learning and problem-solving processes. Existing approaches to self-improvement rely on fixed, handcrafted meta-level mechanisms, fundamentally limiting how fast such systems can improve. The Darwin Gödel Machine (DGM) demonstrates open-ended self-improvement in coding by repeatedly generating and evaluating self-modified variants. Because both evaluation and self-modification are coding tasks, gains in coding ability can translate into gains in self-improvement ability. However, this alignment does not generally hold beyond coding domains. We introduce hyperagents, self-referential agents that integrate a task agent (which solves the target task) and a meta agent (which modifies itself and the task agent) into a single editable program. Crucially, the meta-level modification procedure is itself editable, enabling metacognitive self-modification, improving not only the task-solving behavior, but also the mechanism that generates future improvements. We instantiate this framework by extending DGM to create DGM-Hyperagents (DGM-H), eliminating the assumption of domain-specific alignment between task performance and self-modification skill to potentially support self-accelerating progress on any computable task. Across diverse domains, the DGM-H improves performance over time and outperforms baselines without self-improvement or open-ended exploration, as well as prior self-improving systems. Furthermore, the DGM-H improves the process by which it generates new agents (e.g., persistent memory, performance tracking), and these meta-level improvements transfer across domains and accumulate across runs. DGM-Hyperagents offer a glimpse of open-ended AI systems that do not merely search for better solutions, but continually improve their search for how to improve.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Hyperagents</span><span>Self-improving AI systems</span><span>Metacognitive self-modification</span><span>Open-ended self-improvement</span><span>Darwin Gödel Machine</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.19461" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Astrolabe: Steering Forward-Process Reinforcement Learning for Distilled Autoregressive Video Models</h2>
+                <span class="published-time">Published: 2026-03-17T18:32:18.000Z</span>
+                
+                <p class="summary">Distilled autoregressive (AR) video models enable efficient streaming generation but frequently misalign with human visual preferences. Existing reinforcement learning (RL) frameworks are not naturally suited to these architectures, typically requiring either expensive re-distillation or solver-coupled reverse-process optimization that introduces considerable memory and computational overhead. We present Astrolabe, an efficient online RL framework tailored for distilled AR models. To overcome existing bottlenecks, we introduce a forward-process RL formulation based on negative-aware fine-tuning. By contrasting positive and negative samples directly at inference endpoints, this approach establishes an implicit policy improvement direction without requiring reverse-process unrolling. To scale this alignment to long videos, we propose a streaming training scheme that generates sequences progressively via a rolling KV-cache, applying RL updates exclusively to local clip windows while conditioning on prior context to ensure long-range coherence. Finally, to mitigate reward hacking, we integrate a multi-reward objective stabilized by uncertainty-aware selective regularization and dynamic reference updates. Extensive experiments demonstrate that our method consistently enhances generation quality across multiple distilled AR video models, serving as a robust and scalable alignment solution.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Distilled Autoregressive Video Models</span><span>Reinforcement Learning</span><span>Forward-Process RL</span><span>Streaming Training</span><span>Video Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Generative AI</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.17051" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
