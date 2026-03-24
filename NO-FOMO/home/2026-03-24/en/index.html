@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-03-24</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-03-24</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Arm AGI CPU</h2>
+                <span class="published-time">Published: 2026-03-24 17:30:42</span>
+                
+                <p class="summary">Arm has reportedly unveiled or is developing a new processor design, tentatively named the 'Arm AGI CPU,' signaling its strategic entry or expansion into hardware specifically optimized for Artificial General Intelligence (AGI) workloads. This development positions Arm, a dominant force in CPU and GPU intellectual property, to play a crucial role in the future of advanced AI computing. While specific architectural details, performance benchmarks, and release timelines remain largely undisclosed, the introduction of an AGI-focused CPU suggests a fundamental rethinking of processor design to address the unique and demanding computational requirements of AGI systems. This move could involve specialized cores, enhanced memory bandwidth, and novel instruction sets tailored for complex AI algorithms, machine learning models, and neural networks that underpin AGI. The initiative underscores the increasing industry focus on creating dedicated hardware to accelerate the development and deployment of truly intelligent AI, potentially disrupting the current landscape dominated by general-purpose CPUs and highly specialized AI accelerators. Observers anticipate this could significantly influence the trajectory of AI research and commercialization, providing a robust, power-efficient platform for the next generation of artificial intelligence.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Arm</span><span>AGI</span><span>CPU</span><span>Artificial General Intelligence</span><span>AI hardware</span><span>processor architecture</span><span>machine learning</span><span>deep learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://newsroom.arm.com/blog/introducing-arm-agi-cpu" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>So where are all the AI apps?</h2>
+                <span class="published-time">Published: 2026-03-24 14:19:59</span>
+                
+                <p class="summary">The article titled "So where are all the AI apps?" critically examines the current state of artificial intelligence productization, questioning the apparent scarcity of widely adopted, consumer-facing AI applications despite rapid advancements in underlying AI technologies, particularly large language models. It likely explores the chasm between cutting-edge AI research and the development of robust, scalable, and universally impactful end-user products. The discussion may delve into challenges such as the complexities of integration, high operational costs, difficulties in ensuring reliable performance outside of controlled environments, and the struggle to identify truly transformative use cases beyond specialized tools or infrastructure. The piece potentially suggests that much of the current AI innovation is concentrated in foundational models and developer tools, prompting a reevaluation of expectations for AI's immediate impact on daily consumer life and the future trajectory of AI product development and market penetration.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Applications</span><span>AI Productization</span><span>Large Language Models</span><span>AI Adoption</span><span>Technological Innovation</span><span>AI Deployment</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.answer.ai/posts/2026-03-12-so-where-are-all-the-ai-apps.html" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The AI Industry Is Lying to You</h2>
+                <span class="published-time">Published: 2026-03-24 17:30:55</span>
+                
+                <p class="summary">This article critically examines the prevalent narratives within the artificial intelligence industry, positing that there is a significant disconnect between public perception, industry claims, and the actual capabilities and limitations of AI technologies. The author argues that many industry leaders and companies engage in overhyping AI advancements, leading to unrealistic expectations and potentially misleading investors and the public. This piece aims to deconstruct the exaggeration surrounding concepts like Artificial General Intelligence (AGI) and the immediate societal impacts of current Large Language Models (LLMs), urging for a more transparent and realistic discourse. It highlights concerns about the ethical implications, biases embedded in algorithms, and the sustainability of current AI development practices, advocating for a cautious approach to AI integration and innovation that prioritizes truthfulness and accountability over speculative promises. The discussion emphasizes the importance of understanding AI's practical boundaries and fostering a responsible development ecosystem.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Hype</span><span>Artificial General Intelligence</span><span>Large Language Model</span><span>AI Ethics</span><span>Technological Misinformation</span><span>Responsible AI</span><span>Industry Transparency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.wheresyoured.at/the-ai-industry-is-lying-to-you/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Gemini can now natively embed video, so I built sub-second video search</h2>
+                <span class="published-time">Published: 2026-03-24 14:58:27</span>
+                
+                <p class="summary">A developer has showcased a new sub-second video search tool leveraging Gemini Embedding 2's native video embedding capabilities. This innovative approach allows raw video to be directly projected into a 768-dimensional vector space, co-locating it with text representations. Crucially, it bypasses traditional video analysis steps such as transcription or frame captioning, enabling direct vector-level comparison between natural language queries and video content. The creator developed a Command Line Interface (CLI) that indexes hours of video footage into ChromaDB, facilitating rapid natural language searches and automatically trimming relevant video clips. This system offers significant efficiency gains, allowing queries like "green car cutting me off" to pinpoint specific video segments almost instantly. Indexing costs are approximately $2.50 per hour of footage, with potential for lower costs in applications like security cameras through still-frame detection for idle periods. The project highlights a practical application of advanced multimodal embeddings for highly efficient video retrieval.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Gemini Embedding 2</span><span>Video Search</span><span>Multimodal AI</span><span>Vector Embeddings</span><span>ChromaDB</span><span>Natural Language Processing</span><span>Video Understanding</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Video Understanding</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/ssrajadh/sentrysearch" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: ProofShot – Give AI coding agents eyes to verify the UI they build</h2>
+                <span class="published-time">Published: 2026-03-24 07:46:46</span>
+                
+                <p class="summary">ProofShot is a newly developed CLI tool designed to address a critical limitation in AI coding agents: their inability to visually verify generated UI code. The creator developed ProofShot to enable AI agents to 'see' the user interface they build in a browser, detecting layout issues or console errors that are otherwise invisible to them. The tool allows agents to launch a browser, interact with web pages, and record actions through video, screenshots, and logs. This captured data is then compiled into a single, self-contained HTML file, facilitating quick human review. Compatible with various AI agents such as Claude Code, Cursor, and Codex, ProofShot operates through simple shell commands and leverages Vercel Labs' agent-browser technology, which is highlighted as a more efficient alternative to Playwright MCP. It aims to streamline UI development by providing AI agents with essential visual feedback without acting as a traditional testing framework.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI agents</span><span>UI verification</span><span>Frontend development</span><span>Browser automation</span><span>Code generation</span><span>CLI tool</span><span>Vercel agent-browser</span><span>Visual debugging</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/AmElmo/proofshot" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LLM Neuroanatomy II: Modern LLM Hacking and Hints of a Universal Language?</h2>
+                <span class="published-time">Published: 2026-03-24 10:33:54</span>
+                
+                <p class="summary">This Hacker News story, "LLM Neuroanatomy II: Modern LLM Hacking and Hints of a Universal Language?", delves into advanced techniques for understanding and manipulating Large Language Models. Building upon previous explorations of LLM internal structures, this installment focuses on practical "hacking" methodologies, which can be interpreted as probing or reverse-engineering models to uncover their latent capabilities and vulnerabilities. The discussion extends to the intriguing hypothesis of a "universal language" within these complex systems, suggesting that different LLMs or even different natural languages might share underlying, unified representations or computational principles. This neuroanatomical approach aims to demystify the black box nature of LLMs, offering insights into their decision-making processes, emergent properties, and potential for more secure and predictable AI development. The article likely presents cutting-edge research or theoretical frameworks for deeper LLM analysis, pushing the boundaries of AI interpretability and model security.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>LLM Interpretability</span><span>AI Security</span><span>Neuroanatomy</span><span>Universal Language</span><span>Model Hacking</span><span>Language Representation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://dnhkng.github.io/posts/rys-ii/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>WorldCache: Content-Aware Caching for Accelerated Video World Models</h2>
+                <span class="published-time">Published: 2026-03-23T17:59:54.000Z</span>
+                
+                <p class="summary">Diffusion Transformers (DiTs) power high-fidelity video world models but remain computationally expensive due to sequential denoising and costly spatio-temporal attention. Training-free feature caching accelerates inference by reusing intermediate activations across denoising steps; however, existing methods largely rely on a Zero-Order Hold assumption i.e., reusing cached features as static snapshots when global drift is small. This often leads to ghosting artifacts, blur, and motion inconsistencies in dynamic scenes. We propose WorldCache, a Perception-Constrained Dynamical Caching framework that improves both when and how to reuse features. WorldCache introduces motion-adaptive thresholds, saliency-weighted drift estimation, optimal approximation via blending and warping, and phase-aware threshold scheduling across diffusion steps. Our cohesive approach enables adaptive, motion-consistent feature reuse without retraining. On Cosmos-Predict2.5-2B evaluated on PAI-Bench, WorldCache achieves 2.3times inference speedup while preserving 99.4% of baseline quality, substantially outperforming prior training-free caching approaches. Our code can be accessed on https://umair1221.github.io/World-Cache/{World-Cache}.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video World Models</span><span>Diffusion Transformers</span><span>Feature Caching</span><span>Inference Speedup</span><span>Motion-adaptive Caching</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Video Understanding</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.22286" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Omni-WorldBench: Towards a Comprehensive Interaction-Centric Evaluation for World Models</h2>
+                <span class="published-time">Published: 2026-03-23T17:10:29.000Z</span>
+                
+                <p class="summary">Video--based world models have emerged along two dominant paradigms: video generation and 3D reconstruction. However, existing evaluation benchmarks either focus narrowly on visual fidelity and text--video alignment for generative models, or rely on static 3D reconstruction metrics that fundamentally neglect temporal dynamics. We argue that the future of world modeling lies in 4D generation, which jointly models spatial structure and temporal evolution. In this paradigm, the core capability is interactive response: the ability to faithfully reflect how interaction actions drive state transitions across space and time. Yet no existing benchmark systematically evaluates this critical dimension. To address this gap, we propose Omni--WorldBench, a comprehensive benchmark specifically designed to evaluate the interactive response capabilities of world models in 4D settings. Omni--WorldBench comprises two key components: Omni--WorldSuite, a systematic prompt suite spanning diverse interaction levels and scene types; and Omni--Metrics, an agent-based evaluation framework that quantifies world modeling capabilities by measuring the causal impact of interaction actions on both final outcomes and intermediate state evolution trajectories. We conduct extensive evaluations of 18 representative world models across multiple paradigms. Our analysis reveals critical limitations of current world models in interactive response, providing actionable insights for future research. Omni-WorldBench will be publicly released to foster progress in interactive 4D world modeling.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>World Models</span><span>Interactive Response</span><span>4D Generation</span><span>Evaluation Benchmark</span><span>Agent-based Evaluation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Generative AI</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.22212" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Speed by Simplicity: A Single-Stream Architecture for Fast Audio-Video Generative Foundation Model</h2>
+                <span class="published-time">Published: 2026-03-23T13:49:06.000Z</span>
+                
+                <p class="summary">We present daVinci-MagiHuman, an open-source audio-video generative foundation model for human-centric generation. daVinci-MagiHuman jointly generates synchronized video and audio using a single-stream Transformer that processes text, video, and audio within a unified token sequence via self-attention only. This single-stream design avoids the complexity of multi-stream or cross-attention architectures while remaining easy to optimize with standard training and inference infrastructure. The model is particularly strong in human-centric scenarios, producing expressive facial performance, natural speech-expression coordination, realistic body motion, and precise audio-video synchronization. It supports multilingual spoken generation across Chinese (Mandarin and Cantonese), English, Japanese, Korean, German, and French. For efficient inference, we combine the single-stream backbone with model distillation, latent-space super-resolution, and a Turbo VAE decoder, enabling generation of a 5-second 256p video in 2 seconds on a single H100 GPU. In automatic evaluation, daVinci-MagiHuman achieves the highest visual quality and text alignment among leading open models, along with the lowest word error rate (14.60%) for speech intelligibility. In pairwise human evaluation, it achieves win rates of 80.0% against Ovi 1.1 and 60.9% against LTX 2.3 over 2000 comparisons. We open-source the complete model stack, including the base model, the distilled model, the super-resolution model, and the inference codebase.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Audio-Video Generation</span><span>Foundation Model</span><span>Single-Stream Transformer</span><span>Human-Centric AI</span><span>Efficient Inference</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Multimodal</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.21986" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Demystifying Reinforcement Learning for Long-Horizon Tool-Using Agents: A Comprehensive Recipe</h2>
+                <span class="published-time">Published: 2026-03-23T13:40:08.000Z</span>
+                
+                <p class="summary">Reinforcement Learning (RL) is essential for evolving Large Language Models (LLMs) into autonomous agents capable of long-horizon planning, yet a practical recipe for scaling RL in complex, multi-turn environments remains elusive. This paper presents a systematic empirical study using TravelPlanner, a challenging testbed requiring tool orchestration to satisfy multifaceted constraints. We decompose the agentic RL design space along 5 axes: reward shaping, model scaling, data composition, algorithm selection, and environmental stability. Our controlled experiments yield 7 key takeaways, e.g., (1) reward and algorithm choices are scale-dependent as smaller models benefit from staged rewards and enhanced exploration, whereas larger models converge efficiently with simpler dense rewards, (2) ~ 1K training samples with a balanced difficulty mixture mark a sweet spot for both in-domain and out-of-domain performance, and (3) environmental stability is critical to prevent policy degradation. Based on our distilled recipe, our RL-trained models achieve state-of-the-art performance on TravelPlanner, significantly outperforming leading LLMs.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Large Language Models</span><span>Autonomous Agents</span><span>Tool-Using Agents</span><span>Long-Horizon Planning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.21972" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>On the Direction of RLVR Updates for LLM Reasoning: Identification and Exploitation</h2>
+                <span class="published-time">Published: 2026-03-23T15:42:24.000Z</span>
+                
+                <p class="summary">Reinforcement learning with verifiable rewards (RLVR) has substantially improved the reasoning capabilities of large language models. While existing analyses identify that RLVR-induced changes are sparse, they primarily focus on the magnitude of these updates, largely overlooking their direction. In this work, we argue that the direction of updates is a more critical lens for understanding RLVR's effects, which can be captured by the signed, token-level log probability difference Δlog p between the base and final RLVR models. Through statistical analysis and token-replacement interventions, we demonstrate that Δlog p more effectively identifies sparse, yet reasoning-critical updates than magnitude-based metrics (e.g. divergence or entropy). Building on this insight, we propose two practical applications: (1) a test-time extrapolation method that amplifies the policy along the learned Δlog p direction to improve reasoning accuracy without further training; (2) a training-time reweighting method that focuses learning on low-probability (corresponding to higher Δlog p) tokens, which improves reasoning performance across models and benchmarks. Our work establishes the direction of change as a key principle for analyzing and improving RLVR.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning with Verifiable Rewards</span><span>Large Language Models</span><span>LLM Reasoning</span><span>Token-level Log Probability</span><span>Policy Amplification</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.22117" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MemDLM: Memory-Enhanced DLM Training</h2>
+                <span class="published-time">Published: 2026-03-23T17:39:56.000Z</span>
+                
+                <p class="summary">Diffusion Language Models (DLMs) offer attractive advantages over Auto-Regressive (AR) models, such as full-attention parallel decoding and flexible generation. However, they suffer from a notable train-inference mismatch: DLMs are trained with a static, single-step masked prediction objective, but deployed through a multi-step progressive denoising trajectory. We propose MemDLM (Memory-Enhanced DLM), which narrows this gap by embedding a simulated denoising process into training via Bi-level Optimization. An inner loop updates a set of fast weights, forming a Parametric Memory that captures the local trajectory experience of each sample, while an outer loop updates the base model conditioned on this memory. By offloading memorization pressure from token representations to parameters, MemDLM yields faster convergence and lower training loss. Moreover, the inner loop can be re-enabled at inference time as an adaptation step, yielding additional gains on long-context understanding. We find that, when activated at inference time, this Parametric Memory acts as an emergent in-weight retrieval mechanism, helping MemDLM further reduce token-level attention bottlenecks on challenging Needle-in-a-Haystack retrieval tasks. Code: https://github.com/JarvisPei/MemDLM.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Diffusion Language Models</span><span>Parametric Memory</span><span>Bi-level Optimization</span><span>Train-inference mismatch</span><span>Long-context understanding</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Deep Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.22241" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
