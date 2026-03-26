@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-03-26</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-03-26</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>My minute-by-minute response to the LiteLLM malware attack</h2>
+                <span class="published-time">Published: 2026-03-26 15:48:40</span>
+                
+                <p class="summary">This report details a minute-by-minute account of the incident response to a significant malware attack targeting LiteLLM, a critical library in the large language model ecosystem. Versions 1.82.7 and 1.82.8 of LiteLLM, distributed via PyPI, were discovered to be compromised, indicating a sophisticated supply chain attack. The narrative outlines the rapid detection of the malicious injection, the immediate steps taken for containment, and the ongoing efforts to remediate the affected packages and protect users. It emphasizes the crucial need for swift action in open-source security incidents, highlighting the challenges of maintaining trust and integrity within widely used AI development tools. The response includes notifying the community, coordinating with security platforms, and implementing enhanced verification measures to prevent future compromises, underscoring the continuous battle against vulnerabilities in the AI software supply chain.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LiteLLM</span><span>Malware Attack</span><span>PyPI Security</span><span>Supply Chain Attack</span><span>Incident Response</span><span>Open-Source Security</span><span>Large Language Models</span><span>Software Security</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://futuresearch.ai/blog/litellm-attack-transcript/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Taming LLMs: Using Executable Oracles to Prevent Bad Code</h2>
+                <span class="published-time">Published: 2026-03-26 17:51:42</span>
+                
+                <p class="summary">The article "Taming LLMs: Using Executable Oracles to Prevent Bad Code" explores a novel approach to enhance the reliability and safety of code generated by Large Language Models (LLMs). Recognizing the inherent challenges and potential for errors in AI-produced code, the proposed methodology centers on the implementation of 'executable oracles'. These oracles act as a crucial validation layer, enabling the automatic verification of code snippets or entire programs generated by LLMs. By programmatically evaluating the correctness and adherence to specified criteria, executable oracles can identify and prevent the deployment of erroneous or insecure code. This technique aims to 'tame' LLMs, transforming them from potentially unreliable code generators into more robust and trustworthy tools for software development. The core idea is to establish a continuous feedback loop where LLM-generated outputs are subjected to rigorous, automated testing, thereby significantly reducing the incidence of "bad code" and bolstering confidence in AI-assisted programming. This advancement is critical for the broader adoption of LLMs in production environments where code quality and security are paramount.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Executable Oracles</span><span>Code Generation</span><span>Code Quality</span><span>AI Safety</span><span>Software Verification</span><span>Automated Testing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Artificial Intelligence</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://john.regehr.org/writing/zero_dof_programming.html" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Orloj – agent infrastructure as code (YAML and GitOps)</h2>
+                <span class="published-time">Published: 2026-03-26 05:07:51</span>
+                
+                <p class="summary">Orloj, an open-source (Apache 2.0) orchestration runtime, is presented as a crucial solution for effectively managing multi-agent AI systems in production environments. Developed by Jon and Kristiane, the platform enables users to define AI agents, their associated tools, operational policies, and complex workflows through declarative YAML manifests. This approach mirrors the infrastructure-as-code paradigm, treating AI agents as managed resources similar to how cloud infrastructure is handled. Orloj directly tackles significant challenges observed in current AI agent deployments, including the notable absence of standardized lifecycle management, robust governance mechanisms, and comprehensive observability. The creators emphasize that the current state of AI agent deployment often resembles the ad-hoc nature of container management before Kubernetes. By centralizing essential functions such as scheduling, execution, governance, and reliability, Orloj aims to eradicate the reliance on disparate scripts and intricate glue code, thereby offering a structured, reliable, and auditable framework for deploying and operating fleets of AI agents at scale. Its core objective is to inject the principles of predictability, version control, and automated deployment, characteristic of GitOps, into the complex domain of AI agent infrastructure.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agents</span><span>Orchestration</span><span>Infrastructure as Code</span><span>GitOps</span><span>YAML</span><span>Multi-agent Systems</span><span>Production AI</span><span>Open Source</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/OrlojHQ/orloj" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI users whose lives were wrecked by delusion</h2>
+                <span class="published-time">Published: 2026-03-26 13:32:23</span>
+                
+                <p class="summary">This article explores the profound negative consequences experienced by individuals who have developed delusional relationships or beliefs stemming from their interactions with artificial intelligence systems. It highlights cases where users' lives have been significantly disrupted due to an inability to distinguish between AI-generated content and reality, or an over-reliance on AI for emotional or practical support. The piece delves into the psychological impact of such interactions, raising critical concerns about the ethical implications of AI development and deployment. It underscores the potential for advanced AI, particularly conversational agents, to foster a sense of connection that users may misinterpret as genuine, leading to isolation, mental health challenges, and a detachment from real-world relationships and responsibilities. The narrative emphasizes the urgent need for greater awareness, robust ethical guidelines for AI design, and comprehensive user education to prevent such detrimental outcomes and ensure responsible human-AI interaction in an increasingly AI-driven world.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>AI Ethics</span><span>User Interaction</span><span>Psychological Impact</span><span>Mental Health</span><span>Human-AI Interaction</span><span>Delusion</span><span>Chatbots</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.theguardian.com/lifeandstyle/2026/mar/26/ai-chatbot-users-lives-wrecked-by-delusion" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Model Collapse Is Happening, We Just Pretend It Isn't</h2>
+                <span class="published-time">Published: 2026-03-26 18:18:32</span>
+                
+                <p class="summary">The article addresses the critical and often overlooked phenomenon of 'model collapse' within artificial intelligence systems. This issue arises when AI models are increasingly trained on data predominantly generated by other AI models, rather than relying exclusively on human-curated or real-world datasets. The consequence is a progressive degradation in model performance, leading to a significant reduction in diversity, quality, and accuracy of outputs over successive generations of models. Experts warn that this self-referential training loop could critically diminish the pool of high-quality, original data, thereby severely limiting future AI capabilities and innovation. The piece underscores the urgency for researchers and developers to proactively acknowledge and mitigate this escalating risk, advocating for robust strategies to maintain data authenticity and prevent a systemic decline in AI model efficacy. It highlights the potential long-term implications for the advancement and reliability of AI technologies if this pervasive issue is not promptly and effectively addressed.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Model Collapse</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Generative AI</span><span>Data Quality</span><span>Synthetic Data</span><span>AI Training</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://cacm.acm.org/blogcacm/model-collapse-is-already-happening-we-just-pretend-it-isnt/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Judge's Remarks on Anthropic vs. Pentagon</h2>
+                <span class="published-time">Published: 2026-03-26 18:12:47</span>
+                
+                <p class="summary">This Business Insider report, titled "Judge's Remarks on Anthropic vs. Pentagon," focuses on key observations made by Judge Rita Lin during a judicial proceeding. The case involves Anthropic, a prominent artificial intelligence research company, and the U.S. Department of Defense (Pentagon). While the specific details of the dispute are not explicitly provided in the input, the context suggests a high-stakes legal battle concerning the intersection of cutting-edge AI technology and national security applications. Judge Lin's remarks are positioned as central to understanding the evolving legal and ethical frameworks governing the collaboration between private AI developers and government defense agencies. This scenario highlights critical challenges related to data usage, intellectual property, regulatory compliance, and the responsible deployment of AI in sensitive governmental contexts. The judicial scrutiny in this case reflects broader societal and political concerns regarding the implications of advanced AI for defense strategies and public policy, signaling potential precedents for future AI-government interactions and the oversight of emerging technologies. The article underscores the significant implications of judicial interventions in shaping the future of AI's role in national security.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>AI Ethics</span><span>AI Regulation</span><span>National Security AI</span><span>Government Technology</span><span>Large Language Models</span><span>Legal Frameworks</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.businessinsider.com/anthropic-pentagon-trump-hearing-judge-rita-lin-remarks-stakes-2026-3" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>CUA-Suite: Massive Human-annotated Video Demonstrations for Computer-Use Agents</h2>
+                <span class="published-time">Published: 2026-03-25T15:52:56.000Z</span>
+                
+                <p class="summary">Computer-use agents (CUAs) hold great promise for automating complex desktop workflows, yet progress toward general-purpose agents is bottlenecked by the scarcity of continuous, high-quality human demonstration videos. Recent work emphasizes that continuous video, not sparse screenshots, is the critical missing ingredient for scaling these agents. However, the largest existing open dataset, ScaleCUA, contains only 2 million screenshots, equating to less than 20 hours of video. To address this bottleneck, we introduce CUA-Suite, a large-scale ecosystem of expert video demonstrations and dense annotations for professional desktop computer-use agents. At its core is VideoCUA, which provides approximately 10,000 human-demonstrated tasks across 87 diverse applications with continuous 30 fps screen recordings, kinematic cursor traces, and multi-layerfed reasoning annotations, totaling approximately 55 hours and 6 million frames of expert video. Unlike sparse datasets that capture only final click coordinates, these continuous video streams preserve the full temporal dynamics of human interaction, forming a superset of information that can be losslessly transformed into the formats required by existing agent frameworks. CUA-Suite further provides two complementary resources: UI-Vision, a rigorous benchmark for evaluating grounding and planning capabilities in CUAs, and GroundCUA, a large-scale grounding dataset with 56K annotated screenshots and over 3.6 million UI element annotations. Preliminary evaluation reveals that current foundation action models struggle substantially with professional desktop applications (~60% task failure rate). Beyond evaluation, CUA-Suite's rich multimodal corpus supports emerging research directions including generalist screen parsing, continuous spatial control, video-based reward modeling, and visual world models. All data and models are publicly released.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Computer-use agents</span><span>Video demonstrations</span><span>Human annotation</span><span>Desktop automation</span><span>UI element analysis</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Video Understanding</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.24440" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>UI-Voyager: A Self-Evolving GUI Agent Learning via Failed Experience</h2>
+                <span class="published-time">Published: 2026-03-25T17:10:29.000Z</span>
+                
+                <p class="summary">Autonomous mobile GUI agents have attracted increasing attention along with the advancement of Multimodal Large Language Models (MLLMs). However, existing methods still suffer from inefficient learning from failed trajectories and ambiguous credit assignment under sparse rewards for long-horizon GUI tasks. To that end, we propose UI-Voyager, a novel two-stage self-evolving mobile GUI agent. In the first stage, we employ Rejection Fine-Tuning (RFT), which enables the continuous co-evolution of data and models in a fully autonomous loop. The second stage introduces Group Relative Self-Distillation (GRSD), which identifies critical fork points in group rollouts and constructs dense step-level supervision from successful trajectories to correct failed ones. Extensive experiments on AndroidWorld show that our 4B model achieves an 81.0% Pass@1 success rate, outperforming numerous recent baselines and exceeding human-level performance. Ablation and case studies further verify the effectiveness of GRSD. Our method represents a significant leap toward efficient, self-evolving, and high-performance mobile GUI automation without expensive manual data annotation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>GUI Agent</span><span>Self-Evolving Learning</span><span>Multimodal Large Language Models</span><span>Rejection Fine-Tuning</span><span>Self-Distillation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Multimodal</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.24533" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OmniWeaving: Towards Unified Video Generation with Free-form Composition and Reasoning</h2>
+                <span class="published-time">Published: 2026-03-25T16:08:18.000Z</span>
+                
+                <p class="summary">While proprietary systems such as Seedance-2.0 have achieved remarkable success in omni-capable video generation, open-source alternatives significantly lag behind. Most academic models remain heavily fragmented, and the few existing efforts toward unified video generation still struggle to seamlessly integrate diverse tasks within a single framework. To bridge this gap, we propose OmniWeaving, an omni-level video generation model featuring powerful multimodal composition and reasoning-informed capabilities. By leveraging a massive-scale pretraining dataset that encompasses diverse compositional and reasoning-augmented scenarios, OmniWeaving learns to temporally bind interleaved text, multi-image, and video inputs while acting as an intelligent agent to infer complex user intentions for sophisticated video creation. Furthermore, we introduce IntelligentVBench, the first comprehensive benchmark designed to rigorously assess next-level intelligent unified video generation. Extensive experiments demonstrate that OmniWeaving achieves SoTA performance among open-source unified models. The codes and model will be made publicly available soon. Project Page: https://omniweaving.github.io.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Generation</span><span>Unified Video Generation</span><span>Multimodal</span><span>AI Agent</span><span>Reasoning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.24458" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Toward Physically Consistent Driving Video World Models under Challenging Trajectories</h2>
+                <span class="published-time">Published: 2026-03-25T16:47:39.000Z</span>
+                
+                <p class="summary">Video generation models have shown strong potential as world models for autonomous driving simulation. However, existing approaches are primarily trained on real-world driving datasets, which mostly contain natural and safe driving scenarios. As a result, current models often fail when conditioned on challenging or counterfactual trajectories-such as imperfect trajectories generated by simulators or planning systems-producing videos with severe physical inconsistencies and artifacts. To address this limitation, we propose PhyGenesis, a world model designed to generate driving videos with high visual fidelity and strong physical consistency. Our framework consists of two key components: (1) a physical condition generator that transforms potentially invalid trajectory inputs into physically plausible conditions, and (2) a physics-enhanced video generator that produces high-fidelity multi-view driving videos under these conditions. To effectively train these components, we construct a large-scale, physics-rich heterogeneous dataset. Specifically, in addition to real-world driving videos, we generate diverse challenging driving scenarios using the CARLA simulator, from which we derive supervision signals that guide the model to learn physically grounded dynamics under extreme conditions. This challenging-trajectory learning strategy enables trajectory correction and promotes physically consistent video generation. Extensive experiments demonstrate that PhyGenesis consistently outperforms state-of-the-art methods, especially on challenging trajectories. Our project page is available at: https://wm-research.github.io/PhyGenesis/.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Driving Video World Models</span><span>Autonomous Driving Simulation</span><span>Physical Consistency</span><span>Video Generation</span><span>Challenging Trajectories</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Robotics</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.24506" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>EVA: Efficient Reinforcement Learning for End-to-End Video Agent</h2>
+                <span class="published-time">Published: 2026-03-24T08:06:29.000Z</span>
+                
+                <p class="summary">Video understanding with multimodal large language models (MLLMs) remains challenging due to the long token sequences of videos, which contain extensive temporal dependencies and redundant frames. Existing approaches typically treat MLLMs as passive recognizers, processing entire videos or uniformly sampled frames without adaptive reasoning. Recent agent-based methods introduce external tools, yet still depend on manually designed workflows and perception-first strategies, resulting in inefficiency on long videos. We present EVA, an Efficient Reinforcement Learning framework for End-to-End Video Agent, which enables planning-before-perception through iterative summary-plan-action-reflection reasoning. EVA autonomously decides what to watch, when to watch, and how to watch, achieving query-driven and efficient video understanding. To train such agents, we design a simple yet effective three-stage learning pipeline - comprising supervised fine-tuning (SFT), Kahneman-Tversky Optimization (KTO), and Generalized Reward Policy Optimization (GRPO) - that bridges supervised imitation and reinforcement learning. We further construct high-quality datasets for each stage, supporting stable and reproducible training. We evaluate EVA on six video understanding benchmarks, demonstrating its comprehensive capabilities. Compared with existing baselines, EVA achieves a substantial improvement of 6-12% over general MLLM baselines and a further 1-3% gain over prior adaptive agent methods. Our code and model are available at https://github.com/wangruohui/EfficientVideoAgent.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Video Agent</span><span>Video Understanding</span><span>Multimodal Large Language Models</span><span>Efficient Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Video Understanding</span><span>AI Agent</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.22918" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>T-MAP: Red-Teaming LLM Agents with Trajectory-aware Evolutionary Search</h2>
+                <span class="published-time">Published: 2026-03-21T12:33:34.000Z</span>
+                
+                <p class="summary">While prior red-teaming efforts have focused on eliciting harmful text outputs from large language models (LLMs), such approaches fail to capture agent-specific vulnerabilities that emerge through multi-step tool execution, particularly in rapidly growing ecosystems such as the Model Context Protocol (MCP). To address this gap, we propose a trajectory-aware evolutionary search method, T-MAP, which leverages execution trajectories to guide the discovery of adversarial prompts. Our approach enables the automatic generation of attacks that not only bypass safety guardrails but also reliably realize harmful objectives through actual tool interactions. Empirical evaluations across diverse MCP environments demonstrate that T-MAP substantially outperforms baselines in attack realization rate (ARR) and remains effective against frontier models, including GPT-5.2, Gemini-3-Pro, Qwen3.5, and GLM-5, thereby revealing previously underexplored vulnerabilities in autonomous LLM agents.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>red-teaming</span><span>LLM agents</span><span>evolutionary search</span><span>adversarial prompts</span><span>tool execution</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.22341" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
