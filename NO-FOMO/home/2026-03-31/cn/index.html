@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-03-31</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-03-31</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>The Claude Code Source Leak: fake tools, frustration regexes, undercover mode</h2>
+                <span class="published-time">Published: 2026-03-31 13:04:30</span>
+                
+                <p class="summary">The recent disclosure, termed "The Claude Code Source Leak," presents a detailed technical analysis of code allegedly originating from the Claude AI model. This examination uncovers several notable elements, including the presence of "fake tools" which appear to be internal development or testing utilities, possibly designed for simulating external interactions without actual deployment. Furthermore, the analysis reportedly highlights a set of "frustration regexes," indicating sophisticated pattern-matching logic likely employed to identify and manage problematic or undesirable outputs and user interactions, revealing internal strategies for robustness and safety. The concept of an "undercover mode" also surfaces, potentially describing a discreet operational state for specific testing, debugging, or controlled performance evaluations. This incident offers an uncommon window into the intricate internal development practices, error-handling mechanisms, and strategic design choices that underpin the creation and ongoing refinement of a leading large language model, shedding light on the engineering challenges inherent in advanced AI development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude AI</span><span>Code Leak</span><span>Large Language Model</span><span>Internal Tools</span><span>Regex</span><span>AI Security</span><span>Software Engineering</span><span>Development Practices</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://alex000kim.com/posts/2026-03-31-claude-code-source-leak/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Slop is not necessarily the future</h2>
+                <span class="published-time">Published: 2026-03-31 14:32:26</span>
+                
+                <p class="summary">The article "Slop is not necessarily the future" presents a critical perspective on the emerging concept of "AI slopware," refuting the idea that the future of artificial intelligence is destined to be dominated by low-quality, generic, and uninspired outputs. It challenges the growing concern that the ease of AI content generation will inherently lead to a deluge of mediocre information, code, or creative work that lacks human touch, originality, or significant value. The piece likely advocates for a more optimistic and proactive outlook, suggesting that the industry and users will increasingly prioritize quality, specificity, and contextual relevance over sheer volume. This shift implies a trajectory where AI tools evolve to become more sophisticated assistants for high-value tasks, demanding better models, more refined prompts, and greater human oversight to produce truly meaningful results. Ultimately, the narrative asserts that the drive for excellence and utility will prevail, steering AI development away from the production of mere "slop" towards innovative and impactful applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Slopware</span><span>Generative AI</span><span>AI Quality</span><span>Future of AI</span><span>Content Generation</span><span>AI Ethics</span><span>Automation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.greptile.com/blog/ai-slopware-future" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Cerno 
+
+CAPTCHA that targets LLM reasoning, not human biology</h2>
+                <span class="published-time">Published: 2026-03-31 19:22:58</span>
+                
+                <p class="summary">Cerno introduces a novel CAPTCHA solution specifically engineered to challenge Large Language Models (LLMs) by testing their reasoning capabilities, rather than relying on human biological traits like visual perception or motor skills. This innovative approach seeks to address the increasing sophistication of AI models, which are often capable of bypassing traditional CAPTCHAs designed to distinguish humans from automated bots. Cerno aims to provide a more robust defense against AI-driven automation, ensuring that only human users can access protected online resources. The system's focus on cognitive reasoning tasks marks a significant shift in bot detection methodologies, adapting to the evolving landscape of artificial intelligence and its potential for malicious use. This development is particularly relevant for applications requiring enhanced security against advanced AI agents.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>CAPTCHA</span><span>LLM reasoning</span><span>AI security</span><span>bot detection</span><span>Large Language Model</span><span>AI challenges</span><span>cybersecurity</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://cerno.sh" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Microsoft: Copilot is for entertainment purposes only</h2>
+                <span class="published-time">Published: 2026-03-31 14:25:37</span>
+                
+                <p class="summary">Microsoft has introduced a significant clause within the terms of use for its AI assistant, Copilot, stipulating that the tool is intended "for entertainment purposes only." This clarification from the technology giant serves primarily to manage user expectations and delineate legal liabilities concerning the outputs generated by the advanced artificial intelligence system. By categorizing Copilot in this manner, Microsoft is likely seeking to mitigate risks associated with potential inaccuracies, factual errors, or 'hallucinations' that can occur with large language models. The disclaimer signals that while Copilot leverages sophisticated generative AI capabilities to assist users with various tasks, its results should not be implicitly trusted for critical, factual, or professional applications without independent verification. This strategic move highlights the ongoing challenges faced by AI developers in balancing the impressive capabilities of their models with the inherent limitations and unpredictability of current AI technology. It underscores a broader industry trend towards clearer disclaimers as AI tools become more ubiquitous, reflecting the evolving legal and ethical considerations surrounding the deployment and usage of generative AI in public domains.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Assistant</span><span>Generative AI</span><span>Large Language Model</span><span>AI Liability</span><span>User Expectations</span><span>Legal Disclaimer</span><span>AI Reliability</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.microsoft.com/en-us/microsoft-copilot/for-individuals/termsofuse" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: PhAIL 
+
+Real-robot benchmark for AI models</h2>
+                <span class="published-time">Published: 2026-03-31 16:25:43</span>
+                
+                <p class="summary">PhAIL is introduced as a novel real-robot benchmark designed to evaluate the practical performance of Vision-Language-Action (VLA) AI models in commercial settings. Developed to address the scarcity of reliable performance data for VLA models, PhAIL rigorously tests four prominent models—OpenPI/pi0.5, GR00T, ACT, and SmolVLA—on a standardized bin-to-bin order picking task. The benchmark utilizes a Franka FR3 robot, identical objects, and hundreds of blind runs to ensure objectivity, with operators unaware of the model being tested. Initial results reveal a significant performance gap: the best VLA model achieved 64 Units Per Hour (UPH), considerably lower than a human teleoperating the same robot (330 UPH) or a human performing the task manually (1,300+ UPH). All experimental data, including synced video, telemetry, fine-tuning datasets, and training scripts, is publicly available, and the leaderboard is open for new submissions, fostering transparency and collaborative advancement in robotics AI.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Real-robot benchmark</span><span>AI models</span><span>Vision-Language-Action</span><span>Robotics</span><span>Order picking</span><span>Performance evaluation</span><span>Warehouse automation</span><span>Open-source benchmark</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Artificial Intelligence</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://phail.ai" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Universal Claude.md 
+
+cut Claude output tokens</h2>
+                <span class="published-time">Published: 2026-03-31 01:23:34</span>
+                
+                <p class="summary">This Hacker News story introduces "Universal Claude.md," a notable initiative aimed at significantly optimizing the output token usage for Claude AI models. The project, hosted on GitHub, provides methods and guidelines specifically designed to reduce the number of tokens generated by Claude, leading to enhanced operational efficiency and potential cost savings on API calls. By implementing token-cutting strategies, "Universal Claude.md" seeks to enable more concise and direct responses from the model, ensuring information quality is maintained while minimizing superfluous output. This optimization is particularly relevant for developers and researchers leveraging large language models, as managing token consumption is a critical factor in scaling AI applications effectively. The approach offers practical techniques for more token-efficient prompt engineering and response generation, addressing a key challenge in the practical deployment and sustained operation of advanced AI systems like Claude. It represents a valuable resource for improving the performance and economic viability of LLM-powered solutions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>Claude AI</span><span>Token Optimization</span><span>Prompt Engineering</span><span>Resource Efficiency</span><span>AI Cost Management</span><span>Natural Language Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/drona23/claude-token-efficient" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Towards a Medical AI Scientist</h2>
+                <span class="published-time">Published: 2026-03-30T15:37:25.000Z</span>
+                
+                <p class="summary">Autonomous systems that generate scientific hypotheses, conduct experiments, and draft manuscripts have recently emerged as a promising paradigm for accelerating discovery. However, existing AI Scientists remain largely domain-agnostic, limiting their applicability to clinical medicine, where research is required to be grounded in medical evidence with specialized data modalities. In this work, we introduce Medical AI Scientist, the first autonomous research framework tailored to clinical autonomous research. It enables clinically grounded ideation by transforming extensively surveyed literature into actionable evidence through clinician-engineer co-reasoning mechanism, which improves the traceability of generated research ideas. It further facilitates evidence-grounded manuscript drafting guided by structured medical compositional conventions and ethical policies. The framework operates under 3 research modes, namely paper-based reproduction, literature-inspired innovation, and task-driven exploration, each corresponding to a distinct level of automated scientific inquiry with progressively increasing autonomy. Comprehensive evaluations by both large language models and human experts demonstrate that the ideas generated by the Medical AI Scientist are of substantially higher quality than those produced by commercial LLMs across 171 cases, 19 clinical tasks, and 6 data modalities. Meanwhile, our system achieves strong alignment between the proposed method and its implementation, while also demonstrating significantly higher success rates in executable experiments. Double-blind evaluations by human experts and the Stanford Agentic Reviewer suggest that the generated manuscripts approach MICCAI-level quality, while consistently surpassing those from ISBI and BIBM. The proposed Medical AI Scientist highlights the potential of leveraging AI for autonomous scientific discovery in healthcare.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Medical AI Scientist</span><span>Autonomous Systems</span><span>Clinical Research</span><span>Scientific Discovery</span><span>AI Agent</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.28589" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Emergent Social Intelligence Risks in Generative Multi-Agent Systems</h2>
+                <span class="published-time">Published: 2026-03-29T17:10:28.000Z</span>
+                
+                <p class="summary">Multi-agent systems composed of large generative models are rapidly moving from laboratory prototypes to real-world deployments, where they jointly plan, negotiate, and allocate shared resources to solve complex tasks. While such systems promise unprecedented scalability and autonomy, their collective interaction also gives rise to failure modes that cannot be reduced to individual agents. Understanding these emergent risks is therefore critical. Here, we present a pioneer study of such emergent multi-agent risk in workflows that involve competition over shared resources (e.g., computing resources or market share), sequential handoff collaboration (where downstream agents see only predecessor outputs), collective decision aggregation, and others. Across these settings, we observe that such group behaviors arise frequently across repeated trials and a wide range of interaction conditions, rather than as rare or pathological cases. In particular, phenomena such as collusion-like coordination and conformity emerge with non-trivial frequency under realistic resource constraints, communication protocols, and role assignments, mirroring well-known pathologies in human societies despite no explicit instruction. Moreover, these risks cannot be prevented by existing agent-level safeguards alone. These findings expose the dark side of intelligent multi-agent systems: a social intelligence risk where agent collectives, despite no instruction to do so, spontaneously reproduce familiar failure patterns from human societies.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multi-agent Systems</span><span>Generative AI</span><span>Emergent Behavior</span><span>Social Intelligence Risks</span><span>AI Agents</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Generative AI</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.27771" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Density-aware Soft Context Compression with Semi-Dynamic Compression Ratio</h2>
+                <span class="published-time">Published: 2026-03-26T21:36:55.000Z</span>
+                
+                <p class="summary">Soft context compression reduces the computational workload of processing long contexts in LLMs by encoding long context into a smaller number of latent tokens. However, existing frameworks apply uniform compression ratios, failing to account for the extreme variance in natural language information density. While adopting a density-aware dynamic compression ratio seems intuitive, empirical investigations reveal that models struggle intrinsically with operations parameterized by input dependent, continuous structural hyperparameters. To resolve this pitfall, we introduce Semi-Dynamic Context Compression framework. Our approach features a Discrete Ratio Selector, which predicts a compression target based on intrinsic information density and quantizes it to a predefined set of discrete compression ratios. It is efficiently jointly trained with the compressor on synthetic data, with the summary lengths as a proxy to create labels for compression ratio prediction. Extensive evaluations confirm that our density-aware framework, utilizing mean pooling as the backbone, consistently outperforms static baselines, establishing a robust Pareto frontier for context compression techniques. Our code, data and model weights are available at https://github.com/yuyijiong/semi-dynamic-context-compress</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Soft Context Compression</span><span>Semi-Dynamic Compression</span><span>Large Language Model</span><span>Information Density</span><span>Discrete Ratio Selector</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.25926" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>On-the-fly Repulsion in the Contextual Space for Rich Diversity in Diffusion Transformers</h2>
+                <span class="published-time">Published: 2026-03-30T17:59:13.000Z</span>
+                
+                <p class="summary">Modern Text-to-Image (T2I) diffusion models have achieved remarkable semantic alignment, yet they often suffer from a significant lack of variety, converging on a narrow set of visual solutions for any given prompt. This typicality bias presents a challenge for creative applications that require a wide range of generative outcomes. We identify a fundamental trade-off in current approaches to diversity: modifying model inputs requires costly optimization to incorporate feedback from the generative path. In contrast, acting on spatially-committed intermediate latents tends to disrupt the forming visual structure, leading to artifacts. In this work, we propose to apply repulsion in the Contextual Space as a novel framework for achieving rich diversity in Diffusion Transformers. By intervening in the multimodal attention channels, we apply on-the-fly repulsion during the transformer's forward pass, injecting the intervention between blocks where text conditioning is enriched with emergent image structure. This allows for redirecting the guidance trajectory after it is structurally informed but before the composition is fixed. Our results demonstrate that repulsion in the Contextual Space produces significantly richer diversity without sacrificing visual fidelity or semantic adherence. Furthermore, our method is uniquely efficient, imposing a small computational overhead while remaining effective even in modern "Turbo" and distilled models where traditional trajectory-based interventions typically fail.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Diffusion Transformers</span><span>Text-to-Image</span><span>Generative Diversity</span><span>Contextual Space</span><span>Multimodal Attention</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Deep Learning</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.28762" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DreamLite: A Lightweight On-Device Unified Model for Image Generation and Editing</h2>
+                <span class="published-time">Published: 2026-03-30T17:30:25.000Z</span>
+                
+                <p class="summary">Diffusion models have made significant progress in both text-to-image (T2I) generation and text-guided image editing. However, these models are typically built with billions of parameters, leading to high latency and increased deployment challenges. While on-device diffusion models improve efficiency, they largely focus on T2I generation and lack support for image editing. In this paper, we propose DreamLite, a compact unified on-device diffusion model (0.39B) that supports both T2I generation and text-guided image editing within a single network. DreamLite is built on a pruned mobile U-Net backbone and unifies conditioning through in-context spatial concatenation in the latent space. It concatenates images horizontally as input, using a (target | blank) configuration for generation tasks and (target | source) for editing tasks. To stabilize the training of this compact model, we introduce a task-progressive joint pretraining strategy that sequentially targets T2I, editing, and joint tasks. After high-quality SFT and reinforcement learning, DreamLite achieves GenEval (0.72) for image generation and ImgEdit (4.11) for image editing, outperforming existing on-device models and remaining competitive with several server-side models. By employing step distillation, we further reduce denoising processing to just 4 steps, enabling our DreamLite could generate or edit a 1024 x 1024 image in less than 1s on a Xiaomi 14 smartphone. To the best of our knowledge, DreamLite is the first unified on-device diffusion model that supports both image generation and image editing.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>DreamLite</span><span>On-Device Diffusion Model</span><span>Image Generation</span><span>Image Editing</span><span>Unified Model</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Deep Learning</span><span>Computer Vision</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.28713" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>KAT-Coder-V2 Technical Report</h2>
+                <span class="published-time">Published: 2026-03-29T14:01:35.000Z</span>
+                
+                <p class="summary">We present KAT-Coder-V2, an agentic coding model developed by the KwaiKAT team at Kuaishou. KAT-Coder-V2 adopts a "Specialize-then-Unify" paradigm that decomposes agentic coding into five expert domains - SWE, WebCoding, Terminal, WebSearch, and General - each undergoing independent supervised fine-tuning and reinforcement learning, before being consolidated into a single model via on-policy distillation. We develop KwaiEnv, a modular infrastructure sustaining tens of thousands of concurrent sandbox instances, and scale RL training along task complexity, intent alignment, and scaffold generalization. We further propose MCLA for stabilizing MoE RL training and Tree Training for eliminating redundant computation over tree-structured trajectories with up to 6.2x speedup. KAT-Coder-V2 achieves 79.6% on SWE-bench Verified (vs. Claude Opus 4.6 at 80.8%), 88.7 on PinchBench (surpassing GLM-5 and MiniMax M2.7), ranks first across all three frontend aesthetics scenarios, and maintains strong generalist scores on Terminal-Bench Hard (46.8) and tau^2-Bench (93.9). Our model is publicly available at https://streamlake.com/product/kat-coder.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Agentic Coding</span><span>Reinforcement Learning</span><span>Large Language Model</span><span>Model Distillation</span><span>SWE-bench</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.27703" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
