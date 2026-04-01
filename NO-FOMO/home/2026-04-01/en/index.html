@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-04-01</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-04-01</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>TurboQuant KV Compression and SSD Expert Streaming for M5 Pro and IOS</h2>
+                <span class="published-time">Published: 2026-04-01 18:06:00</span>
+                
+                <p class="summary">A novel system, referred to as TurboQuant KV Compression and SSD Expert Streaming, is introduced, specifically engineered to optimize the deployment and performance of artificial intelligence workloads on Apple's M5 Pro processors and the iOS ecosystem. This innovative technology primarily addresses the persistent challenges of memory and storage constraints inherent in mobile and edge devices. TurboQuant KV Compression focuses on efficiently reducing the memory footprint of key-value stores, a critical component in modern transformer-based models, by applying advanced quantization techniques. Concurrently, SSD Expert Streaming is designed to enable high-throughput and low-latency data access from Solid State Drives, effectively allowing larger models or extensive datasets to be streamed and processed than would typically fit into device RAM. This integrated approach is poised to significantly enhance the capability of running sophisticated AI applications, particularly large language models, directly on M5 Pro-equipped devices. The aim is to improve user experience through faster on-device inference, reduce reliance on cloud infrastructure, and unlock new possibilities for AI applications in mobile environments.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>KV Compression</span><span>SSD Streaming</span><span>Quantization</span><span>Mobile AI</span><span>Large Language Models</span><span>iOS Development</span><span>M5 Pro</span><span>AI Optimization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/SharpAI/SwiftLM" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>StepFun 3.5 Flash is #1 cost-effective model for OpenClaw tasks (300 battles)</h2>
+                <span class="published-time">Published: 2026-04-01 16:17:35</span>
+                
+                <p class="summary">A recent evaluation within the OpenClaw task environment has identified StepFun 3.5 Flash as the leading model in terms of cost-effectiveness, following a rigorous assessment involving 300 simulated battles. This benchmark highlights the model's optimized performance, demonstrating its ability to achieve superior results while minimizing operational costs, a critical factor in the deployment and scaling of AI solutions. The OpenClaw tasks likely represent a challenging domain requiring strategic decision-making and efficient resource utilization. The consistently strong performance of StepFun 3.5 Flash across a substantial number of trials suggests robust design and effective training methodologies, allowing it to deliver high-value outcomes without incurring excessive computational or resource expenditures. This achievement positions StepFun 3.5 Flash as a significant development for practitioners and researchers focused on developing and deploying economically viable AI agents. The findings are particularly relevant for applications where efficiency is paramount, offering a compelling case for its adoption in resource-constrained environments or large-scale operations. Further analysis will likely delve into the specific architectural or algorithmic innovations contributing to this cost-efficiency breakthrough.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Model</span><span>Cost-effectiveness</span><span>Reinforcement Learning</span><span>AI Agent</span><span>Benchmarking</span><span>Optimization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://app.uniclaw.ai/arena?tab=costEffectiveness&via=hn" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Real-time dashboard for Claude Code agent teams</h2>
+                <span class="published-time">Published: 2026-04-01 16:24:28</span>
+                
+                <p class="summary">Agents Observe is an open-source project introducing a real-time dashboard designed for monitoring Claude Code agent teams. Initiated as an exploration into building automation harnesses for Claude Code, the platform allows users to observe agent activities, filter, and search their outputs in real-time. Key technical insights gained during development include the significant performance degradation caused by blocking Claude code hooks when numerous plugins are active, contrasting with the superior information provided by hooks compared to OTEL data. The project also highlights that Claude's JSONL files offer a comprehensive view of agent operations. A crucial finding was the substantial performance improvement achieved by transitioning to background (fire and forget) hooks and deactivating other plugins, underscoring the often-overlooked impact of plugin configurations on Claude's efficiency. The "Agents Observe" plugin leverages Docker for deploying its API and dashboard services. This tool offers crucial visibility into complex AI agent behaviors, facilitating better understanding and optimization of multi-agent systems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Real-time Monitoring</span><span>Dashboard</span><span>Claude Code</span><span>Agent Plugins</span><span>Performance Optimization</span><span>Docker</span><span>API Hooks</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/simple10/agents-observe" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The OpenAI Graveyard: All the Deals and Products That Haven't Happened</h2>
+                <span class="published-time">Published: 2026-04-01 15:55:30</span>
+                
+                <p class="summary">An analysis titled 'The OpenAI Graveyard' critically examines various deals, partnerships, and product initiatives from OpenAI that have failed to materialize or were ultimately discontinued. This report delves into the intricate challenges faced by the leading AI research and deployment company, highlighting instances where strategic collaborations did not proceed as anticipated or where internal product development efforts were shelved. The article suggests that despite OpenAI's significant successes in advancing AI technology, such as the GPT series, the competitive landscape and inherent complexities of cutting-edge innovation lead to numerous ventures that never reach fruition. It likely explores the business implications of these unfulfilled projects, offering insights into the dynamic and often unpredictable nature of the rapidly evolving artificial intelligence industry and the operational realities behind a high-profile tech enterprise, acknowledging both its breakthroughs and its strategic missteps or unrealized ambitions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>OpenAI</span><span>AI Industry</span><span>Product Development</span><span>Business Strategy</span><span>Corporate Partnerships</span><span>Generative AI</span><span>AI Innovation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.forbes.com/sites/phoebeliu/2026/03/31/openai-graveyard-deals-and-products-havent-happened-openai/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Claude Wrote a Full FreeBSD Remote Kernel RCE with Root Shell (CVE-2026-4747)</h2>
+                <span class="published-time">Published: 2026-04-01 05:21:48</span>
+                
+                <p class="summary">A recent report highlights a significant cybersecurity development where an artificial intelligence model, specifically Claude, is credited with autonomously generating a full Remote Kernel Code Execution (RCE) exploit for the FreeBSD operating system, identified as CVE-2026-4747. This exploit reportedly grants root shell access, demonstrating a highly sophisticated capability in automated vulnerability discovery and exploit generation. The incident underscores the rapidly evolving landscape of AI in cybersecurity, posing both unprecedented opportunities for defensive measures and substantial challenges in mitigating AI-assisted threats. The ability of a large language model like Claude to independently identify, analyze, and weaponize a complex kernel-level vulnerability, ultimately achieving root privileges on a robust operating system, signifies a critical and concerning milestone in AI's offensive capabilities. This event necessitates urgent consideration of AI safety protocols, responsible AI development, and advanced defensive strategies to counteract the potential misuse of such powerful AI tools, particularly in the realm of national security and critical infrastructure protection, prompting a reevaluation of current cyber threat models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude</span><span>Large Language Model</span><span>Remote Code Execution</span><span>FreeBSD</span><span>Kernel Exploit</span><span>Vulnerability Research</span><span>Cybersecurity</span><span>AI Security</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/califio/publications/blob/main/MADBugs/CVE-2026-4747/write-up.md" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Claude Code Unpacked : A visual guide</h2>
+                <span class="published-time">Published: 2026-04-01 05:15:37</span>
+                
+                <p class="summary">"Claude Code Unpacked: A Visual Guide" presents itself as a crucial resource designed to dissect and explain the internal mechanics of Claude, an advanced AI model, in the wake of its recent source code leak. The guide aims to provide clear, visual explanations of the complex components and functionalities exposed by the leak, which originated from a map file within Claude's NPM registry in March 2026. This security incident ignited extensive community discourse, revealing intriguing elements such as "fake tools," "frustration regexes," and an "undercover mode" embedded within the AI's architecture. The visual guide will likely offer unprecedented transparency, demystifying proprietary methods and design choices that were previously confidential. It serves as an invaluable educational tool for developers, AI researchers, and enthusiasts seeking to understand the intricate technical construction and operational behavior of a leading large language model.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude AI</span><span>Source Code Leak</span><span>Code Analysis</span><span>Visual Guide</span><span>NPM Registry</span><span>Large Language Model Internals</span><span>Software Security</span><span>AI Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://ccunpacked.dev/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>CutClaw: Agentic Hours-Long Video Editing via Music Synchronization</h2>
+                <span class="published-time">Published: 2026-03-31T12:25:53.000Z</span>
+                
+                <p class="summary">Editing the video content with audio alignment forms a digital human-made art in current social media. However, the time-consuming and repetitive nature of manual video editing has long been a challenge for filmmakers and professional content creators alike. In this paper, we introduce CutClaw, an autonomous multi-agent framework designed to edit hours-long raw footage into meaningful short videos that leverages the capabilities of multiple Multimodal Language Models~(MLLMs) as an agent system. It produces videos with synchronized music, followed by instructions, and a visually appealing appearance. In detail, our approach begins by employing a hierarchical multimodal decomposition that captures both fine-grained details and global structures across visual and audio footage. Then, to ensure narrative consistency, a Playwriter Agent orchestrates the whole storytelling flow and structures the long-term narrative, anchoring visual scenes to musical shifts. Finally, to construct a short edited video, Editor and Reviewer Agents collaboratively optimize the final cut via selecting fine-grained visual content based on rigorous aesthetic and semantic criteria. We conduct detailed experiments to demonstrate that CutClaw significantly outperforms state-of-the-art baselines in generating high-quality, rhythm-aligned videos. The code is available at: https://github.com/GVCLab/CutClaw.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Editing</span><span>Multi-agent Systems</span><span>Multimodal Language Models</span><span>Music Synchronization</span><span>AI Agent</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Multimodal</span><span>Video Understanding</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.29664" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Unify-Agent: A Unified Multimodal Agent for World-Grounded Image Synthesis</h2>
+                <span class="published-time">Published: 2026-03-31T11:41:13.000Z</span>
+                
+                <p class="summary">Unified multimodal models provide a natural and promising architecture for understanding diverse and complex real-world knowledge while generating high-quality images. However, they still rely primarily on frozen parametric knowledge, which makes them struggle with real-world image generation involving long-tail and knowledge-intensive concepts. Inspired by the broad success of agents on real-world tasks, we explore agentic modeling to address this limitation. Specifically, we present Unify-Agent, a unified multimodal agent for world-grounded image synthesis, which reframes image generation as an agentic pipeline consisting of prompt understanding, multimodal evidence searching, grounded recaptioning, and final synthesis. To train our model, we construct a tailored multimodal data pipeline and curate 143K high-quality agent trajectories for world-grounded image synthesis, enabling effective supervision over the full agentic generation process. We further introduce FactIP, a benchmark covering 12 categories of culturally significant and long-tail factual concepts that explicitly requires external knowledge grounding. Extensive experiments show that our proposed Unify-Agent substantially improves over its base unified model across diverse benchmarks and real world generation tasks, while approaching the world knowledge capabilities of the strongest closed-source models. As an early exploration of agent-based modeling for world-grounded image synthesis, our work highlights the value of tightly coupling reasoning, searching, and generation for reliable open-world agentic image synthesis.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Unify-Agent</span><span>Multimodal Agent</span><span>Image Synthesis</span><span>World-Grounded</span><span>External Knowledge Grounding</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>AI Agent</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.29620" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Think Anywhere in Code Generation</h2>
+                <span class="published-time">Published: 2026-03-31T16:24:03.000Z</span>
+                
+                <p class="summary">Recent advances in reasoning Large Language Models (LLMs) have primarily relied on upfront thinking, where reasoning occurs before final answer. However, this approach suffers from critical limitations in code generation, where upfront thinking is often insufficient as problems' full complexity only reveals itself during code implementation. Moreover, it cannot adaptively allocate reasoning effort throughout the code generation process where difficulty varies significantly. In this paper, we propose Think-Anywhere, a novel reasoning mechanism that enables LLMs to invoke thinking on-demand at any token position during code generation. We achieve Think-Anywhere by first teaching LLMs to imitate the reasoning patterns through cold-start training, then leveraging outcome-based RL rewards to drive the model's autonomous exploration of when and where to invoke reasoning. Extensive experiments on four mainstream code generation benchmarks (i.e., LeetCode, LiveCodeBench, HumanEval, and MBPP) show that Think-Anywhere achieves state-of-the-art performance over both existing reasoning methods and recent post-training approaches, while demonstrating consistent generalization across diverse LLMs. Our analysis further reveals that Think-Anywhere enables the model to adaptively invoke reasoning at high-entropy positions, providing enhanced interpretability.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Think-Anywhere</span><span>Code Generation</span><span>Large Language Models</span><span>Reasoning LLMs</span><span>Reinforcement Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Generative AI</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.29957" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>FlowPIE: Test-Time Scientific Idea Evolution with Flow-Guided Literature Exploration</h2>
+                <span class="published-time">Published: 2026-03-31T10:37:47.000Z</span>
+                
+                <p class="summary">Scientific idea generation (SIG) is critical to AI-driven autonomous research, yet existing approaches are often constrained by a static retrieval-then-generation paradigm, leading to homogeneous and insufficiently divergent ideas. In this work, we propose FlowPIE, a tightly coupled retrieval-generation framework that treats literature exploration and idea generation as a co-evolving process. FlowPIE expands literature trajectories via a flow-guided Monte Carlo Tree Search (MCTS) inspired by GFlowNets, using the quality of current ideas assessed by an LLM-based generative reward model (GRM) as a supervised signal to guide adaptive retrieval and construct a diverse, high-quality initial population. Based on this population, FlowPIE models idea generation as a test-time idea evolution process, applying selection, crossover, and mutation with the isolation island paradigm and GRM-based fitness computation to incorporate cross-domain knowledge. It effectively mitigates the information cocoons arising from over-reliance on parametric knowledge and static literature. Extensive evaluations demonstrate that FlowPIE consistently produces ideas with higher novelty, feasibility and diversity compared to strong LLM-based and agent-based frameworks, while enabling reward scaling during test time.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Scientific Idea Generation</span><span>AI-driven Autonomous Research</span><span>Retrieval-Generation Framework</span><span>Large Language Models</span><span>Idea Evolution</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.29557" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>VGGRPO: Towards World-Consistent Video Generation with 4D Latent Reward</h2>
+                <span class="published-time">Published: 2026-03-27T16:57:51.000Z</span>
+                
+                <p class="summary">Large-scale video diffusion models achieve impressive visual quality, yet often fail to preserve geometric consistency. Prior approaches improve consistency either by augmenting the generator with additional modules or applying geometry-aware alignment. However, architectural modifications can compromise the generalization of internet-scale pretrained models, while existing alignment methods are limited to static scenes and rely on RGB-space rewards that require repeated VAE decoding, incurring substantial compute overhead and failing to generalize to highly dynamic real-world scenes. To preserve the pretrained capacity while improving geometric consistency, we propose VGGRPO (Visual Geometry GRPO), a latent geometry-guided framework for geometry-aware video post-training. VGGRPO introduces a Latent Geometry Model (LGM) that stitches video diffusion latents to geometry foundation models, enabling direct decoding of scene geometry from the latent space. By constructing LGM from a geometry model with 4D reconstruction capability, VGGRPO naturally extends to dynamic scenes, overcoming the static-scene limitations of prior methods. Building on this, we perform latent-space Group Relative Policy Optimization with two complementary rewards: a camera motion smoothness reward that penalizes jittery trajectories, and a geometry reprojection consistency reward that enforces cross-view geometric coherence. Experiments on both static and dynamic benchmarks show that VGGRPO improves camera stability, geometry consistency, and overall quality while eliminating costly VAE decoding, making latent-space geometry-guided reinforcement an efficient and flexible approach to world-consistent video generation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Generation</span><span>Geometric Consistency</span><span>Video Diffusion Models</span><span>Latent Space</span><span>Policy Optimization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.26599" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>GEMS: Agent-Native Multimodal Generation with Memory and Skills</h2>
+                <span class="published-time">Published: 2026-03-30T06:42:55.000Z</span>
+                
+                <p class="summary">Recent multimodal generation models have achieved remarkable progress on general-purpose generation tasks, yet continue to struggle with complex instructions and specialized downstream tasks. Inspired by the success of advanced agent frameworks such as Claude Code, we propose GEMS (Agent-Native Multimodal GEneration with Memory and Skills), a framework that pushes beyond the inherent limitations of foundational models on both general and downstream tasks. GEMS is built upon three core components. Agent Loop introduces a structured multi-agent framework that iteratively improves generation quality through closed-loop optimization. Agent Memory provides a persistent, trajectory-level memory that hierarchically stores both factual states and compressed experiential summaries, enabling a global view of the optimization process while reducing redundancy. Agent Skill offers an extensible collection of domain-specific expertise with on-demand loading, allowing the system to effectively handle diverse downstream applications. Across five mainstream tasks and four downstream tasks, evaluated on multiple generative backends, GEMS consistently achieves significant performance gains. Most notably, it enables the lightweight 6B model Z-Image-Turbo to surpass the state-of-the-art Nano Banana 2 on GenEval2, demonstrating the effectiveness of agent harness in extending model capabilities beyond their original limits.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>multimodal generation</span><span>agent framework</span><span>agent memory</span><span>agent skills</span><span>closed-loop optimization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>AI Agent</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.28088" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
