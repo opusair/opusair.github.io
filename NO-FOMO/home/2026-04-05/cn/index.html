@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-04-05</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-04-05</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Running Google Gemma 4 Locally with LM Studio's New Headless CLI and Claude Code</h2>
+                <span class="published-time">Published: 2026-04-05 17:13:51</span>
+                
+                <p class="summary">This story details a practical methodology for deploying and operating Google's Gemma 4 large language model directly on local computing environments. The described approach significantly streamlines the process by leveraging LM Studio's recently introduced Headless Command Line Interface (CLI), which facilitates efficient management and interaction with local AI models without requiring a graphical user interface. The content further mentions the integration of 'Claude Code,' suggesting specialized scripts or programmatic elements designed to enhance or enable specific functionalities in conjunction with the local operation of Gemma 4, potentially drawing on capabilities found in advanced AI assistants like Claude. This development presents a valuable opportunity for developers, researchers, and AI enthusiasts who aim to experiment with state-of-the-art large language models such as Gemma 4, offering increased autonomy and control over model execution. It underscores a prominent trend within the AI community towards decentralized and efficient on-device AI deployment, thereby reducing the necessity for continuous reliance on cloud-based infrastructure and promoting independent, accessible AI development and innovation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Google Gemma 4</span><span>Large Language Model</span><span>LM Studio</span><span>Local Deployment</span><span>Headless CLI</span><span>AI Model</span><span>AI Development</span><span>Machine Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://ai.georgeliu.com/p/running-google-gemma-4-locally-with" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Caveman: Why use many token when few token do trick</h2>
+                <span class="published-time">Published: 2026-04-05 08:56:18</span>
+                
+                <p class="summary">The project, humorously dubbed 'Caveman,' tackles a pervasive challenge within the realm of Large Language Models (LLMs): the optimization of token utilization. The increasing complexity and scale of LLMs often lead to high token consumption, directly impacting computational costs and inference latency. 'Caveman' proposes and investigates methodologies aimed at achieving equivalent or even enhanced model performance with a substantially reduced token count. This initiative is presumed to focus on advanced prompt engineering techniques, sophisticated input data compression strategies, or more efficient output generation paradigms, all designed to distill information to its most critical components. By maximizing the semantic density per token, the project seeks to bolster the cost-effectiveness and operational efficiency of LLM-powered applications. Such advancements are pivotal for facilitating the wider adoption and sustainable scalability of AI technologies, rendering sophisticated language models more economically viable and practically deployable across an array of diverse use cases by significantly reducing their resource footprint.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Token Optimization</span><span>Prompt Engineering</span><span>Computational Efficiency</span><span>Natural Language Processing</span><span>AI Optimization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/JuliusBrussee/caveman" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Nanocode: The best Claude Code that $200 can buy in pure JAX on TPUs</h2>
+                <span class="published-time">Published: 2026-04-05 14:21:17</span>
+                
+                <p class="summary">This discussion thread introduces 'Nanocode,' a project highlighted for delivering highly efficient Claude-based code, achievable within a budget of approximately $200. The core technological innovation of Nanocode stems from its implementation in pure JAX, a robust numerical computing library optimized for machine learning research, and its tailored performance for Google's Tensor Processing Units (TPUs). This strategic combination underscores a commitment to achieving substantial computational efficiency and cost-effectiveness in the development and execution of advanced AI models, particularly those leveraging the capabilities of large language models like Claude. The initiative suggests a concerted effort to democratize access to sophisticated AI development, making high-quality, performant code accessible to a broader audience without requiring significant financial investment in infrastructure. By focusing on JAX and TPUs, Nanocode positions itself at the forefront of combining cutting-edge machine learning frameworks with specialized hardware, offering a potentially powerful solution for researchers and developers aiming to optimize their AI workflows. This project could be particularly impactful for independent developers or smaller organizations seeking to run complex AI computations efficiently on a limited budget, demonstrating an innovative approach to resource management in the realm of computational AI.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>JAX</span><span>TPUs</span><span>Claude AI</span><span>Code Optimization</span><span>Cost-effective AI</span><span>Machine Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/salmanmohammadi/nanocode/discussions/1" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Contrapunk – Real-time counterpoint harmony from guitar input</h2>
+                <span class="published-time">Published: 2026-04-05 00:40:18</span>
+                
+                <p class="summary">Contrapunk is an innovative application showcased on Hacker News, enabling musicians to generate real-time counterpoint harmonies from various inputs, primarily live guitar audio. The creator developed this tool out of a personal desire to improvise with dynamically produced harmonic accompaniment. Beyond guitar, the system can process input from MIDI devices or even a computer keyboard, demonstrating its versatility. A core feature of Contrapunk is its ability to generate harmony voices by strictly adhering to established counterpoint rules, providing a musically coherent and structured output. Users have considerable control, including the ability to choose the musical key for improvisation, select different voice leading styles, and specify which part of the harmony they wish to play. The project offers a convenient macOS DMG for easy installation and actively encourages community engagement through its open-source GitHub repository, inviting feedback particularly on its underlying Digital Signal Processing (DSP) methodologies. This platform represents a unique blend of music theory and audio technology, offering an interactive and creative aid for musicians.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Counterpoint harmony</span><span>Real-time audio processing</span><span>Guitar input</span><span>MIDI</span><span>Music generation</span><span>Digital Signal Processing</span><span>Software development</span><span>Music technology</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://contrapunk.com/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Codex pricing to align with API token usage, instead of per-message</h2>
+                <span class="published-time">Published: 2026-04-05 15:58:08</span>
+                
+                <p class="summary">OpenAI has announced a significant alteration to the pricing structure for its Codex API, transitioning from a "per-message" billing model to one based on "API token usage." This strategic shift means that developers and users will now incur charges commensurate with the number of tokens processed by the Codex model, encompassing both input and output, rather than solely based on the discrete number of requests made. The move aims to offer a more granular, transparent, and potentially predictable cost model for applications that integrate Codex for various programming assistance tasks, including code generation, debugging, and natural language to code translation. This revised pricing methodology aligns with the industry standard adopted by many providers of large language models, directly reflecting the computational resources expended in processing and generating data at the token level. Developers utilizing the Codex API will need to re-evaluate their current cost estimations and adjust their usage patterns to effectively manage expenses under this new token-centric billing paradigm. This change is vital for financial planning and resource optimization in AI-powered development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Codex</span><span>OpenAI</span><span>API pricing</span><span>Token usage</span><span>Large Language Model</span><span>Code generation</span><span>Billing model</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://help.openai.com/en/articles/20001106-codex-rate-card" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>From birds to brains: My path to the fusiform face area (2024)</h2>
+                <span class="published-time">Published: 2026-04-05 17:08:55</span>
+                
+                <p class="summary">This autobiographical account, titled "From birds to brains: My path to the fusiform face area," details a prominent scientist's journey through cognitive neuroscience, culminating in the understanding of a specialized neural mechanism. The narrative likely explores the incremental discoveries and intellectual path that led to the identification and characterization of the fusiform face area (FFA), a distinct region in the human brain critically involved in processing and recognizing faces. This journey might encompass early comparative studies, perhaps referencing visual processing in different species ("from birds"), and delve into the methodologies and challenges of mapping brain functions related to complex visual stimuli. Such foundational work in understanding biological intelligence, specifically how the brain efficiently handles specific object categories like faces, holds profound implications for the development of artificial intelligence. Insights derived from the FFA's specialization serve as crucial inspiration and architectural principles for machine learning and computer vision systems aiming to achieve robust and efficient facial recognition capabilities, bridging the gap between neuroscience and AI innovation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Fusiform face area</span><span>Cognitive neuroscience</span><span>Face recognition</span><span>Brain specialization</span><span>Visual perception</span><span>Neural mechanisms</span><span>Computer Vision</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Deep Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.kavliprize.org/nancy-kanwisher-autobiography" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
