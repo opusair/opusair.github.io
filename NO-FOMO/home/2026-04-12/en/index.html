@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-04-12</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-04-12</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>The Closing of the Frontier</h2>
+                <span class="published-time">Published: 2026-04-12 18:30:29</span>
+                
+                <p class="summary">The article, 'The Closing of the Frontier,' posits a significant transition within the technological domain, suggesting the culmination of an era defined by unfettered exploration and rapid expansion. This metaphorical 'closing' points towards a maturation of various high-growth sectors, particularly those underpinned by artificial intelligence and advanced computing. The narrative implies a shift from extensive foundational discovery to a more intensive phase of optimization, refinement, and practical application of existing breakthroughs. It suggests that the industry is moving towards a period where challenges relate less to identifying new theoretical possibilities and more to the complexities of real-world implementation, scalability, and ethical governance. This perspective invites reflection on the sustainability of current innovation models, the evolving dynamics of competition, and the strategies necessary for continued progress in a potentially more structured and resource-constrained environment, impacting future research and development trajectories.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Technological evolution</span><span>Innovation cycles</span><span>Industry maturation</span><span>AI development</span><span>Digital transformation</span><span>Paradigm shift</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://tanyaverma.sh/2026/04/10/closing-of-the-frontier.html" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Claudraband – Claude Code for the Power User</h2>
+                <span class="published-time">Published: 2026-04-12 16:55:20</span>
+                
+                <p class="summary">Claudraband is an innovative open-source project introduced on Hacker News, designed to enhance the utility of Claude Code, an AI coding assistant. This tool wraps the Claude Code Text User Interface (TUI) within a controlled terminal environment, facilitating advanced and extended workflows for power users. It leverages tmux for interactive, visible sessions or xterm.js for headless, background operations, ensuring all interactions are seamlessly mediated through the actual Claude Code TUI. A notable application highlighted is the ability for a current Claude Code session to 'self-interrogate' previous sessions, reviewing past decisions or outcomes. Key functionalities provided by Claudraband include resumable non-interactive workflows, extending the capabilities of direct Claude interactions with robust session support. Furthermore, it offers an HTTP server for remote control of Claude Code sessions and an ACP server to integrate with alternative frontends like Zed, positioning Claudraband as a powerful orchestration layer for AI-driven code generation and analysis.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claudraband</span><span>Claude Code</span><span>TUI</span><span>terminal</span><span>AI workflows</span><span>session management</span><span>remote control</span><span>AI agent tool</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/halfwhey/claudraband" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Bouncer: Block "crypto", "rage politics", and more from your X feed using AI</h2>
+                <span class="published-time">Published: 2026-04-12 16:24:46</span>
+                
+                <p class="summary">Bouncer is an innovative AI-powered tool developed to give users greater control over their X (formerly Twitter) feed by intelligently filtering out unwanted content. This application specifically targets pervasive and often polarizing topics such as "crypto" discussions and "rage politics," alongside other user-defined undesirable categories. By leveraging advanced artificial intelligence algorithms, Bouncer actively analyzes posts to identify and suppress content that aligns with these specified filters. This proactive approach aims to significantly enhance the user experience, providing a more curated and less contentious social media environment. It exemplifies a practical application of AI in personal content moderation, moving beyond traditional keyword blocking to offer more nuanced and context-aware filtering capabilities. The project underscores the growing demand for personalized digital well-being tools that mitigate exposure to information overload and emotional triggers, thereby fostering a more positive and productive online interaction.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Content Filtering</span><span>Content Moderation</span><span>Machine Learning</span><span>Social Media</span><span>X Platform</span><span>Personalization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/imbue-ai/bouncer" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Anthropic downgraded cache TTL on March 6th</h2>
+                <span class="published-time">Published: 2026-04-12 05:45:52</span>
+                
+                <p class="summary">Anthropic, a leading artificial intelligence research company known for its Claude family of large language models, implemented a notable change to its caching infrastructure on March 6th by downgrading the cache's Time-To-Live (TTL). This operational adjustment, indicated in a GitHub issue, signifies a reduction in the duration for which cached data remains valid before requiring a refresh from the origin server. While the precise motivations behind this decision were not elaborated upon in the provided information, such a change typically aims to accelerate the propagation of data updates or configuration changes across Anthropic's services. For users and developers leveraging Anthropic's APIs and AI models, this could translate to more immediate reflections of platform-wide updates or data modifications, potentially influencing system responsiveness and resource utilization. The move underscores continuous efforts in infrastructure management and optimization within the company's advanced AI operations to maintain service efficiency and data currency.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Cache TTL</span><span>Anthropic</span><span>Claude</span><span>Infrastructure Management</span><span>API Performance</span><span>Service Operations</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/anthropics/claude-code/issues/46829" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OpenAI Silently Removed Study Mode from ChatGPT</h2>
+                <span class="published-time">Published: 2026-04-12 13:20:58</span>
+                
+                <p class="summary">OpenAI has reportedly removed a feature known as 'Study Mode' from its popular artificial intelligence chatbot, ChatGPT, without any official announcement or explanation. Users have noted the silent discontinuation of this specific functionality, which was highly valued for its potential to assist with structured learning, academic support, and personalized study sessions. While the exact capabilities of Study Mode were not extensively detailed publicly by OpenAI, it was generally perceived as a tool designed to enhance user engagement with educational content, potentially through optimized prompts, structured learning paths, or interactive exercises. The unexpected removal has sparked discussions among the user base, particularly within communities like Hacker News, where users expressed disappointment and a desire for its prompt return. This development highlights the dynamic nature of AI product development and the impact of unannounced feature changes on user experience and platform utility, especially for those who integrated such tools into their daily routines for educational or self-improvement purposes. The lack of transparency surrounding the decision raises questions about OpenAI's product strategy and communication with its user community regarding significant platform alterations.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>OpenAI</span><span>ChatGPT</span><span>Study Mode</span><span>AI features</span><span>Product discontinuation</span><span>Language model applications</span><span>User experience</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://news.ycombinator.com/item?id=47739305" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Pro Max 5x quota exhausted in 1.5 hours despite moderate usage</h2>
+                <span class="published-time">Published: 2026-04-12 13:15:31</span>
+                
+                <p class="summary">A user reported on a GitHub issue concerning the rapid exhaustion of their "Pro Max 5x" service quota, reaching its limit within a mere 1.5 hours despite what they perceived as moderate usage. This incident suggests a potential discrepancy between user expectations of resource consumption and the actual operational parameters or measurement mechanisms of the service, presumably related to Anthropic's Claude API given the repository context. The report highlights a critical user experience issue where allocated resources, intended for extended use, were depleted far quicker than anticipated. This situation may prompt an investigation into the system's quota enforcement, billing methodology, or the clarity of usage guidelines to prevent similar occurrences for other users. The quick depletion raises questions about the definition of "moderate usage" within the service's framework and whether current allocations adequately support typical operational workflows, even for users subscribed to higher-tier plans like "Pro Max 5x". This feedback from the user community is crucial for refining service delivery and ensuring user satisfaction by aligning resource availability with actual demand and usage patterns.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Quota Management</span><span>API Usage</span><span>Resource Limits</span><span>Service Tiers</span><span>LLM Services</span><span>Usage Monitoring</span><span>Rate Limiting</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Generative AI</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/anthropics/claude-code/issues/45756" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
