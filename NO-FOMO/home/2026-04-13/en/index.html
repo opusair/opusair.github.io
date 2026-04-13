@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-04-13</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-04-13</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Nothing Ever Happens: Polymarket bot that always buys No on non-sports markets</h2>
+                <span class="published-time">Published: 2026-04-13 15:31:06</span>
+                
+                <p class="summary">The "Nothing Ever Happens" project introduces a Polymarket bot designed to automatically purchase "No" on all non-sports prediction markets. This strategy is based on the premise that many events outside of traditional sports betting often fail to occur or are overvalued by the "Yes" outcome. Operating on the Polymarket platform, the bot aims to capitalize on perceived inefficiencies or a general tendency for anticipated non-sports events to be less likely to materialize than popular sentiment might suggest. This initiative represents an automated approach to engaging with prediction markets, highlighting how simple, rule-based strategies can be implemented for speculative trading. The bot's name itself reflects a probabilistic worldview, suggesting that many predicted future events in diverse categories, from politics to technology, often do not come to pass, thus making a consistent "No" bet a potentially profitable long-term strategy. It showcases the application of algorithmic decision-making in decentralized prediction markets.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Polymarket</span><span>Prediction Markets</span><span>Automated Trading</span><span>Trading Bot</span><span>Betting Strategy</span><span>Algorithmic Trading</span><span>Software Bot</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/sterlingcrispin/nothing-ever-happens" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Ithihāsas 
+
+– a character explorer for Hindu epics, built in a few hours</h2>
+                <span class="published-time">Published: 2026-04-13 19:10:07</span>
+                
+                <p class="summary">A Hacker News user has unveiled Ithihāsas, a new character explorer designed to simplify the navigation of Hindu epics such as the Mahābhārata and Rāmāyaṇa. The application provides a non-linear approach to understanding complex narratives and character relationships, moving beyond traditional sequential reading or scattered online resources. Ithihāsas allows users to delve into these ancient texts by focusing on individual characters and their intricate connections. The project also served as a practical experiment in rapid application development using Claude CLI. The developer successfully assembled the first iteration of Ithihāsas within a few hours, underscoring Claude CLI's potential for efficient structured content generation and significant acceleration of the development lifecycle. While the AI tool proved instrumental in initial content scaffolding and speed, the author notes that user experience refinements and data consistency still necessitated manual intervention. The developer is actively seeking community feedback on the application's UX and the overall effectiveness of this innovative approach to mythological exploration.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude CLI</span><span>Large Language Model</span><span>Application Development</span><span>Data Exploration</span><span>Structured Content Generation</span><span>User Experience</span><span>Rapid Prototyping</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.ithihasas.in" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Microsoft isn't removing Copilot from Windows 11, it's just renaming it</h2>
+                <span class="published-time">Published: 2026-04-13 13:48:24</span>
+                
+                <p class="summary">Microsoft is reportedly not discontinuing its AI-powered Copilot feature within Windows 11, but rather implementing a rebranding strategy, indicating a change in name rather than a removal of functionality. This strategic decision underscores that the core artificial intelligence capabilities and user assistance tools currently integrated into the operating system will remain fully available to users, albeit under a new designation. The move to rename, instead of eliminating the feature entirely, highlights Microsoft's sustained commitment to embedding advanced AI assistants directly into the Windows 11 user experience. Industry analysts suggest this could be a calculated effort to refine branding, achieve better alignment with Microsoft's broader product ecosystems, or enhance user perception without affecting the underlying utility and technological foundation of the AI features. Consequently, users can anticipate that the existing AI-driven tools, which facilitate various tasks from content generation and summarization to system navigation and personalized assistance, will continue to be a fundamental component of Windows 11. This development reinforces Microsoft's overarching vision for AI-augmented productivity and intelligent interaction within its leading desktop environment, signaling the enduring role of generative AI and smart assistants in the evolution of Windows.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Microsoft</span><span>Copilot</span><span>Windows 11</span><span>AI Assistant</span><span>Operating System</span><span>Rebranding</span><span>Artificial Intelligence</span><span>Software Integration</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.neowin.net/opinions/microsoft-isnt-removing-copilot-from-windows-11-its-just-renaming-it/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Evaluation of Claude Mythos Preview's cyber capabilities</h2>
+                <span class="published-time">Published: 2026-04-13 18:08:14</span>
+                
+                <p class="summary">The provided information pertains to an evaluation conducted on the cyber capabilities of Claude Mythos Preview, an advanced AI model. This assessment likely delves into the model's proficiency in various cybersecurity tasks, such as identifying vulnerabilities, analyzing malicious code, assisting in threat detection, or generating secure code. The evaluation would aim to understand the strengths and limitations of Claude Mythos Preview in a defensive or offensive cybersecurity context. Such analyses are crucial for determining the practical applicability and potential risks associated with integrating sophisticated AI models into critical security infrastructures, providing insights for developers and cybersecurity professionals on how to leverage or mitigate the model's performance in real-world scenarios. This type of review helps to benchmark the evolving capabilities of large language models in specialized domains like cybersecurity.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude Mythos Preview</span><span>Cybersecurity</span><span>AI Evaluation</span><span>Large Language Model</span><span>Threat Intelligence</span><span>Vulnerability Analysis</span><span>AI Security</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.aisi.gov.uk/blog/our-evaluation-of-claude-mythos-previews-cyber-capabilities" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Apple's accidental moat: How the "AI Loser" may end up winning</h2>
+                <span class="published-time">Published: 2026-04-13 02:53:10</span>
+                
+                <p class="summary">Apple, often characterized as an 'AI Loser' in comparison to other tech giants making significant strides in foundational model development and cloud-based AI, may actually hold an unexpected strategic advantage. This article explores the concept of Apple's 'accidental moat,' suggesting that its integrated hardware-software ecosystem, stringent privacy policies, and vast user base could ultimately position it to prevail in the long run. While competitors focus on raw computational power and large language models, Apple's strength could lie in its ability to deliver on-device AI, prioritizing user privacy and a seamless, personalized experience. This unique approach could allow Apple to subtly integrate AI into its products in ways that are deeply valued by consumers, transforming perceived weaknesses into a formidable competitive edge. The premise is that as AI shifts towards more personalized, secure, and device-centric applications, Apple's existing infrastructure and user trust could enable it to 'win' by redefining what AI success looks like for the end-user, rather than through direct competition in frontier AI research.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Apple AI</span><span>Accidental Moat</span><span>On-device AI</span><span>Integrated Ecosystem</span><span>AI Strategy</span><span>Privacy</span><span>Tech Industry</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://adlrocha.substack.com/p/adlrocha-how-the-ai-loser-may-end" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: I built a social media management tool in 3 weeks with Claude and Codex</h2>
+                <span class="published-time">Published: 2026-04-13 09:26:56</span>
+                
+                <p class="summary">This Hacker News story highlights a developer's achievement in rapidly building a social media management tool, "Brightbean Studio," within an impressive three-week timeframe. The project significantly leveraged advanced AI models, specifically Anthropic's Claude and OpenAI's Codex, to accelerate the software development lifecycle. By utilizing these large language models (LLMs) for tasks such as code generation, debugging, and potentially architectural guidance, the creator was able to streamline development workflows and efficiently overcome technical challenges. This initiative serves as a compelling demonstration of how AI-powered tools can empower individual developers to tackle complex application development with unprecedented speed and efficiency. The project underscores the evolving paradigms of AI-assisted software engineering and the growing integration of generative AI into practical application development, particularly for productivity solutions like social media management platforms.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Social Media Management</span><span>AI-Assisted Development</span><span>Large Language Models</span><span>Claude</span><span>Codex</span><span>Rapid Prototyping</span><span>Software Engineering</span><span>Code Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/brightbeanxyz/brightbean-studio" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Large Language Models Generate Harmful Content Using a Distinct, Unified Mechanism</h2>
+                <span class="published-time">Published: 2026-04-10T00:00:00.000Z</span>
+                
+                <p class="summary">Large language models (LLMs) undergo alignment training to avoid harmful behaviors, yet the resulting safeguards remain brittle: jailbreaks routinely bypass them, and fine-tuning on narrow domains can induce "emergent misalignment" that generalizes broadly. Whether this brittleness reflects a fundamental lack of coherent internal organization for harmfulness remains unclear. Here we use targeted weight pruning as a causal intervention to probe the internal organization of harmfulness in LLMs. We find that harmful content generation depends on a compact set of weights that are general across harm types and distinct from benign capabilities. Aligned models exhibit a greater compression of harm generation weights than unaligned counterparts, indicating that alignment reshapes harmful representations internally--despite the brittleness of safety guardrails at the surface level. This compression explains emergent misalignment: if weights of harmful capabilities are compressed, fine-tuning that engages these weights in one domain can trigger broad misalignment. Consistent with this, pruning harm generation weights in a narrow domain substantially reduces emergent misalignment. Notably, LLMs harmful generation capability is dissociated from how they recognize and explain such content. Together, these results reveal a coherent internal structure for harmfulness in LLMs that may serve as a foundation for more principled approaches to safety.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Harmful Content Generation</span><span>Emergent Misalignment</span><span>Alignment Training</span><span>Weight Pruning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.09544" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AgentSwing: Adaptive Parallel Context Management Routing for Long-Horizon Web Agents</h2>
+                <span class="published-time">Published: 2026-03-29T00:00:00.000Z</span>
+                
+                <p class="summary">As large language models (LLMs) evolve into autonomous agents for long-horizon information-seeking, managing finite context capacity has become a critical bottleneck. Existing context management methods typically commit to a single fixed strategy throughout the entire trajectory. Such static designs may work well in some states, but they cannot adapt as the usefulness and reliability of the accumulated context evolve during long-horizon search. To formalize this challenge, we introduce a probabilistic framework that characterizes long-horizon success through two complementary dimensions: search efficiency and terminal precision. Building on this perspective, we propose AgentSwing, a state-aware adaptive parallel context management routing framework. At each trigger point, AgentSwing expands multiple context-managed branches in parallel and uses lookahead routing to select the most promising continuation. Experiments across diverse benchmarks and agent backbones show that AgentSwing consistently outperforms strong static context management methods, often matching or exceeding their performance with up to 3times fewer interaction turns while also improving the ultimate performance ceiling of long-horizon web agents. Beyond the empirical gains, the proposed probabilistic framework provides a principled lens for analyzing and designing future context management strategies for long-horizon agents.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AgentSwing</span><span>Context Management</span><span>Long-Horizon Agents</span><span>Large Language Models</span><span>Adaptive Routing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2603.27490" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Process Reward Agents for Steering Knowledge-Intensive Reasoning</h2>
+                <span class="published-time">Published: 2026-04-10T00:00:00.000Z</span>
+                
+                <p class="summary">Reasoning in knowledge-intensive domains remains challenging as intermediate steps are often not locally verifiable: unlike math or code, evaluating step correctness may require synthesizing clues across large external knowledge sources. As a result, subtle errors can propagate through reasoning traces, potentially never to be detected. Prior work has proposed process reward models (PRMs), including retrieval-augmented variants, but these methods operate post hoc, scoring completed trajectories, which prevents their integration into dynamic inference procedures. Here, we introduce Process Reward Agents (PRA), a test-time method for providing domain-grounded, online, step-wise rewards to a frozen policy. In contrast to prior retrieval-augmented PRMs, PRA enables search-based decoding to rank and prune candidate trajectories at every generation step. Experiments on multiple medical reasoning benchmarks demonstrate that PRA consistently outperforms strong baselines, achieving 80.8% accuracy on MedQA with Qwen3-4B, a new state of the art at the 4B scale. Importantly, PRA generalizes to unseen frozen policy models ranging from 0.5B to 8B parameters, improving their accuracy by up to 25.7% without any policy model updates. More broadly, PRA suggests a paradigm in which frozen reasoners are decoupled from domain-specific reward modules, allowing the deployment of new backbones in complex domains without retraining.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Process Reward Agents</span><span>Knowledge-Intensive Reasoning</span><span>Reward Models</span><span>Large Language Models</span><span>Medical Reasoning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.09482" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AVGen-Bench: A Task-Driven Benchmark for Multi-Granular Evaluation of Text-to-Audio-Video Generation</h2>
+                <span class="published-time">Published: 2026-04-09T00:00:00.000Z</span>
+                
+                <p class="summary">Text-to-Audio-Video (T2AV) generation is rapidly becoming a core interface for media creation, yet its evaluation remains fragmented. Existing benchmarks largely assess audio and video in isolation or rely on coarse embedding similarity, failing to capture the fine-grained joint correctness required by realistic prompts. We introduce AVGen-Bench, a task-driven benchmark for T2AV generation featuring high-quality prompts across 11 real-world categories. To support comprehensive assessment, we propose a multi-granular evaluation framework that combines lightweight specialist models with Multimodal Large Language Models (MLLMs), enabling evaluation from perceptual quality to fine-grained semantic controllability. Our evaluation reveals a pronounced gap between strong audio-visual aesthetics and weak semantic reliability, including persistent failures in text rendering, speech coherence, physical reasoning, and a universal breakdown in musical pitch control. Code and benchmark resources are available at http://aka.ms/avgenbench.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Text-to-Audio-Video generation</span><span>benchmark</span><span>evaluation framework</span><span>Multimodal Large Language Models</span><span>semantic controllability</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Multimodal</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.08540" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>CT-1: Vision-Language-Camera Models Transfer Spatial Reasoning Knowledge to Camera-Controllable Video Generation</h2>
+                <span class="published-time">Published: 2026-04-10T00:00:00.000Z</span>
+                
+                <p class="summary">Camera-controllable video generation aims to synthesize videos with flexible and physically plausible camera movements. However, existing methods either provide imprecise camera control from text prompts or rely on labor-intensive manual camera trajectory parameters, limiting their use in automated scenarios. To address these issues, we propose a novel Vision-Language-Camera model, termed CT-1 (Camera Transformer 1), a specialized model designed to transfer spatial reasoning knowledge to video generation by accurately estimating camera trajectories. Built upon vision-language modules and a Diffusion Transformer model, CT-1 employs a Wavelet-based Regularization Loss in the frequency domain to effectively learn complex camera trajectory distributions. These trajectories are integrated into a video diffusion model to enable spatially aware camera control that aligns with user intentions. To facilitate the training of CT-1, we design a dedicated data curation pipeline and construct CT-200K, a large-scale dataset containing over 47M frames. Experimental results demonstrate that our framework successfully bridges the gap between spatial reasoning and video synthesis, yielding faithful and high-quality camera-controllable videos and improving camera control accuracy by 25.7% over prior methods.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Camera-Controllable Video Generation</span><span>Vision-Language-Camera Models</span><span>Spatial Reasoning</span><span>Diffusion Transformer</span><span>Camera Trajectory Estimation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Multimodal</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.09201" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Multi-User Large Language Model Agents</h2>
+                <span class="published-time">Published: 2026-03-19T00:00:00.000Z</span>
+                
+                <p class="summary">Large language models (LLMs) and LLM-based agents are increasingly deployed as assistants in planning and decision making, yet most existing systems are implicitly optimized for a single-principal interaction paradigm, in which the model is designed to satisfy the objectives of one dominant user whose instructions are treated as the sole source of authority and utility. However, as they are integrated into team workflows and organizational tools, they are increasingly required to serve multiple users simultaneously, each with distinct roles, preferences, and authority levels, leading to multi-user, multi-principal settings with unavoidable conflicts, information asymmetry, and privacy constraints. In this work, we present the first systematic study of multi-user LLM agents. We begin by formalizing multi-user interaction with LLM agents as a multi-principal decision problem, where a single agent must account for multiple users with potentially conflicting interests and associated challenges. We then introduce a unified multi-user interaction protocol and design three targeted stress-testing scenarios to evaluate current LLMs' capabilities in instruction following, privacy preservation, and coordination. Our results reveal systematic gaps: frontier LLMs frequently fail to maintain stable prioritization under conflicting user objectives, exhibit increasing privacy violations over multi-turn interactions, and suffer from efficiency bottlenecks when coordination requires iterative information gathering.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>LLM Agents</span><span>Multi-user interaction</span><span>Multi-principal decision</span><span>Privacy preservation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.08567" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
