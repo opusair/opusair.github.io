@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-04-17</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-04-17</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Claude Design</h2>
+                <span class="published-time">Published: 2026-04-17 15:04:09</span>
+                
+                <p class="summary">Anthropic's 'Claude Design' articulates the foundational philosophical and architectural principles guiding the development of its advanced large language model, Claude. The design ethos is deeply rooted in a commitment to safety, interpretability, and the proactive mitigation of harmful biases and outputs. A cornerstone of Claude's development is the implementation of 'Constitutional AI,' a novel approach that trains models to adhere to a curated set of guiding principles, aiming to cultivate more reliable, honest, and harmless interactions. This methodology integrates ethical considerations directly into the model's operational behavior, moving beyond mere technical optimization to foster alignment with human values. The objective is to engineer AI systems that are not only highly capable but also inherently trustworthy and beneficial for societal welfare. The comprehensive design framework further encompasses aspects of human-AI collaboration and a continuous, iterative refinement process, ensuring the robust evolution of advanced, responsible AI assistants.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>AI Safety</span><span>Constitutional AI</span><span>AI Ethics</span><span>Model Architecture</span><span>Interpretability</span><span>Responsible AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.anthropic.com/news/claude-design-anthropic-labs" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Claude Opus 4.7 costs 20–30% more per session</h2>
+                <span class="published-time">Published: 2026-04-17 15:29:36</span>
+                
+                <p class="summary">A recent analysis reveals that the latest iteration of Anthropic's advanced large language model, Claude Opus 4.7, incurs a session cost approximately 20-30% higher compared to its predecessors. This significant increase in operational expense is primarily attributed to modifications in the model's tokenizer, a critical component responsible for breaking down text into manageable units for processing. Preliminary measurements indicate that while the new tokenizer may offer certain computational efficiencies or qualitative improvements in text handling, these enhancements come at the expense of elevated per-session costs for users. This development has immediate implications for developers and enterprises leveraging Claude Opus 4.7 for a wide array of applications, especially those characterized by high-volume usage or extended session durations, necessitating a recalibration of budget forecasts and usage strategies. The findings underscore the critical and often overlooked relationship between underlying model architecture components, like tokenizers, and the direct economic implications for consuming sophisticated AI services. Further investigation into the specific technical advantages offered by the new tokenizer and their potential justification for this cost increment is crucial for understanding the long-term value proposition. This ongoing evolution in large language model cost dynamics reflects the continuous trade-offs between performance and operational expense in the rapidly advancing AI landscape.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude Opus</span><span>Large Language Model</span><span>Tokenizer</span><span>AI Costs</span><span>Session Cost</span><span>Anthropic</span><span>LLM Pricing</span><span>AI Economics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.claudecodecamp.com/p/i-measured-claude-4-7-s-new-tokenizer-here-s-what-it-costs-you" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Isaac Asimov: The Last Question (1956)</h2>
+                <span class="published-time">Published: 2026-04-17 12:01:19</span>
+                
+                <p class="summary">Isaac Asimov's seminal 1956 science fiction short story, "The Last Question," presents a profound contemplation on the ultimate limits of computation and the potential for artificial intelligence to address humanity's most fundamental challenges. The narrative spans billions of years, tracing the iterative evolution of a supercomputer, initially known as Multivac, as it is repeatedly confronted with the persistent query: "Can entropy be reversed?" Over vast epochs, as humanity integrates with the machine and subsequently transcends physical form, the evolving intelligence, eventually designated as AC (Cosmic AC), diligently accumulates data and expands its processing capacity across universal scales. The story culminates dramatically with AC achieving a definitive solution to the entropy reversal problem, thereby illustrating a form of ultimate intelligence capable of fundamentally altering cosmic reality. This work stands as a foundational philosophical inquiry into concepts such as superintelligence, the computational singularity, and the theoretical capabilities of AI to achieve god-like agency, prompting enduring discussions on the long-term trajectories and profound ethical considerations inherent in advanced artificial intelligence development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Superintelligence</span><span>Artificial General Intelligence</span><span>Computational Singularity</span><span>Cosmic Computing</span><span>Entropy Reversal Algorithms</span><span>AI Evolution</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://hex.ooo/library/last_question.html" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Teddy Roosevelt and Abraham Lincoln in the same photo (2010)</h2>
+                <span class="published-time">Published: 2026-04-17 09:18:16</span>
+                
+                <p class="summary">The 2010 blog post from the National Archives, titled 'Teddy Roosevelt and Abraham Lincoln in the same photo', addresses a historically impossible scenario given their distinct lifespans. While the original content likely explored the historical context or potential for early image manipulation, a contemporary analysis from an AI perspective reveals significant implications for generative artificial intelligence and computer vision. The creation of such anachronistic images, even for artistic or educational purposes, now falls within the capabilities of advanced generative models, capable of synthesizing photorealistic scenes and individuals across different eras. Conversely, the proliferation of deepfakes and manipulated media necessitates robust AI-driven digital forensics tools. These systems employ sophisticated computer vision algorithms to detect anomalies, analyze metadata, and identify inconsistencies indicative of image manipulation, thereby preserving historical integrity. The scenario, though originally a historical curiosity, serves as a thought experiment for the evolving challenges and ethical considerations in distinguishing authentic historical records from AI-generated content.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Generative AI</span><span>Computer Vision</span><span>Digital Forensics</span><span>Historical Data</span><span>Image Manipulation</span><span>AI Ethics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://prologue.blogs.archives.gov/2010/11/09/teddy-roosevelt-and-abraham-lincoln-in-the-same-photo/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Tesla tells HW3 owner to 'be patient' after 7 years of waiting for FSD</h2>
+                <span class="published-time">Published: 2026-04-17 19:00:07</span>
+                
+                <p class="summary">A long-standing issue concerning Tesla's Full Self-Driving (FSD) feature has resurfaced, with reports indicating that an owner equipped with Hardware 3 (HW3) has been advised by the company to 'be patient' after seven years of anticipation for the promised autonomous capabilities. This situation underscores the significant delays and challenges Tesla faces in delivering its advanced FSD software suite to its customer base, particularly those with earlier hardware versions. The protracted wait highlights potential complexities in developing and deploying sophisticated AI-driven autonomous systems across diverse hardware platforms, raising questions about software backward compatibility and the feasibility of achieving true Level 5 autonomy within previously stated timelines. Customer frustration is reportedly growing among those who invested in FSD with the expectation of continuous software improvements and feature parity, despite hardware generations. This ongoing saga serves as a critical case study in the real-world deployment of cutting-edge automotive AI, emphasizing the intricate balance between technological ambition, development timelines, and consumer expectations.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Full Self-Driving</span><span>Autonomous Vehicles</span><span>Tesla FSD</span><span>Hardware 3</span><span>AI Deployment</span><span>Software Updates</span><span>Self-Driving Technology</span><span>Vehicle Autonomy</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Computer Vision</span><span>Robotics</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://electrek.co/2026/04/17/tesla-hw3-owners-be-patient-7-years-fsd/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Hyperscalers have already outspent most famous US megaprojects</h2>
+                <span class="published-time">Published: 2026-04-17 16:23:22</span>
+                
+                <p class="summary">The story points to a remarkable financial trend, indicating that hyperscalers – major cloud service providers like Amazon, Google, and Microsoft – have already allocated and spent more capital than most of the United States' most famous and historic megaprojects. This comparison underscores the immense and accelerating investment in digital infrastructure, encompassing the construction of vast data centers, global networking systems, and the procurement of advanced computing hardware, including GPUs critical for artificial intelligence and machine learning workloads. These expenditures are not merely a reflection of the technology sector's growth, but rather a testament to its foundational role in the global economy. Such unprecedented investment levels illustrate the strategic importance placed on scalable computing power and data processing capabilities, which are indispensable for driving innovation across various industries and supporting the complex demands of modern digital services, from consumer applications to enterprise solutions and cutting-edge AI research. This paradigm shift in infrastructural spending highlights the critical role hyperscalers play in shaping the technological landscape and future economic development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Hyperscalers</span><span>Cloud Computing</span><span>Data Centers</span><span>Infrastructure Investment</span><span>Capital Expenditure</span><span>AI Infrastructure</span><span>Technology Investment</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/finmoorhouse/status/2044933442236776794" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D Worlds</h2>
+                <span class="published-time">Published: 2026-04-15T00:00:00.000Z</span>
+                
+                <p class="summary">We introduce HY-World 2.0, a multi-modal world model framework that advances our prior project HY-World 1.0. HY-World 2.0 accommodates diverse input modalities, including text prompts, single-view images, multi-view images, and videos, and produces 3D world representations. With text or single-view image inputs, the model performs world generation, synthesizing high-fidelity, navigable 3D Gaussian Splatting (3DGS) scenes. This is achieved through a four-stage method: a) Panorama Generation with HY-Pano 2.0, b) Trajectory Planning with WorldNav, c) World Expansion with WorldStereo 2.0, and d) World Composition with WorldMirror 2.0. Specifically, we introduce key innovations to enhance panorama fidelity, enable 3D scene understanding and planning, and upgrade WorldStereo, our keyframe-based view generation model with consistent memory. We also upgrade WorldMirror, a feed-forward model for universal 3D prediction, by refining model architecture and learning strategy, enabling world reconstruction from multi-view images or videos. Also, we introduce WorldLens, a high-performance 3DGS rendering platform featuring a flexible engine-agnostic architecture, automatic IBL lighting, efficient collision detection, and training-rendering co-design, enabling interactive exploration of 3D worlds with character support. Extensive experiments demonstrate that HY-World 2.0 achieves state-of-the-art performance on several benchmarks among open-source approaches, delivering results comparable to the closed-source model Marble. We release all model weights, code, and technical details to facilitate reproducibility and support further research on 3D world models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multi-modal</span><span>World Model</span><span>3D Generation</span><span>3D Reconstruction</span><span>Gaussian Splatting</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Computer Vision</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.14268" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>RAD-2: Scaling Reinforcement Learning in a Generator-Discriminator Framework</h2>
+                <span class="published-time">Published: 2026-04-16T00:00:00.000Z</span>
+                
+                <p class="summary">High-level autonomous driving requires motion planners capable of modeling multimodal future uncertainties while remaining robust in closed-loop interactions. Although diffusion-based planners are effective at modeling complex trajectory distributions, they often suffer from stochastic instabilities and the lack of corrective negative feedback when trained purely with imitation learning. To address these issues, we propose RAD-2, a unified generator-discriminator framework for closed-loop planning. Specifically, a diffusion-based generator is used to produce diverse trajectory candidates, while an RL-optimized discriminator reranks these candidates according to their long-term driving quality. This decoupled design avoids directly applying sparse scalar rewards to the full high-dimensional trajectory space, thereby improving optimization stability. To further enhance reinforcement learning, we introduce Temporally Consistent Group Relative Policy Optimization, which exploits temporal coherence to alleviate the credit assignment problem. In addition, we propose On-policy Generator Optimization, which converts closed-loop feedback into structured longitudinal optimization signals and progressively shifts the generator toward high-reward trajectory manifolds. To support efficient large-scale training, we introduce BEV-Warp, a high-throughput simulation environment that performs closed-loop evaluation directly in Bird's-Eye View feature space via spatial warping. RAD-2 reduces the collision rate by 56% compared with strong diffusion-based planners. Real-world deployment further demonstrates improved perceived safety and driving smoothness in complex urban traffic.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Generator-Discriminator Framework</span><span>Autonomous Driving</span><span>Motion Planning</span><span>Diffusion Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Machine Learning</span><span>Deep Learning</span><span>Robotics</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.15308" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>How to Fine-Tune a Reasoning Model? A Teacher-Student Cooperation Framework to Synthesize Student-Consistent SFT Data</h2>
+                <span class="published-time">Published: 2026-03-23T00:00:00.000Z</span>
+                
+                <p class="summary">A widely adopted strategy for model enhancement is to use synthetic data generated by a stronger model for supervised fine-tuning (SFT). However, for emerging reasoning models like Qwen3-8B, this approach often fails to improve reasoning capabilities and can even lead to a substantial drop in performance. In this work, we identify substantial stylistic divergence between teacher generated data and the distribution of student as a major factor impacting SFT. To bridge this gap, we propose a Teacher-Student Cooperation Data Synthesis framework (TESSY), which interleaves teacher and student models to alternately generate style and non-style tokens. Consequently, TESSY produces synthetic sequences that inherit the advanced reasoning capabilities of the teacher while maintaining stylistic consistency with the distribution of the student. In experiments on code generation using GPT-OSS-120B as the teacher, fine-tuning Qwen3-8B on teacher-generated data leads to performance drops of 3.25% on LiveCodeBench-Pro and 10.02% on OJBench, whereas TESSY achieves improvements of 11.25% and 6.68%.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reasoning Model</span><span>Supervised Fine-Tuning</span><span>Synthetic Data</span><span>Teacher-Student Cooperation</span><span>Code Generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.14164" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Dive into Claude Code: The Design Space of Today's and Future AI Agent Systems</h2>
+                <span class="published-time">Published: 2026-04-14T00:00:00.000Z</span>
+                
+                <p class="summary">Claude Code is an agentic coding tool that can run shell commands, edit files, and call external services on behalf of the user. This study describes its comprehensive architecture by analyzing the publicly available TypeScript source code and further comparing it with OpenClaw, an independent open-source AI agent system that answers many of the same design questions from a different deployment context. Our analysis identifies five human values, philosophies, and needs that motivate the architecture (human decision authority, safety and security, reliable execution, capability amplification, and contextual adaptability) and traces them through thirteen design principles to specific implementation choices. The core of the system is a simple while-loop that calls the model, runs tools, and repeats. Most of the code, however, lives in the systems around this loop: a permission system with seven modes and an ML-based classifier, a five-layer compaction pipeline for context management, four extensibility mechanisms (MCP, plugins, skills, and hooks), a subagent delegation mechanism with worktree isolation, and append-oriented session storage. A comparison with OpenClaw, a multi-channel personal assistant gateway, shows that the same recurring design questions produce different architectural answers when the deployment context changes: from per-action safety classification to perimeter-level access control, from a single CLI loop to an embedded runtime within a gateway control plane, and from context-window extensions to gateway-wide capability registration. We finally identify six open design directions for future agent systems, grounded in recent empirical, architectural, and policy literature.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent Systems</span><span>Claude Code</span><span>Agentic Coding</span><span>System Architecture</span><span>Design Principles</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.14228" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>UniDoc-RL: Coarse-to-Fine Visual RAG with Hierarchical Actions and Dense Rewards</h2>
+                <span class="published-time">Published: 2026-04-16T00:00:00.000Z</span>
+                
+                <p class="summary">Retrieval-Augmented Generation (RAG) extends Large Vision-Language Models (LVLMs) with external visual knowledge. However, existing visual RAG systems typically rely on generic retrieval signals that overlook the fine-grained visual semantics essential for complex reasoning. To address this limitation, we propose UniDoc-RL, a unified reinforcement learning framework in which an LVLM agent jointly performs retrieval, reranking, active visual perception, and reasoning. UniDoc-RL formulates visual information acquisition as a sequential decision-making problem with a hierarchical action space. Specifically, it progressively refines visual evidence from coarse-grained document retrieval to fine-grained image selection and active region cropping, allowing the model to suppress irrelevant content and attend to information-dense regions. For effective end-to-end training, we introduce a dense multi-reward scheme that provides task-aware supervision for each action. Based on Group Relative Policy Optimization (GRPO), UniDoc-RL aligns agent behavior with multiple objectives without relying on a separate value network. To support this training paradigm, we curate a comprehensive dataset of high-quality reasoning trajectories with fine-grained action annotations. Experiments on three benchmarks demonstrate that UniDoc-RL consistently surpasses state-of-the-art baselines, yielding up to 17.7% gains over prior RL-based methods.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Visual RAG</span><span>Reinforcement Learning</span><span>Large Vision-Language Models</span><span>Hierarchical Actions</span><span>Dense Rewards</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.14967" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Representations Before Pixels: Semantics-Guided Hierarchical Video Prediction</h2>
+                <span class="published-time">Published: 2026-04-13T00:00:00.000Z</span>
+                
+                <p class="summary">Accurate future video prediction requires both high visual fidelity and consistent scene semantics, particularly in complex dynamic environments such as autonomous driving. We present Re2Pix, a hierarchical video prediction framework that decomposes forecasting into two stages: semantic representation prediction and representation-guided visual synthesis. Instead of directly predicting future RGB frames, our approach first forecasts future scene structure in the feature space of a frozen vision foundation model, and then conditions a latent diffusion model on these predicted representations to render photorealistic frames. This decomposition enables the model to focus first on scene dynamics and then on appearance generation. A key challenge arises from the train-test mismatch between ground-truth representations available during training and predicted ones used at inference. To address this, we introduce two conditioning strategies, nested dropout and mixed supervision, that improve robustness to imperfect autoregressive predictions. Experiments on challenging driving benchmarks demonstrate that the proposed semantics-first design significantly improves temporal semantic consistency, perceptual quality, and training efficiency compared to strong diffusion baselines. We provide the implementation code at https://github.com/sirkosophia/V-GIFT</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Prediction</span><span>Semantic Representation</span><span>Hierarchical Models</span><span>Diffusion Models</span><span>Autonomous Driving</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Video Understanding</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.11707" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
