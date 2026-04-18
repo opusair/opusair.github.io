@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-04-18</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-04-18</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Opus 4.7 to 4.6 Inflation is ~45%</h2>
+                <span class="published-time">Published: 2026-04-18 16:05:43</span>
+                
+                <p class="summary">A recent analysis, likely referencing data from token usage leaderboards such as the one at tokens.billchambers.me/leaderboard, indicates a substantial "inflation" or price increase of approximately 45% between versions 4.6 and 4.7 of the Opus model. While the specific context of "Opus 4.7" and "Opus 4.6" is inferred to refer to iterations or specific applications of Anthropic's Claude 3 Opus large language model, this reported cost escalation suggests a significant change in the economic parameters for accessing or utilizing this advanced AI. Such a substantial hike in token pricing can have considerable implications for developers, researchers, and businesses that integrate the Opus model into their applications, affecting budget allocations, project feasibility, and overall operational costs. The observation underscores the dynamic and sometimes volatile nature of pricing models within the rapidly evolving artificial intelligence landscape, where advancements and demand can lead to shifts in resource expenditure. Users and organizations leveraging this technology will need to adapt their strategies to account for these updated cost structures, potentially exploring cost optimization methods or alternative models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>Token Pricing</span><span>AI Costs</span><span>Claude 3 Opus</span><span>API Pricing</span><span>Natural Language Processing</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://tokens.billchambers.me/leaderboard" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Graphs That Explain the State of AI in 2026</h2>
+                <span class="published-time">Published: 2026-04-18 17:12:44</span>
+                
+                <p class="summary">This IEEE Spectrum report offers a comprehensive, forward-looking analysis detailing the projected state of artificial intelligence in 2026. Utilizing an array of informative graphs and data visualizations, the article elucidates critical trends, emerging technologies, and anticipated developments within the AI ecosystem over the coming years. It delves into the continuous evolution of core AI disciplines, including machine learning, deep learning, and potentially specialized areas like generative AI or large language models, examining their advancements and increasing maturity. The analysis also explores the expanding integration of AI solutions across diverse industrial sectors, from healthcare to finance, and anticipates the novel applications and societal impacts expected to materialize. Designed for researchers, industry leaders, and policymakers, this data-driven explanation provides crucial insights into AI's growth trajectory, potential challenges, and its transformative role. By presenting a clear, visual understanding, the report empowers stakeholders to comprehend the current momentum and strategically prepare for the significant shifts anticipated in the field of artificial intelligence by 2026.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>AI Trends</span><span>AI Forecast</span><span>Machine Learning</span><span>Deep Learning</span><span>Technology Trends</span><span>Data Visualization</span><span>Future of AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://spectrum.ieee.org/state-of-ai-index-2026" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Traders placed over $1B in perfectly timed bets on the Iran war</h2>
+                <span class="published-time">Published: 2026-04-18 18:36:07</span>
+                
+                <p class="summary">An investigative report by The Guardian reveals highly suspicious trading activity totaling over $1 billion, which coincided perfectly with developments preceding a potential conflict in Iran. These substantial, perfectly timed bets across various financial markets have raised significant ethical concerns regarding potential insider knowledge or manipulation related to geopolitical events. The extraordinary precision of these investments suggests either an unparalleled ability to predict future events, possibly through advanced analytical models and AI-driven insights, or access to privileged, non-public information about impending hostilities. Financial regulators and ethics watchdogs are reportedly examining these trades, particularly focusing on the implications for market integrity and national security. The incident underscores the complex interplay between global politics, financial markets, and the potential for speculative gains derived from catastrophic events, prompting calls for heightened scrutiny of market surveillance mechanisms to detect and prevent exploitation of sensitive geopolitical information, including the role of sophisticated algorithms.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Financial Markets</span><span>Geopolitical Risk</span><span>Insider Trading</span><span>Market Manipulation</span><span>Predictive Analytics</span><span>Financial Ethics</span><span>Algorithmic Trading</span><span>Market Surveillance</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.theguardian.com/world/2026/apr/18/iran-war-bets-ethics-concerns" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>4-bit floating point FP4</h2>
+                <span class="published-time">Published: 2026-04-18 17:21:02</span>
+                
+                <p class="summary">The article introduces 4-bit floating point (FP4) representation, a specialized numerical format that is gaining significant traction within the domains of artificial intelligence and machine learning. FP4 is specifically engineered to drastically reduce the memory footprint and computational overhead associated with large-scale deep learning models, both during their intricate training phases and subsequent inference operations. By quantizing numerical data to just four bits, this format delivers substantial advantages in hardware efficiency, thereby facilitating the deployment of increasingly complex models or achieving accelerated processing speeds on current computational architectures. Although the inherent nature of 4-bit precision may introduce challenges concerning numerical stability and potential accuracy degradation when compared to established higher-precision formats such as FP16 or FP32, extensive research and innovative developments in quantization techniques are actively mitigating these inherent trade-offs. The widespread adoption of FP4 is poised to play a pivotal role in enhancing the scalability, energy efficiency, and overall accessibility of cutting-edge AI technologies, particularly vital for environments with limited resources or applications requiring exceptionally high computational throughput.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Floating Point</span><span>Low Precision</span><span>FP4</span><span>Deep Learning</span><span>AI Hardware</span><span>Numerical Precision</span><span>Model Compression</span><span>Quantization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.johndcook.com/blog/2026/04/17/fp4/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Headless Everything for Personal AI</h2>
+                <span class="published-time">Published: 2026-04-18 17:49:22</span>
+                
+                <p class="summary">The concept of 'Headless Everything for Personal AI' introduces a paradigm shift in how individuals interact with artificial intelligence. This approach advocates for personal AI systems that operate without a traditional graphical user interface or a singular, defined presence, instead integrating seamlessly and ubiquitously into a user's digital and physical environments. By decoupling the AI's core intelligence from specific hardware or interface layers, personal AI can become deeply embedded, acting as a pervasive, intelligent assistant that anticipates needs and performs tasks across a myriad of devices, from smart homes to mobile platforms. This model supports a future where AI is less of a discrete application and more of an ambient, context-aware presence, offering personalized services continuously and invisibly, thus enhancing user experience through proactive and distributed intelligence. This vision emphasizes the importance of robust, secure, and highly interconnected AI architectures that prioritize background operation and intelligent autonomy to serve individual users.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Personal AI</span><span>Headless Architecture</span><span>Distributed AI</span><span>AI Agents</span><span>Ubiquitous Computing</span><span>Ambient Intelligence</span><span>AI Systems</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://interconnected.org/home/2026/04/18/headless" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Two $20B: OpenAI and Nvidia in a 'Reasoning Battle'</h2>
+                <span class="published-time">Published: 2026-04-18 17:16:05</span>
+                
+                <p class="summary">The article spotlights the intense strategic competition between OpenAI and Nvidia, two pivotal entities in the artificial intelligence domain, both linked to substantial $20 billion valuations or investments, as they navigate a nascent "reasoning battle." This rivalry underscores their critical contributions to the burgeoning AI industry. OpenAI, renowned for its advancements in large language models and generative AI, is at the forefront of pushing the limits of AI capabilities, particularly in complex reasoning and problem-solving tasks. Simultaneously, Nvidia maintains a dominant position in the AI hardware market, supplying the crucial GPU infrastructure indispensable for training, developing, and deploying cutting-edge AI models. The concept of a "reasoning battle" suggests a multifaceted competition, extending beyond mere model performance to encompass the fundamental computational power, algorithmic efficiencies, and architectural innovations necessary to achieve increasingly sophisticated AI intelligence. This dynamic illustrates the complex, often symbiotic yet inherently competitive, relationship between pioneering AI software development and the indispensable hardware acceleration that underpins the industry's rapid innovation and attracts colossal investment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Large Language Models</span><span>GPU Technology</span><span>AI Hardware</span><span>Generative AI</span><span>AI Investment</span><span>Reasoning Capabilities</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://jianshiapp.com/two-20-billion-openai-and-nvidia-in-a-reasoning-battle/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
