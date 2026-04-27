@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-04-27</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-04-27</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Microsoft and OpenAI end their exclusive and revenue-sharing deal</h2>
+                <span class="published-time">Published: 2026-04-27 13:22:42</span>
+                
+                <p class="summary">Microsoft and OpenAI have announced the conclusion of their exclusive and revenue-sharing agreement, marking a significant strategic shift in their high-profile partnership within the artificial intelligence sector. This development indicates a re-evaluation of the foundational terms that initially defined their collaboration, moving towards a more diversified or mature relationship. The previous arrangement saw Microsoft providing substantial investment and cloud computing resources, while reportedly receiving a share of OpenAI's profits and exclusive rights to integrate certain AI models into its products. The cessation of this exclusivity and revenue-sharing model suggests that OpenAI may now have greater autonomy to pursue partnerships with other companies, potentially broadening its market reach and accelerating AI adoption across various platforms. For Microsoft, this change could imply a transition from a direct revenue-sharing beneficiary to a more nuanced partner, perhaps focusing on cloud infrastructure provision through Azure and continued product integration without the same financial entanglement. This evolution is likely to influence the competitive landscape of the AI industry, potentially fostering new collaborations and intensifying the race for AI innovation and market dominance.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Microsoft</span><span>OpenAI</span><span>AI Partnership</span><span>Revenue Sharing</span><span>Exclusivity</span><span>Artificial Intelligence</span><span>Strategic Alliance</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.bloomberg.com/news/articles/2026-04-27/microsoft-to-stop-sharing-revenue-with-main-ai-partner-openai" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: OSS Agent I built topped the TerminalBench on Gemini-3-flash-preview</h2>
+                <span class="published-time">Published: 2026-04-27 12:35:55</span>
+                
+                <p class="summary">A developer showcased an open-source AI agent on Hacker News that has achieved the top performance on TerminalBench, a prominent evaluation benchmark, specifically when tested with the Gemini-3-flash-preview model. The OSS agent secured a score of 65.2%, surpassing both Google's official entry (47.8%) and the previously leading closed-source model, Junie CLI (64.3%). In light of recent concerns regarding deliberate cheating on TerminalBench 2.0, the developer provided clear assurances: no unauthorized {agents/skills}.md files were used, the agent was run strictly according to leaderboard rules without resource or timeout modifications, and the benchmark was conducted using the identical open-source version available on GitHub. The announcement also noted a delay of eight days in the leaderboard being updated by the maintainers. This demonstrates a significant milestone for open-source AI capabilities against both proprietary and established models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Open Source Software</span><span>TerminalBench</span><span>Benchmarking</span><span>Gemini-3-flash-preview</span><span>LLM Performance</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/dirac-run/dirac" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Tendril – a self-extending agent that builds and registers its own tools</h2>
+                <span class="published-time">Published: 2026-04-27 13:34:48</span>
+                
+                <p class="summary">Tendril represents a groundbreaking advancement in artificial intelligence, introducing a self-extending agent architecture capable of autonomously constructing and registering its own tools. This innovative design empowers the agent to dynamically enhance its capabilities, allowing it to adapt and expand its functional repertoire in real-time without requiring direct human programming for each new tool integration. By enabling agents to create, integrate, and manage new functionalities on the fly, Tendril tackles fundamental limitations inherent in traditional AI agent development, such as rigid, static toolsets and constrained adaptability within complex or rapidly changing operational environments. The core objective of this project is to significantly boost the intelligence and versatility of AI agents, fostering more robust and capable autonomous systems. Through a process of continuous self-improvement and proactive expansion of its operational toolkit, Tendril paves the way for the creation of sophisticated, truly autonomous AI systems that can independently evolve and address a broader spectrum of challenges. This paradigm shift holds substantial promise for future AI applications, offering a pathway to more resilient and intelligent agents.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Self-extending</span><span>Autonomous Systems</span><span>Tool Building</span><span>Agent Architecture</span><span>Dynamic Adaptation</span><span>AI Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/serverless-dna/tendril" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>GitHub Copilot is moving to usage-based billing</h2>
+                <span class="published-time">Published: 2026-04-27 16:03:08</span>
+                
+                <p class="summary">GitHub Copilot, an advanced AI-powered coding assistant developed by GitHub in collaboration with OpenAI, is implementing a significant change to its monetization strategy by moving to a usage-based billing model. This transition implies a departure from its current flat subscription fee, meaning that users will now be charged based on their actual consumption of the service, rather than a fixed monthly or annual rate. This strategic shift aims to offer greater flexibility and cost efficiency, potentially benefiting developers and organizations with fluctuating usage patterns by enabling them to pay only for the AI assistance they actively utilize. While the precise details regarding pricing tiers, usage metrics, and effective dates are anticipated, this move positions Copilot in alignment with prevalent billing practices seen across various cloud and software-as-a-service offerings, where costs dynamically scale with demand. The adoption of usage-based pricing could influence the accessibility and adoption rates of the AI coding tool, potentially making it more attainable for a broader spectrum of users, including individual developers and smaller teams, while necessitating careful cost management for high-volume users. This adjustment underscores the evolving business models within the AI-driven developer tools sector, focusing on value-based resource allocation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>GitHub Copilot</span><span>AI coding assistant</span><span>Usage-based billing</span><span>Generative AI</span><span>Developer tools</span><span>Software development</span><span>Monetization strategy</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The Prompt API</h2>
+                <span class="published-time">Published: 2026-04-27 02:18:58</span>
+                
+                <p class="summary">The Prompt API, highlighted in the Chrome Developer documentation, introduces a novel web platform capability engineered to facilitate the seamless integration of Artificial Intelligence functionalities directly into web applications. This API empowers web developers to interact with sophisticated AI models from within the browser environment, significantly simplifying the processes of constructing prompts and handling model responses. By offering a standardized and accessible interface, the Prompt API aims to lower the technical barrier for embedding advanced AI features, including capabilities like natural language understanding, text generation, and potentially other AI-driven interactions, into modern websites and web-based tools. This development signifies a strategic move towards enabling more intelligent and dynamic client-side experiences, whether by leveraging on-device AI models or providing a unified gateway to cloud-based AI services. The introduction of the Prompt API by Chrome reinforces the ongoing industry trend to democratize AI, making it more programmable and readily available within the expansive web ecosystem, thereby laying a robust foundation for the creation of next-generation interactive and adaptive web applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Prompt API</span><span>Web Development</span><span>Artificial Intelligence</span><span>Browser API</span><span>Client-side AI</span><span>Chrome Developer</span><span>AI Integration</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://developer.chrome.com/docs/ai/prompt-api" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Running local LLMs offline on a ten-hour flight</h2>
+                <span class="published-time">Published: 2026-04-27 13:05:59</span>
+                
+                <p class="summary">This article explores the practicalities and technical considerations involved in deploying and operating Large Language Models (LLMs) locally and offline, specifically tailored for scenarios like extended air travel where internet connectivity is absent. It delves into the essential steps for configuring consumer-grade hardware, such as laptops, to effectively run sophisticated AI models. Key topics likely include optimizing model size through techniques like quantization, selecting efficient inference engines, and choosing suitable open-source LLMs that balance performance with resource consumption. The piece also addresses the critical hardware specifications—including CPU, GPU, and RAM—necessary to ensure smooth and responsive local inference. Furthermore, it covers the required software stack, ranging from operating system configurations to specific libraries and frameworks, all designed to enable robust offline functionality. The overarching goal is to demonstrate the feasibility of accessing advanced AI capabilities independently of cloud services, emphasizing the growing importance of edge AI and democratizing access to powerful language models in resource-constrained environments.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Local LLMs</span><span>Offline AI</span><span>Edge AI</span><span>Large Language Models</span><span>Model Optimization</span><span>On-device AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://deploy.live/blog/running-local-llms-offline-on-a-ten-hour-flight/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Agentic World Modeling: Foundations, Capabilities, Laws, and Beyond</h2>
+                <span class="published-time">Published: 2026-04-24T00:00:00.000Z</span>
+                
+                <p class="summary">As AI systems move from generating text to accomplishing goals through sustained interaction, the ability to model environment dynamics becomes a central bottleneck. Agents that manipulate objects, navigate software, coordinate with others, or design experiments require predictive environment models, yet the term world model carries different meanings across research communities. We introduce a "levels x laws" taxonomy organized along two axes. The first defines three capability levels: L1 Predictor, which learns one-step local transition operators; L2 Simulator, which composes them into multi-step, action-conditioned rollouts that respect domain laws; and L3 Evolver, which autonomously revises its own model when predictions fail against new evidence. The second identifies four governing-law regimes: physical, digital, social, and scientific. These regimes determine what constraints a world model must satisfy and where it is most likely to fail. Using this framework, we synthesize over 400 works and summarize more than 100 representative systems spanning model-based reinforcement learning, video generation, web and GUI agents, multi-agent social simulation, and AI-driven scientific discovery. We analyze methods, failure modes, and evaluation practices across level-regime pairs, propose decision-centric evaluation principles and a minimal reproducible evaluation package, and outline architectural guidance, open problems, and governance challenges. The resulting roadmap connects previously isolated communities and charts a path from passive next-step prediction toward world models that can simulate, and ultimately reshape, the environments in which agents operate.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Agentic World Modeling</span><span>AI Agents</span><span>Environment Models</span><span>Reinforcement Learning</span><span>Simulation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.22748" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Video Analysis and Generation via a Semantic Progress Function</h2>
+                <span class="published-time">Published: 2026-04-24T00:00:00.000Z</span>
+                
+                <p class="summary">Transformations produced by image and video generation models often evolve in a highly non-linear manner: long stretches where the content barely changes are followed by sudden, abrupt semantic jumps. To analyze and correct this behavior, we introduce a Semantic Progress Function, a one-dimensional representation that captures how the meaning of a given sequence evolves over time. For each frame, we compute distances between semantic embeddings and fit a smooth curve that reflects the cumulative semantic shift across the sequence. Departures of this curve from a straight line reveal uneven semantic pacing. Building on this insight, we propose a semantic linearization procedure that reparameterizes (or retimes) the sequence so that semantic change unfolds at a constant rate, yielding smoother and more coherent transitions. Beyond linearization, our framework provides a model-agnostic foundation for identifying temporal irregularities, comparing semantic pacing across different generators, and steering both generated and real-world video sequences toward arbitrary target pacing.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Analysis</span><span>Video Generation</span><span>Semantic Progress Function</span><span>Semantic Pacing</span><span>Temporal Irregularities</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Video Understanding</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.22554" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LLM Safety From Within: Detecting Harmful Content with Internal Representations</h2>
+                <span class="published-time">Published: 2026-04-20T00:00:00.000Z</span>
+                
+                <p class="summary">Guard models are widely used to detect harmful content in user prompts and LLM responses. However, state-of-the-art guard models rely solely on terminal-layer representations and overlook the rich safety-relevant features distributed across internal layers. We present SIREN, a lightweight guard model that harnesses these internal features. By identifying safety neurons via linear probing and combining them through an adaptive layer-weighted strategy, SIREN builds a harmfulness detector from LLM internals without modifying the underlying model. Our comprehensive evaluation shows that SIREN substantially outperforms state-of-the-art open-source guard models across multiple benchmarks while using 250 times fewer trainable parameters. Moreover, SIREN exhibits superior generalization to unseen benchmarks, naturally enables real-time streaming detection, and significantly improves inference efficiency compared to generative guard models. Overall, our results highlight LLM internal states as a promising foundation for practical, high-performance harmfulness detection.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM Safety</span><span>Harmful Content Detection</span><span>Guard Models</span><span>Internal Representations</span><span>Safety Neurons</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.18519" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AgentSearchBench: A Benchmark for AI Agent Search in the Wild</h2>
+                <span class="published-time">Published: 2026-04-24T00:00:00.000Z</span>
+                
+                <p class="summary">The rapid growth of AI agent ecosystems is transforming how complex tasks are delegated and executed, creating a new challenge of identifying suitable agents for a given task. Unlike traditional tools, agent capabilities are often compositional and execution-dependent, making them difficult to assess from textual descriptions alone. However, existing research and benchmarks typically assume well-specified functionalities, controlled candidate pools, or only executable task queries, leaving realistic agent search scenarios insufficiently studied. We introduce AgentSearchBench, a large-scale benchmark for agent search in the wild, built from nearly 10,000 real-world agents across multiple providers. The benchmark formalizes agent search as retrieval and reranking problems under both executable task queries and high-level task descriptions, and evaluates relevance using execution-grounded performance signals. Experiments reveal a consistent gap between semantic similarity and actual agent performance, exposing the limitations of description-based retrieval and reranking methods. We further show that lightweight behavioral signals, including execution-aware probing, can substantially improve ranking quality, highlighting the importance of incorporating execution signals into agent discovery. Our code is available at https://github.com/Bingo-W/AgentSearchBench.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent Search</span><span>Benchmark</span><span>Agent Ecosystems</span><span>Retrieval and Reranking</span><span>Execution-grounded Performance</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.22436" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Contexts are Never Long Enough: Structured Reasoning for Scalable Question Answering over Long Document Sets</h2>
+                <span class="published-time">Published: 2026-04-24T00:00:00.000Z</span>
+                
+                <p class="summary">Real-world document question answering is challenging. Analysts must synthesize evidence across multiple documents and different parts of each document. However, any fixed LLM context window can be exceeded as document collections grow. A common workaround is to decompose documents into chunks and assemble answers from chunk-level outputs, but this introduces an aggregation bottleneck: as the number of chunks grows, systems must still combine and reason over an increasingly large body of extracted evidence. We present SLIDERS, a framework for question answering over long document collections through structured reasoning. SLIDERS extracts salient information into a relational database, enabling scalable reasoning over persistent structured state via SQL rather than concatenated text. To make this locally extracted representation globally coherent, SLIDERS introduces a data reconciliation stage that leverages provenance, extraction rationales, and metadata to detect and repair duplicated, inconsistent, and incomplete records. SLIDERS outperforms all baselines on three existing long-context benchmarks, despite all of them fitting within the context window of strong base LLMs, exceeding GPT-4.1 by 6.6 points on average. It also improves over the next best baseline by ~19 and ~32 points on two new benchmarks at 3.9M and 36M tokens, respectively.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Question Answering</span><span>Structured Reasoning</span><span>Long Document Processing</span><span>Large Language Models</span><span>Information Extraction</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.22294" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Building a Precise Video Language with Human-AI Oversight</h2>
+                <span class="published-time">Published: 2026-04-22T00:00:00.000Z</span>
+                
+                <p class="summary">Video-language models (VLMs) learn to reason about the dynamic visual world through natural language. We introduce a suite of open datasets, benchmarks, and recipes for scalable oversight that enable precise video captioning. First, we define a structured specification for describing subjects, scenes, motion, spatial, and camera dynamics, grounded by hundreds of carefully defined visual primitives developed with professional video creators such as filmmakers. Next, to curate high-quality captions, we introduce CHAI (Critique-based Human-AI Oversight), a framework where trained experts critique and revise model-generated pre-captions into improved post-captions. This division of labor improves annotation accuracy and efficiency by offloading text generation to models, allowing humans to better focus on verification. Additionally, these critiques and preferences between pre- and post-captions provide rich supervision for improving open-source models (Qwen3-VL) on caption generation, reward modeling, and critique generation through SFT, DPO, and inference-time scaling. Our ablations show that critique quality in precision, recall, and constructiveness, ensured by our oversight framework, directly governs downstream performance. With modest expert supervision, the resulting model outperforms closed-source models such as Gemini-3.1-Pro. Finally, we apply our approach to re-caption large-scale professional videos (e.g., films, commercials, games) and fine-tune video generation models such as Wan to better follow detailed prompts of up to 400 words, achieving finer control over cinematography including camera motion, angle, lens, focus, point of view, and framing. Our results show that precise specification and human-AI oversight are key to professional-level video understanding and generation. Data and code are available on our project page: https://linzhiqiu.github.io/papers/chai/.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video-language models</span><span>Human-AI oversight</span><span>Video captioning</span><span>Critique-based oversight</span><span>Video generation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Video Understanding</span><span>Multimodal</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.21718" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
