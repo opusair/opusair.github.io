@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-04-30</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-04-30</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Shai-Hulud Themed Malware Found in the PyTorch Lightning AI Training Library</h2>
+                <span class="published-time">Published: 2026-04-30 16:09:26</span>
+                
+                <p class="summary">A critical cybersecurity vulnerability has been detected within the PyTorch Lightning AI training library, a widely adopted framework by developers for machine learning and deep learning projects. The malware, internally named 'Shai-Hulud' referencing the desert worms, was found embedded as a malicious dependency, presenting a severe supply chain risk. This discovery by Semgrep highlights the escalating threat landscape for open-source software, particularly within the rapidly expanding artificial intelligence domain. Such a compromise in a foundational AI tool could facilitate unauthorized data exfiltration, system control, or the integrity of AI model training processes. The incident serves as a stark reminder of the imperative for rigorous security practices, including continuous dependency scanning and code auditing, throughout the entire AI development lifecycle to mitigate potential attacks targeting popular frameworks and their expansive user bases. This underscores a concerning trend of malicious actors targeting the AI supply chain.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>PyTorch Lightning</span><span>Malware</span><span>AI Training</span><span>Supply Chain Attack</span><span>Cybersecurity</span><span>Machine Learning</span><span>Deep Learning</span><span>Open Source Security</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://semgrep.dev/blog/2026/malicious-dependency-in-pytorch-lightning-used-for-ai-training/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Claude Code refuses requests or charges extra if your commits mention "OpenClaw"</h2>
+                <span class="published-time">Published: 2026-04-30 14:36:58</span>
+                
+                <p class="summary">A report circulating online indicates that Claude Code, an AI coding assistant, allegedly exhibits discriminatory behavior towards user requests. Specifically, the AI model is said to either refuse to process requests or impose additional charges if the developer's commit messages contain the keyword "OpenClaw." This reported functionality raises serious concerns about potential censorship, bias, and commercial restrictions embedded within artificial intelligence tools. Such behavior could significantly impact software developers, limiting their freedom of expression and potentially forcing them to alter their commit practices to avoid penalties or denial of service. The incident underscores the critical need for transparency in AI model development and deployment, particularly regarding content filtering, keyword-based restrictions, and pricing policies. It also highlights ethical implications concerning AI agents that dictate terms based on specific textual triggers, prompting discussions on fair usage and the broader control mechanisms employed by AI providers over developer workflows. This situation calls for clarity from the developers of Claude Code to address these allegations and ensure equitable access and unbiased functionality for all users.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude Code</span><span>AI censorship</span><span>LLM bias</span><span>AI ethics</span><span>developer tools</span><span>content filtering</span><span>commercial restrictions</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://twitter.com/theo/status/2049645973350363168" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Granite 4.1: IBM's 8B Model Matching 32B MoE</h2>
+                <span class="published-time">Published: 2026-04-30 10:31:17</span>
+                
+                <p class="summary">IBM has introduced Granite 4.1, an 8-billion parameter language model that reportedly achieves performance on par with 32-billion parameter Mixture-of-Experts (MoE) models. This development signifies a notable advancement in the field of large language models, particularly concerning computational efficiency and resource optimization. The ability of a substantially smaller model to match the capabilities of a much larger, more complex architecture like MoE suggests potential breakthroughs in deploying powerful AI systems with fewer computational demands. This could lead to more accessible and cost-effective AI solutions, enabling broader adoption across various industries and applications where resource constraints are a factor. The Granite 4.1 model underscores IBM's commitment to advancing open-source AI, offering a more efficient alternative for developers and researchers. This efficiency gain could impact model training, inference speed, and the overall carbon footprint of AI operations, making high-performance AI more sustainable. The implications extend to edge computing and scenarios requiring powerful yet lightweight AI implementations, potentially redefining benchmarks for model scaling and performance.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>IBM</span><span>Granite 4.1</span><span>Large Language Models</span><span>Mixture-of-Experts (MoE)</span><span>Model Efficiency</span><span>AI Models</span><span>Parameter Scaling</span><span>Open Source AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://firethering.com/granite-4-1-ibm-open-source-model-family/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The Zig project's rationale for their anti-AI contribution policy</h2>
+                <span class="published-time">Published: 2026-04-30 02:15:47</span>
+                
+                <p class="summary">The Zig project has officially articulated its rationale for implementing an anti-AI contribution policy, a move that has sparked considerable discourse within the open-source software community. This policy is designed to address burgeoning concerns regarding the integration of Artificial Intelligence, particularly outputs from generative AI models, into critical software development lifecycles. The project emphasizes maintaining high standards of code quality, ensuring clear intellectual property rights, and upholding long-term maintainability, all of which are perceived as potentially compromised by automated or AI-assisted contributions. Key considerations for this stance include difficulties in accurately verifying the origin, licensing compliance, and inherent correctness of AI-generated code, alongside potential implications for human developer engagement and the cultivation of coding skills. The Zig project's decision highlights an ongoing, broader debate within open-source ecosystems about establishing appropriate boundaries for AI's involvement in code creation and community participation, prioritizing human oversight and accountability for sustainable project integrity.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Zig project</span><span>open source</span><span>AI policy</span><span>software development</span><span>code contribution</span><span>generative AI</span><span>intellectual property</span><span>code quality</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://simonwillison.net/2026/Apr/30/zig-anti-ai/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>The Human Creativity Benchmark – Evaluating Generative AI in Creative Work</h2>
+                <span class="published-time">Published: 2026-04-30 18:33:03</span>
+                
+                <p class="summary">ContraLabs has introduced 'The Human Creativity Benchmark,' a novel framework designed to rigorously evaluate the creative capabilities of generative artificial intelligence models. This initiative aims to establish a standardized methodology for comparing AI-generated content against human-created works across diverse creative domains. The benchmark seeks to quantify various facets of creativity, moving beyond qualitative assessments to provide objective metrics that can reliably gauge AI's performance in tasks requiring innovation, originality, and artistic expression. This research is pivotal for understanding the current state and future trajectory of generative AI, offering critical insights into how these advanced models can emulate, augment, or potentially redefine creative processes. The findings from such a benchmark will inform further development in AI, guiding researchers in enhancing the creative potential of artificial intelligence and fostering a deeper understanding of human-AI interaction in creative industries.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Generative AI</span><span>Creativity Benchmark</span><span>AI Evaluation</span><span>Creative Work</span><span>Human-AI Interaction</span><span>AI Performance</span><span>Machine Creativity</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://contralabs.com/research/human-creativity-benchmark" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Where the goblins came from</h2>
+                <span class="published-time">Published: 2026-04-30 03:21:04</span>
+                
+                <p class="summary">The story, cryptically titled 'Where the goblins came from' and published by OpenAI, presents a highly metaphorical phrase as its sole content. Despite the extreme brevity, the title itself strongly suggests a deeper exploration into the origins or emergent properties of phenomena within complex AI systems. In the context of advanced machine learning and large language models, 'goblins' could represent unexpected behaviors, emergent capabilities, subtle biases, or even adversarial examples that arise from model training and architecture. A full analysis of such a topic from OpenAI would typically delve into the theoretical frameworks, empirical observations, and perhaps the computational or data-driven factors contributing to these 'goblins.' While the provided content offers no specific details, the presence of such a title from a leading AI research institution indicates a potential discussion on understanding, diagnosing, or mitigating these inherent complexities in AI development. The presumed article would likely offer insights into the foundational elements or architectural choices that lead to the manifestation of these intricate challenges, aiming to demystify the 'birth' of these system characteristics.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Emergent AI Behavior</span><span>Model Interpretability</span><span>AI System Dynamics</span><span>Large Language Models</span><span>AI Research</span><span>Machine Learning Theory</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://openai.com/index/where-the-goblins-came-from/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>GLM-5V-Turbo: Toward a Native Foundation Model for Multimodal Agents</h2>
+                <span class="published-time">Published: 2026-04-29T00:00:00.000Z</span>
+                
+                <p class="summary">We present GLM-5V-Turbo, a step toward native foundation models for multimodal agents. As foundation models are increasingly deployed in real environments, agentic capability depends not only on language reasoning, but also on the ability to perceive, interpret, and act over heterogeneous contexts such as images, videos, webpages, documents, GUIs. GLM-5V-Turbo is built around this objective: multimodal perception is integrated as a core component of reasoning, planning, tool use, and execution, rather than as an auxiliary interface to a language model. This report summarizes the main improvements behind GLM-5V-Turbo across model design, multimodal training, reinforcement learning, toolchain expansion, and integration with agent frameworks. These developments lead to strong performance in multimodal coding, visual tool use, and framework-based agentic tasks, while preserving competitive text-only coding capability. More importantly, our development process offers practical insights for building multimodal agents, highlighting the central role of multimodal perception, hierarchical optimization, and reliable end-to-end verification.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal Agents</span><span>Foundation Model</span><span>Multimodal Perception</span><span>Agentic Capability</span><span>Reinforcement Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.26752" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Operating-Layer Controls for Onchain Language-Model Agents Under Real Capital</h2>
+                <span class="published-time">Published: 2026-04-28T00:00:00.000Z</span>
+                
+                <p class="summary">We study reliability in autonomous language-model agents that translate user mandates into validated tool actions under real capital. The setting is DX Terminal Pro, a 21-day deployment in which 3,505 user-funded agents traded real ETH in a bounded onchain market. Users configured vaults through structured controls and natural-language strategies, but only agents could choose normal buy/sell trades. The system produced 7.5M agent invocations, roughly 300K onchain actions, about $20M in volume, more than 5,000 ETH deployed, roughly 70B inference tokens, and 99.9% settlement success for policy-valid submitted transactions. Long-running agents accumulated thousands of sequential decisions, including 6,000+ prompt-state-action cycles for continuously active agents, yielding a large-scale trace from user mandate to rendered prompt, reasoning, validation, portfolio state, and settlement. Reliability did not come from the base model alone; it emerged from the operating layer around the model: prompt compilation, typed controls, policy validation, execution guards, memory design, and trace-level observability. Pre-launch testing exposed failures that text-only benchmarks rarely measure, including fabricated trading rules, fee paralysis, numeric anchoring, cadence trading, and misread tokenomics. Targeted harness changes reduced fabricated sell rules from 57% to 3%, reduced fee-led observations from 32.5% to below 10%, and increased capital deployment from 42.9% to 78.0% in an affected test population. We show that capital-managing agents should be evaluated across the full path from user mandate to prompt, validated action, and settlement.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Language Model Agents</span><span>Onchain Trading</span><span>Real Capital</span><span>Operating Layer Controls</span><span>Reliability</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.26091" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>FAMA: Failure-Aware Meta-Agentic Framework for Open-Source LLMs in Interactive Tool Use Environments</h2>
+                <span class="published-time">Published: 2026-04-28T00:00:00.000Z</span>
+                
+                <p class="summary">Large Language Models are being increasingly deployed as the decision-making core of autonomous agents capable of effecting change in external environments. Yet, in conversational benchmarks, which simulate real-world customer-centric issue resolution scenarios, these agents frequently fail due to the cascading effects of incorrect decision-making. These challenges are particularly pronounced for open-source LLMs with smaller parameter sizes, limited context windows, and constrained inference budgets, which contribute to increased error accumulation in agentic settings. To tackle these challenges, we present the Failure-Aware Meta-Agentic (FAMA) framework. FAMA operates in two stages: first, it analyzes failure trajectories from baseline agents to identify the most prevalent errors; second, it employs an orchestration mechanism that activates a minimal subset of specialized agents tailored to address these failures by injecting a targeted context for the tool-use agent before the decision-making step. Experiments across open-source LLMs demonstrate performance gains up to 27% across evaluation modes over standard baselines. These results highlight that targeted curation of context through specialized agents to address common failures is a valuable design principle for building reliable, multi-turn tool-use LLM agents that simulate real-world conversational scenarios.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>AI Agent</span><span>Tool Use</span><span>Failure-Aware</span><span>Meta-Agentic Framework</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.25135" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Large Language Models Explore by Latent Distilling</h2>
+                <span class="published-time">Published: 2026-04-27T00:00:00.000Z</span>
+                
+                <p class="summary">Generating diverse responses is crucial for test-time scaling of large language models (LLMs), yet standard stochastic sampling mostly yields surface-level lexical variation, limiting semantic exploration. In this paper, we propose Exploratory Sampling (ESamp), a decoding approach that explicitly encourages semantic diversity during generation. ESamp is motivated by the well-known observation that neural networks tend to make lower-error predictions on inputs similar to those encountered before, and incur higher prediction error on novel ones. Building on this property, we train a lightweight Distiller at test time to predict deep-layer hidden representations of the LLM from its shallow-layer representations to model the LLM's depth-wise representation transitions. During decoding, the Distiller continuously adapts to the mappings induced by the current generation context. ESamp uses the prediction error as a novelty signal to reweight candidate token extensions conditioned on the current prefix, thereby biasing decoding toward less-explored semantic patterns. ESamp is implemented with an asynchronous training--inference pipeline, with less than 5% worst case overhead (1.2% in the optimized release). Empirical results show that ESamp significantly boosts the Pass@k efficiency of reasoning models, showing superior or comparable performance to strong stochastic and heuristic baselines. Notably, ESamp achieves robust generalization across mathematics, science, and code generation benchmarks and breaks the trade-off between diversity and coherence in creative writing. Our code has released at: https://github.com/LinesHogan/tLLM.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Exploratory Sampling</span><span>Semantic Diversity</span><span>Decoding Approaches</span><span>Representation Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.24927" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Unified 4D World Action Modeling from Video Priors with Asynchronous Denoising</h2>
+                <span class="published-time">Published: 2026-04-29T00:00:00.000Z</span>
+                
+                <p class="summary">We propose X-WAM, a Unified 4D World Model that unifies real-time robotic action execution and high-fidelity 4D world synthesis (video + 3D reconstruction) in a single framework, addressing the critical limitations of prior unified world models (e.g., UWM) that only model 2D pixel-space and fail to balance action efficiency and world modeling quality. To leverage the strong visual priors of pretrained video diffusion models, X-WAM imagines the future world by predicting multi-view RGB-D videos, and obtains spatial information efficiently through a lightweight structural adaptation: replicating the final few blocks of the pretrained Diffusion Transformer into a dedicated depth prediction branch for the reconstruction of future spatial information. Moreover, we propose Asynchronous Noise Sampling (ANS) to jointly optimize generation quality and action decoding efficiency. ANS applies a specialized asynchronous denoising schedule during inference, which rapidly decodes actions with fewer steps to enable efficient real-time execution, while dedicating the full sequence of steps to generate high-fidelity video. Rather than entirely decoupling the timesteps during training, ANS samples from their joint distribution to align with the inference distribution. Pretrained on over 5,800 hours of robotic data, X-WAM achieves 79.2% and 90.7% average success rate on RoboCasa and RoboTwin 2.0 benchmarks, while producing high-fidelity 4D reconstruction and generation surpassing existing methods in both visual and geometric metrics.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Unified 4D World Model</span><span>Robotics</span><span>Video Diffusion Models</span><span>Asynchronous Noise Sampling</span><span>4D World Synthesis</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Generative AI</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.26694" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Diffusion Templates: A Unified Plugin Framework for Controllable Diffusion</h2>
+                <span class="published-time">Published: 2026-04-27T00:00:00.000Z</span>
+                
+                <p class="summary">Controllable diffusion methods have substantially expanded the practical utility of diffusion models, but they are typically developed as isolated, backbone-specific systems with incompatible training pipelines, parameter formats, and runtime hooks. This fragmentation makes it difficult to reuse infrastructure across tasks, transfer capabilities across backbones, or compose multiple controls within a single generation pipeline. We present Diffusion Templates, a unified and open plugin framework that decouples base-model inference from controllable capability injection. The framework is organized around three components: Template models that map arbitrary task-specific inputs to an intermediate capability representation, a Template cache that functions as a standardized interface for capability injection, and a Template pipeline that loads, merges, and injects one or more Template caches into the base diffusion runtime. Because the interface is defined at the systems level rather than tied to a specific control architecture, heterogeneous capability carriers such as KV-Cache and LoRA can be supported under the same abstraction. Based on this design, we build a diverse model zoo spanning structural control, brightness adjustment, color adjustment, image editing, super-resolution, sharpness enhancement, aesthetic alignment, content reference, local inpainting, and age control. These case studies show that Diffusion Templates can unify a broad range of controllable generation tasks while preserving modularity, composability, and practical extensibility across rapidly evolving diffusion backbones. All resources will be open sourced, including code, models, and datasets.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Controllable Diffusion</span><span>Diffusion Models</span><span>Plugin Framework</span><span>Generative AI</span><span>Composability</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Deep Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.24351" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
