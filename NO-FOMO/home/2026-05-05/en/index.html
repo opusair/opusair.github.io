@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-05-05</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="../" class="">中文</a>
+                <a href="." class="active">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-05-05</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../../home/en/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 Back to Homepage</a>
+            <a href="../../../daily/en/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 Latest Daily</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 About Us</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>GPT‑5.5 Instant</h2>
+                <span class="published-time">Published: 2026-05-05 17:02:23</span>
+                
+                <p class="summary">OpenAI has unveiled a new iteration within its prestigious series of large language models, officially designated "GPT-5.5 Instant." This announcement, notably concise and devoid of extensive technical specifications at this preliminary stage, prominently features the "Instant" suffix, which strongly suggests a pivotal focus on operational efficiency and performance optimization. It is highly probable that this new model aims to deliver significantly reduced latency, accelerated inference speeds, or enhanced capabilities for real-time processing and rapid deployment across a multitude of applications. Such advancements are crucial for a wide array of use cases, from interactive conversational agents to on-demand content generation, where immediate responses are paramount. The introduction of "GPT-5.5 Instant" underscores OpenAI's continuous drive to refine and advance generative AI technologies, potentially offering developers and enterprises more efficient and responsive tools, thereby solidifying the company's influence within the rapidly evolving artificial intelligence landscape and expanding the practical accessibility of advanced AI.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>Generative AI</span><span>OpenAI</span><span>AI Model</span><span>Natural Language Processing</span><span>Real-time AI</span><span>Inference Speed</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://openai.com/index/gpt-5-5-instant/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>GLM-5V-Turbo: Toward a Native Foundation Model for Multimodal Agents</h2>
+                <span class="published-time">Published: 2026-05-05 17:52:31</span>
+                
+                <p class="summary">The research introduces GLM-5V-Turbo, a significant step towards developing a native foundation model specifically engineered for multimodal AI agents. This new model aims to address the growing demand for AI systems capable of seamlessly processing and understanding diverse data inputs, including text, vision, and potentially other modalities. Unlike previous approaches that often adapt unimodal models for multimodal tasks, GLM-5V-Turbo is designed with inherent multimodal capabilities, promising more cohesive and efficient integration of information from various sources. The "Turbo" designation likely indicates advancements in performance, speed, or resource efficiency, making it highly suitable for real-time applications and complex agentic behaviors. This initiative is crucial for advancing the next generation of AI agents that can interact with the world in a more holistic and human-like manner, performing tasks that require a deep comprehension of contextual information across different sensory modalities. The development of such a robust foundation model is expected to accelerate progress in areas like autonomous systems, advanced human-computer interaction, and embodied AI.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal AI</span><span>Foundation Models</span><span>AI Agents</span><span>Deep Learning</span><span>Multimodal Learning</span><span>Large Language Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Multimodal</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://arxiv.org/abs/2604.26752" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Accelerating Gemma 4: faster inference with multi-token prediction drafters</h2>
+                <span class="published-time">Published: 2026-05-05 16:14:17</span>
+                
+                <p class="summary">Google has significantly enhanced the inference speed of its Gemma 4 model through the implementation of multi-token prediction drafters. This innovative approach allows the model to generate multiple tokens simultaneously, rather than sequentially, which drastically reduces latency and improves overall efficiency during text generation. The multi-token prediction drafter works by predicting a short sequence of tokens ahead of the main large language model (LLM), which then verifies and accepts these predictions. This method capitalizes on the ability to perform parallel computations, leading to a substantial speedup in practical applications. This advancement is crucial for deploying LLMs in real-time scenarios, such as interactive chatbots and content generation tools, by making them more responsive and resource-efficient. The technique represents a key optimization for next-generation AI models, pushing the boundaries of what is possible in terms of performance.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Gemma 4</span><span>inference acceleration</span><span>multi-token prediction</span><span>large language models</span><span>AI performance</span><span>model optimization</span><span>deep learning</span><span>Google AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://blog.google/innovation-and-ai/technology/developers-tools/multi-token-prediction-gemma-4/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Google Chrome silently installs a 4 GB AI model on your device without consent</h2>
+                <span class="published-time">Published: 2026-05-05 07:34:55</span>
+                
+                <p class="summary">Google Chrome has reportedly been silently installing a substantial 4GB artificial intelligence (AI) model, potentially a 'Nano' variant, onto users' devices without obtaining explicit consent. This unannounced deployment has triggered significant concerns among users and privacy advocates regarding potential implications for data privacy, system resource consumption, and overall user control. The installation of such a large AI component without disclosure suggests an aggressive strategy by Google to embed advanced AI functionalities directly into the browser, leveraging local processing capabilities. This practice not only raises questions about transparency and user autonomy over their device configurations but also highlights broader ethical considerations in software development and the deployment of powerful AI technologies. The incident underscores the ongoing debate about the necessity for clear consent mechanisms and robust disclosure policies when integrating sophisticated AI models into consumer software, especially given the potential impact on performance and security.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Google Chrome</span><span>AI model</span><span>Silent installation</span><span>User privacy</span><span>On-device AI</span><span>Data security</span><span>Software ethics</span><span>Consent</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.thatprivacyguy.com/blog/chrome-silent-nano-install/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Zuckerberg 'Personally Authorized and Encouraged' Meta's Copyright Infringement</h2>
+                <span class="published-time">Published: 2026-05-05 18:04:25</span>
+                
+                <p class="summary">A lawsuit has been filed alleging that Meta CEO Mark Zuckerberg personally authorized and encouraged the company's copyright infringement in the development of its artificial intelligence models. This legal action, initiated by a group of publishers and authors including Scott Turow, contends that Meta deliberately utilized copyrighted works without proper authorization to train its advanced AI systems. The plaintiffs claim that internal directives from the highest levels of Meta leadership prioritized rapid AI development, leading to the unauthorized ingestion of vast quantities of protected content. This case underscores the escalating legal conflict surrounding intellectual property rights and data sourcing practices within the burgeoning field of generative AI, raising significant questions about the legality and ethics of using copyrighted materials for training large language models and other AI technologies. The outcome of this lawsuit could establish a critical legal precedent for how AI companies acquire and utilize data, impacting the entire industry's approach to content licensing and intellectual property.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Copyright Infringement</span><span>Meta Platforms</span><span>Mark Zuckerberg</span><span>Generative AI</span><span>Intellectual Property</span><span>Legal Dispute</span><span>AI Training Data</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://variety.com/2026/digital/news/meta-ai-mark-zuckerberg-copyright-infringement-lawsuit-publishers-scott-turow-1236738383/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Train Your Own LLM from Scratch</h2>
+                <span class="published-time">Published: 2026-05-05 04:09:17</span>
+                
+                <p class="summary">This GitHub repository, titled 'Train Your Own LLM from Scratch,' presents a comprehensive and practical guide for individuals seeking to construct a Large Language Model (LLM) from its foundational principles. It targets developers, researchers, and AI enthusiasts eager to delve into the intricate mechanics of LLMs, moving beyond abstract API interactions to understand the underlying architecture and algorithms. The resource is meticulously designed to demystify the entire development process, encompassing crucial stages from selecting appropriate neural network architectures and implementing attention mechanisms to managing data preprocessing and optimizing training regimens. By providing a hands-on, step-by-step approach, the project empowers users to acquire a profound, ground-up understanding of how these sophisticated models are built and fine-tuned. This initiative is pivotal for fostering deeper technical comprehension and enabling custom development within the rapidly evolving landscape of natural language processing and generative AI, offering an invaluable educational pathway for mastering LLM creation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Model</span><span>Deep Learning</span><span>Neural Networks</span><span>Natural Language Processing</span><span>AI Development</span><span>Model Training</span><span>Machine Learning</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/angelos-p/llm-from-scratch" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>MolmoAct2: Action Reasoning Models for Real-world Deployment</h2>
+                <span class="published-time">Published: 2026-05-04T00:00:00.000Z</span>
+                
+                <p class="summary">Vision-Language-Action (VLA) models aim to provide a single generalist controller for robots, but today's systems fall short on the criteria that matter for real-world deployment. Frontier models are closed, open-weight alternatives are tied to expensive hardware, reasoning-augmented policies pay prohibitive latency for their grounding, and fine-tuned success rates remain below the threshold for dependable use. We present MolmoAct2, a fully open action reasoning model built for practical deployment, advancing its predecessor along five axes. We introduce MolmoER, a VLM backbone specialized for spatial and embodied reasoning, trained on a 3.3M-sample corpus with a specialize-then-rehearse recipe. We release three new datasets spanning low-to-medium cost platforms, including MolmoAct2-BimanualYAM, 720 hours of teleoperated bimanual trajectories that constitute the largest open bimanual dataset to date, together with quality-filtered Franka (DROID) and SO100/101 subsets. We provide OpenFAST, an open-weight, open-data action tokenizer trained on millions of trajectories across five embodiments. We redesign the architecture to graft a flow-matching continuous-action expert onto a discrete-token VLM via per-layer KV-cache conditioning. Finally, we propose MolmoThink, an adaptive-depth reasoning variant that re-predicts depth tokens only for scene regions that change between timesteps, retaining geometric grounding at a fraction of prior latency. In the most extensive empirical study of any open VLA to date, spanning 7 simulation and real-world benchmarks, MolmoAct2 outperforms strong baselines including Pi-05, while MolmoER surpasses GPT-5 and Gemini Robotics ER-1.5 across 13 embodied-reasoning benchmarks. We release model weights, training code, and complete training data. Project page: https://allenai.org/blog/molmoact2</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Vision-Language-Action Models</span><span>Action Reasoning</span><span>Robotics</span><span>Embodied Reasoning</span><span>Real-world Deployment</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Robotics</span><span>Multimodal</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.02881" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>From Context to Skills: Can Language Models Learn from Context Skillfully?</h2>
+                <span class="published-time">Published: 2026-05-03T00:00:00.000Z</span>
+                
+                <p class="summary">Many real-world tasks require language models (LMs) to reason over complex contexts that exceed their parametric knowledge. This calls for context learning, where LMs directly learn relevant knowledge from the given context. An intuitive solution is inference-time skill augmentation: extracting the rules and procedures from context into natural-language skills. However, constructing such skills for context learning scenarios faces two challenges: the prohibitive cost of manual skill annotation for long, technically dense contexts, and the lack of external feedback for automated skill construction. In this paper, we propose Ctx2Skill, a self-evolving framework that autonomously discovers, refines, and selects context-specific skills without human supervision or external feedback. At its core, a multi-agent self-play loop has a Challenger that generates probing tasks and rubrics, a Reasoner that attempts to solve them guided by an evolving skill set, and a neutral Judge that provides binary feedback. Crucially, both the Challenger and the Reasoner evolve through accumulated skills: dedicated Proposer and Generator agents analyze failure cases and synthesize them into targeted skill updates for both sides, enabling automated skill discovery and refinement. To prevent adversarial collapse caused by increasingly extreme task generation and over-specialized skill accumulation, we further introduce a Cross-time Replay mechanism that identifies the skill set achieving the best balance across representative cases for the Reasoner side, ensuring robust and generalizable skill evolution. The resulting skills can be plugged into any language model to obtain better context learning capability. Evaluated on four context learning tasks from CL-bench, Ctx2Skill consistently improves solving rates across backbone models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Language Models</span><span>Context Learning</span><span>Skill Augmentation</span><span>Multi-agent System</span><span>Self-evolving Framework</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.27660" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Hallucinations Undermine Trust; Metacognition is a Way Forward</h2>
+                <span class="published-time">Published: 2026-05-02T00:00:00.000Z</span>
+                
+                <p class="summary">Despite significant strides in factual reliability, errors -- often termed hallucinations -- remain a major concern for generative AI, especially as LLMs are increasingly expected to be helpful in more complex or nuanced setups. Yet even in the simplest setting -- factoid question-answering with clear ground truth-frontier models without external tools continue to hallucinate. We argue that most factuality gains in this domain have come from expanding the model's knowledge boundary (encoding more facts) rather than improving awareness of that boundary (distinguishing known from unknown). We conjecture that the latter is inherently difficult: models may lack the discriminative power to perfectly separate truths from errors, creating an unavoidable tradeoff between eliminating hallucinations and preserving utility. This tradeoff dissolves under a different framing. If we understand hallucinations as confident errors -- incorrect information delivered without appropriate qualification -- a third path emerges beyond the answer-or-abstain dichotomy: expressing uncertainty. We propose faithful uncertainty: aligning linguistic uncertainty with intrinsic uncertainty. This is one facet of metacognition -- the ability to be aware of one's own uncertainty and to act on it. For direct interaction, acting on uncertainty means communicating it honestly; for agentic systems, it becomes the control layer governing when to search and what to trust. Metacognition is thus essential for LLMs to be both trustworthy and capable; we conclude by highlighting open problems for progress towards this objective.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Hallucinations</span><span>Generative AI</span><span>Large Language Models</span><span>Metacognition</span><span>Uncertainty</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.01428" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>PhysicianBench: Evaluating LLM Agents in Real-World EHR Environments</h2>
+                <span class="published-time">Published: 2026-05-04T00:00:00.000Z</span>
+                
+                <p class="summary">We introduce PhysicianBench, a benchmark for evaluating LLM agents on physician tasks grounded in real clinical setting within electronic health record (EHR) environments. Existing medical agent benchmarks primarily focus on static knowledge recall, single-step atomic actions, or action intent without verifiable execution against the environment. As a result, they fail to capture the long-horizon, composite workflows that characterize real clinical systems. PhysicianBench comprises 100 long-horizon tasks adapted from real consultation cases between primary care and subspecialty physicians, with each task independently reviewed by a separate panel of physicians. Tasks are instantiated in an EHR environment with real patient records and accessed through the same standard APIs used by commercial EHR vendors. Tasks span 21 specialties (e.g., cardiology, endocrinology, oncology, psychiatry) and diverse workflow types (e.g., diagnosis interpretation, medication prescribing, treatment planning), requiring an average of 27 tool calls per task. Solving each task requires retrieving data across encounters, reasoning over heterogeneous clinical information, executing consequential clinical actions, and producing clinical documentation. Each task is decomposed into structured checkpoints (670 in total across the benchmark) capturing distinct stages of completion graded by task-specific scripts with execution-grounded verification. Across 13 proprietary and open-source LLM agents, the best-performing model achieves only 46% success rate (pass@1), while open-source models reach at most 19%, revealing a substantial gap between current agent capabilities and the demands of real-world clinical workflows. PhysicianBench provides a realistic and execution-grounded benchmark for measuring progress toward autonomous clinical agents.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM Agents</span><span>EHR Environments</span><span>Clinical Benchmarking</span><span>Medical AI</span><span>Physician Tasks</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.02240" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OceanPile: A Large-Scale Multimodal Ocean Corpus for Foundation Models</h2>
+                <span class="published-time">Published: 2026-04-25T00:00:00.000Z</span>
+                
+                <p class="summary">The vast and underexplored ocean plays a critical role in regulating global climate and supporting marine biodiversity, yet artificial intelligence has so far delivered limited impact in this domain due to a fundamental data bottleneck. Specifically, ocean data are highly fragmented across disparate sources and inherently exhibit multi-modal, high-noise, and weakly labeled characteristics, lacking unified schemas and semantic alignment. Although Multimodal Large Language Models (MLLMs) have achieved remarkable success in general domains, their application to ocean science remains severely constrained by the absence of large-scale, well-aligned multimodal datasets tailored to marine environments. To bridge this gap, we introduce OceanPile, a large-scale multimodal corpus designed for ocean foundation models. It comprises three key components: OceanCorpus, a unified collection integrating sonar data, underwater imagery, marine science visuals, and scientific text from diverse authoritative sources; OceanInstruction, a high-quality instruction dataset synthesized via a novel pipeline guided by a hierarchical Ocean Concept Knowledge Graph; and OceanBenchmark, a manually curated evaluation benchmark for rigorous assessment. We establish a multi-stage quality control process to ensure scientific validity and alignment across modalities. Experimental validation demonstrates significant performance improvements for models trained on our data. All datasets are publicly released to advance the field of marine artificial intelligence and empower domain-specific MLLMs.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>OceanPile</span><span>Multimodal Corpus</span><span>Foundation Models</span><span>Marine AI</span><span>Multimodal Large Language Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Multimodal</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.00877" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Motion-Aware Caching for Efficient Autoregressive Video Generation</h2>
+                <span class="published-time">Published: 2026-05-03T00:00:00.000Z</span>
+                
+                <p class="summary">Autoregressive video generation paradigms offer theoretical promise for long video synthesis, yet their practical deployment is hindered by the computational burden of sequential iterative denoising. While cache reuse strategies can accelerate generation by skipping redundant denoising steps, existing methods rely on coarse-grained chunk-level skipping that fails to capture fine-grained pixel dynamics. This oversight is critical: pixels with high motion require more denoising steps to prevent error accumulation, while static pixels tolerate aggressive skipping. We formalize this insight theoretically by linking cache errors to residual instability, and propose MotionCache, a motion-aware cache framework that exploits inter-frame differences as a lightweight proxy for pixel-level motion characteristics. MotionCache employs a coarse-to-fine strategy: an initial warm-up phase establishes semantic coherence, followed by motion-weighted cache reuse that dynamically adjusts update frequencies per token. Extensive experiments on state-of-the-art models like SkyReels-V2 and MAGI-1 demonstrate that MotionCache achieves significant speedups of 6.28times and 1.64times respectively, while effectively preserving generation quality (VBench: 1%downarrow and 0.01%downarrow respectively). The code is available at https://github.com/ywlq/MotionCache.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Autoregressive Video Generation</span><span>Motion-Aware Caching</span><span>Cache Reuse</span><span>Video Synthesis</span><span>Denoising</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.01725" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
