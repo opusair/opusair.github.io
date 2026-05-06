@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-05-06</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-05-06</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Learning the Integral of a Diffusion Model</h2>
+                <span class="published-time">Published: 2026-05-06 18:46:27</span>
+                
+                <p class="summary">The research explores a novel approach to understanding and manipulating diffusion models by focusing on learning their integral. This method potentially offers a more direct and efficient way to model the generative process inherent in diffusion-based generative models, moving beyond iterative sampling. By integrating the diffusion process, researchers aim to develop 'flow maps' that can transform noise into data or vice-versa in a single, continuous step, rather than through a sequence of discrete steps. This could lead to significant advancements in computational efficiency for generating high-quality synthetic data, image synthesis, and other generative tasks. The underlying mathematical framework likely involves connections to continuous-time stochastic processes, optimal transport, and normalizing flows, providing a theoretical foundation for faster and more controlled generation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Diffusion Models</span><span>Generative AI</span><span>Stochastic Differential Equations</span><span>Continuous-time models</span><span>Normalizing Flows</span><span>Flow Maps</span><span>Machine Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://sander.ai/2026/05/06/flow-maps.html" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Google Cloud fraud defense, the next evolution of reCAPTCHA</h2>
+                <span class="published-time">Published: 2026-05-06 17:59:33</span>
+                
+                <p class="summary">Google Cloud has announced the launch of Google Cloud Fraud Defense, marking the next significant evolution of its established reCAPTCHA technology. This new comprehensive service is engineered to deliver advanced, real-time fraud protection tailored for businesses operating within the Google Cloud ecosystem. Extending beyond reCAPTCHA's core function of discerning human users from automated bots, Google Cloud Fraud Defense incorporates sophisticated machine learning models and behavioral analytics. Its purpose is to proactively detect and mitigate a wider array of fraudulent activities, including account takeovers, payment fraud, synthetic account creation, and large-scale bot attacks. The solution is poised to harness Google's vast global threat intelligence and deep expertise in artificial intelligence, enabling it to continuously adapt to emerging fraud patterns. This strategic enhancement aims to fortify the security posture of enterprises, safeguard critical digital assets, and ensure trust in online interactions, reflecting Google Cloud's ongoing commitment to delivering intelligent and scalable cybersecurity defenses.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Google Cloud</span><span>Fraud Defense</span><span>reCAPTCHA</span><span>Cybersecurity</span><span>Machine Learning</span><span>Risk Assessment</span><span>Bot Detection</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://cloud.google.com/blog/products/identity-security/introducing-google-cloud-fraud-defense-the-next-evolution-of-recaptcha/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Agents can now create Cloudflare accounts, buy domains, and deploy</h2>
+                <span class="published-time">Published: 2026-05-06 03:10:33</span>
+                
+                <p class="summary">Cloudflare has announced a new capability enabling automated agents to interact directly with its platform, streamlining various development and deployment workflows. This advancement allows agents to programmatically create new Cloudflare accounts, acquire domain names, and deploy applications, potentially automating significant portions of web infrastructure management. The integration aims to enhance efficiency for developers and organizations leveraging AI agents or other automated systems to manage their online presence. This development signifies Cloudflare's push towards greater platform programmability and integration with emerging AI-driven tools, offering a more hands-off approach to managing web services from account creation to global deployment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Cloudflare</span><span>Automation</span><span>Domain Management</span><span>Deployment</span><span>Web Infrastructure</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Others</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://blog.cloudflare.com/agents-stripe-projects/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Vibe coding and agentic engineering are getting closer than I'd like</h2>
+                <span class="published-time">Published: 2026-05-06 15:06:37</span>
+                
+                <p class="summary">The article's concise title, "Vibe coding and agentic engineering are getting closer than I'd like," signals a growing apprehension regarding the evolving landscape of software development. "Vibe coding" generally describes an intuitive, less structured programming methodology, often characterized by rapid iteration and a focus on achieving a functional outcome without extensive upfront design or formal processes. This approach contrasts sharply with traditional, disciplined software engineering practices. Concurrently, "agentic engineering" represents the emerging trend of utilizing advanced AI agents to automate significant portions of the software development lifecycle, from ideation and code generation to testing and deployment. These AI agents, often powered by sophisticated Large Language Models, are designed to operate autonomously, making decisions and executing tasks with minimal human intervention. The author's concern arises from the potential convergence of these two paradigms. A fear exists that the inherent lack of rigorous structure in "vibe coding" could be amplified or exacerbated when integrated with autonomous AI agents. This convergence might lead to software systems that are less predictable, harder to debug, or more challenging to maintain due to a diminished human understanding of the underlying agent-driven processes. Such a scenario could compromise software quality, increase technical debt, and introduce unforeseen complexities, prompting a critical re-evaluation of current practices in AI-assisted software development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Agentic Engineering</span><span>AI Agents</span><span>Software Development</span><span>Code Generation</span><span>Programming Paradigms</span><span>Autonomous Systems</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://simonwillison.net/2026/May/6/vibe-coding-and-agentic-engineering/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Tilde.run 
+– Agent Sandbox with a Transactional, Versioned Filesystem</h2>
+                <span class="published-time">Published: 2026-05-06 15:58:34</span>
+                
+                <p class="summary">Tilde.run introduces an innovative agent sandbox platform featuring a transactional and versioned filesystem. This new offering aims to provide developers and researchers with a robust environment for deploying and testing software agents. The core distinction lies in its sophisticated filesystem, which ensures data integrity through transactional operations and enables comprehensive state management via versioning. This capability is crucial for debugging agent behavior, reproducing specific scenarios, and maintaining audit trails of agent interactions and modifications to their operational environment. By combining a secure sandbox with advanced data management, Tilde.run addresses common challenges in agent development, such as ensuring deterministic execution, managing complex dependencies, and rolling back to previous states. This platform is poised to facilitate the development of more reliable and accountable AI agents and automated systems across various applications, from research prototypes to production deployments. It provides a foundational infrastructure designed to enhance the development lifecycle of intelligent agents by offering control and transparency over their operational data.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Agent Sandbox</span><span>Transactional Filesystem</span><span>Versioned Filesystem</span><span>Software Agents</span><span>Sandboxing</span><span>Data Integrity</span><span>System Architecture</span><span>Version Control</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://tilde.run/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Telus Uses AI to Alter Call-Agent Accents</h2>
+                <span class="published-time">Published: 2026-05-06 01:38:44</span>
+                
+                <p class="summary">Telus, a prominent telecommunications company, has reportedly implemented artificial intelligence technology to modify the accents of its call center agents in real-time. This innovative application of AI aims to enhance customer experience by potentially making communication clearer and more universally understandable, particularly for customers engaging with agents from diverse linguistic backgrounds. The technology likely leverages advanced speech synthesis and voice transformation algorithms, enabling a dynamic alteration of an agent's vocal characteristics to a perceived standard or a more neutral accent. While proponents suggest this could lead to improved service efficiency and customer satisfaction by reducing communication barriers, the deployment of such AI raises significant ethical and cultural considerations. Concerns may include the impact on agents' identity, the potential for accent discrimination, and broader questions about authenticity in human-computer interaction. The initiative underscores a growing trend in businesses adopting sophisticated AI tools to optimize customer service operations, pushing the boundaries of real-time audio manipulation and highlighting the complex interplay between technology, human interaction, and cultural perception.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Artificial Intelligence</span><span>Speech Synthesis</span><span>Voice Transformation</span><span>Customer Service AI</span><span>Accent Modification</span><span>Telecommunications</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://letsdatascience.com/news/telus-uses-ai-to-alter-call-agent-accents-a3868f63" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Generate, Filter, Control, Replay: A Comprehensive Survey of Rollout Strategies for LLM Reinforcement Learning</h2>
+                <span class="published-time">Published: 2026-04-08T00:00:00.000Z</span>
+                
+                <p class="summary">Reinforcement learning (RL) has become a central post-training tool for improving the reasoning abilities of large language models (LLMs). In these systems, the rollout, the trajectory sampled from a prompt to termination, including intermediate reasoning steps and optional tool or environment interactions, determines the data the optimizer learns from, yet rollout design is often underreported. This survey provides an optimizer-agnostic view of rollout strategies for RL-based post-training of reasoning LLMs. We formalize rollout pipelines with unified notation and introduce Generate-Filter-Control-Replay (GFCR), a lifecycle taxonomy that decomposes rollout pipelines into four modular stages: Generate proposes candidate trajectories and topologies; Filter constructs intermediate signals via verifiers, judges, critics; Control allocates compute and makes continuation/branching/stopping decisions under budgets; and Replay retains and reuses artifacts across rollouts without weight updates, including self-evolving curricula that autonomously generate new training tasks. We complement GFCR with a criterion taxonomy of reliability, coverage, and cost sensitivity that characterizes rollout trade-offs. Using this framework, we synthesize methods spanning RL with verifiable rewards, process supervision, judge-based gating, guided and tree/segment rollouts, adaptive compute allocation, early-exit and partial rollouts, throughput optimization, and replay/recomposition for self-improvement. We ground the framework with case studies in math, code/SQL, multimodal reasoning, tool-using agents, and agentic skill benchmarks that evaluate skill induction, reuse, and cross-task transfer. Finally, we provide a diagnostic index that maps common rollout pathologies to GFCR modules and mitigation levers, alongside open challenges for building reproducible, compute-efficient, and trustworthy rollout pipelines.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Reinforcement Learning</span><span>Rollout Strategies</span><span>Post-training</span><span>AI Agent</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.02913" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>ARIS: Autonomous Research via Adversarial Multi-Agent Collaboration</h2>
+                <span class="published-time">Published: 2026-05-04T00:00:00.000Z</span>
+                
+                <p class="summary">This report describes ARIS (Auto-Research-in-sleep), an open-source research harness for autonomous research, including its architecture, assurance mechanisms, and early deployment experience. The performance of agent systems built on LLMs depends on both the model weights and the harness around them, which governs what information to store, retrieve, and present to the model. For long-horizon research workflows, the central failure mode is not a visible breakdown but a plausible unsupported success: a long-running agent can produce claims whose evidential support is incomplete, misreported, or silently inherited from the executor's framing. Therefore, we present ARIS as a research harness that coordinates machine-learning research workflows through cross-model adversarial collaboration as a default configuration: an executor model drives forward progress while a reviewer from a different model family is recommended to critique intermediate artifacts and request revisions. ARIS has three architectural layers. The execution layer provides more than 65 reusable Markdown-defined skills, model integrations via MCP, a persistent research wiki for iterative reuse of prior findings, and deterministic figure generation. The orchestration layer coordinates five end-to-end workflows with adjustable effort settings and configurable routing to reviewer models. The assurance layer includes a three-stage process for checking whether experimental claims are supported by evidence: integrity verification, result-to-claim mapping, and claim auditing that cross-checks manuscript statements against the claim ledger and raw evidence, as well as a five-pass scientific-editing pipeline, mathematical-proof checks, and visual inspection of the rendered PDF. A prototype self-improvement loop records research traces and proposes harness improvements that are adopted only after reviewer approval.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Autonomous Research</span><span>Multi-Agent Collaboration</span><span>LLMs</span><span>Research Harness</span><span>Adversarial Collaboration</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.03042" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>OpenSeeker-v2: Pushing the Limits of Search Agents with Informative and High-Difficulty Trajectories</h2>
+                <span class="published-time">Published: 2026-05-05T00:00:00.000Z</span>
+                
+                <p class="summary">Deep search capabilities have become an indispensable competency for frontier Large Language Model (LLM) agents, yet their development remains dominated by industrial giants. The typical industry recipe involves a highly resource-intensive pipeline spanning pre-training, continual pre-training (CPT), supervised fine-tuning (SFT), and reinforcement learning (RL). In this report, we show that when fueled with informative and high-difficulty trajectories, a simple SFT approach could be surprisingly powerful for training frontier search agents. By introducing three simple data synthesis modifications: scaling knowledge graph size for richer exploration, expanding the tool set size for broader functionality, and strict low-step filtering, we establish a stronger baseline. Trained on merely 10.6k data points, our OpenSeeker-v2 achieves state-of-the-art performance across 4 benchmarks (30B-sized agents with ReAct paradigm): 46.0% on BrowseComp, 58.1% on BrowseComp-ZH, 34.6% on Humanity's Last Exam, and 78.0% on xbench, surpassing even Tongyi DeepResearch trained with heavy CPT+SFT+RL pipeline, which achieves 43.4%, 46.7%, 32.9%, and 75.0%, respectively. Notably, OpenSeeker-v2 represents the first state-of-the-art search agent within its model scale and paradigm to be developed by a purely academic team using only SFT. We are excited to open-source the OpenSeeker-v2 model weights and share our simple yet effective findings to make frontier search agent research more accessible to the community.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Search Agents</span><span>Large Language Models</span><span>Supervised Fine-tuning</span><span>State-of-the-art</span><span>Open-source</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.04036" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Video Generation with Predictive Latents</h2>
+                <span class="published-time">Published: 2026-05-04T00:00:00.000Z</span>
+                
+                <p class="summary">Video Variational Autoencoder (VAE) enables latent video generative modeling by mapping the visual world into compact spatiotemporal latent spaces, improving training efficiency and stability. While existing video VAEs achieve commendable reconstruction quality, continued optimization of reconstruction does not necessarily translate into improved generative performance. How to enhance the diffusability of video latents remains a critical and unresolved challenge. In this work, inspired by principles of predictive world modeling, we investigate the potential of predictive learning to improve the video generative modeling. To this end, we introduce a simple and effective predictive reconstruction objective that unifies predictive learning with video reconstruction. Specifically, we randomly discard future frames and encode only partial past observations, while training the decoder to reconstruct the observed frames and predict future ones simultaneously. This design encourages the latent space to encode temporally predictive structures and build a more coherent understanding of video dynamics, thereby improving generation quality. Our model, termed Predictive Video VAE (PV-VAE), achieves superior performance on video generation, with 52% faster convergence and a 34.42 FVD improvement over the Wan2.2 VAE on UCF101. Furthermore, comprehensive analyses demonstrate that PV-VAE not only exhibits favorable scalability, with generative performance improving alongside VAE training, but also yields consistent gains in downstream video understanding, underscoring a latent space that effectively captures temporal coherence and motion priors.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video VAE</span><span>Predictive Learning</span><span>Video Generation</span><span>Latent Generative Modeling</span><span>Video Understanding</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Deep Learning</span><span>Video Understanding</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.02134" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Beyond SFT-to-RL: Pre-alignment via Black-Box On-Policy Distillation for Multimodal RL</h2>
+                <span class="published-time">Published: 2026-05-01T00:00:00.000Z</span>
+                
+                <p class="summary">The standard post-training recipe for large multimodal models (LMMs) applies supervised fine-tuning (SFT) on curated demonstrations followed by reinforcement learning with verifiable rewards (RLVR). However, SFT introduces distributional drift that neither preserves the model's original capabilities nor faithfully matches the supervision distribution. This problem is further amplified in multimodal reasoning, where perception errors and reasoning failures follow distinct drift patterns that compound during subsequent RL. We introduce PRISM, a three-stage pipeline that mitigates this drift by inserting an explicit distribution-alignment stage between SFT and RLVR. Building on the principle of on-policy distillation (OPD), PRISM casts alignment as a black-box, response-level adversarial game between the policy and a Mixture-of-Experts (MoE) discriminator with dedicated perception and reasoning experts, providing disentangled corrective signals that steer the policy toward the supervision distribution without requiring access to teacher logits. While 1.26M public demonstrations suffice for broad SFT initialization, distribution alignment demands higher-fidelity supervision; we therefore curate 113K additional demonstrations from Gemini 3 Flash, featuring dense visual grounding and step-by-step reasoning on the hardest unsolved problems. Experiments on Qwen3-VL show that PRISM consistently improves downstream RLVR performance across multiple RL algorithms (GRPO, DAPO, GSPO) and diverse multimodal benchmarks, improving average accuracy by +4.4 and +6.0 points over the SFT-to-RLVR baseline on 4B and 8B, respectively. Our code, data, and model checkpoints are publicly available at https://github.com/XIAO4579/PRISM.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal RL</span><span>Large Multimodal Models</span><span>On-Policy Distillation</span><span>Distribution Alignment</span><span>Reinforcement Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Large Language Model</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2604.28123" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Chain of Evidence: Pixel-Level Visual Attribution for Iterative Retrieval-Augmented Generation</h2>
+                <span class="published-time">Published: 2026-05-02T00:00:00.000Z</span>
+                
+                <p class="summary">Iterative Retrieval-Augmented Generation (iRAG) has emerged as a powerful paradigm for answering complex multi-hop questions by progressively retrieving and reasoning over external documents. However, current systems predominantly operate on parsed text, which creates two critical bottlenecks: (1) Coarse-grained attribution, where users are burdened with manually locating evidence within lengthy documents based on vague text-level citations; and (2) Visual semantic loss, where the conversion of visually rich documents (e.g., slides, PDFs with charts) into text discards spatial logic and layout cues essential for reasoning. To bridge this gap, we present Chain of Evidence (CoE), a retriever-agnostic visual attribution framework that leverages Vision-Language Models to reason directly over screenshots of retrieved document candidates. CoE eliminates format-specific parsing and outputs precise bounding boxes, visualizing the complete reasoning chain within the retrieved candidate set. We evaluate CoE on two distinct benchmarks: Wiki-CoE, a large-scale dataset of structured web pages derived from 2WikiMultiHopQA, and SlideVQA, a challenging dataset of presentation slides featuring complex diagrams and free-form layouts. Experiments demonstrate that fine-tuned Qwen3-VL-8B-Instruct achieves robust performance, significantly outperforming text-based baselines in scenarios requiring visual layout understanding, while establishing a retriever-agnostic solution for pixel-level interpretable iRAG. Our code is available at https://github.com/PeiYangLiu/CoE.git.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Iterative Retrieval-Augmented Generation</span><span>Visual Attribution</span><span>Vision-Language Models</span><span>Pixel-Level Attribution</span><span>Multi-hop Questions</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Computer Vision</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.01284" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
