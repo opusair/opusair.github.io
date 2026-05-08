@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-05-08</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-05-08</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Mojo 1.0 Beta</h2>
+                <span class="published-time">Published: 2026-05-08 02:49:01</span>
+                
+                <p class="summary">Mojo, a groundbreaking programming language developed by Modular, has officially unveiled its 1.0 Beta release, signifying a major leap forward in its journey towards a stable and production-ready state. This innovative language is meticulously engineered to unify the experience of developing for the entire Artificial Intelligence stack, merging the intuitive syntax and developer-friendliness of Python with the unparalleled performance capabilities traditionally found in systems languages like C++ and Rust. Mojo's core objective is to empower AI and machine learning engineers to build exceptionally fast and efficient applications, particularly those requiring tight integration with specialized hardware accelerators. The 1.0 Beta introduces enhanced stability, a more comprehensive toolchain, and a maturing ecosystem, inviting the developer community to experiment with and deploy high-performance AI solutions. By streamlining the development process and maximizing computational efficiency, Mojo aims to drastically accelerate AI research and productization, positioning itself as a pivotal tool for future advancements in artificial intelligence.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Mojo programming language</span><span>AI development</span><span>Machine Learning</span><span>Python alternative</span><span>Systems programming</span><span>Performance optimization</span><span>Hardware acceleration</span><span>Compiler</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://mojolang.org/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>GPT-5.5 Price Increase: What It Costs</h2>
+                <span class="published-time">Published: 2026-05-08 01:02:28</span>
+                
+                <p class="summary">OpenRouter.ai has published an announcement detailing a recent price increase for the GPT-5.5 model, outlining the revised cost structure for its users. The announcement, titled "GPT-5.5 Price Increase: What It Costs," serves to inform developers and businesses leveraging the platform about the updated API tariffs. While specific price points were not detailed in the provided content snippet, the context implies a comprehensive breakdown of the new per-token or per-request charges, potentially differentiating between input and output tokens. This update is critical for users to reassess their operational budgets and resource allocation when integrating the GPT-5.5 model into their applications. The analysis from OpenRouter.ai likely aims to provide transparency regarding these changes, explaining the factors contributing to the price adjustment, such as increased computational demands or underlying model provider costs. Users are advised to review the full announcement on OpenRouter's platform to understand the precise impact on their projects and to adjust their usage strategies accordingly to manage expenditures effectively in the evolving landscape of large language model services.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>GPT-5.5</span><span>Large Language Model</span><span>AI Pricing</span><span>API Costs</span><span>OpenRouter</span><span>Generative AI</span><span>Model Economics</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://openrouter.ai/announcements/gpt55-cost-analysis" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Court to DOGE: Asking ChatGPT 'Is This DEI?' Is Not Proper Legal Process</h2>
+                <span class="published-time">Published: 2026-05-08 17:14:52</span>
+                
+                <p class="summary">A recent court ruling has decisively rejected the use of ChatGPT as a legitimate tool for legal analysis, specifically in evaluating Diversity, Equity, and Inclusion (DEI) policies. The court underscored that consulting a large language model like ChatGPT does not constitute proper legal process, highlighting the critical limitations of generative AI in judicial contexts. This incident, involving the "DOGE bros" and their informal AI query, exemplifies the judiciary's growing need to establish clear boundaries for AI integration into legal workflows. The court's stance reinforces that AI tools, while advanced, lack the nuanced understanding of legal precedents, constitutional implications, and ethical considerations required for authoritative legal determinations. This decision serves as an important precedent for the responsible deployment of artificial intelligence in professional domains, emphasizing the irreplaceable role of human legal expertise and established judicial methodologies. It signals a cautionary approach to AI adoption where accuracy and legal validity are paramount.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>ChatGPT</span><span>Artificial Intelligence</span><span>Legal Process</span><span>AI Ethics</span><span>Generative AI</span><span>Legal Technology</span><span>Court Ruling</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.techdirt.com/2026/05/08/court-to-doge-bros-asking-chatgpt-yo-is-this-dei-is-not-proper-legal-process-also-a-first-amendment-violation/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Git for AI Agents</h2>
+                <span class="published-time">Published: 2026-05-08 14:15:36</span>
+                
+                <p class="summary">An open-source solution named `re_gent` has been unveiled, aiming to fill a critical void in the current workflow for AI agents: robust version control. The creator highlights significant challenges in gaining insight into agent operations, specifically regarding the rationale behind actions ("why did you do it?") and the history of changes (e.g., "when did you delete this folder?"). Traditional AI agent interactions often lack the capability to rewind to previous states or perform a 'bisect' operation to identify the exact moment and reason behind a particular agent action or state change across sessions. This project draws a parallel with Git, which revolutionized code development by providing comprehensive versioning. `re_gent` seeks to replicate these essential version control capabilities for AI agents, enabling better traceability, reversibility, and understanding of their historical activities. The solution currently offers support for Claude code, with plans for broader applicability. The developer is actively soliciting community feedback, contributions, and discussions on innovative solutions to these pervasive agent workflow complexities, with the ultimate goal of enhancing transparency and control over AI agent deployments.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agents</span><span>Version Control System</span><span>Agent Workflow</span><span>Open Source</span><span>Traceability</span><span>Developer Tools</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/regent-vcs/re_gent" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: GETadb.com – every GET request creates a DB</h2>
+                <span class="published-time">Published: 2026-05-08 16:17:37</span>
+                
+                <p class="summary">GETadb.com is a new platform designed to simplify the development of full-stack applications by AI agents. It eliminates the need for agents to handle credentials, as every GET request automatically provisions a dedicated database, a synchronization engine, and essential abstractions for authentication, presence, and data streams. This allows AI agents to immediately access necessary resources for application development. The platform incorporates clever implementation techniques, such as distinguishing between agent and human requests by detecting the 'Sec-Fetch-Mode' HTTP header, allowing it to serve agent-specific content. Furthermore, to circumvent global URL caching issues prevalent in many web-based app builders, GETadb.com employs a two-step provisioning process: agents first request a unique UUID, then use it in a subsequent fetch to provision their specific database. This innovative approach aims to streamline AI-driven application creation by providing instant backend infrastructure.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>GETadb</span><span>AI Agents</span><span>Full-Stack Development</span><span>Database</span><span>Web Development</span><span>API</span><span>Synchronization</span><span>Authentication</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.getadb.com/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI Is Breaking Two Vulnerability Cultures</h2>
+                <span class="published-time">Published: 2026-05-08 17:55:08</span>
+                
+                <p class="summary">The article "AI Is Breaking Two Vulnerability Cultures" explores how the rapid advancement and deployment of artificial intelligence systems are fundamentally challenging and disrupting established approaches to vulnerability management. Traditionally, the realm of software security has operated within a culture centered on identifying, disclosing, and patching deterministic code bugs and exploits. Concurrently, a distinct academic culture focused on AI safety and ethics has concentrated on issues like algorithmic bias, fairness, and the broader societal implications of AI. However, the unique characteristics of AI, particularly advanced machine learning models, introduce a novel spectrum of non-deterministic vulnerabilities. These include adversarial attacks, data poisoning, and prompt injection techniques, which do not align with conventional software patching methodologies and often extend beyond the purview of classical AI safety research. The piece argues that AI necessitates a profound re-evaluation of existing security frameworks, demanding innovative strategies to identify, mitigate, and respond to these new classes of risks throughout the entire AI system lifecycle. This disruption ultimately compels the convergence of traditional cybersecurity practices with emerging AI safety and robustness research to secure the future of AI.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Security</span><span>Vulnerability Management</span><span>Adversarial AI</span><span>Prompt Injection</span><span>AI Safety</span><span>Cybersecurity</span><span>Machine Learning Security</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.jefftk.com/p/ai-is-breaking-two-vulnerability-cultures" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>Skill1: Unified Evolution of Skill-Augmented Agents via Reinforcement Learning</h2>
+                <span class="published-time">Published: 2026-05-07T00:00:00.000Z</span>
+                
+                <p class="summary">A persistent skill library allows language model agents to reuse successful strategies across tasks. Maintaining such a library requires three coupled capabilities. The agent selects a relevant skill, utilizes it during execution, and distills new skills from experience. Existing methods optimize these capabilities in isolation or with separate reward sources, resulting in partial and conflicting evolution. We propose Skill1, a framework that trains a single policy to co-evolve skill selection, utilization, and distillation toward a shared task-outcome objective. The policy generates a query to search the skill library, re-ranks candidates to select one, solves the task conditioned on it, and distills a new skill from the trajectory. All learning derives from a single task-outcome signal. Its low-frequency trend credits selection and its high-frequency variation credits distillation. Experiments on ALFWorld and WebShop show that Skill1 outperforms prior skill-based and reinforcement learning baselines. Training dynamics confirm the co-evolution of the three capabilities, and ablations show that removing any credit signal degrades the evolution.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Skill-Augmented Agents</span><span>Language Model Agents</span><span>Skill Co-evolution</span><span>Skill Library</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.06130" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Continuous Latent Diffusion Language Model</h2>
+                <span class="published-time">Published: 2026-05-07T00:00:00:000Z</span>
+                
+                <p class="summary">Large language models have achieved remarkable success under the autoregressive paradigm, yet high-quality text generation need not be tied to a fixed left-to-right order. Existing alternatives still struggle to jointly achieve generation efficiency, scalable representation learning, and effective global semantic modeling. We propose Cola DLM, a hierarchical latent diffusion language model that frames text generation through hierarchical information decomposition. Cola DLM first learns a stable text-to-latent mapping with a Text VAE, then models a global semantic prior in continuous latent space with a block-causal DiT, and finally generates text through conditional decoding. From a unified Markov-path perspective, its diffusion process performs latent prior transport rather than token-level observation recovery, thereby separating global semantic organization from local textual realization. This design yields a more flexible non-autoregressive inductive bias, supports semantic compression and prior fitting in continuous space, and naturally extends to other continuous modalities. Through experiments spanning 4 research questions, 8 benchmarks, strictly matched ~2B-parameter autoregressive and LLaDA baselines, and scaling curves up to about 2000 EFLOPs, we identify an effective overall configuration of Cola DLM and verify its strong scaling behavior for text generation. Taken together, the results establish hierarchical continuous latent prior modeling as a principled alternative to strictly token-level language modeling, where generation quality and scaling behavior may better reflect model capability than likelihood, while also suggesting a concrete path toward unified modeling across discrete text and continuous modalities.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Continuous Latent Diffusion</span><span>Large Language Models</span><span>Text Generation</span><span>Non-Autoregressive</span><span>Hierarchical Latent Space</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Natural Language Processing</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.06548" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Can RL Teach Long-Horizon Reasoning to LLMs? Expressiveness Is Key</h2>
+                <span class="published-time">Published: 2026-05-07T00:00:00:000Z</span>
+                
+                <p class="summary">Reinforcement learning (RL) has been applied to improve large language model (LLM) reasoning, yet the systematic study of how training scales with task difficulty has been hampered by the lack of controlled, scalable environments. We introduce ScaleLogic, a synthetic logical reasoning framework that offers independent control over two axes of difficulty: the depth of the required proof planning (i.e., the horizon) and the expressiveness of the underlying logic. Our proposed framework supports a wide range of logics: from simple implication-only logic ("if-then") towards more expressive first-order reasoning with conjunction ("and"), disjunction ("or"), negation ("not"), and universal quantification ("for all"). Using this framework, we show that the RL training compute T follows a power law with respect to reasoning depth D (T propto D^γ, R^{2} > 0.99), and that the scaling exponent γ increases monotonically with logical expressiveness, from 1.04 to 2.60. On downstream mathematics and general reasoning benchmarks, more expressive training settings yield both larger performance gains (up to +10.66 points) and more compute-efficient transfer compared to less expressive settings, demonstrating that what a model is trained on, not just how much it is trained, shapes downstream transfer. We further show that the power-law relationship holds across multiple RL methods, and curriculum-based training substantially improves scaling efficiency.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Large Language Models</span><span>Logical Reasoning</span><span>Scaling Laws</span><span>Expressiveness</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.06638" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>UniPool: A Globally Shared Expert Pool for Mixture-of-Experts</h2>
+                <span class="published-time">Published: 2026-05-07T00:00:00:000Z</span>
+                
+                <p class="summary">Modern Mixture-of-Experts (MoE) architectures allocate expert capacity through a rigid per-layer rule: each transformer layer owns a separate expert set. This convention couples depth scaling with linear expert-parameter growth and assumes that every layer needs isolated expert capacity. However, recent analyses and our routing probe challenge this allocation rule: replacing a deeper layer's learned top-k router with uniform random routing drops downstream accuracy by only 1.0-1.6 points across multiple production MoE models. Motivated by this redundancy, we propose UniPool, an MoE architecture that treats expert capacity as a global architectural budget by replacing per-layer expert ownership with a single shared pool accessed by independent per-layer routers. To enable stable and balanced training under sharing, we introduce a pool-level auxiliary loss that balances expert utilization across the entire pool, and adopt NormRouter to provide sparse and scale-stable routing into the shared expert pool. Across five LLaMA-architecture model scales (182M, 469M, 650M, 830M, and 978M parameters) trained on 30B tokens from the Pile, UniPool consistently improves validation loss and perplexity over the matched vanilla MoE baselines. Across these scales, UniPool reduces validation loss by up to 0.0386 relative to vanilla MoE. Beyond raw loss improvement, our results identify pool size as an explicit depth-scaling hyperparameter: reduced-pool UniPool variants using only 41.6%-66.7% of the vanilla expert-parameter budget match or outperform layer-wise MoE at the tested scales. This shows that, under a shared-pool design, expert parameters need not grow linearly with depth; they can grow sublinearly while remaining more efficient and effective than vanilla MoE. Further analysis shows that UniPool's benefits compose with finer-grained expert decomposition.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Mixture-of-Experts</span><span>UniPool</span><span>Transformer architecture</span><span>Expert capacity</span><span>Routing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Deep Learning</span><span>Natural Language Processing</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.06665" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>SwiftI2V: Efficient High-Resolution Image-to-Video Generation via Conditional Segment-wise Generation</h2>
+                <span class="published-time">Published: 2026-05-07T00:00:00:000Z</span>
+                
+                <p class="summary">High-resolution image-to-video (I2V) generation aims to synthesize realistic temporal dynamics while preserving fine-grained appearance details of the input image. At 2K resolution, it becomes extremely challenging, and existing solutions suffer from various weaknesses: 1) end-to-end models are often prohibitively expensive in memory and latency; 2) cascading low-resolution generation with a generic video super-resolution tends to hallucinate details and drift from input-specific local structures, since the super-resolution stage is not explicitly conditioned on the input image. To this end, we propose SwiftI2V, an efficient framework tailored for high-resolution I2V. Following the widely used two-stage design, it addresses the efficiency--fidelity dilemma by first generating a low-resolution motion reference to reduce token costs and ease the modeling burden, then performing a strongly image-conditioned 2K synthesis guided by the motion to recover input-faithful details with controlled overhead. Specifically, to make generation more scalable, SwiftI2V introduces Conditional Segment-wise Generation (CSG) to synthesize videos segment-by-segment with a bounded per-step token budget, and adopts bidirectional contextual interaction within each segment to improve cross-segment coherence and input fidelity. On VBench-I2V at 2K resolution, SwiftI2V achieves performance comparable to end-to-end baselines while reducing total GPU-time by 202x. Particularly, it enables practical 2K I2V generation on a single datacenter GPU (e.g., H800) or consumer GPU (e.g., RTX 4090).</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Image-to-Video Generation</span><span>High-Resolution</span><span>Video Synthesis</span><span>Conditional Segment-wise Generation</span><span>Efficient Framework</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Computer Vision</span><span>Generative AI</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.06356" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI Co-Mathematician: Accelerating Mathematicians with Agentic AI</h2>
+                <span class="published-time">Published: 2026-05-07T00:00:00:000Z</span>
+                
+                <p class="summary">We introduce the AI co-mathematician, a workbench for mathematicians to interactively leverage AI agents to pursue open-ended research. The AI co-mathematician is optimized to provide holistic support for the exploratory and iterative reality of mathematical workflows, including ideation, literature search, computational exploration, theorem proving and theory building. By providing an asynchronous, stateful workspace that manages uncertainty, refines user intent, tracks failed hypotheses, and outputs native mathematical artifacts, the system mirrors human collaborative workflows. In early tests, the AI co-mathematician helped researchers solve open problems, identify new research directions, and uncover overlooked literature references. Besides demonstrating a highly interactive paradigm for AI-assisted mathematical discovery, the AI co-mathematician also achieves state of the art results on hard problem-solving benchmarks, including scoring 48% on FrontierMath Tier 4, a new high score among all AI systems evaluated.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Co-Mathematician</span><span>AI Agents</span><span>Mathematical Discovery</span><span>Problem Solving</span><span>Research Acceleration</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.06651" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
