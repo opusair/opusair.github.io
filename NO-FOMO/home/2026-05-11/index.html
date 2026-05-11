@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-05-11</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-05-11</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>Interfaze: A new model architecture built for high accuracy at scale</h2>
+                <span class="published-time">Published: 2026-05-11 16:22:31</span>
+                
+                <p class="summary">A new model architecture, dubbed 'Interfaze', has been introduced, specifically engineered to achieve high accuracy while maintaining scalability for diverse applications. This development addresses a critical challenge in artificial intelligence and machine learning, where the pursuit of greater predictive precision often conflicts with the practical requirements of deploying models across large datasets or in high-throughput environments. The Interfaze architecture is posited as a significant step forward, aiming to reconcile these competing demands by optimizing computational efficiency without compromising on performance benchmarks. While specific technical details regarding its foundational mechanisms or empirical validation are yet to be fully disclosed, the emphasis on both accuracy and scale suggests potential advancements in areas such as efficient resource utilization, novel algorithmic approaches, or innovative data processing techniques. This approach could unlock new possibilities for AI-driven solutions, enabling more robust, reliable, and deployable systems across industries requiring high-performance analytical capabilities. The introduction of Interfaze signals a continued push towards more sophisticated and practical AI model designs capable of meeting the rigorous demands of real-world, large-scale deployment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Model Architecture</span><span>Scalability</span><span>High Accuracy</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Models</span><span>Deep Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://interfaze.ai/blog/interfaze-a-new-model-architecture-built-for-high-accuracy-at-scale" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>I'm going back to writing code by hand</h2>
+                <span class="published-time">Published: 2026-05-11 01:23:51</span>
+                
+                <p class="summary">This Hacker News story, titled 'I'm going back to writing code by hand,' reflects a growing sentiment among developers regarding the balance between traditional software engineering practices and the increasing adoption of AI-powered code generation tools like GitHub Copilot or various Large Language Models. The author likely advocates for a conscious return to manual coding, emphasizing its role in fostering a deeper understanding of programming concepts, enhancing problem-solving capabilities, and ultimately improving overall code quality. This perspective suggests potential concerns with an over-reliance on AI assistance, such as diminished developer proficiency, reduced ability to debug complex issues independently, or the introduction of subtle errors that might impact system maintainability, security, and long-term project health. The piece implicitly encourages developers to prioritize foundational coding skills, critical thinking, and a thorough understanding of system architecture over automated solutions, thereby highlighting the enduring value of human craftsmanship and expertise in complex software development.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Manual Coding</span><span>Software Engineering</span><span>Developer Productivity</span><span>Code Quality</span><span>AI Code Generation</span><span>Programming Practices</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://blog.k10s.dev/im-going-back-to-writing-code-by-hand/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Software engineering may no longer be a lifetime career</h2>
+                <span class="published-time">Published: 2026-05-11 14:34:08</span>
+                
+                <p class="summary">The notion of software engineering as a stable, lifelong career path is increasingly being questioned due to several evolving factors within the tech industry. Rapid advancements in artificial intelligence, particularly in areas like code generation and automated development tools, are poised to significantly alter the landscape of traditional software development roles. This shift necessitates that engineers continuously adapt and acquire new skills to remain relevant, moving away from specialized, static roles towards more dynamic, cross-functional capabilities. The accelerating pace of technological change means that skill sets can become obsolete more quickly than in previous decades, urging professionals to engage in perpetual learning and reskilling. Consequently, the industry may see a rise in shorter career cycles within specific technological domains, with individuals frequently transitioning into new areas or taking on more abstract, high-level problem-solving roles that complement AI tools rather than compete directly with them. This trend highlights a fundamental transformation in career sustainability within software engineering, emphasizing agility and continuous innovation as paramount for professional longevity.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Software Engineering</span><span>Career Longevity</span><span>Skill Obsolescence</span><span>Technological Disruption</span><span>AI Automation</span><span>Workforce Transformation</span><span>Reskilling</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Others</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.seangoedecke.com/software-engineering-may-no-longer-be-a-lifetime-career/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>A.I. note takers are making lawyers nervous</h2>
+                <span class="published-time">Published: 2026-05-11 10:04:47</span>
+                
+                <p class="summary">The legal profession is experiencing growing unease regarding the proliferation of Artificial Intelligence note-takers, a trend highlighted in recent analyses. These AI tools are designed to streamline the documentation of legal proceedings, client consultations, and internal meetings by automatically transcribing, summarizing, and organizing information. While proponents laud their potential to significantly boost operational efficiency and reduce manual labor, lawyers are expressing profound concerns over a multitude of critical issues. Chief among these are the robust safeguarding of sensitive client data and maintaining attorney-client privilege, given the inherent data processing nature of these AI systems. Furthermore, questions persist about the absolute accuracy and contextual understanding of AI-generated notes, which could have serious implications in legal contexts. Ethical dilemmas, potential professional liabilities stemming from AI errors, and the need for clear regulatory frameworks are also at the forefront of the discussion, pushing the legal industry to adapt swiftly to this transformative, yet challenging, technological advancement.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI note-takers</span><span>Legal Tech</span><span>Natural Language Processing</span><span>Data Privacy</span><span>Legal Ethics</span><span>Automation in Law</span><span>Confidentiality</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Natural Language Processing</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.nytimes.com/2026/05/09/business/dealbook/ai-notetakers-legal-risk.html" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: adamsreview – better multi-agent PR reviews for Claude Code</h2>
+                <span class="published-time">Published: 2026-05-11 02:06:29</span>
+                
+                <p class="summary">adamsreview is a newly developed Claude Code plugin designed to enhance multi-stage Pull Request (PR) reviews through the use of parallel sub-agents and validation passes. The tool integrates persistent JSON state management and offers optional ensemble review capabilities via Codex CLI and PR bot comments. Its creator claims adamsreview significantly improves bug detection rates and reduces false positives compared to existing tools like Claude’s built-in review commands, CodeRabbit, Greptile, and Codex’s review. The plugin features six distinct slash commands, including a 'walkthrough' command that leverages Claude’s AskUserQuestion feature to guide users through uncertain findings, facilitating human oversight. Its state persistence mechanism, using on-disk JSON artifacts, allows for context clearing between review stages, making it a robust solution for deep code analysis.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>adamsreview</span><span>Claude Code</span><span>PR reviews</span><span>multi-agent systems</span><span>code review</span><span>developer tools</span><span>AI agent</span><span>software development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/adamjgmiller/adamsreview" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AI-powered hacking has exploded into industrial-scale threat, Google says</h2>
+                <span class="published-time">Published: 2026-05-11 14:56:41</span>
+                
+                <p class="summary">Google has issued a stark warning regarding the rapid escalation of AI-powered hacking, noting its transformation into an industrial-scale threat within the last three months. This development signifies a critical shift in the cybersecurity landscape, where artificial intelligence is being leveraged to automate and enhance malicious activities, making cyberattacks more pervasive and harder to detect. The report indicates that threat actors are increasingly utilizing AI to develop more sophisticated malware, conduct highly targeted and convincing phishing campaigns, and exploit system vulnerabilities at an unprecedented speed and scale. This industrialization of cyberattacks poses a significant challenge for traditional defense mechanisms, demanding the implementation of advanced AI-driven countermeasures and a proactive, adaptive approach to safeguard digital infrastructure. The inherent ability of AI to learn, adapt, and operate autonomously grants attackers a powerful new toolkit, making it imperative for organizations and individuals globally to bolster their defenses against these evolving, widespread, and highly effective threats. This trend, highlighted by Google, underscores the urgent need for collaborative efforts in AI safety and cybersecurity innovation.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI</span><span>Cybersecurity</span><span>Automated Attacks</span><span>Malware</span><span>Phishing</span><span>Threat Intelligence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Machine Learning</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.theguardian.com/technology/2026/may/11/ai-powered-hacking-industrial-scale-threat-three-months-google" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>A^2RD: Agentic Autoregressive Diffusion for Long Video Consistency</h2>
+                <span class="published-time">Published: 2026-05-07T00:00:00.000Z</span>
+                
+                <p class="summary">Synthesizing consistent and coherent long video remains a fundamental challenge. Existing methods suffer from semantic drift and narrative collapse over long horizons. We present A^2RD, an Agentic Auto-Regressive Diffusion architecture that decouples creative synthesis from consistency enforcement. A^2RD formulates long video synthesis as a closed-loop process that synthesizes and self-improves video segment-by-segment through a Retrieve--Synthesize--Refine--Update cycle. It comprises three core components: (i) Multimodal Video Memory that tracks video progression across modalities; (ii) Adaptive Segment Generation that switches among generation modes for natural progression and visual consistency; and (iii) Hierarchical Test-Time Self-Improvement that self-improves each segment at frame and video levels to prevent error propagation. We further introduce LVBench-C, a challenging benchmark with non-linear entity and environment transitions to stress-test long-horizon consistency. Across public and LVBench-C benchmarks spanning one- to ten-minute videos, A^2RD outperforms state-of-the-art baselines by up to 30% in consistency and 20% in narrative coherence. Human evaluations corroborate these gains while also highlighting notable improvements in motion and transition smoothness.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Long Video Consistency</span><span>Agentic Autoregressive Diffusion</span><span>Video Synthesis</span><span>Multimodal Video Memory</span><span>Test-Time Self-Improvement</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>AI Agent</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.06924" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Flow-OPD: On-Policy Distillation for Flow Matching Models</h2>
+                <span class="published-time">Published: 2026-05-08T00:00:00.000Z</span>
+                
+                <p class="summary">Existing Flow Matching (FM) text-to-image models suffer from two critical bottlenecks under multi-task alignment: the reward sparsity induced by scalar-valued rewards, and the gradient interference arising from jointly optimizing heterogeneous objectives, which together give rise to a 'seesaw effect' of competing metrics and pervasive reward hacking. Inspired by the success of On-Policy Distillation (OPD) in the large language model community, we propose Flow-OPD, the first unified post-training framework that integrates on-policy distillation into Flow Matching models. Flow-OPD adopts a two-stage alignment strategy: it first cultivates domain-specialized teacher models via single-reward GRPO fine-tuning, allowing each expert to reach its performance ceiling in isolation; it then establishes a robust initial policy through a Flow-based Cold-Start scheme and seamlessly consolidates heterogeneous expertise into a single student via a three-step orchestration of on-policy sampling, task-routing labeling, and dense trajectory-level supervision. We further introduce Manifold Anchor Regularization (MAR), which leverages a task-agnostic teacher to provide full-data supervision that anchors generation to a high-quality manifold, effectively mitigating the aesthetic degradation commonly observed in purely RL-driven alignment. Built upon Stable Diffusion 3.5 Medium, Flow-OPD raises the GenEval score from 63 to 92 and the OCR accuracy from 59 to 94, yielding an overall improvement of roughly 10 points over vanilla GRPO, while preserving image fidelity and human-preference alignment and exhibiting an emergent 'teacher-surpassing' effect. These results establish Flow-OPD as a scalable alignment paradigm for building generalist text-to-image models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Flow Matching Models</span><span>On-Policy Distillation</span><span>Text-to-Image</span><span>Multi-task Alignment</span><span>Reinforcement Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Deep Learning</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.08063" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>LLMs Improving LLMs: Agentic Discovery for Test-Time Scaling</h2>
+                <span class="published-time">Published: 2026-05-08T00:00:00.000Z</span>
+                
+                <p class="summary">Test-time scaling (TTS) has become an effective approach for improving large language model performance by allocating additional computation during inference. However, existing TTS strategies are largely hand-crafted: researchers manually design reasoning patterns and tune heuristics by intuition, leaving much of the computation-allocation space unexplored. We propose an environment-driven framework, AutoTTS, that changes what researchers design: from individual TTS heuristics to environments where TTS strategies can be discovered automatically. The key to AutoTTS lies in environment construction: the discovery environment must make the control space tractable and provide cheap, frequent feedback for TTS search. As a concrete instantiation, we formulate width--depth TTS as controller synthesis over pre-collected reasoning trajectories and probe signals, where controllers decide when to branch, continue, probe, prune, or stop and can be evaluated cheaply without repeated LLM calls. We further introduce beta parameterization to make the search tractable and fine-grained execution trace feedback to improve discovery efficiency by helping the agent diagnose why a TTS program fails. Experiments on mathematical reasoning benchmarks show that the discovered strategies improve the overall accuracy--cost tradeoff over strong manually designed baselines. The discovered strategies generalize to held-out benchmarks and model scales, while the entire discovery costs only $39.9 and 160 minutes. Our data, and code will be open-source at https://github.com/zhengkid/AutoTTS.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Test-Time Scaling</span><span>Agentic Discovery</span><span>Automated Strategy Generation</span><span>Computational Efficiency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>AI Agent</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.08083" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>MISA: Mixture of Indexer Sparse Attention for Long-Context LLM Inference</h2>
+                <span class="published-time">Published: 2026-05-08T00:00:00.000Z</span>
+                
+                <p class="summary">DeepSeek Sparse Attention (DSA) sets the state of the art for fine-grained inference-time sparse attention by introducing a learned token-wise indexer that scores every prefix token and selects the most relevant ones for the main attention. To remain expressive, the indexer uses many query heads (for example, 64 on DeepSeek-V3.2) that share the same selected token set; this multi-head design is precisely what makes the indexer the dominant cost on long contexts. We propose MISA (Mixture of Indexer Sparse Attention), a drop-in replacement for the DSA indexer that treats its indexer heads as a pool of mixture-of-experts. A lightweight router uses cheap block-level statistics to pick a query-dependent subset of only a few active heads, and only those heads run the heavy token-level scoring. This preserves the diversity of the original indexer pool while reducing the per-query cost from scoring every prefix token with every head to scoring it with only a handful of routed heads, plus a negligible router term computed on a small set of pooled keys. We further introduce a hierarchical variant of MISA that uses the routed pass to keep an enlarged candidate set and then re-ranks it with the original DSA indexer to recover the final selected tokens almost exactly. With only eight active heads and no additional training, MISA matches the dense DSA indexer on LongBench across DeepSeek-V3.2 and GLM-5 while running with eight and four times fewer indexer heads respectively, and outperforms HISA on average. It also preserves fully green Needle-in-a-Haystack heatmaps up to a 128K-token context and recovers more than 92% of the tokens selected by the DSA indexer per layer. Our TileLang kernel delivers roughly a 3.82 times speedup over DSA's original indexer kernel on a single NVIDIA H200 GPU.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>MISA</span><span>Sparse Attention</span><span>LLM Inference</span><span>Mixture-of-Experts</span><span>Long-Context</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.07363" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Rethinking RL for LLM Reasoning: It's Sparse Policy Selection, Not Capability Learning</h2>
+                <span class="published-time">Published: 2026-05-07T00:00:00.000Z</span>
+                
+                <p class="summary">Reinforcement learning has become the standard for improving reasoning in large language models, yet evidence increasingly suggests that RL does not teach new strategies; it redistributes probability mass over solutions the base model already contains. In this work, we ask: if RL merely steers the model toward paths it already knows, is the RL optimization loop itself necessary? Through token-level analysis across multiple model families and RL algorithms, we find that RL's beneficial footprint is a sparse, predictable correction concentrated at high-entropy decision points where the model is uncertain which branch to take. Only 1--3% of token positions are affected, the promoted token always lies within the base model's top-5 alternatives, and targeted corrections at those few positions causally recover a large fraction of RL's accuracy gain, while random corrections fail. The base model's own entropy identifies these positions without any RL-trained model, and the entire correction is low-dimensional, representable in a tiny fraction of model parameters. These findings reframe reasoning improvement as sparse policy selection, not capability acquisition. We translate this insight into ReasonMaxxer, a minimal RL-free method that applies contrastive loss only at entropy-gated decision points, using a few hundred base-model rollouts and no online generation. Across three model families, six scales, and six math reasoning benchmarks, ReasonMaxxer matches or exceeds full RL performance while requiring only tens of problems and minutes of single-GPU training, a reduction in training cost of roughly three orders of magnitude.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reinforcement Learning</span><span>Large Language Models</span><span>LLM Reasoning</span><span>Sparse Policy Selection</span><span>ReasonMaxxer</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.06241" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>STARFlow2: Bridging Language Models and Normalizing Flows for Unified Multimodal Generation</h2>
+                <span class="published-time">Published: 2026-05-08T00:00:00.000Z</span>
+                
+                <p class="summary">Deep generative models have advanced rapidly across text and vision, motivating unified multimodal systems that can understand, reason over, and generate interleaved text-image sequences. Most existing approaches combine autoregressive language modeling with diffusion-based image generators, inheriting a structural mismatch between causal text generation and iterative visual denoising. We observe that autoregressive normalizing flows are autoregressive Transformers--sharing the same causal mask, KV-cache mechanism, and left-to-right structure as LLMs--making them the most natural paradigm for true unified multimodal generation. We present STARFlow2, built on the Pretzel architecture that vertically interleaves a pretrained VLM stream with a TarFlow stream via residual skip connections, both operating under the same causal mask. Combined with a deep-shallow flow design and a unified FAE latent space, STARFlow2 enables cache-friendly interleaved generation where both text and visual outputs directly enter the KV-cache without re-encoding. Experiments demonstrate strong performance across image generation and multimodal understanding benchmarks, validating autoregressive flows as a viable foundation for unified multimodal modeling.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Multimodal Generation</span><span>Normalizing Flows</span><span>Language Models</span><span>Autoregressive Transformers</span><span>Deep Generative Models</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Generative AI</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.08029" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
