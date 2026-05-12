@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-05-12</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-05-12</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>FairyFuse: Multiplication-Free LLM Inference on CPUs via Fused Ternary Kernels</h2>
+                <span class="published-time">Published: 2026-05-12 17:35:51</span>
+                
+                <p class="summary">FairyFuse introduces a novel approach to significantly optimize Large Language Model (LLM) inference specifically for CPU architectures. The technique aims to achieve "multiplication-free" LLM computations by leveraging fused ternary kernels. This innovation targets a crucial bottleneck in deploying sophisticated LLMs on commodity hardware, which typically relies on CPUs and lacks the specialized tensor processing units found in GPUs. By eliminating complex multiplication operations, FairyFuse seeks to drastically reduce computational overhead and power consumption, making LLM inference more efficient and accessible for a wider range of applications and devices. The use of "fused ternary kernels" implies a strategic combination of simplified, low-precision arithmetic operations, possibly quantizing model weights or activations to ternary values (-1, 0, 1) and integrating these operations into highly optimized, single-pass kernels. This not only speeds up computation but also enhances cache utilization and minimizes data movement, which are critical factors for performance on CPU-based systems. The proposed method represents a significant step towards enabling broader adoption and real-time execution of LLMs without requiring specialized hardware accelerators, thereby democratizing access to powerful AI capabilities.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLM Inference</span><span>CPU Optimization</span><span>Ternary Kernels</span><span>Multiplication-Free</span><span>Deep Learning</span><span>Hardware Acceleration</span><span>Quantization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://arxiv.org/abs/2604.20913" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Needle: We Distilled Gemini Tool Calling into a 26M Model</h2>
+                <span class="published-time">Published: 2026-05-12 18:03:11</span>
+                
+                <p class="summary">Cactus has open-sourced Needle, a compact 26-million-parameter model designed for efficient function-calling, also known as tool use. This innovation addresses the challenge of deploying agentic AI capabilities on budget consumer devices, such as phones, smartwatches, and smart glasses. Needle achieves impressive performance metrics, processing 6000 tokens per second during prefill and 1200 tokens per second during decoding on standard consumer hardware. The developers at Cactus argue that tool calling is primarily a task of retrieval and assembly—matching queries to tool names, extracting arguments, and emitting JSON—rather than complex reasoning, making massive models unnecessarily large for this specific function. Their design leverages Simple Attention Networks, relying solely on attention and gating mechanisms without traditional Multi-Layer Perceptrons (MLPs), optimizing for cross-attention as the core primitive. This experimental model, pretrained on an extensive dataset of 200 billion tokens, represents a significant step towards democratizing agentic AI by enabling powerful, on-device single-shot function calling.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Function Calling</span><span>Tool Use</span><span>Small Language Model</span><span>Edge AI</span><span>Attention Networks</span><span>Agentic AI</span><span>Model Distillation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/cactus-compute/needle" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Show HN: Statewright – Visual state machines that make AI agents reliable</h2>
+                <span class="published-time">Published: 2026-05-12 14:24:55</span>
+                
+                <p class="summary">Statewright, a new project by Ben Cochran (formerly of NVIDIA and AMD), addresses the inherent brittleness of current AI agentic problem-solving approaches. Cochran, a Distinguished Engineer with two decades in full-stack engineering, DevOps, HPC, and ML, argues that brute-forcing reliability with larger models and extensive context windows is an inefficient solution. Instead, Statewright proposes an alternative strategy: making the problem space smaller. This is achieved by utilizing smaller language models, specifically in the 13-20 billion parameter range, combined with formal state machines. These visual state machines are designed to constrain the tool and solution spaces available to AI agents, thereby enhancing their reliability when tackling complex tasks, such as real-world SWE-bench problems.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agents</span><span>State Machines</span><span>Reliability Engineering</span><span>Large Language Models</span><span>Software Engineering Automation</span><span>DevOps</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://github.com/statewright/statewright" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Claude Platform on AWS</h2>
+                <span class="published-time">Published: 2026-05-12 01:24:29</span>
+                
+                <p class="summary">Anthropic has officially announced the availability of its advanced artificial intelligence platform, Claude, on Amazon Web Services (AWS), marking a significant milestone in making its powerful large language models more accessible to a global enterprise audience. This strategic collaboration allows developers and businesses already operating within the AWS ecosystem to seamlessly integrate Claude's sophisticated conversational AI capabilities into their applications and workflows. By leveraging AWS's secure, scalable, and reliable cloud infrastructure, users can now deploy and manage Claude with enhanced efficiency, benefiting from the robust suite of tools and services provided by Amazon. This integration is designed to accelerate the adoption of cutting-edge AI technologies in diverse sectors, facilitating the development of innovative solutions in areas such as customer service, content generation, and data analysis. The availability on AWS underscores Anthropic's commitment to broad accessibility and robust deployment options, positioning Claude as a leading solution for enterprise-grade AI applications seeking powerful natural language processing and understanding.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Claude</span><span>AWS</span><span>Large Language Model</span><span>AI Platform</span><span>Cloud Computing</span><span>Natural Language Processing</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://claude.com/blog/claude-platform-on-aws" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Launch HN: Voker (YC S24) – Analytics for AI Agents</h2>
+                <span class="published-time">Published: 2026-05-12 15:45:20</span>
+                
+                <p class="summary">Voker.ai, founded by Alex and Tyler, has launched its analytics platform specifically designed for AI product teams to gain comprehensive visibility into AI agent performance. The platform addresses a critical challenge faced by agent engineers and AI product teams: the lack of adequate monitoring in production environments, which often leads to suboptimal user experiences, customer churn, and extensive manual debugging efforts. Voker's core offering is a lightweight, LLM stack-agnostic SDK that integrates seamlessly with agent products. This SDK provides real-time insights into user interactions with agents and evaluates the agents' ability to deliver effective responses, eliminating the need for tedious log analysis. By streamlining the monitoring and debugging process, Voker aims to enhance agent reliability and optimize overall AI product performance.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agents</span><span>Agent Analytics</span><span>LLM Stack Agnostic</span><span>SDK</span><span>Production Monitoring</span><span>Debugging Tools</span><span>AI Product Teams</span><span>Performance Visibility</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://voker.ai" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Reimagining the mouse pointer for the AI era</h2>
+                <span class="published-time">Published: 2026-05-12 17:40:13</span>
+                
+                <p class="summary">Google DeepMind has introduced a forward-thinking concept to revolutionize human-computer interaction by proposing a reimagined mouse pointer designed for the artificial intelligence era. This initiative aims to evolve the traditional cursor from a passive selection tool into an intelligent, context-aware assistant. The envisioned 'AI pointer' would leverage advanced AI capabilities, including machine learning and predictive algorithms, to anticipate user intent and significantly enhance efficiency within digital environments. By understanding the context of on-screen elements and user behavior, this next-generation pointer could intelligently highlight relevant options, suggest optimal actions, or even execute minor tasks autonomously. This approach moves beyond conventional UI design, suggesting a more intuitive and responsive interface where the pointer actively assists in navigation and interaction, representing a notable step towards more symbiotic human-AI collaboration in digital workspaces.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Pointer</span><span>Human-Computer Interaction</span><span>AI Agent</span><span>Contextual AI</span><span>Assistive Technology</span><span>Predictive AI</span><span>Intelligent Interfaces</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://deepmind.google/blog/ai-pointer/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>A Single Neuron Is Sufficient to Bypass Safety Alignment in Large Language Models</h2>
+                <span class="published-time">Published: 2026-05-08T00:00:00.000Z</span>
+                
+                <p class="summary">Safety alignment in language models operates through two mechanistically distinct systems: refusal neurons that gate whether harmful knowledge is expressed, and concept neurons that encode the harmful knowledge itself. By targeting a single neuron in each system, we demonstrate both directions of failure -- bypassing safety on explicit harmful requests via suppression, and inducing harmful content from innocent prompts via amplification -- across seven models spanning two families and 1.7B to 70B parameters, without any training or prompt engineering. Our findings suggest that safety alignment is not robustly distributed across model weights but is mediated by individual neurons that are each causally sufficient to gate refusal behavior -- suppressing any one of the identified refusal neurons bypasses safety alignment across diverse harmful requests.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Safety Alignment</span><span>Large Language Models</span><span>Refusal Neurons</span><span>Concept Neurons</span><span>Bypassing Safety</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Deep Learning</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.08513" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Qwen-Image-2.0 Technical Report</h2>
+                <span class="published-time">Published: 2026-05-11T00:00:00.000Z</span>
+                
+                <p class="summary">We present Qwen-Image-2.0, an omni-capable image generation foundation model that unifies high-fidelity generation and precise image editing within a single framework. Despite recent progress, existing models still struggle with ultra-long text rendering, multilingual typography, high-resolution photorealism, robust instruction following, and efficient deployment, especially in text-rich and compositionally complex scenarios. Qwen-Image-2.0 addresses these challenges by coupling Qwen3-VL as the condition encoder with a Multimodal Diffusion Transformer for joint condition-target modeling, supported by large-scale data curation and a customized multi-stage training pipeline. This enables strong multimodal understanding while preserving flexible generation and editing capabilities. The model supports instructions of up to 1K tokens for generating text-rich content such as slides, posters, infographics, and comics, while significantly improving multilingual text fidelity and typography. It also enhances photorealistic generation with richer details, more realistic textures, and coherent lighting, and follows complex prompts more reliably across diverse styles. Extensive human evaluations show that Qwen-Image-2.0 substantially outperforms previous Qwen-Image models in both generation and editing, marking a step toward more general, reliable, and practical image generation foundation models.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Qwen-Image-2.0</span><span>Image Generation</span><span>Image Editing</span><span>Multimodal Diffusion Transformer</span><span>Foundation Model</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Multimodal</span><span>Computer Vision</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.10730" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Soohak: A Mathematician-Curated Benchmark for Evaluating Research-level Math Capabilities of LLMs</h2>
+                <span class="published-time">Published: 2026-05-09T00:00:00.000Z</span>
+                
+                <p class="summary">Following the recent achievement of gold-medal performance on the IMO by frontier LLMs, the community is searching for the next meaningful and challenging target for measuring LLM reasoning. Whereas olympiad-style problems measure step-by-step reasoning alone, research-level problems use such reasoning to advance the frontier of mathematical knowledge itself, emerging as a compelling alternative. Yet research-level math benchmarks remain scarce because such problems are difficult to source (e.g., Riemann Bench and FrontierMath-Tier 4 contain 25 and 50 problems, respectively). To support reliable evaluation of next-generation frontier models, we introduce Soohak, a 439-problem benchmark newly authored from scratch by 64 mathematicians. Soohak comprises two subsets. On the Challenge subset, frontier models including Gemini-3-Pro, GPT-5, and Claude-Opus-4.5 reach 30.4%, 26.4%, and 10.4% respectively, leaving substantial headroom, while leading open-weight models such as Qwen3-235B, GPT-OSS-120B, and Kimi-2.5 remain below 15%. Notably, beyond standard problem solving, Soohak introduces a refusal subset that probes a capability intrinsic to research mathematics: recognizing ill-posed problems and pausing rather than producing confident but unjustified answers. On this subset, no model exceeds 50%, identifying refusal as a new optimization target that current models do not directly address. To prevent contamination, the dataset will be publicly released in late 2026, with model evaluations available upon request in the interim.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>LLMs</span><span>Math Capabilities</span><span>Research-level Math</span><span>Benchmark</span><span>Soohak</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.09063" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>CollabVR: Collaborative Video Reasoning with Vision-Language and Video Generation Models</h2>
+                <span class="published-time">Published: 2026-05-09T00:00:00.000Z</span>
+                
+                <p class="summary">Recent "Thinking with Video" approaches use Video Generation Models (VGMs) for visual reasoning by producing temporally coherent Chain-of-Frames as reasoning artifacts. Even strong VGMs, however, exhibit two recurring failure modes on goal-directed tasks: long-horizon drift on multi-step tasks and mid-clip simulation errors that compound. Both stem from the absence of explicit reasoning built upon the VGM's short-horizon visual prior, a role naturally filled by Vision-Language Models (VLMs), but where to place the VLM is non-trivial: upfront plans commit before any frame is generated and post-hoc critiques over whole videos intervene too late. We propose VLM-VGM Collaborative Video Reasoning (CollabVR), a closed-loop framework that couples the VLM with the VGM at step-level granularity: the VLM plans the immediate next action, inspects the clip the VGM generates, and folds the verifier's diagnosis directly into the next action prompt to repair detected failures. On Gen-ViRe and VBVR-Bench, CollabVR improves both open-source and closed-source VGMs over single-inference, Pass@k, and prior test-time scaling baselines at matched compute, with the largest gains on the hardest tasks. It also yields further improvements on top of a reasoning-fine-tuned VGM, indicating that step-level VLM supervision is orthogonal to and stackable with reasoning-oriented fine-tuning. We provide video samples and additional qualitative results at our project page: https://joow0n-kim.github.io/collabvr-project-page.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Video Reasoning</span><span>Video Generation Models</span><span>Vision-Language Models</span><span>Collaborative AI</span><span>Closed-loop System</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Video Understanding</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.08735" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>AgentForesight: Online Auditing for Early Failure Prediction in Multi-Agent Systems</h2>
+                <span class="published-time">Published: 2026-05-09T00:00:00.000Z</span>
+                
+                <p class="summary">LLM-based multi-agent systems are increasingly deployed on long-horizon tasks, but a single decisive error is often accepted by downstream agents and cascades into trajectory-level failure. Existing work frames this as post-hoc failure attribution, diagnosing the responsible agent and step after the trajectory has ended. However, this paradigm forfeits any opportunity to intervene while trajectory is still unfolding. In this work, we introduce AgentForesight, a framework that reframes this problem as online auditing: at each step of an unfolding trajectory, an auditor observes only the current prefix and must either continue the run or alarm at the earliest decisive error, without access to future steps. To this end, we curate AFTraj-2K, a corpus of agentic trajectories across Coding, Math, and Agentic domains, in which safe trajectories are retained under a strict curation pipeline and unsafe trajectories are annotated at the step of their decisive error via consensus among multiple LLM judges. Built on that, we develop AgentForesight-7B, a compact online auditor trained with a coarse-to-fine reinforcement learning recipe that first equips it with a risk-anticipation prior at the failure boundary on adjacent safe/unsafe prefix pairs, then sharpens this prior into precise step-level localization under a three-axis reward jointly targeting the what, where, and who of an audit verdict. Across AFTraj-2K and an external Who&When benchmark, AgentForesight-7B outperforms leading proprietary models, including GPT-4.1 and DeepSeek-V4-Pro, achieving up to +19.9% performance gain and 3times lower step localization error, opening the loop from post-hoc failures detection to enabling deployment-time intervention. Project page: https://zbox1005.github.io/agent-foresight/.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>multi-agent systems</span><span>online auditing</span><span>failure prediction</span><span>LLM-based systems</span><span>reinforcement learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.08715" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>SEIF: Self-Evolving Reinforcement Learning for Instruction Following</h2>
+                <span class="published-time">Published: 2026-05-08T00:00:00.000Z</span>
+                
+                <p class="summary">Instruction following is a fundamental capability of large language models (LLMs), yet continuously improving this capability remains challenging. Existing methods typically rely either on costly external supervision from humans or strong teacher models, or on self-play training with static-difficulty instructions that cannot evolve as the model's capabilities improve. To address these limitations, we propose SEIF (Self-Evolving Reinforcement Learning for Instruction Following), a self-evolving framework for enhancing the instruction-following ability of LLMs. SEIF forms a closed self-evolution loop that improves the model's instruction-following ability, where instruction difficulty evolution and model capability evolution reinforce each other. SEIF consists of four roles: an Instructor that generates increasingly challenging instructions, a Filter that removes conflicting or invalid instructions to ensure data quality, a Follower that learns to follow evolved instructions, and a Judger that provides reward signals for reinforcement learning. The Instructor and Follower are alternately trained and co-evolve throughout the process. Experiments across multiple model scales and architectures show that SEIF consistently improves instruction-following performance, suggesting strong generality. Further analyses reveal the sources of improvement and identify an effective training strategy for self-evolution on open-ended tasks: sufficient early-stage training to build a solid foundation, followed by moderate late-stage training to mitigate overfitting and achieve better final performance. The code and data are publicly available at https://github.com/Rainier-rq1/SEIF.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Self-Evolving Reinforcement Learning</span><span>Instruction Following</span><span>Large Language Models</span><span>Self-Evolution</span><span>Reinforcement Learning</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Natural Language Processing</span><span>AI Agent</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.07465" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
