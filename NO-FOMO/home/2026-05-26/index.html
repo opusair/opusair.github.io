@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily Report - 2026-05-26</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background-color: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.075);
+            --tag-keyword-bg: #e7f3ff;
+            --tag-keyword-text: #0056b3;
+            --tag-area-bg: #e6f7f0;
+            --tag-area-text: #198754;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px 30px;
+            background: var(--card-background-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .report-header h1 {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .report-header .theme-info {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        .source-group {
+            margin-bottom: 40px;
+        }
+
+        .source-group-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .item-card .published-time {
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-card .summary {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .item-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd;
+        }
+
+        .item-card .meta-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-card .keywords,
+        .item-card .area {
+            font-size: 0.85em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .item-card .keywords .label,
+        .item-card .area .label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-right: 8px;
+        }
+
+        .item-card .keywords span,
+        .item-card .area span {
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .item-card .keywords span {
+            background-color: var(--tag-keyword-bg);
+            color: var(--tag-keyword-text);
+        }
+
+        .item-card .area span {
+            background-color: var(--tag-area-bg);
+            color: var(--tag-area-text);
+        }
+
+        .item-card .read-more a {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .item-card .read-more a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .report-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+    
+        .language-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+        .language-switch a {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .language-switch a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        .language-switch a.active {
+            background: var(--secondary-color);
+        }
+    </style>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-008T4WC27P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-008T4WC27P');
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <div class="language-switch">
+                <a href="." class="active">中文</a>
+                <a href="en/" class="">English</a>
+            </div>
+
+            <h1>AI Daily Report</h1>
+            <p class="date">2026-05-26</p>
+            <p class="theme-info">About us: <a href="https://opusair.github.io/" target="_blank" rel="noopener noreferrer">https://opusair.github.io/</a></p>
+        </header>
+
+        <nav style="text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <a href="../../home/" style="margin: 0 15px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">🏠 返回主页</a>
+            <a href="../../daily/" style="margin: 0 15px; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">📅 最新日报</a>
+            <a href="https://opusair.github.io/" style="margin: 0 15px; padding: 10px 20px; background: #ff9800; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">👤 关于我们</a>
+        </nav>
+
+
+        <section class="source-group">
+            <h2 class="source-group-title">Hacker News</h2>
+
+            <article class="item-card">
+                <h2>A sleep-like consolidation mechanism for LLMs</h2>
+                <span class="published-time">Published: 2026-05-26 15:36:24</span>
+                
+                <p class="summary">Recent research introduces a novel 'sleep-like consolidation mechanism' designed to enhance the performance and efficiency of Large Language Models (LLMs). This innovative approach draws inspiration from biological sleep processes, where the brain consolidates memories, prunes less relevant information, and strengthens critical neural connections. For LLMs, this mechanism is proposed as a method to optimize learned representations, mitigate issues like catastrophic forgetting, and improve generalization capabilities. By periodically engaging in this consolidation phase, LLMs could potentially achieve more robust and stable learning, leading to more reliable and energy-efficient models. The core idea is to allow models to process and stabilize acquired knowledge, similar to how human brains use sleep to integrate new information and clear out cognitive clutter. This could represent a significant step towards developing more biologically plausible and resource-efficient AI systems, offering a promising avenue for future advancements in AI training methodologies and model longevity. The mechanism aims to ensure that critical knowledge is retained and reinforced, while superfluous data is de-emphasized, ultimately leading to more coherent and high-performing LLMs.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Large Language Models</span><span>Consolidation Mechanisms</span><span>AI Research</span><span>Machine Learning</span><span>Neural Networks</span><span>Bio-inspired AI</span><span>Model Optimization</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Machine Learning</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://arxiv.org/abs/2605.26099" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Eagle 3.1: Collaboration Between the EAGLE Team, vLLM Team, and TorchSpec Team</h2>
+                <span class="published-time">Published: 2026-05-26 11:46:10</span>
+                
+                <p class="summary">The announcement of Eagle 3.1 marks a significant collaborative effort involving the EAGLE Team, the vLLM Team, and the TorchSpec Team. This partnership is poised to deliver substantial enhancements to the Eagle project, likely focusing on elevating performance, efficiency, and expanding capabilities within the rapidly evolving domain of large language models. The involvement of the vLLM team, renowned for its high-throughput inference engine, strongly suggests a core emphasis on optimizing model serving, reducing latency, and improving scalability for complex AI workloads. Concurrently, the TorchSpec team's contribution indicates a potential focus on foundational machine learning infrastructure, possibly leveraging PyTorch for robust and efficient model development, deployment, and perhaps advanced compiler or optimization techniques. This multi-team collaboration is designed to integrate specialized expertise from each group, consolidating cutting-edge advancements in AI infrastructure and LLM optimization. The goal is to create a more powerful and versatile Eagle 3.1 platform, offering developers and researchers a sophisticated and production-ready solution for AI applications, particularly those demanding efficient and high-performance large language model inference and training. This synergy is expected to push the boundaries of current LLM capabilities.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Eagle 3.1</span><span>vLLM</span><span>TorchSpec</span><span>Large Language Model</span><span>AI Collaboration</span><span>Machine Learning Infrastructure</span><span>LLM Inference</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Artificial Intelligence</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://vllm.ai/blog/2026-05-26-eagle-3-1" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>DeepSWE: A contamination-free benchmark for long-horizon coding agents</h2>
+                <span class="published-time">Published: 2026-05-26 19:40:59</span>
+                
+                <p class="summary">DeepSWE introduces a novel benchmark designed to rigorously evaluate long-horizon coding agents, addressing a critical need in the rapidly evolving field of AI for software development. The benchmark's defining characteristic is its 'contamination-free' nature, ensuring that the test data has not been inadvertently included in the training datasets of the agents being evaluated. This crucial design choice aims to provide a more accurate and unbiased assessment of agent performance on complex, multi-step coding tasks that require extended reasoning and planning. By offering a reliable evaluation framework, DeepSWE seeks to drive progress in developing more capable and robust AI coding assistants, enabling researchers to confidently compare and advance different architectural approaches and training methodologies for automated code generation and problem-solving over extended sequences of actions. This initiative marks a significant step towards developing trustworthy metrics for the next generation of AI-powered software engineering tools.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>DeepSWE</span><span>Coding Agents</span><span>AI Benchmarking</span><span>Contamination-free</span><span>Long-horizon tasks</span><span>Software Engineering AI</span><span>AI Evaluation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://deepswe.datacurve.ai/blog" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Bay Area mom out thousands after scammers use AI to mimic daughter's voice</h2>
+                <span class="published-time">Published: 2026-05-26 20:23:40</span>
+                
+                <p class="summary">A mother residing in the Bay Area has reportedly lost thousands of dollars after falling victim to a sophisticated scam involving artificial intelligence. The fraudsters employed AI technology to convincingly mimic her daughter's voice, orchestrating a fake kidnapping scenario designed to induce panic and urgency. This incident highlights a concerning and rapidly growing trend where readily accessible AI tools, particularly voice cloning software, are being weaponized for malicious purposes. Scammers are leveraging these advanced capabilities to execute highly persuasive social engineering attacks, making it increasingly difficult for individuals to discern genuine from fabricated communications. The case serves as a critical warning to the public about the evolving landscape of digital fraud and the imperative need for heightened skepticism and verification protocols when confronted with urgent demands, especially those involving financial transactions or personal crises. It underscores the urgent need for robust public awareness campaigns and stronger technological safeguards to combat the proliferation of AI-driven scams, which exploit emotional vulnerabilities with unprecedented efficacy.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Voice Mimicry</span><span>Voice Cloning</span><span>Deepfake Audio</span><span>Scams</span><span>Fraud</span><span>Artificial Intelligence</span><span>Social Engineering</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Generative AI</span><span>Machine Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://abc7news.com/post/bay-area-mom-thousands-scammers-use-ai-mimic-daughters-voice-fake-kidnapping-part-growing-trend/19154381/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Launch HN: Minicor (YC P26) – Windows desktop automations at scale</h2>
+                <span class="published-time">Published: 2026-05-26 14:57:27</span>
+                
+                <p class="summary">Minicor, founded by Faiz and Saheed (YC P26), introduces a novel solution enabling AI companies to rapidly develop and deploy scalable Windows desktop automations, or RPAs. This addresses the critical challenge of integrating with legacy desktop systems that often lack modern APIs, a common hurdle for businesses seeking to leverage AI. The co-founders highlight significant difficulties inherent in building large-scale desktop RPAs, including complex scripting due to dynamic UIs and system learning curves. Furthermore, intricate orchestration requirements—such as managing virtual machines, task queuing, and parallel processing—along with severe debugging challenges like limited observability and high failure rates (often exceeding 30%), plague existing approaches. Minicor aims to overcome these obstacles, providing a robust platform for efficient desktop RPA deployment, thereby facilitating seamless interaction between AI systems and diverse desktop environments to unblock vital business operations.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Robotic Process Automation</span><span>Windows Automation</span><span>API Integration</span><span>Scalable Automation</span><span>Desktop Integration</span><span>Legacy Systems</span><span>Orchestration</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Robotics</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://www.minicor.com/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Stack Overflow’s forum is dead but the company’s still kicking</h2>
+                <span class="published-time">Published: 2026-05-26 17:17:12</span>
+                
+                <p class="summary">The article discusses the significant decline in the traditional Q&A forum activity on Stack Overflow, largely attributing this shift to the rapid advancement and widespread adoption of Artificial Intelligence tools, particularly large language models. These AI platforms now offer immediate and often comprehensive solutions to complex programming and technical queries, thereby reducing the dependency on community-driven platforms like Stack Overflow for real-time problem-solving. This paradigm shift has led to the perceived 'death' of its original forum model. However, despite the challenges faced by its core product, the company behind Stack Overflow is reportedly demonstrating resilience and strategic adaptation. This indicates that Stack Overflow is actively exploring new business models, potentially by integrating AI into its own offerings, focusing on enterprise solutions, or leveraging its extensive knowledge base in innovative ways to ensure its continued relevance and operation in the evolving technology landscape.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Stack Overflow</span><span>Artificial Intelligence</span><span>Large Language Models</span><span>Developer Community</span><span>Q&A Platform</span><span>Digital Transformation</span><span>Business Adaptation</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://sherwood.news/tech/stack-overflow-forum-dead-thanks-ai-but-companys-still-kicking-ai/" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">huggingface</h2>
+
+            <article class="item-card">
+                <h2>ThriftAttention: Selective Mixed Precision for Long-Context FP4 Attention</h2>
+                <span class="published-time">Published: 2026-05-21T00:00:00.000Z</span>
+                
+                <p class="summary">Efficient attention algorithms are critical to mitigate the quadratic cost of attention in long-context workloads. Prior work utilises block-scaled quantisation techniques on Blackwell GPUs to move attention computation to 4-bit precision to accelerate inference. However, these techniques result in significant quality degradation in long-context settings. We show that the output impact of quantisation error is highly non-uniform and increases with the importance of each query-key interaction, concentrating functionally relevant error in a small number of attention blocks that contain the most important tokens. We propose ThriftAttention, a low-bit attention variant that delivers near-FP16 long-context quality at FP4 inference efficiency. This approach proceeds in two stages. First, a heuristic rapidly selects a small number of important query-key block pairs for FP16 precision. Second, the selected blocks are computed in FP16 and the remaining blocks in FP4, with both paths merged via online softmax into a single output. We demonstrate across long-context benchmarks and model families that by computing only 5% of query-key blocks in FP16, ThriftAttention recovers on average 89.1% of the FP4-to-FP16 performance gap. We show ThriftAttention's advantage grows with sequence length, mitigating the systematic FP4 quality degradation observed at longer contexts. The code is available at https://github.com/joesharratt1229/ThriftAttention.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>ThriftAttention</span><span>Mixed Precision</span><span>Long-Context Attention</span><span>FP4 Quantization</span><span>Inference Efficiency</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Deep Learning</span><span>Natural Language Processing</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.23081" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Anticipate and Learn: Unleashing Idle-Time Compute in Proactive Agents</h2>
+                <span class="published-time">Published: 2026-05-25T00:00:00.000Z</span>
+                
+                <p class="summary">While AI agents demonstrate remarkable capabilities in reasoning and tool use, they remain fundamentally reactive: they compute responses only after explicit user prompts. This paradigm ignores a critical opportunity: the idle time between interactions is largely wasted, leaving agents unable to prepare for future user needs. To bridge this gap, we introduce ProAct, a proactive agent architecture that leverages idle-time compute to anticipate and fulfill likely upcoming user needs. By analyzing evolving dialogue history together with persistent memory, ProAct predicts upcoming needs and iteratively acquires information, allowing the agent to resolve knowledge gaps and prepare evidence before the user initiates a query.To rigorously evaluate proactive capabilities, we also introduce ProActEval, a comprehensive benchmark comprising 200 scenarios across 40 domains, featuring predictable need chains and diverse user cognitive profiles. Empirical results demonstrate significant advantages over reactive baselines. ProAct accelerates task completion by reducing required turns by 14.8%, decreases user effort by 11.7%, and cuts hallucination rates by 28.1% on ProActEval. Furthermore, MemBench evaluations confirm that ProAct achieves state-of-the-art reflective accuracy, underscoring its sustained and robust performance.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Proactive Agents</span><span>Idle-Time Compute</span><span>AI Agents</span><span>Anticipation</span><span>Knowledge Gaps</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Artificial Intelligence</span><span>Natural Language Processing</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.25971" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Toward Native Multimodal Modeling: A Roadmap</h2>
+                <span class="published-time">Published: 2026-05-25T00:00:00.000Z</span>
+                
+                <p class="summary">Multimodal modeling represents a vital step from modality-agnostic reasoning toward world modeling. While early approaches predominantly rely on late-fusion that assembles encoders and frozen language backbones with output heads, recent efforts have shifted the paradigm toward native multimodal modeling (NMM) with the intrinsic integration of modalities for superior multimodal performance. Despite its potential, the design space of native architectures remains insufficiently defined. In this paper, we present the community with a formalized roadmap for this transition. Specifically, we formally define the architectural nativity, distinguishing mid-fusion and early-fusion from non-native paradigms. We further organize the existing native models through the lens of input-output duality into three categories: (i) Multi-to-Text for cross-modal comprehension with text-only output; (ii) Multi-to-Target for scenario-oriented generation, e.g., image, audio and video generation, and (iii) Multi-to-Multi for unified modeling with symmetric input-output. We deliver a comprehensive and industrial-grade investigation into the transition toward the definitive NMM framework, where understanding and generation seamlessly coexist within a unified transformer paradigm. We systematically unpack the end-to-end pipeline from industrial perspectives from architectural coordination, massive data curation, to full-stack training recipes, inference & deployment, and the comprehensive evaluation for truly native modeling.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Native Multimodal Modeling</span><span>Multimodal Architectures</span><span>Unified Transformer</span><span>Cross-modal Comprehension</span><span>Generative AI</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Multimodal</span><span>Deep Learning</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.25343" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>On-Policy Adversarial Flow Distillation for Autoregressive Video Generation</h2>
+                <span class="published-time">Published: 2026-05-25T00:00:00.000Z</span>
+                
+                <p class="summary">Autoregressive video generators are attractive for streaming, long-horizon, and interactive applications, but distilling strong black-box teachers into causal students remains difficult. The student must learn under its own rollout distribution, whereas practical teachers may expose only prompt-conditioned completed videos and may differ in architecture, capacity, temporal design, and sampling schedule. This interface makes supervised fine-tuning off-policy, score-based distillation inapplicable, and direct adversarial imitation too sparse for denoising-time credit assignment. We propose Adversarial Flow Distillation (AFD), an on-policy framework for heterogeneous black-box video distillation. AFD queries the teacher and rolls out the current student on the same prompts, trains a prompt-paired Bradley-Terry discriminator to estimate clean-sample teacher-student discrepancy, and converts the resulting on-policy advantage into forward-process flow-matching updates on the student's own noised states. Thus, AFD provides dense velocity-field supervision while requiring no teacher scores, latents, denoising trajectories, step alignment, or reverse-chain reinforcement learning. Experiments across two causal AR student families show that AFD consistently improves motion- and physics-sensitive generation while preserving general video quality, and ablations validate the importance of adaptive on-policy feedback and forward-process credit assignment. The method requires only clean teacher videos and student rollouts, providing a practical route for distilling proprietary or heterogeneous video generators into efficient autoregressive students.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Autoregressive Video Generation</span><span>Adversarial Flow Distillation</span><span>On-policy Learning</span><span>Black-box Distillation</span><span>Video Generator</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Computer Vision</span><span>Deep Learning</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.26105" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Directional Alignment Mitigates Reward Hacking in Reinforcement Learning for Language Models</h2>
+                <span class="published-time">Published: 2026-05-24T00:00:00.000Z</span>
+                
+                <p class="summary">Reward hacking arises when a model improves a proxy reward by exploiting shortcuts rather than solving the intended task. We study this failure mode through the geometry of reinforcement learning updates in language models and argue that hacking emerges when optimization drifts away from a stable low-dimensional learning trajectory. We analyze this drift through dominant singular directions of parameter updates and show that reward-hacking runs exhibit substantially larger directional change than clean runs. Motivated by this observation, we introduce trusted-direction projection, which constrains gradients to remain within a clean reference subspace. Across reward-hacking experiments on mathematical reasoning, the proposed approach delays shortcut exploitation and better preserves task performance.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Reward Hacking</span><span>Reinforcement Learning</span><span>Language Models</span><span>Directional Alignment</span><span>Trusted-direction projection</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Machine Learning</span><span>Natural Language Processing</span><span>Large Language Model</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.25189" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Claw-Anything: Benchmarking Always-On Personal Assistants with Broader Access to User's Digital World</h2>
+                <span class="published-time">Published: 2026-05-25T00:00:00.000Z</span>
+                
+                <p class="summary">Large language model agents are increasingly envisioned as always-on personal assistants with access to anything relevant in the user's digital world. Yet current systems operate over only narrow slices of that world, limiting context-sensitive reasoning and effective assistance. Existing benchmarks similarly provide only partial user state and therefore fail to capture performance in such a broad, always-on setting. To address this gap, we introduce Claw-Anything, a benchmark that expands agent context along three dimensions: long-horizon activity histories, interdependent backend services, and integrated GUI and CLI interaction across multiple devices. To instantiate this setting, we simulate months of user activity through multi-round event injection, producing complex world states and realistic noise, including irrelevant events and conflicting signals. Agents must reason over rich contextual environments while remaining robust to such noise. This expanded scope also enables the evaluation of proactive assistance, requiring agents to anticipate user needs and deliver timely recommendations. Experiments show that GPT-5.5 achieves only 34.5% pass@1, substantially below prior benchmarks, underscoring a gap between current agent capabilities and the demands of always-on personal assistance. Alongside the benchmark, we release an automated data-generation pipeline that yields 2,000 training environments and improves the base model by 23.7%, demonstrating its utility of scalable data infrastructure.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agent</span><span>Personal Assistants</span><span>Benchmarking</span><span>Large Language Model</span><span>Digital World</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>AI Agent</span><span>Large Language Model</span><span>Artificial Intelligence</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://huggingface.co/papers/2605.26086" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <section class="source-group">
+            <h2 class="source-group-title">Twitter</h2>
+
+            <article class="item-card">
+                <h2>ZoubinGhahrama1_AlphaProof Nexus</h2>
+                <span class="published-time">Published: 2026-05-26 17:24:52</span>
+                
+                <p class="summary">The tweet highlights significant advancements in AI agents, specifically mentioning Google DeepMind's AlphaProof Nexus. This new agentic framework is reportedly capable of conducting research-level mathematics. The announcement, shared by Pushmeet, suggests a major step forward in AI's ability to engage in complex problem-solving and discovery, particularly within mathematical research. The implications of such an agent could be far-reaching, potentially accelerating scientific progress by automating aspects of mathematical exploration and theorem proving. This development underscores the increasing sophistication of AI systems and their expanding role in cutting-edge research fields. The mention of 'research-level math' points towards AI moving beyond routine tasks into areas requiring abstract reasoning and novel insights.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI agents</span><span>AlphaProof Nexus</span><span>Google DeepMind</span><span>research-level math</span><span>agentic framework</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Research Progress</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/ZoubinGhahrama1/status/2059324906840457423" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Google AI Model Updates</h2>
+                <span class="published-time">Published: 2026-05-26 17:34:28</span>
+                
+                <p class="summary">Google has introduced significant advancements in its AI models, focusing on enhanced reasoning and multimodal capabilities. These updates aim to improve the models' ability to understand and generate content across various formats, including text, images, and potentially audio and video in the future. The company highlighted progress in areas such as scientific research, coding assistance, and creative content generation. This evolution signifies Google's commitment to pushing the boundaries of artificial intelligence and making these powerful tools more accessible and useful for a wider range of applications and users, underscoring a rapid pace of innovation in the AI landscape. The focus on multimodal understanding is particularly noteworthy, paving the way for more intuitive human-computer interactions.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Google AI</span><span>AI Models</span><span>Multimodal AI</span><span>Reasoning Capabilities</span><span>Artificial Intelligence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Multimodal</span><span>Research Progress</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/Google/status/2059327321752866918" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>Kling AI House of David Success</h2>
+                <span class="published-time">Published: 2026-05-26 03:57:22</span>
+                
+                <p class="summary">Jon Erwin, Founder & CCO of Wonder Project and CEO of Innovative Dreams, highlighted Kling AI's significant role in the creation of the Amazon Prime hit series "House of David" Seasons 1 and 2. He expressed excitement over Kling AI delivering multiple industry firsts, specifically mentioning it as the first to achieve a certain unnamed milestone, with a provided link for further details. This endorsement underscores Kling AI's innovative capabilities and impact on high-profile media productions, suggesting a strong performance and pioneering application of AI in the entertainment industry. The tweet implies that Kling AI's technology is at the forefront of advancements, capable of driving complex projects and setting new benchmarks.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Kling AI</span><span>House of David</span><span>Amazon Prime</span><span>Generative AI</span><span>Media Production</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Generative AI</span><span>Video Understanding</span><span>Industry News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/Kling_ai/status/2059121691385622761" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>natolambert_Gemma 4 vs Qwen 3.5/3.6</h2>
+                <span class="published-time">Published: 2026-05-26 15:42:20</span>
+                
+                <p class="summary">The tweet highlights a significant shift in the international balance of influence within open-source AI models, with Gemma 4 adoption numbers reportedly outpacing those of Qwen 3.5 and 3.6 for similarly sized models. This development suggests a growing momentum and potential preference for Gemma 4 in the AI community, possibly due to its performance, accessibility, or specific features. The observed trend indicates a dynamic landscape in the competition among open models, with Gemma 4 emerging as a strong contender. The provided URL likely contains further details or data supporting this claim, offering deeper insights into the adoption rates and the factors driving this change in influence among AI models. This dynamic is crucial for understanding the future direction of open model development and deployment.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>Gemma 4</span><span>Qwen 3.5</span><span>Qwen 3.6</span><span>Open Models</span><span>AI Influence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Large Language Model</span><span>Open Source</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/natolambert/status/2059299103964811512" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>GaryMarcus_AI Agents Warning</h2>
+                <span class="published-time">Published: 2026-05-26 14:46:44</span>
+                
+                <p class="summary">Gary Marcus retweets a warning from an OpenAI insider, @thsottiaux, regarding the increasing reliance on AI agents for cognitive tasks. The insider's caution suggests potential pitfalls or unintended consequences associated with offloading critical thinking processes to artificial intelligence. This highlights a growing concern within the AI community about the implications of advanced AI agents and their impact on human cognitive functions and decision-making. The tweet serves as a call for careful consideration of the role and development of AI agents in society, urging users to remain mindful of the limits and potential risks involved. It underscores the need for a balanced approach to integrating AI into daily life and critical thinking processes.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>AI Agents</span><span>OpenAI</span><span>Thinking</span><span>Warning</span><span>Artificial Intelligence</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>AI Agent</span><span>Tech News</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/GaryMarcus/status/2059285109035954522" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+
+            <article class="item-card">
+                <h2>gdb_GPT-5.5 Coding Model</h2>
+                <span class="published-time">Published: 2026-05-26 21:39:47</span>
+                
+                <p class="summary">The tweet highlights GPT-5.5 as a uniquely proficient coding model. This suggests a significant advancement in artificial intelligence's capabilities within software development and programming tasks. The assertion points to the model's potential to excel in generating, understanding, or debugging code across various programming languages. Such a development could have substantial implications for the efficiency and effectiveness of software engineering workflows, potentially accelerating development cycles and improving code quality. Further details on its specific functionalities and performance benchmarks would be beneficial to fully assess its impact on the AI and developer communities. The focus on coding prowess indicates a specialized advancement in large language models, moving towards highly specialized AI applications.</p>
+                <div class="meta-tags">
+                    <div class="keywords"><span class="label">Keywords：</span><span>GPT-5.5</span><span>Coding Model</span><span>AI</span><span>Software Development</span></div>
+                    <div class="area"><span class="label">Areas：</span><span>Artificial Intelligence</span><span>Large Language Model</span><span>Generative AI</span></div>
+                </div>
+                <div class="read-more">
+                    <a href="https://x.com/gdb/status/2059389057055252554" target="_blank" rel="noopener noreferrer">Read more...</a>
+                </div>
+            </article>
+        </section>
+        <footer class="report-footer">
+            Generated by AI Assistant
+        </footer>
+    </div>
+</body>
+</html>
